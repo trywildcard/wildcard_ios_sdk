@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>WildcardSDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>WildcardSDKTestApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1D3A285A1A2E696A00A9D4C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D3A286F1A2E696A00A9D4C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D3A28821A2E697700A9D4C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D3A288C1A2E697700A9D4C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
