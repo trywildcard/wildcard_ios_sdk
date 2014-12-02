@@ -1,0 +1,6 @@
+framework module WildcardSDK {
+  umbrella header "WildcardSDK.h"
+
+  export *
+  module * { export * }
+}

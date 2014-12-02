@@ -1,0 +1,1 @@
+ const unsigned char WildcardSDKVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:WildcardSDK  PROJECT:WildcardSDKProject-1" "\n"; const double WildcardSDKVersionNumber __attribute__ ((used)) = (double)1.;

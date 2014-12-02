@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1D3A28A31A2E69EF00A9D4C1 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1D3A28A41A2E69EF00A9D4C1 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				1D3A28A91A2E6A1500A9D4C1 /* ShellScript */,
+			);
+			dependencies = (
+				1D3A28A81A2E6A1100A9D4C1 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */; };
 		1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28621A2E696A00A9D4C1 /* ViewController.swift */; };
@@ -18,6 +33,7 @@
 		1D3A28971A2E697700A9D4C1 /* WildcardSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */; };
 		1D3A289A1A2E697700A9D4C1 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; };
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +59,13 @@
 			remoteInfo = WildcardSDKTestApp;
 		};
 		1D3A28981A2E697700A9D4C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D3A28511A2E695D00A9D4C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D3A28821A2E697700A9D4C1;
+			remoteInfo = WildcardSDK;
+		};
+		1D3A28A71A2E6A1100A9D4C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1D3A28511A2E695D00A9D4C1 /* Project object */;
 			proxyType = 1;
@@ -82,6 +105,7 @@
 		1D3A288D1A2E697700A9D4C1 /* WildcardSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WildcardSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
+		1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				1D3A28871A2E697700A9D4C1 /* WildcardSDK.h */,
+				1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */,
 				1D3A28851A2E697700A9D4C1 /* Supporting Files */,
 			);
 			path = WildcardSDK;
@@ -322,6 +347,9 @@
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = 1D3A285A1A2E696A00A9D4C1;
 					};
+					1D3A28A31A2E69EF00A9D4C1 = {
+						CreatedOnToolsVersion = 6.1;
+					};
 				};
 			};
 			buildConfigurationList = 1D3A28541A2E695D00A9D4C1 /* Build configuration list for PBXProject "WildcardSDKProject" */;
@@ -341,6 +369,7 @@
 				1D3A286F1A2E696A00A9D4C1 /* WildcardSDKTestAppTests */,
 				1D3A28821A2E697700A9D4C1 /* WildcardSDK */,
 				1D3A288C1A2E697700A9D4C1 /* WildcardSDKTests */,
+				1D3A28A31A2E69EF00A9D4C1 /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -379,6 +408,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D3A28A91A2E6A1500A9D4C1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nSDK_TARGET=WildcardSDK\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${SDK_TARGET}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${SDK_TARGET}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework/${SDK_TARGET}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to copy the framework to the user's desktopSDK_TARGET\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${HOME}/Desktop/${SDK_TARGET}.framework\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D3A28571A2E696A00A9D4C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -401,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +480,11 @@
 			isa = PBXTargetDependency;
 			target = 1D3A28821A2E697700A9D4C1 /* WildcardSDK */;
 			targetProxy = 1D3A28981A2E697700A9D4C1 /* PBXContainerItemProxy */;
+		};
+		1D3A28A81A2E6A1100A9D4C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D3A28821A2E697700A9D4C1 /* WildcardSDK */;
+			targetProxy = 1D3A28A71A2E6A1100A9D4C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -839,6 +890,20 @@
 			};
 			name = Release;
 		};
+		1D3A28A51A2E69EF00A9D4C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1D3A28A61A2E69EF00A9D4C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -880,6 +945,14 @@
 			buildConfigurations = (
 				1D3A28A11A2E697700A9D4C1 /* Debug */,
 				1D3A28A21A2E697700A9D4C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1D3A28A41A2E69EF00A9D4C1 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D3A28A51A2E69EF00A9D4C1 /* Debug */,
+				1D3A28A61A2E69EF00A9D4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

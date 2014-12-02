@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Framework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>WildcardSDK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>1D3A288C1A2E697700A9D4C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1D3A28A31A2E69EF00A9D4C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/dxiang/Library/Developer/Xcode/DerivedData/WildcardSDKProject-amozredtjhvbwjdpidtaroyhnlde/Build/Products/Debug-iphonesimulator/WildcardSDK.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/dxiang/workspace/wildcard_ios_sdk/WildcardSDKProject/build/WildcardSDKProject.build/Debug-iphonesimulator/WildcardSDK.build/unextended-module.modulemap',
+    }]
+  }]
+}
