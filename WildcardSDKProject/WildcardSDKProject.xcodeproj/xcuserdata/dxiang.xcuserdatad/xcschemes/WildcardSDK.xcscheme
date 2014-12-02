@@ -28,7 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D3A288C1A2E697700A9D4C1"
+               BuildableName = "WildcardSDKTests.xctest"
+               BlueprintName = "WildcardSDKTests"
+               ReferencedContainer = "container:WildcardSDKProject.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1D3A28821A2E697700A9D4C1"
+            BuildableName = "WildcardSDK.framework"
+            BlueprintName = "WildcardSDK"
+            ReferencedContainer = "container:WildcardSDKProject.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
