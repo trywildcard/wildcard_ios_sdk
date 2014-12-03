@@ -353,7 +353,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nSDK_TARGET=WildcardSDK\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${SDK_TARGET}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${SDK_TARGET}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework/${SDK_TARGET}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to copy the framework to the user's desktopSDK_TARGET\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${HOME}/Desktop/${SDK_TARGET}.framework\"";
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nSDK_TARGET=WildcardSDK\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"${SDK_TARGET}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${SDK_TARGET}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/Modules/${SDK_TARGET}.swiftmodule\"\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${SDK_TARGET}.framework/${SDK_TARGET}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${SDK_TARGET}.framework/${SDK_TARGET}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\nrm -rf \"${PROJECT_DIR}/${SDK_TARGET}.framework\"\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to copy the framework to the user's desktopSDK_TARGET\nrm -rf \"${HOME}/Desktop/${SDK_TARGET}.framework\"\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${SDK_TARGET}.framework\" \"${HOME}/Desktop/${SDK_TARGET}.framework\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -753,6 +753,7 @@
 				1D3A287A1A2E696A00A9D4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D3A289C1A2E697700A9D4C1 /* Build configuration list for PBXNativeTarget "WildcardSDK" */ = {
 			isa = XCConfigurationList;
@@ -761,6 +762,7 @@
 				1D3A289E1A2E697700A9D4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D3A28A01A2E697700A9D4C1 /* Build configuration list for PBXNativeTarget "WildcardSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -769,6 +771,7 @@
 				1D3A28A21A2E697700A9D4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D3A28A41A2E69EF00A9D4C1 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
 			isa = XCConfigurationList;
@@ -777,6 +780,7 @@
 				1D3A28A61A2E69EF00A9D4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
