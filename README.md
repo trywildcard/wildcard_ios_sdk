@@ -2,8 +2,7 @@
 
 <h3>Building</h3>
 
-All targets are included in **WildcardSDKProject.xcodeproj
-**
+All targets are included in **WildcardSDKProject.xcodeproj**
 
 <h4>TARGETS</h4>
 
