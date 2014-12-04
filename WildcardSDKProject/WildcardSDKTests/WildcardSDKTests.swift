@@ -8,22 +8,44 @@
 
 import UIKit
 import XCTest
+import WildcardSDK
 
 class WildcardSDKTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testAccess(){
+        XCTAssert("Hello!" == Hello.sayHello())
+    }
+    
+    func testArticleCard(){
+        let expectation = expectationWithDescription("Creates Article Card")
+        let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
+        ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+            XCTAssert(card != nil)
+            XCTAssert(error == nil)
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
+    func testBogusArticleCard(){
+        let expectation = expectationWithDescription("Bogus Article Card")
+        let articleUrl = NSURL(string: "http://www.google.com")
+        ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+            XCTAssert(card == nil)
+            XCTAssert(error != nil)
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
     }
     
     

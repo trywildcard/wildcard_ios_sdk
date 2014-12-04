@@ -33,6 +33,9 @@
 		1D3A289A1A2E697700A9D4C1 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; };
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */; };
+		1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F981A2FDD5B001FFDEA /* Card.swift */; };
+		1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */; };
+		1D904F9F1A302937001FFDEA /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F9E1A302937001FFDEA /* Platform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
 		1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
+		1D904F981A2FDD5B001FFDEA /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCard.swift; sourceTree = "<group>"; };
+		1D904F9E1A302937001FFDEA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +174,9 @@
 		1D3A28841A2E697700A9D4C1 /* WildcardSDK */ = {
 			isa = PBXGroup;
 			children = (
+				1D904F9A1A2FDD61001FFDEA /* Public */,
+				1D904F9B1A2FDD66001FFDEA /* Project */,
 				1D3A28871A2E697700A9D4C1 /* WildcardSDK.h */,
-				1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */,
 				1D3A28851A2E697700A9D4C1 /* Supporting Files */,
 			);
 			path = WildcardSDK;
@@ -198,6 +205,24 @@
 				1D3A28951A2E697700A9D4C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D904F9A1A2FDD61001FFDEA /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				1D904F981A2FDD5B001FFDEA /* Card.swift */,
+				1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */,
+				1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		1D904F9B1A2FDD66001FFDEA /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				1D904F9E1A302937001FFDEA /* Platform.swift */,
+			);
+			name = Project;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +397,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */,
+				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,
+				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
+				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

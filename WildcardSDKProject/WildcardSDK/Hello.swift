@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class Hello : NSObject{
+public class Hello{
     public class func sayHello()->String{
         return "Hello!"
     }
