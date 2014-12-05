@@ -32,10 +32,19 @@
 		1D3A28971A2E697700A9D4C1 /* WildcardSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */; };
 		1D3A289A1A2E697700A9D4C1 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; };
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */; };
+		1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */; };
+		1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */; };
+		1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC8E1A312B0000734B9A /* CardLayouts.swift */; };
+		1D7EAC911A312C7100734B9A /* CardLayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC901A312C7100734B9A /* CardLayoutEngine.swift */; };
 		1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F981A2FDD5B001FFDEA /* Card.swift */; };
 		1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */; };
 		1D904F9F1A302937001FFDEA /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F9E1A302937001FFDEA /* Platform.swift */; };
+		1D904FA11A309E0B001FFDEA /* LinkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904FA01A309E0B001FFDEA /* LinkCard.swift */; };
+		1DAC26801A326B790005C4BE /* DummyEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* DummyEdge.swift */; };
+		1DAC26821A326BFE0005C4BE /* ArticleCardEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26811A326BFE0005C4BE /* ArticleCardEdge.swift */; };
+		1DAC26841A326C150005C4BE /* LinkCardEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26831A326C150005C4BE /* LinkCardEdge.swift */; };
+		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
+		1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,10 +106,19 @@
 		1D3A288D1A2E697700A9D4C1 /* WildcardSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WildcardSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
-		1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
+		1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionEdge.swift; sourceTree = "<group>"; };
+		1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionNode.swift; sourceTree = "<group>"; };
+		1D7EAC8E1A312B0000734B9A /* CardLayouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayouts.swift; sourceTree = "<group>"; };
+		1D7EAC901A312C7100734B9A /* CardLayoutEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayoutEngine.swift; sourceTree = "<group>"; };
 		1D904F981A2FDD5B001FFDEA /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCard.swift; sourceTree = "<group>"; };
 		1D904F9E1A302937001FFDEA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		1D904FA01A309E0B001FFDEA /* LinkCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCard.swift; sourceTree = "<group>"; };
+		1DAC267F1A326B790005C4BE /* DummyEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyEdge.swift; sourceTree = "<group>"; };
+		1DAC26811A326BFE0005C4BE /* ArticleCardEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardEdge.swift; sourceTree = "<group>"; };
+		1DAC26831A326C150005C4BE /* LinkCardEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCardEdge.swift; sourceTree = "<group>"; };
+		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
+		1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitEdge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,12 +225,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1D7EAC881A31258100734B9A /* CardLayoutEngine */ = {
+			isa = PBXGroup;
+			children = (
+				1DAC267E1A326B620005C4BE /* Edges */,
+				1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */,
+				1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */,
+				1D7EAC8E1A312B0000734B9A /* CardLayouts.swift */,
+				1D7EAC901A312C7100734B9A /* CardLayoutEngine.swift */,
+			);
+			name = CardLayoutEngine;
+			sourceTree = "<group>";
+		};
 		1D904F9A1A2FDD61001FFDEA /* Public */ = {
 			isa = PBXGroup;
 			children = (
 				1D904F981A2FDD5B001FFDEA /* Card.swift */,
-				1D3A28AA1A2E6C4300A9D4C1 /* Hello.swift */,
 				1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */,
+				1D904FA01A309E0B001FFDEA /* LinkCard.swift */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -220,9 +250,22 @@
 		1D904F9B1A2FDD66001FFDEA /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				1D7EAC881A31258100734B9A /* CardLayoutEngine */,
 				1D904F9E1A302937001FFDEA /* Platform.swift */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		1DAC267E1A326B620005C4BE /* Edges */ = {
+			isa = PBXGroup;
+			children = (
+				1DAC26811A326BFE0005C4BE /* ArticleCardEdge.swift */,
+				1DAC267F1A326B790005C4BE /* DummyEdge.swift */,
+				1DAC26831A326C150005C4BE /* LinkCardEdge.swift */,
+				1DAC26851A326E530005C4BE /* LandscapeEdge.swift */,
+				1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */,
+			);
+			name = Edges;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,10 +439,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D3A28AB1A2E6C4300A9D4C1 /* Hello.swift in Sources */,
+				1D904FA11A309E0B001FFDEA /* LinkCard.swift in Sources */,
+				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
+				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
+				1DAC26801A326B790005C4BE /* DummyEdge.swift in Sources */,
+				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
+				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
+				1DAC26821A326BFE0005C4BE /* ArticleCardEdge.swift in Sources */,
+				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
+				1D7EAC911A312C7100734B9A /* CardLayoutEngine.swift in Sources */,
+				1DAC26841A326C150005C4BE /* LinkCardEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

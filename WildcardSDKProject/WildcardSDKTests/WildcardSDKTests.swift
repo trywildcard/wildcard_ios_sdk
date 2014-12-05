@@ -20,10 +20,6 @@ class WildcardSDKTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAccess(){
-        XCTAssert("Hello!" == Hello.sayHello())
-    }
-    
     func testArticleCard(){
         let expectation = expectationWithDescription("Creates Article Card")
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
@@ -46,6 +42,19 @@ class WildcardSDKTests: XCTestCase {
         })
         waitForExpectationsWithTimeout(10, handler:{ error in
         })
+    }
+    
+    func testLinkCard(){
+        let expectation = expectationWithDescription("Link Card")
+        let articleUrl = NSURL(string: "https://www.etsy.com/listing/128235512/etsy-i-buy-from-real-people-tote-bag")
+        LinkCard.createFromWebUrl(articleUrl!, completion: { (card:LinkCard?, error:NSError?) -> Void in
+            XCTAssert(card != nil)
+            XCTAssert(error == nil)
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+        
     }
     
     

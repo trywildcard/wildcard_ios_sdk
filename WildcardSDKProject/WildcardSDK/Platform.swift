@@ -10,6 +10,8 @@ import Foundation
 
 class Platform{
     
+    let platformBaseURL = "http://platform-prod.trywildcard.com"
+    
     // swift doesn't support class constant variables yet, but you can do it in a struct
     class var sharedInstance : Platform{
         struct Static{
@@ -18,14 +20,10 @@ class Platform{
         return Static.instance
     }
     
-    class var platformBaseURL:String{
-        return "http://platform-prod.trywildcard.com"
-    }
-    
     class func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var urlString = Platform.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
         let url = NSURL(string:urlString)
         
         var session = NSURLSession.sharedSession()
@@ -53,7 +51,6 @@ class Platform{
                             if let article = resultDict["article"] as? NSDictionary{
                                 title = article["title"] as? String
                                 html = article["html"] as? String
-                                
                                 if(title != nil && html != nil && startURL != nil){
                                     articleCard  = ArticleCard(title: title!, html: html!, url: startURL!, dictionary:article)
                                 }
@@ -62,6 +59,38 @@ class Platform{
                         
                     }
                     completion(articleCard, nil)
+                }
+            }
+        })
+        task.resume()
+    }
+    
+    class func getLinkCardFromWebUrl(url:NSURL, completion: ((LinkCard?, NSError?)->Void)) -> Void
+    {
+        var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
+        let requestURL = NSURL(string:urlString)
+        
+        var session = NSURLSession.sharedSession()
+        var task:NSURLSessionTask = session.dataTaskWithURL(requestURL!, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
+            if(error != nil){
+                completion(nil, error)
+            }else{
+                var jsonError:NSError?
+                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
+                if (jsonError != nil) {
+                    completion(nil, jsonError)
+                }
+                else {
+                    var linkCard:LinkCard?
+                    if let result = json!["result"] as? NSDictionary{
+                        let title = result["title"] as? String
+                        let description = result["description"] as? String
+                        if title != nil && description != nil{
+                            linkCard = LinkCard(url: url,description:description!, title: title!, dictionary: result)
+                        }
+                    }
+                    completion(linkCard, nil)
                 }
             }
         })
