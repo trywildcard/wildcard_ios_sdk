@@ -263,13 +263,13 @@
 		1DAC267E1A326B620005C4BE /* Edges */ = {
 			isa = PBXGroup;
 			children = (
-				1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */,
-				1DAC26851A326E530005C4BE /* LandscapeEdge.swift */,
-				1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */,
 				1DAC26891A355BB70005C4BE /* CardTypeEdge.swift */,
 				1DAC268B1A355DEF0005C4BE /* CheckImageEdge.swift */,
-				1DAC268D1A3564170005C4BE /* CheckShortTitleEdge.swift */,
 				1DAC268F1A3569DB0005C4BE /* CheckShortDescriptionEdge.swift */,
+				1DAC268D1A3564170005C4BE /* CheckShortTitleEdge.swift */,
+				1DAC26851A326E530005C4BE /* LandscapeEdge.swift */,
+				1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */,
+				1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */,
 			);
 			name = Edges;
 			sourceTree = "<group>";
