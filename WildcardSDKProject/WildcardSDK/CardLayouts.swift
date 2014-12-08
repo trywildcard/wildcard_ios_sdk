@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum CardLayout {
+public enum CardLayout {
     case Unknown
     case BareCard
     case LinkCardLandscapeDefault;
     case LinkCardLandscapeImage;
     case LinkCardLandscapeDescription;
     case LinkCardLandscapeImageDescription;
-    case LinkCardPortraitDescription;
+    case LinkCardPortraitDefault;
     case LinkCardPortraitImageFull;
     case LinkCardPortraitImageSmallFloatLeft;
-    case LinkCasePortraitImageSmallFloatBottom;
+    case LinkCardPortraitImageSmallFloatBottom;
 }

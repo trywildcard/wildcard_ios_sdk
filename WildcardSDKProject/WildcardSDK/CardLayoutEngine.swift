@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CardLayoutEngine{
+public class CardLayoutEngine{
     
     var root:LayoutDecisionNode
     
@@ -18,7 +18,7 @@ class CardLayoutEngine{
     }
     
     // swift doesn't support class constant variables yet, but you can do it in a struct
-    class var sharedInstance : CardLayoutEngine {
+    public class var sharedInstance : CardLayoutEngine {
         struct Static {
             static var onceToken : dispatch_once_t = 0
             static var instance : CardLayoutEngine? = nil
@@ -33,17 +33,41 @@ class CardLayoutEngine{
     
     func buildDecisionTree(){
         let cardTypeNode = LayoutDecisionNode(description: "Checking Card Type")
-        let passThrough = DummyEdge(description:"Passthrough")
-        root.addEdge(passThrough, destination: cardTypeNode)
-        let linkCardNode = LayoutDecisionNode(description: "It's a video card")
+        root.addEdge(PassThroughEdge(), destination: cardTypeNode)
         
+        let linkCardNode = LayoutDecisionNode(description: "It's a web link card")
+        cardTypeNode.addEdge(CardTypeEdge(cardType: "weblink"), destination: linkCardNode)
         
+        let linkCardHasImageNode = LayoutDecisionNode(description: "Web link card has an image")
+        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.LinkCardPortraitDefault)
         
+        linkCardNode.addEdge(CheckImageEdge(), destination: linkCardHasImageNode)
+        linkCardNode.addEdge(PassThroughEdge(), destination: linkCardDefaultNode)
         
+        let linkCardFullImageNode = LayoutDecisionNode(description: "LinkCardPortraitImageFull", layout: CardLayout.LinkCardPortraitImageFull)
+        let linkCardLongTitleNode = LayoutDecisionNode(description: "Web link card has a long title")
+        linkCardHasImageNode.addEdge(CheckShortTitleEdge(), destination: linkCardFullImageNode)
+        linkCardHasImageNode.addEdge(PassThroughEdge(), destination: linkCardLongTitleNode)
+        
+        let linkCardFloatLeftNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatLeft", layout: CardLayout.LinkCardPortraitImageSmallFloatLeft)
+        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.LinkCardPortraitImageSmallFloatBottom)
+        linkCardLongTitleNode.addEdge(CheckShortDescriptionEdge(), destination: linkCardFloatLeftNode)
+        linkCardLongTitleNode.addEdge(PassThroughEdge(), destination: linkCardFloatBottomNode)
     }
     
-    func matchLayout(card:Card)->CardLayout{
-        return CardLayout.Unknown
+    public func matchLayout(card:Card)->CardLayout{
+        var node:LayoutDecisionNode = root
+        while(true){
+            let followEdge:LayoutDecisionEdge? = node.edgeToFollow(card)
+            
+            // no edge to follow, return the layout at this node
+            if(followEdge == nil){
+                return  node.cardLayout
+            // follow
+            }else{
+                node = followEdge!.post!
+            }
+        }
     }
     
 }

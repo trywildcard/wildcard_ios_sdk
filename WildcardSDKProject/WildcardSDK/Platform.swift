@@ -65,7 +65,7 @@ class Platform{
         task.resume()
     }
     
-    class func getLinkCardFromWebUrl(url:NSURL, completion: ((LinkCard?, NSError?)->Void)) -> Void
+    class func getWebLinkCardFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
@@ -82,12 +82,12 @@ class Platform{
                     completion(nil, jsonError)
                 }
                 else {
-                    var linkCard:LinkCard?
+                    var linkCard:WebLinkCard?
                     if let result = json!["result"] as? NSDictionary{
                         let title = result["title"] as? String
                         let description = result["description"] as? String
                         if title != nil && description != nil{
-                            linkCard = LinkCard(url: url,description:description!, title: title!, dictionary: result)
+                            linkCard = WebLinkCard(url: url,description:description!, title: title!, dictionary: result)
                         }
                     }
                     completion(linkCard, nil)

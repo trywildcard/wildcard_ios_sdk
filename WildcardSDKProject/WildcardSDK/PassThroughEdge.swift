@@ -8,7 +8,11 @@
 
 import Foundation
 
-class DummyEdge : LayoutDecisionEdge {
+class PassThroughEdge : LayoutDecisionEdge {
+
+    init(){
+        super.init(description: "passthrough")
+    }
     
     override func evaluation(input:AnyObject)->Bool{
         return true

@@ -9,32 +9,32 @@
 import Foundation
 
 /*
-* Link Card
+* WebLink Card
 *
 * Official Schema:
 * http://www.trywildcard.com/docs/schema/#link-card
 *
 */
 @objc
-public class LinkCard : Card{
+public class WebLinkCard : Card{
     
     let title:String
     let description:String
     
     let imageUrl:NSURL?
     
-    init(url:NSURL, description:String, title:String,dictionary:NSDictionary){
+    public init(url:NSURL, description:String, title:String,dictionary:NSDictionary?){
         self.title = title
         self.description = description
-        super.init(webUrl: url, cardType: "link")
+        super.init(webUrl: url, cardType: "weblink")
         
-        if let imageUrl = dictionary["primaryImageUrl"] as? String{
+        if let imageUrl = dictionary?["primaryImageUrl"] as? String{
             self.imageUrl = NSURL(string: imageUrl)
         }
     }
     
-    public class func createFromWebUrl(url:NSURL, completion: ((LinkCard?, NSError?)->Void)) -> Void{
-        Platform.getLinkCardFromWebUrl(url,completion:completion)
+    public class func createFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void{
+        Platform.getWebLinkCardFromWebUrl(url,completion:completion)
     }
     
 }

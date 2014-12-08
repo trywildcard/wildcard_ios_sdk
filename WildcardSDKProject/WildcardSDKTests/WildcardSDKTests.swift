@@ -47,14 +47,40 @@ class WildcardSDKTests: XCTestCase {
     func testLinkCard(){
         let expectation = expectationWithDescription("Link Card")
         let articleUrl = NSURL(string: "https://www.etsy.com/listing/128235512/etsy-i-buy-from-real-people-tote-bag")
-        LinkCard.createFromWebUrl(articleUrl!, completion: { (card:LinkCard?, error:NSError?) -> Void in
+        WebLinkCard.createFromWebUrl(articleUrl!, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
             XCTAssert(card != nil)
             XCTAssert(error == nil)
             expectation.fulfill()
         })
         waitForExpectationsWithTimeout(10, handler:{ error in
         })
+    }
+    
+    func testWebLinkCardLayouts(){
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")
         
+        let articleCard = ArticleCard(title: "default", html: "", url: url!, dictionary: nil)
+        XCTAssert(engine.matchLayout(articleCard) == CardLayout.BareCard)
+        
+        // no image results in default lay out
+        let webLinkCard1 = WebLinkCard(url: url!, description: "test1", title: "test1", dictionary: nil)
+        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.LinkCardPortraitDefault)
+        
+        let testDictionary:NSMutableDictionary = NSMutableDictionary()
+        testDictionary["primaryImageUrl"] = "http://www.google.com"
+        
+        // image with short title
+        let webLinkCard2 = WebLinkCard(url: url!, description: "test2", title: "test2", dictionary: testDictionary)
+        XCTAssert(engine.matchLayout(webLinkCard2) == CardLayout.LinkCardPortraitImageFull)
+        
+        // image with long title and short description
+        let webLinkCard3 = WebLinkCard(url: url!, description: "test2", title: "longer title generates a different layout", dictionary: testDictionary)
+        XCTAssert(engine.matchLayout(webLinkCard3) == CardLayout.LinkCardPortraitImageSmallFloatLeft)
+        
+        // image with long title and long description
+        let webLinkCard4 = WebLinkCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", dictionary: testDictionary)
+        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.LinkCardPortraitImageSmallFloatBottom)
     }
     
     
