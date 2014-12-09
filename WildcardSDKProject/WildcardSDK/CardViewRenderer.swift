@@ -22,13 +22,15 @@ public class CardViewRenderer
         
         var newCardView = CardView(frame: CGRectZero)
         if let cardContentView = CardViewRenderer.generateContentViewFromLayout(layoutToUse!, cardView:newCardView){
+            
             // initialize card content view
             newCardView.initializeContentView(cardContentView)
             
             // upate content for card
             cardContentView.updateViewForCard(card)
             
-            // apply best fit bounds
+            // any last minute things to do to card view before returning to user
+            newCardView.finalizeCard()
             
             return newCardView
         }else{

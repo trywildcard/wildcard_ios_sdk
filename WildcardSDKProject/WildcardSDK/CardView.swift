@@ -44,19 +44,27 @@ public class CardView : UIView
             contentView = nil
         }
         
+        bounds =  cardContentView.optimalBounds()
+        layoutIfNeeded()
+        
         containerView.addSubview(cardContentView)
         cardContentView.constrainToSuperViewEdges()
+    }
+    
+    func finalizeCard(){
+        // set original always at 0,0
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height)
     }
     
     // MARK: Private
     func convenienceInitialize(){
         
         backgroundColor = UIColor.clearColor()
-        addSubview(containerView)
         containerView.backgroundColor = UIColor.clearColor()
-        containerView.constrainToSuperViewEdges()
         containerView.layer.cornerRadius = 2.0
         containerView.layer.masksToBounds = true
+        addSubview(containerView)
+        containerView.constrainToSuperViewEdges()
         
         // drop shadow
         layer.shadowColor = UIColor(red: 157/255, green: 163/255, blue: 178/255, alpha: 1.0).CGColor

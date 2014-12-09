@@ -14,7 +14,8 @@ class BareCardView : CardContentView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.font = UIFont(name: "Polaris-Light", size: 24.0)
+        associatedLayout = CardLayout.BareCard
+        titleLabel.font = UIFont(name: "Polaris-Light", size: 28.0)
     }
     
     override func updateViewForCard(card:Card){
@@ -28,5 +29,11 @@ class BareCardView : CardContentView{
             let webLinkCard = card as WebLinkCard
             titleLabel.text = webLinkCard.title
         }
+    }
+    
+    override func optimalBounds() -> CGRect {
+        let screenBounds = UIScreen.mainScreen().bounds
+        return CGRectMake(0, 0, screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_PADDING), 300)
+        
     }
 }

@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class PortraitEdge : LayoutDecisionEdge {
+    
+    init(){
+        super.init(description: "portrait")
+    }
     
     override func evaluation(input:AnyObject)->Bool{
         // TODO: always take

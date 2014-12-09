@@ -32,8 +32,13 @@ public class CardLayoutEngine{
     }
     
     func buildDecisionTree(){
+        let landscapeNode = LayoutDecisionNode(description: "Using landscape layouts")
+        let portraitNode = LayoutDecisionNode(description: "Using portrait layouts")
+        root.addEdge(PortraitEdge(), destination: portraitNode)
+        root.addEdge(LandscapeEdge(), destination: landscapeNode)
+        
         let cardTypeNode = LayoutDecisionNode(description: "Checking Card Type")
-        root.addEdge(PassThroughEdge(), destination: cardTypeNode)
+        portraitNode.addEdge(PassThroughEdge(), destination: cardTypeNode)
         
         let linkCardNode = LayoutDecisionNode(description: "It's a web link card")
         cardTypeNode.addEdge(CardTypeEdge(cardType: "weblink"), destination: linkCardNode)

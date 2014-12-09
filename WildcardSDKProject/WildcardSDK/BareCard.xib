@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,35 +10,42 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gr-2i-dqa">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-mF-KxM">
-                            <rect key="frame" x="74" y="40" width="451" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="centerX" secondItem="oxh-mF-KxM" secondAttribute="centerX" id="XIB-rd-byR"/>
-                        <constraint firstItem="oxh-mF-KxM" firstAttribute="top" secondItem="2Gr-2i-dqa" secondAttribute="top" constant="40" id="cTT-w2-0uv"/>
-                        <constraint firstItem="oxh-mF-KxM" firstAttribute="width" secondItem="2Gr-2i-dqa" secondAttribute="width" multiplier="0.75" constant="1" id="pj2-LA-0ip"/>
-                    </constraints>
-                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-mF-KxM">
+                    <rect key="frame" x="263" y="250" width="74.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                        <rect key="frame" x="364" y="40" width="75" height="21"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-zQ-HIv">
+                    <rect key="frame" x="256" y="285.5" width="88" height="22"/>
+                    <state key="normal" image="viewOnWebButton">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="2Gr-2i-dqa" secondAttribute="bottom" id="9U8-mW-siv"/>
-                <constraint firstItem="2Gr-2i-dqa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GdB-ga-blT"/>
-                <constraint firstAttribute="trailing" secondItem="2Gr-2i-dqa" secondAttribute="trailing" id="nd0-iC-4Hq"/>
-                <constraint firstItem="2Gr-2i-dqa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tV3-sh-9g6"/>
+                <constraint firstAttribute="centerX" secondItem="oxh-mF-KxM" secondAttribute="centerX" id="1hv-n6-ki2"/>
+                <constraint firstItem="DxG-zQ-HIv" firstAttribute="top" secondItem="oxh-mF-KxM" secondAttribute="bottom" constant="15" id="6gX-m9-sQQ"/>
+                <constraint firstAttribute="centerY" secondItem="oxh-mF-KxM" secondAttribute="centerY" constant="40" id="A43-QJ-2B8"/>
+                <constraint firstItem="oxh-mF-KxM" firstAttribute="top" secondItem="DxG-zQ-HIv" secondAttribute="bottom" constant="20" id="ATP-YX-57l"/>
+                <constraint firstItem="DxG-zQ-HIv" firstAttribute="centerX" secondItem="oxh-mF-KxM" secondAttribute="centerX" id="Qmm-kN-ncD"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ATP-YX-57l"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="titleLabel" destination="oxh-mF-KxM" id="Omq-bS-0dd"/>
             </connections>
             <point key="canvasLocation" x="251" y="329"/>
         </view>
     </objects>
+    <resources>
+        <image name="viewOnWebButton" width="88" height="13"/>
+    </resources>
 </document>
