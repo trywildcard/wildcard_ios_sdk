@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 public class Card {
     
     enum Type{

@@ -15,7 +15,6 @@ import Foundation
  * http://www.trywildcard.com/docs/schema/#article-card
  *
  */
-@objc
 public class ArticleCard : Card{
     
     let title:String

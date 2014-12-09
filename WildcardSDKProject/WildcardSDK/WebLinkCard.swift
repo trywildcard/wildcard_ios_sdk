@@ -1,12 +1,10 @@
 //
-//  LinkCard.swift
+//  WebLinkCard.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/4/14.
+//  Created by David Xiang on 12/8/14.
 //
 //
-
-import Foundation
 
 /*
 * WebLink Card
@@ -15,7 +13,6 @@ import Foundation
 * http://www.trywildcard.com/docs/schema/#link-card
 *
 */
-@objc
 public class WebLinkCard : Card{
     
     let title:String

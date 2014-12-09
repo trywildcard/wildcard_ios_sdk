@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TiemposTextApp-SemiboldItalic.ttf</string>
+		<string>TiemposTextApp-Semibold.ttf</string>
+		<string>TiemposTextApp-RegularItalic.ttf</string>
+		<string>TiemposTextApp-Regular.ttf</string>
+		<string>Polaris-Bold.otf</string>
+		<string>Polaris-Heavy.otf</string>
+		<string>Polaris-Light.otf</string>
+		<string>Polaris-Medium.otf</string>
+		<string>Polaris-Book.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

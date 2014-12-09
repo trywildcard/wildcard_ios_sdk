@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class PortraitEdge : LayoutDecisionEdge {
     
     override func evaluation(input:AnyObject)->Bool{
