@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class Utilities{
-    public class func printFontFamilies()
+class Utilities{
+    class func printFontFamilies()
     {
         for name in UIFont.familyNames()
         {

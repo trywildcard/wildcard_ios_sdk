@@ -8,13 +8,13 @@
 
 import Foundation
 
-public extension UIFont{
+extension UIFont{
    
-    public class func wildcardStandardHeaderFont()->UIFont{
+    class func wildcardStandardHeaderFont()->UIFont{
         return UIFont(name: "Polaris-Bold", size: 20.0)!
     }
     
-    public class func wildcardStandardSubHeaderFont()->UIFont{
+    class func wildcardStandardSubHeaderFont()->UIFont{
         return UIFont(name: "Polaris-Medium", size: 15.0)!
     }
     
