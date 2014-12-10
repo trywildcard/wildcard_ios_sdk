@@ -10,7 +10,7 @@ import UIKit
 
 class ModalCardViewController: UIViewController {
     
-    var presentingControllBackgroundView:UIView?
+    var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
     var cardView:CardView?
     var presentedCard:Card!
@@ -19,9 +19,12 @@ class ModalCardViewController: UIViewController {
     // MARK:UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
-        view.addGestureRecognizer(backgroundTapRecognizer!)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
     }
     
     override func viewDidAppear(animated: Bool) {
