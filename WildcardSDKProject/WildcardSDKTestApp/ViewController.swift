@@ -16,15 +16,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         println(WildcardSDKVersionNumber)
-        view.backgroundColor = UIColor(red: 213/255, green: 219/255, blue: 229/255, alpha: 1.0)
+        view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google", dictionary: nil)
-        if let cardView = CardViewRenderer.renderViewFromCard(dummyCard, layout: CardLayout.BareCard){
+        let layoutToRender:CardLayout = CardLayout.LinkCardPortraitDefault
+        if let cardView = CardViewRenderer.renderViewFromCard(dummyCard, layout: layoutToRender){
             cardView.frame = CGRectOffset(cardView.frame, 15, 100)
             println(cardView)
             view.addSubview(cardView)
-            
         }
         
     }

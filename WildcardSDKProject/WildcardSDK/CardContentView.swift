@@ -26,12 +26,15 @@ class CardContentView : UIView
     var associatedLayout:CardLayout?
     
     // MARK: Instance
+    
+    // Update the card content view with card data
     func updateViewForCard(card:Card){
         // override
     }
     
-    func optimalBounds()->CGRect{
+    // Return a best fit bounds given the current state of the content view
+    func optimalBounds()->CGSize{
         // override
-        return CGRectZero
+        return CGSizeZero
     }
 }

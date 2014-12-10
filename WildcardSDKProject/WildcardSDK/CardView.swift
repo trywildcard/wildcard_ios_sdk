@@ -44,16 +44,23 @@ public class CardView : UIView
             contentView = nil
         }
         
-        bounds =  cardContentView.optimalBounds()
+        // initialize the bounds initially to whatever the content view is
+        bounds =  cardContentView.bounds
         layoutIfNeeded()
         
         containerView.addSubview(cardContentView)
         cardContentView.constrainToSuperViewEdges()
+        contentView = cardContentView
     }
     
     func finalizeCard(){
-        // set original always at 0,0
-        frame = CGRectMake(0, 0, frame.size.width, frame.size.height)
+        if(contentView != nil){
+            let optimalSize = contentView!.optimalBounds()
+            
+            // always finalize w/ origin at 0,0
+            frame = CGRectMake(0, 0, optimalSize.width,optimalSize.height)
+            layoutIfNeeded()
+        }
     }
     
     // MARK: Private
@@ -67,7 +74,7 @@ public class CardView : UIView
         containerView.constrainToSuperViewEdges()
         
         // drop shadow
-        layer.shadowColor = UIColor(red: 157/255, green: 163/255, blue: 178/255, alpha: 1.0).CGColor
+        layer.shadowColor = UIColor.wildcardMediumGray().CGColor
         layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSizeMake(0, 2.0)
         layer.shadowRadius = 2.0

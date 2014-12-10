@@ -26,7 +26,7 @@ public class CardViewRenderer
             // initialize card content view
             newCardView.initializeContentView(cardContentView)
             
-            // upate content for card
+            // update content for card
             cardContentView.updateViewForCard(card)
             
             // any last minute things to do to card view before returning to user
@@ -43,6 +43,8 @@ public class CardViewRenderer
             
         case .BareCard:
             return CardContentView.loadFromNibNamed("BareCard")
+        case .LinkCardPortraitDefault:
+            return CardContentView.loadFromNibNamed("LinkCardPortraitDefault")
         default:
             return nil
         }

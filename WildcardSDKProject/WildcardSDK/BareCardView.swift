@@ -15,7 +15,7 @@ class BareCardView : CardContentView{
     override func awakeFromNib() {
         super.awakeFromNib()
         associatedLayout = CardLayout.BareCard
-        titleLabel.font = UIFont(name: "Polaris-Light", size: 28.0)
+        titleLabel.font = UIFont(name: "Polaris-Light", size: 32.0)
     }
     
     override func updateViewForCard(card:Card){
@@ -31,9 +31,11 @@ class BareCardView : CardContentView{
         }
     }
     
-    override func optimalBounds() -> CGRect {
+    override func optimalBounds() -> CGSize{
         let screenBounds = UIScreen.mainScreen().bounds
-        return CGRectMake(0, 0, screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_PADDING), 300)
-        
+        let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_PADDING)
+        let cardHeight = cardWidth * (3/4)
+        // do a standard 4 x 3 relative to the screen width
+        return CGSizeMake(cardWidth, cardHeight)
     }
 }
