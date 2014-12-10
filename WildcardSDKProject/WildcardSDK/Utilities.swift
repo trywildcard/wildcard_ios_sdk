@@ -20,4 +20,23 @@ public class Utilities{
             }
         }
     }
+    
+    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
+        let nsStr = NSString(string: text)
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = lineHeight
+        paragraphStyle.maximumLineHeight = lineHeight
+        
+        var attributesDictionary:[NSObject:AnyObject] =
+        [NSParagraphStyleAttributeName: paragraphStyle,
+            NSFontAttributeName:font]
+        
+        let bounds =
+        nsStr.boundingRectWithSize(CGSizeMake(width,
+            CGFloat.max),
+            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            attributes: attributesDictionary,
+            context: nil)
+        return bounds.size.height;
+    }
 }

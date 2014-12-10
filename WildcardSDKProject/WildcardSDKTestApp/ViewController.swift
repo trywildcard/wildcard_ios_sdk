@@ -28,6 +28,11 @@ class ViewController: UIViewController {
         }
         
     }
+    @IBAction func presentCardButtonTapped(sender: AnyObject) {
+        let google = NSURL(string: "http://www.google.com")
+             let dummyCard = WebLinkCard(url:google!, description: "Yahoo is not quite as good as Google in Searching.", title: "Yahoo < Google", dictionary: nil)
+        presentCard(dummyCard)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

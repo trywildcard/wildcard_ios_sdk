@@ -33,7 +33,7 @@ class BareCardView : CardContentView{
     
     override func optimalBounds() -> CGSize{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_PADDING)
+        let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_MARGIN)
         let cardHeight = cardWidth * (3/4)
         // do a standard 4 x 3 relative to the screen width
         return CGSizeMake(cardWidth, cardHeight)

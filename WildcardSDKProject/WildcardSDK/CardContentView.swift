@@ -12,6 +12,9 @@ import UIKit
 class CardContentView : UIView
 {
     // MARK: Class
+    class var DEFAULT_HORIZONTAL_MARGIN :CGFloat{
+        return 15.0
+    }
     class var DEFAULT_HORIZONTAL_PADDING :CGFloat{
         return 15.0
     }

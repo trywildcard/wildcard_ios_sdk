@@ -20,12 +20,12 @@ extension UIView{
     }
     
     // adds a dark blur overlay to the view and returns a reference to it.
-    func addDarkBlurOverlay()->UIView{
+    func addBlurOverlay(style:UIBlurEffectStyle)->UIView{
         let overlay = UIView(frame: CGRectZero)
         addSubview(overlay)
         overlay.constrainToSuperViewEdges()
         
-        let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style:UIBlurEffectStyle.Dark)) as UIVisualEffectView
+        let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style:style)) as UIVisualEffectView
         overlay.addSubview(visualEffect)
         visualEffect.constrainToSuperViewEdges()
         

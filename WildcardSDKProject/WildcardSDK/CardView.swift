@@ -22,6 +22,7 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
+    // MARK: Public
     override public func layoutSubviews()
     {
         super.layoutSubviews()
@@ -35,6 +36,10 @@ public class CardView : UIView
         self.containerView = UIView()
         super.init(coder: coder)
         convenienceInitialize()
+    }
+    
+    public func resizeToOptimalBounds(){
+        finalizeCard()
     }
     
     // MARK: Instance
@@ -64,7 +69,7 @@ public class CardView : UIView
     }
     
     // MARK: Private
-    func convenienceInitialize(){
+    private func convenienceInitialize(){
         
         backgroundColor = UIColor.clearColor()
         containerView.backgroundColor = UIColor.clearColor()

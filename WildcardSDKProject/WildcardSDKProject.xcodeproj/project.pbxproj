@@ -82,6 +82,10 @@
 		1DAC26E41A3655530005C4BE /* BareCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26E21A3655530005C4BE /* BareCard.xib */; };
 		1DAC26EA1A3657220005C4BE /* BareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26E81A3657220005C4BE /* BareCardView.swift */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
+		1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */; };
+		1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */; };
+		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
+		1DE218421A38091A007746B4 /* ModalCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218411A38091A007746B4 /* ModalCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +185,10 @@
 		1DAC26E21A3655530005C4BE /* BareCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BareCard.xib; sourceTree = "<group>"; };
 		1DAC26E81A3657220005C4BE /* BareCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareCardView.swift; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
+		1DE218411A38091A007746B4 /* ModalCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +304,7 @@
 		1D7EAC881A31258100734B9A /* CardLayoutEngine */ = {
 			isa = PBXGroup;
 			children = (
+				1DE2183E1A38073B007746B4 /* Presentations */,
 				1DAC26911A36315A0005C4BE /* Views */,
 				1DAC267E1A326B620005C4BE /* Edges */,
 				1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */,
@@ -354,9 +363,11 @@
 		1DAC26921A3631AC0005C4BE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
+				1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */,
 				1DAC269B1A3641850005C4BE /* UIColorExtension.swift */,
 				1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */,
+				1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */,
+				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
 			);
 			name = Utilities;
@@ -387,6 +398,15 @@
 				1D5873321A3794F600C3EAF3 /* LinkCardPortraitDefaultView.swift */,
 			);
 			name = "Content Layout Views";
+			sourceTree = "<group>";
+		};
+		1DE2183E1A38073B007746B4 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
+				1DE218411A38091A007746B4 /* ModalCardViewController.swift */,
+			);
+			name = Presentations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,13 +618,17 @@
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
+				1DE218421A38091A007746B4 /* ModalCardViewController.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1DAC26981A3632700005C4BE /* CardViewRenderer.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
+				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
+				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
+				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,
 				1D0451C81A36C8C100972061 /* CardContentView.swift in Sources */,
 				1D7EAC911A312C7100734B9A /* CardLayoutEngine.swift in Sources */,
