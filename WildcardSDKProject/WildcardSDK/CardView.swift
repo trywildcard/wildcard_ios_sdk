@@ -42,6 +42,37 @@ public class CardView : UIView
         finalizeCard()
     }
     
+    public func renderCard(card:Card){
+        println("Re render card now")
+        
+        var originalOrigin = CGRectZero
+        if(superview != nil)
+        {
+            originalOrigin = frame
+        }
+        
+        let cardContentView = CardViewRenderer.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
+        
+        initializeContentView(cardContentView)
+        
+        // update content for card
+        cardContentView.updateViewForCard(card)
+        
+        // any last minute things to do to card view before returning to user
+        if (superview == nil){
+            finalizeCard()
+        }else{
+            // already belongs to a super view, do not change position, but re frame to optimal
+            let optimalSize = contentView!.optimalBounds()
+            
+            // always finalize w/ origin at 0,0
+            frame = CGRectMake(originalOrigin.origin.x, originalOrigin.origin.y, optimalSize.width, optimalSize.height)
+            
+            setNeedsLayout()
+        }
+        
+    }
+    
     // MARK: Instance
     func initializeContentView(cardContentView:CardContentView){
         if(contentView != nil){
@@ -63,8 +94,9 @@ public class CardView : UIView
             let optimalSize = contentView!.optimalBounds()
             
             // always finalize w/ origin at 0,0
-            frame = CGRectMake(0, 0, optimalSize.width,optimalSize.height)
-            layoutIfNeeded()
+            frame = CGRectMake(0, 0, optimalSize.width, optimalSize.height)
+            
+            setNeedsLayout()
         }
     }
     
@@ -81,8 +113,8 @@ public class CardView : UIView
         // drop shadow
         layer.shadowColor = UIColor.wildcardMediumGray().CGColor
         layer.shadowOpacity = 0.8
-        layer.shadowOffset = CGSizeMake(0, 2.0)
-        layer.shadowRadius = 2.0
+        layer.shadowOffset = CGSizeMake(0.0, 1.0)
+        layer.shadowRadius = 1.0
     }
     
 }

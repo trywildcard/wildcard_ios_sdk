@@ -10,8 +10,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-mF-KxM">
-                    <rect key="frame" x="263" y="250" width="75" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-mF-KxM">
+                    <rect key="frame" x="20" y="250" width="560" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -32,10 +32,13 @@
                 <constraint firstItem="DxG-zQ-HIv" firstAttribute="top" secondItem="oxh-mF-KxM" secondAttribute="bottom" constant="15" id="6gX-m9-sQQ"/>
                 <constraint firstAttribute="centerY" secondItem="oxh-mF-KxM" secondAttribute="centerY" constant="40" id="A43-QJ-2B8"/>
                 <constraint firstItem="oxh-mF-KxM" firstAttribute="top" secondItem="DxG-zQ-HIv" secondAttribute="bottom" constant="20" id="ATP-YX-57l"/>
+                <constraint firstItem="oxh-mF-KxM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Q2q-c3-uXp"/>
                 <constraint firstItem="DxG-zQ-HIv" firstAttribute="centerX" secondItem="oxh-mF-KxM" secondAttribute="centerX" id="Qmm-kN-ncD"/>
+                <constraint firstAttribute="trailing" secondItem="oxh-mF-KxM" secondAttribute="trailing" constant="20" id="RLL-gu-P0q"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="1hv-n6-ki2"/>
                     <exclude reference="ATP-YX-57l"/>
                 </mask>
             </variation>

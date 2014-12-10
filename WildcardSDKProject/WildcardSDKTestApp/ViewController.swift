@@ -15,7 +15,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println(WildcardSDKVersionNumber)
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
@@ -30,7 +29,9 @@ class ViewController: UIViewController {
     }
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
         let google = NSURL(string: "http://www.google.com")
-             let dummyCard = WebLinkCard(url:google!, description: "Yahoo is not quite as good as Google in Searching.", title: "Yahoo < Google", dictionary: nil)
+        let dictionary:NSMutableDictionary = NSMutableDictionary()
+        dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
+        let dummyCard = WebLinkCard(url:google!, description: "Yahoo is not quite as good as Google in Searching.", title: "Yahoo < Google", dictionary: dictionary )
         presentCard(dummyCard)
     }
     

@@ -17,6 +17,10 @@ class ModalCardViewController: UIViewController {
     var backgroundTapRecognizer:UITapGestureRecognizer?
     
     // MARK:UIViewController
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
@@ -59,7 +63,6 @@ class ModalCardViewController: UIViewController {
         
         // unblur
         if(blurredOverlayView != nil){
-            
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.blurredOverlayView!.alpha = 0
                 
@@ -68,9 +71,6 @@ class ModalCardViewController: UIViewController {
                     self.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)
                     
             })
-           
         }
-        
     }
-
 }

@@ -86,6 +86,11 @@
 		1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */; };
 		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
 		1DE218421A38091A007746B4 /* ModalCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218411A38091A007746B4 /* ModalCardViewController.swift */; };
+		1DE218441A38BC4A007746B4 /* LinkCardPortraitImageFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE218431A38BC4A007746B4 /* LinkCardPortraitImageFull.xib */; };
+		1DE218461A38BC7F007746B4 /* LinkCardPortraitImageFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218451A38BC7F007746B4 /* LinkCardPortraitImageFullView.swift */; };
+		1DE218471A38BF18007746B4 /* LinkCardPortraitImageFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE218431A38BC4A007746B4 /* LinkCardPortraitImageFull.xib */; };
+		1DE218491A38C103007746B4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218481A38C103007746B4 /* ImageCache.swift */; };
+		1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2184A1A38DCA6007746B4 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +194,10 @@
 		1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
 		1DE218411A38091A007746B4 /* ModalCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCardViewController.swift; sourceTree = "<group>"; };
+		1DE218431A38BC4A007746B4 /* LinkCardPortraitImageFull.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LinkCardPortraitImageFull.xib; sourceTree = "<group>"; };
+		1DE218451A38BC7F007746B4 /* LinkCardPortraitImageFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCardPortraitImageFullView.swift; sourceTree = "<group>"; };
+		1DE218481A38C103007746B4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		1DE2184A1A38DCA6007746B4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +256,7 @@
 			children = (
 				1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */,
 				1D3A28621A2E696A00A9D4C1 /* ViewController.swift */,
+				1DE2184A1A38DCA6007746B4 /* ViewController2.swift */,
 				1D3A28641A2E696A00A9D4C1 /* Main.storyboard */,
 				1D3A28671A2E696A00A9D4C1 /* Images.xcassets */,
 				1D3A28691A2E696A00A9D4C1 /* LaunchScreen.xib */,
@@ -369,6 +379,7 @@
 				1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */,
 				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
+				1DE218481A38C103007746B4 /* ImageCache.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -396,6 +407,8 @@
 				1DAC26E81A3657220005C4BE /* BareCardView.swift */,
 				1D5873341A37953500C3EAF3 /* LinkCardPortraitDefault.xib */,
 				1D5873321A3794F600C3EAF3 /* LinkCardPortraitDefaultView.swift */,
+				1DE218431A38BC4A007746B4 /* LinkCardPortraitImageFull.xib */,
+				1DE218451A38BC7F007746B4 /* LinkCardPortraitImageFullView.swift */,
 			);
 			name = "Content Layout Views";
 			sourceTree = "<group>";
@@ -529,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
+				1DE218471A38BF18007746B4 /* LinkCardPortraitImageFull.xib in Resources */,
 				1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */,
 				1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
@@ -561,6 +575,7 @@
 				1DAC26E41A3655530005C4BE /* BareCard.xib in Resources */,
 				1DAC26D91A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
 				1D5873351A37953500C3EAF3 /* LinkCardPortraitDefault.xib in Resources */,
+				1DE218441A38BC4A007746B4 /* LinkCardPortraitImageFull.xib in Resources */,
 				1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,6 +612,7 @@
 			files = (
 				1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */,
 				1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */,
+				1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DE218491A38C103007746B4 /* ImageCache.swift in Sources */,
 				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
 				1D5873331A3794F600C3EAF3 /* LinkCardPortraitDefaultView.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
@@ -625,6 +642,7 @@
 				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
+				1DE218461A38BC7F007746B4 /* LinkCardPortraitImageFullView.swift in Sources */,
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
