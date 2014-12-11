@@ -43,15 +43,14 @@ public class CardView : UIView
     }
     
     public func renderCard(card:Card){
-        println("Re render card now")
         
-        var originalOrigin = CGRectZero
-        if(superview != nil)
-        {
-            originalOrigin = frame
+        // if already belongs to a view, keep current position
+        var prevCenter = CGPointZero
+        if(hasSuperview()){
+            prevCenter = center
         }
         
-        let cardContentView = CardViewRenderer.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
+        let cardContentView = CardContentView.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
         
         initializeContentView(cardContentView)
         
@@ -59,16 +58,10 @@ public class CardView : UIView
         cardContentView.updateViewForCard(card)
         
         // any last minute things to do to card view before returning to user
-        if (superview == nil){
-            finalizeCard()
-        }else{
-            // already belongs to a super view, do not change position, but re frame to optimal
-            let optimalSize = contentView!.optimalBounds()
-            
-            // always finalize w/ origin at 0,0
-            frame = CGRectMake(originalOrigin.origin.x, originalOrigin.origin.y, optimalSize.width, optimalSize.height)
-            
-            setNeedsLayout()
+        finalizeCard()
+        
+        if (hasSuperview()){
+            center = prevCenter
         }
         
     }

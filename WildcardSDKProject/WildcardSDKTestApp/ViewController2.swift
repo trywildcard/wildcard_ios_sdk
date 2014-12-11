@@ -11,7 +11,7 @@ import WildcardSDK
 
 class ViewController2: UIViewController {
     
-    var links:[NSURL] = []
+    var redditData:[NSDictionary] = []
     var counter = 0
     var mainCardView:CardView?
     @IBOutlet weak var reRenderButton: UIButton!
@@ -31,7 +31,7 @@ class ViewController2: UIViewController {
             mainCardView = cardView
         }
         
-        let requestURL = NSURL(string:"https://www.reddit.com/new.json")
+        let requestURL = NSURL(string:"https://www.reddit.com/top.json?limit=100")
         
         reRenderButton.enabled = false
         var session = NSURLSession.sharedSession()
@@ -51,11 +51,7 @@ class ViewController2: UIViewController {
                             for child in children{
                                 if let childData = child as? NSDictionary{
                                     if let data = childData["data"] as? NSDictionary{
-                                        if let url = data["url"] as? String{
-                                            if let redditUrl = NSURL(string: url){
-                                                self.links.append(redditUrl)
-                                            }
-                                        }
+                                        self.redditData.append(data)
                                     }
                                 }
                             }
@@ -71,20 +67,34 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func reRenderTapped(sender: AnyObject) {
-        println("Rerender tapped")
-        
         // Attempt to create a web link card from this url to render it
-        let index = counter++ % links.count
-        let url = links[index]
-        reRenderButton.enabled = false
-        WebLinkCard.createFromWebUrl(url, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.reRenderButton.enabled = true
-                if (error == nil && card != nil){
-                    self.mainCardView!.renderCard(card!)
+        let index = counter++ % redditData.count
+        let data = redditData[index]
+        
+        if let urlString = data["url"] as? String{
+            if let title = data["title"] as? String{
+                if let url = NSURL(string: urlString) {
+                    // manually create a card if the url is just a jpg or png
+                    if (urlString.rangeOfString("jpg") != nil || urlString.rangeOfString("png") != nil){
+                        let params = NSMutableDictionary()
+                        params["primaryImageUrl"] = urlString
+                        let webLinkCard = WebLinkCard(url: url, description: title, title: title, dictionary: params)
+                        self.mainCardView!.renderCard(webLinkCard)
+                    }
+                    else{
+                        reRenderButton.enabled = false
+                        WebLinkCard.createFromWebUrl(url, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.reRenderButton.enabled = true
+                                if (error == nil && card != nil){
+                                    self.mainCardView!.renderCard(card!)
+                                }
+                            })
+                        })
+                    }
                 }
-            })
-        })
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LinkCardPortraitDefaultView : CardContentView{
+class WebLinkCardPortraitDefaultView : CardContentView{
     
     // MARK: Outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,14 +18,16 @@ class LinkCardPortraitDefaultView : CardContentView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        associatedLayout = CardLayout.LinkCardPortraitDefault
+        associatedLayout = CardLayout.WebLinkCardPortraitDefault
         bottomHairline.backgroundColor = UIColor.wildcardBackgroundGray()
+        titleLabel.textColor = UIColor.wildcardDarkBlue()
+        titleLabel.font = UIFont.wildcardStandardHeaderFont()
     }
     
     // MARK: CardContentView
     override func updateViewForCard(card:Card){
         if let webLinkCard = card as? WebLinkCard{
-            titleLabel.setAsCardHeaderWithText(webLinkCard.title)
+            titleLabel.text = webLinkCard.title
             descriptionLabel.setAsCardSubHeaderWithText(webLinkCard.description)
         }
     }

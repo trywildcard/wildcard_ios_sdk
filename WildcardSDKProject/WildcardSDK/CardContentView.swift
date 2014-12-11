@@ -40,4 +40,16 @@ class CardContentView : UIView
         // override
         return CGSizeZero
     }
+    
+    class func generateContentViewFromLayout(layout:CardLayout)->CardContentView{
+        switch(layout){
+            
+        case .WebLinkCardPortraitDefault:
+            return CardContentView.loadFromNibNamed("WebLinkCardPortraitDefault")!
+        case .WebLinkCardPortraitImageFull:
+            return CardContentView.loadFromNibNamed("LinkCardPortraitImageFull")!
+        default:
+            return CardContentView.loadFromNibNamed("BareCard")!
+        }
+    }
 }

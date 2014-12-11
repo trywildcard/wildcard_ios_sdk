@@ -13,20 +13,20 @@ public class CardViewRenderer
 {
     // MARK: Public
     
-    // Renders a CardView from a Card if possible. 
-    // If layout is nil, a layout will be automatically chosen from the CardLayoutEngine
+    // Renders a CardView from a Card w/ best fit layout
     public class func renderViewFromCard(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         return CardViewRenderer.renderViewFromCard(card, layout:layoutToUse)
     }
     
+    // Renders a CardView from a Card w/ explicit layout
     public class func renderViewFromCard(card:Card, layout:CardLayout)->CardView?{
         
         // brand new card view
         var newCardView = CardView(frame: CGRectZero)
         
         // generate content view with appropriate layout
-        let cardContentView = CardViewRenderer.generateContentViewFromLayout(layout)
+        let cardContentView = CardContentView.generateContentViewFromLayout(layout)
         
         // initialize content view
         newCardView.initializeContentView(cardContentView)
@@ -39,18 +39,6 @@ public class CardViewRenderer
         
         return newCardView
     }
-        
-    // MARK: Private
-    class func generateContentViewFromLayout(layout:CardLayout)->CardContentView{
-        switch(layout){
-            
-        case .LinkCardPortraitDefault:
-            return CardContentView.loadFromNibNamed("LinkCardPortraitDefault")!
-        case .LinkCardPortraitImageFull:
-            return CardContentView.loadFromNibNamed("LinkCardPortraitImageFull")!
-        default:
-            return CardContentView.loadFromNibNamed("BareCard")!
-        }
-    }
+
     
 }

@@ -32,5 +32,8 @@ extension UIView{
         return overlay
     }
     
+    func hasSuperview()->Bool{
+        return superview != nil
+    }
   
 }

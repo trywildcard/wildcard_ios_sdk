@@ -15,7 +15,7 @@ class BareCardView : CardContentView{
     override func awakeFromNib() {
         super.awakeFromNib()
         associatedLayout = CardLayout.BareCard
-        titleLabel.font = UIFont(name: "Polaris-Light", size: 32.0)
+        titleLabel.font = UIFont(name: "Polaris-Light", size: 28.0)
     }
     
     override func updateViewForCard(card:Card){
