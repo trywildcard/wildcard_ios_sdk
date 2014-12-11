@@ -13,7 +13,38 @@ import QuartzCore
 public class CardView : UIView
 {
     let containerView:UIView
-    var contentView:CardContentView?
+    public var contentView:CardContentView?
+    
+    // MARK: Public Class Functions
+    
+    // Renders a CardView from a Card w/ best fit layout
+    public class func createCardViewFromCard(card:Card)->CardView?{
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+        return CardView.createCardViewFromCard(card, layout:layoutToUse)
+    }
+    
+    // Renders a CardView from a Card w/ explicit layout
+    public class func createCardViewFromCard(card:Card, layout:CardLayout)->CardView?{
+        
+        // generate content view for this card
+        let cardContentView = CardContentView.generateContentViewFromLayout(layout)
+        
+        // initialize the CardView with optimal size
+        var newCardView = CardView(frame:CGRectZero)
+        
+        // initialize content view
+        newCardView.initializeContentView(cardContentView)
+        
+        // update content for card
+        cardContentView.updateViewForCard(card)
+        
+        // finalize
+        newCardView.finalizeCard()
+        
+        return newCardView
+        
+    }
+    
     
     // MARK: UIView
     override init(frame: CGRect) {
@@ -22,7 +53,6 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
-    // MARK: Public
     override public func layoutSubviews()
     {
         super.layoutSubviews()
@@ -38,35 +68,34 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
-    public func resizeToOptimalBounds(){
-        finalizeCard()
-    }
-    
-    public func renderCard(card:Card){
-        
-        // if already belongs to a view, keep current position
-        var prevCenter = CGPointZero
-        if(hasSuperview()){
-            prevCenter = center
-        }
-        
-        let cardContentView = CardContentView.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
-        
-        initializeContentView(cardContentView)
-        
-        // update content for card
-        cardContentView.updateViewForCard(card)
-        
-        // any last minute things to do to card view before returning to user
-        finalizeCard()
-        
-        if (hasSuperview()){
-            center = prevCenter
-        }
-        
-    }
-    
     // MARK: Instance
+    public func renderCard(card:Card, animated:Bool){
+        if(contentView != nil){
+            // if already belongs to a view, keep current position
+            var prevCenter = CGPointZero
+            if(hasSuperview()){
+                prevCenter = center
+            }
+            
+            let cardContentView = CardContentView.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
+            
+            // update content for card
+            cardContentView.updateViewForCard(card)
+  
+            // reset the content view
+            initializeContentView(cardContentView)
+            
+            // finalize
+            finalizeCard()
+            
+            // reset position
+            if (hasSuperview()){
+                center = prevCenter
+            }
+        }
+    }
+    
+    // MARK: Private
     func initializeContentView(cardContentView:CardContentView){
         if(contentView != nil){
             contentView!.removeFromSuperview()
@@ -75,7 +104,6 @@ public class CardView : UIView
         
         // initialize the bounds initially to whatever the content view is
         bounds =  cardContentView.bounds
-        layoutIfNeeded()
         
         containerView.addSubview(cardContentView)
         cardContentView.constrainToSuperViewEdges()
@@ -83,17 +111,16 @@ public class CardView : UIView
     }
     
     func finalizeCard(){
-        if(contentView != nil){
+       if(contentView != nil){
             let optimalSize = contentView!.optimalBounds()
             
-            // always finalize w/ origin at 0,0
-            frame = CGRectMake(0, 0, optimalSize.width, optimalSize.height)
+            // always finalize w/ frame origin at 0,0
+            frame = CGRectMake(0, 0, optimalSize.size.width, optimalSize.size.height)
             
             setNeedsLayout()
         }
     }
     
-    // MARK: Private
     private func convenienceInitialize(){
         
         backgroundColor = UIColor.clearColor()

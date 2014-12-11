@@ -20,7 +20,7 @@ public extension UIViewController{
         modalViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
         modalViewController.blurredOverlayView!.alpha = 0
         modalViewController.presentedCard = card
-        modalViewController.cardView = CardViewRenderer.renderViewFromCard(card)
+        modalViewController.cardView = CardView.createCardViewFromCard(card)
         
         presentViewController(modalViewController, animated: false, completion: nil)
     }

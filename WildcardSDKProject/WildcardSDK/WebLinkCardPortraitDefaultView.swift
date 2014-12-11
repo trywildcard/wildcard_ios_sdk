@@ -32,7 +32,7 @@ class WebLinkCardPortraitDefaultView : CardContentView{
         }
     }
     
-    override func optimalBounds() -> CGSize {
+    override func optimalBounds() -> CGRect {
         let screenBounds = UIScreen.mainScreen().bounds
         let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_MARGIN)
         
@@ -47,6 +47,6 @@ class WebLinkCardPortraitDefaultView : CardContentView{
         height += 15
         height += 40
         
-        return CGSizeMake(cardWidth, height)
+        return CGRectMake(0,0,cardWidth,height)
     }
 }

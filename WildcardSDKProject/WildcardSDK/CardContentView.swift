@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CardContentView : UIView
+public class CardContentView : UIView
 {
     // MARK: Class
     class var DEFAULT_HORIZONTAL_MARGIN :CGFloat{
@@ -36,20 +36,28 @@ class CardContentView : UIView
     }
     
     // Return a best fit bounds given the current state of the content view
-    func optimalBounds()->CGSize{
+    func optimalBounds()->CGRect{
         // override
-        return CGSizeZero
+        return CGRectZero
     }
     
     class func generateContentViewFromLayout(layout:CardLayout)->CardContentView{
+        var newCardContentView:CardContentView!
+        
         switch(layout){
             
+        case .WebLinkCardPortraitImageSmallFloatLeft:
+            newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageSmallFloatLeft")!
         case .WebLinkCardPortraitDefault:
-            return CardContentView.loadFromNibNamed("WebLinkCardPortraitDefault")!
+            newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitDefault")!
         case .WebLinkCardPortraitImageFull:
-            return CardContentView.loadFromNibNamed("LinkCardPortraitImageFull")!
+            newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageFull")!
         default:
-            return CardContentView.loadFromNibNamed("BareCard")!
+            newCardContentView = CardContentView.loadFromNibNamed("BareCard")!
         }
+        
+        // After we load the template, set bounds to whatever we think is optimal
+       // newCardContentView.bounds = newCardContentView.optimalBounds()
+        return newCardContentView
     }
 }

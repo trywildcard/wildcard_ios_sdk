@@ -55,7 +55,6 @@
 		1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC268F1A3569DB0005C4BE /* CheckShortDescriptionEdge.swift */; };
 		1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */; };
 		1DAC26961A36321B0005C4BE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26951A36321B0005C4BE /* CardView.swift */; };
-		1DAC26981A3632700005C4BE /* CardViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26971A3632700005C4BE /* CardViewRenderer.swift */; };
 		1DAC269A1A36383F0005C4BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26991A36383F0005C4BE /* QuartzCore.framework */; };
 		1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC269B1A3641850005C4BE /* UIColorExtension.swift */; };
 		1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B01A3649EA0005C4BE /* Utilities.swift */; };
@@ -91,6 +90,10 @@
 		1DE218471A38BF18007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE218431A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib */; };
 		1DE218491A38C103007746B4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218481A38C103007746B4 /* ImageCache.swift */; };
 		1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2184A1A38DCA6007746B4 /* ViewController2.swift */; };
+		1DF0BA911A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */; };
+		1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */; };
+		1DF0BA941A3930CC00EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */; };
+		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,7 +176,6 @@
 		1DAC268F1A3569DB0005C4BE /* CheckShortDescriptionEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckShortDescriptionEdge.swift; sourceTree = "<group>"; };
 		1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		1DAC26951A36321B0005C4BE /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		1DAC26971A3632700005C4BE /* CardViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewRenderer.swift; sourceTree = "<group>"; };
 		1DAC26991A36383F0005C4BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1DAC269B1A3641850005C4BE /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1DAC26B01A3649EA0005C4BE /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -198,6 +200,9 @@
 		1DE218451A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitImageFullView.swift; sourceTree = "<group>"; };
 		1DE218481A38C103007746B4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		1DE2184A1A38DCA6007746B4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebLinkCardPortraitImageSmallFloatLeft.xib; sourceTree = "<group>"; };
+		1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitImageSmallFloatLeftView.swift; sourceTree = "<group>"; };
+		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,7 +369,6 @@
 			children = (
 				1DAC26EB1A3657280005C4BE /* Content Layout Views */,
 				1DAC26951A36321B0005C4BE /* CardView.swift */,
-				1DAC26971A3632700005C4BE /* CardViewRenderer.swift */,
 				1D0451C71A36C8C100972061 /* CardContentView.swift */,
 			);
 			name = Views;
@@ -380,6 +384,7 @@
 				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
 				1DE218481A38C103007746B4 /* ImageCache.swift */,
+				1DF0BA951A3935D300EE9645 /* StringExtensions.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -409,6 +414,8 @@
 				1D5873321A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift */,
 				1DE218431A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib */,
 				1DE218451A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift */,
+				1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */,
+				1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */,
 			);
 			name = "Content Layout Views";
 			sourceTree = "<group>";
@@ -544,6 +551,7 @@
 				1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1DE218471A38BF18007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */,
 				1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */,
+				1DF0BA941A3930CC00EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */,
 				1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1DAC26D21A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */,
@@ -567,6 +575,7 @@
 				1DAC26D31A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */,
 				1DAC26DB1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
 				1DAC26D51A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */,
+				1DF0BA911A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */,
 				1DAC26D71A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */,
 				1DAC26D11A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,
@@ -630,6 +639,7 @@
 				1DAC268A1A355BB70005C4BE /* CardTypeEdge.swift in Sources */,
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
+				1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */,
 				1DAC26EA1A3657220005C4BE /* BareCardView.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
@@ -637,13 +647,13 @@
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
 				1DE218421A38091A007746B4 /* ModalCardViewController.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
-				1DAC26981A3632700005C4BE /* CardViewRenderer.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
 				1DE218461A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift in Sources */,
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
+				1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */,
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,

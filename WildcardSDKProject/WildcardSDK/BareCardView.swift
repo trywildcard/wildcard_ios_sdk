@@ -24,18 +24,18 @@ class BareCardView : CardContentView{
             return
         case .Article:
             let articleCard = card as ArticleCard
-            titleLabel.text = articleCard.title
+            titleLabel.text = String(htmlEncodedString: articleCard.title)
         case .WebLink:
             let webLinkCard = card as WebLinkCard
-            titleLabel.text = webLinkCard.title
+            titleLabel.text = String(htmlEncodedString: webLinkCard.title)
         }
     }
     
-    override func optimalBounds() -> CGSize{
+    override func optimalBounds() -> CGRect{
         let screenBounds = UIScreen.mainScreen().bounds
         let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_MARGIN)
         let cardHeight = cardWidth * (3/4)
         // do a standard 4 x 3 relative to the screen width
-        return CGSizeMake(cardWidth, cardHeight)
+        return CGRectMake(0,0,cardWidth, cardHeight)
     }
 }

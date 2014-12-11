@@ -24,7 +24,7 @@ class ViewController2: UIViewController {
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = WebLinkCard(url:google!, description: "Bare Bones Card", title: "Bare Bones Card", dictionary: nil)
-        if let cardView = CardViewRenderer.renderViewFromCard(dummyCard, layout: CardLayout.BareCard){
+        if let cardView = CardView.createCardViewFromCard(dummyCard, layout: CardLayout.BareCard){
             cardView.frame = CGRectOffset(cardView.frame, 15, 100)
             println(cardView)
             view.addSubview(cardView)
@@ -79,7 +79,7 @@ class ViewController2: UIViewController {
                         let params = NSMutableDictionary()
                         params["primaryImageUrl"] = urlString
                         let webLinkCard = WebLinkCard(url: url, description: title, title: title, dictionary: params)
-                        self.mainCardView!.renderCard(webLinkCard)
+                        self.mainCardView!.renderCard(webLinkCard,animated:true)
                     }
                     else{
                         reRenderButton.enabled = false
@@ -87,7 +87,7 @@ class ViewController2: UIViewController {
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.reRenderButton.enabled = true
                                 if (error == nil && card != nil){
-                                    self.mainCardView!.renderCard(card!)
+                                    self.mainCardView!.renderCard(card!,animated:true)
                                 }
                             })
                         })

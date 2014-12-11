@@ -28,7 +28,7 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
                 }
             case .WebLink:
                 let webLinkCard = card as WebLinkCard
-                return countElements(webLinkCard.description) < 40
+                return countElements(webLinkCard.description) < 140
             }
         }
         return false

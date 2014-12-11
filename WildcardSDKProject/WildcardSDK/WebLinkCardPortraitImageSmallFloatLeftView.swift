@@ -1,5 +1,5 @@
 //
-//  LinkCardPortraitImageFull.swift
+//  WebLinkCardPortraitImageSmallFloatLeftView.swift
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 12/10/14.
@@ -8,25 +8,29 @@
 
 import Foundation
 
-class WebLinkCardPortraitImageFullView : CardContentView{
+class WebLinkCardPortraitImageSmallFloatLeftView : CardContentView{
     
-    @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var alphaOverlay: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var bottomHairline: UIView!
+    @IBOutlet weak var viewOnWebButton: UIButton!
+    @IBOutlet weak var cardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        associatedLayout = CardLayout.WebLinkCardPortraitImageFull
-        titleLabel.font = UIFont.wildcardStandardHeaderFont()
+        associatedLayout = CardLayout.WebLinkCardPortraitDefault
+        bottomHairline.backgroundColor = UIColor.wildcardBackgroundGray()
         titleLabel.textColor = UIColor.wildcardDarkBlue()
+        titleLabel.font = UIFont.wildcardStandardHeaderFont()
     }
-    
+
     override func updateViewForCard(card:Card){
         var imageUrl:NSURL?
         var titleText:String?
         
         if let webLinkCard = card as? WebLinkCard{
-            titleLabel.text = webLinkCard.title
+            titleLabel.setAsCardHeaderWithText(String(htmlEncodedString: webLinkCard.title))
+            descriptionLabel.setAsCardSubHeaderWithText(String(htmlEncodedString: webLinkCard.description))
             
             // download image
             if let imageUrl = webLinkCard.imageUrl{
@@ -65,10 +69,11 @@ class WebLinkCardPortraitImageFullView : CardContentView{
         }
     }
     
-    override func optimalBounds() -> CGRect{
+    
+    override func optimalBounds() -> CGRect {
         let screenBounds = UIScreen.mainScreen().bounds
         let cardWidth = screenBounds.width - (2*CardContentView.DEFAULT_HORIZONTAL_MARGIN)
-        let cardHeight = cardWidth * (3/4)
-        return CGRectMake(0,0,cardWidth, cardHeight)
+        return CGRectMake(0,0,cardWidth, 180)
     }
+    
 }
