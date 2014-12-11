@@ -7,26 +7,72 @@
 //
 
 import Foundation
+import UIKit
 
 public class CardPhysics : NSObject {
     
     var cardView:CardView
     var flipBoolean = false
-    var cardSwipeGestureRecognizer: UISwipeGestureRecognizer?
+    var cardSwipeRightGestureRecognizer: UISwipeGestureRecognizer?
+    var cardSwipeLeftGestureRecognizer: UISwipeGestureRecognizer?
+    var cardLongPressGestureRecognizer:UILongPressGestureRecognizer?
     
     init(cardView:CardView){
         self.cardView = cardView
     }
     
-    func cardSwiped(recognizer:UISwipeGestureRecognizer!){
-        
-        println("here")
+    // MARK: Gesture Handlers
+    func cardSwipedRight(recognizer:UISwipeGestureRecognizer!){
+        // these built in transitions automatically re assign super views, so gotta re constrain every time
+        if(!flipBoolean){
+            cardView.addSubview(cardView.backOfCard)
+            cardView.backOfCard.constrainToSuperViewEdges()
+            UIView.transitionFromView(cardView.containerView, toView:cardView.backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
+                self.flipBoolean = true
+            }
+        }else{
+            cardView.addSubview(cardView.containerView)
+            cardView.containerView.constrainToSuperViewEdges()
+            UIView.transitionFromView(cardView.backOfCard!, toView:cardView.containerView, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
+                self.flipBoolean = false
+            }
+        }
     }
     
+    func cardSwipedLeft(recognizer:UISwipeGestureRecognizer!){
+        if(!flipBoolean){
+            cardView.addSubview(cardView.backOfCard)
+            cardView.backOfCard.constrainToSuperViewEdges()
+            UIView.transitionFromView(cardView.containerView, toView:cardView.backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromRight) { (bool:Bool) -> Void in
+                self.flipBoolean = true
+            }
+        }else{
+            cardView.addSubview(cardView.containerView)
+            cardView.containerView.constrainToSuperViewEdges()
+            UIView.transitionFromView(cardView.backOfCard!, toView:cardView.containerView, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromRight) { (bool:Bool) -> Void in
+                self.flipBoolean = false
+            }
+        }
+    }
     
+    func cardLongPress(recognizer:UILongPressGestureRecognizer!){
+        if let parentVC = cardView.parentViewController(){
+            parentVC.presentCard(cardView.backingCard)
+        }
+    }
+    
+    // MARK: Instance
     func setup(){
-        cardSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "cardSwiped:")
-        self.cardView.addGestureRecognizer(cardSwipeGestureRecognizer!)
+        cardSwipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "cardSwipedRight:")
+        cardSwipeRightGestureRecognizer?.direction = UISwipeGestureRecognizerDirection.Right
+        self.cardView.addGestureRecognizer(cardSwipeRightGestureRecognizer!)
+        
+        cardSwipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "cardSwipedLeft:")
+        cardSwipeLeftGestureRecognizer?.direction = UISwipeGestureRecognizerDirection.Left
+        self.cardView.addGestureRecognizer(cardSwipeLeftGestureRecognizer!)
+        
+        cardLongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "cardLongPress:")
+        self.cardView.addGestureRecognizer(cardLongPressGestureRecognizer!)
     }
     
 

@@ -35,5 +35,18 @@ extension UIView{
     func hasSuperview()->Bool{
         return superview != nil
     }
+    
+    func parentViewController() -> UIViewController? {
+        var parentResponder: UIResponder? = self
+        while true {
+            if parentResponder == nil {
+                return nil
+            }
+            parentResponder = parentResponder!.nextResponder()
+            if parentResponder is UIViewController {
+                return (parentResponder as UIViewController)
+            }
+        }
+    }
   
 }

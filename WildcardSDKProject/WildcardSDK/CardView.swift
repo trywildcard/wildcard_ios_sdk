@@ -15,7 +15,8 @@ public class CardView : UIView
     let containerView:UIView
     public var physics:CardPhysics?
     public var contentView:CardContentView?
-    public var backOfCard:UIView?
+    public var backOfCard:UIView!
+    public var backingCard:Card!
     
     // MARK: Public Class Functions
     
@@ -37,11 +38,17 @@ public class CardView : UIView
         // initialize content view
         newCardView.initializeContentView(cardContentView)
         
+        // the back
+        newCardView.initializeBackOfCard()
+        
         // update content for card
         cardContentView.updateViewForCard(card)
         
         // finalize
         newCardView.finalizeCard()
+        
+        // backing card
+        newCardView.backingCard = card
         
         return newCardView
         
@@ -93,6 +100,8 @@ public class CardView : UIView
             if (hasSuperview()){
                 center = prevCenter
             }
+            
+            backingCard = card
         }
     }
     
@@ -109,6 +118,24 @@ public class CardView : UIView
         containerView.addSubview(cardContentView)
         cardContentView.constrainToSuperViewEdges()
         contentView = cardContentView
+    }
+    
+    func initializeBackOfCard(){
+        // TODO: Placeholder for now
+        let label = UILabel(frame: CGRectZero)
+        label.textColor = UIColor.wildcardDarkBlue()
+        label.font =  UIFont.wildcardLargePlaceholderFont()
+        label.text = "The Back"
+        
+        backOfCard = UIView(frame: CGRectZero)
+        backOfCard?.backgroundColor = UIColor.whiteColor()
+        insertSubview(backOfCard!, belowSubview: containerView)
+        backOfCard?.constrainToSuperViewEdges()
+        
+        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        backOfCard?.addSubview(label)
+        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
+        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 4))
     }
     
     func finalizeCard(){
@@ -139,37 +166,5 @@ public class CardView : UIView
         
         physics = CardPhysics(cardView:self)
         physics?.setup()
-        //physics?.cardView = self
-        
-        /*
-       // physics = CardPhysics(cardView: self)
-        let tapGesture = UITapGestureRecognizer(target: self, action: "test")
-        tapGesture.numberOfTapsRequired = 2
-        addGestureRecognizer(tapGesture)
-        
-        let swipe = UISwipeGestureRecognizer(target: self, action: "test2")
-        addGestureRecognizer(swipe)
-*/
-        
-    }
-    
-    func test(){
-        println("test")
-    }
-    
-    func test2(){
-        println("test2")
-        
-        if(backOfCard == nil){
-            backOfCard = UIView(frame: CGRectZero)
-            backOfCard?.backgroundColor = UIColor.redColor()
-            addSubview(backOfCard!)
-            backOfCard?.constrainToSuperViewEdges()
-            layoutIfNeeded()
-        }
-        UIView.transitionFromView(containerView, toView:backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-        println("after flip")
-        println(containerView)
-        println(contentView)
     }
 }

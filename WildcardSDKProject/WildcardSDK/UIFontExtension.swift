@@ -26,4 +26,8 @@ extension UIFont{
         return 20;
     }
     
+    class func wildcardLargePlaceholderFont()->UIFont{
+        return UIFont(name: "Polaris-Light", size: 28.0)!
+    }
+    
 }
