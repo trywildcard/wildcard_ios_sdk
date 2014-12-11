@@ -27,6 +27,15 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func secondButtonTapped(sender: AnyObject) {
+        let google = NSURL(string: "http://www.google.com")
+        let dictionary:NSMutableDictionary = NSMutableDictionary()
+        dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
+        let dummyCard = WebLinkCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.", title: "This is an example of another card format", dictionary: dictionary )
+        presentCard(dummyCard)
+    }
+    
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
         let google = NSURL(string: "http://www.google.com")
         let dictionary:NSMutableDictionary = NSMutableDictionary()

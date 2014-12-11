@@ -29,36 +29,14 @@ class WebLinkCardPortraitImageFullView : CardContentView{
             
             // download image
             if let imageUrl = webLinkCard.imageUrl{
-                let imageRequest:NSURLRequest = NSURLRequest(URL: imageUrl)
-                if let cachedImage = ImageCache.sharedInstance.cachedImageForRequest(imageRequest){
-                    cardImageView.image = cachedImage
-                }else{
-                    var downloadTask:NSURLSessionDownloadTask =
-                    NSURLSession.sharedSession().downloadTaskWithRequest(imageRequest,
-                        completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
-                            if(error == nil){
-                                let data:NSData? = NSData(contentsOfURL: location)
-                                if let newImage = UIImage(data: data!, scale: UIScreen.mainScreen().scale){
-                                    ImageCache.sharedInstance.cacheImageForRequest(newImage, request: imageRequest)
-                                    dispatch_async(dispatch_get_main_queue(), {
-                                        self.cardImageView.image = newImage
-                                    })
-                                }else{
-                                    let error = NSError(domain: "Couldn't create image from data", code: 0, userInfo: nil)
-                                    dispatch_async(dispatch_get_main_queue(), {
-                                        self.cardImageView.image = UIImage(named: "noImage")
-                                        self.cardImageView.contentMode = UIViewContentMode.Center
-                                    })
-                                }
-                            }else{
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    self.cardImageView.image = UIImage(named: "noImage")
-                                    self.cardImageView.contentMode = UIViewContentMode.Center
-                                })
-                            }
-                    })
-                    downloadTask.resume()
-                }
+                cardImageView.downloadImageWithURL(imageUrl, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                    if(image != nil){
+                        self.cardImageView.image = image
+                    }else{
+                        self.cardImageView.image = UIImage(named: "noImage")
+                        self.cardImageView.contentMode = UIViewContentMode.Center
+                    }
+                })
             }
         }
     }

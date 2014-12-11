@@ -27,20 +27,12 @@ public class CardPhysics : NSObject {
         if(!flipBoolean){
             cardView.addSubview(cardView.backOfCard)
             cardView.backOfCard.constrainToSuperViewEdges()
-            println(cardView.contentView?.subviews)
-            println(cardView.contentView?.frame)
             UIView.transitionFromView(cardView.containerView, toView:cardView.backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
                 self.flipBoolean = true
             }
         }else{
             cardView.addSubview(cardView.containerView)
             cardView.containerView.constrainToSuperViewEdges()
-           // cardView.setNeedsLayout()
-           // cardView.layoutIfNeeded()
-           // cardView.layoutSubviews()
-            //cardView.sizeToFit()
-            println(cardView.contentView?.subviews)
-            println(cardView.contentView?.frame)
             UIView.transitionFromView(cardView.backOfCard!, toView:cardView.containerView, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
                 self.flipBoolean = false
             }

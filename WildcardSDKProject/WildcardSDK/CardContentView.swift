@@ -52,12 +52,12 @@ public class CardContentView : UIView
             newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitDefault")!
         case .WebLinkCardPortraitImageFull:
             newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageFull")!
+        case .PortraitImageFullFloatBottom:
+            newCardContentView = CardContentView.loadFromNibNamed("CardPortraitImageFullFloatBottom")
         default:
             newCardContentView = CardContentView.loadFromNibNamed("BareCard")!
         }
         
-        // After we load the template, set bounds to whatever we think is optimal
-       // newCardContentView.bounds = newCardContentView.optimalBounds()
         return newCardContentView
     }
 }

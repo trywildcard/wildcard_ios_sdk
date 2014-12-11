@@ -55,7 +55,7 @@ public class CardLayoutEngine{
         linkCardHasImageNode.addEdge(PassThroughEdge(), destination: linkCardLongTitleNode)
         
         let linkCardFloatLeftNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatLeft", layout: CardLayout.WebLinkCardPortraitImageSmallFloatLeft)
-        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.WebLinkCardPortraitImageSmallFloatBottom)
+        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.PortraitImageFullFloatBottom)
         linkCardLongTitleNode.addEdge(CheckShortDescriptionEdge(), destination: linkCardFloatLeftNode)
         linkCardLongTitleNode.addEdge(PassThroughEdge(), destination: linkCardFloatBottomNode)
     }

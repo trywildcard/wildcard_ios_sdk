@@ -25,11 +25,22 @@
                                     <action selector="presentCardButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wHy-gY-C5w"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fM2-rn-VGX">
+                                <rect key="frame" x="203" y="330" width="193" height="30"/>
+                                <state key="normal" title="Default Modal Another Style">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="secondButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HGe-z5-cU1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fM2-rn-VGX" firstAttribute="top" secondItem="IO0-Rv-PYu" secondAttribute="bottom" constant="15" id="6eN-im-vAU"/>
                             <constraint firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="Mrn-Cw-J9Q"/>
                             <constraint firstAttribute="centerY" secondItem="IO0-Rv-PYu" secondAttribute="centerY" id="eTT-zk-unx"/>
+                            <constraint firstItem="fM2-rn-VGX" firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="iEC-ZA-vAl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Demo 1" id="Djv-HO-RYC"/>

@@ -80,7 +80,7 @@ class WildcardSDKTests: XCTestCase {
         
         // image with long title and long description
         let webLinkCard4 = WebLinkCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", dictionary: testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.WebLinkCardPortraitImageSmallFloatBottom)
+        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.PortraitImageFullFloatBottom)
         
         let longDesc = "Everybody I send cards to this year is getting one of these."
         let webLinkCard5 = WebLinkCard(url:url!, description:longDesc, title:longDesc, dictionary:testDictionary)
