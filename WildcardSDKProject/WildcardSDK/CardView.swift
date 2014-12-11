@@ -135,7 +135,7 @@ public class CardView : UIView
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         backOfCard?.addSubview(label)
         backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
-        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 4))
+        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: -4))
     }
     
     func finalizeCard(){

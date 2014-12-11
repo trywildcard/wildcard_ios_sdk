@@ -26,12 +26,11 @@ class ViewController2: UIViewController {
         let dummyCard = WebLinkCard(url:google!, description: "Bare Bones Card", title: "Bare Bones Card", dictionary: nil)
         if let cardView = CardView.createCardViewFromCard(dummyCard, layout: CardLayout.BareCard){
             cardView.frame = CGRectOffset(cardView.frame, 15, 100)
-            println(cardView)
             view.addSubview(cardView)
             mainCardView = cardView
         }
         
-        let requestURL = NSURL(string:"https://www.reddit.com/top.json?limit=100")
+        let requestURL = NSURL(string:"https://www.reddit.com/new.json?limit=100")
         
         reRenderButton.enabled = false
         var session = NSURLSession.sharedSession()

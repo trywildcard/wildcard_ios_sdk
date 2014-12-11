@@ -10,11 +10,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmd-x8-ceV">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="555"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmd-x8-ceV">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="545"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzJ-AC-K7B">
-                    <rect key="frame" x="10" y="565" width="580" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzJ-AC-K7B">
+                    <rect key="frame" x="10" y="555" width="580" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="RTB-1C-zOC"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -28,17 +31,11 @@
                 <constraint firstItem="gmd-x8-ceV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RL5-lr-3iF"/>
                 <constraint firstAttribute="bottom" secondItem="XzJ-AC-K7B" secondAttribute="bottom" constant="15" id="avi-jT-xdL"/>
                 <constraint firstItem="XzJ-AC-K7B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="krL-RN-I7C"/>
-                <constraint firstAttribute="bottom" secondItem="gmd-x8-ceV" secondAttribute="bottom" constant="100" id="rxh-vF-kKV"/>
                 <constraint firstAttribute="trailing" secondItem="gmd-x8-ceV" secondAttribute="trailing" id="yGt-H2-m7w"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="rxh-vF-kKV"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="cardImageView" destination="gmd-x8-ceV" id="nPz-B1-pgm"/>
-                <outlet property="titleLabel" destination="XzJ-AC-K7B" id="r1l-7T-gOX"/>
+                <outlet property="titleLabel" destination="XzJ-AC-K7B" id="ZPT-Le-byK"/>
             </connections>
         </view>
     </objects>

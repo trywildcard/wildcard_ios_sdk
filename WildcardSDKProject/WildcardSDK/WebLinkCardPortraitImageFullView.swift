@@ -10,9 +10,8 @@ import Foundation
 
 class WebLinkCardPortraitImageFullView : CardContentView{
     
-    @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var alphaOverlay: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var cardImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
