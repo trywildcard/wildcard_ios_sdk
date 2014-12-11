@@ -61,7 +61,7 @@ class WildcardSDKTests: XCTestCase {
         let url = NSURL(string: "http://www.google.com")
         
         let articleCard = ArticleCard(title: "default", html: "", url: url!, dictionary: nil)
-        XCTAssert(engine.matchLayout(articleCard) == CardLayout.BareCard)
+        XCTAssert(engine.matchLayout(articleCard) == CardLayout.PortraitDefault)
         
         // no image results in default lay out
         let webLinkCard1 = WebLinkCard(url: url!, description: "test1", title: "test1", dictionary: nil)
@@ -88,5 +88,14 @@ class WildcardSDKTests: XCTestCase {
         
     }
     
+    func testArticleCardLayouts(){
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")
+        
+        // article card no image has default
+        let articleCard = ArticleCard(title: "default", html: "", url: url!, dictionary: nil)
+        XCTAssert(engine.matchLayout(articleCard) == CardLayout.PortraitDefault)
+        
+    }
     
 }

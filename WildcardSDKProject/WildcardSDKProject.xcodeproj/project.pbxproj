@@ -35,9 +35,9 @@
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
-		1D5873331A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873321A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift */; };
-		1D5873351A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib */; };
-		1D5873361A379B1B00C3EAF3 /* WebLinkCardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib */; };
+		1D5873331A3794F600C3EAF3 /* CardPortraitDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */; };
+		1D5873351A37953500C3EAF3 /* CardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */; };
+		1D5873361A379B1B00C3EAF3 /* CardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */; };
 		1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */; };
 		1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */; };
 		1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */; };
@@ -162,8 +162,8 @@
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		1D5873321A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitDefaultView.swift; sourceTree = "<group>"; };
-		1D5873341A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebLinkCardPortraitDefault.xib; sourceTree = "<group>"; };
+		1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPortraitDefaultView.swift; sourceTree = "<group>"; };
+		1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardPortraitDefault.xib; sourceTree = "<group>"; };
 		1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionEdge.swift; sourceTree = "<group>"; };
 		1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionNode.swift; sourceTree = "<group>"; };
@@ -421,14 +421,14 @@
 			children = (
 				1DAC26E21A3655530005C4BE /* BareCard.xib */,
 				1DAC26E81A3657220005C4BE /* BareCardView.swift */,
-				1D5873341A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib */,
-				1D5873321A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift */,
+				1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */,
+				1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */,
+				1DF0BA9E1A39FE6B00EE9645 /* CardPortraitImageFullFloatBottom.xib */,
+				1DF0BA9C1A39FB1E00EE9645 /* CardPortraitImageFullFloatBottomView.swift */,
 				1DE218431A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib */,
 				1DE218451A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift */,
 				1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */,
 				1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */,
-				1DF0BA9C1A39FB1E00EE9645 /* CardPortraitImageFullFloatBottomView.swift */,
-				1DF0BA9E1A39FE6B00EE9645 /* CardPortraitImageFullFloatBottom.xib */,
 			);
 			name = "Content Layout Views";
 			sourceTree = "<group>";
@@ -585,7 +585,7 @@
 				1DDA4EDE1A3A047400DC02A4 /* CardPortraitImageFullFloatBottom.xib in Resources */,
 				1DAC26E01A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
 				1DAC26DA1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
-				1D5873361A379B1B00C3EAF3 /* WebLinkCardPortraitDefault.xib in Resources */,
+				1D5873361A379B1B00C3EAF3 /* CardPortraitDefault.xib in Resources */,
 				1DAC26D81A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,7 +606,7 @@
 				1DAC26E11A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
 				1DAC26E41A3655530005C4BE /* BareCard.xib in Resources */,
 				1DAC26D91A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
-				1D5873351A37953500C3EAF3 /* WebLinkCardPortraitDefault.xib in Resources */,
+				1D5873351A37953500C3EAF3 /* CardPortraitDefault.xib in Resources */,
 				1DE218441A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */,
 				1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */,
 			);
@@ -654,7 +654,7 @@
 			files = (
 				1DE218491A38C103007746B4 /* ImageCache.swift in Sources */,
 				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
-				1D5873331A3794F600C3EAF3 /* WebLinkCardPortraitDefaultView.swift in Sources */,
+				1D5873331A3794F600C3EAF3 /* CardPortraitDefaultView.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,

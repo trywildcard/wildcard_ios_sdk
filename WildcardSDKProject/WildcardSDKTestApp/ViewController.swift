@@ -19,13 +19,12 @@ class ViewController: UIViewController {
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google", dictionary: nil)
-        let layoutToRender:CardLayout = CardLayout.WebLinkCardPortraitDefault
+        let layoutToRender:CardLayout = CardLayout.PortraitDefault
         if let cardView = CardView.createCardViewFromCard(dummyCard, layout: layoutToRender){
             cardView.frame = CGRectOffset(cardView.frame, 15, 100)
             println(cardView)
             view.addSubview(cardView)
         }
-        
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

@@ -12,11 +12,14 @@ import QuartzCore
 
 public class CardView : UIView
 {
-    let containerView:UIView
+    // MARK: Public properties
     public var physics:CardPhysics?
     public var contentView:CardContentView?
     public var backOfCard:UIView!
     public var backingCard:Card!
+    
+    // MARK: Private properties
+    let containerView:UIView
     
     // MARK: Public Class Functions
     

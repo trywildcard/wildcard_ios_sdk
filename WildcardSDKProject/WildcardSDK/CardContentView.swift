@@ -48,8 +48,8 @@ public class CardContentView : UIView
             
         case .WebLinkCardPortraitImageSmallFloatLeft:
             newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageSmallFloatLeft")!
-        case .WebLinkCardPortraitDefault:
-            newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitDefault")!
+        case .PortraitDefault:
+            newCardContentView = CardContentView.loadFromNibNamed("CardPortraitDefault")!
         case .WebLinkCardPortraitImageFull:
             newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageFull")!
         case .PortraitImageFullFloatBottom:

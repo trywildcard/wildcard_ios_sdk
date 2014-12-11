@@ -41,10 +41,19 @@ public class CardLayoutEngine{
         portraitNode.addEdge(PassThroughEdge(), destination: cardTypeNode)
         
         let linkCardNode = LayoutDecisionNode(description: "It's a web link card")
+        let articleCardNode = LayoutDecisionNode(description: "It's an article card")
         cardTypeNode.addEdge(CardTypeEdge(cardType: "weblink"), destination: linkCardNode)
+        cardTypeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
+        // article card layouts
+        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout:CardLayout.PortraitImageFullFloatBottom)
+        let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: CardLayout.PortraitDefault)
+        articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
+        articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
+        
+        // web card layouts
         let linkCardHasImageNode = LayoutDecisionNode(description: "Web link card has an image")
-        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.WebLinkCardPortraitDefault)
+        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.PortraitDefault)
         
         linkCardNode.addEdge(CheckImageEdge(), destination: linkCardHasImageNode)
         linkCardNode.addEdge(PassThroughEdge(), destination: linkCardDefaultNode)

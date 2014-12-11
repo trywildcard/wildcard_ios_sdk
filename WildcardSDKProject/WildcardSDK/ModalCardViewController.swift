@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ModalCardViewController: UIViewController {
+class ModalCardViewController: UIViewController, CardPhysicsDelegate {
     
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
     var cardView:CardView?
     var presentedCard:Card!
     var backgroundTapRecognizer:UITapGestureRecognizer?
+    
+    // MARK: CardPhysicsDelegate
+    func cardViewDropped(cardView: CardView, position: CGPoint) {
+        cardView.physics?.panGestureReset()
+    }
     
     // MARK:UIViewController
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -29,6 +34,8 @@ class ModalCardViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
+        cardView?.physics?.enableDragging = true
+        cardView?.physics?.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {

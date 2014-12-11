@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WebLinkCardPortraitDefaultView : CardContentView{
+class CardPortraitDefaultView : CardContentView{
     
     // MARK: Outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,9 +26,27 @@ class WebLinkCardPortraitDefaultView : CardContentView{
     
     // MARK: CardContentView
     override func updateViewForCard(card:Card){
-        if let webLinkCard = card as? WebLinkCard{
-            titleLabel.text = webLinkCard.title
-            descriptionLabel.setAsCardSubHeaderWithText(webLinkCard.description)
+        var titleText:String?
+        var description:String?
+        
+        switch card.type{
+        case .Unknown:
+            return
+        case .Article:
+            let articleCard = card as ArticleCard
+            titleText = articleCard.title
+            description = articleCard.abstractContent
+        case .WebLink:
+            let webLinkCard = card as WebLinkCard
+            titleText = webLinkCard.title
+            description = webLinkCard.description
+        }
+        
+        if(titleText != nil){
+            titleLabel.text = titleText!
+        }
+        if(description != nil){
+            descriptionLabel.setAsCardSubHeaderWithText(description!)
         }
     }
     
