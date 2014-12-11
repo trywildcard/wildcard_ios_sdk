@@ -13,7 +13,9 @@ import QuartzCore
 public class CardView : UIView
 {
     let containerView:UIView
+    public var physics:CardPhysics?
     public var contentView:CardContentView?
+    public var backOfCard:UIView?
     
     // MARK: Public Class Functions
     
@@ -44,7 +46,6 @@ public class CardView : UIView
         return newCardView
         
     }
-    
     
     // MARK: UIView
     override init(frame: CGRect) {
@@ -135,6 +136,40 @@ public class CardView : UIView
         layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSizeMake(0.0, 1.0)
         layer.shadowRadius = 1.0
+        
+        physics = CardPhysics(cardView:self)
+        physics?.setup()
+        //physics?.cardView = self
+        
+        /*
+       // physics = CardPhysics(cardView: self)
+        let tapGesture = UITapGestureRecognizer(target: self, action: "test")
+        tapGesture.numberOfTapsRequired = 2
+        addGestureRecognizer(tapGesture)
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: "test2")
+        addGestureRecognizer(swipe)
+*/
+        
     }
     
+    func test(){
+        println("test")
+    }
+    
+    func test2(){
+        println("test2")
+        
+        if(backOfCard == nil){
+            backOfCard = UIView(frame: CGRectZero)
+            backOfCard?.backgroundColor = UIColor.redColor()
+            addSubview(backOfCard!)
+            backOfCard?.constrainToSuperViewEdges()
+            layoutIfNeeded()
+        }
+        UIView.transitionFromView(containerView, toView:backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+        println("after flip")
+        println(containerView)
+        println(contentView)
+    }
 }

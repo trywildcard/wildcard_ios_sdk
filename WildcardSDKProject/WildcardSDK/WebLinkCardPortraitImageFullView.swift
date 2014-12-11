@@ -60,7 +60,6 @@ class WebLinkCardPortraitImageFullView : CardContentView{
                     })
                     downloadTask.resume()
                 }
-                
             }
         }
     }

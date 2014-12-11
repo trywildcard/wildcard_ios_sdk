@@ -94,6 +94,7 @@
 		1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */; };
 		1DF0BA941A3930CC00EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */; };
 		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
+		1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,7 @@
 		1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebLinkCardPortraitImageSmallFloatLeft.xib; sourceTree = "<group>"; };
 		1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitImageSmallFloatLeftView.swift; sourceTree = "<group>"; };
 		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhysics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +369,7 @@
 		1DAC26911A36315A0005C4BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DF0BA971A394AF500EE9645 /* Physics */,
 				1DAC26EB1A3657280005C4BE /* Content Layout Views */,
 				1DAC26951A36321B0005C4BE /* CardView.swift */,
 				1D0451C71A36C8C100972061 /* CardContentView.swift */,
@@ -427,6 +430,14 @@
 				1DE218411A38091A007746B4 /* ModalCardViewController.swift */,
 			);
 			name = Presentations;
+			sourceTree = "<group>";
+		};
+		1DF0BA971A394AF500EE9645 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */,
+			);
+			name = Physics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -638,6 +649,7 @@
 				1DAC268E1A3564170005C4BE /* CheckShortTitleEdge.swift in Sources */,
 				1DAC268A1A355BB70005C4BE /* CardTypeEdge.swift in Sources */,
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
+				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
 				1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */,
 				1DAC26EA1A3657220005C4BE /* BareCardView.swift in Sources */,
