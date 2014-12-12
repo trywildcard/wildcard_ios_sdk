@@ -18,7 +18,7 @@ class CardPortraitDefaultView : CardContentView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        associatedLayout = CardLayout.WebLinkCardPortraitDefault
+        associatedLayout = CardLayout.PortraitDefault
         bottomHairline.backgroundColor = UIColor.wildcardBackgroundGray()
         titleLabel.textColor = UIColor.wildcardDarkBlue()
         titleLabel.font = UIFont.wildcardStandardHeaderFont()

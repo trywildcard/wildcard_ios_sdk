@@ -22,7 +22,7 @@ class CardPortraitImageFullFloatBottomView : CardContentView{
     override func updateViewForCard(card:Card){
         var imageUrl:NSURL?
         var titleText:String?
-        var description:String?
+        var cardDescription:String?
         
         switch card.type{
         case .Unknown:
@@ -30,20 +30,22 @@ class CardPortraitImageFullFloatBottomView : CardContentView{
         case .Article:
             let articleCard = card as ArticleCard
             imageUrl = articleCard.primaryImageURL
-            titleText = articleCard.title
-            description = articleCard.abstractContent
+            titleText = String(htmlEncodedString: articleCard.title)
+            if let description = articleCard.abstractContent{
+                cardDescription = String(htmlEncodedString: description)
+            }
         case .WebLink:
             let webLinkCard = card as WebLinkCard
             imageUrl = webLinkCard.imageUrl
-            titleText = webLinkCard.title
-            description = webLinkCard.description
+            titleText = String(htmlEncodedString: webLinkCard.title)
+            cardDescription = String(htmlEncodedString: webLinkCard.description)
         }
         
         if(titleText != nil){
             titleLabel.setAsCardHeaderWithText(titleText!)
         }
-        if(description != nil){
-            descriptionLabel.setAsCardSubHeaderWithText(description!)
+        if(cardDescription != nil){
+            descriptionLabel.setAsCardSubHeaderWithText(cardDescription!)
         }
         if(imageUrl != nil){
             coverImageView.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in

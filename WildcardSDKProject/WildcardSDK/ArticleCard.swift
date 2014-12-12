@@ -60,8 +60,9 @@ public class ArticleCard : Card{
         }
     }
     
+    // Attempts to create an Article Card from a web URL.
     public class func createFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void{
-        Platform.getArticleCardFromWebUrl(url,completion:completion)
+        Platform.sharedInstance.getArticleCardFromWebUrl(url,completion:completion)
     }
     
 }

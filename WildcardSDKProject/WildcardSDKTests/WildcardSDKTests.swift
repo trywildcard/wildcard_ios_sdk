@@ -65,7 +65,7 @@ class WildcardSDKTests: XCTestCase {
         
         // no image results in default lay out
         let webLinkCard1 = WebLinkCard(url: url!, description: "test1", title: "test1", dictionary: nil)
-        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.WebLinkCardPortraitDefault)
+        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.PortraitDefault)
         
         let testDictionary:NSMutableDictionary = NSMutableDictionary()
         testDictionary["primaryImageUrl"] = "http://www.google.com"

@@ -19,7 +19,7 @@ extension UIView{
         self.superview?.layoutIfNeeded()
     }
     
-    // adds a dark blur overlay to the view and returns a reference to it.
+    // adds a blur overlay to the view and returns a reference to it.
     func addBlurOverlay(style:UIBlurEffectStyle)->UIView{
         let overlay = UIView(frame: CGRectZero)
         addSubview(overlay)

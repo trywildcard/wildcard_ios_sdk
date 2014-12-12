@@ -15,6 +15,7 @@ public extension UIViewController{
         
         let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
         modalViewController.view.insertSubview(snapShot, atIndex:0)
+        snapShot.constrainToSuperViewEdges()    
         
         modalViewController.presentingControllerBackgroundView = snapShot
         modalViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)

@@ -10,7 +10,7 @@
 * WebLink Card
 *
 * Official Schema:
-* http://www.trywildcard.com/docs/schema/#link-card
+* http://www.trywildcard.com/docs/schema/#weblink-card
 *
 */
 public class WebLinkCard : Card{
@@ -31,7 +31,7 @@ public class WebLinkCard : Card{
     }
     
     public class func createFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void{
-        Platform.getWebLinkCardFromWebUrl(url,completion:completion)
+        Platform.sharedInstance.getWebLinkCardFromWebUrl(url,completion:completion)
     }
     
 }

@@ -18,7 +18,7 @@ class WebLinkCardPortraitImageSmallFloatLeftView : CardContentView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        associatedLayout = CardLayout.WebLinkCardPortraitDefault
+        associatedLayout = CardLayout.WebLinkCardPortraitImageSmallFloatLeft
         bottomHairline.backgroundColor = UIColor.wildcardBackgroundGray()
         titleLabel.textColor = UIColor.wildcardDarkBlue()
         titleLabel.font = UIFont.wildcardStandardHeaderFont()

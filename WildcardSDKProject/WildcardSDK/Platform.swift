@@ -8,6 +8,11 @@
 
 import Foundation
 
+/*
+* Platform
+*
+* Any interaction we have with the Wildcard Platform should go here
+*/
 class Platform{
     
     let platformBaseURL = "http://platform-prod.trywildcard.com"
@@ -20,13 +25,102 @@ class Platform{
         return Static.instance
     }
     
-    class func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
+    func createWildcardShortLink(url:NSURL, completion:((NSURL?,NSError?)->Void)) ->Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/shortlink?url=" + targetUrlEncoded!
+        let shortLinkPlatformUrl = NSURL(string:urlString)!
+        getJsonResponseFromWebUrl(shortLinkPlatformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
+            if(error == nil){
+                if(json != nil){
+                    if let shortLink = json!["short_link_result"] as? String{
+                        completion(NSURL(string: shortLink),nil)
+                    }else{
+                        completion(nil,NSError())
+                    }
+                }else{
+                    completion(nil,NSError())
+                }
+            }else{
+                completion(nil,error)
+            }
+        }
+    }
+    
+    private func getJsonResponseFromWebUrl(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
+    {
+        var session = NSURLSession.sharedSession()
+        
+        var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
+            if(error != nil){
+                completion(nil, error)
+            }else{
+                var jsonError:NSError?
+                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
+                if (jsonError != nil) {
+                    completion(nil, jsonError)
+                }
+                else {
+                    completion(json, nil)
+                }
+            }
+        })
+        task.resume()
+    }
+    
+    func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
+    {
+        createWildcardShortLink(url) { (shortLink:NSURL?, error:NSError?) -> Void in
+            if(error == nil){
+                if(shortLink != nil){
+                    var targetUrlEncoded = shortLink?.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+                    var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
+                    let platformUrl = NSURL(string:urlString)
+                    
+                    self.getJsonResponseFromWebUrl(platformUrl!, completion: { (json:NSDictionary?, error: NSError?) -> Void in
+                        if(error == nil){
+                            var articleCard:ArticleCard?
+                            if let result = json!["result"] as? NSArray{
+                                if result.count > 0 && result[0] is NSDictionary{
+                                    let resultDict = result[0] as NSDictionary
+                                    var startURL:NSURL?
+                                    var title:String?
+                                    var html:String?
+                                    if let urlString = resultDict["startUrl"] as? String{
+                                        startURL = NSURL(string:urlString)
+                                    }
+                                    
+                                    if let article = resultDict["article"] as? NSDictionary{
+                                        title = article["title"] as? String
+                                        html = article["html"] as? String
+                                        if(title != nil && html != nil && startURL != nil){
+                                            articleCard  = ArticleCard(title: title!, html: html!, url: startURL!, dictionary:article)
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            completion(articleCard, nil)
+                        }else{
+                            completion(nil,error)
+                        }
+                    })
+                }else{
+                    completion(nil,NSError())
+                }
+            }else{
+                completion(nil,error)
+            }
+        }
+        
+        /*
+        
+        var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
-        let url = NSURL(string:urlString)
+        let platformUrl = NSURL(string:urlString)
         
         var session = NSURLSession.sharedSession()
+        
         var task:NSURLSessionTask = session.dataTaskWithURL(url!, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             if(error != nil){
                 completion(nil, error)
@@ -63,9 +157,10 @@ class Platform{
             }
         })
         task.resume()
+*/
     }
     
-    class func getWebLinkCardFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void
+    func getWebLinkCardFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
