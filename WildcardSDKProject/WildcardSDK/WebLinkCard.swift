@@ -15,23 +15,27 @@
 */
 public class WebLinkCard : Card {
     
-    let title:String
-    let description:String
+    var title:String
+    var description:String
     
-    let imageUrl:NSURL?
+    var imageUrl:NSURL?
     
-    public init(url:NSURL, description:String, title:String,dictionary:NSDictionary?){
+    public init(url:NSURL, description:String, title:String, dictionary:NSDictionary?){
         self.title = title
         self.description = description
         super.init(webUrl: url, cardType: "weblink")
         
-        if let imageUrl = dictionary?["primaryImageUrl"] as? String{
-            self.imageUrl = NSURL(string: imageUrl)
+        if let image = dictionary?["primaryImageUrl"] as? String{
+            imageUrl = NSURL(string: image)
+        }
+        if let image = dictionary?["og:image"] as? String{
+            imageUrl = NSURL(string: image)
         }
     }
     
     public class func createFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void{
         Platform.sharedInstance.getWebLinkCardFromWebUrl(url,completion:completion)
     }
+    
     
 }
