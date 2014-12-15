@@ -23,17 +23,43 @@ public class Card : PlatformObject{
     init(webUrl:NSURL, cardType:String){
         self.webUrl = webUrl
         self.cardType = cardType
-        
-        if(cardType == "weblink"){
-            type = Type.WebLink
-        }else if(cardType == "article"){
-            type = Type.Article
+        self.type = Card.cardTypeFromString(cardType)
+    }
+    
+    class func cardTypeFromString(name:String) -> Type{
+        if(name == "article"){
+            return Type.Article
+        }else if(name == "weblink"){
+            return Type.WebLink
         }else{
-            type = Type.Unknown
+            return Type.Unknown
+        }
+    }
+    
+    class func stringFromCardType(type:Type)->String{
+        switch(type){
+        case .Article:
+            return "article"
+        case .WebLink:
+            return "weblink"
+        default:
+            return "unknown"
         }
     }
     
     class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+        if let cardTypeDict = data["cardType"] as? NSDictionary{
+            if let cardTypeValue = cardTypeDict["name"] as? String{
+                switch(cardTypeValue){
+                case "article":
+                    return ArticleCard.deserializeFromData(data) as? ArticleCard
+                case "weblink":
+                    return WebLinkCard.deserializeFromData(data) as? WebLinkCard
+                default:
+                    return nil
+                }
+            }
+        }
         return nil
     }
 }

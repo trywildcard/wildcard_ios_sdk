@@ -80,7 +80,6 @@ public class ArticleCard : Card{
         return articleCard
     }
     
-    
     // Attempts to create an Article Card from a web URL.
     public class func createFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void{
         Platform.sharedInstance.getArticleCardFromWebUrl(url,completion:completion)
@@ -88,22 +87,14 @@ public class ArticleCard : Card{
     
     // Searches for article cards from a given query
     public class func searchArticleCards(query:String, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
-        Platform.sharedInstance.generalSearchFromQuery(query, completion: { (results:[NSDictionary]?, error:NSError?) -> Void in
+        Platform.sharedInstance.generalSearchFromQuery(query, completion: { (cards:[Card]?, error:NSError?) -> Void in
             if(error != nil){
                 completion(nil,error)
             }else{
                 var articleCards:[ArticleCard] = []
-                if(results != nil){
-                    for result in results!{
-                        if let cardTypeDict = result["cardType"] as? NSDictionary{
-                            if let type = cardTypeDict["name"] as? String{
-                                if type == "article"{
-                                    if let newArticle = ArticleCard.deserializeFromData(result) as? ArticleCard{
-                                        articleCards.append(newArticle)
-                                    }
-                                }
-                            }
-                        }
+                for card in cards!{
+                    if let articleCard = card as? ArticleCard{
+                        articleCards.append(articleCard)
                     }
                 }
                 completion(articleCards,nil)

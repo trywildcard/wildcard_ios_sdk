@@ -72,7 +72,7 @@ class Platform{
         task.resume()
     }
     
-    func generalSearchFromQuery(query:String, completion: (([NSDictionary]?, NSError?)->Void)) -> Void
+    func generalSearchFromQuery(query:String, completion: (([Card]?, NSError?)->Void)) -> Void
     {
         var queryParam = query.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
@@ -80,11 +80,13 @@ class Platform{
         let platformUrl = NSURL(string:urlString)!
         getJsonResponseFromWebUrl(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
             if(error == nil){
-                var results:[NSDictionary] = []
+                var results:[Card] = []
                 if let result = json!["result"] as? NSArray{
                     for item in result{
-                        if let itemDictionary = item as? NSDictionary{
-                            results.append(itemDictionary)
+                        if let data = item as? NSDictionary{
+                            if let newCard = Card.deserializeFromData(data) as? Card{
+                                results.append(newCard)
+                            }
                         }
                     }
                 }
