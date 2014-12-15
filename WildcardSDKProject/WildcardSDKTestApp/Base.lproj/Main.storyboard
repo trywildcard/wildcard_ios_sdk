@@ -49,6 +49,40 @@
             </objects>
             <point key="canvasLocation" x="1063" y="219"/>
         </scene>
+        <!--Demo 3-->
+        <scene sceneID="sCQ-FO-PRS">
+            <objects>
+                <viewController id="TcV-Vj-cbZ" customClass="ViewController3" customModule="WildcardSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fhN-oy-XKG"/>
+                        <viewControllerLayoutGuide type="bottom" id="6nz-fH-IaB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lEO-k3-Y6m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDr-WV-wbr">
+                                <rect key="frame" x="209" y="285" width="181" height="30"/>
+                                <state key="normal" title="Present Modal Card Stack">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="12m-e4-Pkt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="mDr-WV-wbr" secondAttribute="centerX" id="MEv-Xa-bk1"/>
+                            <constraint firstAttribute="centerY" secondItem="mDr-WV-wbr" secondAttribute="centerY" id="t5V-Zd-pVV"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Demo 3" id="JcI-jH-HtG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gam-CR-4Eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="251" y="1075"/>
+        </scene>
         <!--Demo 2-->
         <scene sceneID="RG1-W1-Znq">
             <objects>
@@ -106,6 +140,7 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="CGU-sq-D68"/>
                         <segue destination="54Z-eI-u65" kind="relationship" relationship="viewControllers" id="Gmh-Le-eQn"/>
+                        <segue destination="TcV-Vj-cbZ" kind="relationship" relationship="viewControllers" id="lQH-kC-TuZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POJ-el-vHh" userLabel="First Responder" sceneMemberID="firstResponder"/>

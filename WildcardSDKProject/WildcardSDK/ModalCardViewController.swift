@@ -34,6 +34,7 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
+        cardView = CardView.createCardViewFromCard(presentedCard)
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self
     }

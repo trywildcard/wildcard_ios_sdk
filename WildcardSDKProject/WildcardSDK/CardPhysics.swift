@@ -84,6 +84,12 @@ public class CardPhysics : NSObject {
             let finalY = dy + originalPosition.y;
             delegate?.cardViewDropped?(cardView, position: CGPointMake(finalX,finalY))
             
+          //  let viewPoint = cardView.convertPoint(CGPointMake(finalX, finalY), toView:cardView.superview)
+          //  println("dropped!")
+          //  println(viewPoint.x)
+          //  println(viewPoint.y)
+            
+            
         }else if(recognizer.state == UIGestureRecognizerState.Cancelled) {
             panGestureReset()
         }

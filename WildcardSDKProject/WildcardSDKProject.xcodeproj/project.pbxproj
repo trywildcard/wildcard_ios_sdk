@@ -23,6 +23,8 @@
 
 /* Begin PBXBuildFile section */
 		1D0451C81A36C8C100972061 /* CardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0451C71A36C8C100972061 /* CardContentView.swift */; };
+		1D3064751A3B803D00D99F6E /* ModalCardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */; };
+		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
 		1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */; };
 		1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28621A2E696A00A9D4C1 /* ViewController.swift */; };
 		1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3A28641A2E696A00A9D4C1 /* Main.storyboard */; };
@@ -148,6 +150,8 @@
 
 /* Begin PBXFileReference section */
 		1D0451C71A36C8C100972061 /* CardContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContentView.swift; sourceTree = "<group>"; };
+		1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCardStackViewController.swift; sourceTree = "<group>"; };
+		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		1D3A285B1A2E696A00A9D4C1 /* WildcardSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildcardSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3A285F1A2E696A00A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */,
 				1D3A28621A2E696A00A9D4C1 /* ViewController.swift */,
 				1DE2184A1A38DCA6007746B4 /* ViewController2.swift */,
+				1D3064761A3B83B100D99F6E /* ViewController3.swift */,
 				1D3A28641A2E696A00A9D4C1 /* Main.storyboard */,
 				1D3A28671A2E696A00A9D4C1 /* Images.xcassets */,
 				1D3A28691A2E696A00A9D4C1 /* LaunchScreen.xib */,
@@ -438,6 +443,7 @@
 			children = (
 				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
 				1DE218411A38091A007746B4 /* ModalCardViewController.swift */,
+				1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */,
 			);
 			name = Presentations;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 			files = (
 				1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */,
 				1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */,
+				1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */,
 				1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,6 +677,7 @@
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
 				1DE218421A38091A007746B4 /* ModalCardViewController.swift in Sources */,
+				1D3064751A3B803D00D99F6E /* ModalCardStackViewController.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
