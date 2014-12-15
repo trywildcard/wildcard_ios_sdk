@@ -60,7 +60,7 @@ class WildcardSDKTests: XCTestCase {
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
         
-        let articleCard = ArticleCard(title: "default", html: "", url: url!, dictionary: nil)
+        let articleCard = ArticleCard(title: "default", html: "", url: url!)
         XCTAssert(engine.matchLayout(articleCard) == CardLayout.PortraitDefault)
         
         // no image results in default lay out
@@ -93,8 +93,20 @@ class WildcardSDKTests: XCTestCase {
         let url = NSURL(string: "http://www.google.com")
         
         // article card no image has default
-        let articleCard = ArticleCard(title: "default", html: "", url: url!, dictionary: nil)
+        let articleCard = ArticleCard(title: "default", html: "", url: url!)
         XCTAssert(engine.matchLayout(articleCard) == CardLayout.PortraitDefault)
+    }
+    
+    func testArticleGeneralSearch(){
+        let expectation = expectationWithDescription("General Article")
+        ArticleCard.searchArticleCards("isis") { (articleCards:[ArticleCard]?, error:NSError?) -> Void in
+            XCTAssert(error == nil)
+            XCTAssert(articleCards?.count > 0)
+            expectation.fulfill()
+        }
+ 
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
         
     }
     

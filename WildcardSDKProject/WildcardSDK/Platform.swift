@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol PlatformObject{
+    class func deserializeFromData(data:NSDictionary) -> AnyObject?
+}
+
 /*
 * Platform
 *
@@ -68,6 +72,30 @@ class Platform{
         task.resume()
     }
     
+    func generalSearchFromQuery(query:String, completion: (([NSDictionary]?, NSError?)->Void)) -> Void
+    {
+        var queryParam = query.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v2.1/cross_brand_search?limit=50&q=" + queryParam
+        let platformUrl = NSURL(string:urlString)!
+        getJsonResponseFromWebUrl(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
+            if(error == nil){
+                var results:[NSDictionary] = []
+                if let result = json!["result"] as? NSArray{
+                    for item in result{
+                        if let itemDictionary = item as? NSDictionary{
+                            results.append(itemDictionary)
+                        }
+                    }
+                }
+                completion(results,nil)
+            }else{
+                completion(nil,error)
+            }
+        }
+    }
+    
+    
     func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
     {
         createWildcardShortLink(url) { (shortLink:NSURL?, error:NSError?) -> Void in
@@ -82,23 +110,10 @@ class Platform{
                             var articleCard:ArticleCard?
                             if let result = json!["result"] as? NSArray{
                                 if result.count > 0 && result[0] is NSDictionary{
-                                    let resultDict = result[0] as NSDictionary
-                                    var startURL:NSURL?
-                                    var title:String?
-                                    var html:String?
-                                    if let urlString = resultDict["startUrl"] as? String{
-                                        startURL = NSURL(string:urlString)
-                                    }
-                                    
-                                    if let article = resultDict["article"] as? NSDictionary{
-                                        title = article["title"] as? String
-                                        html = article["html"] as? String
-                                        if(title != nil && html != nil && startURL != nil){
-                                            articleCard  = ArticleCard(title: title!, html: html!, url: startURL!, dictionary:article)
-                                        }
+                                    if let newArticle = ArticleCard.deserializeFromData(result[0] as NSDictionary) as? ArticleCard{
+                                        articleCard = newArticle
                                     }
                                 }
-                                
                             }
                             completion(articleCard, nil)
                         }else{

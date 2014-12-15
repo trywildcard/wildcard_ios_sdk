@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Card {
+public class Card : PlatformObject{
     
     enum Type{
         case Unknown
@@ -31,5 +31,9 @@ public class Card {
         }else{
             type = Type.Unknown
         }
+    }
+    
+    class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+        return nil
     }
 }

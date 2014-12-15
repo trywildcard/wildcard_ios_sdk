@@ -13,7 +13,7 @@
 * http://www.trywildcard.com/docs/schema/#weblink-card
 *
 */
-public class WebLinkCard : Card{
+public class WebLinkCard : Card {
     
     let title:String
     let description:String
