@@ -12,22 +12,7 @@ class EmptyCardBack : CardViewElement {
     
     var titleLabel:UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        convenienceInit()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        convenienceInit()
-    }
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)
-        convenienceInit()
-    }
-    
-    func convenienceInit(){
+    override func initializeElement() {
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center

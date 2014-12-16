@@ -18,16 +18,16 @@ class ViewController: UIViewController {
         
         // set up a dummy card
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google is the best search engine in the world.", dictionary: nil)
+        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google", dictionary: nil)
         
         // render with stock data source
-        let bareBones = BareBonesCardDataSource(card:dummyCard)
+        let bareBones = SimpleDescriptionCardDataSource(card:dummyCard)
         let newCardView:CardView = CardView.testCardRender(dummyCard, datasource: bareBones)
         
         view.addSubview(newCardView)
         newCardView.horizontallyCenterToSuperView(0)
         newCardView.verticallyCenterToSuperView(0)
-        newCardView.constrainWidth(bareBones.widthForCard(), andHeight: bareBones.heightForCardBody())
+        newCardView.constrainWidth(bareBones.widthForCard(), andHeight: newCardView.frame.size.height)
         
     }
     

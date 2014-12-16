@@ -22,7 +22,9 @@ public protocol CardViewDataSource{
     
     func widthForCard()->CGFloat
     
-    func backingCard()->Card
+}
+
+public protocol CardViewDelegate{
 }
 
 public class CardView : UIView
@@ -126,6 +128,7 @@ public class CardView : UIView
         
         // backing card
         newCardView.backingCard = card
+        newCardView.layoutIfNeeded()
         
         return newCardView
     }

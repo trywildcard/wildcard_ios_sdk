@@ -9,27 +9,33 @@
 import Foundation
 
 extension UILabel{
-    func setAsCardHeaderWithText(text:String){
-        let mutableString = NSMutableAttributedString(string: text)
-        mutableString.setLineHeight(UIFont.wildcardStandardHeaderFontLineHeight())
-        mutableString.setColor(UIColor.wildcardDarkBlue())
-        mutableString.setFont(UIFont.wildcardStandardHeaderFont())
-        attributedText = mutableString
+    func setAsCardHeaderWithText(text:String?){
+        if(text != nil){
+            let mutableString = NSMutableAttributedString(string: text!)
+            mutableString.setLineHeight(UIFont.wildcardStandardHeaderFontLineHeight())
+            mutableString.setColor(UIColor.wildcardDarkBlue())
+            mutableString.setFont(UIFont.wildcardStandardHeaderFont())
+            attributedText = mutableString
+        }
     }
     
-    func setAsCardSubHeaderWithText(text:String){
-        let mutableString = NSMutableAttributedString(string: text)
-        mutableString.setLineHeight(UIFont.wildcardStandardSubHeaderFontLineHeight())
-        mutableString.setColor(UIColor.wildcardMediumGray())
-        mutableString.setFont(UIFont.wildcardStandardSubHeaderFont())
-        attributedText = mutableString
+    func setAsCardSubHeaderWithText(text:String?){
+        if(text != nil){
+            let mutableString = NSMutableAttributedString(string: text!)
+            mutableString.setLineHeight(UIFont.wildcardStandardSubHeaderFontLineHeight())
+            mutableString.setColor(UIColor.wildcardMediumGray())
+            mutableString.setFont(UIFont.wildcardStandardSubHeaderFont())
+            attributedText = mutableString
+        }
     }
     
-    func setAsCardMediaBodyWithText(text:String){
-        let mutableString = NSMutableAttributedString(string: text)
-        mutableString.setLineHeight(UIFont.wildcardStandardMediaBodyFontLineHeight())
-        mutableString.setColor(UIColor.wildcardMediumGray())
-        mutableString.setFont(UIFont.wildcardStandardMediaBodyFont())
-        attributedText = mutableString
+    func setAsCardMediaBodyWithText(text:String?){
+        if(text != nil){
+            let mutableString = NSMutableAttributedString(string: text!)
+            mutableString.setLineHeight(UIFont.wildcardStandardMediaBodyFontLineHeight())
+            mutableString.setColor(UIColor.wildcardMediumGray())
+            mutableString.setFont(UIFont.wildcardStandardMediaBodyFont())
+            attributedText = mutableString
+        }
     }
 }

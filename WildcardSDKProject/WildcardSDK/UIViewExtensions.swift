@@ -70,5 +70,16 @@ public extension UIView{
             }
         }
     }
+    
+    func addBottomBorderWithWidth(width:CGFloat, color:UIColor){
+        let borderImageView = UIImageView(frame: CGRectZero)
+        borderImageView.backgroundColor = color
+        borderImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        addSubview(borderImageView)
+        addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: width))
+        addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
+    }
   
 }
