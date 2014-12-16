@@ -9,27 +9,45 @@
 import UIKit
 import WildcardSDK
 
-class ViewController2: UIViewController {
+class ViewController2: UIViewController, CardViewDelegate {
     
     var redditData:[NSDictionary] = []
     var counter = 0
     var mainCardView:CardView?
     @IBOutlet weak var reRenderButton: UIButton!
+    var mainCardWidthConstraint:NSLayoutConstraint!
+    var mainCardHeightConstraint:NSLayoutConstraint!
+    
+    func cardViewReloaded(cardView:CardView){
+        view.removeConstraint(mainCardHeightConstraint)
+        view.removeConstraint(mainCardWidthConstraint)
+        mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
+        mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
+        view.layoutIfNeeded()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Bare Bones Card", title: "Bare Bones Card", dictionary: nil)
-        let bareBones = SimpleDescriptionCardDataSource(card:dummyCard)
+        let dummyCard = WebLinkCard(url:google!, description: "A Bare Bones Card", title: "A Bare Bones Card", dictionary: nil)
+        let bareBones = BareBonesCardDataSource(card:dummyCard)
         if let cardView = CardView.createCardView(dummyCard, datasource: bareBones){
-            cardView.frame = CGRectOffset(cardView.frame, 15, 100)
             view.addSubview(cardView)
+            cardView.horizontallyCenterToSuperView(0)
+            cardView.verticallyCenterToSuperView(-100)
+            mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
+            mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
+            cardView.delegate = self
             mainCardView = cardView
         }
+        
+        loadReddit()
+    }
+    
+    func loadReddit(){
         
         let requestURL = NSURL(string:"https://www.reddit.com/new.json?limit=100")
         
@@ -37,7 +55,7 @@ class ViewController2: UIViewController {
         var session = NSURLSession.sharedSession()
         var task:NSURLSessionTask = session.dataTaskWithURL(requestURL!, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             if(error != nil){
-               // completion(nil, error)
+                // completion(nil, error)
             }else{
                 var jsonError:NSError?
                 var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
@@ -66,12 +84,12 @@ class ViewController2: UIViewController {
         task.resume()
     }
     
+    
     @IBAction func reRenderTapped(sender: AnyObject) {
         // Attempt to create a web link card from this url to render it
         let index = counter++ % redditData.count
         let data = redditData[index]
         
-        /*
         if let urlString = data["url"] as? String{
             if let title = data["title"] as? String{
                 if let url = NSURL(string: urlString) {
@@ -80,7 +98,7 @@ class ViewController2: UIViewController {
                         let params = NSMutableDictionary()
                         params["primaryImageUrl"] = urlString
                         let webLinkCard = WebLinkCard(url: url, description: title, title: title, dictionary: params)
-                        self.mainCardView!.renderCard(webLinkCard,animated:true)
+                        self.mainCardView!.reloadWithCard(webLinkCard)
                     }
                     else{
                         reRenderButton.enabled = false
@@ -88,7 +106,7 @@ class ViewController2: UIViewController {
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.reRenderButton.enabled = true
                                 if (error == nil && card != nil){
-                                    self.mainCardView!.renderCard(card!,animated:true)
+                                    self.mainCardView!.reloadWithCard(card!)
                                 }
                             })
                         })
@@ -96,7 +114,6 @@ class ViewController2: UIViewController {
                 }
             }
         }
-*/
     }
     
     override func didReceiveMemoryWarning() {

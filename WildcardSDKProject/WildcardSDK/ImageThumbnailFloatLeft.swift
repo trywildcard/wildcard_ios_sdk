@@ -23,8 +23,6 @@ class ImageThumbnailFloatLeft : CardViewElement
         var imageUrl:NSURL?
         var titleText:String?
         
-        
-        
         if let webLinkCard = card as? WebLinkCard{
             cardTitle.setAsCardHeaderWithText(String(htmlEncodedString: webLinkCard.title))
             cardDescription.setAsCardSubHeaderWithText(String(htmlEncodedString: webLinkCard.description))

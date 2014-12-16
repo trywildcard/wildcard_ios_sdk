@@ -48,7 +48,6 @@ class CenteredImageBody : CardViewElement{
                 }
             })
         }
-        
     }
     
     override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{

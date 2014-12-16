@@ -10,74 +10,48 @@ import Foundation
 import UIKit
 import QuartzCore
 
+@objc
 public protocol CardViewDataSource{
     
-    func viewForCardHeader()->UIView?
-    func heightForCardHeader()->CGFloat
     func viewForCardBody()->UIView?
     func heightForCardBody()->CGFloat
-    func viewForCardFooter()->UIView?
-    func heightForCardFooter()->CGFloat
-    func viewForBackOfCard()->UIView?
-    
     func widthForCard()->CGFloat
     
-    func backingCard()->Card?
+    optional func viewForCardHeader()->UIView?
+    optional func heightForCardHeader()->CGFloat
+    optional func viewForCardFooter()->UIView?
+    optional func heightForCardFooter()->CGFloat
+    optional func viewForBackOfCard()->UIView?
 }
 
+@objc
 public protocol CardViewDelegate{
+    // card view about to be reloaded, if you constrained the card view relative to
+    // any of your custom views, this would be a good time to re-do if necessary.
+    // at this point in the time the new CardView's frame has already been re calculated
+    // but layout has not happened yet
+    optional func cardViewWillReload(cardView:CardView)
+    
+    // card view has been reloaded with a new card
+    optional func cardViewDidReload(cardView:CardView)
 }
 
 public class CardView : UIView
 {
     // MARK: Public properties
     public var physics:CardPhysics?
-    public var contentView:CardContentView?
-    public var backOfCard:UIView?
     public var backingCard:Card!
+    public var delegate:CardViewDelegate?
     
     // MARK: Private properties
-    let containerView:UIView
+    var containerView:UIView!
+    var back:UIView?
+    var header:UIView?
+    var body:UIView?
+    var footer:UIView?
+    var datasource:CardViewDataSource?
     
     // MARK: Public Class Functions
-    
-    /*
-    // Renders a CardView from a Card w/ best fit layout
-    public class func createCardViewFromCard(card:Card)->CardView?{
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        return CardView.createCardViewFromCard(card, layout:layoutToUse)
-    }
-*/
-    
-    /*
-    // Renders a CardView from a Card w/ explicit layout
-    public class func createCardViewFromCard(card:Card, layout:CardLayout)->CardView?{
-        
-        // generate content view for this card
-        let cardContentView = CardContentView.generateContentViewFromLayout(layout)
-        
-        // initialize the CardView with optimal size
-        var newCardView = CardView(frame:CGRectZero)
-        
-        // initialize content view
-        newCardView.initializeContentView(cardContentView)
-        
-        // the back
-        newCardView.initializeBackOfCard()
-        
-        // update content for card
-        cardContentView.updateViewForCard(card)
-        
-        // finalize
-        newCardView.finalizeCard()
-        
-        // backing card
-        newCardView.backingCard = card
-        
-        return newCardView
-    }
-*/
-    
     public class func autoCreateCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
@@ -85,68 +59,42 @@ public class CardView : UIView
     }
     
     public class func createCardView(card:Card, datasource:CardViewDataSource)->CardView?{
-        
-        // set up the initial card frame via data source
-        let newCardHeight = datasource.heightForCardHeader() + datasource.heightForCardBody() + datasource.heightForCardFooter()
-        let cardFrame = CGRectMake(0, 0, datasource.widthForCard(), newCardHeight)
+        let cardFrame = CardView.createFrameFromDataSource(datasource)
         let newCardView = CardView(frame: cardFrame)
+        newCardView.datasource = datasource
+        newCardView.layoutCardComponents()
+        newCardView.backingCard = card
+        return newCardView
+    }
+    
+    // MARK: Instance
+    public func reloadWithCard(card:Card){
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+        let autoDatasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
+        reloadWithCard(card, datasource: autoDatasource)
+    }
+    
+    public func reloadWithCard(card:Card, datasource:CardViewDataSource){
         
-        // initialize content view
-        var currentHeightOffset:CGFloat = 0
+        // initialize again
+        convenienceInitialize()
         
-        // initialize header, body, footer of card
-        let headerView = datasource.viewForCardHeader()
-        if(headerView != nil && datasource.heightForCardHeader() > 0){
-            headerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-            newCardView.containerView.addSubview(headerView!)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
-            headerView!.horizontallyCenterToSuperView(0)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
-            headerView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardHeader())
-            currentHeightOffset += datasource.heightForCardHeader()
-        }
-        
-        let bodyView = datasource.viewForCardBody()
-        if(bodyView != nil && datasource.heightForCardBody() > 0){
-            bodyView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-            newCardView.containerView.addSubview(bodyView!)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
-            bodyView!.horizontallyCenterToSuperView(0)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
-            bodyView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardBody())
-            currentHeightOffset += datasource.heightForCardBody()
-        }
-        
-        let footerView = datasource.viewForCardFooter()
-        if(footerView != nil && datasource.heightForCardFooter() > 0){
-            footerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
-            newCardView.containerView.addSubview(footerView!)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
-            footerView!.horizontallyCenterToSuperView(0)
-            newCardView.containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
-            footerView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardFooter())
-            currentHeightOffset += datasource.heightForCardFooter()
-        }
-        
-        // set up the back of the card
-        if let backView = datasource.viewForBackOfCard(){
-            newCardView.insertSubview(backView, belowSubview:newCardView.containerView)
-            backView.constrainToSuperViewEdges()
-            newCardView.backOfCard = backView
-            backView.layer.cornerRadius = 2.0
-            backView.layer.masksToBounds = true
-        }
+        // new frame calculated, let delegate prepare
+        frame = CardView.createFrameFromDataSource(datasource)
+        delegate?.cardViewWillReload?(self)
+     
+        // layout components
+        layoutCardComponents()
         
         // backing card
-        newCardView.backingCard = card
-        newCardView.layoutIfNeeded()
+        backingCard = card
         
-        return newCardView
+        // reloaded
+        delegate?.cardViewDidReload?(self)
     }
     
     // MARK: UIView
     override init(frame: CGRect) {
-        self.containerView = UIView()
         super.init(frame: frame)
         convenienceInitialize()
     }
@@ -161,91 +109,84 @@ public class CardView : UIView
     }
     
     required public init(coder: NSCoder) {
-        self.containerView = UIView()
         super.init(coder: coder)
         convenienceInitialize()
     }
     
-    /*
-    // MARK: Instance
-    public func renderCard(card:Card, animated:Bool){
-        if(contentView != nil){
-            // if already belongs to a view, keep current position
-            var prevCenter = CGPointZero
-            if(hasSuperview()){
-                prevCenter = center
-            }
-            
-            let cardContentView = CardContentView.generateContentViewFromLayout(CardLayoutEngine.sharedInstance.matchLayout(card))
-            
-            // update content for card
-            cardContentView.updateViewForCard(card)
-  
-            // reset the content view
-            initializeContentView(cardContentView)
-            
-            // finalize
-            finalizeCard()
-            
-            // reset position
-            if (hasSuperview()){
-                center = prevCenter
-            }
-            
-            backingCard = card
-        }
-    }
-*/
-    
     // MARK: Private
-    func initializeContentView(cardContentView:CardContentView){
-        if(contentView != nil){
-            contentView!.removeFromSuperview()
-            contentView = nil
-        }
+    private func layoutCardComponents(){
         
-        // initialize the bounds initially to whatever the content view is
-        bounds =  cardContentView.bounds
-        
-        containerView.addSubview(cardContentView)
-        cardContentView.constrainToSuperViewEdges()
-        contentView = cardContentView
-    }
-    
-    func initializeBackOfCard(){
-        // TODO: Placeholder for now
-        let label = UILabel(frame: CGRectZero)
-        label.textColor = UIColor.wildcardDarkBlue()
-        label.font =  UIFont.wildcardLargePlaceholderFont()
-        label.text = "The Back"
-        
-        backOfCard = UIView(frame: CGRectZero)
-        backOfCard?.backgroundColor = UIColor.whiteColor()
-        insertSubview(backOfCard!, belowSubview: containerView)
-        backOfCard?.constrainToSuperViewEdges()
-        
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        backOfCard?.addSubview(label)
-        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
-        backOfCard?.addConstraint(NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: backOfCard, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: -4))
-    }
-    
-    func finalizeCard(){
-       if(contentView != nil){
-            let optimalSize = contentView!.optimalBounds()
+        // initialize header, body, footer of card
+        var currentHeightOffset:CGFloat = 0
+        if let ds = datasource{
+            let headerView = ds.viewForCardHeader?()
+            if(headerView != nil && ds.heightForCardHeader?() > 0){
+                headerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+                containerView.addSubview(headerView!)
+                containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+                headerView!.horizontallyCenterToSuperView(0)
+                containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+                headerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardHeader!())
+                currentHeightOffset += ds.heightForCardHeader!()
+            }
             
-            // always finalize w/ frame origin at 0,0
-            frame = CGRectMake(0, 0, optimalSize.size.width, optimalSize.size.height)
+            let bodyView = ds.viewForCardBody()
+            if(bodyView != nil && ds.heightForCardBody() > 0){
+                bodyView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+                containerView.addSubview(bodyView!)
+                containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+                bodyView!.horizontallyCenterToSuperView(0)
+                containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+                bodyView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardBody())
+                currentHeightOffset += ds.heightForCardBody()
+            }
             
-            setNeedsLayout()
+            let footerView = ds.viewForCardFooter?()
+            if(footerView != nil && ds.heightForCardFooter?() > 0){
+                footerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+                containerView.addSubview(footerView!)
+                containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+                footerView!.horizontallyCenterToSuperView(0)
+                containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+                footerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardFooter!())
+                currentHeightOffset += ds.heightForCardFooter!()
+            }
+            
+            if let backView = ds.viewForBackOfCard?(){
+                insertSubview(backView, belowSubview:containerView)
+                backView.constrainToSuperViewEdges()
+                backView.layer.cornerRadius = 2.0
+                backView.layer.masksToBounds = true
+                back = backView
+            }
         }
     }
     
+    private class func createFrameFromDataSource(datasource:CardViewDataSource)->CGRect{
+        let width = datasource.widthForCard()
+        var height:CGFloat = 0
+        if let headerHeight = datasource.heightForCardHeader?(){
+            height += headerHeight
+        }
+        if let footerHeight = datasource.heightForCardFooter?(){
+            height += footerHeight
+        }
+        height += datasource.heightForCardBody()
+        return CGRectMake(0, 0, width, height)
+    }
+
     private func convenienceInitialize(){
+        
+        // remove container view and back view
+        containerView?.removeFromSuperview()
+        containerView = nil
+        back?.removeFromSuperview()
+        back = nil
         
         backgroundColor = UIColor.clearColor()
         
         // always have a white container view holder card elements
+        containerView = UIView(frame: CGRectZero)
         containerView.backgroundColor = UIColor.whiteColor()
         containerView.layer.cornerRadius = 2.0
         containerView.layer.masksToBounds = true

@@ -128,18 +128,18 @@ public class CardPhysics : NSObject {
     }
     
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){
-        if(cardView.backOfCard != nil){
+        if(cardView.back != nil){
             // these built in transitions automatically re assign super views, so gotta re constrain every time
             if(!flipBoolean){
-                cardView.addSubview(cardView.backOfCard!)
-                cardView.backOfCard!.constrainToSuperViewEdges()
-                UIView.transitionFromView(cardView.containerView, toView:cardView.backOfCard!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
+                cardView.addSubview(cardView.back!)
+                cardView.back!.constrainToSuperViewEdges()
+                UIView.transitionFromView(cardView.containerView, toView:cardView.back!, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromLeft) { (bool:Bool) -> Void in
                     self.flipBoolean = true
                 }
             }else{
                 cardView.addSubview(cardView.containerView)
                 cardView.containerView.constrainToSuperViewEdges()
-                UIView.transitionFromView(cardView.backOfCard!, toView:cardView.containerView, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromRight) { (bool:Bool) -> Void in
+                UIView.transitionFromView(cardView.back!, toView:cardView.containerView, duration: 0.4, options: UIViewAnimationOptions.TransitionFlipFromRight) { (bool:Bool) -> Void in
                     self.flipBoolean = false
                 }
             }

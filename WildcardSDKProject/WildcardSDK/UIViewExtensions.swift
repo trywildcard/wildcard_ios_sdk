@@ -48,13 +48,26 @@ public extension UIView{
         return xConstraint
     }
     
+    public func constrainHeight(height:CGFloat)->NSLayoutConstraint{
+        setTranslatesAutoresizingMaskIntoConstraints(false)
+        let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: height)
+        superview!.addConstraint(heightConstraint)
+        return heightConstraint
+    }
+    
+    public func constrainWidth(width:CGFloat)->NSLayoutConstraint{
+        setTranslatesAutoresizingMaskIntoConstraints(false)
+        let widthConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: width)
+        superview!.addConstraint(widthConstraint)
+        return widthConstraint
+    }
+    
     public func constrainWidth(width:CGFloat, andHeight:CGFloat){
         setTranslatesAutoresizingMaskIntoConstraints(false)
         addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: width))
         addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: andHeight))
         superview?.layoutIfNeeded()
     }
-    
     
     // adds a blur overlay to the view and returns a reference to it.
     public func addBlurOverlay(style:UIBlurEffectStyle)->UIView{

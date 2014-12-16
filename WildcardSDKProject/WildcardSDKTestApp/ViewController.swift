@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         // set up a dummy card
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world. It has crawled trillions of pages on the Internet.", title: "Google", dictionary: nil)
+        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world. It has crawled trillions of pages on the Internet. This is a Basic Card.", title: "Goliath", dictionary: nil)
         
         // render with stock data source
         let bareBones = SimpleDescriptionCardDataSource(card:dummyCard)

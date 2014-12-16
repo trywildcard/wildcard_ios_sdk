@@ -23,6 +23,12 @@ class BareBonesCardBody : CardViewElement {
         titleLabel.textColor = UIColor.wildcardDarkBlue()
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 15))
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -15))
+        
+        viewOnWebButton = UIButton(frame: CGRectZero)
+        addSubview(viewOnWebButton)
+        viewOnWebButton.horizontallyCenterToSuperView(0)
+        addConstraint(NSLayoutConstraint(item: viewOnWebButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 15))
+        viewOnWebButton?.setBackgroundImage(UIImage(named: "viewOnWebButton"), forState: UIControlState.Normal)
     }
     
     override func updateForCard(card: Card) {
