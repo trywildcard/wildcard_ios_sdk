@@ -120,6 +120,8 @@ public class CardView : UIView
             newCardView.insertSubview(backView, belowSubview:newCardView.containerView)
             backView.constrainToSuperViewEdges()
             newCardView.backOfCard = backView
+            backView.layer.cornerRadius = 2.0
+            backView.layer.masksToBounds = true
         }
         
         // backing card
@@ -226,13 +228,15 @@ public class CardView : UIView
     private func convenienceInitialize(){
         
         backgroundColor = UIColor.clearColor()
+        
+        // always have a white container view holder card elements
         containerView.backgroundColor = UIColor.whiteColor()
         containerView.layer.cornerRadius = 2.0
         containerView.layer.masksToBounds = true
         addSubview(containerView)
         containerView.constrainToSuperViewEdges()
         
-        // drop shadow
+        // drop shadow goes on actual card layer
         layer.shadowColor = UIColor.wildcardMediumGray().CGColor
         layer.shadowOpacity = 0.8
         layer.shadowOffset = CGSizeMake(0.0, 1.0)
