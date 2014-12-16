@@ -65,7 +65,7 @@ class WildcardSDKTests: XCTestCase {
         
         // no image results in default lay out
         let webLinkCard1 = WebLinkCard(url: url!, description: "test1", title: "test1", dictionary: nil)
-        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.PortraitDefault)
+        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.WebLinkCardPortraitDefault)
         
         let testDictionary:NSMutableDictionary = NSMutableDictionary()
         testDictionary["primaryImageUrl"] = "http://www.google.com"
@@ -80,7 +80,7 @@ class WildcardSDKTests: XCTestCase {
         
         // image with long title and long description
         let webLinkCard4 = WebLinkCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", dictionary: testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.PortraitImageFullFloatBottom)
+        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.WebLinkCardPortraitImageFullFloatBottom)
         
         let longDesc = "Everybody I send cards to this year is getting one of these."
         let webLinkCard5 = WebLinkCard(url:url!, description:longDesc, title:longDesc, dictionary:testDictionary)

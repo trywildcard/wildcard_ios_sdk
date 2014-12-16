@@ -61,9 +61,5 @@ class SingleParagraphCardBody : CardViewElement {
         }else{
             return CGFloat.min
         }
-        
-        
-        // optionally return an optimized height for this element given a width + card
-       // return CGFloat.min
     }
 }

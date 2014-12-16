@@ -37,9 +37,6 @@
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
-		1D5873331A3794F600C3EAF3 /* CardPortraitDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */; };
-		1D5873351A37953500C3EAF3 /* CardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */; };
-		1D5873361A379B1B00C3EAF3 /* CardPortraitDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */; };
 		1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */; };
 		1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7417071A40145100281714 /* EmptyCardBack.swift */; };
 		1D74170A1A40748300281714 /* OneLineCardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7417091A40748300281714 /* OneLineCardHeader.swift */; };
@@ -83,10 +80,16 @@
 		1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */; };
 		1DAC26E01A364E8E0005C4BE /* Polaris-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */; };
 		1DAC26E11A364E8E0005C4BE /* Polaris-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */; };
-		1DAC26E31A3655530005C4BE /* BareCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26E21A3655530005C4BE /* BareCard.xib */; };
-		1DAC26E41A3655530005C4BE /* BareCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26E21A3655530005C4BE /* BareCard.xib */; };
-		1DAC26EA1A3657220005C4BE /* BareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26E81A3657220005C4BE /* BareCardView.swift */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
+		1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */; };
+		1DC9287A1A4089160040DAD0 /* CardViewDataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928791A4089160040DAD0 /* CardViewDataSourceFactory.swift */; };
+		1DC9287C1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9287B1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift */; };
+		1DC9287E1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */; };
+		1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */; };
+		1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC928851A409A590040DAD0 /* FullCardHeader.xib */; };
+		1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC928851A409A590040DAD0 /* FullCardHeader.xib */; };
+		1DC928891A409CC00040DAD0 /* CenteredImageBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928881A409CC00040DAD0 /* CenteredImageBody.swift */; };
+		1DC9288B1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */; };
 		1DDA4EDE1A3A047400DC02A4 /* CardPortraitImageFullFloatBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA9E1A39FE6B00EE9645 /* CardPortraitImageFullFloatBottom.xib */; };
 		1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */; };
 		1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */; };
@@ -97,9 +100,8 @@
 		1DE218471A38BF18007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE218431A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib */; };
 		1DE218491A38C103007746B4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218481A38C103007746B4 /* ImageCache.swift */; };
 		1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2184A1A38DCA6007746B4 /* ViewController2.swift */; };
-		1DF0BA911A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */; };
-		1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */; };
-		1DF0BA941A3930CC00EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */; };
+		1DF0BA911A392DF300EE9645 /* ImageThumbnailFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* ImageThumbnailFloatLeft.xib */; };
+		1DF0BA941A3930CC00EE9645 /* ImageThumbnailFloatLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF0BA901A392DF300EE9645 /* ImageThumbnailFloatLeft.xib */; };
 		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
 		1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */; };
 		1DF0BA9B1A39F82100EE9645 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA9A1A39F82100EE9645 /* UIImageViewExtensions.swift */; };
@@ -173,8 +175,6 @@
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPortraitDefaultView.swift; sourceTree = "<group>"; };
-		1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardPortraitDefault.xib; sourceTree = "<group>"; };
 		1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		1D7417071A40145100281714 /* EmptyCardBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardBack.swift; sourceTree = "<group>"; };
 		1D7417091A40748300281714 /* OneLineCardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLineCardHeader.swift; sourceTree = "<group>"; };
@@ -209,9 +209,15 @@
 		1DAC26CD1A364E8E0005C4BE /* Polaris-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Heavy.otf"; sourceTree = "<group>"; };
 		1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Light.otf"; sourceTree = "<group>"; };
 		1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Medium.otf"; sourceTree = "<group>"; };
-		1DAC26E21A3655530005C4BE /* BareCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BareCard.xib; sourceTree = "<group>"; };
-		1DAC26E81A3657220005C4BE /* BareCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareCardView.swift; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWebCardFooter.swift; sourceTree = "<group>"; };
+		1DC928791A4089160040DAD0 /* CardViewDataSourceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewDataSourceFactory.swift; sourceTree = "<group>"; };
+		1DC9287B1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageThumbnailFloatLeft.swift; sourceTree = "<group>"; };
+		1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageThumbnailFloatLeftDataSource.swift; sourceTree = "<group>"; };
+		1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullCardHeader.swift; sourceTree = "<group>"; };
+		1DC928851A409A590040DAD0 /* FullCardHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullCardHeader.xib; sourceTree = "<group>"; };
+		1DC928881A409CC00040DAD0 /* CenteredImageBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredImageBody.swift; sourceTree = "<group>"; };
+		1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFullFloatBottomDataSource.swift; sourceTree = "<group>"; };
 		1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
@@ -220,8 +226,7 @@
 		1DE218451A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitImageFullView.swift; sourceTree = "<group>"; };
 		1DE218481A38C103007746B4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		1DE2184A1A38DCA6007746B4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
-		1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebLinkCardPortraitImageSmallFloatLeft.xib; sourceTree = "<group>"; };
-		1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCardPortraitImageSmallFloatLeftView.swift; sourceTree = "<group>"; };
+		1DF0BA901A392DF300EE9645 /* ImageThumbnailFloatLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageThumbnailFloatLeft.xib; sourceTree = "<group>"; };
 		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhysics.swift; sourceTree = "<group>"; };
 		1DF0BA9A1A39F82100EE9645 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
@@ -395,6 +400,7 @@
 		1DAC26911A36315A0005C4BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DC928791A4089160040DAD0 /* CardViewDataSourceFactory.swift */,
 				1DFFEDD11A400818008E65BC /* Card Elements */,
 				1DFFEDD01A400803008E65BC /* Stock Card View Data Sources */,
 				1DF0BA971A394AF500EE9645 /* Physics */,
@@ -440,18 +446,50 @@
 		1DAC26EB1A3657280005C4BE /* Content Layout Views */ = {
 			isa = PBXGroup;
 			children = (
-				1DAC26E21A3655530005C4BE /* BareCard.xib */,
-				1DAC26E81A3657220005C4BE /* BareCardView.swift */,
-				1D5873341A37953500C3EAF3 /* CardPortraitDefault.xib */,
-				1D5873321A3794F600C3EAF3 /* CardPortraitDefaultView.swift */,
 				1DF0BA9E1A39FE6B00EE9645 /* CardPortraitImageFullFloatBottom.xib */,
 				1DF0BA9C1A39FB1E00EE9645 /* CardPortraitImageFullFloatBottomView.swift */,
 				1DE218431A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib */,
 				1DE218451A38BC7F007746B4 /* WebLinkCardPortraitImageFullView.swift */,
-				1DF0BA901A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib */,
-				1DF0BA921A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift */,
 			);
 			name = "Content Layout Views";
+			sourceTree = "<group>";
+		};
+		1DC928811A4099430040DAD0 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				1D7417091A40748300281714 /* OneLineCardHeader.swift */,
+				1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */,
+				1DC928851A409A590040DAD0 /* FullCardHeader.xib */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		1DC928821A4099480040DAD0 /* Bodies */ = {
+			isa = PBXGroup;
+			children = (
+				1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */,
+				1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */,
+				1DC9287B1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift */,
+				1DF0BA901A392DF300EE9645 /* ImageThumbnailFloatLeft.xib */,
+				1DC928881A409CC00040DAD0 /* CenteredImageBody.swift */,
+			);
+			name = Bodies;
+			sourceTree = "<group>";
+		};
+		1DC928831A40994E0040DAD0 /* Footers */ = {
+			isa = PBXGroup;
+			children = (
+				1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */,
+			);
+			name = Footers;
+			sourceTree = "<group>";
+		};
+		1DC928841A4099650040DAD0 /* Backs */ = {
+			isa = PBXGroup;
+			children = (
+				1D7417071A40145100281714 /* EmptyCardBack.swift */,
+			);
+			name = Backs;
 			sourceTree = "<group>";
 		};
 		1DE2183E1A38073B007746B4 /* Presentations */ = {
@@ -477,6 +515,8 @@
 			children = (
 				1DFFEDD61A400A4C008E65BC /* BareBonesCardDataSource.swift */,
 				1D74170D1A40772E00281714 /* SimpleDescriptionCardDataSource.swift */,
+				1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */,
+				1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */,
 			);
 			name = "Stock Card View Data Sources";
 			sourceTree = "<group>";
@@ -484,11 +524,11 @@
 		1DFFEDD11A400818008E65BC /* Card Elements */ = {
 			isa = PBXGroup;
 			children = (
-				1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */,
 				1DFFEDD41A40086D008E65BC /* CardViewElement.swift */,
-				1D7417071A40145100281714 /* EmptyCardBack.swift */,
-				1D7417091A40748300281714 /* OneLineCardHeader.swift */,
-				1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */,
+				1DC928841A4099650040DAD0 /* Backs */,
+				1DC928831A40994E0040DAD0 /* Footers */,
+				1DC928821A4099480040DAD0 /* Bodies */,
+				1DC928811A4099430040DAD0 /* Headers */,
 			);
 			name = "Card Elements";
 			sourceTree = "<group>";
@@ -615,7 +655,8 @@
 				1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1DE218471A38BF18007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */,
 				1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */,
-				1DF0BA941A3930CC00EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */,
+				1DF0BA941A3930CC00EE9645 /* ImageThumbnailFloatLeft.xib in Resources */,
+				1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */,
 				1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1DAC26D21A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */,
@@ -623,12 +664,10 @@
 				1DAC26DC1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */,
 				1DAC26D61A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */,
 				1DAC26D41A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */,
-				1DAC26E31A3655530005C4BE /* BareCard.xib in Resources */,
 				1D3A28681A2E696A00A9D4C1 /* Images.xcassets in Resources */,
 				1DDA4EDE1A3A047400DC02A4 /* CardPortraitImageFullFloatBottom.xib in Resources */,
 				1DAC26E01A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
 				1DAC26DA1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
-				1D5873361A379B1B00C3EAF3 /* CardPortraitDefault.xib in Resources */,
 				1DAC26D81A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,15 +680,14 @@
 				1DAC26DB1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
 				1DAC26D51A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */,
 				1DF0BA9F1A39FE6B00EE9645 /* CardPortraitImageFullFloatBottom.xib in Resources */,
-				1DF0BA911A392DF300EE9645 /* WebLinkCardPortraitImageSmallFloatLeft.xib in Resources */,
+				1DF0BA911A392DF300EE9645 /* ImageThumbnailFloatLeft.xib in Resources */,
 				1DAC26D71A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */,
 				1DAC26D11A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,
 				1DAC26DD1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */,
 				1DAC26E11A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
-				1DAC26E41A3655530005C4BE /* BareCard.xib in Resources */,
 				1DAC26D91A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
-				1D5873351A37953500C3EAF3 /* CardPortraitDefault.xib in Resources */,
+				1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */,
 				1DE218441A38BC4A007746B4 /* WebLinkCardPortraitImageFull.xib in Resources */,
 				1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */,
 			);
@@ -698,7 +736,6 @@
 			files = (
 				1DE218491A38C103007746B4 /* ImageCache.swift in Sources */,
 				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
-				1D5873331A3794F600C3EAF3 /* CardPortraitDefaultView.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,
@@ -707,11 +744,10 @@
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
 				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
-				1DF0BA931A392E0E00EE9645 /* WebLinkCardPortraitImageSmallFloatLeftView.swift in Sources */,
-				1DAC26EA1A3657220005C4BE /* BareCardView.swift in Sources */,
 				1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
+				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
@@ -719,6 +755,7 @@
 				1D3064751A3B803D00D99F6E /* ModalCardStackViewController.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
+				1DC9287C1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift in Sources */,
 				1DFFEDD71A400A4C008E65BC /* BareBonesCardDataSource.swift in Sources */,
 				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
@@ -728,6 +765,8 @@
 				1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */,
 				1DFFEDD31A400843008E65BC /* BareBonesCardBody.swift in Sources */,
 				1D74170E1A40772E00281714 /* SimpleDescriptionCardDataSource.swift in Sources */,
+				1DC9287E1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift in Sources */,
+				1DC928891A409CC00040DAD0 /* CenteredImageBody.swift in Sources */,
 				1D74170A1A40748300281714 /* OneLineCardHeader.swift in Sources */,
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
@@ -736,8 +775,11 @@
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,
 				1D0451C81A36C8C100972061 /* CardContentView.swift in Sources */,
 				1DF0BA9B1A39F82100EE9645 /* UIImageViewExtensions.swift in Sources */,
+				1DC9288B1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift in Sources */,
 				1D7EAC911A312C7100734B9A /* CardLayoutEngine.swift in Sources */,
 				1DF0BA9D1A39FB1E00EE9645 /* CardPortraitImageFullFloatBottomView.swift in Sources */,
+				1DC9287A1A4089160040DAD0 /* CardViewDataSourceFactory.swift in Sources */,
+				1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

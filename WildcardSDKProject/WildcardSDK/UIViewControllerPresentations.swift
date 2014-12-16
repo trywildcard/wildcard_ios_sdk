@@ -13,7 +13,28 @@ import Foundation
 */
 public extension UIViewController{
     
+
+    public func presentCard(card:Card, customDatasource:CardViewDataSource){
+        let modalViewController = ModalCardViewController()
+        
+        // snap shot current view to use as background in modal
+        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
+        modalViewController.view.insertSubview(snapShot, atIndex:0)
+        snapShot.constrainToSuperViewEdges()
+        
+        // prepare for presentation
+        modalViewController.presentingControllerBackgroundView = snapShot
+        modalViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
+        modalViewController.blurredOverlayView!.alpha = 0
+        modalViewController.presentedCard = card
+        modalViewController.cardDataSource = customDatasource
+        
+        presentViewController(modalViewController, animated: false, completion: nil)
+        
+    }
+    
     public func presentCard(card:Card){
+        /*
         let modalViewController = ModalCardViewController()
         
         // snap shot current view to use as background in modal
@@ -28,6 +49,7 @@ public extension UIViewController{
         modalViewController.presentedCard = card
         
         presentViewController(modalViewController, animated: false, completion: nil)
+*/
     }
     
     public func presentCardsAsStack(cards:[Card]){

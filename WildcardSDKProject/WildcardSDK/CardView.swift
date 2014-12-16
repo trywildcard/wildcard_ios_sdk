@@ -22,6 +22,7 @@ public protocol CardViewDataSource{
     
     func widthForCard()->CGFloat
     
+    func backingCard()->Card?
 }
 
 public protocol CardViewDelegate{
@@ -40,12 +41,15 @@ public class CardView : UIView
     
     // MARK: Public Class Functions
     
+    /*
     // Renders a CardView from a Card w/ best fit layout
     public class func createCardViewFromCard(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         return CardView.createCardViewFromCard(card, layout:layoutToUse)
     }
+*/
     
+    /*
     // Renders a CardView from a Card w/ explicit layout
     public class func createCardViewFromCard(card:Card, layout:CardLayout)->CardView?{
         
@@ -72,8 +76,15 @@ public class CardView : UIView
         
         return newCardView
     }
+*/
     
-    public class func testCardRender(card:Card, datasource:CardViewDataSource)->CardView{
+    public class func autoCreateCardView(card:Card)->CardView?{
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+        let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
+        return CardView.createCardView(card, datasource: datasource)
+    }
+    
+    public class func createCardView(card:Card, datasource:CardViewDataSource)->CardView?{
         
         // set up the initial card frame via data source
         let newCardHeight = datasource.heightForCardHeader() + datasource.heightForCardBody() + datasource.heightForCardFooter()
@@ -155,6 +166,7 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
+    /*
     // MARK: Instance
     public func renderCard(card:Card, animated:Bool){
         if(contentView != nil){
@@ -183,6 +195,7 @@ public class CardView : UIView
             backingCard = card
         }
     }
+*/
     
     // MARK: Private
     func initializeContentView(cardContentView:CardContentView){

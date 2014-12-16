@@ -15,6 +15,8 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
     var cardView:CardView?
     var presentedCard:Card!
     var backgroundTapRecognizer:UITapGestureRecognizer?
+    var cardDataSource:CardViewDataSource!
+    var cardViewVerticalConstraint:NSLayoutConstraint?
     
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
@@ -34,9 +36,15 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
-        cardView = CardView.createCardViewFromCard(presentedCard)
+        cardView = CardView.createCardView(presentedCard, datasource: cardDataSource)
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self
+        
+        // constrain card to this controller view
+        view.addSubview(cardView!)
+        cardView?.constrainWidth(cardView!.frame.size.width, andHeight: cardView!.frame.size.height)
+        cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
+        cardView?.horizontallyCenterToSuperView(0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,11 +52,9 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
         
         // pop up the card
         if(cardView != nil){
-            cardView!.center = CGPointMake(view.frame.size.width/2, view.frame.size.height + cardView!.frame.size.height)
-            view.addSubview(cardView!)
-            
             UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                self.cardView!.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)
+                self.cardViewVerticalConstraint!.constant = 0
+                self.view.layoutIfNeeded()
             }, completion: nil)
         }
         
@@ -65,7 +71,8 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
         
         // move card down
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                 self.cardView!.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height + self.cardView!.frame.size.height)
+                self.cardViewVerticalConstraint!.constant = self.view.frame.size.height
+                self.view.layoutIfNeeded()
             }, { (bool:Bool) -> Void in
         })
         
@@ -73,11 +80,8 @@ class ModalCardViewController: UIViewController, CardPhysicsDelegate {
         if(blurredOverlayView != nil){
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 self.blurredOverlayView!.alpha = 0
-                
                 }, completion: {(bool:Bool) -> Void in
-                    
                     self.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)
-                    
             })
         }
     }

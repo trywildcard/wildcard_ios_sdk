@@ -53,7 +53,7 @@ public class CardLayoutEngine{
         
         // web card layouts
         let linkCardHasImageNode = LayoutDecisionNode(description: "Web link card has an image")
-        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.PortraitDefault)
+        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.WebLinkCardPortraitDefault)
         
         linkCardNode.addEdge(CheckImageEdge(), destination: linkCardHasImageNode)
         linkCardNode.addEdge(PassThroughEdge(), destination: linkCardDefaultNode)
@@ -64,7 +64,7 @@ public class CardLayoutEngine{
         linkCardHasImageNode.addEdge(PassThroughEdge(), destination: linkCardLongTitleNode)
         
         let linkCardFloatLeftNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatLeft", layout: CardLayout.WebLinkCardPortraitImageSmallFloatLeft)
-        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.PortraitImageFullFloatBottom)
+        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.WebLinkCardPortraitImageFullFloatBottom)
         linkCardLongTitleNode.addEdge(CheckShortDescriptionEdge(), destination: linkCardFloatLeftNode)
         linkCardLongTitleNode.addEdge(PassThroughEdge(), destination: linkCardFloatBottomNode)
     }

@@ -19,13 +19,6 @@ public class CardContentView : UIView
         return 15.0
     }
     
-    class func loadFromNibNamed(nibNamed: String, bundle : NSBundle? = nil) -> CardContentView? {
-        return UINib(
-            nibName: nibNamed,
-            bundle: bundle
-            ).instantiateWithOwner(nil, options: nil)[0] as? CardContentView
-    }
-    
     var associatedLayout:CardLayout?
     
     // MARK: Instance
@@ -41,7 +34,9 @@ public class CardContentView : UIView
         return CGRectZero
     }
     
+    /*
     class func generateContentViewFromLayout(layout:CardLayout)->CardContentView{
+        /*
         var newCardContentView:CardContentView!
         
         switch(layout){
@@ -61,5 +56,7 @@ public class CardContentView : UIView
         }
         
         return newCardContentView
+*/
     }
+*/
 }

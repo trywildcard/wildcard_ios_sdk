@@ -26,7 +26,6 @@ public class CardViewElement : UIView {
     
     required public init(coder: NSCoder) {
         super.init(coder: coder)
-        initializeElement()
     }
     
     override init(frame: CGRect) {

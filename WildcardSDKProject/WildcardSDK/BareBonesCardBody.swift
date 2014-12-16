@@ -13,22 +13,7 @@ class BareBonesCardBody : CardViewElement {
     var titleLabel:UILabel!
     var viewOnWebButton:UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        convenienceInit()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        convenienceInit()
-    }
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)
-        convenienceInit()
-    }
-    
-    func convenienceInit(){
+    override func initializeElement(){
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = NSTextAlignment.Center

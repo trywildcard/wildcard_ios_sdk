@@ -24,7 +24,8 @@ class ViewController2: UIViewController {
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = WebLinkCard(url:google!, description: "Bare Bones Card", title: "Bare Bones Card", dictionary: nil)
-        if let cardView = CardView.createCardViewFromCard(dummyCard, layout: CardLayout.BareCard){
+        let bareBones = SimpleDescriptionCardDataSource(card:dummyCard)
+        if let cardView = CardView.createCardView(dummyCard, datasource: bareBones){
             cardView.frame = CGRectOffset(cardView.frame, 15, 100)
             view.addSubview(cardView)
             mainCardView = cardView
@@ -70,6 +71,7 @@ class ViewController2: UIViewController {
         let index = counter++ % redditData.count
         let data = redditData[index]
         
+        /*
         if let urlString = data["url"] as? String{
             if let title = data["title"] as? String{
                 if let url = NSURL(string: urlString) {
@@ -94,6 +96,7 @@ class ViewController2: UIViewController {
                 }
             }
         }
+*/
     }
     
     override func didReceiveMemoryWarning() {

@@ -1,5 +1,5 @@
 //
-//  SimpleDescriptionCardDataSource.swift
+//  ImageFullFloatBottomDataSource.swift
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 12/16/14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SimpleDescriptionCardDataSource : CardViewDataSource{
+public class ImageFullFloatBottomDataSource : CardViewDataSource {
     
     var card:Card
     
@@ -17,36 +17,34 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
     }
     
     public func viewForCardHeader()->UIView?{
-        var headerView:CardViewElement = OneLineCardHeader(frame:CGRectZero)
-        headerView.updateForCard(card)
-        return headerView
+        if let headerView = UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader{
+            headerView.updateForCard(card)
+            return headerView
+        }else{
+            return nil
+        }
     }
     
     public func heightForCardHeader()->CGFloat{
-        return 41;
+        return FullCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForCardBody()->UIView?{
-        var bodyView:CardViewElement = SingleParagraphCardBody(frame:CGRectZero)
+        var bodyView = CenteredImageBody(frame:CGRectZero)
         bodyView.updateForCard(card)
         return bodyView
     }
     
     public func heightForCardBody()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
-        return SingleParagraphCardBody.optimizedHeight(cardWidth, card: card) 
+        return CenteredImageBody.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForCardFooter()->UIView?{
-        let footer = ViewOnWebCardFooter(frame:CGRectZero)
-        footer.updateForCard(card)
-        return footer   
+        return nil
     }
     
     public func heightForCardFooter()->CGFloat{
-        return 40.5
+        return 0
     }
     
     public func viewForBackOfCard()->UIView?{
@@ -64,5 +62,4 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
     public func backingCard() -> Card? {
         return card
     }
-    
 }

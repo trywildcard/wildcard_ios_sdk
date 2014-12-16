@@ -18,16 +18,16 @@ class ViewController: UIViewController {
         
         // set up a dummy card
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google", dictionary: nil)
+        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world. It has crawled trillions of pages on the Internet.", title: "Google", dictionary: nil)
         
         // render with stock data source
         let bareBones = SimpleDescriptionCardDataSource(card:dummyCard)
-        let newCardView:CardView = CardView.testCardRender(dummyCard, datasource: bareBones)
+        let newCardView = CardView.createCardView(dummyCard, datasource: bareBones)
         
-        view.addSubview(newCardView)
-        newCardView.horizontallyCenterToSuperView(0)
-        newCardView.verticallyCenterToSuperView(0)
-        newCardView.constrainWidth(bareBones.widthForCard(), andHeight: newCardView.frame.size.height)
+        view.addSubview(newCardView!)
+        newCardView!.horizontallyCenterToSuperView(0)
+        newCardView!.verticallyCenterToSuperView(-100)
+        newCardView!.constrainWidth(bareBones.widthForCard(), andHeight: newCardView!.frame.size.height)
         
     }
     
@@ -36,7 +36,9 @@ class ViewController: UIViewController {
         let dictionary:NSMutableDictionary = NSMutableDictionary()
         dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
         let dummyCard = WebLinkCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.", title: "This is an example of another card format", dictionary: dictionary )
-        presentCard(dummyCard)
+        
+        let thumbnailsource = ImageThumbnailFloatLeftDataSource(card: dummyCard)
+        presentCard(dummyCard, customDatasource: thumbnailsource)
     }
     
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
@@ -44,7 +46,8 @@ class ViewController: UIViewController {
         let dictionary:NSMutableDictionary = NSMutableDictionary()
         dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
         let dummyCard = WebLinkCard(url:google!, description: "Yahoo is not quite as good as Google in Searching.", title: "Yahoo < Google", dictionary: dictionary )
-        presentCard(dummyCard)
+        let fullsource = ImageFullFloatBottomDataSource(card: dummyCard)
+        presentCard(dummyCard, customDatasource: fullsource)
     }
     
     override func didReceiveMemoryWarning() {

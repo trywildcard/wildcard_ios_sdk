@@ -16,7 +16,7 @@ class CardPortraitImageFullFloatBottomView : CardContentView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        associatedLayout = CardLayout.PortraitImageFullFloatBottom
+        associatedLayout = CardLayout.WebLinkCardPortraitImageFullFloatBottom
     }
     
     override func updateViewForCard(card:Card){
