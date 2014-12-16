@@ -54,6 +54,8 @@ public class CardContentView : UIView
             newCardContentView = CardContentView.loadFromNibNamed("WebLinkCardPortraitImageFull")!
         case .PortraitImageFullFloatBottom:
             newCardContentView = CardContentView.loadFromNibNamed("CardPortraitImageFullFloatBottom")
+        case .ArticleCardPortraitNoImage:
+            newCardContentView = CardContentView.loadFromNibNamed("ArticleCardPortraitNoImage")
         default:
             newCardContentView = CardContentView.loadFromNibNamed("BareCard")!
         }

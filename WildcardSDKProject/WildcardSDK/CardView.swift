@@ -10,12 +10,27 @@ import Foundation
 import UIKit
 import QuartzCore
 
+public protocol CardViewDataSource{
+    
+    func viewForCardHeader()->UIView?
+    func heightForCardHeader()->CGFloat
+    func viewForCardBody()->UIView?
+    func heightForCardBody()->CGFloat
+    func viewForCardFooter()->UIView?
+    func heightForCardFooter()->CGFloat
+    func viewForBackOfCard()->UIView?
+    
+    func widthForCard()->CGFloat
+    
+    func backingCard()->Card
+}
+
 public class CardView : UIView
 {
     // MARK: Public properties
     public var physics:CardPhysics?
     public var contentView:CardContentView?
-    public var backOfCard:UIView!
+    public var backOfCard:UIView?
     public var backingCard:Card!
     
     // MARK: Private properties
@@ -54,7 +69,63 @@ public class CardView : UIView
         newCardView.backingCard = card
         
         return newCardView
+    }
+    
+    public class func testCardRender(card:Card, datasource:CardViewDataSource)->CardView{
         
+        // set up the initial card frame via data source
+        let newCardHeight = datasource.heightForCardHeader() + datasource.heightForCardBody() + datasource.heightForCardFooter()
+        let cardFrame = CGRectMake(0, 0, datasource.widthForCard(), newCardHeight)
+        let newCardView = CardView(frame: cardFrame)
+        
+        // initialize content view
+        var currentHeightOffset:CGFloat = 0
+        
+        // initialize header, body, footer of card
+        let headerView = datasource.viewForCardHeader()
+        if(headerView != nil && datasource.heightForCardHeader() > 0){
+            headerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newCardView.containerView.addSubview(headerView!)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+            headerView!.horizontallyCenterToSuperView(0)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+            headerView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardHeader())
+            currentHeightOffset += datasource.heightForCardHeader()
+        }
+        
+        let bodyView = datasource.viewForCardBody()
+        if(bodyView != nil && datasource.heightForCardBody() > 0){
+            bodyView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newCardView.containerView.addSubview(bodyView!)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+            bodyView!.horizontallyCenterToSuperView(0)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+            bodyView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardBody())
+            currentHeightOffset += datasource.heightForCardBody()
+        }
+        
+        let footerView = datasource.viewForCardFooter()
+        if(footerView != nil && datasource.heightForCardFooter() > 0){
+            footerView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+            newCardView.containerView.addSubview(footerView!)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Width, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
+            footerView!.horizontallyCenterToSuperView(0)
+            newCardView.containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
+            footerView!.constrainWidth(datasource.widthForCard(), andHeight: datasource.heightForCardFooter())
+            currentHeightOffset += datasource.heightForCardFooter()
+        }
+        
+        // set up the back of the card
+        if let backView = datasource.viewForBackOfCard(){
+            newCardView.insertSubview(backView, belowSubview:newCardView.containerView)
+            backView.constrainToSuperViewEdges()
+            newCardView.backOfCard = backView
+        }
+        
+        // backing card
+        newCardView.backingCard = card
+        
+        return newCardView
     }
     
     // MARK: UIView
@@ -155,7 +226,7 @@ public class CardView : UIView
     private func convenienceInitialize(){
         
         backgroundColor = UIColor.clearColor()
-        containerView.backgroundColor = UIColor.clearColor()
+        containerView.backgroundColor = UIColor.whiteColor()
         containerView.layer.cornerRadius = 2.0
         containerView.layer.masksToBounds = true
         addSubview(containerView)

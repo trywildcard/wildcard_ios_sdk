@@ -15,7 +15,6 @@ extension UILabel{
         mutableString.setColor(UIColor.wildcardDarkBlue())
         mutableString.setFont(UIFont.wildcardStandardHeaderFont())
         attributedText = mutableString
-        sizeToFit()
     }
     
     func setAsCardSubHeaderWithText(text:String){
@@ -24,6 +23,13 @@ extension UILabel{
         mutableString.setColor(UIColor.wildcardMediumGray())
         mutableString.setFont(UIFont.wildcardStandardSubHeaderFont())
         attributedText = mutableString
-        sizeToFit()
+    }
+    
+    func setAsCardMediaBodyWithText(text:String){
+        let mutableString = NSMutableAttributedString(string: text)
+        mutableString.setLineHeight(UIFont.wildcardStandardMediaBodyFontLineHeight())
+        mutableString.setColor(UIColor.wildcardMediumGray())
+        mutableString.setFont(UIFont.wildcardStandardMediaBodyFont())
+        attributedText = mutableString
     }
 }

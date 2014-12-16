@@ -12,19 +12,22 @@ import WildcardSDK
 class ViewController3: UIViewController {
 
     var dummyCardStack:[Card] = []
+    @IBOutlet weak var presentButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.wildcardBackgroundGray()
-        let url = NSURL(string:"http://www.google.com")!
-        let dictionary:NSMutableDictionary = NSMutableDictionary()
-        dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
-        
-        for index in 1...3 {
-            let dummyCard = WebLinkCard(url: url, description: "The quick brown fox jumped over the lazy dog", title: "Mock Card", dictionary: dictionary)
-            dummyCardStack.append(dummyCard)
-        }
+
+        presentButton.enabled = false
+        ArticleCard.searchArticleCards("isis", completion: { (cards:[ArticleCard]?, error:NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.presentButton.enabled = true
+                if(cards != nil){
+                    self.dummyCardStack = cards!
+                }
+            })
+        })
     }
 
     override func didReceiveMemoryWarning() {

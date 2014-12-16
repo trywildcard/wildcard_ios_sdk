@@ -46,8 +46,8 @@ public class CardLayoutEngine{
         cardTypeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
         // article card layouts
-        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout:CardLayout.PortraitImageFullFloatBottom)
-        let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: CardLayout.PortraitDefault)
+        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout:CardLayout.ArticleCardPortraitImage)
+        let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: CardLayout.ArticleCardPortraitNoImage)
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         

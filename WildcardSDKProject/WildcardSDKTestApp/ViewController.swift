@@ -13,18 +13,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
+        // set up a dummy card
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google", dictionary: nil)
-        let layoutToRender:CardLayout = CardLayout.PortraitDefault
-        if let cardView = CardView.createCardViewFromCard(dummyCard, layout: layoutToRender){
-            cardView.frame = CGRectOffset(cardView.frame, 15, 100)
-            println(cardView)
-            view.addSubview(cardView)
-        }
+        let dummyCard = WebLinkCard(url:google!, description: "Google is the best search engine in the world.", title: "Google is the best search engine in the world.", dictionary: nil)
+        
+        // render with stock data source
+        let bareBones = BareBonesCardDataSource(card:dummyCard)
+        let newCardView:CardView = CardView.testCardRender(dummyCard, datasource: bareBones)
+        
+        view.addSubview(newCardView)
+        newCardView.horizontallyCenterToSuperView(0)
+        newCardView.verticallyCenterToSuperView(0)
+        newCardView.constrainWidth(bareBones.widthForCard(), andHeight: bareBones.heightForCardBody())
+        
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

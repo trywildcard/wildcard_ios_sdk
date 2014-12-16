@@ -122,8 +122,8 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
         frontCardView = CardView.createCardViewFromCard(frontCard)
         
         view.addSubview(frontCardView!)
-        frontCardCenterX = frontCardView?.horizontallyConstrainToSuperView(0)
-        frontCardCenterY = frontCardView?.verticallyConstrainToSuperView(0)
+        frontCardCenterX = frontCardView?.horizontallyCenterToSuperView(0)
+        frontCardCenterY = frontCardView?.verticallyCenterToSuperView(0)
         
         frontCardView?.constrainWidth(cardSideLength(), andHeight: cardSideLength())
         frontCardView?.physics?.delegate = self
@@ -173,8 +173,8 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
             backCardView?.physics?.enableDragging = true
             
             view.insertSubview(backCardView!, belowSubview: frontCardView!)
-            backCardCenterX = backCardView?.horizontallyConstrainToSuperView(0)
-            backCardCenterY = backCardView?.verticallyConstrainToSuperView(0)
+            backCardCenterX = backCardView?.horizontallyCenterToSuperView(0)
+            backCardCenterY = backCardView?.verticallyCenterToSuperView(0)
             backCardView?.constrainWidth(cardSideLength(), andHeight: cardSideLength())
         }
     }

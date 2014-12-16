@@ -17,5 +17,7 @@ public enum CardLayout {
     case PortraitImageFullFloatBottom;
     case PortraitDefault;
     case MaximizedFullWebView;
+    case ArticleCardPortraitNoImage;
+    case ArticleCardPortraitImage;
 }
 
