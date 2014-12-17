@@ -32,6 +32,14 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return CenteredImageBody.optimizedHeight(widthForCard(), card: card)
     }
     
+    public func viewForCardFooter() -> UIView? {
+        return TallReadMoreFooter(frame:CGRectZero)
+    }
+    
+    public func heightForCardFooter() -> CGFloat {
+        return TallReadMoreFooter.optimizedHeight(widthForCard(), card: card)
+    }
+    
     public func viewForBackOfCard()->UIView?{
         return EmptyCardBack(frame:CGRectZero)
     }

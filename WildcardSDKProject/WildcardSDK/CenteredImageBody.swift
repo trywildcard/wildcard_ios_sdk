@@ -13,7 +13,10 @@ class CenteredImageBody : CardViewElement{
     var cardImage:UIImageView!
     
     override func initializeElement(){
+        
         cardImage = UIImageView(frame: CGRectZero)
+        cardImage.layer.cornerRadius = 2.0
+        cardImage.layer.masksToBounds = true
         cardImage.backgroundColor = UIColor.wildcardBackgroundGray()
         addSubview(cardImage)
         cardImage.verticallyCenterToSuperView(0)
@@ -51,7 +54,7 @@ class CenteredImageBody : CardViewElement{
     }
     
     override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
-        return 200
+        return 180
     }
     
 }

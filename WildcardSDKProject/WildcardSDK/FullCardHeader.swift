@@ -20,18 +20,26 @@ class FullCardHeader :CardViewElement
     }
     
     override func updateForCard(card: Card) {
-        kicker.setAsCardSubHeaderWithText("Card Kicker!")
-        favicon.image = UIImage(named: "wildcardSmallLogo")
-        
         switch(card.type){
         case .Article:
             let articleCard = card as ArticleCard
             title.setAsCardHeaderWithText(articleCard.title)
+            kicker.setAsCardSubHeaderWithText(articleCard.publisher.name)
+            if let url = articleCard.publisher.smallLogoUrl{
+                favicon.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                    if(image != nil){
+                        self.favicon.image = image!
+                    }
+                })
+            }
         case .WebLink:
             let webLinkCard = card as WebLinkCard
-            title.setAsCardHeaderWithText(webLinkCard.title)
+            kicker.setAsCardSubHeaderWithText(webLinkCard.title)
+            title.setAsCardHeaderWithText(webLinkCard.description)
+            favicon.image = UIImage(named: "wildcardSmallLogo")
         case .Unknown:
             title.setAsCardHeaderWithText("Unknown Card Type")
+            favicon.image = UIImage(named: "wildcardSmallLogo")
         }
     }
     
@@ -44,7 +52,7 @@ class FullCardHeader :CardViewElement
             titleText = articleCard.title
         case .WebLink:
             let webLinkCard = card as WebLinkCard
-            titleText = webLinkCard.title
+            titleText = webLinkCard.description
         case .Unknown:
             titleText = "Unknown Card Type"
         }
