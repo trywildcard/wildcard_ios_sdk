@@ -17,23 +17,25 @@ import Foundation
  */
 public class ArticleCard : Card{
     
-    var title:String
-    var html:String
+    public var title:String
+    public var html:String
+    public var publisher:Publisher
     
-    var publicationDate:NSDate?
-    var isBreaking:Bool?
-    var abstractContent:String?
-    var source:String?
-    var author:String?
-    var updatedDate:NSDate?
-    var media:[NSDictionary]?
-    var appLinkAndroid:NSURL?
-    var appLinkIOS:NSURL?
-    var primaryImageURL:NSURL?
+    public var publicationDate:NSDate?
+    public var isBreaking:Bool?
+    public var abstractContent:String?
+    public var source:String?
+    public var author:String?
+    public var updatedDate:NSDate?
+    public var media:[NSDictionary]?
+    public var appLinkAndroid:NSURL?
+    public var appLinkIOS:NSURL?
+    public var primaryImageURL:NSURL?
     
-    public init(title:String,html:String, url:NSURL){
+    public init(title:String,html:String, url:NSURL,publisher:Publisher){
         self.title = title
         self.html = html
+        self.publisher = publisher
         super.init(webUrl: url, cardType: "article")
     }
     
@@ -43,15 +45,20 @@ public class ArticleCard : Card{
         var startURL:NSURL?
         var title:String?
         var html:String?
+        var publisher:Publisher?
         if let urlString = data["startUrl"] as? String{
             startURL = NSURL(string:urlString)
+        }
+        
+        if let brandData = data["brand"] as? NSDictionary{
+            publisher = Publisher.deserializeFromData(brandData) as? Publisher
         }
         
         if let article = data["article"] as? NSDictionary{
             title = article["title"] as? String
             html = article["html"] as? String
-            if(title != nil && html != nil && startURL != nil){
-                articleCard = ArticleCard(title: title!, html: html!, url: startURL!)
+            if(title != nil && html != nil && startURL != nil && publisher != nil){
+                articleCard = ArticleCard(title: title!, html: html!, url: startURL!, publisher:publisher!)
                 
                 if let epochTime = article["publishedAt"] as? NSTimeInterval{
                     articleCard?.publicationDate = NSDate(timeIntervalSince1970: epochTime/1000)

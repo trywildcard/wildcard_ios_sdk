@@ -41,4 +41,8 @@ class ImageThumbnailFloatLeft : CardViewElement
         }
     }
     
+    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+        return 140
+    }
+    
 }

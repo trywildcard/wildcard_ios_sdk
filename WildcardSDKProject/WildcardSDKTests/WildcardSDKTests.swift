@@ -26,6 +26,8 @@ class WildcardSDKTests: XCTestCase {
         ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
             XCTAssert(card != nil)
             XCTAssert(error == nil)
+            
+            println(card!.publisher.name)
             expectation.fulfill()
         })
         waitForExpectationsWithTimeout(10, handler:{ error in
@@ -59,8 +61,9 @@ class WildcardSDKTests: XCTestCase {
     func testWebLinkCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
+        let publisher = Publisher(name:"Google")
         
-        let articleCard = ArticleCard(title: "default", html: "", url: url!)
+        let articleCard = ArticleCard(title: "default", html: "", url: url!, publisher:publisher )
         XCTAssert(engine.matchLayout(articleCard) == CardLayout.ArticleCardPortraitNoImage)
         
         // no image results in default lay out
@@ -91,9 +94,10 @@ class WildcardSDKTests: XCTestCase {
     func testArticleCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
+        let publisher = Publisher(name:"Google")
         
         // article card no image has default
-        let articleCard = ArticleCard(title: "default", html: "", url: url!)
+        let articleCard = ArticleCard(title: "default", html: "", url: url!, publisher:publisher)
         XCTAssert(engine.matchLayout(articleCard) == CardLayout.ArticleCardPortraitNoImage)
     }
     

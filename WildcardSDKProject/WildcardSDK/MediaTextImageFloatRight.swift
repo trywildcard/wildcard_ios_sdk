@@ -69,4 +69,5 @@ class MediaTextImageFloatRight : CardViewElement{
             cardImage.hidden = true
         }
     }
+    
 }

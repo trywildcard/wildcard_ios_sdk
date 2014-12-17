@@ -17,11 +17,7 @@ public class SquareArticleDataSource : CardViewDataSource {
     }
     
     public func viewForCardHeader()->UIView?{
-        if let headerView = UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader{
-            return headerView
-        }else{
-            return nil
-        }
+        return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
     }
     
     public func heightForCardHeader()->CGFloat{
@@ -29,11 +25,7 @@ public class SquareArticleDataSource : CardViewDataSource {
     }
     
     public func viewForCardBody()->UIView?{
-        if let bodyView = UIView.loadFromNibNamed("MediaTextImageFloatRight") as? MediaTextImageFloatRight{
-            return bodyView
-        }else{
-            return nil
-        }
+        return UIView.loadFromNibNamed("MediaTextImageFloatRight") as? MediaTextImageFloatRight
     }
     
     public func heightForCardBody()->CGFloat{
@@ -41,17 +33,15 @@ public class SquareArticleDataSource : CardViewDataSource {
     }
     
     public func viewForBackOfCard()->UIView?{
-        let emptyBack = EmptyCardBack(frame:CGRectZero)
-        return emptyBack
+        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func viewForCardFooter() -> UIView? {
-        let footer = TallReadMoreFooter(frame:CGRectZero)
-        return footer
+        return TallReadMoreFooter(frame:CGRectZero)
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return 65
+        return TallReadMoreFooter.optimizedHeight(widthForCard(), card: card)
     }
     
     public func widthForCard()->CGFloat{

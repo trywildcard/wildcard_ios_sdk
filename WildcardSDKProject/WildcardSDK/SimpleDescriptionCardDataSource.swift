@@ -17,41 +17,31 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
     }
     
     public func viewForCardHeader()->UIView?{
-        var headerView:CardViewElement = OneLineCardHeader(frame:CGRectZero)
-        headerView.updateForCard(card)
-        return headerView
+        return OneLineCardHeader(frame:CGRectZero)
     }
     
     public func heightForCardHeader()->CGFloat{
-        return 41;
+        return OneLineCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForCardBody()->UIView?{
-        var bodyView:CardViewElement = SingleParagraphCardBody(frame:CGRectZero)
-        bodyView.updateForCard(card)
-        return bodyView
+        return SingleParagraphCardBody(frame:CGRectZero)
     }
     
     public func heightForCardBody()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
-        return SingleParagraphCardBody.optimizedHeight(cardWidth, card: card) 
+        return SingleParagraphCardBody.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForCardFooter()->UIView?{
-        let footer = ViewOnWebCardFooter(frame:CGRectZero)
-        footer.updateForCard(card)
-        return footer   
+        return ViewOnWebCardFooter(frame:CGRectZero)
     }
     
     public func heightForCardFooter()->CGFloat{
-        return 40.5
+        return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForBackOfCard()->UIView?{
-        let emptyBack = EmptyCardBack(frame:CGRectZero)
-        return emptyBack
+        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func widthForCard()->CGFloat{

@@ -42,7 +42,7 @@ public class Card : PlatformObject{
             return "article"
         case .WebLink:
             return "weblink"
-        default:
+        case .Unknown:
             return "unknown"
         }
     }

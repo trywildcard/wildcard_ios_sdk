@@ -41,4 +41,8 @@ class OneLineCardHeader : CardViewElement {
             titleLabel.setAsCardHeaderWithText("Unknown Card Type!")
         }
     }
+    
+    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+        return 41
+    }
 }

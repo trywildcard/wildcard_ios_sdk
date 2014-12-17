@@ -17,12 +17,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
     }
     
     public func viewForCardHeader()->UIView?{
-        if let headerView = UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader{
-            headerView.updateForCard(card)
-            return headerView
-        }else{
-            return nil
-        }
+        return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
     }
     
     public func heightForCardHeader()->CGFloat{
@@ -30,19 +25,15 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
     }
     
     public func viewForCardBody()->UIView?{
-        var bodyView = CenteredImageBody(frame:CGRectZero)
-        bodyView.updateForCard(card)
-        return bodyView
+        return CenteredImageBody(frame:CGRectZero)
     }
     
     public func heightForCardBody()->CGFloat{
         return CenteredImageBody.optimizedHeight(widthForCard(), card: card)
     }
     
-    
     public func viewForBackOfCard()->UIView?{
-        let emptyBack = EmptyCardBack(frame:CGRectZero)
-        return emptyBack
+        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func widthForCard()->CGFloat{

@@ -17,31 +17,23 @@ public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
     }
     
     public func viewForCardBody()->UIView?{
-        if let bodyView = UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as? ImageThumbnailFloatLeft{
-            bodyView.updateForCard(card)
-            return bodyView
-        }else{
-            return nil
-        }
+        return UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as? ImageThumbnailFloatLeft
     }
     
     public func heightForCardBody()->CGFloat{
-        return 140
+        return ImageThumbnailFloatLeft.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForCardFooter()->UIView?{
-        let footer = ViewOnWebCardFooter(frame:CGRectZero)
-        footer.updateForCard(card)
-        return footer
+        return ViewOnWebCardFooter(frame:CGRectZero)
     }
     
     public func heightForCardFooter()->CGFloat{
-        return 40.5
+        return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
     }
     
     public func viewForBackOfCard()->UIView?{
-        let emptyBack = EmptyCardBack(frame:CGRectZero)
-        return emptyBack
+        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func widthForCard()->CGFloat{

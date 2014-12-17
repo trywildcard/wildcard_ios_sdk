@@ -26,4 +26,8 @@ class ViewOnWebCardFooter: CardViewElement {
     override func updateForCard(card: Card) {
 
     }
+    
+    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+        return 40.5
+    }
 }

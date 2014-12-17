@@ -25,6 +25,10 @@ class TallReadMoreFooter: CardViewElement {
         buttonTitle.setKerning(0.4)
         readMoreButton.setAttributedTitle(buttonTitle, forState: UIControlState.Normal)
         
+        let highlightedTitle = NSMutableAttributedString(attributedString: buttonTitle)
+        highlightedTitle.setColor(UIColor.wildcardDarkBlue())
+        readMoreButton.setAttributedTitle(highlightedTitle, forState: UIControlState.Highlighted)
+        
         readMoreButton.titleEdgeInsets = UIEdgeInsetsMake(-2, 1, 0, 0);
         readMoreButton.verticallyCenterToSuperView(0)
         addConstraint(NSLayoutConstraint(item:readMoreButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20))
@@ -33,5 +37,9 @@ class TallReadMoreFooter: CardViewElement {
     
     override func updateForCard(card: Card) {
         
+    }
+    
+    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+        return 65
     }
 }

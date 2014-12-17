@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t6-fZ-qb4">
-                    <rect key="frame" x="20" y="5" width="560" height="585"/>
+                    <rect key="frame" x="20" y="5" width="560" height="590"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,7 +32,7 @@
                 <constraint firstItem="uh0-s7-zAG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="WyC-13-79m"/>
                 <constraint firstItem="7t6-fZ-qb4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="mMr-79-B5y"/>
                 <constraint firstAttribute="trailing" secondItem="7t6-fZ-qb4" secondAttribute="trailing" constant="20" id="xqH-s3-w1m"/>
-                <constraint firstAttribute="bottom" secondItem="7t6-fZ-qb4" secondAttribute="bottom" constant="10" id="zJa-kZ-sBX"/>
+                <constraint firstAttribute="bottom" secondItem="7t6-fZ-qb4" secondAttribute="bottom" constant="5" id="zJa-kZ-sBX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
