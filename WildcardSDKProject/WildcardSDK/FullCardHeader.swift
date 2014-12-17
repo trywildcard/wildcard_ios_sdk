@@ -53,7 +53,8 @@ class FullCardHeader :CardViewElement
         height += 7
         height += UIFont.wildcardStandardSubHeaderFontLineHeight()
         height += 4
-        height += Utilities.heightRequiredForText(titleText!, lineHeight: UIFont.wildcardStandardHeaderFontLineHeight(), font: UIFont.wildcardStandardHeaderFont(), width: cardWidth - 64)
+        height += Utilities.heightRequiredForText(titleText!, lineHeight: UIFont.wildcardStandardHeaderFontLineHeight(), font: UIFont.wildcardStandardHeaderFont(), width: cardWidth - 65, maxHeight:3 * UIFont.wildcardStandardHeaderFontLineHeight())
+        height += 11
         return height
     }
     

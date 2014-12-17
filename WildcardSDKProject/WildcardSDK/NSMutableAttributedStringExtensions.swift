@@ -32,5 +32,10 @@ extension NSMutableAttributedString{
             value: color,
             range: NSMakeRange(0, countElements(self.string)))
     }
+    
+    func setKerning(kerning:Float){
+        self.addAttribute(NSKernAttributeName, value: NSNumber(float:kerning), range: NSMakeRange(0, countElements(self.string)))
+        
+    }
 }
 

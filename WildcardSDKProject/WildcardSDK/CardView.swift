@@ -64,22 +64,24 @@ public class CardView : UIView
         newCardView.datasource = datasource
         newCardView.layoutCardComponents()
         newCardView.backingCard = card
+        newCardView.updateForCard(card)
         return newCardView
     }
     
     // MARK: Instance
-    public func reloadWithCard(card:Card){
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let autoDatasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
-        reloadWithCard(card, datasource: autoDatasource)
+    public func reloadWithCard(newCard:Card){
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
+        let autoDatasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: newCard)
+        reloadWithCard(newCard, datasource: autoDatasource)
     }
     
     public func reloadWithCard(card:Card, datasource:CardViewDataSource){
         
         // initialize again
         convenienceInitialize()
+        self.datasource = datasource
         
-        // new frame calculated, let delegate prepare
+        // calculate new frame, let delegate prepare
         frame = CardView.createFrameFromDataSource(datasource)
         delegate?.cardViewWillReload?(self)
      
@@ -88,6 +90,9 @@ public class CardView : UIView
         
         // backing card
         backingCard = card
+        
+        // update views
+        updateForCard(backingCard)
         
         // reloaded
         delegate?.cardViewDidReload?(self)
@@ -128,6 +133,7 @@ public class CardView : UIView
                 containerView.addConstraint(NSLayoutConstraint(item: headerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: headerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
                 headerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardHeader!())
                 currentHeightOffset += ds.heightForCardHeader!()
+                header = headerView
             }
             
             let bodyView = ds.viewForCardBody()
@@ -139,6 +145,7 @@ public class CardView : UIView
                 containerView.addConstraint(NSLayoutConstraint(item: bodyView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: bodyView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
                 bodyView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardBody())
                 currentHeightOffset += ds.heightForCardBody()
+                body = bodyView
             }
             
             let footerView = ds.viewForCardFooter?()
@@ -150,6 +157,7 @@ public class CardView : UIView
                 containerView.addConstraint(NSLayoutConstraint(item: footerView!, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: footerView!.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: currentHeightOffset))
                 footerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardFooter!())
                 currentHeightOffset += ds.heightForCardFooter!()
+                footer = footerView
             }
             
             if let backView = ds.viewForBackOfCard?(){
@@ -159,6 +167,18 @@ public class CardView : UIView
                 backView.layer.masksToBounds = true
                 back = backView
             }
+        }
+    }
+    
+    private func updateForCard(card:Card){
+        if let header = header as? CardViewElement{
+            header.updateForCard(card)
+        }
+        if let body = body as? CardViewElement{
+            body.updateForCard(card)
+        }
+        if let footer = footer as? CardViewElement{
+            footer.updateForCard(card)
         }
     }
     

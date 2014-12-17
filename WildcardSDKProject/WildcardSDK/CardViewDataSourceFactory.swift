@@ -22,6 +22,9 @@ class CardViewDataSourceFactory {
             return SimpleDescriptionCardDataSource(card: card)
         case .WebLinkCardPortraitImageSmallFloatLeft:
             return ImageThumbnailFloatLeftDataSource(card: card)
+        case .ArticleCardPortraitImage,
+        .ArticleCardPortraitNoImage:
+            return SquareArticleDataSource(card:card)
         default:
             return BareBonesCardDataSource(card: card)
         }

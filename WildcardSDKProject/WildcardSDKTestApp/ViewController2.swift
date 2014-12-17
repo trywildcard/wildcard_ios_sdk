@@ -18,7 +18,7 @@ class ViewController2: UIViewController, CardViewDelegate {
     var mainCardWidthConstraint:NSLayoutConstraint!
     var mainCardHeightConstraint:NSLayoutConstraint!
     
-    func cardViewReloaded(cardView:CardView){
+    func cardViewWillReload(cardView:CardView){
         view.removeConstraint(mainCardHeightConstraint)
         view.removeConstraint(mainCardWidthConstraint)
         mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
@@ -60,7 +60,6 @@ class ViewController2: UIViewController, CardViewDelegate {
                 var jsonError:NSError?
                 var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
                 if (jsonError != nil) {
-                    //completion(nil, jsonError)
                     println("JSON ERROR")
                 }
                 else {

@@ -35,10 +35,10 @@ class BareBonesCardBody : CardViewElement {
         switch(card.type){
         case .Article:
             let articleCard = card as ArticleCard
-            titleLabel.text = articleCard.title
+            titleLabel.text = String(htmlEncodedString:articleCard.title)
         case .WebLink:
             let webLinkCard = card as WebLinkCard
-            titleLabel.text = webLinkCard.title
+            titleLabel.text = String(htmlEncodedString:webLinkCard.title)
         case .Unknown:
             titleLabel.text = "Unknown Card Type!"
         }

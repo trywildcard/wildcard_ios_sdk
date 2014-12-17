@@ -38,4 +38,8 @@ extension UIFont{
         return 18.0
     }
     
+    class func wildcardStandardButtonFont()->UIFont{
+        return UIFont(name: "Polaris-Medium", size: 12.0)!
+    }
+    
 }

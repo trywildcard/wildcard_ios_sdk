@@ -21,7 +21,7 @@ class Utilities{
         }
     }
     
-    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
+    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat, maxHeight:CGFloat)->CGFloat{
         let nsStr = NSString(string: text)
         var paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = lineHeight
@@ -33,10 +33,15 @@ class Utilities{
         
         let bounds =
         nsStr.boundingRectWithSize(CGSizeMake(width,
-            CGFloat.max),
+            maxHeight),
             options: NSStringDrawingOptions.UsesLineFragmentOrigin,
             attributes: attributesDictionary,
             context: nil)
         return bounds.size.height;
+    }
+    
+    
+    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
+        return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
 }

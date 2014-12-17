@@ -16,14 +16,6 @@ public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardHeader()->UIView?{
-        return nil
-    }
-    
-    public func heightForCardHeader()->CGFloat{
-        return 0
-    }
-    
     public func viewForCardBody()->UIView?{
         if let bodyView = UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as? ImageThumbnailFloatLeft{
             bodyView.updateForCard(card)
