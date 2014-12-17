@@ -161,7 +161,7 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
     }
     
     func cardSideLength()->CGFloat{
-        return view.frame.size.width - (2 * CardContentView.DEFAULT_HORIZONTAL_PADDING)
+        return view.frame.size.width - (2 * 15)
     }
     
     func setupBackCard(card:Card){
