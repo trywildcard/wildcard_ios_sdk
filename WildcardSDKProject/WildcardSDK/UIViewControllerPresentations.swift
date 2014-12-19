@@ -21,38 +21,25 @@ public extension UIViewController{
 
     public func presentCard(card:Card, customDatasource:CardViewDataSource){
         let stockModal = StockModalCardViewController()
-        
         stockModal.modalPresentationStyle = .Custom
         stockModal.transitioningDelegate = stockModal
         stockModal.modalPresentationCapturesStatusBarAppearance = true
         stockModal.presentedCard = card
         stockModal.cardDataSource = customDatasource
-
         presentViewController(stockModal, animated: true, completion: nil)
     }
     
     public func presentCardsAsStack(cards:[Card]){
-        
-        if(cards.count < 3){
-            println("Can not present Card Stack with less than 3 Cards.")
+        if(cards.count < 5){
+            println("Can not present Deck with less than 5 Cards.")
             return
         }
-        
-        let modalStackViewController = ModalCardStackViewController()
-        modalStackViewController.cards = cards
-        
-        // snap shot current view to use as background in modal
-        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
-        modalStackViewController.view.insertSubview(snapShot, atIndex:0)
-        snapShot.constrainToSuperViewEdges()
-        
-        // prepare for presentation
-        modalStackViewController.presentingControllerBackgroundView = snapShot
-        modalStackViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
-        modalStackViewController.blurredOverlayView!.alpha = 0
-        
-        presentViewController(modalStackViewController, animated: false, completion: nil)
-        
+        let deckController = StockModalDeckViewController()
+        deckController.modalPresentationStyle = .Custom
+        deckController.transitioningDelegate = deckController
+        deckController.modalPresentationCapturesStatusBarAppearance = true
+        deckController.cards = cards
+        presentViewController(deckController, animated: true, completion: nil)
     }
     
     public func maximizeCardView(cardView:CardView){

@@ -16,10 +16,64 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     var presentedCard:Card!
     var cardDataSource:CardViewDataSource!
     var cardViewVerticalConstraint:NSLayoutConstraint?
+    var cardViewHorizontalConstraint:NSLayoutConstraint?
 
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
-        cardView.physics?.panGestureReset()
+        
+        // check if the card view has been dragged "out of bounds" in the view controller view(10% of edges)
+        let viewBounds = view.bounds
+        
+        let horizontalThreshold = 0.10 * viewBounds.width
+        let verticalThreshold = 0.10 * viewBounds.height
+        
+        // move left, right, up, or down
+        if(position.x < horizontalThreshold){
+            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                if let constraint =  self.cardViewHorizontalConstraint {
+                    constraint.constant = constraint.constant - viewBounds.width
+                    self.view.layoutIfNeeded()
+                }
+                }) { (bool:Bool) -> Void in
+                    cardView.removeFromSuperview()
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+        }else if(position.x > (view.bounds.width - horizontalThreshold)){
+            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                if let constraint = self.cardViewHorizontalConstraint {
+                    constraint.constant = constraint.constant + viewBounds.width
+                    self.view.layoutIfNeeded()
+                }
+                }) { (bool:Bool) -> Void in
+                    cardView.removeFromSuperview()
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+        }else if(position.y < verticalThreshold){
+            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                if let constraint =  self.cardViewVerticalConstraint{
+                    constraint.constant = constraint.constant - viewBounds.height
+                    self.view.layoutIfNeeded()
+                }
+                }) { (bool:Bool) -> Void in
+                    cardView.removeFromSuperview()
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+        }else if(position.y > (view.bounds.height - verticalThreshold)){
+            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                if let constraint = self.cardViewVerticalConstraint{
+                    constraint.constant = constraint.constant + viewBounds.height
+                    self.view.layoutIfNeeded()
+                }
+                }) { (bool:Bool) -> Void in
+                    cardView.removeFromSuperview()
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }else{
+            cardView.physics?.panGestureReset()
+        }
     }
     
     // MARK: UIViewController
@@ -38,7 +92,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         view.addSubview(cardView!)
         cardView?.constrainWidth(cardView!.frame.size.width, andHeight: cardView!.frame.size.height)
         cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
-        cardView?.horizontallyCenterToSuperView(0)
+        cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
         view.layoutIfNeeded()
         
         backgroundClearView = UIView(frame:CGRectZero)
@@ -46,6 +100,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         backgroundClearView?.constrainToSuperViewEdges()
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
         backgroundClearView!.addGestureRecognizer(backgroundTapRecognizer!)
+        
     }
     
     // MARK: Private

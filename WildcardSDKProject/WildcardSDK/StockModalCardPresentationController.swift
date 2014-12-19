@@ -31,7 +31,7 @@ class StockModalCardPresentationController: UIPresentationController {
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {
             transitionCoordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
-                self.blurView.alpha = 0.8
+                self.blurView.alpha = 0.75
                 }, completion:nil)
         }
     }

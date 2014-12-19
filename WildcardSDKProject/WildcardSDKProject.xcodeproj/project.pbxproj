@@ -22,10 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */; };
+		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
 		1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
-		1D3064751A3B803D00D99F6E /* ModalCardStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
 		1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */; };
 		1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28621A2E696A00A9D4C1 /* ViewController.swift */; };
@@ -167,9 +168,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckViewController.swift; sourceTree = "<group>"; };
+		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
 		1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataSource.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
-		1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCardStackViewController.swift; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		1D3A285B1A2E696A00A9D4C1 /* WildcardSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildcardSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3A285F1A2E696A00A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -515,11 +517,12 @@
 			isa = PBXGroup;
 			children = (
 				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
-				1D3064741A3B803D00D99F6E /* ModalCardStackViewController.swift */,
 				1D9764851A43747C00E51FE5 /* ModalMaximizedCardViewController.swift */,
 				1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */,
 				1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */,
 				1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */,
+				1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */,
+				1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */,
 			);
 			name = "Stock Presentations";
 			sourceTree = "<group>";
@@ -775,13 +778,13 @@
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
 				1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */,
 				1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */,
+				1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
-				1D3064751A3B803D00D99F6E /* ModalCardStackViewController.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
@@ -805,6 +808,7 @@
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1D97647F1A43470A00E51FE5 /* MediaTextFullWebView.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
+				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,

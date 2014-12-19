@@ -61,6 +61,7 @@ public class CardPhysics : NSObject {
             touchPosition = recognizer.translationInView(cardView.superview!)
         }else if(recognizer.state == UIGestureRecognizerState.Changed){
             let currentLocation = recognizer.translationInView(cardView.superview!)
+            println("Current location is \(currentLocation)")
             let dx = currentLocation.x - touchPosition.x
             let dy = currentLocation.y - touchPosition.y
             
