@@ -16,23 +16,17 @@ public class BareBonesCardDataSource : CardViewDataSource{
         self.card = card
     }
     
-    public func viewForCardBody()->UIView?{
-        var bodyView:CardViewElement = BareBonesCardBody(frame:CGRectZero)
-        bodyView.updateForCard(card)
-        return bodyView
+    public func viewForCardBody()->UIView{
+        return BareBonesCardBody(frame:CGRectZero)
     }
     
     public func heightForCardBody()->CGFloat{
         // 4 x 3
-        let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
-        return cardWidth * (3/4)
+        return  widthForCard() * (3/4)
     }
     
     public func viewForBackOfCard()->UIView?{
-        let emptyBack = EmptyCardBack(frame:CGRectZero)
-        return emptyBack
+        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func widthForCard()->CGFloat{

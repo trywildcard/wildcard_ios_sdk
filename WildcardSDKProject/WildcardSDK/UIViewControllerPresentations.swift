@@ -26,6 +26,8 @@ public extension UIViewController{
         // snap shot current view to use as background in modal
         let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
         modalViewController.view.insertSubview(snapShot, atIndex:0)
+        snapShot.verticallyCenterToSuperView(0)
+        snapShot.horizontallyCenterToSuperView(0)
         snapShot.constrainToSuperViewEdges()
         
         // prepare for presentation
@@ -66,19 +68,13 @@ public extension UIViewController{
         
         let viewController = ModalMaximizedCardViewController()
         
-        //viewController.initialFrame = cardView
-        
         let maximizedDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
-        println(viewController.maximizedCard)
         
         let convertedCardFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = convertedCardFrame
         viewController.initialCardDataSource = cardView.datasource
         viewController.maximizedCardDataSource = maximizedDataSource
         viewController.maximizedCard = cardView.backingCard
-        
-        println("converted card frame")
-        println(convertedCardFrame)
         
         // snap shot current view to use as background in modal
         let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)

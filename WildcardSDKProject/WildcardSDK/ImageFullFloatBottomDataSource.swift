@@ -24,7 +24,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return FullCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView?{
+    public func viewForCardBody()->UIView{
         return CenteredImageBody(frame:CGRectZero)
     }
     

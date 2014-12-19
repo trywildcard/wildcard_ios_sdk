@@ -16,8 +16,8 @@ public class MaximizedArticleDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardBody()->UIView?{
-        return UIView.loadFromNibNamed("MediaTextFullWebView") as? MediaTextFullWebView
+    public func viewForCardBody()->UIView{
+        return UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
     }
     
     public func heightForCardBody()->CGFloat{

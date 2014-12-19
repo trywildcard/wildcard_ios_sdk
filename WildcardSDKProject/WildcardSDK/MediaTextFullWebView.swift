@@ -28,7 +28,7 @@ class MediaTextFullWebView : CardViewElement
     }
   
     @IBAction func closeButtonTapped(sender: AnyObject) {
-        delegate?.askedToCollapse?()
+        delegate?.cardViewElementRequestedToClose?()
     }
     
     func constructFinalHtml(articleCard:ArticleCard)->String{

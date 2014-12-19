@@ -13,11 +13,9 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
     var cardView:CardView?
-  //  var presentedCard:Card!
     var maximizedCard:Card!
     var maximizedCardDataSource:CardViewDataSource!
     
-    var backgroundTapRecognizer:UITapGestureRecognizer?
     var cardDataSource:CardViewDataSource!
     var cardViewTopConstraint:NSLayoutConstraint?
     var cardViewBottomConstraint:NSLayoutConstraint?
@@ -32,9 +30,6 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var loaded:Bool = false
     
     func cardViewRequestedCollapse(cardView: CardView) {
-        println("collapse!")
-        println(cardView)
-        println(self.cardView)
         cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
     }
     
@@ -50,8 +45,6 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
-        
         
         cardView = CardView.createCardView(maximizedCard, datasource: initialCardDataSource)
         cardView?.delegate = self
@@ -69,20 +62,14 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         view.addConstraint(cardViewRightConstraint!)
         view.addConstraint(cardViewBottomConstraint!)
         
-        view.layoutIfNeeded()
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
     }
 
     
     func cardViewWillReload(cardView: CardView) {
-        println("View reload frame will be ")
-        println(cardView.frame)
         
         
         if(!loaded){
@@ -111,8 +98,6 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         }
 
 
-        
-
     }
     
     func cardViewDidReload(cardView: CardView) {
@@ -122,20 +107,9 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        cardView?.reloadWithCard(maximizedCard, datasource: maximizedCardDataSource)
         
-       cardView?.reloadWithCard(maximizedCard, datasource: maximizedCardDataSource)
         loaded = true
-        
-        /*
-        //destinationCardFrame = CGRectOffset(destinationCardFrame, 15, 15)
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
-            self.cardViewLeftConstraint!.constant = 10
-            self.cardViewTopConstraint!.constant = 25
-            self.cardViewRightConstraint!.constant = 10
-            self.cardViewBottomConstraint!.constant = 10
-            self.view.layoutIfNeeded()
-        })
-*/
         
         // maximize card
         

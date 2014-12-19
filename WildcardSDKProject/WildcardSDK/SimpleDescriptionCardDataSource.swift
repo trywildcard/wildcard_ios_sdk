@@ -24,7 +24,7 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
         return OneLineCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView?{
+    public func viewForCardBody()->UIView{
         return SingleParagraphCardBody(frame:CGRectZero)
     }
     

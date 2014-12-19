@@ -9,12 +9,12 @@
 import Foundation
 
 @objc
-protocol CardViewElementDelegate{
-    optional func askedToMaximize()
-    optional func askedToCollapse()
-    optional func askedToViewOnWeb()
+protocol CardViewElementDelegate
+{
+    optional func cardViewElementRequestedViewOnWeb()
+    optional func cardViewElementRequestedReadMore()
+    optional func cardViewElementRequestedToClose()
 }
-
 
 public class CardViewElement : UIView {
     
@@ -23,7 +23,6 @@ public class CardViewElement : UIView {
     
     func updateForCard(card:Card){
         backingCard = card
-        
         // override
     }
     

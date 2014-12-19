@@ -22,11 +22,13 @@ class CardViewDataSourceFactory {
             return SimpleDescriptionCardDataSource(card: card)
         case .WebLinkCardPortraitImageSmallFloatLeft:
             return ImageThumbnailFloatLeftDataSource(card: card)
+        case .WebLinkCardPortraitImageFull:
+            return ImageFullFloatBottomDataSource(card: card)
         case .ArticleCardPortraitImage,
         .ArticleCardPortraitNoImage:
             return SquareArticleDataSource(card:card)
-        default:
-            return BareBonesCardDataSource(card: card)
+        case .MaximizedFullWebView:
+            return MaximizedArticleDataSource(card:card)
         }
     }
 }

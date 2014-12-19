@@ -21,8 +21,8 @@ public class WebLinkCard : Card {
     var imageUrl:NSURL?
     
     public init(url:NSURL, description:String, title:String, dictionary:NSDictionary?){
-        self.title = title
-        self.description = description
+        self.title = String(htmlEncodedString: title)
+        self.description = String(htmlEncodedString: description)
         super.init(webUrl: url, cardType: "weblink")
         
         if let image = dictionary?["primaryImageUrl"] as? String{

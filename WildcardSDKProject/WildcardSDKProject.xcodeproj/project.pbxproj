@@ -544,10 +544,10 @@
 			isa = PBXGroup;
 			children = (
 				1DFFEDD41A40086D008E65BC /* CardViewElement.swift */,
-				1DC928841A4099650040DAD0 /* Backs */,
-				1DC928831A40994E0040DAD0 /* Footers */,
-				1DC928821A4099480040DAD0 /* Bodies */,
 				1DC928811A4099430040DAD0 /* Headers */,
+				1DC928821A4099480040DAD0 /* Bodies */,
+				1DC928831A40994E0040DAD0 /* Footers */,
+				1DC928841A4099650040DAD0 /* Backs */,
 			);
 			name = "Card Elements";
 			sourceTree = "<group>";

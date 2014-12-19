@@ -24,8 +24,8 @@ public class SquareArticleDataSource : CardViewDataSource {
         return FullCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView?{
-        return UIView.loadFromNibNamed("MediaTextImageFloatRight") as? MediaTextImageFloatRight
+    public func viewForCardBody()->UIView{
+        return UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
     }
     
     public func heightForCardBody()->CGFloat{

@@ -47,6 +47,6 @@ class TallReadMoreFooter: CardViewElement {
     }
     
     func readMoreButtonTapped(){
-        delegate?.askedToMaximize?()
+        delegate?.cardViewElementRequestedReadMore?()
     }
 }

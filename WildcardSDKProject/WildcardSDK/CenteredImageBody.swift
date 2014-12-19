@@ -17,7 +17,7 @@ class CenteredImageBody : CardViewElement{
         cardImage = UIImageView(frame: CGRectZero)
         cardImage.layer.cornerRadius = 2.0
         cardImage.layer.masksToBounds = true
-        cardImage.backgroundColor = UIColor.wildcardBackgroundGray()
+        cardImage.backgroundColor = UIColor.whiteColor()
         addSubview(cardImage)
         cardImage.verticallyCenterToSuperView(0)
         addConstraint(NSLayoutConstraint(item: cardImage, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20))

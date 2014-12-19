@@ -12,7 +12,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VLP-tx-v6y">
                     <rect key="frame" x="10" y="240" width="120" height="120"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="Af3-4K-I0z"/>
                         <constraint firstAttribute="width" constant="120" id="aOr-UP-vSP"/>
