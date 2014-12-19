@@ -14,6 +14,7 @@ public protocol CardPhysicsDelegate{
     
     optional func cardViewDragged(cardView:CardView, position:CGPoint)
     optional func cardViewDropped(cardView:CardView, position:CGPoint)
+    optional func cardViewLongPressed(cardView:CardView)
 }
 
 public class CardPhysics : NSObject {
@@ -116,9 +117,7 @@ public class CardPhysics : NSObject {
     }
     
     func cardLongPress(recognizer:UILongPressGestureRecognizer!){
-        if let parentVC = cardView.parentViewController(){
-            parentVC.presentCard(cardView.backingCard)
-        }
+        delegate?.cardViewLongPressed?(cardView)
     }
     
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){

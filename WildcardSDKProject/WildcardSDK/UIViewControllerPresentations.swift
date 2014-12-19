@@ -48,6 +48,7 @@ public extension UIViewController{
         }
         
         let modalStackViewController = ModalCardStackViewController()
+        modalStackViewController.cards = cards
         
         // snap shot current view to use as background in modal
         let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
@@ -58,7 +59,6 @@ public extension UIViewController{
         modalStackViewController.presentingControllerBackgroundView = snapShot
         modalStackViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
         modalStackViewController.blurredOverlayView!.alpha = 0
-        modalStackViewController.cards = cards
         
         presentViewController(modalStackViewController, animated: false, completion: nil)
         

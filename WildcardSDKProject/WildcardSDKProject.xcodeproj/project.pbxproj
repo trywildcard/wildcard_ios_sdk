@@ -529,13 +529,13 @@
 		1DFFEDD01A400803008E65BC /* Stock Card View Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1DFFEDD61A400A4C008E65BC /* BareBonesCardDataSource.swift */,
-				1D74170D1A40772E00281714 /* SimpleDescriptionCardDataSource.swift */,
-				1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */,
-				1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */,
-				1D3ECFBD1A40DDEC0001BF7A /* SquareArticleDataSource.swift */,
-				1D9764831A4356B200E51FE5 /* MaximizedArticleDataSource.swift */,
 				1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */,
+				1DFFEDD61A400A4C008E65BC /* BareBonesCardDataSource.swift */,
+				1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */,
+				1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */,
+				1D9764831A4356B200E51FE5 /* MaximizedArticleDataSource.swift */,
+				1D74170D1A40772E00281714 /* SimpleDescriptionCardDataSource.swift */,
+				1D3ECFBD1A40DDEC0001BF7A /* SquareArticleDataSource.swift */,
 			);
 			name = "Stock Card View Data Sources";
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
+class ModalCardStackViewController: UIViewController, CardViewDelegate, CardPhysicsDelegate {
     
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
@@ -25,6 +25,11 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
     var frontCardCenterY:NSLayoutConstraint?
     var backCardCenterX:NSLayoutConstraint?
     var backCardCenterY:NSLayoutConstraint?
+    
+    // MARK: CardViewDelegate
+    func cardViewRequestedMaximize(cardView: CardView) {
+        maximizeCardView(cardView)
+    }
     
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
@@ -111,25 +116,28 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
+        
+        // Initialize Front Card
+        let frontCard = cards[0]
+        frontCardView = CardView.createCardView(frontCard)
+        frontCardView?.delegate = self
+        
+        view.addSubview(frontCardView!)
+        frontCardCenterX = frontCardView?.horizontallyCenterToSuperView(0)
+        frontCardCenterY = frontCardView?.verticallyCenterToSuperView(0)
+        
+        frontCardView?.constrainWidth(frontCardView!.frame.size.width, andHeight: frontCardView!.frame.size.height)
+        frontCardView?.physics?.delegate = self
+        frontCardView?.physics?.enableDragging = true
+        
+        setupBackCard(cards[1])
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         presentingControllerBackgroundView?.addGestureRecognizer(backgroundTapRecognizer!)
         
-        // Initialize Front Card
-        let frontCard = cards[0]
-        frontCardView = CardView.createCardView(frontCard)
-        
-        view.addSubview(frontCardView!)
-        frontCardCenterX = frontCardView?.horizontallyCenterToSuperView(0)
-        frontCardCenterY = frontCardView?.verticallyCenterToSuperView(0)
-        
-        frontCardView?.constrainWidth(cardSideLength(), andHeight: cardSideLength())
-        frontCardView?.physics?.delegate = self
-        frontCardView?.physics?.enableDragging = true
-        
-        setupBackCard(cards[1])
+ 
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -160,22 +168,20 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
         return (index + 1) % cards.count
     }
     
-    func cardSideLength()->CGFloat{
-        return view.frame.size.width - (2 * 15)
-    }
     
     func setupBackCard(card:Card){
         // set up the card in the back
         if(frontCardView != nil){
             backCard = card
             backCardView = CardView.createCardView(backCard!)
+            backCardView?.delegate = self
             backCardView?.physics?.delegate = self
             backCardView?.physics?.enableDragging = true
             
             view.insertSubview(backCardView!, belowSubview: frontCardView!)
             backCardCenterX = backCardView?.horizontallyCenterToSuperView(0)
             backCardCenterY = backCardView?.verticallyCenterToSuperView(0)
-            backCardView?.constrainWidth(cardSideLength(), andHeight: cardSideLength())
+            backCardView?.constrainWidth(backCardView!.frame.size.width, andHeight: backCardView!.frame.size.height)
         }
     }
 

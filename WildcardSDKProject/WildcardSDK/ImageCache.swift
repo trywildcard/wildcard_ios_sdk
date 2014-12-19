@@ -12,7 +12,6 @@ import NotificationCenter
 class ImageCache: NSCache {
     
     // swift doesn't support class constant variables yet, but you can do it in a struct
-    
     class var sharedInstance : ImageCache{
         struct Static{
             static var onceToken : dispatch_once_t = 0
@@ -22,7 +21,7 @@ class ImageCache: NSCache {
         dispatch_once(&Static.onceToken, { () -> Void in
             Static.instance = ImageCache()
             NSNotificationCenter.defaultCenter().addObserver(
-                self,
+                Static.instance!,
                 selector: "memoryWarningReceived",
                 name: UIApplicationDidReceiveMemoryWarningNotification,
                 object: nil)

@@ -120,7 +120,6 @@ public class CardView : UIView, CardViewElementDelegate
     var body:UIView?
     var footer:UIView?
     var datasource:CardViewDataSource!
-
     
     // MARK: CardViewElementDelegate
     func cardViewElementRequestedReadMore() {
@@ -165,6 +164,9 @@ public class CardView : UIView, CardViewElementDelegate
             constrainSubComponent(headerView!, offset: currentHeightOffset, height: datasource.heightForCardHeader!())
             currentHeightOffset += datasource.heightForCardHeader!()
             header = headerView
+            if let cardElement = header as? CardViewElement{
+                cardElement.delegate = self
+            }
         }
         
         let bodyView = datasource.viewForCardBody()
@@ -172,16 +174,21 @@ public class CardView : UIView, CardViewElementDelegate
             constrainSubComponent(bodyView, offset: currentHeightOffset, height: datasource.heightForCardBody())
             currentHeightOffset += datasource.heightForCardBody()
             body = bodyView
+            if let cardElement = body as? CardViewElement{
+                cardElement.delegate = self
+            }
         }else{
             println("Card layout error: height for card body should not be 0")
         }
         
         let footerView = datasource.viewForCardFooter?()
         if(footerView != nil && datasource.heightForCardFooter?() > 0){
-            
             constrainSubComponent(footerView!, offset: currentHeightOffset, height: datasource.heightForCardFooter!())
             currentHeightOffset += datasource.heightForCardFooter!()
             footer = footerView
+            if let cardElement = footer as? CardViewElement{
+                cardElement.delegate = self
+            }
         }
         
         if let backView = datasource.viewForBackOfCard?(){
@@ -230,7 +237,7 @@ public class CardView : UIView, CardViewElementDelegate
 
     private func convenienceInitialize(){
         
-        // remove container view and back view
+        // remove container and back view
         containerView?.removeFromSuperview()
         containerView = nil
         back?.removeFromSuperview()
