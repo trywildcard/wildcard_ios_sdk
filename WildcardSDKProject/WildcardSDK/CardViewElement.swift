@@ -8,10 +8,22 @@
 
 import Foundation
 
+@objc
+protocol CardViewElementDelegate{
+    optional func askedToMaximize()
+    optional func askedToCollapse()
+    optional func askedToViewOnWeb()
+}
+
 
 public class CardViewElement : UIView {
     
+    var backingCard:Card?
+    var delegate:CardViewElementDelegate?
+    
     func updateForCard(card:Card){
+        backingCard = card
+        
         // override
     }
     

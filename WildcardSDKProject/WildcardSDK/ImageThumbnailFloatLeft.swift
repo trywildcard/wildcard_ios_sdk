@@ -20,6 +20,7 @@ class ImageThumbnailFloatLeft : CardViewElement
     }
     
     override func updateForCard(card: Card) {
+        super.updateForCard(card)
         var imageUrl:NSURL?
         var titleText:String?
         

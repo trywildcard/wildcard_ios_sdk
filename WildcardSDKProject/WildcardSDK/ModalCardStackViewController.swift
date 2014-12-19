@@ -119,7 +119,7 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
         
         // Initialize Front Card
         let frontCard = cards[0]
-        frontCardView = CardView.autoCreateCardView(frontCard)
+        frontCardView = CardView.createCardView(frontCard)
         
         view.addSubview(frontCardView!)
         frontCardCenterX = frontCardView?.horizontallyCenterToSuperView(0)
@@ -168,7 +168,7 @@ class ModalCardStackViewController: UIViewController, CardPhysicsDelegate {
         // set up the card in the back
         if(frontCardView != nil){
             backCard = card
-            backCardView = CardView.autoCreateCardView(backCard!)
+            backCardView = CardView.createCardView(backCard!)
             backCardView?.physics?.delegate = self
             backCardView?.physics?.enableDragging = true
             

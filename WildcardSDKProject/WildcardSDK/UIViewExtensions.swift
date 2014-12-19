@@ -24,14 +24,35 @@ public extension UIView{
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0))
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0))
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0))
-        self.superview?.layoutIfNeeded()
+        superview?.layoutIfNeeded()
     }
     
     public func constrainLeftToSuperView(offset:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let leftConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: offset)
-        superview!.layoutIfNeeded()
+        superview?.layoutIfNeeded()
         return leftConstraint
+    }
+    
+    public func constrainRightToSuperView(offset:CGFloat)->NSLayoutConstraint{
+        setTranslatesAutoresizingMaskIntoConstraints(false)
+        let rightConstraint = NSLayoutConstraint(item: self.superview!, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: offset)
+        superview?.layoutIfNeeded()
+        return rightConstraint
+    }
+    
+    public func constrainTopToSuperView(offset:CGFloat)->NSLayoutConstraint{
+        setTranslatesAutoresizingMaskIntoConstraints(false)
+        let topConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: offset)
+        superview?.layoutIfNeeded()
+        return topConstraint
+    }
+    
+    public func constrainBottomToSuperView(offset:CGFloat)->NSLayoutConstraint{
+        setTranslatesAutoresizingMaskIntoConstraints(false)
+        let bottomConstraint = NSLayoutConstraint(item: self.superview!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: offset)
+        superview?.layoutIfNeeded()
+        return bottomConstraint
     }
     
     public func verticallyCenterToSuperView(offset:CGFloat)->NSLayoutConstraint {
@@ -66,7 +87,6 @@ public extension UIView{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: width))
         addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: andHeight))
-        superview?.layoutIfNeeded()
     }
     
     // adds a blur overlay to the view and returns a reference to it.
@@ -93,6 +113,7 @@ public extension UIView{
                 return nil
             }
             parentResponder = parentResponder!.nextResponder()
+            println(parentResponder)
             if parentResponder is UIViewController {
                 return (parentResponder as UIViewController)
             }

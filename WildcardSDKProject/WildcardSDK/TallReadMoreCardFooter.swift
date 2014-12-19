@@ -33,13 +33,20 @@ class TallReadMoreFooter: CardViewElement {
         readMoreButton.verticallyCenterToSuperView(0)
         addConstraint(NSLayoutConstraint(item:readMoreButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20))
         readMoreButton.constrainWidth(98, andHeight: 25)
+        
+        readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func updateForCard(card: Card) {
+        super.updateForCard(card)
         
     }
     
     override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
         return 65
+    }
+    
+    func readMoreButtonTapped(){
+        delegate?.askedToMaximize?()
     }
 }

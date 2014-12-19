@@ -1,0 +1,161 @@
+<style>
+
+#customWildcardHeader {
+    font-family:'Polaris-Bold', serif;
+    font-size:16px;
+    line-height:19px;
+    padding-top:2px;
+    padding-left:0px;
+    padding-right:30px;
+    padding-bottom:7px;
+}
+
+#customWildcardByline {
+    font-family:'Tiempos', serif;
+    font-size:14px;
+    color:rgb(98,107,128);
+}
+
+body{
+    font-family:'Tiempos', 'Georgia', serif;
+    font-weight:400;
+    font-size:15px;
+    line-height:22px;
+    color:rgb(40,47,60);
+    word-break:keep-all;
+    
+    margin-left:auto;
+    margin-right:auto;
+    width:90%;
+}
+
+figure{ 
+    margin:0px auto;
+    display:block;
+    max-width:100%%;
+}
+
+figcaption {
+    padding: 2px;
+    color: rgb(155,163,178);
+    font-family: 'Tiempos', 'Georgia', serif;
+    font-size: 12px;
+    line-height:16px;
+    font-style: italic;
+    border: none;
+    background: transparent;
+    word-wrap:normal;
+    text-align: center;
+    margin-bottom:15px;
+}
+
+img{
+    margin:0px auto;
+    max-width:100%%;
+    width:100%%;
+    display:block;
+    border-radius:4px;
+}
+
+video{
+    margin:0px auto;
+    max-width:100%%;
+    width:100%%;
+    display:block;
+}
+
+iframe{
+    margin:0px auto;
+    max-width:100%%;
+    width:100%%;
+    display:block;
+}
+
+blockquote{
+    margin:0px auto;
+    max-width:80%%;
+    width:80%%;
+    display:block;
+    font-style: italic;
+}
+
+strong{
+    font-family:'TiemposSemibold', serif;
+}
+
+a{
+    color:rgb(76,180,255);
+    text-decoration:underline;
+}
+
+ul, ol{
+    padding: 0 0 25px 30px;
+}
+
+li{
+    font-family:'Tiempos', 'Georgia', serif;
+    font-weight:400;
+    font-size:15px;
+}
+
+h1{
+    font-size:18px;
+    line-height:24px;
+}
+
+h2{
+    font-size:18px;
+    line-height:24px;
+}
+
+h3{
+    font-size:18px;
+    line-height:24px;
+}
+
+table{
+    max-width:100%%;
+    width:100%%;
+    font-size:10px;
+    display:block;
+    word-break:break-all;
+    table-layout:fixed;
+}
+
+#viewOnWeb{
+    display:inline;
+    font-family:'Polaris-Medium', serif;
+    color:rgb(76,180,255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:12px;
+}
+
+#openInApp{
+    display:inline-block;
+    font-family:'Polaris-Medium', serif;
+    color:rgb(76,180,255);
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:12px;
+    margin-left: 5px;
+    vertical-align: top;
+    line-height: 12px;
+}
+
+#openInAppImage{
+    display:inline-block;
+    width:15px;
+    height:15px;
+}
+
+.viewMore{
+    margin:10px auto;
+    width:100%;
+    display:block;
+    text-align:center;
+}
+
+</style>

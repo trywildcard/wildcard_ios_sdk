@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDr-WV-wbr">
-                                <rect key="frame" x="209" y="285" width="181" height="30"/>
+                                <rect key="frame" x="209" y="50" width="181" height="30"/>
                                 <state key="normal" title="Present Modal Card Stack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -79,9 +79,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mDr-WV-wbr" firstAttribute="top" secondItem="fhN-oy-XKG" secondAttribute="bottom" constant="30" id="KfH-ib-DrA"/>
                             <constraint firstAttribute="centerX" secondItem="mDr-WV-wbr" secondAttribute="centerX" id="MEv-Xa-bk1"/>
                             <constraint firstAttribute="centerY" secondItem="mDr-WV-wbr" secondAttribute="centerY" id="t5V-Zd-pVV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="t5V-Zd-pVV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Demo 3" id="JcI-jH-HtG"/>
                     <connections>

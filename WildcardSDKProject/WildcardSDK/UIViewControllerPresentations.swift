@@ -9,10 +9,16 @@
 import Foundation
 
 /*
-* UIViewController extensions for various card presentations
-*/
+ * UIViewController extensions for various stock card presentations
+ */
 public extension UIViewController{
     
+    
+    public func presentCard(card:Card){
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+        let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
+        presentCard(card, customDatasource: datasource)
+    }
 
     public func presentCard(card:Card, customDatasource:CardViewDataSource){
         let modalViewController = ModalCardViewController()
@@ -30,26 +36,6 @@ public extension UIViewController{
         modalViewController.cardDataSource = customDatasource
         
         presentViewController(modalViewController, animated: false, completion: nil)
-        
-    }
-    
-    public func presentCard(card:Card){
-        /*
-        let modalViewController = ModalCardViewController()
-        
-        // snap shot current view to use as background in modal
-        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
-        modalViewController.view.insertSubview(snapShot, atIndex:0)
-        snapShot.constrainToSuperViewEdges()    
-        
-        // prepare for presentation
-        modalViewController.presentingControllerBackgroundView = snapShot
-        modalViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
-        modalViewController.blurredOverlayView!.alpha = 0
-        modalViewController.presentedCard = card
-        
-        presentViewController(modalViewController, animated: false, completion: nil)
-*/
     }
     
     public func presentCardsAsStack(cards:[Card]){
@@ -74,5 +60,36 @@ public extension UIViewController{
         
         presentViewController(modalStackViewController, animated: false, completion: nil)
         
+    }
+    
+    public func maximizeCardView(cardView:CardView){
+        
+        let viewController = ModalMaximizedCardViewController()
+        
+        //viewController.initialFrame = cardView
+        
+        let maximizedDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
+        println(viewController.maximizedCard)
+        
+        let convertedCardFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
+        viewController.initialCardFrame = convertedCardFrame
+        viewController.initialCardDataSource = cardView.datasource
+        viewController.maximizedCardDataSource = maximizedDataSource
+        viewController.maximizedCard = cardView.backingCard
+        
+        println("converted card frame")
+        println(convertedCardFrame)
+        
+        // snap shot current view to use as background in modal
+        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
+        viewController.view.insertSubview(snapShot, atIndex:0)
+        snapShot.constrainToSuperViewEdges()
+        
+        // prepare for presentation
+        viewController.presentingControllerBackgroundView = snapShot
+        viewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
+        viewController.blurredOverlayView!.alpha = 0
+        
+        presentViewController(viewController, animated: false, completion: nil)
     }
 }

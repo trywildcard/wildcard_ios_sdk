@@ -20,6 +20,9 @@ class FullCardHeader :CardViewElement
     }
     
     override func updateForCard(card: Card) {
+        
+        super.updateForCard(card)
+        
         switch(card.type){
         case .Article:
             let articleCard = card as ArticleCard

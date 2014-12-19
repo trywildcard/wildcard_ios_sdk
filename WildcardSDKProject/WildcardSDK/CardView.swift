@@ -34,9 +34,16 @@ public protocol CardViewDelegate{
     
     // card view has been reloaded with a new card
     optional func cardViewDidReload(cardView:CardView)
+    
+    optional func cardViewRequestedMaximize(cardView:CardView)
+    
+    optional func cardViewRequestedCollapse(cardView:CardView)
+    
+    optional func cardViewRequestViewOnWeb(cardView:CardView)
+    
 }
 
-public class CardView : UIView
+public class CardView : UIView, CardViewElementDelegate
 {
     // MARK: Public properties
     public var physics:CardPhysics?
@@ -52,23 +59,28 @@ public class CardView : UIView
     var datasource:CardViewDataSource?
     
     // MARK: Public Class Functions
-    public class func autoCreateCardView(card:Card)->CardView?{
+    public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
         return CardView.createCardView(card, datasource: datasource)
     }
     
     public class func createCardView(card:Card, datasource:CardViewDataSource)->CardView?{
-        let cardFrame = CardView.createFrameFromDataSource(datasource)
+        let size = CardView.createSizeFromDataSource(datasource)
+        let cardFrame = CGRectMake(0, 0, size.width, size.height)
         let newCardView = CardView(frame: cardFrame)
         newCardView.datasource = datasource
         newCardView.layoutCardComponents()
         newCardView.backingCard = card
-        newCardView.updateForCard(card)
+        newCardView.refresh()
         return newCardView
     }
     
     // MARK: Instance
+    public func refresh(){
+        updateForCard(backingCard)
+    }
+    
     public func reloadWithCard(newCard:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
         let autoDatasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: newCard)
@@ -82,7 +94,8 @@ public class CardView : UIView
         self.datasource = datasource
         
         // calculate new frame, let delegate prepare
-        frame = CardView.createFrameFromDataSource(datasource)
+        let newSize = CardView.createSizeFromDataSource(datasource)
+        frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
         delegate?.cardViewWillReload?(self)
      
         // layout components
@@ -92,10 +105,23 @@ public class CardView : UIView
         backingCard = card
         
         // update views
-        updateForCard(backingCard)
+        refresh()
         
         // reloaded
         delegate?.cardViewDidReload?(self)
+    }
+    
+    // MARK: CardViewElementDelegate
+    func askedToMaximize(){
+        delegate?.cardViewRequestedMaximize?(self)
+    }
+    
+    func askedToCollapse() {
+        delegate?.cardViewRequestedCollapse?(self)
+    }
+    
+    func askedToViewOnWeb(){
+        delegate?.cardViewRequestViewOnWeb?(self)
     }
     
     // MARK: UIView
@@ -134,6 +160,9 @@ public class CardView : UIView
                 headerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardHeader!())
                 currentHeightOffset += ds.heightForCardHeader!()
                 header = headerView
+                if let cardViewElement = header as? CardViewElement{
+                    cardViewElement.delegate = self
+                }
             }
             
             let bodyView = ds.viewForCardBody()
@@ -146,6 +175,9 @@ public class CardView : UIView
                 bodyView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardBody())
                 currentHeightOffset += ds.heightForCardBody()
                 body = bodyView
+                if let cardViewElement = body as? CardViewElement{
+                    cardViewElement.delegate = self
+                }
             }
             
             let footerView = ds.viewForCardFooter?()
@@ -158,6 +190,9 @@ public class CardView : UIView
                 footerView!.constrainWidth(ds.widthForCard(), andHeight: ds.heightForCardFooter!())
                 currentHeightOffset += ds.heightForCardFooter!()
                 footer = footerView
+                if let cardViewElement = footer as? CardViewElement{
+                    cardViewElement.delegate = self
+                }
             }
             
             if let backView = ds.viewForBackOfCard?(){
@@ -166,6 +201,9 @@ public class CardView : UIView
                 backView.layer.cornerRadius = 2.0
                 backView.layer.masksToBounds = true
                 back = backView
+                if let cardViewElement = back as? CardViewElement{
+                    cardViewElement.delegate = self
+                }
             }
         }
     }
@@ -182,7 +220,7 @@ public class CardView : UIView
         }
     }
     
-    private class func createFrameFromDataSource(datasource:CardViewDataSource)->CGRect{
+    private class func createSizeFromDataSource(datasource:CardViewDataSource)->CGSize{
         let width = datasource.widthForCard()
         var height:CGFloat = 0
         if let headerHeight = datasource.heightForCardHeader?(){
@@ -192,7 +230,7 @@ public class CardView : UIView
             height += footerHeight
         }
         height += datasource.heightForCardBody()
-        return CGRectMake(0, 0, width, height)
+        return CGSizeMake(width, height)
     }
 
     private func convenienceInitialize(){

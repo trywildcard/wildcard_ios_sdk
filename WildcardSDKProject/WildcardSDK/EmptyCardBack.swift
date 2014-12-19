@@ -26,6 +26,7 @@ class EmptyCardBack : CardViewElement {
     }
     
     override func updateForCard(card: Card) {
+        super.updateForCard(card)
         // nothing
     }
 }

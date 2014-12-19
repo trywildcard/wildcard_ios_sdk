@@ -29,6 +29,15 @@ class ViewController: UIViewController {
         newCardView!.verticallyCenterToSuperView(-100)
         newCardView!.constrainWidth(bareBones.widthForCard(), andHeight: newCardView!.frame.size.height)
         
+        
+        for name in UIFont.familyNames()
+        {
+            if let nameString = name as? String{
+                let names = UIFont.fontNamesForFamilyName(nameString)
+                println(nameString)
+                println(names)
+            }
+        }
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

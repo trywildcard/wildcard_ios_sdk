@@ -24,6 +24,7 @@ class ViewOnWebCardFooter: CardViewElement {
     }
     
     override func updateForCard(card: Card) {
+        super.updateForCard(card)
 
     }
     

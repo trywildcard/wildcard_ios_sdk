@@ -24,6 +24,7 @@ class MediaTextImageFloatRight : CardViewElement{
     }
     
     override func updateForCard(card: Card) {
+        super.updateForCard(card)
         
         var imageUrl:NSURL?
         var abstractContent:String?
