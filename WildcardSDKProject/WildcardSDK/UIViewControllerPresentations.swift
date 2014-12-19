@@ -13,7 +13,6 @@ import Foundation
  */
 public extension UIViewController{
     
-    
     public func presentCard(card:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
@@ -21,23 +20,15 @@ public extension UIViewController{
     }
 
     public func presentCard(card:Card, customDatasource:CardViewDataSource){
-        let modalViewController = ModalCardViewController()
+        let stockModal = StockModalCardViewController()
         
-        // snap shot current view to use as background in modal
-        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
-        modalViewController.view.insertSubview(snapShot, atIndex:0)
-        snapShot.verticallyCenterToSuperView(0)
-        snapShot.horizontallyCenterToSuperView(0)
-        snapShot.constrainToSuperViewEdges()
-        
-        // prepare for presentation
-        modalViewController.presentingControllerBackgroundView = snapShot
-        modalViewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
-        modalViewController.blurredOverlayView!.alpha = 0
-        modalViewController.presentedCard = card
-        modalViewController.cardDataSource = customDatasource
-        
-        presentViewController(modalViewController, animated: false, completion: nil)
+        stockModal.modalPresentationStyle = .Custom
+        stockModal.transitioningDelegate = stockModal
+        stockModal.modalPresentationCapturesStatusBarAppearance = true
+        stockModal.presentedCard = card
+        stockModal.cardDataSource = customDatasource
+
+        presentViewController(stockModal, animated: true, completion: nil)
     }
     
     public func presentCardsAsStack(cards:[Card]){
