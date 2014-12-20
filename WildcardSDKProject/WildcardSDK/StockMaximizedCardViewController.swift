@@ -25,12 +25,10 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var initialCardFrame:CGRect!
     var initialCardDataSource:CardViewDataSource!
     
-    var destinationCardFrame:CGRect!
-    
     var loaded:Bool = false
     
     func cardViewRequestedCollapse(cardView: CardView) {
-       // cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
+        cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -62,7 +60,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         view.addConstraint(cardViewTopConstraint!)
         view.addConstraint(cardViewRightConstraint!)
         view.addConstraint(cardViewBottomConstraint!)
-        
     }
     
     override func viewWillAppear(animated: Bool) {

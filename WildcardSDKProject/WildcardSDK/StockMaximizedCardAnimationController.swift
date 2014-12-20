@@ -43,8 +43,9 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         transitionContext.completeTransition(true)
         
         if let maximizedController = presentedController as? StockMaximizedCardViewController{
-            // pop up the card
             if(maximizedController.cardView != nil){
+                maximizedController.cardView!.alpha = 0
+                
                 UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                     
                     maximizedController.cardViewLeftConstraint?.constant = 10
@@ -53,6 +54,8 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
                     maximizedController.cardViewBottomConstraint?.constant = 10
                     maximizedController.view.layoutIfNeeded()
                     
+                    
+                    maximizedController.cardView?.alpha = 1
                     
                     }, completion: {(completed: Bool) -> Void in
                         transitionContext.completeTransition(completed)
@@ -79,7 +82,6 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
                     maximizedController.cardViewBottomConstraint?.constant = maximizedController.view.frame.size.height - maximizedController.initialCardFrame.origin.y - maximizedController.initialCardFrame.size.height
                     
                     maximizedController.view.layoutIfNeeded()
-                    
                     
                     }, completion: {(completed: Bool) -> Void in
                         transitionContext.completeTransition(completed)
