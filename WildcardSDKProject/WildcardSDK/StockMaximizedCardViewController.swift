@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate {
+class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate,UIViewControllerTransitioningDelegate {
     
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
@@ -30,7 +30,8 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var loaded:Bool = false
     
     func cardViewRequestedCollapse(cardView: CardView) {
-        cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
+       // cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: CardPhysicsDelegate
@@ -70,33 +71,6 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
 
     
     func cardViewWillReload(cardView: CardView) {
-        
-        
-        if(!loaded){
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                self.cardViewLeftConstraint?.constant = 10
-                self.cardViewTopConstraint?.constant = 25
-                self.cardViewRightConstraint?.constant = 10
-                self.cardViewBottomConstraint?.constant = 10
-                self.view.layoutIfNeeded()
-            })
-        }else{
-      
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                self.cardViewLeftConstraint?.constant = self.initialCardFrame.origin.x
-                self.cardViewTopConstraint?.constant = self.initialCardFrame.origin.y
-                self.cardViewRightConstraint?.constant = (self.view.frame.size.width - self.initialCardFrame.origin.x - self.initialCardFrame.size.width)
-                self.cardViewBottomConstraint?.constant = (self.view.frame.size.height - self.initialCardFrame.origin.y - self.initialCardFrame.size.height)
-                self.view.layoutIfNeeded()
-                
-                }) { (bool:Bool) -> () in
-                    
-                    
-                    self.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
-                    return
-            }
-        }
-
 
     }
     
@@ -106,33 +80,34 @@ class ModalMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         cardView?.reloadWithCard(maximizedCard, datasource: maximizedCardDataSource)
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
         
-        loaded = true
-        
-        // maximize card
-        
-        
-        // blur background
-        if(blurredOverlayView != nil){
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.blurredOverlayView!.alpha = 0.95
-            })
+        if presented == self {
+            return StockModalCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
+        }else{
+            return nil
         }
     }
     
-    // MARK: Private
-    func backgroundTapped(){
-
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
         
-        // unblur
-        if(blurredOverlayView != nil){
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                self.blurredOverlayView!.alpha = 0
-                }, completion: {(bool:Bool) -> Void in
-                    self.presentingViewController!.dismissViewControllerAnimated(false, completion: nil)
-            })
+        if presented == self {
+            return StockMaximizedCardAnimationController(isPresenting: true)
+        }else {
+            return nil
+        }
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        
+        if dismissed == self {
+            return StockMaximizedCardAnimationController(isPresenting: false)
+        }else {
+            return nil
         }
     }
 }

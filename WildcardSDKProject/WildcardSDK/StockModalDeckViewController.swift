@@ -149,6 +149,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         // set up new back card
         let thirdCard = cards[incrIndex(frontCardIndex, amount: 2)]
         let thirdCardView = CardView.createCardView(thirdCard)
+        thirdCardView?.delegate = self
         view.insertSubview(thirdCardView!, belowSubview:secondCardView)
         let newContainer = fullyConstrainCardView(thirdCardView!)
         
@@ -171,6 +172,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         // Initialize Front Card
         let frontCard = cards[frontCardIndex]
         let firstCardView = CardView.createCardView(frontCard)
+        firstCardView?.delegate = self
         view.addSubview(firstCardView!)
         let container = fullyConstrainCardView(firstCardView!)
         visibleCardViews.append(firstCardView!)
@@ -179,6 +181,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         // second
         let secondCard = cards[frontCardIndex + 1]
         let secondCardView = CardView.createCardView(secondCard)
+        secondCardView?.delegate = self
         view.insertSubview(secondCardView!, belowSubview:firstCardView!)
         let container2 = fullyConstrainCardView(secondCardView!)
         
@@ -190,6 +193,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         
         let thirdCard = cards[frontCardIndex + 2]
         let thirdCardView = CardView.createCardView(thirdCard)
+        thirdCardView?.delegate = self
         view.insertSubview(thirdCardView!, belowSubview:secondCardView!)
         let container3 = fullyConstrainCardView(thirdCardView!)
         

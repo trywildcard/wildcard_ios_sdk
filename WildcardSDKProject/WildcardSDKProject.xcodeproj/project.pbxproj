@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */; };
 		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
+		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
 		1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
@@ -65,7 +66,7 @@
 		1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764841A4356B200E51FE5 /* MaximizedArticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764831A4356B200E51FE5 /* MaximizedArticleDataSource.swift */; };
-		1D9764861A43747C00E51FE5 /* ModalMaximizedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764851A43747C00E51FE5 /* ModalMaximizedCardViewController.swift */; };
+		1D9764861A43747C00E51FE5 /* StockMaximizedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */; };
 		1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */; };
 		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
 		1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */; };
@@ -170,6 +171,7 @@
 /* Begin PBXFileReference section */
 		1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckViewController.swift; sourceTree = "<group>"; };
 		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
+		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
 		1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataSource.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
@@ -210,7 +212,7 @@
 		1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextFullWebView.swift; sourceTree = "<group>"; };
 		1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextFullWebView.xib; sourceTree = "<group>"; };
 		1D9764831A4356B200E51FE5 /* MaximizedArticleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximizedArticleDataSource.swift; sourceTree = "<group>"; };
-		1D9764851A43747C00E51FE5 /* ModalMaximizedCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalMaximizedCardViewController.swift; sourceTree = "<group>"; };
+		1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardViewController.swift; sourceTree = "<group>"; };
 		1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughEdge.swift; sourceTree = "<group>"; };
 		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
 		1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitEdge.swift; sourceTree = "<group>"; };
@@ -516,13 +518,14 @@
 		1DE2183E1A38073B007746B4 /* Stock Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
-				1D9764851A43747C00E51FE5 /* ModalMaximizedCardViewController.swift */,
+				1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */,
+				1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */,
+				1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */,
 				1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */,
 				1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */,
-				1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */,
-				1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */,
 				1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */,
+				1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */,
+				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
 			);
 			name = "Stock Presentations";
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
+				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
@@ -798,7 +802,7 @@
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
 				1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */,
 				1DFFEDD31A400843008E65BC /* BareBonesCardBody.swift in Sources */,
-				1D9764861A43747C00E51FE5 /* ModalMaximizedCardViewController.swift in Sources */,
+				1D9764861A43747C00E51FE5 /* StockMaximizedCardViewController.swift in Sources */,
 				1D74170E1A40772E00281714 /* SimpleDescriptionCardDataSource.swift in Sources */,
 				1D6719B01A44AA7A006DA49A /* StockModalCardAnimationController.swift in Sources */,
 				1DC9287E1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift in Sources */,

@@ -30,8 +30,8 @@ public extension UIViewController{
     }
     
     public func presentCardsAsStack(cards:[Card]){
-        if(cards.count < 5){
-            println("Can not present Deck with less than 5 Cards.")
+        if(cards.count < 4){
+            println("Can not present Deck with less than 4 Cards.")
             return
         }
         let deckController = StockModalDeckViewController()
@@ -44,26 +44,19 @@ public extension UIViewController{
     
     public func maximizeCardView(cardView:CardView){
         
-        let viewController = ModalMaximizedCardViewController()
+        let viewController = StockMaximizedCardViewController()
+        viewController.modalPresentationStyle = .Custom
+        viewController.transitioningDelegate = viewController
+        viewController.modalPresentationCapturesStatusBarAppearance = true
+        viewController.maximizedCard = cardView.backingCard
         
         let maximizedDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
+        viewController.maximizedCardDataSource = maximizedDataSource
         
         let convertedCardFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = convertedCardFrame
         viewController.initialCardDataSource = cardView.datasource
-        viewController.maximizedCardDataSource = maximizedDataSource
-        viewController.maximizedCard = cardView.backingCard
         
-        // snap shot current view to use as background in modal
-        let snapShot:UIView = view.snapshotViewAfterScreenUpdates(false)
-        viewController.view.insertSubview(snapShot, atIndex:0)
-        snapShot.constrainToSuperViewEdges()
-        
-        // prepare for presentation
-        viewController.presentingControllerBackgroundView = snapShot
-        viewController.blurredOverlayView = snapShot.addBlurOverlay(UIBlurEffectStyle.Dark)
-        viewController.blurredOverlayView!.alpha = 0
-        
-        presentViewController(viewController, animated: false, completion: nil)
+        presentViewController(viewController, animated: true, completion: nil)
     }
 }
