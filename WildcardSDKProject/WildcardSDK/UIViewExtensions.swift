@@ -30,6 +30,7 @@ public extension UIView{
     public func constrainLeftToSuperView(offset:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let leftConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: offset)
+        superview?.addConstraint(leftConstraint)
         superview?.layoutIfNeeded()
         return leftConstraint
     }
@@ -37,6 +38,7 @@ public extension UIView{
     public func constrainRightToSuperView(offset:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let rightConstraint = NSLayoutConstraint(item: self.superview!, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: offset)
+        superview?.addConstraint(rightConstraint)
         superview?.layoutIfNeeded()
         return rightConstraint
     }
@@ -44,6 +46,7 @@ public extension UIView{
     public func constrainTopToSuperView(offset:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let topConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: offset)
+        superview?.addConstraint(topConstraint)
         superview?.layoutIfNeeded()
         return topConstraint
     }
@@ -51,6 +54,7 @@ public extension UIView{
     public func constrainBottomToSuperView(offset:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let bottomConstraint = NSLayoutConstraint(item: self.superview!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: offset)
+        superview?.addConstraint(bottomConstraint)
         superview?.layoutIfNeeded()
         return bottomConstraint
     }

@@ -205,9 +205,10 @@ public class CardView : UIView, CardViewElementDelegate
     
     private func constrainSubComponent(cardComponent:UIView, offset:CGFloat, height:CGFloat){
         containerView.addSubview(cardComponent)
-        cardComponent.horizontallyCenterToSuperView(0)
-        containerView.addConstraint(NSLayoutConstraint(item: cardComponent, attribute: NSLayoutAttribute.Top, relatedBy:NSLayoutRelation.Equal, toItem: containerView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: offset))
-        cardComponent.constrainWidth(datasource.widthForCard(), andHeight: height)
+        cardComponent.constrainLeftToSuperView(0)
+        cardComponent.constrainRightToSuperView(0)
+        cardComponent.constrainTopToSuperView(offset)
+        cardComponent.constrainHeight(height)
     }
     
     private func updateForCard(card:Card){

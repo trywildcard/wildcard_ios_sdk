@@ -15,6 +15,8 @@ public protocol CardPhysicsDelegate{
     optional func cardViewDragged(cardView:CardView, position:CGPoint)
     optional func cardViewDropped(cardView:CardView, position:CGPoint)
     optional func cardViewLongPressed(cardView:CardView)
+    
+    optional func attachedCardViewDragged(cardView:CardView, attachedCardView:CardView, position:CGPoint)
 }
 
 public class CardPhysics : NSObject {
@@ -41,6 +43,10 @@ public class CardPhysics : NSObject {
         }
     }
     
+    public func attachMovementToCardView(cardView:CardView){
+        attachedCard = cardView
+    }
+    
     // MARK: Private properties
     var flipBoolean = false
     var cardLongPressGestureRecognizer:UILongPressGestureRecognizer?
@@ -48,6 +54,7 @@ public class CardPhysics : NSObject {
     var cardDoubleTapGestureRecognizer:UITapGestureRecognizer?
     var touchPosition:CGPoint = CGPointZero
     var originalPosition:CGPoint = CGPointZero
+    var attachedCard:CardView?
     
     // MARK: Initializers
     init(cardView:CardView){
@@ -61,7 +68,6 @@ public class CardPhysics : NSObject {
             touchPosition = recognizer.translationInView(cardView.superview!)
         }else if(recognizer.state == UIGestureRecognizerState.Changed){
             let currentLocation = recognizer.translationInView(cardView.superview!)
-            println("Current location is \(currentLocation)")
             let dx = currentLocation.x - touchPosition.x
             let dy = currentLocation.y - touchPosition.y
             
@@ -70,6 +76,10 @@ public class CardPhysics : NSObject {
             let finalX = dx + originalPosition.x
             let finalY = dy + originalPosition.y
             delegate?.cardViewDragged?(cardView, position: CGPointMake(finalX, finalY))
+            
+            if(attachedCard != nil){
+                attachedCard!.physics?.delegate?.attachedCardViewDragged?(attachedCard!, attachedCardView: cardView, position: CGPointMake(finalX, finalY))
+            }
             
         }else if(recognizer.state == UIGestureRecognizerState.Ended){
             let currentLocation = recognizer.translationInView(cardView.superview!)
@@ -105,15 +115,15 @@ public class CardPhysics : NSObject {
         let rotation:CGAffineTransform = CGAffineTransformMakeRotation(M_PI_CGFLOAT * (-degrees/180.0))
         cardView.transform = CGAffineTransformConcat(rotation,translation)
     }
-    
+   
     func panGestureReset()
     {
         cardPanGestureRecognizer?.enabled = false
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.cardView.transform = CGAffineTransformIdentity
             }){ (bool:Bool) -> Void in
-                println("Card View Position Reset")
                 self.cardPanGestureRecognizer?.enabled = true
+                return
         }
     }
     

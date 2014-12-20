@@ -10,13 +10,15 @@ import Foundation
 
 class StockModalDeckViewController : UIViewController, UIViewControllerTransitioningDelegate, CardViewDelegate, CardPhysicsDelegate
 {
-    
     struct ConstraintContainer{
         var centerX:NSLayoutConstraint
         var centerY:NSLayoutConstraint
         var width:NSLayoutConstraint
         var height:NSLayoutConstraint
     }
+    
+    let BACKCARD_VERTICAL_OFFSET:CGFloat = 12
+    let BACKCARD_SCALE:CGFloat = 0.97
     
     var backgroundClearView:UIView?
     var backgroundTapRecognizer:UITapGestureRecognizer?
@@ -25,22 +27,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     
     var visibleCardViews:[CardView] = []
     var visibleCardConstraintContainers:[ConstraintContainer] = []
-    var frontCardIndex = 0
-    
-    //var visibleCards:[Card] = []
-    
-    /*
-    var frontCard:Card?
-    var backCard:Card?
-    var frontCardView:CardView?
-    var backCardView:CardView?
-    var currentCardIndex:Int = 0
-    
-    var frontCardCenterX:NSLayoutConstraint?
-    var frontCardCenterY:NSLayoutConstraint?
-    var backCardCenterX:NSLayoutConstraint?
-    var backCardCenterY:NSLayoutConstraint?
-*/
+    var frontCardIndex:Int = 0
     
     // MARK: CardViewDelegate
     func cardViewRequestedMaximize(cardView: CardView) {
@@ -50,7 +37,6 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
         
-        /*
         // check if the card view has been dragged "out of bounds" in the view controller view(10% of edges)
         let viewBounds = view.bounds
         
@@ -60,10 +46,9 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         // move left, right, up, or down
         if(position.x < horizontalThreshold){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                if let constraint = self.frontCardCenterX {
+                    let constraint = self.visibleCardConstraintContainers[0].centerX
                     constraint.constant = constraint.constant - viewBounds.width
                     self.view.layoutIfNeeded()
-                }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
                     self.setupNextCard()
@@ -71,10 +56,9 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
             
         }else if(position.x > (view.bounds.width - horizontalThreshold)){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                if let constraint = self.frontCardCenterX {
+                    let constraint = self.visibleCardConstraintContainers[0].centerX
                     constraint.constant = constraint.constant + viewBounds.width
                     self.view.layoutIfNeeded()
-                }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
                     self.setupNextCard()
@@ -82,10 +66,9 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
             
         }else if(position.y < verticalThreshold){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                if let constraint = self.frontCardCenterY {
+                    let constraint = self.visibleCardConstraintContainers[0].centerY
                     constraint.constant = constraint.constant - viewBounds.height
                     self.view.layoutIfNeeded()
-                }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
                     self.setupNextCard()
@@ -93,70 +76,87 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
             
         }else if(position.y > (view.bounds.height - verticalThreshold)){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                if let constraint = self.frontCardCenterY {
+                    let constraint = self.visibleCardConstraintContainers[0].centerY
                     constraint.constant = constraint.constant + viewBounds.height
                     self.view.layoutIfNeeded()
-                }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
                     self.setupNextCard()
             }
         }else{
             cardView.physics?.panGestureReset()
+            
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.visibleCardViews[1].transform =   CGAffineTransformMakeScale(self.BACKCARD_SCALE,self.BACKCARD_SCALE)
+                }){ (bool:Bool) -> Void in
+                    return
+            }
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.visibleCardViews[2].transform =   CGAffineTransformMakeScale(self.BACKCARD_SCALE,self.BACKCARD_SCALE)
+                }){ (bool:Bool) -> Void in
+                    return
+            }
         }
-*/
-        cardView.physics?.panGestureReset()
+        
     }
     
     func cardViewDragged(cardView: CardView, position: CGPoint) {
-       // println(position)
-       // println(frontCardCenter)
-        //println(position)
         let xDiff = position.x - frontCardCenter.x
         let yDiff = position.y - frontCardCenter.y
         
+        let THRESHOLD:CGFloat = 140
         var distanceFromCenter:CGFloat = sqrt((xDiff * xDiff) + (yDiff * yDiff))
-        //println(distanceFromCenter)
-        
-        let THRESHOLD:CGFloat = 200
-        var percentage:CGFloat = 0
-        if distanceFromCenter > THRESHOLD{
-            percentage = 1
-        }else{
-            percentage = distanceFromCenter / THRESHOLD
-        }
-        
+        distanceFromCenter = min(distanceFromCenter,THRESHOLD)
+        var percentage:CGFloat = distanceFromCenter / THRESHOLD
         println(percentage)
         
-        let firstContainer = visibleCardConstraintContainers[0]
+        let yTranslate:CGFloat = (BACKCARD_VERTICAL_OFFSET * percentage)
+        let scale:CGFloat = BACKCARD_SCALE + (0.03 * percentage)
         
-        let secondContainer = visibleCardConstraintContainers[1]
-        secondContainer.width.constant = firstContainer.width.constant - 20 + (20*percentage)
-        secondContainer.centerY.constant = firstContainer.centerY.constant - 10 + (10*percentage)
-        view.layoutIfNeeded()
+        let translation:CGAffineTransform = CGAffineTransformMakeScale(scale,scale)
+        let translation2:CGAffineTransform = CGAffineTransformMakeTranslation(0, -yTranslate)
+        let secondCardView = visibleCardViews[1]
+        secondCardView.transform = CGAffineTransformConcat(translation, translation2)
         
+        let translation3:CGAffineTransform = CGAffineTransformMakeScale(BACKCARD_SCALE,BACKCARD_SCALE)
+        let translation4:CGAffineTransform = CGAffineTransformMakeTranslation(0, yTranslate)
+        let thirdCardView = visibleCardViews[2]
+        thirdCardView.transform = CGAffineTransformConcat(translation3, translation4)
     }
     
-    
-    // MARK:Private
-    /*
     func setupNextCard(){
         
-        // back to front
-        frontCard = backCard
-        frontCardView = backCardView
-        frontCardCenterX = backCardCenterX
-        frontCardCenterY = backCardCenterY
+        visibleCardViews.removeAtIndex(0)
+        visibleCardConstraintContainers.removeAtIndex(0)
         
-        // up index
-        currentCardIndex = nextIndex(currentCardIndex)
+        // update current index
+        frontCardIndex = incrIndex(frontCardIndex,amount: 1)
         
-        // new back card
-        let backCardIndex = nextIndex(currentCardIndex)
-        let newBackCard = cards[backCardIndex]
-        setupBackCard(newBackCard)
+        // init physics, etc. on front card
+        let frontCardContainer = visibleCardConstraintContainers[0]
+        frontCardContainer.centerY.constant = 0
+        let frontCardView = visibleCardViews[0]
+        frontCardView.physics?.delegate = self
+        frontCardView.physics?.enableDragging = true
+        frontCardView.transform = CGAffineTransformMakeScale(1, 1)
+        
+        // middle
+        let middleCardContainer = visibleCardConstraintContainers[1]
+        let secondCardView = visibleCardViews[1]
+        middleCardContainer.centerY.constant = BACKCARD_VERTICAL_OFFSET
+        secondCardView.transform = CGAffineTransformMakeScale(BACKCARD_SCALE, BACKCARD_SCALE)
+        
+        // set up new back card
+        let thirdCard = cards[incrIndex(frontCardIndex, amount: 2)]
+        let thirdCardView = CardView.createCardView(thirdCard)
+        view.insertSubview(thirdCardView!, belowSubview:secondCardView)
+        let newContainer = fullyConstrainCardView(thirdCardView!)
+        
+        thirdCardView?.transform = CGAffineTransformMakeScale(BACKCARD_SCALE, BACKCARD_SCALE)
+        
+        visibleCardViews.append(thirdCardView!)
+        visibleCardConstraintContainers.append(newContainer)
     }
-*/
     
     
     // MARK:UIViewController
@@ -169,28 +169,35 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
         
         // Initialize Front Card
-        let frontCard = cards[0]
+        let frontCard = cards[frontCardIndex]
         let firstCardView = CardView.createCardView(frontCard)
         view.addSubview(firstCardView!)
         let container = fullyConstrainCardView(firstCardView!)
-        
         visibleCardViews.append(firstCardView!)
         visibleCardConstraintContainers.append(container)
-
         
-         let secondCard = cards[1]
+        // second
+        let secondCard = cards[frontCardIndex + 1]
         let secondCardView = CardView.createCardView(secondCard)
         view.insertSubview(secondCardView!, belowSubview:firstCardView!)
         let container2 = fullyConstrainCardView(secondCardView!)
         
-        container2.width.constant -= 20
-        container2.centerY.constant -= 10
+        secondCardView?.transform = CGAffineTransformMakeScale(BACKCARD_SCALE, BACKCARD_SCALE)
+        container2.centerY.constant = BACKCARD_VERTICAL_OFFSET
         
         visibleCardViews.append(secondCardView!)
         visibleCardConstraintContainers.append(container2)
-        secondCardView?.setNeedsLayout()
         
+        let thirdCard = cards[frontCardIndex + 2]
+        let thirdCardView = CardView.createCardView(thirdCard)
+        view.insertSubview(thirdCardView!, belowSubview:secondCardView!)
+        let container3 = fullyConstrainCardView(thirdCardView!)
         
+        thirdCardView?.transform = CGAffineTransformMakeScale(BACKCARD_SCALE, BACKCARD_SCALE)
+        
+        visibleCardViews.append(thirdCardView!)
+        visibleCardConstraintContainers.append(container3)
+
         backgroundClearView = UIView(frame:CGRectZero)
         view.insertSubview(backgroundClearView!, atIndex:0)
         backgroundClearView?.constrainToSuperViewEdges()
@@ -208,7 +215,6 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     }
     
     // MARK: Private
-    
     func fullyConstrainCardView(cardView:CardView)->ConstraintContainer{
         let centerX = cardView.horizontallyCenterToSuperView(0)
         let centerY = cardView.verticallyCenterToSuperView(0)
@@ -221,27 +227,9 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func nextIndex(index:Int)->Int{
-        return (index + 1) % cards.count
+    func incrIndex(index:Int, amount:Int)->Int{
+        return (index + amount) % cards.count
     }
-    
-    /*
-    func setupBackCard(card:Card){
-        // set up the card in the back
-        if(frontCardView != nil){
-            backCard = card
-            backCardView = CardView.createCardView(backCard!)
-            backCardView?.delegate = self
-            backCardView?.physics?.delegate = self
-            backCardView?.physics?.enableDragging = true
-            
-            view.insertSubview(backCardView!, belowSubview: frontCardView!)
-            backCardCenterX = backCardView?.horizontallyCenterToSuperView(0)
-            backCardCenterY = backCardView?.verticallyCenterToSuperView(0)
-            backCardView?.constrainWidth(backCardView!.frame.size.width, andHeight: backCardView!.frame.size.height)
-        }
-    }
-*/
     
     // MARK: UIViewControllerTransitioningDelegate
     func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
@@ -270,7 +258,4 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
             return nil
         }
     }
-    
-
-    
 }
