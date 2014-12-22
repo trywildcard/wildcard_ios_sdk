@@ -12,6 +12,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
+    var previousCardView:CardView!
     var cardView:CardView?
     var maximizedCard:Card!
     var maximizedCardDataSource:CardViewDataSource!
@@ -25,10 +26,11 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var initialCardFrame:CGRect!
     var initialCardDataSource:CardViewDataSource!
     
-    var loaded:Bool = false
-    
     func cardViewRequestedCollapse(cardView: CardView) {
-        cardView.reloadWithCard(maximizedCard, datasource: initialCardDataSource)
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func closeButtonTapped(){
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -64,27 +66,34 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        cardView?.fadeOut(0.3, delay: 0, completion: { (bool) -> Void in
+            self.cardView?.reloadWithCard(self.maximizedCard, datasource: self.maximizedCardDataSource)
+            self.cardView?.header?.alpha = 0
+            self.cardView?.footer?.alpha = 0
+            self.cardView?.body?.alpha = 0
+            self.cardView?.fadeIn(0.3, delay: 0, completion: nil)
+        })
     }
 
-    
     func cardViewWillReload(cardView: CardView) {
-
     }
     
     func cardViewDidReload(cardView: CardView) {
     }
     
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        cardView?.reloadWithCard(maximizedCard, datasource: maximizedCardDataSource)
+
     }
     
     // MARK: UIViewControllerTransitioningDelegate
     func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
         
         if presented == self {
-            return StockModalCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            let presentationController = StockMaximizedCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            presentationController.presentingCardView = previousCardView
+            return presentationController
         }else{
             return nil
         }

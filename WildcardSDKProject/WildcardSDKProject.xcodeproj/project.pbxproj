@@ -25,6 +25,7 @@
 		1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */; };
 		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
 		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
+		1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */; };
 		1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
@@ -108,6 +109,7 @@
 		1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC928851A409A590040DAD0 /* FullCardHeader.xib */; };
 		1DC928891A409CC00040DAD0 /* CenteredImageBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928881A409CC00040DAD0 /* CenteredImageBody.swift */; };
 		1DC9288B1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */; };
+		1DCA935C1A47D35100782193 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA935B1A47D35100782193 /* ViewController4.swift */; };
 		1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */; };
 		1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */; };
 		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
@@ -172,6 +174,7 @@
 		1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckViewController.swift; sourceTree = "<group>"; };
 		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
 		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
+		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
 		1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataSource.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
@@ -244,6 +247,7 @@
 		1DC928851A409A590040DAD0 /* FullCardHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullCardHeader.xib; sourceTree = "<group>"; };
 		1DC928881A409CC00040DAD0 /* CenteredImageBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredImageBody.swift; sourceTree = "<group>"; };
 		1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFullFloatBottomDataSource.swift; sourceTree = "<group>"; };
+		1DCA935B1A47D35100782193 /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		1DE2183A1A37FFE9007746B4 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				1D3A28621A2E696A00A9D4C1 /* ViewController.swift */,
 				1DE2184A1A38DCA6007746B4 /* ViewController2.swift */,
 				1D3064761A3B83B100D99F6E /* ViewController3.swift */,
+				1DCA935B1A47D35100782193 /* ViewController4.swift */,
 				1D3A28641A2E696A00A9D4C1 /* Main.storyboard */,
 				1D3A28671A2E696A00A9D4C1 /* Images.xcassets */,
 				1D3A28691A2E696A00A9D4C1 /* LaunchScreen.xib */,
@@ -519,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */,
+				1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */,
 				1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */,
 				1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */,
 				1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */,
@@ -760,6 +766,7 @@
 				1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */,
 				1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */,
 				1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */,
+				1DCA935C1A47D35100782193 /* ViewController4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +821,7 @@
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
+				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,
 				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,
 				1DF0BA9B1A39F82100EE9645 /* UIImageViewExtensions.swift in Sources */,

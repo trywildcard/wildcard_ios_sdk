@@ -16,9 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-x2-z6p">
+                                <rect key="frame" x="229" y="411" width="141" height="30"/>
+                                <state key="normal" title="Present Card Style 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="firstButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hEL-Yt-aqq"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IO0-Rv-PYu">
-                                <rect key="frame" x="188" y="456" width="224" height="30"/>
-                                <state key="normal" title="Default Modal Presentation Card">
+                                <rect key="frame" x="229" y="456" width="141" height="30"/>
+                                <state key="normal" title="Present Card Style 2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -26,22 +35,32 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fM2-rn-VGX">
-                                <rect key="frame" x="186" y="501" width="228" height="30"/>
-                                <state key="normal" title="Default Modal With Another Style">
+                                <rect key="frame" x="229" y="501" width="141" height="30"/>
+                                <state key="normal" title="Present Card Style 3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="secondButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HGe-z5-cU1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Basic Card Added Inline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-W7-4cb">
+                                <rect key="frame" x="199" y="50" width="202" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fM2-rn-VGX" firstAttribute="top" secondItem="IO0-Rv-PYu" secondAttribute="bottom" constant="15" id="6eN-im-vAU"/>
+                            <constraint firstAttribute="centerX" secondItem="mxQ-x2-z6p" secondAttribute="centerX" id="8aZ-Nr-76X"/>
+                            <constraint firstItem="IO0-Rv-PYu" firstAttribute="top" secondItem="mxQ-x2-z6p" secondAttribute="bottom" constant="15" id="Kbs-X8-XzY"/>
                             <constraint firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="Mrn-Cw-J9Q"/>
+                            <constraint firstItem="5Nn-W7-4cb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="apy-cC-nB8"/>
                             <constraint firstAttribute="centerY" secondItem="IO0-Rv-PYu" secondAttribute="centerY" id="eTT-zk-unx"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="fM2-rn-VGX" secondAttribute="bottom" constant="20" id="h2R-cM-pse"/>
                             <constraint firstItem="fM2-rn-VGX" firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="iEC-ZA-vAl"/>
+                            <constraint firstAttribute="centerX" secondItem="5Nn-W7-4cb" secondAttribute="centerX" id="qsm-ZB-9fO"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -67,36 +86,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDr-WV-wbr">
-                                <rect key="frame" x="209" y="50" width="181" height="30"/>
-                                <state key="normal" title="Present Modal Card Stack">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Flourishes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-zw-cJo">
+                                <rect key="frame" x="240" y="50" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kMi-zw-cJo" secondAttribute="centerX" id="dza-2j-Aqd"/>
+                            <constraint firstItem="kMi-zw-cJo" firstAttribute="top" secondItem="fhN-oy-XKG" secondAttribute="bottom" constant="30" id="gSX-jq-jhb"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Demo 3" id="JcI-jH-HtG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gam-CR-4Eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="251" y="1075"/>
+        </scene>
+        <!--Demo4-->
+        <scene sceneID="D3G-GM-wI6">
+            <objects>
+                <viewController id="ccK-gt-S2t" customClass="ViewController4" customModule="WildcardSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ahs-4c-umI"/>
+                        <viewControllerLayoutGuide type="bottom" id="19U-7q-BAu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HPI-5J-gU0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-Hb-wtG">
+                                <rect key="frame" x="174" y="50" width="251" height="30"/>
+                                <state key="normal" title="Present Cards as a Swipe-able Deck">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="presentButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="12m-e4-Pkt"/>
+                                    <action selector="presentButtonTapped:" destination="ccK-gt-S2t" eventType="touchUpInside" id="nlr-KM-YU9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mDr-WV-wbr" firstAttribute="top" secondItem="fhN-oy-XKG" secondAttribute="bottom" constant="30" id="KfH-ib-DrA"/>
-                            <constraint firstAttribute="centerX" secondItem="mDr-WV-wbr" secondAttribute="centerX" id="MEv-Xa-bk1"/>
-                            <constraint firstAttribute="centerY" secondItem="mDr-WV-wbr" secondAttribute="centerY" id="t5V-Zd-pVV"/>
+                            <constraint firstItem="JuO-Hb-wtG" firstAttribute="top" secondItem="Ahs-4c-umI" secondAttribute="bottom" constant="30" id="H4a-FJ-SoQ"/>
+                            <constraint firstAttribute="centerX" secondItem="JuO-Hb-wtG" secondAttribute="centerX" id="Ou9-Ad-AAa"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="t5V-Zd-pVV"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Demo 3" id="JcI-jH-HtG"/>
+                    <tabBarItem key="tabBarItem" title="Demo4" id="YTi-WH-rab"/>
                     <connections>
-                        <outlet property="presentButton" destination="mDr-WV-wbr" id="J4V-g5-4ZH"/>
+                        <outlet property="presentButton" destination="JuO-Hb-wtG" id="yKg-3B-Tng"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gam-CR-4Eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMQ-wK-0NA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="1075"/>
+            <point key="canvasLocation" x="-434" y="917"/>
         </scene>
         <!--Demo 2-->
         <scene sceneID="RG1-W1-Znq">
@@ -120,12 +164,25 @@
                                     <action selector="reRenderTapped:" destination="54Z-eI-u65" eventType="touchUpInside" id="42A-8q-Zho"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rnR-Wr-tVo">
+                                <rect key="frame" x="290" y="506" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Card View Reloaded w/ Different Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpJ-pC-4Be">
+                                <rect key="frame" x="132" y="50" width="336" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="nnx-wR-zqt" secondAttribute="centerX" id="5MG-ob-vM9"/>
+                            <constraint firstItem="rnR-Wr-tVo" firstAttribute="top" secondItem="nnx-wR-zqt" secondAttribute="bottom" constant="5" id="F18-8v-jKI"/>
+                            <constraint firstItem="wpJ-pC-4Be" firstAttribute="top" secondItem="ycq-Gs-8fu" secondAttribute="bottom" constant="30" id="HLZ-z7-4P4"/>
+                            <constraint firstAttribute="centerX" secondItem="wpJ-pC-4Be" secondAttribute="centerX" id="LFO-5M-ZSM"/>
                             <constraint firstItem="idc-VG-4R3" firstAttribute="top" secondItem="nnx-wR-zqt" secondAttribute="bottom" constant="50" id="OwA-Z5-Ytn"/>
                             <constraint firstAttribute="centerY" secondItem="nnx-wR-zqt" secondAttribute="centerY" id="RUd-fg-Wyr"/>
+                            <constraint firstItem="nnx-wR-zqt" firstAttribute="centerX" secondItem="rnR-Wr-tVo" secondAttribute="centerX" id="SUf-aq-eV3"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -136,6 +193,7 @@
                     <tabBarItem key="tabBarItem" title="Demo 2" id="0D8-WY-a0N"/>
                     <connections>
                         <outlet property="reRenderButton" destination="nnx-wR-zqt" id="V2f-tm-HLd"/>
+                        <outlet property="spinner" destination="rnR-Wr-tVo" id="nn4-dR-C9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxb-DK-83k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,6 +214,7 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="CGU-sq-D68"/>
                         <segue destination="54Z-eI-u65" kind="relationship" relationship="viewControllers" id="Gmh-Le-eQn"/>
                         <segue destination="TcV-Vj-cbZ" kind="relationship" relationship="viewControllers" id="lQH-kC-TuZ"/>
+                        <segue destination="ccK-gt-S2t" kind="relationship" relationship="viewControllers" id="Psv-1R-Rd9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POJ-el-vHh" userLabel="First Responder" sceneMemberID="firstResponder"/>

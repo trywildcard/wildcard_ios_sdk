@@ -1,27 +1,24 @@
 //
-//  ModalCardPresentationController.swift
+//  StockMaximizedCardPresentationController.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/19/14.
+//  Created by David Xiang on 12/21/14.
 //
 //
 
-import UIKit
+import Foundation
 
-/*
- * The only purpose of this presentation controller is to add a blur effect 
- * for the duration of the presentation
- *
- */
-class StockModalCardPresentationController: UIPresentationController {
-   
+class StockMaximizedCardPresentationController :UIPresentationController
+{
+    var presentingCardView:CardView!
+    
     lazy var blurView :UIView = {
         let view = UIView(frame: self.containerView!.bounds)
         view.backgroundColor = UIColor.clearColor()
         let blur = view.addBlurOverlay(UIBlurEffectStyle.Dark)
         blur.alpha = 0
         return blur
-    }()
+        }()
     
     override func presentationTransitionWillBegin() {
         self.blurView.frame = self.containerView.bounds
@@ -39,6 +36,7 @@ class StockModalCardPresentationController: UIPresentationController {
         if !completed {
             blurView.removeFromSuperview()
         }
+        presentingCardView.fadeOut(0, delay: 0, completion: nil)
     }
     
     override func dismissalTransitionWillBegin()  {
@@ -52,7 +50,7 @@ class StockModalCardPresentationController: UIPresentationController {
     override func dismissalTransitionDidEnd(completed: Bool) {
         if completed {
             blurView.removeFromSuperview()
+            presentingCardView.fadeIn(0.3, delay: 0, completion: nil)
         }
     }
-    
 }

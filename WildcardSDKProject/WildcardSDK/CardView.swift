@@ -113,6 +113,28 @@ public class CardView : UIView, CardViewElementDelegate
         delegate?.cardViewDidReload?(self)
     }
     
+    func fadeOut(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
+        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.header?.alpha = 0
+            self.body?.alpha = 0
+            self.footer?.alpha = 0
+            }) { (bool:Bool) -> Void in
+                completion?(bool: bool)
+                return
+        }
+    }
+    
+    func fadeIn(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
+        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.header?.alpha = 1
+            self.body?.alpha = 1
+            self.footer?.alpha = 1
+            }) { (bool:Bool) -> Void in
+                completion?(bool: bool)
+                return
+        }
+    }
+    
     // MARK: Private properties
     var containerView:UIView!
     var back:UIView?

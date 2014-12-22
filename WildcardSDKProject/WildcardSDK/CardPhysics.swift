@@ -55,6 +55,7 @@ public class CardPhysics : NSObject {
     var touchPosition:CGPoint = CGPointZero
     var originalPosition:CGPoint = CGPointZero
     var attachedCard:CardView?
+    var pulsing:Bool = false
     
     // MARK: Initializers
     init(cardView:CardView){
@@ -128,7 +129,21 @@ public class CardPhysics : NSObject {
     }
     
     func cardLongPress(recognizer:UILongPressGestureRecognizer!){
-        delegate?.cardViewLongPressed?(cardView)
+        if(!pulsing){
+            delegate?.cardViewLongPressed?(cardView)
+            pulsing  = true
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.cardView.transform = CGAffineTransformMakeScale(1.04, 1.04)
+                }){ (bool:Bool) -> Void in
+                    UIView.animateWithDuration(0.2, animations: { () -> Void in
+                        self.cardView.transform = CGAffineTransformIdentity
+                        }) { (bool:Bool) -> Void in
+                            self.pulsing = false
+                            return
+                            
+                    }
+            }
+        }
     }
     
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){
@@ -154,6 +169,7 @@ public class CardPhysics : NSObject {
     func setup(){
         
         cardLongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "cardLongPress:")
+        cardLongPressGestureRecognizer?.minimumPressDuration = 0.25
         self.cardView.addGestureRecognizer(cardLongPressGestureRecognizer!)
         
         cardDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cardDoubleTapped:")

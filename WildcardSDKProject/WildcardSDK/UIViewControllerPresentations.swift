@@ -45,18 +45,21 @@ public extension UIViewController{
     public func maximizeCardView(cardView:CardView){
         
         let viewController = StockMaximizedCardViewController()
+        viewController.previousCardView = cardView
+        viewController.initialCardDataSource = cardView.datasource
         viewController.modalPresentationStyle = .Custom
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationCapturesStatusBarAppearance = true
         viewController.maximizedCard = cardView.backingCard
         
-        let maximizedDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
-        viewController.maximizedCardDataSource = maximizedDataSource
+        viewController.maximizedCardDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
         
-        let convertedCardFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
-        viewController.initialCardFrame = convertedCardFrame
-        viewController.initialCardDataSource = cardView.datasource
         
+        let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
+        viewController.initialCardFrame = initialFrame
+        
+        println("PRESNTING Card view")
+        println(cardView)
         presentViewController(viewController, animated: true, completion: nil)
     }
 }

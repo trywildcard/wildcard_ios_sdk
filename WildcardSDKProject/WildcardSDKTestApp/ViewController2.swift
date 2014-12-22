@@ -11,6 +11,7 @@ import WildcardSDK
 
 class ViewController2: UIViewController, CardViewDelegate {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     var redditData:[NSDictionary] = []
     var counter = 0
     var mainCardView:CardView?
@@ -32,12 +33,12 @@ class ViewController2: UIViewController, CardViewDelegate {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "A Bare Bones Card", title: "A Bare Bones Card", dictionary: nil)
+        let dummyCard = WebLinkCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", dictionary: nil)
         let bareBones = BareBonesCardDataSource(card:dummyCard)
         if let cardView = CardView.createCardView(dummyCard, datasource: bareBones){
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
-            cardView.verticallyCenterToSuperView(-100)
+            cardView.verticallyCenterToSuperView(-50)
             mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
             mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
             cardView.delegate = self
@@ -101,8 +102,11 @@ class ViewController2: UIViewController, CardViewDelegate {
                     }
                     else{
                         reRenderButton.enabled = false
+                        spinner.startAnimating()
+                        
                         WebLinkCard.createFromWebUrl(url, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.spinner.stopAnimating()
                                 self.reRenderButton.enabled = true
                                 if (error == nil && card != nil){
                                     self.mainCardView!.reloadWithCard(card!)

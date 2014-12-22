@@ -62,6 +62,7 @@ class StockModalCardAnimationController: NSObject,UIViewControllerAnimatedTransi
             // move card up and out
             if(stockModalController.cardView != nil){
                 UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                    stockModalController.closeButton.alpha = 0
                     stockModalController.cardViewVerticalConstraint!.constant = -presentedControllerView.frame.size.height
                     stockModalController.view.layoutIfNeeded()
                     }, completion: {(completed: Bool) -> Void in

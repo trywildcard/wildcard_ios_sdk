@@ -12,7 +12,6 @@ import WildcardSDK
 class ViewController3: UIViewController, CardViewDelegate {
 
     var dummyCardStack:[Card] = []
-    @IBOutlet weak var presentButton: UIButton!
     
     func cardViewRequestedMaximize(cardView: CardView) {
         // use wildcard's stock maximize presentation
@@ -26,26 +25,11 @@ class ViewController3: UIViewController, CardViewDelegate {
         
     }
     
-   // func cardViewRequestedCollapse(cardView: CardView) {
-    //    <#code#>
-   // }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.wildcardBackgroundGray()
 
-        presentButton.enabled = false
-        ArticleCard.searchArticleCards("isis", completion: { (cards:[ArticleCard]?, error:NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.presentButton.enabled = true
-                if(cards != nil){
-                    self.dummyCardStack = cards!
-                }
-            })
-        })
-        
-        
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/20/us/ray-rice-janay-rice-after-attack/index.html?hpt=us_c1")
         ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -67,8 +51,5 @@ class ViewController3: UIViewController, CardViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func presentButtonTapped(sender: AnyObject) {
-        presentCardsAsStack(dummyCardStack)
-    }
 
 }
