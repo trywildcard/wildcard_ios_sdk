@@ -67,7 +67,7 @@ public class CardView : UIView, CardViewElementDelegate
     }
     
     public class func createCardView(card:Card, datasource:CardViewDataSource)->CardView?{
-        let size = CardView.createSizeFromDataSource(datasource)
+        let size = Utilities.sizeFromDataSource(datasource)
         let cardFrame = CGRectMake(0, 0, size.width, size.height)
         let newCardView = CardView(frame: cardFrame)
         newCardView.datasource = datasource
@@ -76,7 +76,6 @@ public class CardView : UIView, CardViewElementDelegate
         newCardView.refresh()
         return newCardView
     }
-    
     
     // MARK: Public Instance
     public func refresh(){
@@ -96,7 +95,7 @@ public class CardView : UIView, CardViewElementDelegate
         self.datasource = datasource
         
         // calculate new frame, let delegate prepare
-        let newSize = CardView.createSizeFromDataSource(datasource)
+        let newSize = Utilities.sizeFromDataSource(datasource)
         frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
         delegate?.cardViewWillReload?(self)
         
@@ -113,7 +112,7 @@ public class CardView : UIView, CardViewElementDelegate
         delegate?.cardViewDidReload?(self)
     }
     
-    func fadeOut(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
+    public func fadeOut(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
         UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.header?.alpha = 0
             self.body?.alpha = 0
@@ -124,7 +123,7 @@ public class CardView : UIView, CardViewElementDelegate
         }
     }
     
-    func fadeIn(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
+    public func fadeIn(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
         UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.header?.alpha = 1
             self.body?.alpha = 1
@@ -243,19 +242,6 @@ public class CardView : UIView, CardViewElementDelegate
         if let footer = footer as? CardViewElement{
             footer.updateForCard(card)
         }
-    }
-    
-    private class func createSizeFromDataSource(datasource:CardViewDataSource)->CGSize{
-        let width = datasource.widthForCard()
-        var height:CGFloat = 0
-        if let headerHeight = datasource.heightForCardHeader?(){
-            height += headerHeight
-        }
-        if let footerHeight = datasource.heightForCardFooter?(){
-            height += footerHeight
-        }
-        height += datasource.heightForCardBody()
-        return CGSizeMake(width, height)
     }
 
     private func convenienceInitialize(){

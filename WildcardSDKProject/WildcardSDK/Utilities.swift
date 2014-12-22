@@ -44,4 +44,18 @@ class Utilities{
     class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
+    
+    class func sizeFromDataSource(datasource:CardViewDataSource)->CGSize{
+        let width = datasource.widthForCard()
+        var height:CGFloat = 0
+        if let headerHeight = datasource.heightForCardHeader?(){
+            height += headerHeight
+        }
+        if let footerHeight = datasource.heightForCardFooter?(){
+            height += footerHeight
+        }
+        height += datasource.heightForCardBody()
+        return CGSizeMake(width, height)
+    }
+    
 }

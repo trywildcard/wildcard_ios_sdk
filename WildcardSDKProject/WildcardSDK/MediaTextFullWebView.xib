@@ -15,9 +15,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-q3-6nl">
-                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ojq-4z-q1T"/>
+                        <constraint firstAttribute="height" constant="40" id="ojq-4z-q1T"/>
                     </constraints>
                     <items>
                         <barButtonItem systemItem="stop" id="IGw-lH-uZC">

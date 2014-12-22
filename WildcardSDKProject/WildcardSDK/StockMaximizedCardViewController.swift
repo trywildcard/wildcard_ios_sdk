@@ -67,12 +67,11 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        cardView?.fadeOut(0.3, delay: 0, completion: { (bool) -> Void in
+        cardView?.fadeOut(0.2, delay: 0, completion: { (bool) -> Void in
             self.cardView?.reloadWithCard(self.maximizedCard, datasource: self.maximizedCardDataSource)
             self.cardView?.header?.alpha = 0
             self.cardView?.footer?.alpha = 0
             self.cardView?.body?.alpha = 0
-            self.cardView?.fadeIn(0.3, delay: 0, completion: nil)
         })
     }
 
@@ -84,7 +83,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
+        self.cardView?.fadeIn(0.2, delay: 0, completion: nil)
     }
     
     // MARK: UIViewControllerTransitioningDelegate

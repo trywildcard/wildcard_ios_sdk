@@ -54,12 +54,9 @@ public extension UIViewController{
         
         viewController.maximizedCardDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
         
-        
         let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = initialFrame
         
-        println("PRESNTING Card view")
-        println(cardView)
         presentViewController(viewController, animated: true, completion: nil)
     }
 }

@@ -30,6 +30,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     var visibleCardViews:[CardView] = []
     var visibleCardConstraintContainers:[ConstraintContainer] = []
     var frontCardIndex:Int = 0
+    var closeButton:UIButton!
     
     // MARK: CardViewDelegate
     func cardViewRequestedMaximize(cardView: CardView) {
@@ -160,6 +161,9 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         visibleCardConstraintContainers.append(container3)
         
     }
+    func closeButtonTapped(){
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
     // MARK:UIViewController
@@ -169,6 +173,15 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        closeButton.setImage(UIImage(named: "closeIcon"), forState: UIControlState.Normal)
+        view.addSubview(closeButton)
+        closeButton.constrainTopToSuperView(15)
+        closeButton.constrainLeftToSuperView(0)
+        closeButton.constrainWidth(50, andHeight: 50)
+        closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        
         
         // Initialize Front Card
         let frontCard = cards[frontCardIndex]
