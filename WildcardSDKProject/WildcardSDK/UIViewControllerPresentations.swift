@@ -50,9 +50,9 @@ public extension UIViewController{
         viewController.modalPresentationStyle = .Custom
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationCapturesStatusBarAppearance = true
-        viewController.maximizedCard = cardView.backingCard
+        viewController.maximizedCard = cardView.datasource.backingCard()
         
-        viewController.maximizedCardDataSource = MaximizedArticleDataSource(card:cardView.backingCard)
+        viewController.maximizedCardDataSource = MaximizedArticleDataSource(card:cardView.datasource.backingCard())
         
         let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = initialFrame

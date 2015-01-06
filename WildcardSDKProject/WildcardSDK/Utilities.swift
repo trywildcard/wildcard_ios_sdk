@@ -9,8 +9,7 @@
 import Foundation
 
 class Utilities{
-    class func printFontFamilies()
-    {
+    class func printFontFamilies(){
         for name in UIFont.familyNames()
         {
             if let nameString = name as? String{
@@ -39,7 +38,6 @@ class Utilities{
             context: nil)
         return bounds.size.height;
     }
-    
     
     class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)

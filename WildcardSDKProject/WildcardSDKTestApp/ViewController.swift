@@ -30,8 +30,11 @@ class ViewController: UIViewController {
         view.addSubview(newCardView!)
         newCardView!.horizontallyCenterToSuperView(0)
         newCardView!.verticallyCenterToSuperView(-100)
-        newCardView!.constrainWidth(bareBones.widthForCard(), andHeight: newCardView!.frame.size.height)
+        newCardView!.constrainWidth(bareBones.widthForCard(), height: newCardView!.frame.size.height)
+        view.layoutIfNeeded()
+        println(newCardView!.frame)
     }
+    
     @IBAction func firstButtonTapped(sender: AnyObject) {
         let simple = SimpleDescriptionCardDataSource(card:dummyCard!)
         presentCard(dummyCard!, customDatasource: simple)

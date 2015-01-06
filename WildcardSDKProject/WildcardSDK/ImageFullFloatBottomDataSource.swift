@@ -51,7 +51,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return cardWidth
     }
     
-    public func backingCard() -> Card? {
+    public func backingCard() -> Card {
         return card
     }
 }

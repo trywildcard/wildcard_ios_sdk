@@ -179,7 +179,7 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
         view.addSubview(closeButton)
         closeButton.constrainTopToSuperView(15)
         closeButton.constrainLeftToSuperView(0)
-        closeButton.constrainWidth(50, andHeight: 50)
+        closeButton.constrainWidth(50, height: 50)
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
         

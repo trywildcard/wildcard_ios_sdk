@@ -32,7 +32,7 @@ class TallReadMoreFooter: CardViewElement {
         readMoreButton.titleEdgeInsets = UIEdgeInsetsMake(-2, 1, 0, 0);
         readMoreButton.verticallyCenterToSuperView(0)
         addConstraint(NSLayoutConstraint(item:readMoreButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20))
-        readMoreButton.constrainWidth(98, andHeight: 25)
+        readMoreButton.constrainWidth(98, height: 25)
         
         readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }

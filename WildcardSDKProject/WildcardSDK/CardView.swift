@@ -13,6 +13,8 @@ import QuartzCore
 @objc
 public protocol CardViewDataSource{
     
+    func backingCard()->Card
+    
     func viewForCardBody()->UIView
     func heightForCardBody()->CGFloat
     func widthForCard()->CGFloat
@@ -28,9 +30,9 @@ public protocol CardViewDataSource{
 public protocol CardViewDelegate{
     
     /*
-    CardView about to be reloaded.
+    CardView will be reloaded.
    
-    Based on any new dataSource for the card, internal constraints of the CardView may change.
+    Based on any new datasource for the card, internal constraints of the CardView may change.
     If you constrained the CardView relative to any of your custom views, this is the time
     to re-do any layout if necessary. At this point in the time the new CardView's frame
     has already been re-calculated, but layout has not happened yet.
@@ -52,12 +54,7 @@ public class CardView : UIView, CardViewElementDelegate
     // MARK: Public properties
     public var physics:CardPhysics?
     public var delegate:CardViewDelegate?
-    public var backingCard:Card!
-    public var backingDataSource:CardViewDataSource{
-        get{
-            return self.datasource
-        }
-    }
+    public var datasource:CardViewDataSource!
     
     // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
@@ -72,14 +69,20 @@ public class CardView : UIView, CardViewElementDelegate
         let newCardView = CardView(frame: cardFrame)
         newCardView.datasource = datasource
         newCardView.layoutCardComponents()
-        newCardView.backingCard = card
         newCardView.refresh()
         return newCardView
     }
     
     // MARK: Public Instance
+    
     public func refresh(){
-        updateForCard(backingCard)
+        let card = datasource.backingCard()
+        var cardViews:[AnyObject?] = [header, body, footer, back]
+        for view in cardViews{
+            if let cardElement = view as? CardViewElement{
+                cardElement.updateForCard(card)
+            }
+        }
     }
     
     public func reloadWithCard(newCard:Card){
@@ -90,20 +93,18 @@ public class CardView : UIView, CardViewElementDelegate
     
     public func reloadWithCard(card:Card, datasource:CardViewDataSource){
         
-        // initialize again
-        convenienceInitialize()
         self.datasource = datasource
         
-        // calculate new frame, let delegate prepare
+        // remove old card subviews
+        removeCardSubviews()
+        
+        // calculate new card frame, let delegate prepare
         let newSize = Utilities.sizeFromDataSource(datasource)
         frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
         delegate?.cardViewWillReload?(self)
         
         // layout components
         layoutCardComponents()
-        
-        // backing card
-        backingCard = card
         
         // update views
         refresh()
@@ -117,6 +118,7 @@ public class CardView : UIView, CardViewElementDelegate
             self.header?.alpha = 0
             self.body?.alpha = 0
             self.footer?.alpha = 0
+            self.back?.alpha = 0
             }) { (bool:Bool) -> Void in
                 completion?(bool: bool)
                 return
@@ -128,6 +130,7 @@ public class CardView : UIView, CardViewElementDelegate
             self.header?.alpha = 1
             self.body?.alpha = 1
             self.footer?.alpha = 1
+            self.back?.alpha = 1
             }) { (bool:Bool) -> Void in
                 completion?(bool: bool)
                 return
@@ -140,7 +143,6 @@ public class CardView : UIView, CardViewElementDelegate
     var header:UIView?
     var body:UIView?
     var footer:UIView?
-    var datasource:CardViewDataSource!
     
     // MARK: CardViewElementDelegate
     func cardViewElementRequestedReadMore() {
@@ -161,13 +163,12 @@ public class CardView : UIView, CardViewElementDelegate
         convenienceInitialize()
     }
     
-    override public func layoutSubviews()
-    {
+    override public func layoutSubviews(){
         super.layoutSubviews()
         
         // reset shadow path
         let path = UIBezierPath(rect: bounds)
-        layer.shadowPath =  path.CGPath
+        layer.shadowPath = path.CGPath
     }
     
     required public init(coder: NSCoder) {
@@ -222,6 +223,8 @@ public class CardView : UIView, CardViewElementDelegate
                 cardViewElement.delegate = self
             }
         }
+        
+        layoutIfNeeded()
     }
     
     private func constrainSubComponent(cardComponent:UIView, offset:CGFloat, height:CGFloat){
@@ -232,25 +235,7 @@ public class CardView : UIView, CardViewElementDelegate
         cardComponent.constrainHeight(height)
     }
     
-    private func updateForCard(card:Card){
-        if let header = header as? CardViewElement{
-            header.updateForCard(card)
-        }
-        if let body = body as? CardViewElement{
-            body.updateForCard(card)
-        }
-        if let footer = footer as? CardViewElement{
-            footer.updateForCard(card)
-        }
-    }
-
     private func convenienceInitialize(){
-        
-        // remove container and back view
-        containerView?.removeFromSuperview()
-        containerView = nil
-        back?.removeFromSuperview()
-        back = nil
         
         backgroundColor = UIColor.clearColor()
         
@@ -270,5 +255,12 @@ public class CardView : UIView, CardViewElementDelegate
         
         physics = CardPhysics(cardView:self)
         physics?.setup()
+    }
+    
+    private func removeCardSubviews(){
+        var cardViews:[UIView?] = [header, body, footer, back]
+        for view in cardViews{
+            view?.removeFromSuperview()
+        }
     }
 }

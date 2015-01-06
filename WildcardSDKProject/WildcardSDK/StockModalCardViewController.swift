@@ -90,7 +90,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         view.addSubview(closeButton)
         closeButton.constrainTopToSuperView(15)
         closeButton.constrainLeftToSuperView(0)
-        closeButton.constrainWidth(50, andHeight: 50)
+        closeButton.constrainWidth(50, height: 50)
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
         cardView = CardView.createCardView(presentedCard, datasource: cardDataSource)
@@ -99,7 +99,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         
         // constrain card at the bottom controller view
         view.addSubview(cardView!)
-        cardView?.constrainWidth(cardView!.frame.size.width, andHeight: cardView!.frame.size.height)
+        cardView?.constrainWidth(cardView!.frame.size.width, height: cardView!.frame.size.height)
         cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
         cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
         view.layoutIfNeeded()

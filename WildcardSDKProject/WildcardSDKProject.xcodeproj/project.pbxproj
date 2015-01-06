@@ -26,7 +26,6 @@
 		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
 		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
 		1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */; };
-		1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
@@ -175,7 +174,6 @@
 		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
 		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
-		1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataSource.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		1D3A285B1A2E696A00A9D4C1 /* WildcardSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildcardSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -547,7 +545,6 @@
 		1DFFEDD01A400803008E65BC /* Stock Card View Data Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1D1A28681A43AF20007D3E64 /* BaseDataSource.swift */,
 				1DFFEDD61A400A4C008E65BC /* BareBonesCardDataSource.swift */,
 				1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomDataSource.swift */,
 				1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftDataSource.swift */,
@@ -650,6 +647,7 @@
 				TargetAttributes = {
 					1D3A285A1A2E696A00A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = NQ8GZFQ3RP;
 					};
 					1D3A28821A2E697700A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
@@ -786,7 +784,6 @@
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
 				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
-				1D1A28691A43AF20007D3E64 /* BaseDataSource.swift in Sources */,
 				1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */,
 				1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
@@ -942,6 +939,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -982,6 +980,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -39,7 +39,7 @@ class ViewController3: UIViewController, CardViewDelegate {
                         self.view.addSubview(newCardView)
                         newCardView.horizontallyCenterToSuperView(0)
                         newCardView.verticallyCenterToSuperView(0)
-                        newCardView.constrainWidth(newCardView.frame.size.width, andHeight: newCardView.frame.size.height)
+                        newCardView.constrainWidth(newCardView.frame.size.width, height: newCardView.frame.size.height)
                     }
                 }
             })
