@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SimpleDescriptionCardDataSource : CardViewDataSource{
+public class SimpleDescriptionCardVisualSource : CardViewVisualSource{
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
         self.card = card
     }
     
-    public func viewForCardHeader()->UIView?{
+    public func viewForCardHeader()->CardViewElement?{
         return OneLineCardHeader(frame:CGRectZero)
     }
     
@@ -24,7 +24,7 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
         return OneLineCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return SingleParagraphCardBody(frame:CGRectZero)
     }
     
@@ -32,7 +32,7 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
         return SingleParagraphCardBody.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardFooter()->UIView?{
+    public func viewForCardFooter()->CardViewElement?{
         return ViewOnWebCardFooter(frame:CGRectZero)
     }
     
@@ -40,7 +40,7 @@ public class SimpleDescriptionCardDataSource : CardViewDataSource{
         return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForBackOfCard()->UIView?{
+    public func viewForBackOfCard()->CardViewElement?{
         return EmptyCardBack(frame:CGRectZero)
     }
     

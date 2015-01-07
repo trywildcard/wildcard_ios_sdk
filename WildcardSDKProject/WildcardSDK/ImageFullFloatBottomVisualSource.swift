@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ImageFullFloatBottomDataSource : CardViewDataSource {
+public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardHeader()->UIView?{
+    public func viewForCardHeader()->CardViewElement?{
         return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
     }
     
@@ -24,7 +24,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return FullCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return CenteredImageBody(frame:CGRectZero)
     }
     
@@ -32,7 +32,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return CenteredImageBody.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardFooter() -> UIView? {
+    public func viewForCardFooter() -> CardViewElement? {
         return TallReadMoreFooter(frame:CGRectZero)
     }
     
@@ -40,7 +40,7 @@ public class ImageFullFloatBottomDataSource : CardViewDataSource {
         return TallReadMoreFooter.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForBackOfCard()->UIView?{
+    public func viewForBackOfCard()->CardViewElement?{
         return EmptyCardBack(frame:CGRectZero)
     }
     

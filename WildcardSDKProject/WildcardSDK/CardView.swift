@@ -10,64 +10,86 @@ import Foundation
 import UIKit
 import QuartzCore
 
+/**
+The display and visuals behind a CardView.
+*/
 @objc
-public protocol CardViewDataSource{
+public protocol CardViewVisualSource{
     
-    func backingCard()->Card
-    
-    func viewForCardBody()->UIView
+    func viewForCardBody()->CardViewElement
     func heightForCardBody()->CGFloat
     func widthForCard()->CGFloat
     
-    optional func viewForCardHeader()->UIView?
+    optional func viewForCardHeader()->CardViewElement?
     optional func heightForCardHeader()->CGFloat
-    optional func viewForCardFooter()->UIView?
+    optional func viewForCardFooter()->CardViewElement?
     optional func heightForCardFooter()->CGFloat
-    optional func viewForBackOfCard()->UIView?
+    optional func viewForBackOfCard()->CardViewElement?
 }
 
+/**
+Delegation of CardView behavior
+*/
 @objc
 public protocol CardViewDelegate{
     
-    /*
-    CardView will be reloaded.
-   
-    Based on any new datasource for the card, internal constraints of the CardView may change.
-    If you constrained the CardView relative to any of your custom views, this is the time
-    to re-do any layout if necessary. At this point in the time the new CardView's frame
-    has already been re-calculated, but layout has not happened yet.
+    /**
+    The dimensions of the Card are about to change. This could either be from a refresh() where
+    the datasource calculates a new dimension, or if the CardView is reloaded with a new Card. 
+    Let the delegate prepare. 
+    
+    :param: fromSize - The previous size of the CardView
+    :param: toSize - The new size of the CardView
+    */
+    optional func cardViewDimensionWillChange(cardView:CardView, fromSize:CGSize, toSize:CGSize)
+    
+    /**
+    CardView is about to be reloaded.
     */
     optional func cardViewWillReload(cardView:CardView)
 
+    /**
+    CardView has reloaded.
+    */
     optional func cardViewDidReload(cardView:CardView)
     
-    optional func cardViewRequestedMaximize(cardView:CardView)
+    /**
+    CardView has been requested to perform a specific action
+    */
+    optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction) 
     
-    optional func cardViewRequestedCollapse(cardView:CardView)
+    /**
+    The CardView has been explicitly requested to open a URL. By default, Cards
+    will just call the standard UIApplication.openURL if this function is not implemented.
+    You may implement this function and return false to do anything custom.
     
-    optional func cardViewRequestViewOnWeb(cardView:CardView)
+    :param: url - The URL to be opened
+    */
+    optional func cardViewShouldRedirectToURL(cardView:CardView, url:NSURL) -> Bool
     
 }
 
-public class CardView : UIView, CardViewElementDelegate
+public class CardView : UIView //, CardViewElementDelegate
 {
     // MARK: Public properties
     public var physics:CardPhysics?
     public var delegate:CardViewDelegate?
-    public var datasource:CardViewDataSource!
+    public var visualSource:CardViewVisualSource!
+    public var backingCard:Card!
     
     // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
-        return CardView.createCardView(card, datasource: datasource)
+        let datasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: card)
+        return CardView.createCardView(card, visualSource: datasource)
     }
     
-    public class func createCardView(card:Card, datasource:CardViewDataSource)->CardView?{
-        let size = Utilities.sizeFromDataSource(datasource)
+    public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
+        let size = Utilities.sizeFromVisualSource(visualSource)
         let cardFrame = CGRectMake(0, 0, size.width, size.height)
         let newCardView = CardView(frame: cardFrame)
-        newCardView.datasource = datasource
+        newCardView.backingCard = card
+        newCardView.visualSource = visualSource
         newCardView.layoutCardComponents()
         newCardView.refresh()
         return newCardView
@@ -76,30 +98,27 @@ public class CardView : UIView, CardViewElementDelegate
     // MARK: Public Instance
     
     public func refresh(){
-        let card = datasource.backingCard()
-        var cardViews:[AnyObject?] = [header, body, footer, back]
+        var cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
-            if let cardElement = view as? CardViewElement{
-                cardElement.updateForCard(card)
-            }
+            view?.update()
         }
     }
     
     public func reloadWithCard(newCard:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
-        let autoDatasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: newCard)
-        reloadWithCard(newCard, datasource: autoDatasource)
+        let autoDatasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: newCard)
+        reloadWithCard(newCard, visualSource: autoDatasource)
     }
     
-    public func reloadWithCard(card:Card, datasource:CardViewDataSource){
+    public func reloadWithCard(card:Card, visualSource:CardViewVisualSource){
         
-        self.datasource = datasource
+        self.visualSource = visualSource
         
         // remove old card subviews
         removeCardSubviews()
         
         // calculate new card frame, let delegate prepare
-        let newSize = Utilities.sizeFromDataSource(datasource)
+        let newSize = Utilities.sizeFromVisualSource(visualSource)
         frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
         delegate?.cardViewWillReload?(self)
         
@@ -139,23 +158,10 @@ public class CardView : UIView, CardViewElementDelegate
     
     // MARK: Private properties
     var containerView:UIView!
-    var back:UIView?
-    var header:UIView?
-    var body:UIView?
-    var footer:UIView?
-    
-    // MARK: CardViewElementDelegate
-    func cardViewElementRequestedReadMore() {
-        delegate?.cardViewRequestedMaximize?(self)
-    }
-    
-    func cardViewElementRequestedToClose() {
-        delegate?.cardViewRequestedCollapse?(self)
-    }
-    
-    func cardViewElementRequestedViewOnWeb() {
-        delegate?.cardViewRequestViewOnWeb?(self)
-    }
+    var back:CardViewElement?
+    var header:CardViewElement?
+    var body:CardViewElement!
+    var footer:CardViewElement?
     
     // MARK: UIView
     override init(frame: CGRect) {
@@ -181,47 +187,39 @@ public class CardView : UIView, CardViewElementDelegate
         
         // initialize header, body, footer of card
         var currentHeightOffset:CGFloat = 0
-        let headerView = datasource.viewForCardHeader?()
-        if(headerView != nil && datasource.heightForCardHeader?() > 0){
-            constrainSubComponent(headerView!, offset: currentHeightOffset, height: datasource.heightForCardHeader!())
-            currentHeightOffset += datasource.heightForCardHeader!()
+        let headerView = visualSource.viewForCardHeader?()
+        if(headerView != nil && visualSource.heightForCardHeader?() > 0){
+            constrainSubComponent(headerView!, offset: currentHeightOffset, height: visualSource.heightForCardHeader!())
+            currentHeightOffset += visualSource.heightForCardHeader!()
             header = headerView
-            if let cardElement = header as? CardViewElement{
-                cardElement.delegate = self
-            }
+            header?.cardView = self
         }
         
-        let bodyView = datasource.viewForCardBody()
-        if(datasource.heightForCardBody() > 0){
-            constrainSubComponent(bodyView, offset: currentHeightOffset, height: datasource.heightForCardBody())
-            currentHeightOffset += datasource.heightForCardBody()
+        let bodyView = visualSource.viewForCardBody()
+        if(visualSource.heightForCardBody() > 0){
+            constrainSubComponent(bodyView, offset: currentHeightOffset, height: visualSource.heightForCardBody())
+            currentHeightOffset += visualSource.heightForCardBody()
             body = bodyView
-            if let cardElement = body as? CardViewElement{
-                cardElement.delegate = self
-            }
+            body.cardView = self
         }else{
             println("Card layout error: height for card body should not be 0")
         }
         
-        let footerView = datasource.viewForCardFooter?()
-        if(footerView != nil && datasource.heightForCardFooter?() > 0){
-            constrainSubComponent(footerView!, offset: currentHeightOffset, height: datasource.heightForCardFooter!())
-            currentHeightOffset += datasource.heightForCardFooter!()
+        let footerView = visualSource.viewForCardFooter?()
+        if(footerView != nil && visualSource.heightForCardFooter?() > 0){
+            constrainSubComponent(footerView!, offset: currentHeightOffset, height: visualSource.heightForCardFooter!())
+            currentHeightOffset += visualSource.heightForCardFooter!()
             footer = footerView
-            if let cardElement = footer as? CardViewElement{
-                cardElement.delegate = self
-            }
+            footer?.cardView = self
         }
         
-        if let backView = datasource.viewForBackOfCard?(){
+        if let backView = visualSource.viewForBackOfCard?(){
             insertSubview(backView, belowSubview:containerView)
             backView.constrainToSuperViewEdges()
             backView.layer.cornerRadius = 2.0
             backView.layer.masksToBounds = true
             back = backView
-            if let cardViewElement = back as? CardViewElement{
-                cardViewElement.delegate = self
-            }
+            back?.cardView = self
         }
         
         layoutIfNeeded()

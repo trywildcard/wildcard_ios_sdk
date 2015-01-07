@@ -31,15 +31,15 @@ class BareBonesCardBody : CardViewElement {
         viewOnWebButton?.setBackgroundImage(UIImage(named: "viewOnWebButton"), forState: UIControlState.Normal)
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             titleLabel.text = String(htmlEncodedString:articleCard.title)
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             titleLabel.text = String(htmlEncodedString:webLinkCard.title)
         case .Unknown:
             titleLabel.text = "Unknown Card Type!"

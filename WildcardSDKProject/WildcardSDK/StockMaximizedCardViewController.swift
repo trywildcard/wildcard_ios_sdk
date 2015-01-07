@@ -15,25 +15,23 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var previousCardView:CardView!
     var cardView:CardView?
     var maximizedCard:Card!
-    var maximizedCardDataSource:CardViewDataSource!
+    var maximizedCardDataSource:CardViewVisualSource!
     
-    var cardDataSource:CardViewDataSource!
+    var cardDataSource:CardViewVisualSource!
     var cardViewTopConstraint:NSLayoutConstraint?
     var cardViewBottomConstraint:NSLayoutConstraint?
     var cardViewLeftConstraint:NSLayoutConstraint?
     var cardViewRightConstraint:NSLayoutConstraint?
     
     var initialCardFrame:CGRect!
-    var initialCardDataSource:CardViewDataSource!
+    var initialCardVisualSource:CardViewVisualSource!
     
-    func cardViewRequestedCollapse(cardView: CardView) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        if(action.type == .Collapse){
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-    
-    func closeButtonTapped(){
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+ 
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
         cardView.physics?.panGestureReset()
@@ -47,7 +45,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardView = CardView.createCardView(maximizedCard, datasource: initialCardDataSource)
+        cardView = CardView.createCardView(maximizedCard, visualSource: initialCardVisualSource)
         cardView?.delegate = self
         cardView!.frame = initialCardFrame
         
@@ -68,7 +66,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         super.viewWillAppear(animated)
         
         cardView?.fadeOut(0.2, delay: 0, completion: { (bool) -> Void in
-            self.cardView?.reloadWithCard(self.maximizedCard, datasource: self.maximizedCardDataSource)
+            self.cardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardDataSource)
             self.cardView?.header?.alpha = 0
             self.cardView?.footer?.alpha = 0
             self.cardView?.body?.alpha = 0

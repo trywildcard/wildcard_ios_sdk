@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MaximizedArticleDataSource : CardViewDataSource {
+public class MaximizedArticleVisualSource : CardViewVisualSource {
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class MaximizedArticleDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
     }
     

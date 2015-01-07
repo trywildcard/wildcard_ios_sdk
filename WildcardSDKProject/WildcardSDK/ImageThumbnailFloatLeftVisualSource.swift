@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
+public class ImageThumbnailFloatLeftVisualSource : CardViewVisualSource {
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as ImageThumbnailFloatLeft
     }
     
@@ -24,7 +24,7 @@ public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
         return ImageThumbnailFloatLeft.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardFooter()->UIView?{
+    public func viewForCardFooter()->CardViewElement?{
         return ViewOnWebCardFooter(frame:CGRectZero)
     }
     
@@ -32,7 +32,7 @@ public class ImageThumbnailFloatLeftDataSource : CardViewDataSource {
         return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForBackOfCard()->UIView?{
+    public func viewForBackOfCard()->CardViewElement?{
         return EmptyCardBack(frame:CGRectZero)
     }
     

@@ -43,16 +43,19 @@ class Utilities{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
     
-    class func sizeFromDataSource(datasource:CardViewDataSource)->CGSize{
-        let width = datasource.widthForCard()
+    /**
+    Calculates a CGSize from a given visual source
+    */
+    class func sizeFromVisualSource(visualSource:CardViewVisualSource)->CGSize{
+        let width = visualSource.widthForCard()
         var height:CGFloat = 0
-        if let headerHeight = datasource.heightForCardHeader?(){
+        if let headerHeight = visualSource.heightForCardHeader?(){
             height += headerHeight
         }
-        if let footerHeight = datasource.heightForCardFooter?(){
+        if let footerHeight = visualSource.heightForCardFooter?(){
             height += footerHeight
         }
-        height += datasource.heightForCardBody()
+        height += visualSource.heightForCardBody()
         return CGSizeMake(width, height)
     }
     

@@ -37,16 +37,11 @@ class TallReadMoreFooter: CardViewElement {
         readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
-        
-    }
-    
     override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
         return 65
     }
     
     func readMoreButtonTapped(){
-        delegate?.cardViewElementRequestedReadMore?()
+        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Maximize, parameters: nil))
     }
 }

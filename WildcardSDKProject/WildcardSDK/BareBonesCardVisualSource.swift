@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BareBonesCardDataSource : CardViewDataSource{
+public class BareBonesCardVisualSource : CardViewVisualSource{
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class BareBonesCardDataSource : CardViewDataSource{
         self.card = card
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return BareBonesCardBody(frame:CGRectZero)
     }
     
@@ -25,7 +25,7 @@ public class BareBonesCardDataSource : CardViewDataSource{
         return  widthForCard() * (3/4)
     }
     
-    public func viewForBackOfCard()->UIView?{
+    public func viewForBackOfCard()->CardViewElement?{
         return EmptyCardBack(frame:CGRectZero)
     }
     

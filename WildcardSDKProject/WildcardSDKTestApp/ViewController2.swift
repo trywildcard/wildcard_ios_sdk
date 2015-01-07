@@ -22,6 +22,7 @@ class ViewController2: UIViewController, CardViewDelegate {
     func cardViewWillReload(cardView:CardView){
         view.removeConstraint(mainCardHeightConstraint)
         view.removeConstraint(mainCardWidthConstraint)
+        
         mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
         mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
         view.layoutIfNeeded()
@@ -34,8 +35,8 @@ class ViewController2: UIViewController, CardViewDelegate {
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = WebLinkCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", dictionary: nil)
-        let bareBones = BareBonesCardDataSource(card:dummyCard)
-        if let cardView = CardView.createCardView(dummyCard, datasource: bareBones){
+        let bareBones = BareBonesCardVisualSource(card:dummyCard)
+        if let cardView = CardView.createCardView(dummyCard, visualSource: bareBones){
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(-50)

@@ -24,9 +24,4 @@ class EmptyCardBack : CardViewElement {
         titleLabel.text = "The Back!"
         backgroundColor = UIColor.wildcardDarkBlue()
     }
-    
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
-        // nothing
-    }
 }

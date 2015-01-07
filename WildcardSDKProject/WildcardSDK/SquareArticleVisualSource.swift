@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SquareArticleDataSource : CardViewDataSource {
+public class SquareArticleVisualSource : CardViewVisualSource {
     
     var card:Card
     
@@ -16,7 +16,7 @@ public class SquareArticleDataSource : CardViewDataSource {
         self.card = card
     }
     
-    public func viewForCardHeader()->UIView?{
+    public func viewForCardHeader()->CardViewElement?{
         return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
     }
     
@@ -24,7 +24,7 @@ public class SquareArticleDataSource : CardViewDataSource {
         return FullCardHeader.optimizedHeight(widthForCard(), card: card)
     }
     
-    public func viewForCardBody()->UIView{
+    public func viewForCardBody()->CardViewElement{
         return UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
     }
     
@@ -32,11 +32,11 @@ public class SquareArticleDataSource : CardViewDataSource {
         return widthForCard() - heightForCardFooter() - heightForCardHeader()
     }
     
-    public func viewForBackOfCard()->UIView?{
+    public func viewForBackOfCard()->CardViewElement?{
         return EmptyCardBack(frame:CGRectZero)
     }
     
-    public func viewForCardFooter() -> UIView? {
+    public func viewForCardFooter() -> CardViewElement? {
         return TallReadMoreFooter(frame:CGRectZero)
     }
     

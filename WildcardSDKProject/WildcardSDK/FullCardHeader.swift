@@ -19,13 +19,13 @@ class FullCardHeader :CardViewElement
         favicon.layer.masksToBounds = true
     }
     
-    override func updateForCard(card: Card) {
+    override func update() {
         
-        super.updateForCard(card)
+        super.update()
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             title.setAsCardHeaderWithText(articleCard.title)
             kicker.setAsCardSubHeaderWithText(articleCard.publisher.name)
             if let url = articleCard.publisher.smallLogoUrl{
@@ -36,7 +36,7 @@ class FullCardHeader :CardViewElement
                 })
             }
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             kicker.setAsCardSubHeaderWithText(webLinkCard.title)
             title.setAsCardHeaderWithText(webLinkCard.description)
             favicon.image = UIImage(named: "wildcardSmallLogo")

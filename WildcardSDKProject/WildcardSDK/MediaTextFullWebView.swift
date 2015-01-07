@@ -19,16 +19,14 @@ class MediaTextFullWebView : CardViewElement
         configuration.allowsInlineMediaPlayback = true
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
-        
-        if let articleCard = card as? ArticleCard{
+    override func update() {
+        if let articleCard = cardView.backingCard as? ArticleCard{
             webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: nil)
         }
     }
   
     @IBAction func closeButtonTapped(sender: AnyObject) {
-        delegate?.cardViewElementRequestedToClose?()
+        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Collapse, parameters: nil))
     }
     
     func constructFinalHtml(articleCard:ArticleCard)->String{

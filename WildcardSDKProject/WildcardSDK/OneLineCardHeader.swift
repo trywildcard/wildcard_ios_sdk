@@ -29,15 +29,15 @@ class OneLineCardHeader : CardViewElement {
         addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             titleLabel.setAsCardHeaderWithText(articleCard.title)
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             titleLabel.setAsCardHeaderWithText(webLinkCard.title)
         case .Unknown:
             titleLabel.setAsCardHeaderWithText("Unknown Card Type!")

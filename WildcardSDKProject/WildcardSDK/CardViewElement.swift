@@ -8,28 +8,26 @@
 
 import Foundation
 
-@objc
-protocol CardViewElementDelegate
-{
-    optional func cardViewElementRequestedViewOnWeb()
-    optional func cardViewElementRequestedReadMore()
-    optional func cardViewElementRequestedToClose()
-}
-
 public class CardViewElement : UIView {
     
-    var backingCard:Card?
-    var delegate:CardViewElementDelegate?
+    var cardView:CardView!
     
-    func updateForCard(card:Card){
-        backingCard = card
-        // override
+    /**
+    Override this function to update the CardViewElement based on the current backing Card
+    */
+    func update(){
     }
     
+    /**
+    Override to initialize any parts of the CardViewElement. This is called automatically 
+    whenever the view is initialized.
+    */
     func initializeElement(){
-        // override
     }
     
+    /**
+    Optionally return an optimized height for this element given a width + card
+    */
     class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
         // optionally return an optimized height for this element given a width + card
         return CGFloat.min

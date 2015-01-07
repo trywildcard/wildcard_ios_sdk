@@ -23,11 +23,6 @@ class ViewOnWebCardFooter: CardViewElement {
         addTopBorderWithWidth(0.5, color: UIColor.wildcardBackgroundGray())
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
-
-    }
-    
     override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
         return 40.5
     }

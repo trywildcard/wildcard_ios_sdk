@@ -26,15 +26,15 @@ class SingleParagraphCardBody : CardViewElement {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10))
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             titleLabel.setAsCardSubHeaderWithText(articleCard.abstractContent)
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             titleLabel.setAsCardSubHeaderWithText(webLinkCard.description)
         case .Unknown:
             titleLabel.setAsCardSubHeaderWithText("Unknown Card Type!")

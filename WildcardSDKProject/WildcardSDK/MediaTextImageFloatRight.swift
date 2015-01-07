@@ -23,19 +23,19 @@ class MediaTextImageFloatRight : CardViewElement{
         cardImage.layer.masksToBounds = true
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         
         var imageUrl:NSURL?
         var abstractContent:String?
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             abstractContent = articleCard.abstractContent
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             imageUrl = webLinkCard.imageUrl
             abstractContent = webLinkCard.description
         case .Unknown:

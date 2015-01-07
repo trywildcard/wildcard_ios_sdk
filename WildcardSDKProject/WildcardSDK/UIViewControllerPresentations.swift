@@ -15,17 +15,17 @@ public extension UIViewController{
     
     public func presentCard(card:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewDataSourceFactory.cardViewDataSourceFromLayout(layoutToUse, card: card)
-        presentCard(card, customDatasource: datasource)
+        let datasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: card)
+        presentCard(card, customVisualSource: datasource)
     }
 
-    public func presentCard(card:Card, customDatasource:CardViewDataSource){
+    public func presentCard(card:Card, customVisualSource:CardViewVisualSource){
         let stockModal = StockModalCardViewController()
         stockModal.modalPresentationStyle = .Custom
         stockModal.transitioningDelegate = stockModal
         stockModal.modalPresentationCapturesStatusBarAppearance = true
         stockModal.presentedCard = card
-        stockModal.cardDataSource = customDatasource
+        stockModal.cardVisualSource = customVisualSource
         presentViewController(stockModal, animated: true, completion: nil)
     }
     
@@ -46,13 +46,13 @@ public extension UIViewController{
         
         let viewController = StockMaximizedCardViewController()
         viewController.previousCardView = cardView
-        viewController.initialCardDataSource = cardView.datasource
+        viewController.initialCardVisualSource = cardView.visualSource
         viewController.modalPresentationStyle = .Custom
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationCapturesStatusBarAppearance = true
-        viewController.maximizedCard = cardView.datasource.backingCard()
+        viewController.maximizedCard = cardView.backingCard
         
-        viewController.maximizedCardDataSource = MaximizedArticleDataSource(card:cardView.datasource.backingCard())
+        viewController.maximizedCardDataSource = MaximizedArticleVisualSource(card:cardView.backingCard)
         
         let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = initialFrame

@@ -11,12 +11,9 @@ import UIKit
 
 @objc
 public protocol CardPhysicsDelegate{
-    
     optional func cardViewDragged(cardView:CardView, position:CGPoint)
     optional func cardViewDropped(cardView:CardView, position:CGPoint)
     optional func cardViewLongPressed(cardView:CardView)
-    
-    optional func attachedCardViewDragged(cardView:CardView, attachedCardView:CardView, position:CGPoint)
 }
 
 public class CardPhysics : NSObject {
@@ -77,10 +74,6 @@ public class CardPhysics : NSObject {
             let finalX = dx + originalPosition.x
             let finalY = dy + originalPosition.y
             delegate?.cardViewDragged?(cardView, position: CGPointMake(finalX, finalY))
-            
-            if(attachedCard != nil){
-                attachedCard!.physics?.delegate?.attachedCardViewDragged?(attachedCard!, attachedCardView: cardView, position: CGPointMake(finalX, finalY))
-            }
             
         }else if(recognizer.state == UIGestureRecognizerState.Ended){
             let currentLocation = recognizer.translationInView(cardView.superview!)

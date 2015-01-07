@@ -19,12 +19,12 @@ class ImageThumbnailFloatLeft : CardViewElement
         
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         var imageUrl:NSURL?
         var titleText:String?
         
-        if let webLinkCard = card as? WebLinkCard{
+        if let webLinkCard = cardView.backingCard as? WebLinkCard{
             cardTitle.setAsCardHeaderWithText(String(htmlEncodedString: webLinkCard.title))
             cardDescription.setAsCardSubHeaderWithText(String(htmlEncodedString: webLinkCard.description))
             

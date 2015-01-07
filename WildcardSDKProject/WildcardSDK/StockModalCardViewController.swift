@@ -14,7 +14,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     var backgroundTapRecognizer:UITapGestureRecognizer?
     var cardView:CardView?
     var presentedCard:Card!
-    var cardDataSource:CardViewDataSource!
+    var cardVisualSource:CardViewVisualSource!
     var cardViewVerticalConstraint:NSLayoutConstraint?
     var cardViewHorizontalConstraint:NSLayoutConstraint?
     var closeButton:UIButton!
@@ -93,7 +93,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         closeButton.constrainWidth(50, height: 50)
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
-        cardView = CardView.createCardView(presentedCard, datasource: cardDataSource)
+        cardView = CardView.createCardView(presentedCard, visualSource: cardVisualSource)
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self
         

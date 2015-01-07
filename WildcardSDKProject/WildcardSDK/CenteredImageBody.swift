@@ -25,17 +25,17 @@ class CenteredImageBody : CardViewElement{
         addConstraint(NSLayoutConstraint(item: cardImage, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 180))
     }
     
-    override func updateForCard(card: Card) {
-        super.updateForCard(card)
+    override func update() {
+        super.update()
         
         var imageUrl:NSURL?
         
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
         case .WebLink:
-            let webLinkCard = card as WebLinkCard
+            let webLinkCard = cardView.backingCard as WebLinkCard
             imageUrl = webLinkCard.imageUrl
         case .Unknown:
             imageUrl = nil

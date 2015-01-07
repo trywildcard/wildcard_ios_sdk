@@ -13,16 +13,10 @@ class ViewController3: UIViewController, CardViewDelegate {
 
     var dummyCardStack:[Card] = []
     
-    func cardViewRequestedMaximize(cardView: CardView) {
-        // use wildcard's stock maximize presentation
-        maximizeCardView(cardView)
-        // or do something else
-        // ...
-    }
-    
-    func cardViewRequestedCollapse(cardView: CardView) {
-        println("requested collapse")
-        
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        if(action.type == .Maximize){
+            maximizeCardView(cardView)
+        }
     }
     
     override func viewDidLoad() {

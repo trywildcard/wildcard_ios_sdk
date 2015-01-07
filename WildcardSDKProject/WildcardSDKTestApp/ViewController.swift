@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         // render with stock data source
-        let bareBones = BareBonesCardDataSource(card:dummyCard!)
-        let newCardView = CardView.createCardView(dummyCard!, datasource: bareBones)
+        let bareBones = BareBonesCardVisualSource(card:dummyCard!)
+        let newCardView = CardView.createCardView(dummyCard!, visualSource: bareBones)
         
         view.addSubview(newCardView!)
         newCardView!.horizontallyCenterToSuperView(0)
@@ -36,18 +36,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        let simple = SimpleDescriptionCardDataSource(card:dummyCard!)
-        presentCard(dummyCard!, customDatasource: simple)
+        let simple = SimpleDescriptionCardVisualSource(card:dummyCard!)
+        presentCard(dummyCard!, customVisualSource: simple)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        let thumbnailsource = ImageThumbnailFloatLeftDataSource(card: dummyCard!)
-        presentCard(dummyCard!, customDatasource: thumbnailsource)
+        let thumbnailsource = ImageThumbnailFloatLeftVisualSource(card: dummyCard!)
+        presentCard(dummyCard!, customVisualSource: thumbnailsource)
     }
     
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        let fullsource = ImageFullFloatBottomDataSource(card: dummyCard!)
-        presentCard(dummyCard!, customDatasource: fullsource)
+        let fullsource = ImageFullFloatBottomVisualSource(card: dummyCard!)
+        presentCard(dummyCard!, customVisualSource: fullsource)
     }
     
     override func didReceiveMemoryWarning() {
