@@ -9,9 +9,9 @@
 import Foundation
 
 /**
-    Publisher of a Card
+Publisher of a Card
 
-    Any entity that owns Card content. This may be a company, specific website, or individual.
+Any entity that owns Card content. This may be a company, specific website, or individual.
 */
 public class Publisher : PlatformObject {
     

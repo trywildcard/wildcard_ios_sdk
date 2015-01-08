@@ -34,14 +34,19 @@ Delegation of CardView behavior
 public protocol CardViewDelegate{
     
     /**
-    The dimensions of the Card are about to change. This could either be from a refresh() where
-    the datasource calculates a new dimension, or if the CardView is reloaded with a new Card. 
-    Let the delegate prepare. 
+    The CardView is about to go through re-layout. For example, if a CardView is reloaded
+    with a brand new Card and visual source, a re-layout of the CardView will happen. This helps
+    the delegate prepare for the re-layout given the old and new-size.
     
     :param: fromSize - The previous size of the CardView
     :param: toSize - The new size of the CardView
     */
-    optional func cardViewDimensionWillChange(cardView:CardView, fromSize:CGSize, toSize:CGSize)
+    optional func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize)
+    
+    /**
+    Simply just a hook into UIView.layoutSubviews() to do any specific custom layout
+    */
+    optional func cardViewLayoutSubviews(cardView:CardView)
     
     /**
     CardView is about to be reloaded.
@@ -61,7 +66,7 @@ public protocol CardViewDelegate{
     /**
     The CardView has been explicitly requested to open a URL. By default, Cards
     will just call the standard UIApplication.openURL if this function is not implemented.
-    You may implement this function and return false to do anything custom.
+    You may implement this function and return false to do something custom.
     
     :param: url - The URL to be opened
     */
@@ -96,7 +101,6 @@ public class CardView : UIView //, CardViewElementDelegate
     }
     
     // MARK: Public Instance
-    
     public func refresh(){
         var cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
@@ -112,15 +116,17 @@ public class CardView : UIView //, CardViewElementDelegate
     
     public func reloadWithCard(card:Card, visualSource:CardViewVisualSource){
         
+        backingCard = card
         self.visualSource = visualSource
+        
+        delegate?.cardViewWillReload?(self)
         
         // remove old card subviews
         removeCardSubviews()
         
         // calculate new card frame, let delegate prepare
         let newSize = Utilities.sizeFromVisualSource(visualSource)
-        frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
-        delegate?.cardViewWillReload?(self)
+        delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
         
         // layout components
         layoutCardComponents()
@@ -172,7 +178,9 @@ public class CardView : UIView //, CardViewElementDelegate
     override public func layoutSubviews(){
         super.layoutSubviews()
         
-        // reset shadow path
+        delegate?.cardViewLayoutSubviews?(self)
+        
+        // reset shadow path to whatever bounds card is taking up
         let path = UIBezierPath(rect: bounds)
         layer.shadowPath = path.CGPath
     }

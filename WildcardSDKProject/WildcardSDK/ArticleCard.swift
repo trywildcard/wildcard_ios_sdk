@@ -8,13 +8,9 @@
 
 import Foundation
 
-/*
- * Article Card
- *
- * Official Schema:
- * http://www.trywildcard.com/docs/schema/#article-card
- *
- */
+/**
+Article Card
+*/
 public class ArticleCard : Card{
     
     public var title:String
@@ -87,14 +83,25 @@ public class ArticleCard : Card{
         return articleCard
     }
     
-    // Attempts to create an Article Card from a web URL.
-    public class func createFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void{
+    /**
+    Attempts to create an Article Card from a URL.
+    */
+    public class func createFromUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void{
         Platform.sharedInstance.getArticleCardFromWebUrl(url,completion:completion)
     }
     
-    // Searches for article cards from a given query
-    public class func searchArticleCards(query:String, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
-        Platform.sharedInstance.generalSearchFromQuery(query, completion: { (cards:[Card]?, error:NSError?) -> Void in
+    /**
+    Searches for Article Cards from a given query. Caps out at 10 cards.
+    */
+    public class func search(query:String, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
+        search(query, limit: 10, completion: completion)
+    }
+    
+    /**
+    Searches for Article Cards from a given query with an arbitrary limit.
+    */
+    public class func search(query:String, limit:Int, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
+        Platform.sharedInstance.generalSearchFromQuery(query, limit:limit, type:Card.stringFromCardType(.Article), completion: { (cards:[Card]?, error:NSError?) -> Void in
             if(error != nil){
                 completion(nil,error)
             }else{
@@ -108,5 +115,6 @@ public class ArticleCard : Card{
             }
         })
     }
+    
     
 }

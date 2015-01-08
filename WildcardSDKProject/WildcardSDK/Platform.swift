@@ -72,11 +72,12 @@ class Platform{
         task.resume()
     }
     
-    func generalSearchFromQuery(query:String, completion: (([Card]?, NSError?)->Void)) -> Void
+    func generalSearchFromQuery(query:String, limit:Int, type:String, completion: (([Card]?, NSError?)->Void)) -> Void
     {
         var queryParam = query.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        var urlString = Platform.sharedInstance.platformBaseURL +
+        "/v2.1/cross_brand_search?limit=\(limit)&q=\(queryParam)&cardTypeName=\(type)"
         
-        var urlString = Platform.sharedInstance.platformBaseURL + "/v2.1/cross_brand_search?limit=50&q=" + queryParam
         let platformUrl = NSURL(string:urlString)!
         getJsonResponseFromWebUrl(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
             if(error == nil){
@@ -96,7 +97,6 @@ class Platform{
             }
         }
     }
-    
     
     func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
     {

@@ -60,16 +60,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D3A286F1A2E696A00A9D4C1"
-               BuildableName = "WildcardSDKTestAppTests.xctest"
-               BlueprintName = "WildcardSDKTestAppTests"
-               ReferencedContainer = "container:WildcardSDKProject.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D3A288C1A2E697700A9D4C1"
                BuildableName = "WildcardSDKTests.xctest"
                BlueprintName = "WildcardSDKTests"

@@ -350,7 +350,7 @@
 		1D3A28841A2E697700A9D4C1 /* WildcardSDK */ = {
 			isa = PBXGroup;
 			children = (
-				1D904F9A1A2FDD61001FFDEA /* Card Models */,
+				1D904F9A1A2FDD61001FFDEA /* Models */,
 				1D904F9B1A2FDD66001FFDEA /* Project */,
 				1D3A28871A2E697700A9D4C1 /* WildcardSDK.h */,
 				1D3A28851A2E697700A9D4C1 /* Supporting Files */,
@@ -398,7 +398,7 @@
 			name = CardLayoutEngine;
 			sourceTree = "<group>";
 		};
-		1D904F9A1A2FDD61001FFDEA /* Card Models */ = {
+		1D904F9A1A2FDD61001FFDEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1D904F981A2FDD5B001FFDEA /* Card.swift */,
@@ -406,7 +406,7 @@
 				1DAC26B21A364B4A0005C4BE /* WebLinkCard.swift */,
 				1D3ECFC81A4151370001BF7A /* Publisher.swift */,
 			);
-			name = "Card Models";
+			name = Models;
 			sourceTree = "<group>";
 		};
 		1D904F9B1A2FDD66001FFDEA /* Project */ = {

@@ -23,7 +23,7 @@ class WildcardSDKTests: XCTestCase {
     func testArticleCard(){
         let expectation = expectationWithDescription("Creates Article Card")
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
-        ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+        ArticleCard.createFromUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
             XCTAssert(card != nil)
             XCTAssert(error == nil)
             
@@ -34,10 +34,24 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
+    func testArticleCardLimitSearch(){
+        let expectation = expectationWithDescription("Creates Article Card")
+        let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
+        
+        ArticleCard.search("isis", limit: 10) { (cards:[ArticleCard]?, error:NSError?) -> Void in
+            XCTAssert(cards != nil)
+            XCTAssert(error == nil)
+            XCTAssert(cards!.count == 10)
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
     func testBogusArticleCard(){
         let expectation = expectationWithDescription("Bogus Article Card")
         let articleUrl = NSURL(string: "http://www.google.com")
-        ArticleCard.createFromWebUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+        ArticleCard.createFromUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
             XCTAssert(card == nil)
             XCTAssert(error != nil)
             expectation.fulfill()
@@ -103,7 +117,7 @@ class WildcardSDKTests: XCTestCase {
     
     func testArticleGeneralSearch(){
         let expectation = expectationWithDescription("General Article")
-        ArticleCard.searchArticleCards("isis") { (articleCards:[ArticleCard]?, error:NSError?) -> Void in
+        ArticleCard.search("isis") { (articleCards:[ArticleCard]?, error:NSError?) -> Void in
             XCTAssert(error == nil)
             XCTAssert(articleCards?.count > 0)
             expectation.fulfill()

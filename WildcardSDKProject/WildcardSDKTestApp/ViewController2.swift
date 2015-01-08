@@ -19,15 +19,15 @@ class ViewController2: UIViewController, CardViewDelegate {
     var mainCardWidthConstraint:NSLayoutConstraint!
     var mainCardHeightConstraint:NSLayoutConstraint!
     
-    func cardViewWillReload(cardView:CardView){
+    func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize){
         view.removeConstraint(mainCardHeightConstraint)
         view.removeConstraint(mainCardWidthConstraint)
         
-        mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
-        mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
+        mainCardWidthConstraint = cardView.constrainWidth(toSize.width)
+        mainCardHeightConstraint = cardView.constrainHeight(toSize.height)
         view.layoutIfNeeded()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
