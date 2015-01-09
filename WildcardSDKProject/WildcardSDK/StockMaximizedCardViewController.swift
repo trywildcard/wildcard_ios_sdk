@@ -25,6 +25,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     var initialCardFrame:CGRect!
     var initialCardVisualSource:CardViewVisualSource!
+    var finishedLoadAnimation = false
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         if(action.type == .Collapse){
@@ -65,12 +66,14 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        cardView?.fadeOut(0.2, delay: 0, completion: { (bool) -> Void in
-            self.cardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardDataSource)
-            self.cardView?.header?.alpha = 0
-            self.cardView?.footer?.alpha = 0
-            self.cardView?.body?.alpha = 0
-        })
+        if(!finishedLoadAnimation){
+            cardView?.fadeOut(0.2, delay: 0, completion: { (bool) -> Void in
+                self.cardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardDataSource)
+                self.cardView?.header?.alpha = 0
+                self.cardView?.footer?.alpha = 0
+                self.cardView?.body?.alpha = 0
+            })
+        }
     }
 
     func cardViewWillReload(cardView: CardView) {
@@ -81,7 +84,10 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.cardView?.fadeIn(0.2, delay: 0, completion: nil)
+        if(!finishedLoadAnimation){
+            self.cardView?.fadeIn(0.2, delay: 0, completion: nil)
+            finishedLoadAnimation = true
+        }
     }
     
     // MARK: UIViewControllerTransitioningDelegate

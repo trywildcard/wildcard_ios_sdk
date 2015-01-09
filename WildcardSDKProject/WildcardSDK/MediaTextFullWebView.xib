@@ -14,18 +14,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-q3-6nl">
-                    <rect key="frame" x="0.0" y="560" width="600" height="40"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-bR-gqC">
+                    <rect key="frame" x="565" y="7" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="ojq-4z-q1T"/>
+                        <constraint firstAttribute="width" constant="25" id="bGK-EF-rUQ"/>
+                        <constraint firstAttribute="height" constant="25" id="pwF-ep-iMY"/>
                     </constraints>
-                    <items>
-                        <barButtonItem systemItem="stop" id="IGw-lH-uZC">
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="iN0-l3-epB" id="gRl-3e-t2Q"/>
-                            </connections>
-                        </barButtonItem>
-                    </items>
+                </imageView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-q3-6nl">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ojq-4z-q1T"/>
+                    </constraints>
+                    <items/>
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -38,6 +39,8 @@
                 <constraint firstAttribute="bottom" secondItem="hkD-Es-DQB" secondAttribute="bottom" id="QKB-0q-KUC"/>
                 <constraint firstAttribute="trailing" secondItem="hkD-Es-DQB" secondAttribute="trailing" id="QKv-AL-97s"/>
                 <constraint firstAttribute="bottom" secondItem="Dkp-q3-6nl" secondAttribute="bottom" id="QcK-ag-H3h"/>
+                <constraint firstItem="XCi-bR-gqC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="YXG-gK-0EV"/>
+                <constraint firstAttribute="trailing" secondItem="XCi-bR-gqC" secondAttribute="trailing" constant="10" id="nSa-3t-8Vc"/>
                 <constraint firstAttribute="centerX" secondItem="Dkp-q3-6nl" secondAttribute="centerX" id="qJX-BO-Rff"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -49,6 +52,7 @@
             </variation>
             <connections>
                 <outlet property="bottomToolbar" destination="Dkp-q3-6nl" id="4H3-mg-XgZ"/>
+                <outlet property="favicon" destination="XCi-bR-gqC" id="Q41-Wi-MTx"/>
                 <outlet property="webview" destination="hkD-Es-DQB" id="trC-sx-zOx"/>
             </connections>
         </view>

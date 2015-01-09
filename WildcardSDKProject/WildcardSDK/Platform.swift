@@ -100,35 +100,25 @@ class Platform{
     
     func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
     {
-        createWildcardShortLink(url) { (shortLink:NSURL?, error:NSError?) -> Void in
+        var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
+        let platformUrl = NSURL(string:urlString)
+        
+        self.getJsonResponseFromWebUrl(platformUrl!, completion: { (json:NSDictionary?, error: NSError?) -> Void in
             if(error == nil){
-                if(shortLink != nil){
-                    var targetUrlEncoded = shortLink?.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-                    var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
-                    let platformUrl = NSURL(string:urlString)
-                    
-                    self.getJsonResponseFromWebUrl(platformUrl!, completion: { (json:NSDictionary?, error: NSError?) -> Void in
-                        if(error == nil){
-                            var articleCard:ArticleCard?
-                            if let result = json!["result"] as? NSArray{
-                                if result.count > 0 && result[0] is NSDictionary{
-                                    if let newArticle = ArticleCard.deserializeFromData(result[0] as NSDictionary) as? ArticleCard{
-                                        articleCard = newArticle
-                                    }
-                                }
-                            }
-                            completion(articleCard, nil)
-                        }else{
-                            completion(nil,error)
+                var articleCard:ArticleCard?
+                if let result = json!["result"] as? NSArray{
+                    if result.count > 0 && result[0] is NSDictionary{
+                        if let newArticle = ArticleCard.deserializeFromData(result[0] as NSDictionary) as? ArticleCard{
+                            articleCard = newArticle
                         }
-                    })
-                }else{
-                    completion(nil,NSError())
+                    }
                 }
+                completion(articleCard, nil)
             }else{
                 completion(nil,error)
             }
-        }
+        })
     }
     
     func getWebLinkCardFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void

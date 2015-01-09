@@ -42,4 +42,8 @@ extension UIFont{
         return UIFont(name: "Polaris-Medium", size: 12.0)!
     }
     
+    class func wildcardSmallButtonFont()->UIFont{
+        return UIFont(name: "Polaris-Medium", size: 10.0)!
+    }
+    
 }

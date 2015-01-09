@@ -7,26 +7,131 @@
 //
 
 import Foundation
-import WebKit
+import StoreKit
 
-class MediaTextFullWebView : CardViewElement
+class MediaTextFullWebView : CardViewElement, UIWebViewDelegate, SKStoreProductViewControllerDelegate
 {
+    @IBOutlet weak var favicon: UIImageView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
+    var downloadAppBarButton:UIBarButtonItem!
+    var downloadAppIcon:UIImageView!
     
+    // MARK: CardViewElement
     override func initializeElement() {
-        let configuration = WKWebViewConfiguration()
-        configuration.allowsInlineMediaPlayback = true
+        favicon.layer.cornerRadius = 4.0
+        favicon.layer.masksToBounds = true
+        webview.delegate = self
+        bottomToolbar.tintColor = UIColor.wildcardLightBlue()
+        
+        // initialize a download app button in case publisher has an app store link
+        var downloadAppButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
+        downloadAppButton?.setTitle("DOWNLOAD APP", forState: UIControlState.Normal)
+        downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 1, 0)
+        downloadAppButton?.titleLabel!.font = UIFont.wildcardSmallButtonFont()
+        downloadAppButton?.setTitleColor(UIColor.wildcardLightBlue(), forState: UIControlState.Normal)
+        downloadAppButton?.addTarget(self, action: "actionButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        downloadAppButton?.sizeToFit()
+        downloadAppBarButton = UIBarButtonItem(customView: downloadAppButton!)
+        
+        downloadAppIcon = UIImageView(frame: CGRectMake(0, 0, 25, 25))
+        downloadAppIcon.layer.cornerRadius = 4.0
+        downloadAppIcon.layer.masksToBounds = true
     }
     
     override func update() {
         if let articleCard = cardView.backingCard as? ArticleCard{
+            // top right favicon
+            if let url = articleCard.publisher.smallLogoUrl{
+                favicon.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                    if(image != nil){
+                        self.favicon.image = image!
+                        self.downloadAppIcon.image = image!
+                    }
+                })
+            }
             webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: nil)
+            updateToolbar()
         }
     }
-  
-    @IBAction func closeButtonTapped(sender: AnyObject) {
+    
+    // MARK: Action
+    func closeButtonTapped(sender: AnyObject) {
         cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Collapse, parameters: nil))
+    }
+    
+    func actionButtonTapped(sender:AnyObject){
+        
+        if let articleCard = cardView.backingCard as? ArticleCard{
+            if let url = articleCard.publisher.appStoreUrl {
+                var lastComponent:NSString = url.lastPathComponent!
+                var id = lastComponent.substringFromIndex(2) as NSString
+                var parameters = NSMutableDictionary()
+                parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
+                
+                
+                var storeController = SKStoreProductViewController()
+                storeController.delegate = self
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    
+                    self.parentViewController()?.presentViewController(storeController, animated: true, completion: nil)
+                    return
+                    
+                    
+                })
+            }
+            
+        
+            /*
+        var storeController = SKStoreProductViewController()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+       // storeController.loadProductWithParameters(, completionBlock: <#((Bool, NSError!) -> Void)!##(Bool, NSError!) -> Void#>)
+        
+        println("action button tapped")
+*/
+        }
+    }
+    
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
+        self.parentViewController()?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: Private
+    func updateToolbar(){
+        
+        var barButtonItems:[AnyObject] = []
+        
+        var closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
+        barButtonItems.append(closeButton)
+        
+        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        barButtonItems.append(flexSpace)
+        
+        if let articleCard = cardView.backingCard as? ArticleCard{
+            if let appStoreUrl = articleCard.publisher.appStoreUrl {
+                
+                // publisher logo
+                var imageButton = UIBarButtonItem(customView: downloadAppIcon)
+                imageButton.target = self
+                imageButton.action = "actionButtonTapped:"
+                barButtonItems.append(imageButton)
+                
+                // download app button
+                barButtonItems.append(downloadAppBarButton)
+                
+                // fixed spacing to left of action button
+                var fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+                fixedSpace.width = 5
+                barButtonItems.append(fixedSpace)
+            }
+        }
+        
+        var actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped")
+        barButtonItems.append(actionButton)
+        
+        bottomToolbar.setItems(barButtonItems, animated: false)
     }
     
     func constructFinalHtml(articleCard:ArticleCard)->String{
@@ -77,4 +182,17 @@ class MediaTextFullWebView : CardViewElement
         })
         return Static.instance!
     }
+    
+    // MARK: UIWebViewDelegate
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if(navigationType == .LinkClicked){
+            if(cardView.delegate?.cardViewShouldRedirectToURL? == nil || cardView.delegate?.cardViewShouldRedirectToURL?(cardView, url: request.URL) == true){
+                UIApplication.sharedApplication().openURL(request.URL)
+            }
+            return false
+        }else{
+            return true
+        }
+    }
+    
 }

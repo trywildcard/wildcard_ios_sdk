@@ -65,8 +65,9 @@ public protocol CardViewDelegate{
     
     /**
     The CardView has been explicitly requested to open a URL. By default, Cards
-    will just call the standard UIApplication.openURL if this function is not implemented.
-    You may implement this function and return false to do something custom.
+    will just call the standard UIApplication.openURL if this function is not implemented or
+    returns true. To do something custom, you may implement this function to do something custom
+    and return false.
     
     :param: url - The URL to be opened
     */
