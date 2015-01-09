@@ -29,7 +29,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 1, 0)
         downloadAppButton?.titleLabel!.font = UIFont.wildcardSmallButtonFont()
         downloadAppButton?.setTitleColor(UIColor.wildcardLightBlue(), forState: UIControlState.Normal)
-        downloadAppButton?.addTarget(self, action: "actionButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        downloadAppButton?.addTarget(self, action: "downloadAppButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         downloadAppButton?.sizeToFit()
         downloadAppBarButton = UIBarButtonItem(customView: downloadAppButton!)
         
@@ -60,6 +60,16 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     }
     
     func actionButtonTapped(sender:AnyObject){
+        Platform.sharedInstance.createWildcardShortLink(cardView.backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
+            if let shareUrl = url {
+                var parameters = NSMutableDictionary()
+                parameters["url"] = shareUrl
+                self.cardView.delegate?.cardViewRequestedAction?(self.cardView, action: CardViewAction(type: .Action, parameters: parameters))
+            }
+        })
+    }
+    
+    func downloadAppButtonTapped(sender:AnyObject){
         if let articleCard = cardView.backingCard as? ArticleCard{
             if let url = articleCard.publisher.appStoreUrl {
                 var lastComponent:NSString = url.lastPathComponent!
@@ -88,7 +98,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
                 // publisher logo
                 var imageButton = UIBarButtonItem(customView: downloadAppIcon)
                 imageButton.target = self
-                imageButton.action = "actionButtonTapped:"
+                imageButton.action = "downloadAppButtonTapped:"
                 barButtonItems.append(imageButton)
                 
                 // download app button
@@ -101,7 +111,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
             }
         }
         
-        var actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped")
+        var actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped:")
         barButtonItems.append(actionButton)
         
         bottomToolbar.setItems(barButtonItems, animated: false)

@@ -12,13 +12,11 @@ import StoreKit
 class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate,UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate {
     
     var presentingControllerBackgroundView:UIView?
-    var blurredOverlayView:UIView?
-    var previousCardView:CardView!
-    var cardView:CardView?
+    var presentingCardView:CardView!
     var maximizedCard:Card!
-    var maximizedCardDataSource:CardViewVisualSource!
+    var maximizedCardView:CardView?
+    var maximizedCardVisualSource:MaximizedCardViewVisualSource!
     
-    var cardDataSource:CardViewVisualSource!
     var cardViewTopConstraint:NSLayoutConstraint?
     var cardViewBottomConstraint:NSLayoutConstraint?
     var cardViewLeftConstraint:NSLayoutConstraint?
@@ -30,6 +28,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         if(action.type == .Collapse){
+            maximizedCardView?.fadeOut(0.2, delay: 0, completion: nil)
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }else if(action.type == .DownloadApp){
             if let actionParams = action.parameters{
@@ -45,6 +44,13 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
                     self.presentViewController(storeController, animated: true, completion: nil)
                     return
                 })
+            }
+        }else if(action.type == .Action){
+            if let actionParams = action.parameters{
+                let url = actionParams["url"] as NSURL
+                let activityItems:[AnyObject] = [url]
+                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+                presentViewController(activityViewController, animated: true, completion: nil)
             }
         }
     }
@@ -62,50 +68,47 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardView = CardView.createCardView(maximizedCard, visualSource: initialCardVisualSource)
-        cardView?.delegate = self
-        cardView!.frame = initialCardFrame
+        maximizedCardView = CardView.createCardView(maximizedCard, visualSource: initialCardVisualSource)
+        maximizedCardView?.delegate = self
+        maximizedCardView!.frame = initialCardFrame
         
-        view.addSubview(cardView!)
+        view.addSubview(maximizedCardView!)
         
         //initiailize constraints
-        cardViewLeftConstraint = cardView?.constrainLeftToSuperView(initialCardFrame.origin.x)
-        cardViewTopConstraint = cardView?.constrainTopToSuperView(initialCardFrame.origin.y)
-        cardViewRightConstraint = cardView?.constrainRightToSuperView(view.frame.size.width - initialCardFrame.origin.x - initialCardFrame.size.width)
-        cardViewBottomConstraint = cardView?.constrainBottomToSuperView(view.frame.size.height - initialCardFrame.origin.y - initialCardFrame.size.height)
+        cardViewLeftConstraint = maximizedCardView?.constrainLeftToSuperView(initialCardFrame.origin.x)
+        cardViewTopConstraint = maximizedCardView?.constrainTopToSuperView(initialCardFrame.origin.y)
+        cardViewRightConstraint = maximizedCardView?.constrainRightToSuperView(view.frame.size.width - initialCardFrame.origin.x - initialCardFrame.size.width)
+        cardViewBottomConstraint = maximizedCardView?.constrainBottomToSuperView(view.frame.size.height - initialCardFrame.origin.y - initialCardFrame.size.height)
         view.addConstraint(cardViewLeftConstraint!)
         view.addConstraint(cardViewTopConstraint!)
         view.addConstraint(cardViewRightConstraint!)
         view.addConstraint(cardViewBottomConstraint!)
+        maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.maximizedCardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardVisualSource)
+        
         if(!finishedLoadAnimation){
-            cardView?.fadeOut(0.2, delay: 0, completion: { (bool) -> Void in
-                self.cardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardDataSource)
-                self.cardView?.header?.alpha = 0
-                self.cardView?.footer?.alpha = 0
-                self.cardView?.body?.alpha = 0
-            })
+            self.maximizedCardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardVisualSource)
+            maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
         }
     }
-
-    func cardViewWillReload(cardView: CardView) {
-    }
-    
-    func cardViewDidReload(cardView: CardView) {
-    }
-    
- 
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if(!finishedLoadAnimation){
-            self.cardView?.fadeIn(0.2, delay: 0, completion: nil)
+            maximizedCardView?.fadeIn(0.2, delay: 0, completion: nil)
             finishedLoadAnimation = true
         }
+    }
+    
+    func cardViewWillReload(cardView: CardView) {
+    }
+    
+    func cardViewDidReload(cardView: CardView) {
     }
     
     // MARK: SKStoreProductViewControllerDelegate
@@ -118,7 +121,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         
         if presented == self {
             let presentationController = StockMaximizedCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
-            presentationController.presentingCardView = previousCardView
+            presentationController.presentingCardView = presentingCardView
             return presentationController
         }else{
             return nil

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MaximizedArticleVisualSource : CardViewVisualSource {
+public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     
     var card:Card
     
@@ -16,20 +16,27 @@ public class MaximizedArticleVisualSource : CardViewVisualSource {
         self.card = card
     }
     
+    public func applicationFrameEdgeInsets() -> UIEdgeInsets {
+        return UIEdgeInsetsMake(10, 10, 10, 10)
+    }
+    
     public func viewForCardBody()->CardViewElement{
         return UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
     }
     
     public func heightForCardBody()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        let cardHeight = screenBounds.height - 35
-        return cardHeight
+        // must be relative to application frame and insets
+        let frame = UIScreen.mainScreen().applicationFrame
+        let insets = applicationFrameEdgeInsets()
+        return frame.size.height - insets.top - insets.bottom
+       
     }
     
     public func widthForCard()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 10.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
+        // must be relative to application frame and insets
+        let screenBounds = UIScreen.mainScreen().applicationFrame
+        let insets = applicationFrameEdgeInsets()
+        let cardWidth = screenBounds.width - insets.left - insets.right
         return cardWidth
     }
     

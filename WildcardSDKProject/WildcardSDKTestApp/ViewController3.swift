@@ -15,7 +15,7 @@ class ViewController3: UIViewController, CardViewDelegate {
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         if(action.type == .Maximize){
-            maximizeCardView(cardView)
+            maximizeArticleCard(cardView)
         }
     }
     

@@ -28,6 +28,24 @@ public protocol CardViewVisualSource{
 }
 
 /**
+The visual source of a maximized CardView extends from the standard visual source.
+
+The maximized visual source should always be used with the extension UIView.maximizeCardView. This visual source is responsible for displaying a Card during its 'maximized state'. In this state, the Card takes up the entire application frame, and is owned by a fully presented view controller.
+
+This visual source may never be used for an inline card. 
+*/
+@objc
+public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
+    
+    /**
+    This represents the edge insets of the maximized CardView to the application frame.
+    
+    This must be defined carefully with the width / height protocol functions since both will dictate the eventual size of the card.
+    */
+    func applicationFrameEdgeInsets()->UIEdgeInsets
+}
+
+/**
 Delegation of CardView behavior
 */
 @objc

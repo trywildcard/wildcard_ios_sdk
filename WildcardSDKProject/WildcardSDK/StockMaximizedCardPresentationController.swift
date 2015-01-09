@@ -21,9 +21,8 @@ class StockMaximizedCardPresentationController :UIPresentationController
         }()
     
     override func presentationTransitionWillBegin() {
-        self.blurView.frame = self.containerView.bounds
-        self.containerView.addSubview(self.blurView)
-        self.blurView.constrainToSuperViewEdges()
+        containerView.addSubview(self.blurView)
+        blurView.constrainToSuperViewEdges()
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {
             transitionCoordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
@@ -50,7 +49,7 @@ class StockMaximizedCardPresentationController :UIPresentationController
     override func dismissalTransitionDidEnd(completed: Bool) {
         if completed {
             blurView.removeFromSuperview()
-            presentingCardView.fadeIn(0.3, delay: 0, completion: nil)
+            presentingCardView.fadeIn(0.2, delay: 0, completion: nil)
         }
     }
 }

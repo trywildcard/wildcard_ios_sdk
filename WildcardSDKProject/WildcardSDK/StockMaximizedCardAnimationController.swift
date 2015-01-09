@@ -12,7 +12,7 @@ import UIKit
 class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
-    let duration :NSTimeInterval = 0.5
+    let duration :NSTimeInterval = 0.4
     
     init(isPresenting: Bool) {
         self.isPresenting = isPresenting
@@ -37,25 +37,30 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         let containerView = transitionContext.containerView()
         
+        // insets relative to the application frame
+        let applicationInsets = maximizedController.maximizedCardVisualSource.applicationFrameEdgeInsets()
+        let applicationFrame = UIScreen.mainScreen().applicationFrame
+        
+        // this is the card frame in the coordinate space of the application frame / main screen
+        let cardFrame = CGRectMake(applicationFrame.origin.x + applicationInsets.left, applicationFrame.origin.y + applicationInsets.top, applicationFrame.width - applicationInsets.left - applicationInsets.right, applicationFrame.height - applicationInsets.top - applicationInsets.bottom)
+        
+        // convert to a rectangle in view controller space
+        let rectConvert = maximizedController.view.convertRect(cardFrame, fromCoordinateSpace: UIScreen.mainScreen().coordinateSpace)
         
         containerView.addSubview(presentedControllerView)
         
-        if(maximizedController.cardView != nil){
+        maximizedController.view.layoutIfNeeded()
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             
+            maximizedController.cardViewLeftConstraint?.constant = rectConvert.origin.x
+            maximizedController.cardViewTopConstraint?.constant = rectConvert.origin.y
+            maximizedController.cardViewRightConstraint?.constant = maximizedController.view.frame.size.width - rectConvert.origin.x - rectConvert.width
+            maximizedController.cardViewBottomConstraint?.constant = maximizedController.view.frame.size.height - rectConvert.origin.y - rectConvert.height
             maximizedController.view.layoutIfNeeded()
-            UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                
-                maximizedController.cardViewLeftConstraint?.constant = 10
-                maximizedController.cardViewTopConstraint?.constant = 25
-                maximizedController.cardViewRightConstraint?.constant = 10
-                maximizedController.cardViewBottomConstraint?.constant = 10
-                maximizedController.view.layoutIfNeeded()
-                
-                
-                }, completion: {(completed: Bool) -> Void in
-                    transitionContext.completeTransition(completed)
-            })
-        }
+            
+            }, completion: {(completed: Bool) -> Void in
+                transitionContext.completeTransition(completed)
+        })
     }
     
     func animateDismissalWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
@@ -64,22 +69,20 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         let containerView = transitionContext.containerView()
         
         // pop up the card
-        if(maximizedController.cardView != nil){
-            UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                maximizedController.cardView?.body?.alpha = 0
-                maximizedController.cardView?.footer?.alpha = 0
-                maximizedController.cardView?.header?.alpha = 0
-                
-                maximizedController.cardViewLeftConstraint?.constant = maximizedController.initialCardFrame.origin.x
-                maximizedController.cardViewTopConstraint?.constant = maximizedController.initialCardFrame.origin.y
-                maximizedController.cardViewRightConstraint?.constant = maximizedController.view.frame.size.width - maximizedController.initialCardFrame.origin.x - maximizedController.initialCardFrame.size.width
-                maximizedController.cardViewBottomConstraint?.constant = maximizedController.view.frame.size.height - maximizedController.initialCardFrame.origin.y - maximizedController.initialCardFrame.size.height
-                
-                maximizedController.view.layoutIfNeeded()
-                
-                }, completion: {(completed: Bool) -> Void in
-                    transitionContext.completeTransition(completed)
-            })
-        }
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            //maximizedController.maximizedCardView?.body?.alpha = 0
+           // maximizedController.maximizedCardView?.footer?.alpha = 0
+          //  maximizedController.maximizedCardView?.header?.alpha = 0
+            
+            maximizedController.cardViewLeftConstraint?.constant = maximizedController.initialCardFrame.origin.x
+            maximizedController.cardViewTopConstraint?.constant = maximizedController.initialCardFrame.origin.y
+            maximizedController.cardViewRightConstraint?.constant = maximizedController.view.frame.size.width - maximizedController.initialCardFrame.origin.x - maximizedController.initialCardFrame.size.width
+            maximizedController.cardViewBottomConstraint?.constant = maximizedController.view.frame.size.height - maximizedController.initialCardFrame.origin.y - maximizedController.initialCardFrame.size.height
+            
+            maximizedController.view.layoutIfNeeded()
+            
+            }, completion: {(completed: Bool) -> Void in
+                transitionContext.completeTransition(completed)
+        })
     }
 }
