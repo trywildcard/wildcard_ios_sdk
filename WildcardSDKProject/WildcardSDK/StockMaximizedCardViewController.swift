@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import StoreKit
 
-class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate,UIViewControllerTransitioningDelegate {
+class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate,UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate {
     
     var presentingControllerBackgroundView:UIView?
     var blurredOverlayView:UIView?
@@ -30,6 +31,21 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         if(action.type == .Collapse){
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }else if(action.type == .DownloadApp){
+            if let actionParams = action.parameters{
+                let id = actionParams["id"] as NSString
+                var parameters = NSMutableDictionary()
+                parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
+                
+                var storeController = SKStoreProductViewController()
+                storeController.delegate = self
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    self.presentViewController(storeController, animated: true, completion: nil)
+                    return
+                })
+            }
         }
     }
  
@@ -82,12 +98,19 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     func cardViewDidReload(cardView: CardView) {
     }
     
+ 
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if(!finishedLoadAnimation){
             self.cardView?.fadeIn(0.2, delay: 0, completion: nil)
             finishedLoadAnimation = true
         }
+    }
+    
+    // MARK: SKStoreProductViewControllerDelegate
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: UIViewControllerTransitioningDelegate

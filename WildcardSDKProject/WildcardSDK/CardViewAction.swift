@@ -13,6 +13,7 @@ public class CardViewAction{
     public enum Type{
         case Maximize
         case Collapse
+        case DownloadApp
         case Custom
     }
     

@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import StoreKit
 
-class MediaTextFullWebView : CardViewElement, UIWebViewDelegate, SKStoreProductViewControllerDelegate
+class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
     @IBOutlet weak var favicon: UIImageView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
@@ -61,48 +60,22 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate, SKStoreProductV
     }
     
     func actionButtonTapped(sender:AnyObject){
-        
         if let articleCard = cardView.backingCard as? ArticleCard{
             if let url = articleCard.publisher.appStoreUrl {
                 var lastComponent:NSString = url.lastPathComponent!
                 var id = lastComponent.substringFromIndex(2) as NSString
                 var parameters = NSMutableDictionary()
-                parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
-                
-                
-                var storeController = SKStoreProductViewController()
-                storeController.delegate = self
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    
-                    self.parentViewController()?.presentViewController(storeController, animated: true, completion: nil)
-                    return
-                    
-                    
-                })
+                parameters["id"] = id
+                cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .DownloadApp, parameters: parameters))
             }
-            
-        
-            /*
-        var storeController = SKStoreProductViewController()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-       // storeController.loadProductWithParameters(, completionBlock: <#((Bool, NSError!) -> Void)!##(Bool, NSError!) -> Void#>)
-        
-        println("action button tapped")
-*/
         }
     }
-    
-    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
-        self.parentViewController()?.dismissViewControllerAnimated(true, completion: nil)
-    }
+  
     
     // MARK: Private
     func updateToolbar(){
         
         var barButtonItems:[AnyObject] = []
-        
         var closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
         barButtonItems.append(closeButton)
         
