@@ -29,15 +29,13 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
         let frame = UIScreen.mainScreen().applicationFrame
         let insets = applicationFrameEdgeInsets()
         return frame.size.height - insets.top - insets.bottom
-       
     }
     
     public func widthForCard()->CGFloat{
         // must be relative to application frame and insets
-        let screenBounds = UIScreen.mainScreen().applicationFrame
+        let frame = UIScreen.mainScreen().applicationFrame
         let insets = applicationFrameEdgeInsets()
-        let cardWidth = screenBounds.width - insets.left - insets.right
-        return cardWidth
+        return frame.width - insets.left - insets.right
     }
     
     public func backingCard() -> Card {

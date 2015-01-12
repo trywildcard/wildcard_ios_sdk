@@ -11,7 +11,6 @@ import StoreKit
 
 class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, CardViewDelegate,UIViewControllerTransitioningDelegate, SKStoreProductViewControllerDelegate {
     
-    var presentingControllerBackgroundView:UIView?
     var presentingCardView:CardView!
     var maximizedCard:Card!
     var maximizedCardView:CardView?
@@ -25,6 +24,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var initialCardFrame:CGRect!
     var initialCardVisualSource:CardViewVisualSource!
     var finishedLoadAnimation = false
+    var currentOrientation:UIInterfaceOrientation!
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         if(action.type == .Collapse){
@@ -69,8 +69,9 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         super.viewDidLoad()
         
         maximizedCardView = CardView.createCardView(maximizedCard, visualSource: initialCardVisualSource)
+        
+        println(maximizedCardView!.frame)
         maximizedCardView?.delegate = self
-        maximizedCardView!.frame = initialCardFrame
         
         view.addSubview(maximizedCardView!)
         
@@ -84,12 +85,17 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         view.addConstraint(cardViewRightConstraint!)
         view.addConstraint(cardViewBottomConstraint!)
         maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
+        
+        currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
+        view.layoutIfNeeded()
+        
+        println(maximizedCardView!.frame)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.maximizedCardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardVisualSource)
         
         if(!finishedLoadAnimation){
             self.maximizedCardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardVisualSource)
@@ -109,6 +115,40 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     }
     
     func cardViewDidReload(cardView: CardView) {
+    }
+    
+    func handleOrientationChange(notification:NSNotification){
+        if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
+            currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+            
+            maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
+            let destination = calculateMaximizedFrame()
+            updateInternalCardConstraints(destination)
+            
+            let initialFrame = view.convertRect(presentingCardView.frame, fromView: presentingCardView.superview)
+            initialCardFrame = initialFrame
+        }
+    }
+    
+    func calculateMaximizedFrame() -> CGRect{
+        // insets relative to the application frame
+        let applicationInsets = maximizedCardVisualSource.applicationFrameEdgeInsets()
+        let applicationFrame = UIScreen.mainScreen().applicationFrame
+        
+        // this is the card frame in the coordinate space of the application frame / main screen
+        let cardFrame = CGRectMake(applicationFrame.origin.x + applicationInsets.left, applicationFrame.origin.y + applicationInsets.top, applicationFrame.width - applicationInsets.left - applicationInsets.right, applicationFrame.height - applicationInsets.top - applicationInsets.bottom)
+        
+        // convert to a rectangle in view controller space
+        let rectConvert = view.convertRect(cardFrame, fromCoordinateSpace: UIScreen.mainScreen().coordinateSpace)
+        return rectConvert
+    }
+    
+    func updateInternalCardConstraints(destination:CGRect){
+        cardViewLeftConstraint?.constant = destination.origin.x
+        cardViewTopConstraint?.constant = destination.origin.y
+        cardViewRightConstraint?.constant = view.frame.size.width - destination.origin.x - destination.width
+        cardViewBottomConstraint?.constant = view.frame.size.height - destination.origin.y - destination.height
+        view.layoutIfNeeded()
     }
     
     // MARK: SKStoreProductViewControllerDelegate

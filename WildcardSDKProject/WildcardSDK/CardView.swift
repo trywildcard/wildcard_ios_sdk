@@ -18,6 +18,7 @@ public protocol CardViewVisualSource{
     
     func viewForCardBody()->CardViewElement
     func heightForCardBody()->CGFloat
+    
     func widthForCard()->CGFloat
     
     optional func viewForCardHeader()->CardViewElement?
@@ -53,8 +54,9 @@ public protocol CardViewDelegate{
     
     /**
     The CardView is about to go through re-layout. For example, if a CardView is reloaded
-    with a brand new Card and visual source, a re-layout of the CardView will happen. This helps
-    the delegate prepare for the re-layout given the old and new-size.
+    with a brand new Card and visual source, a re-layout of the CardView will happen. This lets
+    the delegate prepare for the re-layout given the old and new-size for any elements dependent
+    on the CardView
     
     :param: fromSize - The previous size of the CardView
     :param: toSize - The new size of the CardView
@@ -93,7 +95,7 @@ public protocol CardViewDelegate{
     
 }
 
-public class CardView : UIView //, CardViewElementDelegate
+public class CardView : UIView
 {
     // MARK: Public properties
     public var physics:CardPhysics?
@@ -110,11 +112,11 @@ public class CardView : UIView //, CardViewElementDelegate
     
     public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
         let size = Utilities.sizeFromVisualSource(visualSource)
-        let cardFrame = CGRectMake(0, 0, size.width, size.height)
-        let newCardView = CardView(frame: cardFrame)
+        let newCardView = CardView(frame: CGRectMake(0, 0, size.width, size.height))
         newCardView.backingCard = card
         newCardView.visualSource = visualSource
         newCardView.layoutCardComponents()
+        newCardView.layoutIfNeeded()
         newCardView.refresh()
         return newCardView
     }
@@ -137,6 +139,7 @@ public class CardView : UIView //, CardViewElementDelegate
         
         backingCard = card
         self.visualSource = visualSource
+        let newSize = Utilities.sizeFromVisualSource(visualSource)
         
         delegate?.cardViewWillReload?(self)
         
@@ -144,11 +147,11 @@ public class CardView : UIView //, CardViewElementDelegate
         removeCardSubviews()
         
         // calculate new card frame, let delegate prepare
-        let newSize = Utilities.sizeFromVisualSource(visualSource)
         delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
         
         // layout components
         layoutCardComponents()
+        layoutIfNeeded()
         
         // update views
         refresh()
@@ -248,8 +251,6 @@ public class CardView : UIView //, CardViewElementDelegate
             back = backView
             back?.cardView = self
         }
-        
-        layoutIfNeeded()
     }
     
     private func constrainSubComponent(cardComponent:UIView, offset:CGFloat, height:CGFloat){

@@ -444,7 +444,7 @@
 				1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */,
 				1DF0BA971A394AF500EE9645 /* Physics */,
 				1DFFEDD11A400818008E65BC /* Card View Elements */,
-				1DFFEDD01A400803008E65BC /* Stock Card View Visual Sources */,
+				1DFFEDD01A400803008E65BC /* Stock Visual Sources */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -524,6 +524,14 @@
 			name = Backs;
 			sourceTree = "<group>";
 		};
+		1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */,
+			);
+			name = "Maximized Visual Sources";
+			sourceTree = "<group>";
+		};
 		1DE2183E1A38073B007746B4 /* Stock Presentations */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,17 +556,17 @@
 			name = Physics;
 			sourceTree = "<group>";
 		};
-		1DFFEDD01A400803008E65BC /* Stock Card View Visual Sources */ = {
+		1DFFEDD01A400803008E65BC /* Stock Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */,
 				1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */,
 				1DC9288A1A409F1E0040DAD0 /* ImageFullFloatBottomVisualSource.swift */,
 				1DC9287D1A408FA80040DAD0 /* ImageThumbnailFloatLeftVisualSource.swift */,
-				1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */,
 				1D74170D1A40772E00281714 /* SimpleDescriptionCardVisualSource.swift */,
 				1D3ECFBD1A40DDEC0001BF7A /* SquareArticleVisualSource.swift */,
 			);
-			name = "Stock Card View Visual Sources";
+			name = "Stock Visual Sources";
 			sourceTree = "<group>";
 		};
 		1DFFEDD11A400818008E65BC /* Card View Elements */ = {
@@ -652,7 +660,6 @@
 				TargetAttributes = {
 					1D3A285A1A2E696A00A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = NQ8GZFQ3RP;
 					};
 					1D3A28821A2E697700A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
@@ -1011,6 +1018,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1066,6 +1074,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;

@@ -59,4 +59,27 @@ class Utilities{
         return CGSizeMake(width, height)
     }
     
+    /**
+    Verifies the integrity of the maximize visual size
+    */
+    class func validateMaximizeVisualSource(visualSource:MaximizedCardViewVisualSource)->Bool{
+        let appFrame = UIScreen.mainScreen().applicationFrame
+        let insets = visualSource.applicationFrameEdgeInsets()
+        let size = sizeFromVisualSource(visualSource)
+        var valid = true
+        
+        let appFrameWidth = appFrame.width - insets.left - insets.right
+        let appFrameHeight = appFrame.height - insets.top - insets.bottom
+        
+        if(appFrameWidth != size.width){
+            println("The card width \(size.width) should equal width relative to app frame \(appFrameWidth)")
+            valid = false
+        }
+        if(appFrameHeight != size.height){
+            println("The card height \(size.height) should equal height relative to app frame \(appFrameHeight)")
+            valid = false
+        }
+        return valid
+    }
+    
 }

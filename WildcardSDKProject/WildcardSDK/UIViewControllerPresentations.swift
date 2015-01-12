@@ -79,6 +79,10 @@ public extension UIViewController{
         let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
         viewController.initialCardFrame = initialFrame
         
-        presentViewController(viewController, animated: true, completion: nil)
+        if( Utilities.validateMaximizeVisualSource(visualsource)){
+            presentViewController(viewController, animated: true, completion: nil)
+        }else{
+            println("Can not maximize CardView due to dimension mismatch")
+        }
     }
 }

@@ -71,14 +71,16 @@ public extension UIView{
     public func constrainHeight(height:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: height)
-        superview!.addConstraint(heightConstraint)
+ //       superview!.addConstraint(heightConstraint)
+        addConstraint(heightConstraint)
         return heightConstraint
     }
     
     public func constrainWidth(width:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let widthConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: width)
-        superview!.addConstraint(widthConstraint)
+ //       superview!.addConstraint(widthConstraint)
+        addConstraint(widthConstraint)
         return widthConstraint
     }
     

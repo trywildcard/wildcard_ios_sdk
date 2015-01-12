@@ -101,6 +101,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         view.addSubview(cardView!)
         cardView?.constrainWidth(cardView!.frame.size.width, height: cardView!.frame.size.height)
         cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
+        
         cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
         view.layoutIfNeeded()
         
