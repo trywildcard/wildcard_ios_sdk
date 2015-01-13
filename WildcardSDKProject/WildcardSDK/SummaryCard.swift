@@ -20,17 +20,14 @@ public class SummaryCard : Card {
         self.description = String(htmlEncodedString: description)
         self.imageUrl = imageUrl
         super.init(webUrl: url, cardType: "summary")
-        
     }
     
     override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
-        // TODO
+        // TODO when there's real Summary Cards
         return nil;
     }
     
     public class func createFromUrl(url:NSURL, completion: ((SummaryCard?, NSError?)->Void)) -> Void{
         Platform.sharedInstance.createSummaryCardFromUrl(url,completion:completion)
     }
-    
-    
 }

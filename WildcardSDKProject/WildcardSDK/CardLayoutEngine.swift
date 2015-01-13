@@ -42,7 +42,7 @@ public class CardLayoutEngine{
         
         let linkCardNode = LayoutDecisionNode(description: "It's a web link card")
         let articleCardNode = LayoutDecisionNode(description: "It's an article card")
-        cardTypeNode.addEdge(CardTypeEdge(cardType: "weblink"), destination: linkCardNode)
+        cardTypeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: linkCardNode)
         cardTypeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
         // article card layouts

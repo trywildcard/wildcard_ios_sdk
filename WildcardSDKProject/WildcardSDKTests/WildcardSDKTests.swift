@@ -85,7 +85,7 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(engine.matchLayout(SummaryCard1) == CardLayout.SummaryCardPortraitDefault)
         
         let imageUrl = NSURL(string: "http://www.google.com")
-        
+       
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
         XCTAssert(engine.matchLayout(SummaryCard2) == CardLayout.SummaryCardPortraitImageFull)
