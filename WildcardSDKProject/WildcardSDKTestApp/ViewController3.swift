@@ -24,7 +24,7 @@ class ViewController3: UIViewController, CardViewDelegate {
 
         view.backgroundColor = UIColor.wildcardBackgroundGray()
 
-        let articleUrl = NSURL(string: "http://www.vice.com/read/2015s-headlines-revealed")
+        let articleUrl = NSURL(string: "http://www.freep.com/story/money/cars/detroit-auto-show/2015/01/12/2017-ford-shelby-gt-mustang-michigan-350r/21632001/")
         ArticleCard.createFromUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let articleCard = card {

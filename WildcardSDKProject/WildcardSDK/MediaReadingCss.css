@@ -23,12 +23,14 @@ body{
     line-height:22px;
     color:rgb(40,47,60);
     word-break:keep-all;
+    word-wrap:break-word;
     margin-left:auto;
     margin-right:auto;
-    width:90%;
+    width:90%%;
+    
 }
 
-figure{ 
+figure{
     margin:0px auto;
     display:block;
 }
@@ -59,12 +61,14 @@ video{
     margin:0px auto;
     width:100%%;
     display:block;
+    height:auto;
 }
 
 iframe{
     margin:0px auto;
     width:100%%;
     display:block;
+    height:auto;
 }
 
 blockquote{
