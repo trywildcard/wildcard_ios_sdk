@@ -51,20 +51,20 @@ public class CardLayoutEngine{
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
-        // web card layouts
+        // summary card lay outs
         let linkCardHasImageNode = LayoutDecisionNode(description: "Web link card has an image")
-        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.WebLinkCardPortraitDefault)
+        let linkCardDefaultNode = LayoutDecisionNode(description: "LinkCardPortraitDefault", layout: CardLayout.SummaryCardPortraitDefault)
         
         linkCardNode.addEdge(CheckImageEdge(), destination: linkCardHasImageNode)
         linkCardNode.addEdge(PassThroughEdge(), destination: linkCardDefaultNode)
         
-        let linkCardFullImageNode = LayoutDecisionNode(description: "LinkCardPortraitImageFull", layout: CardLayout.WebLinkCardPortraitImageFull)
+        let linkCardFullImageNode = LayoutDecisionNode(description: "LinkCardPortraitImageFull", layout: CardLayout.SummaryCardPortraitImageFull)
         let linkCardLongTitleNode = LayoutDecisionNode(description: "Web link card has a long title")
         linkCardHasImageNode.addEdge(CheckShortTitleEdge(), destination: linkCardFullImageNode)
         linkCardHasImageNode.addEdge(PassThroughEdge(), destination: linkCardLongTitleNode)
         
-        let linkCardFloatLeftNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatLeft", layout: CardLayout.WebLinkCardPortraitImageSmallFloatLeft)
-        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.WebLinkCardPortraitImageFull)
+        let linkCardFloatLeftNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatLeft", layout: CardLayout.SummaryCardPortraitImageSmallFloatLeft)
+        let linkCardFloatBottomNode = LayoutDecisionNode(description: "LinkCardPortraitImageSmallFloatBottom", layout: CardLayout.SummaryCardPortraitImageFull)
         linkCardLongTitleNode.addEdge(CheckShortDescriptionEdge(), destination: linkCardFloatLeftNode)
         linkCardLongTitleNode.addEdge(PassThroughEdge(), destination: linkCardFloatBottomNode)
     }

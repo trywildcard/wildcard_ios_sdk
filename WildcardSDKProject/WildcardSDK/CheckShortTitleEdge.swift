@@ -22,9 +22,9 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
             case .Article:
                 let articleCard = card as ArticleCard
                 return countElements(articleCard.title) < 40
-            case .WebLink:
-                let webLinkCard = card as WebLinkCard
-                return countElements(webLinkCard.title) < 40
+            case .Summary:
+                let summaryCard = card as SummaryCard
+                return countElements(summaryCard.title) < 40
             }
         }
         return false

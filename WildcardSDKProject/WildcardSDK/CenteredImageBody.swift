@@ -34,8 +34,8 @@ class CenteredImageBody : CardViewElement{
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
+        case .Summary:
+            let webLinkCard = cardView.backingCard as SummaryCard
             imageUrl = webLinkCard.imageUrl
         case .Unknown:
             imageUrl = nil

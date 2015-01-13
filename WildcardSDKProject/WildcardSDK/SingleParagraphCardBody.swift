@@ -33,8 +33,8 @@ class SingleParagraphCardBody : CardViewElement {
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             titleLabel.setAsCardSubHeaderWithText(articleCard.abstractContent)
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
+        case .Summary:
+            let webLinkCard = cardView.backingCard as SummaryCard
             titleLabel.setAsCardSubHeaderWithText(webLinkCard.description)
         case .Unknown:
             titleLabel.setAsCardSubHeaderWithText("Unknown Card Type!")
@@ -49,8 +49,8 @@ class SingleParagraphCardBody : CardViewElement {
         case .Article:
             let articleCard = card as ArticleCard
             titleText = articleCard.abstractContent
-        case .WebLink:
-            let webLinkCard = card as WebLinkCard
+        case .Summary:
+            let webLinkCard = card as SummaryCard
             titleText = webLinkCard.description
         case .Unknown:
             titleText = nil

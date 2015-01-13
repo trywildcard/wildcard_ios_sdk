@@ -20,11 +20,9 @@ class ViewController2: UIViewController, CardViewDelegate {
     var mainCardHeightConstraint:NSLayoutConstraint!
     
     func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize){
-        view.removeConstraint(mainCardHeightConstraint)
-        view.removeConstraint(mainCardWidthConstraint)
         
-        mainCardWidthConstraint = cardView.constrainWidth(toSize.width)
-        mainCardHeightConstraint = cardView.constrainHeight(toSize.height)
+        mainCardWidthConstraint.constant = toSize.width
+        mainCardHeightConstraint.constant = toSize.height
         view.layoutIfNeeded()
     }
 
@@ -34,7 +32,7 @@ class ViewController2: UIViewController, CardViewDelegate {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = WebLinkCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", dictionary: nil)
+        let dummyCard = SummaryCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", imageUrl:nil)
         let bareBones = BareBonesCardVisualSource(card:dummyCard)
         if let cardView = CardView.createCardView(dummyCard, visualSource: bareBones){
             view.addSubview(cardView)
@@ -98,14 +96,14 @@ class ViewController2: UIViewController, CardViewDelegate {
                     if (urlString.rangeOfString("jpg") != nil || urlString.rangeOfString("png") != nil){
                         let params = NSMutableDictionary()
                         params["primaryImageUrl"] = urlString
-                        let webLinkCard = WebLinkCard(url: url, description: title, title: title, dictionary: params)
+                        let webLinkCard = SummaryCard(url: url, description: title, title: title, imageUrl:nil)
                         self.mainCardView!.reloadWithCard(webLinkCard)
                     }
                     else{
                         reRenderButton.enabled = false
                         spinner.startAnimating()
                         
-                        WebLinkCard.createFromWebUrl(url, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
+                        SummaryCard.createFromUrl(url, completion: { (card:SummaryCard?, error:NSError?) -> Void in
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.spinner.stopAnimating()
                                 self.reRenderButton.enabled = true

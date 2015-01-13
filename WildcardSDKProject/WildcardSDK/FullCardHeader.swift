@@ -35,10 +35,10 @@ class FullCardHeader :CardViewElement
                     }
                 })
             }
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
-            kicker.setAsCardSubHeaderWithText(webLinkCard.title)
-            title.setAsCardHeaderWithText(webLinkCard.description)
+        case .Summary:
+            let summaryCard = cardView.backingCard as SummaryCard
+            kicker.setAsCardSubHeaderWithText(summaryCard.title)
+            title.setAsCardHeaderWithText(summaryCard.description)
             favicon.image = UIImage(named: "wildcardSmallLogo")
         case .Unknown:
             title.setAsCardHeaderWithText("Unknown Card Type")
@@ -53,9 +53,9 @@ class FullCardHeader :CardViewElement
         case .Article:
             let articleCard = card as ArticleCard
             titleText = articleCard.title
-        case .WebLink:
-            let webLinkCard = card as WebLinkCard
-            titleText = webLinkCard.description
+        case .Summary:
+            let summaryCard = card as SummaryCard
+            titleText = summaryCard.description
         case .Unknown:
             titleText = "Unknown Card Type"
         }

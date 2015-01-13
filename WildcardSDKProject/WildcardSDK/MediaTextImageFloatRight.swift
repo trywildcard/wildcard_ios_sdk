@@ -34,10 +34,10 @@ class MediaTextImageFloatRight : CardViewElement{
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             abstractContent = articleCard.abstractContent
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
-            imageUrl = webLinkCard.imageUrl
-            abstractContent = webLinkCard.description
+        case .Summary:
+            let summaryCard = cardView.backingCard as SummaryCard
+            imageUrl = summaryCard.imageUrl
+            abstractContent = summaryCard.description
         case .Unknown:
             imageUrl = nil
         }

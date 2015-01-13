@@ -16,13 +16,13 @@ class CardViewVisualSourceFactory {
     */
     class func cardViewVisualSourceFromLayout(layout:CardLayout, card:Card)->CardViewVisualSource{
         switch(layout){
-        case .BareCard:
+        case .Unknown:
             return BareBonesCardVisualSource(card: card)
-        case .WebLinkCardPortraitDefault:
+        case .SummaryCardPortraitDefault:
             return SimpleDescriptionCardVisualSource(card: card)
-        case .WebLinkCardPortraitImageSmallFloatLeft:
+        case .SummaryCardPortraitImageSmallFloatLeft:
             return ImageThumbnailFloatLeftVisualSource(card: card)
-        case .WebLinkCardPortraitImageFull:
+        case .SummaryCardPortraitImageFull:
             return ImageFullFloatBottomVisualSource(card: card)
         case .ArticleCardPortraitImage,
         .ArticleCardPortraitNoImage:

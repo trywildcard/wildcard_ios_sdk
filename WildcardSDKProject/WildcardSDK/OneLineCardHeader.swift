@@ -36,8 +36,8 @@ class OneLineCardHeader : CardViewElement {
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             titleLabel.setAsCardHeaderWithText(articleCard.title)
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
+        case .Summary:
+            let webLinkCard = cardView.backingCard as SummaryCard
             titleLabel.setAsCardHeaderWithText(webLinkCard.title)
         case .Unknown:
             titleLabel.setAsCardHeaderWithText("Unknown Card Type!")

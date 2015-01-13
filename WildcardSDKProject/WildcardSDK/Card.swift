@@ -9,17 +9,17 @@
 import Foundation
 
 @objc
-public class Card : PlatformObject{
+public class Card : PlatformObject {
     
-    enum Type{
+    public enum Type{
         case Unknown
+        case Summary
         case Article
-        case WebLink
     }
     
-    let webUrl:NSURL
-    let cardType:String
-    let type:Type
+    public let webUrl:NSURL
+    public let cardType:String
+    public let type:Type
     
     init(webUrl:NSURL, cardType:String){
         self.webUrl = webUrl
@@ -27,22 +27,22 @@ public class Card : PlatformObject{
         self.type = Card.cardTypeFromString(cardType)
     }
     
-    class func cardTypeFromString(name:String) -> Type{
+    public class func cardTypeFromString(name:String) -> Type{
         if(name == "article"){
-            return Type.Article
-        }else if(name == "weblink"){
-            return Type.WebLink
+            return .Article
+        }else if(name == "summary"){
+            return .Summary
         }else{
-            return Type.Unknown
+            return .Unknown
         }
     }
     
-    class func stringFromCardType(type:Type)->String{
+    public class func stringFromCardType(type:Type)->String{
         switch(type){
         case .Article:
             return "article"
-        case .WebLink:
-            return "weblink"
+        case .Summary:
+            return "summary"
         case .Unknown:
             return "unknown"
         }
@@ -54,8 +54,6 @@ public class Card : PlatformObject{
                 switch(cardTypeValue){
                 case "article":
                     return ArticleCard.deserializeFromData(data) as? ArticleCard
-                case "weblink":
-                    return WebLinkCard.deserializeFromData(data) as? WebLinkCard
                 default:
                     return nil
                 }

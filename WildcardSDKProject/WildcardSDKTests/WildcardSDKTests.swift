@@ -63,7 +63,7 @@ class WildcardSDKTests: XCTestCase {
     func testLinkCard(){
         let expectation = expectationWithDescription("Link Card")
         let articleUrl = NSURL(string: "https://www.etsy.com/listing/128235512/etsy-i-buy-from-real-people-tote-bag")
-        WebLinkCard.createFromWebUrl(articleUrl!, completion: { (card:WebLinkCard?, error:NSError?) -> Void in
+        SummaryCard.createFromUrl(articleUrl!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
             XCTAssert(card != nil)
             XCTAssert(error == nil)
             expectation.fulfill()
@@ -72,7 +72,7 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
-    func testWebLinkCardLayouts(){
+    func testSummaryCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
         let publisher = Publisher(name:"Google")
@@ -81,27 +81,26 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(engine.matchLayout(articleCard) == CardLayout.ArticleCardPortraitNoImage)
         
         // no image results in default lay out
-        let webLinkCard1 = WebLinkCard(url: url!, description: "test1", title: "test1", dictionary: nil)
-        XCTAssert(engine.matchLayout(webLinkCard1) == CardLayout.WebLinkCardPortraitDefault)
+        let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", imageUrl:nil)
+        XCTAssert(engine.matchLayout(SummaryCard1) == CardLayout.SummaryCardPortraitDefault)
         
-        let testDictionary:NSMutableDictionary = NSMutableDictionary()
-        testDictionary["primaryImageUrl"] = "http://www.google.com"
+        let imageUrl = NSURL(string: "http://www.google.com")
         
         // image with short title
-        let webLinkCard2 = WebLinkCard(url: url!, description: "test2", title: "test2", dictionary: testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard2) == CardLayout.WebLinkCardPortraitImageFull)
+        let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
+        XCTAssert(engine.matchLayout(SummaryCard2) == CardLayout.SummaryCardPortraitImageFull)
         
         // image with long title and short description
-        let webLinkCard3 = WebLinkCard(url: url!, description: "test2", title: "longer title generates a different layout", dictionary: testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard3) == CardLayout.WebLinkCardPortraitImageSmallFloatLeft)
+        let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", imageUrl:imageUrl)
+        XCTAssert(engine.matchLayout(SummaryCard3) == CardLayout.SummaryCardPortraitImageSmallFloatLeft)
         
         // image with long title and long description
-        let webLinkCard4 = WebLinkCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", dictionary: testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard4) == CardLayout.WebLinkCardPortraitImageFull)
+        let SummaryCard4 = SummaryCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", imageUrl:imageUrl)
+        XCTAssert(engine.matchLayout(SummaryCard4) == CardLayout.SummaryCardPortraitImageFull)
         
         let longDesc = "Everybody I send cards to this year is getting one of these."
-        let webLinkCard5 = WebLinkCard(url:url!, description:longDesc, title:longDesc, dictionary:testDictionary)
-        XCTAssert(engine.matchLayout(webLinkCard5) == CardLayout.WebLinkCardPortraitImageSmallFloatLeft)
+        let SummaryCard5 = SummaryCard(url:url!, description:longDesc, title:longDesc, imageUrl:imageUrl)
+        XCTAssert(engine.matchLayout(SummaryCard5) == CardLayout.SummaryCardPortraitImageSmallFloatLeft)
         
     }
     

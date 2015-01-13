@@ -80,7 +80,7 @@
 		1DAC269A1A36383F0005C4BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26991A36383F0005C4BE /* QuartzCore.framework */; };
 		1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC269B1A3641850005C4BE /* UIColorExtension.swift */; };
 		1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B01A3649EA0005C4BE /* Utilities.swift */; };
-		1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* WebLinkCard.swift */; };
+		1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */; };
 		1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */; };
 		1DAC26D11A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */; };
 		1DAC26D21A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */; };
@@ -229,7 +229,7 @@
 		1DAC26991A36383F0005C4BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1DAC269B1A3641850005C4BE /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1DAC26B01A3649EA0005C4BE /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		1DAC26B21A364B4A0005C4BE /* WebLinkCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLinkCard.swift; sourceTree = "<group>"; };
+		1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-Regular.ttf"; sourceTree = "<group>"; };
 		1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-RegularItalic.ttf"; sourceTree = "<group>"; };
 		1DAC26C91A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-Semibold.ttf"; sourceTree = "<group>"; };
@@ -402,9 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				1D904F981A2FDD5B001FFDEA /* Card.swift */,
-				1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */,
-				1DAC26B21A364B4A0005C4BE /* WebLinkCard.swift */,
 				1D3ECFC81A4151370001BF7A /* Publisher.swift */,
+				1DF62C1D1A65C7AA006C2CC3 /* Cards */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -556,6 +555,15 @@
 			name = Physics;
 			sourceTree = "<group>";
 		};
+		1DF62C1D1A65C7AA006C2CC3 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */,
+				1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
 		1DFFEDD01A400803008E65BC /* Stock Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +668,7 @@
 				TargetAttributes = {
 					1D3A285A1A2E696A00A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = NQ8GZFQ3RP;
 					};
 					1D3A28821A2E697700A9D4C1 = {
 						CreatedOnToolsVersion = 6.1;
@@ -804,7 +813,7 @@
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
-				1DAC26B31A364B4A0005C4BE /* WebLinkCard.swift in Sources */,
+				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
 				1D7EAC8F1A312B0000734B9A /* CardLayouts.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,

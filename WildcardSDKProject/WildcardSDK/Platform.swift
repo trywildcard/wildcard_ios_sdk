@@ -121,7 +121,7 @@ class Platform{
         })
     }
     
-    func getWebLinkCardFromWebUrl(url:NSURL, completion: ((WebLinkCard?, NSError?)->Void)) -> Void
+    func createSummaryCardFromUrl(url:NSURL, completion: ((SummaryCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
@@ -138,15 +138,35 @@ class Platform{
                     completion(nil, jsonError)
                 }
                 else {
-                    var linkCard:WebLinkCard?
+                    var card:SummaryCard?
                     if let result = json!["result"] as? NSDictionary{
-                        let title = result["title"] as? String
-                        let description = result["description"] as? String
-                        if title != nil && description != nil{
-                            linkCard = WebLinkCard(url: url,description:description!, title: title!, dictionary: result)
+                        
+                        var cardImageUrl:NSURL?
+                        var cardTitle:String?
+                        var cardDescription:String?
+                        if let image = result["primaryImageUrl"] as? String{
+                            cardImageUrl = NSURL(string: image)
+                        }else if let image = result["og:image"] as? String{
+                            cardImageUrl = NSURL(string: image)
+                        }
+                        
+                        if let title = result["title"] as? String {
+                            cardTitle = title
+                        }else if let title = result["og:title"] as? String{
+                            cardTitle = title
+                        }
+                        
+                        if let description = result["description"] as? String{
+                            cardDescription = description
+                        }else if let description = result["og:description"] as? String{
+                            cardDescription = description
+                        }
+                        
+                        if cardTitle != nil && cardDescription != nil{
+                            card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
                         }
                     }
-                    completion(linkCard, nil)
+                    completion(card, nil)
                 }
             }
         })

@@ -38,8 +38,8 @@ class BareBonesCardBody : CardViewElement {
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             titleLabel.text = String(htmlEncodedString:articleCard.title)
-        case .WebLink:
-            let webLinkCard = cardView.backingCard as WebLinkCard
+        case .Summary:
+            let webLinkCard = cardView.backingCard as SummaryCard
             titleLabel.text = String(htmlEncodedString:webLinkCard.title)
         case .Unknown:
             titleLabel.text = "Unknown Card Type!"

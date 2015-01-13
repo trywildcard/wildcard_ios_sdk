@@ -11,15 +11,13 @@ import WildcardSDK
 
 class ViewController: UIViewController {
     
-    var dummyCard:WebLinkCard?
+    var dummyCard:SummaryCard?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let google = NSURL(string: "http://www.google.com")
-        let dictionary:NSMutableDictionary = NSMutableDictionary()
-        dictionary["primaryImageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
-        dummyCard = WebLinkCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.", title: "The Card Title", dictionary: dictionary )
+        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.", title: "The Card Title", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         

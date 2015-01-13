@@ -9,12 +9,12 @@
 import Foundation
 
 public enum CardLayout {
-    case BareCard
-    case WebLinkCardPortraitImageFull;
-    case WebLinkCardPortraitImageSmallFloatLeft;
-    case WebLinkCardPortraitDefault;
-    case ArticleCardPortraitNoImage;
-    case ArticleCardPortraitImage;
-    case MaximizedFullWebView;
+    case Unknown
+    case SummaryCardPortraitDefault
+    case SummaryCardPortraitImageFull
+    case SummaryCardPortraitImageSmallFloatLeft
+    case ArticleCardPortraitNoImage
+    case ArticleCardPortraitImage
+    case MaximizedFullWebView
 }
 
