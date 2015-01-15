@@ -8,14 +8,39 @@
 
 import Foundation
 
+@objc
+public protocol CardViewElementDelegate{
+    /**
+    The CardViewElement is about to be updated 
+    */
+    optional func cardElementWillUpdate(cardViewElement:CardViewElement)
+    
+    /**
+    The CardViewElement has updated
+    */
+    optional func cardElementDidUpdate(cardViewElement:CardViewElement)
+}
+
 public class CardViewElement : UIView {
     
     var cardView:CardView!
+    var delegate:CardViewElementDelegate?
+    var backingCard:Card{
+        get{
+            return cardView.backingCard
+        }
+    }
     
     /**
     Override this function to update the CardViewElement based on the current backing Card
     */
     func update(){
+    }
+    
+    func updateCardView(){
+        delegate?.cardElementWillUpdate?(self)
+        update()
+        delegate?.cardElementDidUpdate?(self)
     }
     
     /**
@@ -26,10 +51,9 @@ public class CardViewElement : UIView {
     }
     
     /**
-    Optionally return an optimized height for this element given a width + card
+    Optionally return an optimized height for this element given a width
     */
-    class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
-        // optionally return an optimized height for this element given a width + card
+    func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return CGFloat.min
     }
     

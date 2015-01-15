@@ -64,7 +64,7 @@ public protocol CardViewDelegate{
     optional func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize)
     
     /**
-    Simply just a hook into UIView.layoutSubviews() to do any specific custom layout
+    Simply just a hook into UIView.layoutSubviews()
     */
     optional func cardViewLayoutSubviews(cardView:CardView)
     
@@ -111,13 +111,21 @@ public class CardView : UIView
     }
     
     public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
-        let size = Utilities.sizeFromVisualSource(visualSource)
-        let newCardView = CardView(frame: CGRectMake(0, 0, size.width, size.height))
+        let newCardView = CardView(frame: CGRectZero)
+        
+        // init data and visuals
         newCardView.backingCard = card
         newCardView.visualSource = visualSource
+        
+        // layout
         newCardView.layoutCardComponents()
+        let size = Utilities.sizeFromVisualSource(visualSource)
+        newCardView.frame = CGRectMake(0, 0, size.width, size.height)
         newCardView.layoutIfNeeded()
+        
+        // update view
         newCardView.refresh()
+        
         return newCardView
     }
     
@@ -125,7 +133,7 @@ public class CardView : UIView
     public func refresh(){
         var cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
-            view?.update()
+            view?.updateCardView()
         }
     }
     
@@ -217,39 +225,41 @@ public class CardView : UIView
         
         // initialize header, body, footer of card
         var currentHeightOffset:CGFloat = 0
-        let headerView = visualSource.viewForCardHeader?()
-        if(headerView != nil && visualSource.heightForCardHeader?() > 0){
-            constrainSubComponent(headerView!, offset: currentHeightOffset, height: visualSource.heightForCardHeader!())
-            currentHeightOffset += visualSource.heightForCardHeader!()
-            header = headerView
-            header?.cardView = self
+        if let headerView = visualSource.viewForCardHeader?(){
+            headerView.cardView = self
+            if(visualSource.heightForCardHeader?() > 0){
+                constrainSubComponent(headerView, offset: currentHeightOffset, height: visualSource.heightForCardHeader!())
+                currentHeightOffset += visualSource.heightForCardHeader!()
+                header = headerView
+            }
         }
         
         let bodyView = visualSource.viewForCardBody()
+        bodyView.cardView = self
         if(visualSource.heightForCardBody() > 0){
             constrainSubComponent(bodyView, offset: currentHeightOffset, height: visualSource.heightForCardBody())
             currentHeightOffset += visualSource.heightForCardBody()
             body = bodyView
-            body.cardView = self
         }else{
             println("Card layout error: height for card body should not be 0")
         }
         
-        let footerView = visualSource.viewForCardFooter?()
-        if(footerView != nil && visualSource.heightForCardFooter?() > 0){
-            constrainSubComponent(footerView!, offset: currentHeightOffset, height: visualSource.heightForCardFooter!())
-            currentHeightOffset += visualSource.heightForCardFooter!()
-            footer = footerView
-            footer?.cardView = self
+        if let footerView = visualSource.viewForCardFooter?(){
+            footerView.cardView = self
+            if(visualSource.heightForCardFooter?() > 0){
+                constrainSubComponent(footerView, offset: currentHeightOffset, height: visualSource.heightForCardFooter!())
+                currentHeightOffset += visualSource.heightForCardFooter!()
+                footer = footerView
+            }
         }
         
         if let backView = visualSource.viewForBackOfCard?(){
+            backView.cardView = self
             insertSubview(backView, belowSubview:containerView)
             backView.constrainToSuperViewEdges()
             backView.layer.cornerRadius = 2.0
             backView.layer.masksToBounds = true
             back = backView
-            back?.cardView = self
         }
     }
     

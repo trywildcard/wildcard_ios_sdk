@@ -29,7 +29,7 @@ class SingleParagraphCardBody : CardViewElement {
     override func update() {
         super.update()
         
-        switch(cardView.backingCard.type){
+        switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             titleLabel.setAsCardSubHeaderWithText(articleCard.abstractContent)
@@ -41,16 +41,16 @@ class SingleParagraphCardBody : CardViewElement {
         }
     }
     
-    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         
         var titleText:String?
         
-        switch(card.type){
+        switch(backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = backingCard as ArticleCard
             titleText = articleCard.abstractContent
         case .Summary:
-            let webLinkCard = card as SummaryCard
+            let webLinkCard = backingCard as SummaryCard
             titleText = webLinkCard.description
         case .Unknown:
             titleText = nil

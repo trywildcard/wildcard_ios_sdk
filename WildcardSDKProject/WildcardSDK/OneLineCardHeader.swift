@@ -8,43 +8,79 @@
 
 import Foundation
 
-class OneLineCardHeader : CardViewElement {
+/**
+The most basic Card Header consisting of a 1 line title label and a logo
+*/
+public class OneLineCardHeader : CardViewElement {
     
-    var titleLabel:UILabel!
+    public var title:UILabel!
+    
+    /**
+    Custom offset adjustments to the title label
+    */
+    public var titleOffset:UIOffset!{
+        get{
+            return UIOffset(horizontal: titleVerticalConstraint.constant, vertical: titleLeftConstraint.constant)
+        }
+        set{
+            titleVerticalConstraint.constant = newValue.vertical
+            titleLeftConstraint.constant = newValue.horizontal
+        }
+    }
+    public var bottomHairline:UIView!
+    public var logo:UIImageView!
+    
+    private var titleVerticalConstraint:NSLayoutConstraint!
+    private var titleLeftConstraint:NSLayoutConstraint!
+    private var titleRightConstraint:NSLayoutConstraint!
     
     override func initializeElement() {
-        titleLabel = UILabel(frame: CGRectZero)
-        titleLabel.numberOfLines = 1
-        titleLabel.textAlignment = NSTextAlignment.Left
-        addSubview(titleLabel)
-        titleLabel.verticallyCenterToSuperView(0)
-        titleLabel.font = UIFont.wildcardStandardHeaderFont()
-        titleLabel.textColor = UIColor.wildcardDarkBlue()
-        titleLabel.text = "The Back!"
+        
         backgroundColor = UIColor.whiteColor()
         
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10))
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10))
+        title = UILabel(frame: CGRectZero)
+        title.numberOfLines = 1
+        title.textAlignment = NSTextAlignment.Left
+        addSubview(title)
+        titleVerticalConstraint = title.verticallyCenterToSuperView(0)
+        titleLeftConstraint = title.constrainLeftToSuperView(10)
+        titleRightConstraint = title.constrainRightToSuperView(45)
         
-        addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
+        logo = UIImageView(frame: CGRectMake(0, 0, 25, 25))
+        logo.constrainWidth(25, height: 25)
+        logo.layer.cornerRadius = 3.0
+        logo.layer.masksToBounds = true
+        addSubview(logo)
+        logo.constrainRightToSuperView(10)
+        logo.constrainTopToSuperView(7.5)
+        
+        bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
     override func update() {
         super.update()
         
-        switch(cardView.backingCard.type){
+        switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
-            titleLabel.setAsCardHeaderWithText(articleCard.title)
+            title.text = articleCard.title
+            if let url = articleCard.publisher.smallLogoUrl{
+                logo.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                    if(image != nil){
+                        self.logo.image = image!
+                    }
+                })
+            }
         case .Summary:
-            let webLinkCard = cardView.backingCard as SummaryCard
-            titleLabel.setAsCardHeaderWithText(webLinkCard.title)
+            let summaryCard = cardView.backingCard as SummaryCard
+            title.text = summaryCard.title
+            logo.image = UIImage(named: "wildcardSmallLogo")
         case .Unknown:
-            titleLabel.setAsCardHeaderWithText("Unknown Card Type!")
+            title.text = "Unknown Card Type!"
         }
     }
     
-    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return 41
     }
 }

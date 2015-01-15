@@ -71,7 +71,6 @@ public extension UIView{
     public func constrainHeight(height:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: height)
- //       superview!.addConstraint(heightConstraint)
         addConstraint(heightConstraint)
         return heightConstraint
     }
@@ -79,7 +78,6 @@ public extension UIView{
     public func constrainWidth(width:CGFloat)->NSLayoutConstraint{
         setTranslatesAutoresizingMaskIntoConstraints(false)
         let widthConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: width)
- //       superview!.addConstraint(widthConstraint)
         addConstraint(widthConstraint)
         return widthConstraint
     }
@@ -120,7 +118,7 @@ public extension UIView{
         }
     }
     
-    func addBottomBorderWithWidth(width:CGFloat, color:UIColor){
+    func addBottomBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
         let borderImageView = UIImageView(frame: CGRectZero)
         borderImageView.backgroundColor = color
         borderImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -129,6 +127,7 @@ public extension UIView{
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: width))
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
+        return borderImageView
     }
     
     func addTopBorderWithWidth(width:CGFloat, color:UIColor){

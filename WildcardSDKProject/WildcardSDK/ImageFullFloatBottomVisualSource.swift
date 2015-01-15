@@ -11,33 +11,39 @@ import Foundation
 public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
     
     var card:Card
+    var header:FullCardHeader
+    var body:CenteredImageBody
+    var footer:TallReadMoreFooter
     
     public init(card:Card){
         self.card = card
+        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+        self.body = CenteredImageBody(frame:CGRectZero)
+        self.footer = TallReadMoreFooter(frame:CGRectZero)
     }
     
     public func viewForCardHeader()->CardViewElement?{
-        return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
+        return header
     }
     
     public func heightForCardHeader()->CGFloat{
-        return FullCardHeader.optimizedHeight(widthForCard(), card: card)
+        return header.optimizedHeight(widthForCard())
     }
     
     public func viewForCardBody()->CardViewElement{
-        return CenteredImageBody(frame:CGRectZero)
+        return body
     }
     
     public func heightForCardBody()->CGFloat{
-        return CenteredImageBody.optimizedHeight(widthForCard(), card: card)
+        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        return TallReadMoreFooter(frame:CGRectZero)
+        return footer
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return TallReadMoreFooter.optimizedHeight(widthForCard(), card: card)
+        return footer.optimizedHeight(widthForCard())
     }
     
     public func viewForBackOfCard()->CardViewElement?{
@@ -49,9 +55,5 @@ public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
         let defaultMargins:CGFloat = 15.0
         let cardWidth = screenBounds.width - (2*defaultMargins)
         return cardWidth
-    }
-    
-    public func backingCard() -> Card {
-        return card
     }
 }

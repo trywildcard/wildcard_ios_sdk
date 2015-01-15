@@ -11,8 +11,8 @@ import Foundation
 class FullCardHeader :CardViewElement
 {
     @IBOutlet weak var favicon: UIImageView!
-    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var kicker: UILabel!
+    @IBOutlet weak var title: UILabel!
     
     override func initializeElement() {
         favicon.layer.cornerRadius = 4.0
@@ -23,7 +23,7 @@ class FullCardHeader :CardViewElement
         
         super.update()
         
-        switch(cardView.backingCard.type){
+        switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             title.setAsCardHeaderWithText(articleCard.title)
@@ -46,15 +46,15 @@ class FullCardHeader :CardViewElement
         }
     }
     
-    override class func optimizedHeight(cardWidth:CGFloat, card:Card)->CGFloat{
+    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         
         var titleText:String?
-        switch(card.type){
+        switch(cardView.backingCard.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = cardView.backingCard as ArticleCard
             titleText = articleCard.title
         case .Summary:
-            let summaryCard = card as SummaryCard
+            let summaryCard = cardView.backingCard as SummaryCard
             titleText = summaryCard.description
         case .Unknown:
             titleText = "Unknown Card Type"

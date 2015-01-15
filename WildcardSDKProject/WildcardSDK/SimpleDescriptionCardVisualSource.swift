@@ -11,33 +11,42 @@ import Foundation
 public class SimpleDescriptionCardVisualSource : CardViewVisualSource{
     
     var card:Card
+    var header:OneLineCardHeader
+    var body:SingleParagraphCardBody
+    var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
+        self.header = OneLineCardHeader(frame:CGRectZero)
+        self.header.title.textColor = UIColor.wildcardDarkBlue()
+        self.header.title.font = UIFont.wildcardStandardHeaderFont()
+        self.header.titleOffset = UIOffsetMake(10, -2)
+        self.body = SingleParagraphCardBody(frame:CGRectZero)
+        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
     }
     
     public func viewForCardHeader()->CardViewElement?{
-        return OneLineCardHeader(frame:CGRectZero)
+        return header
     }
     
     public func heightForCardHeader()->CGFloat{
-        return OneLineCardHeader.optimizedHeight(widthForCard(), card: card)
+        return header.optimizedHeight(widthForCard())
     }
     
     public func viewForCardBody()->CardViewElement{
-        return SingleParagraphCardBody(frame:CGRectZero)
+        return body;
     }
     
     public func heightForCardBody()->CGFloat{
-        return SingleParagraphCardBody.optimizedHeight(widthForCard(), card: card)
+        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter()->CardViewElement?{
-        return ViewOnWebCardFooter(frame:CGRectZero)
+        return footer
     }
     
     public func heightForCardFooter()->CGFloat{
-        return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
+        return footer.optimizedHeight(widthForCard())
     }
     
     public func viewForBackOfCard()->CardViewElement?{
@@ -49,10 +58,6 @@ public class SimpleDescriptionCardVisualSource : CardViewVisualSource{
         let defaultMargins:CGFloat = 15.0
         let cardWidth = screenBounds.width - (2*defaultMargins)
         return cardWidth
-    }
-    
-    public func backingCard() -> Card {
-        return card
     }
     
 }

@@ -11,24 +11,31 @@ import Foundation
 public class SquareArticleVisualSource : CardViewVisualSource {
     
     var card:Card
+    var header:FullCardHeader
+    var body:MediaTextImageFloatRight
+    var footer:TallReadMoreFooter
     
     public init(card:Card){
         self.card = card
+        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+        self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
+        self.footer = TallReadMoreFooter(frame:CGRectZero)
     }
     
     public func viewForCardHeader()->CardViewElement?{
-        return UIView.loadFromNibNamed("FullCardHeader") as? FullCardHeader
+        return header
     }
     
     public func heightForCardHeader()->CGFloat{
-        return FullCardHeader.optimizedHeight(widthForCard(), card: card)
+        return header.optimizedHeight(widthForCard())
     }
     
     public func viewForCardBody()->CardViewElement{
-        return UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
+        return body
     }
     
     public func heightForCardBody()->CGFloat{
+        // keeping it square
         return widthForCard() - heightForCardFooter() - heightForCardHeader()
     }
     
@@ -37,11 +44,11 @@ public class SquareArticleVisualSource : CardViewVisualSource {
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        return TallReadMoreFooter(frame:CGRectZero)
+        return footer
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return TallReadMoreFooter.optimizedHeight(widthForCard(), card: card)
+        return footer.optimizedHeight(widthForCard())
     }
     
     public func widthForCard()->CGFloat{

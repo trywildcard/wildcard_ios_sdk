@@ -11,25 +11,29 @@ import Foundation
 public class ImageThumbnailFloatLeftVisualSource : CardViewVisualSource {
     
     var card:Card
+    var body:ImageThumbnailFloatLeft
+    var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
+        self.body = UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as ImageThumbnailFloatLeft
+        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
     }
     
     public func viewForCardBody()->CardViewElement{
-        return UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as ImageThumbnailFloatLeft
+        return body
     }
     
     public func heightForCardBody()->CGFloat{
-        return ImageThumbnailFloatLeft.optimizedHeight(widthForCard(), card: card)
+        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter()->CardViewElement?{
-        return ViewOnWebCardFooter(frame:CGRectZero)
+        return footer
     }
     
     public func heightForCardFooter()->CGFloat{
-        return ViewOnWebCardFooter.optimizedHeight(widthForCard(), card: card)
+        return footer.optimizedHeight(widthForCard())
     }
     
     public func viewForBackOfCard()->CardViewElement?{
