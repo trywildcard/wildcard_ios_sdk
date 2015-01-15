@@ -17,7 +17,7 @@ public class BareBonesCardVisualSource : CardViewVisualSource{
     }
     
     public func viewForCardBody()->CardViewElement{
-        return BareBonesCardBody(frame:CGRectZero)
+        return PlaceholderCardBody(frame:CGRectZero)
     }
     
     public func heightForCardBody()->CGFloat{
@@ -35,9 +35,4 @@ public class BareBonesCardVisualSource : CardViewVisualSource{
         let cardWidth = screenBounds.width - (2*defaultMargins)
         return cardWidth
     }
-    
-    public func backingCard()->Card{
-        return card
-    }
-    
 }

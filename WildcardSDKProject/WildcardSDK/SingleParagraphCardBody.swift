@@ -8,22 +8,42 @@
 
 import Foundation
 
-class SingleParagraphCardBody : CardViewElement {
+/**
+Most basic card body consisting of just a paragraph label
+*/
+public class SingleParagraphCardBody : CardViewElement {
     
-    var titleLabel:UILabel!
+    public var paragraphLabel:UILabel!
+    
+    public var paragraphLabelEdgeInsets:UIEdgeInsets{
+        get{
+            return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
+        }
+        set{
+            topConstraint.constant = newValue.top
+            leftConstraint.constant = newValue.left
+            rightConstraint.constant = newValue.right
+            bottomConstraint.constant = newValue.bottom
+        }
+    }
+    
+    private var topConstraint:NSLayoutConstraint!
+    private var leftConstraint:NSLayoutConstraint!
+    private var rightConstraint:NSLayoutConstraint!
+    private var bottomConstraint:NSLayoutConstraint!
     
     override func initializeElement() {
-        titleLabel = UILabel(frame: CGRectZero)
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = NSTextAlignment.Left
-        addSubview(titleLabel)
-        titleLabel.verticallyCenterToSuperView(-2)
-        titleLabel.font = UIFont.wildcardStandardSubHeaderFont()
-        titleLabel.textColor = UIColor.wildcardMediumGray()
         backgroundColor = UIColor.whiteColor()
         
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 10))
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -10))
+        paragraphLabel = UILabel(frame: CGRectZero)
+        paragraphLabel.textColor = UIColor.darkTextColor()
+        paragraphLabel.textAlignment = NSTextAlignment.Left
+        paragraphLabel.numberOfLines = 0
+        addSubview(paragraphLabel)
+        leftConstraint = paragraphLabel.constrainLeftToSuperView(10)
+        rightConstraint = paragraphLabel.constrainRightToSuperView(10)
+        topConstraint = paragraphLabel.constrainTopToSuperView(5)
+        bottomConstraint = paragraphLabel.constrainBottomToSuperView(10)
     }
     
     override func update() {
@@ -32,36 +52,21 @@ class SingleParagraphCardBody : CardViewElement {
         switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
-            titleLabel.setAsCardSubHeaderWithText(articleCard.abstractContent)
+            paragraphLabel.text = articleCard.abstractContent
         case .Summary:
             let webLinkCard = cardView.backingCard as SummaryCard
-            titleLabel.setAsCardSubHeaderWithText(webLinkCard.description)
+            paragraphLabel.text = webLinkCard.description
         case .Unknown:
-            titleLabel.setAsCardSubHeaderWithText("Unknown Card Type!")
+            paragraphLabel.text = "Unknown Card Type"
         }
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        
-        var titleText:String?
-        
-        switch(backingCard.type){
-        case .Article:
-            let articleCard = backingCard as ArticleCard
-            titleText = articleCard.abstractContent
-        case .Summary:
-            let webLinkCard = backingCard as SummaryCard
-            titleText = webLinkCard.description
-        case .Unknown:
-            titleText = nil
-        }
-        
-        if(titleText != nil){
-            var height:CGFloat = 0;
-            height += Utilities.heightRequiredForText(titleText!, lineHeight: UIFont.wildcardStandardSubHeaderFontLineHeight(), font: UIFont.wildcardStandardSubHeaderFont(), width: (cardWidth - (2*10)))
-            return height + 18
-        }else{
-            return CGFloat.min
-        }
+        var height:CGFloat = 0
+        height += topConstraint.constant
+        let expectedParagraphSize = paragraphLabel.sizeThatFits(CGSizeMake(cardWidth - leftConstraint.constant - rightConstraint.constant, CGFloat.max))
+        height += expectedParagraphSize.height
+        height += bottomConstraint.constant
+        return height
     }
 }

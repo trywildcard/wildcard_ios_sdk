@@ -8,41 +8,18 @@
 
 import Foundation
 
-class BareBonesCardBody : CardViewElement {
+class PlaceholderCardBody : CardViewElement {
     
     var titleLabel:UILabel!
-    var viewOnWebButton:UIButton!
     
     override func initializeElement(){
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = NSTextAlignment.Center
         addSubview(titleLabel)
-        titleLabel.verticallyCenterToSuperView(-20)
-        titleLabel.font = UIFont.wildcardLargePlaceholderFont()
-        titleLabel.textColor = UIColor.wildcardDarkBlue()
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 15))
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -15))
-        
-        viewOnWebButton = UIButton(frame: CGRectZero)
-        addSubview(viewOnWebButton)
-        viewOnWebButton.horizontallyCenterToSuperView(0)
-        addConstraint(NSLayoutConstraint(item: viewOnWebButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: titleLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 15))
-        viewOnWebButton?.setBackgroundImage(UIImage(named: "viewOnWebButton"), forState: UIControlState.Normal)
-    }
-    
-    override func update() {
-        super.update()
-        
-        switch(cardView.backingCard.type){
-        case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
-            titleLabel.text = String(htmlEncodedString:articleCard.title)
-        case .Summary:
-            let webLinkCard = cardView.backingCard as SummaryCard
-            titleLabel.text = String(htmlEncodedString:webLinkCard.title)
-        case .Unknown:
-            titleLabel.text = "Unknown Card Type!"
-        }
+        titleLabel.verticallyCenterToSuperView(0)
+        titleLabel.text = "Placeholder"
+        titleLabel.constrainLeftToSuperView(15)
+        titleLabel.constrainRightToSuperView(15)
     }
 }

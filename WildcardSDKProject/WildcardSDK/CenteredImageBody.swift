@@ -8,21 +8,39 @@
 
 import Foundation
 
-class CenteredImageBody : CardViewElement{
+public class CenteredImageBody : CardViewElement{
     
-    var cardImage:UIImageView!
+    public var image:UIImageView!
+    public var imageAspectRatio:CGFloat = 0.75
+    public var imageEdgeInsets:UIEdgeInsets{
+        get{
+            return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
+        }
+        set{
+            topConstraint.constant = newValue.top
+            leftConstraint.constant = newValue.left
+            rightConstraint.constant = newValue.right
+            bottomConstraint.constant = newValue.bottom
+        }
+    }
+    
+    private var topConstraint:NSLayoutConstraint!
+    private var leftConstraint:NSLayoutConstraint!
+    private var rightConstraint:NSLayoutConstraint!
+    private var bottomConstraint:NSLayoutConstraint!
     
     override func initializeElement(){
         
-        cardImage = UIImageView(frame: CGRectZero)
-        cardImage.layer.cornerRadius = 2.0
-        cardImage.layer.masksToBounds = true
-        cardImage.backgroundColor = UIColor.whiteColor()
-        addSubview(cardImage)
-        cardImage.verticallyCenterToSuperView(0)
-        addConstraint(NSLayoutConstraint(item: cardImage, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20))
-        addConstraint(NSLayoutConstraint(item: cardImage, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -20))
-        addConstraint(NSLayoutConstraint(item: cardImage, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 180))
+        image = UIImageView(frame: CGRectZero)
+        image.layer.cornerRadius = 2.0
+        image.layer.masksToBounds = true
+        image.backgroundColor = UIColor.whiteColor()
+        addSubview(image)
+        
+        leftConstraint = image.constrainLeftToSuperView(10)
+        rightConstraint = image.constrainRightToSuperView(10)
+        topConstraint = image.constrainTopToSuperView(10)
+        bottomConstraint = image.constrainBottomToSuperView(10)
     }
     
     override func update() {
@@ -43,20 +61,24 @@ class CenteredImageBody : CardViewElement{
         
         // download image
         if imageUrl != nil {
-            cardImage.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+            image.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
                 if(image != nil){
-                    self.cardImage.image = image
-                    self.cardImage.contentMode = UIViewContentMode.ScaleAspectFill
+                    self.image.image = image
+                    self.image.contentMode = UIViewContentMode.ScaleAspectFill
                 }else{
-                    self.cardImage.image = UIImage(named: "noImage")
-                    self.cardImage.contentMode = UIViewContentMode.Center
+                    self.image.image = UIImage(named: "noImage")
+                    self.image.contentMode = UIViewContentMode.Center
                 }
             })
         }
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 180
+        var height:CGFloat = 0.0
+        height += topConstraint.constant
+        height += bottomConstraint.constant
+        height += imageAspectRatio * (cardWidth - leftConstraint.constant - rightConstraint.constant)
+        return height
     }
     
 }
