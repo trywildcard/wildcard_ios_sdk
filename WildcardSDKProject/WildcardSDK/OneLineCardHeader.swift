@@ -58,7 +58,6 @@ public class OneLineCardHeader : CardViewElement {
     }
     
     override func update() {
-        super.update()
         
         switch(backingCard.type){
         case .Article:

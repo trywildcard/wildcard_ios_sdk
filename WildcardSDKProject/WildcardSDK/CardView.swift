@@ -117,14 +117,16 @@ public class CardView : UIView
         newCardView.backingCard = card
         newCardView.visualSource = visualSource
         
-        // layout
+        // layout card elements
         newCardView.layoutCardComponents()
+        
+        // layout the card view before returning
         let size = Utilities.sizeFromVisualSource(visualSource)
         newCardView.frame = CGRectMake(0, 0, size.width, size.height)
         newCardView.layoutIfNeeded()
         
         // update view
-        newCardView.refresh()
+       // newCardView.refresh()
         
         return newCardView
     }
@@ -227,6 +229,7 @@ public class CardView : UIView
         var currentHeightOffset:CGFloat = 0
         if let headerView = visualSource.viewForCardHeader?(){
             headerView.cardView = self
+            headerView.update()
             if(visualSource.heightForCardHeader?() > 0){
                 constrainSubComponent(headerView, offset: currentHeightOffset, height: visualSource.heightForCardHeader!())
                 currentHeightOffset += visualSource.heightForCardHeader!()
@@ -236,6 +239,7 @@ public class CardView : UIView
         
         let bodyView = visualSource.viewForCardBody()
         bodyView.cardView = self
+        bodyView.update()
         if(visualSource.heightForCardBody() > 0){
             constrainSubComponent(bodyView, offset: currentHeightOffset, height: visualSource.heightForCardBody())
             currentHeightOffset += visualSource.heightForCardBody()
@@ -246,6 +250,7 @@ public class CardView : UIView
         
         if let footerView = visualSource.viewForCardFooter?(){
             footerView.cardView = self
+            footerView.update()
             if(visualSource.heightForCardFooter?() > 0){
                 constrainSubComponent(footerView, offset: currentHeightOffset, height: visualSource.heightForCardFooter!())
                 currentHeightOffset += visualSource.heightForCardFooter!()
@@ -255,6 +260,7 @@ public class CardView : UIView
         
         if let backView = visualSource.viewForBackOfCard?(){
             backView.cardView = self
+            backView.update()
             insertSubview(backView, belowSubview:containerView)
             backView.constrainToSuperViewEdges()
             backView.layer.cornerRadius = 2.0

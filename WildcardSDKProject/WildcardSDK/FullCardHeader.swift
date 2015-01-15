@@ -8,64 +8,83 @@
 
 import Foundation
 
-class FullCardHeader :CardViewElement
+public class FullCardHeader :CardViewElement
 {
-    @IBOutlet weak var favicon: UIImageView!
-    @IBOutlet weak var kicker: UILabel!
-    @IBOutlet weak var title: UILabel!
+    /**
+    Spacing between kicker and the title
+    */
+    public var kickerSpacing:CGFloat!{
+        get{
+            return kickerTitleVerticalSpacing.constant
+        }
+        set{
+            kickerTitleVerticalSpacing.constant = newValue
+        }
+    }
+    /**
+    Custom offset adjustments to the title label
+    */
+    public var titleOffset:UIOffset!{
+        get{
+            return UIOffset(horizontal: titleLeadingConstraint.constant, vertical: titleTitleTopConstraint.constant)
+        }
+        set{
+            titleTitleTopConstraint.constant = newValue.vertical
+            titleLeadingConstraint.constant = newValue.horizontal
+        }
+    }
+    
+    @IBOutlet weak public var logo: UIImageView!
+    @IBOutlet weak public var kicker: UILabel!
+    @IBOutlet weak public var title: UILabel!
+    
+    @IBOutlet weak var titleTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleTitleTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var kickerTitleVerticalSpacing: NSLayoutConstraint!
     
     override func initializeElement() {
-        favicon.layer.cornerRadius = 4.0
-        favicon.layer.masksToBounds = true
+        logo.layer.cornerRadius = 4.0
+        logo.layer.masksToBounds = true
     }
     
     override func update() {
         
-        super.update()
-        
         switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
-            title.setAsCardHeaderWithText(articleCard.title)
-            kicker.setAsCardSubHeaderWithText(articleCard.publisher.name)
+            kicker.text = articleCard.publisher.name
+            title.text = articleCard.title
             if let url = articleCard.publisher.smallLogoUrl{
-                favicon.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                logo.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
                     if(image != nil){
-                        self.favicon.image = image!
+                        self.logo.image = image!
                     }
                 })
             }
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
-            kicker.setAsCardSubHeaderWithText(summaryCard.title)
-            title.setAsCardHeaderWithText(summaryCard.description)
-            favicon.image = UIImage(named: "wildcardSmallLogo")
+            kicker.text = summaryCard.webUrl.host
+            title.text = summaryCard.title
+            logo.image = UIImage(named: "wildcardSmallLogo")
         case .Unknown:
-            title.setAsCardHeaderWithText("Unknown Card Type")
-            favicon.image = UIImage(named: "wildcardSmallLogo")
+            title.text = "Unknown Card Type"
+            kicker.text = "Unknown Card Type"
+            logo.image = UIImage(named: "wildcardSmallLogo")
         }
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         
-        var titleText:String?
-        switch(cardView.backingCard.type){
-        case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
-            titleText = articleCard.title
-        case .Summary:
-            let summaryCard = cardView.backingCard as SummaryCard
-            titleText = summaryCard.description
-        case .Unknown:
-            titleText = "Unknown Card Type"
-        }
-        
         var height:CGFloat = 0
-        height += 7
-        height += UIFont.wildcardStandardSubHeaderFontLineHeight()
-        height += 4
-        height += Utilities.heightRequiredForText(titleText!, lineHeight: UIFont.wildcardStandardHeaderFontLineHeight(), font: UIFont.wildcardStandardHeaderFont(), width: cardWidth - 65, maxHeight:3 * UIFont.wildcardStandardHeaderFontLineHeight())
-        height += 11
+        height += titleOffset.vertical
+        
+        // how tall would the title need to be for this width
+        let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
+        height += expectedTitleSize.height
+  
+        // bottom margin below the title
+        height += 10
         return height
     }
     
