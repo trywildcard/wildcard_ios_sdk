@@ -130,7 +130,7 @@ public extension UIView{
         return borderImageView
     }
     
-    func addTopBorderWithWidth(width:CGFloat, color:UIColor){
+    func addTopBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
         let borderImageView = UIImageView(frame: CGRectZero)
         borderImageView.backgroundColor = color
         borderImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -139,6 +139,7 @@ public extension UIView{
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: width))
         addConstraint(NSLayoutConstraint(item: borderImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0))
+        return borderImageView
     }
   
 }

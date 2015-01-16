@@ -17,9 +17,9 @@ class EmptyCardBack : CardViewElement {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center
         addSubview(titleLabel)
-        titleLabel.verticallyCenterToSuperView(-4)
+        titleLabel.verticallyCenterToSuperView(0)
         titleLabel.horizontallyCenterToSuperView(0)
-        titleLabel.font = UIFont.wildcardStandardHeaderFont()
+        titleLabel.font = UIFont.defaultCardTitleFont()
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.text = "The Back!"
         backgroundColor = UIColor.wildcardDarkBlue()

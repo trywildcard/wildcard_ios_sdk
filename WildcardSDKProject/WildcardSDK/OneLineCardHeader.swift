@@ -14,10 +14,6 @@ The most basic Card Header consisting of a 1 line title label and a logo
 public class OneLineCardHeader : CardViewElement {
     
     public var title:UILabel!
-    
-    /**
-    Custom offset adjustments to the title label
-    */
     public var titleOffset:UIOffset!{
         get{
             return UIOffset(horizontal: titleVerticalConstraint.constant, vertical: titleLeftConstraint.constant)
@@ -41,6 +37,8 @@ public class OneLineCardHeader : CardViewElement {
         title = UILabel(frame: CGRectZero)
         title.numberOfLines = 1
         title.textAlignment = NSTextAlignment.Left
+        title.font = UIFont.defaultCardTitleFont()
+        title.textColor = UIColor.wildcardDarkBlue()
         addSubview(title)
         titleVerticalConstraint = title.verticallyCenterToSuperView(0)
         titleLeftConstraint = title.constrainLeftToSuperView(10)

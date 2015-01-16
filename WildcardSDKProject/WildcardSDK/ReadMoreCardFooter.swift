@@ -1,5 +1,5 @@
 //
-//  ViewOnWebFooter.swift
+//  TallReadMoreCardFooter.swift
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 12/16/14.
@@ -8,10 +8,9 @@
 
 import Foundation
 
-public class ViewOnWebCardFooter: CardViewElement {
+public class ReadMoreFooter: CardViewElement {
     
-    public var viewOnWebButton:UIButton!
-    public var hairline:UIView!
+    public var readMoreButton:UIButton!
     
     public var viewOnWebButtonOffset:UIOffset!{
         get{
@@ -27,14 +26,20 @@ public class ViewOnWebCardFooter: CardViewElement {
     private var leftConstraint:NSLayoutConstraint!
     
     override func initializeElement() {
-        viewOnWebButton = UIButton.defaultViewOnWebButton()
-        addSubview(viewOnWebButton!)
-        verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
-        leftConstraint = viewOnWebButton?.constrainLeftToSuperView(10)
-        hairline = addTopBorderWithWidth(0.5, color: UIColor.wildcardBackgroundGray())
+        readMoreButton = UIButton.defaultReadMoreButton()
+        addSubview(readMoreButton!)
+        
+        verticalCenterConstraint = readMoreButton.verticallyCenterToSuperView(0)
+        leftConstraint = readMoreButton.constrainLeftToSuperView(10)
+        
+        readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 40
+        return 60
+    }
+    
+    func readMoreButtonTapped(){
+        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Maximize, parameters: nil))
     }
 }

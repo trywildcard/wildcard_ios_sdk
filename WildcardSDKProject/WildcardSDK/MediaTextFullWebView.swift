@@ -27,7 +27,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         var downloadAppButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
         downloadAppButton?.setTitle("DOWNLOAD APP", forState: UIControlState.Normal)
         downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 1, 0)
-        downloadAppButton?.titleLabel!.font = UIFont.wildcardSmallButtonFont()
+        downloadAppButton?.titleLabel!.font = UIFont.defaultCardDescriptionFont()
         downloadAppButton?.setTitleColor(UIColor.wildcardLightBlue(), forState: UIControlState.Normal)
         downloadAppButton?.addTarget(self, action: "downloadAppButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         downloadAppButton?.sizeToFit()

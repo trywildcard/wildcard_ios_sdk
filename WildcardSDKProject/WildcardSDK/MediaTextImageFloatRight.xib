@@ -36,8 +36,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
+                <outlet property="bottomConstraint" destination="1EG-V7-sAQ" id="dLC-z6-z0j"/>
                 <outlet property="cardImage" destination="uh0-s7-zAG" id="mnW-BO-d0z"/>
+                <outlet property="leftConstraint" destination="mMr-79-B5y" id="tMB-o9-F1s"/>
+                <outlet property="rightConstraint" destination="xqH-s3-w1m" id="uWD-mx-i2k"/>
                 <outlet property="textContainer" destination="7t6-fZ-qb4" id="Hsw-g4-uuO"/>
+                <outlet property="topConstraint" destination="gM3-Az-6Hh" id="Iw2-hp-33U"/>
             </connections>
         </view>
     </objects>

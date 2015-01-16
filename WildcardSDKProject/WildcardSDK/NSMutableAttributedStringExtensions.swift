@@ -37,5 +37,9 @@ extension NSMutableAttributedString{
         self.addAttribute(NSKernAttributeName, value: NSNumber(float:kerning), range: NSMakeRange(0, countElements(self.string)))
         
     }
+    
+    func setUnderline(style:NSUnderlineStyle){
+        self.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(long:style.rawValue), range: NSMakeRange(0,countElements(self.string)))
+    }
 }
 

@@ -13,13 +13,13 @@ public class SquareArticleVisualSource : CardViewVisualSource {
     var card:Card
     var header:FullCardHeader
     var body:MediaTextImageFloatRight
-    var footer:TallReadMoreFooter
+    var footer:ReadMoreFooter
     
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
-        self.footer = TallReadMoreFooter(frame:CGRectZero)
+        self.footer = ReadMoreFooter(frame:CGRectZero)
     }
     
     public func viewForCardHeader()->CardViewElement?{

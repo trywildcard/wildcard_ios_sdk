@@ -18,12 +18,7 @@ public class SimpleDescriptionCardVisualSource : CardViewVisualSource{
     public init(card:Card){
         self.card = card
         self.header = OneLineCardHeader(frame:CGRectZero)
-        self.header.title.textColor = UIColor.wildcardDarkBlue()
-        self.header.title.font = UIFont.wildcardStandardHeaderFont()
-        self.header.titleOffset = UIOffsetMake(10, -2)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
-        self.body.paragraphLabel.font = UIFont.wildcardStandardSubHeaderFont()
-        self.body.paragraphLabel.textColor = UIColor.wildcardMediumGray()
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
     }
     

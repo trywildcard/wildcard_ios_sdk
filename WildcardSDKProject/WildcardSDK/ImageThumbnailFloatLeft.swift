@@ -25,8 +25,8 @@ class ImageThumbnailFloatLeft : CardViewElement
         var titleText:String?
         
         if let webLinkCard = cardView.backingCard as? SummaryCard{
-            cardTitle.setAsCardHeaderWithText(String(htmlEncodedString: webLinkCard.title))
-            cardDescription.setAsCardSubHeaderWithText(String(htmlEncodedString: webLinkCard.description))
+            cardTitle.text = String(htmlEncodedString: webLinkCard.title)
+            cardDescription.text = String(htmlEncodedString: webLinkCard.description)
             
             // download image
             if let imageUrl = webLinkCard.imageUrl{

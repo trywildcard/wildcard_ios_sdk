@@ -13,13 +13,13 @@ public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
     var card:Card
     var header:FullCardHeader
     var body:CenteredImageBody
-    var footer:TallReadMoreFooter
+    var footer:ReadMoreFooter
     
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.body = CenteredImageBody(frame:CGRectZero)
-        self.footer = TallReadMoreFooter(frame:CGRectZero)
+        self.footer = ReadMoreFooter(frame:CGRectZero)
     }
     
     public func viewForCardHeader()->CardViewElement?{

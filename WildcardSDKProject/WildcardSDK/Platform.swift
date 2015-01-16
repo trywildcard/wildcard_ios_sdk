@@ -19,7 +19,7 @@ protocol PlatformObject{
 */
 class Platform{
     
-    let platformBaseURL = "http://platform-prod.trywildcard.com"
+    let platformBaseURL = "https://platform-prod.trywildcard.com"
     
     // swift doesn't support class constant variables yet, but you can do it in a struct
     class var sharedInstance : Platform{
@@ -101,6 +101,7 @@ class Platform{
     func getArticleCardFromWebUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        println(targetUrlEncoded)
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
         let platformUrl = NSURL(string:urlString)
         

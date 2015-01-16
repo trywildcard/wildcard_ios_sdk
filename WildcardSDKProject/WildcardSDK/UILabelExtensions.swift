@@ -9,6 +9,7 @@
 import Foundation
 
 extension UILabel{
+    /*
     func setAsCardHeaderWithText(text:String?){
         if(text != nil){
             let mutableString = NSMutableAttributedString(string: text!)
@@ -38,4 +39,5 @@ extension UILabel{
             attributedText = mutableString
         }
     }
+    */
 }

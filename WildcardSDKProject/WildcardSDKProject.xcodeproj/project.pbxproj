@@ -43,7 +43,7 @@
 		1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */; };
 		1D3ECFC41A40EC3F0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
 		1D3ECFC51A40ED6A0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
-		1D3ECFC71A40FB260001BF7A /* TallReadMoreCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC61A40FB260001BF7A /* TallReadMoreCardFooter.swift */; };
+		1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */; };
 		1D3ECFC91A4151370001BF7A /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC81A4151370001BF7A /* Publisher.swift */; };
 		1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
@@ -81,24 +81,6 @@
 		1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC269B1A3641850005C4BE /* UIColorExtension.swift */; };
 		1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B01A3649EA0005C4BE /* Utilities.swift */; };
 		1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */; };
-		1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */; };
-		1DAC26D11A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */; };
-		1DAC26D21A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */; };
-		1DAC26D31A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */; };
-		1DAC26D41A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C91A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf */; };
-		1DAC26D51A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26C91A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf */; };
-		1DAC26D61A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CA1A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf */; };
-		1DAC26D71A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CA1A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf */; };
-		1DAC26D81A364E8E0005C4BE /* Polaris-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CB1A364E8E0005C4BE /* Polaris-Bold.otf */; };
-		1DAC26D91A364E8E0005C4BE /* Polaris-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CB1A364E8E0005C4BE /* Polaris-Bold.otf */; };
-		1DAC26DA1A364E8E0005C4BE /* Polaris-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CC1A364E8E0005C4BE /* Polaris-Book.otf */; };
-		1DAC26DB1A364E8E0005C4BE /* Polaris-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CC1A364E8E0005C4BE /* Polaris-Book.otf */; };
-		1DAC26DC1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CD1A364E8E0005C4BE /* Polaris-Heavy.otf */; };
-		1DAC26DD1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CD1A364E8E0005C4BE /* Polaris-Heavy.otf */; };
-		1DAC26DE1A364E8E0005C4BE /* Polaris-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */; };
-		1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */; };
-		1DAC26E01A364E8E0005C4BE /* Polaris-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */; };
-		1DAC26E11A364E8E0005C4BE /* Polaris-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
 		1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */; };
 		1DC9287A1A4089160040DAD0 /* CardViewVisualSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */; };
@@ -120,6 +102,7 @@
 		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
 		1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */; };
 		1DF0BA9B1A39F82100EE9645 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA9A1A39F82100EE9645 /* UIImageViewExtensions.swift */; };
+		1DF1B8801A699CB5000EC76E /* CustomButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */; };
 		1DFFEDD31A400843008E65BC /* BareBonesCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 		1DFFEDD71A400A4C008E65BC /* BareBonesCardVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */; };
@@ -193,7 +176,7 @@
 		1D3ECFBD1A40DDEC0001BF7A /* SquareArticleVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareArticleVisualSource.swift; sourceTree = "<group>"; };
 		1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextImageFloatRight.swift; sourceTree = "<group>"; };
 		1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextImageFloatRight.xib; sourceTree = "<group>"; };
-		1D3ECFC61A40FB260001BF7A /* TallReadMoreCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallReadMoreCardFooter.swift; sourceTree = "<group>"; };
+		1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMoreCardFooter.swift; sourceTree = "<group>"; };
 		1D3ECFC81A4151370001BF7A /* Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
@@ -230,15 +213,6 @@
 		1DAC269B1A3641850005C4BE /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1DAC26B01A3649EA0005C4BE /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
-		1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-Regular.ttf"; sourceTree = "<group>"; };
-		1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-RegularItalic.ttf"; sourceTree = "<group>"; };
-		1DAC26C91A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-Semibold.ttf"; sourceTree = "<group>"; };
-		1DAC26CA1A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TiemposTextApp-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		1DAC26CB1A364E8E0005C4BE /* Polaris-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Bold.otf"; sourceTree = "<group>"; };
-		1DAC26CC1A364E8E0005C4BE /* Polaris-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Book.otf"; sourceTree = "<group>"; };
-		1DAC26CD1A364E8E0005C4BE /* Polaris-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Heavy.otf"; sourceTree = "<group>"; };
-		1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Light.otf"; sourceTree = "<group>"; };
-		1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Polaris-Medium.otf"; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWebCardFooter.swift; sourceTree = "<group>"; };
 		1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewVisualSourceFactory.swift; sourceTree = "<group>"; };
@@ -258,6 +232,7 @@
 		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhysics.swift; sourceTree = "<group>"; };
 		1DF0BA9A1A39F82100EE9645 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonExtensions.swift; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardBody.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 		1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardVisualSource.swift; sourceTree = "<group>"; };
@@ -362,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				1D58732F1A374AA500C3EAF3 /* Media.xcassets */,
-				1DAC269D1A3649520005C4BE /* Fonts */,
 				1D3A28861A2E697700A9D4C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -464,22 +438,6 @@
 			name = "Utilities and Extensions";
 			sourceTree = "<group>";
 		};
-		1DAC269D1A3649520005C4BE /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				1DAC26C71A364E8E0005C4BE /* TiemposTextApp-Regular.ttf */,
-				1DAC26C81A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf */,
-				1DAC26C91A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf */,
-				1DAC26CA1A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf */,
-				1DAC26CB1A364E8E0005C4BE /* Polaris-Bold.otf */,
-				1DAC26CC1A364E8E0005C4BE /* Polaris-Book.otf */,
-				1DAC26CD1A364E8E0005C4BE /* Polaris-Heavy.otf */,
-				1DAC26CE1A364E8E0005C4BE /* Polaris-Light.otf */,
-				1DAC26CF1A364E8E0005C4BE /* Polaris-Medium.otf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
 		1DC928811A4099430040DAD0 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +468,8 @@
 			isa = PBXGroup;
 			children = (
 				1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */,
-				1D3ECFC61A40FB260001BF7A /* TallReadMoreCardFooter.swift */,
+				1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */,
+				1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */,
 			);
 			name = Footers;
 			sourceTree = "<group>";
@@ -708,7 +667,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DAC26D01A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */,
 				1DF0BA941A3930CC00EE9645 /* ImageThumbnailFloatLeft.xib in Resources */,
 				1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */,
@@ -716,16 +674,8 @@
 				1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */,
-				1DAC26D21A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */,
-				1DAC26DE1A364E8E0005C4BE /* Polaris-Light.otf in Resources */,
-				1DAC26DC1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */,
-				1DAC26D61A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */,
 				1D3ECFC51A40ED6A0001BF7A /* MediaTextImageFloatRight.xib in Resources */,
-				1DAC26D41A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */,
 				1D3A28681A2E696A00A9D4C1 /* Images.xcassets in Resources */,
-				1DAC26E01A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
-				1DAC26DA1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
-				1DAC26D81A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,21 +683,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DAC26D31A364E8E0005C4BE /* TiemposTextApp-RegularItalic.ttf in Resources */,
-				1DAC26DB1A364E8E0005C4BE /* Polaris-Book.otf in Resources */,
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
-				1DAC26D51A364E8E0005C4BE /* TiemposTextApp-Semibold.ttf in Resources */,
 				1DF0BA911A392DF300EE9645 /* ImageThumbnailFloatLeft.xib in Resources */,
 				1D3ECFC41A40EC3F0001BF7A /* MediaTextImageFloatRight.xib in Resources */,
-				1DAC26D71A364E8E0005C4BE /* TiemposTextApp-SemiboldItalic.ttf in Resources */,
 				1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */,
-				1DAC26D11A364E8E0005C4BE /* TiemposTextApp-Regular.ttf in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,
-				1DAC26DD1A364E8E0005C4BE /* Polaris-Heavy.otf in Resources */,
-				1DAC26E11A364E8E0005C4BE /* Polaris-Medium.otf in Resources */,
-				1DAC26D91A364E8E0005C4BE /* Polaris-Bold.otf in Resources */,
 				1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */,
-				1DAC26DF1A364E8E0005C4BE /* Polaris-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,7 +761,7 @@
 				1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */,
 				1DC9287C1A408D8C0040DAD0 /* ImageThumbnailFloatLeft.swift in Sources */,
 				1DFFEDD71A400A4C008E65BC /* BareBonesCardVisualSource.swift in Sources */,
-				1D3ECFC71A40FB260001BF7A /* TallReadMoreCardFooter.swift in Sources */,
+				1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */,
 				1DE2183B1A37FFE9007746B4 /* UILabelExtensions.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
@@ -842,6 +783,7 @@
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,
 				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,
+				1DF1B8801A699CB5000EC76E /* CustomButtonExtensions.swift in Sources */,
 				1DF0BA9B1A39F82100EE9645 /* UIImageViewExtensions.swift in Sources */,
 				1D6F80201A5CA20900B765B5 /* CardViewAction.swift in Sources */,
 				1D6719AC1A44A952006DA49A /* StockModalCardPresentationController.swift in Sources */,

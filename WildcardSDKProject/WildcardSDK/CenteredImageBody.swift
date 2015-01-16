@@ -64,7 +64,7 @@ public class CenteredImageBody : CardViewElement{
             image.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
                 if(image != nil){
                     self.image.image = image
-                    self.image.contentMode = UIViewContentMode.ScaleAspectFill
+                    self.image.contentMode = UIViewContentMode.ScaleToFill
                 }else{
                     self.image.image = UIImage(named: "noImage")
                     self.image.contentMode = UIViewContentMode.Center
