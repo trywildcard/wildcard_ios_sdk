@@ -125,8 +125,7 @@ public class CardView : UIView
         newCardView.frame = CGRectMake(0, 0, size.width, size.height)
         newCardView.layoutIfNeeded()
         
-        // update view
-       // newCardView.refresh()
+        newCardView.notifyCardViewElementsFinishedLayout()
         
         return newCardView
     }
@@ -135,7 +134,7 @@ public class CardView : UIView
     public func refresh(){
         var cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
-            view?.updateCardView()
+            view?.update()
         }
     }
     
@@ -149,22 +148,20 @@ public class CardView : UIView
         
         backingCard = card
         self.visualSource = visualSource
-        let newSize = Utilities.sizeFromVisualSource(visualSource)
         
         delegate?.cardViewWillReload?(self)
         
         // remove old card subviews
         removeCardSubviews()
         
-        // calculate new card frame, let delegate prepare
-        delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
-        
         // layout components
         layoutCardComponents()
-        layoutIfNeeded()
         
-        // update views
-        refresh()
+        // calculate new card frame, let delegate prepare
+        let newSize = Utilities.sizeFromVisualSource(visualSource)
+        delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
+        frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
+        layoutIfNeeded()
         
         // reloaded
         delegate?.cardViewDidReload?(self)
@@ -223,6 +220,13 @@ public class CardView : UIView
     }
     
     // MARK: Private
+    public func notifyCardViewElementsFinishedLayout(){
+        var cardViews:[CardViewElement?] = [header, body, footer, back]
+        for view in cardViews{
+            view?.cardViewFinishedLayout()
+        }
+    }
+    
     private func layoutCardComponents(){
         
         // initialize header, body, footer of card

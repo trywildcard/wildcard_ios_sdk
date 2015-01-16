@@ -22,7 +22,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var cardViewRightConstraint:NSLayoutConstraint?
     
     var initialCardFrame:CGRect!
-    var initialCardVisualSource:CardViewVisualSource!
     var finishedLoadAnimation = false
     var currentOrientation:UIInterfaceOrientation!
     
@@ -68,7 +67,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        maximizedCardView = CardView.createCardView(maximizedCard, visualSource: initialCardVisualSource)
+        maximizedCardView = CardView.createCardView(maximizedCard, visualSource: maximizedCardVisualSource)
         
         println(maximizedCardView!.frame)
         maximizedCardView?.delegate = self
@@ -96,11 +95,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if(!finishedLoadAnimation){
-            self.maximizedCardView?.reloadWithCard(self.maximizedCard, visualSource: self.maximizedCardVisualSource)
-            maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -121,7 +115,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
             
-            maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
+          //  maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
             let destination = calculateMaximizedFrame()
             updateInternalCardConstraints(destination)
             

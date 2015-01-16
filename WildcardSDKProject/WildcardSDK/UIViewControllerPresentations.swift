@@ -69,7 +69,7 @@ public extension UIViewController{
         
         let viewController = StockMaximizedCardViewController()
         viewController.presentingCardView = cardView
-        viewController.initialCardVisualSource = cardView.visualSource
+       // viewController.initialCardVisualSource = cardView.visualSource()
         viewController.modalPresentationStyle = .Custom
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationCapturesStatusBarAppearance = true

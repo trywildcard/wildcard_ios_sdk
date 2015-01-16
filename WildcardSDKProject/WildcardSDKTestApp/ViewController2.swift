@@ -23,7 +23,6 @@ class ViewController2: UIViewController, CardViewDelegate {
         
         mainCardWidthConstraint.constant = toSize.width
         mainCardHeightConstraint.constant = toSize.height
-        view.layoutIfNeeded()
     }
 
     override func viewDidLoad() {

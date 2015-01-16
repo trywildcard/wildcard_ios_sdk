@@ -121,24 +121,6 @@ public class CardPhysics : NSObject {
         }
     }
     
-    func cardLongPress(recognizer:UILongPressGestureRecognizer!){
-        if(!pulsing){
-            delegate?.cardViewLongPressed?(cardView)
-            pulsing  = true
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.cardView.transform = CGAffineTransformMakeScale(1.04, 1.04)
-                }){ (bool:Bool) -> Void in
-                    UIView.animateWithDuration(0.2, animations: { () -> Void in
-                        self.cardView.transform = CGAffineTransformIdentity
-                        }) { (bool:Bool) -> Void in
-                            self.pulsing = false
-                            return
-                            
-                    }
-            }
-        }
-    }
-    
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){
         if(cardView.back != nil){
             // these built in transitions automatically re assign super views, so gotta re constrain every time
@@ -160,10 +142,6 @@ public class CardPhysics : NSObject {
     
     // MARK: Instance
     func setup(){
-        
-        cardLongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "cardLongPress:")
-        cardLongPressGestureRecognizer?.minimumPressDuration = 0.25
-        self.cardView.addGestureRecognizer(cardLongPressGestureRecognizer!)
         
         cardDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cardDoubleTapped:")
         cardDoubleTapGestureRecognizer?.numberOfTapsRequired = 2

@@ -8,23 +8,9 @@
 
 import Foundation
 
-@objc
-public protocol CardViewElementDelegate{
-    /**
-    The CardViewElement is about to be updated 
-    */
-    optional func cardElementWillUpdate(cardViewElement:CardViewElement)
-    
-    /**
-    The CardViewElement has updated
-    */
-    optional func cardElementDidUpdate(cardViewElement:CardViewElement)
-}
-
 public class CardViewElement : UIView {
     
     var cardView:CardView!
-    var delegate:CardViewElementDelegate?
     var backingCard:Card{
         get{
             return cardView.backingCard
@@ -37,17 +23,17 @@ public class CardViewElement : UIView {
     func update(){
     }
     
-    func updateCardView(){
-        delegate?.cardElementWillUpdate?(self)
-        update()
-        delegate?.cardElementDidUpdate?(self)
-    }
-    
     /**
     Override to initialize any parts of the CardViewElement. This is called automatically 
     whenever the view is initialized.
     */
     func initializeElement(){
+    }
+    
+    /**
+    Override this function to get notified when the card view finishes laying out
+    */
+    func cardViewFinishedLayout(){
     }
     
     /**
