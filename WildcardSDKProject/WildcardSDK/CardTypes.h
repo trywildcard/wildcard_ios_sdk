@@ -6,7 +6,7 @@
 //
 //
 
-typedef NS_ENUM(NSInteger, CardType) {
+typedef NS_ENUM(NSInteger, WCCardType) {
     WCCardTypeUnknown,
     WCCardTypeSummary,
     WCCardTypeArticle

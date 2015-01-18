@@ -46,21 +46,21 @@ public class MediaTextImageFloatRight : CardViewElement{
         var abstractContent:String?
         
         switch(cardView.backingCard.type){
-        case .WCCardTypeArticle:
+        case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             abstractContent = articleCard.abstractContent
-        case .WCCardTypeSummary:
+        case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
             imageUrl = summaryCard.imageUrl
             abstractContent = summaryCard.description
-        case .WCCardTypeUnknown:
+        case .Unknown:
             imageUrl = nil
         }
         
         if(abstractContent != nil){
             var attributedText = NSMutableAttributedString(string: abstractContent!)
-            attributedText.setColor(UIColor.wildcardMediaBodyFont())
+            attributedText.setColor(UIColor.wildcardMediaBodyColor())
             textContainer.attributedText = attributedText
         }
         
@@ -78,19 +78,12 @@ public class MediaTextImageFloatRight : CardViewElement{
         }else{
             cardImage.hidden = true
         }
-        
     }
     
     override func cardViewFinishedLayout() {
-        if let card = backingCard as? ArticleCard{
-            if let hasUrl = card.primaryImageURL{
-                let convert = textContainer.convertRect(cardImage.frame, fromView: self)
-                let exclusionRect = CGRectMake(convert.origin.x - 10, 0, convert.size.width + 10, convert.size.height)
-                let exclusionPath = UIBezierPath(rect: exclusionRect)
-                textContainer.textContainer.exclusionPaths = [exclusionPath]
-            }else{
-                textContainer.textContainer.exclusionPaths = []
-            }
-        }
+        let convert = textContainer.convertRect(cardImage.frame, fromView: self)
+        let exclusionRect = CGRectMake(convert.origin.x - 10, 0, convert.size.width + 10, convert.size.height)
+        let exclusionPath = UIBezierPath(rect: exclusionRect)
+        textContainer.textContainer.exclusionPaths = [exclusionPath]
     }
 }

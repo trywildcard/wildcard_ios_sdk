@@ -1,27 +1,32 @@
 //
-//  ImageFullFloatBottomDataSource.swift
+//  ArticleCardFullImageVisualSource.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/16/14.
+//  Created by David Xiang on 1/18/15.
 //
 //
 
 import Foundation
 
-public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
+public class ArticleCardFullImageVisualSource : CardViewVisualSource {
     
     var card:Card
     var header:FullCardHeader
     var body:ImageAndCaptionBody
     var footer:ReadMoreFooter
+    var aspectRatio:CGFloat
     
-    public init(card:Card){
+    public init(card:Card, aspectRatio:CGFloat){
         self.card = card
+        self.aspectRatio = aspectRatio
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.bottomHairline.hidden = true
+        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
-        self.body.contentEdgeInset = UIEdgeInsetsMake(0, 10, 5, 10)
+        self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.body.imageAspectRatio = aspectRatio
         self.footer = ReadMoreFooter(frame:CGRectZero)
+        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -45,11 +50,7 @@ public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return footer.optimizedHeight(widthForCard())
-    }
-    
-    public func viewForBackOfCard()->CardViewElement?{
-        return EmptyCardBack(frame:CGRectZero)
+        return 60
     }
     
     public func widthForCard()->CGFloat{

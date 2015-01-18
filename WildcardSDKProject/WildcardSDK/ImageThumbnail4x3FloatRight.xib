@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageThumbnail4x3FloatRight" customModule="WildcardSDK">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-i2-k3m">
+                    <rect key="frame" x="458" y="10" width="132" height="99"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="99" id="aSc-fv-hcQ"/>
+                        <constraint firstAttribute="width" constant="132" id="wPB-QD-JBg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kicker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3D-Wj-hJC">
+                    <rect key="frame" x="10" y="33" width="438" height="13.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGh-Dw-SkZ">
+                    <rect key="frame" x="10" y="49" width="438" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B52-rb-pVv">
+                    <rect key="frame" x="10" y="70" width="121" height="34"/>
+                    <state key="normal" title="VIEW ON WEB">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="viewOnWebButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="JrL-zZ-ydB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="B52-rb-pVv" firstAttribute="leading" secondItem="aGh-Dw-SkZ" secondAttribute="leading" id="DJP-zf-9ho"/>
+                <constraint firstItem="Q3D-Wj-hJC" firstAttribute="top" secondItem="Xf1-i2-k3m" secondAttribute="top" id="FfA-Zr-wCn"/>
+                <constraint firstItem="aGh-Dw-SkZ" firstAttribute="top" secondItem="Q3D-Wj-hJC" secondAttribute="bottom" constant="3" id="bpD-Kd-zB2"/>
+                <constraint firstItem="Xf1-i2-k3m" firstAttribute="centerY" secondItem="aGh-Dw-SkZ" secondAttribute="centerY" id="cP0-TQ-Qb5"/>
+                <constraint firstItem="Xf1-i2-k3m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dyD-vF-dFc"/>
+                <constraint firstItem="B52-rb-pVv" firstAttribute="top" secondItem="aGh-Dw-SkZ" secondAttribute="bottom" id="pDo-If-raS"/>
+                <constraint firstItem="Q3D-Wj-hJC" firstAttribute="trailing" secondItem="aGh-Dw-SkZ" secondAttribute="trailing" id="qC4-JJ-X8a"/>
+                <constraint firstItem="Xf1-i2-k3m" firstAttribute="leading" secondItem="Q3D-Wj-hJC" secondAttribute="trailing" constant="10" id="rps-Y8-5Hu"/>
+                <constraint firstItem="Q3D-Wj-hJC" firstAttribute="leading" secondItem="aGh-Dw-SkZ" secondAttribute="leading" id="sUP-cd-dcA"/>
+                <constraint firstAttribute="centerY" secondItem="Xf1-i2-k3m" secondAttribute="centerY" id="tCA-A7-X0v"/>
+                <constraint firstAttribute="trailing" secondItem="Xf1-i2-k3m" secondAttribute="trailing" constant="10" id="vUN-aM-Kqd"/>
+                <constraint firstItem="Q3D-Wj-hJC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="vrl-ed-wuJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="FfA-Zr-wCn"/>
+                    <exclude reference="tCA-A7-X0v"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imageView" destination="Xf1-i2-k3m" id="BrO-Ns-ysk"/>
+                <outlet property="imageViewHeight" destination="aSc-fv-hcQ" id="Vd3-zT-i2o"/>
+                <outlet property="imageViewWidth" destination="wPB-QD-JBg" id="NUR-yR-yZy"/>
+                <outlet property="kicker" destination="Q3D-Wj-hJC" id="k5y-W5-FFu"/>
+                <outlet property="title" destination="aGh-Dw-SkZ" id="Kg9-Fm-SMJ"/>
+                <outlet property="viewOnWeb" destination="B52-rb-pVv" id="ci8-Nd-CwF"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -1,27 +1,37 @@
 //
-//  ImageThumbnailFloatLeftDataSource.swift
+//  SummaryCardNoImageVisualSource.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/16/14.
+//  Created by David Xiang on 1/18/15.
 //
 //
 
 import Foundation
 
-public class ImageThumbnailFloatLeftVisualSource : CardViewVisualSource {
+public class SummaryCardNoImageVisualSource : CardViewVisualSource{
     
     var card:Card
-    var body:ImageThumbnailFloatLeft
+    var header:OneLineCardHeader
+    var body:SingleParagraphCardBody
     var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
-        self.body = UIView.loadFromNibNamed("ImageThumbnailFloatLeft") as ImageThumbnailFloatLeft
+        self.header = OneLineCardHeader(frame:CGRectZero)
+        self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
     }
     
+    public func viewForCardHeader()->CardViewElement?{
+        return header
+    }
+    
+    public func heightForCardHeader()->CGFloat{
+        return header.optimizedHeight(widthForCard())
+    }
+    
     public func viewForCardBody()->CardViewElement{
-        return body
+        return body;
     }
     
     public func heightForCardBody()->CGFloat{
@@ -47,7 +57,4 @@ public class ImageThumbnailFloatLeftVisualSource : CardViewVisualSource {
         return cardWidth
     }
     
-    public func backingCard() -> Card {
-        return card
-    }
 }

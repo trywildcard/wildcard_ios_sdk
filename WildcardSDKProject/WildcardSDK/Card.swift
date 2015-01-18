@@ -13,7 +13,7 @@ public class Card : PlatformObject {
     
     public let webUrl:NSURL
     public let cardType:String
-    public let type:CardType
+    public let type:WCCardType
     
     init(webUrl:NSURL, cardType:String){
         self.webUrl = webUrl
@@ -21,23 +21,23 @@ public class Card : PlatformObject {
         self.type = Card.cardTypeFromString(cardType)
     }
     
-    public class func cardTypeFromString(name:String) -> CardType{
+    public class func cardTypeFromString(name:String) -> WCCardType{
         if(name == "article"){
-            return CardType.WCCardTypeArticle
+            return .Article
         }else if(name == "summary"){
-            return CardType.WCCardTypeSummary
+            return .Summary
         }else{
-            return CardType.WCCardTypeUnknown
+            return .Unknown
         }
     }
     
-    public class func stringFromCardType(type:CardType)->String{
+    public class func stringFromCardType(type:WCCardType)->String{
         switch(type){
-        case .WCCardTypeArticle:
+        case .Article:
             return "article"
-        case .WCCardTypeSummary:
+        case .Summary:
             return "summary"
-        case .WCCardTypeUnknown:
+        case .Unknown:
             return "unknown"
         }
     }

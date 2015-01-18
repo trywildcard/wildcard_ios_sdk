@@ -78,21 +78,21 @@ class WildcardSDKTests: XCTestCase {
         
         // no image results in default lay out
         let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", imageUrl:nil)
-        XCTAssert(engine.matchLayout(SummaryCard1) == CardLayoutTemplate.WCSummaryCardNoImage)
+        XCTAssert(engine.matchLayout(SummaryCard1) == .SummaryCardNoImage)
         
         let imageUrl = NSURL(string: "http://www.google.com")
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard2) == CardLayoutTemplate.WCSummaryCard4x3FullImage)
+        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FullImage)
         
         // image with long title and short description
         let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard3) == CardLayoutTemplate.WCSummaryCard4x3FloatRightImage)
+        XCTAssert(engine.matchLayout(SummaryCard3) == .SummaryCard4x3FloatRightImage)
         
         // image with long title and long description
         let SummaryCard4 = SummaryCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard4) == CardLayoutTemplate.WCSummaryCard4x3FloatRightImageTitleOnly)
+        XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCard4x3FloatRightImageTextWrap)
         
     }
     
@@ -103,13 +103,13 @@ class WildcardSDKTests: XCTestCase {
         
         // article card no image has default
         let articleCard = ArticleCard(title: "default", html: "", url: url!, publisher:publisher)
-        XCTAssert(engine.matchLayout(articleCard) == CardLayoutTemplate.WCArticleCardNoImage)
+        XCTAssert(engine.matchLayout(articleCard) == .ArticleCardNoImage)
         
         articleCard.primaryImageURL = NSURL(string:"http://www.dummyimage.com")
-        XCTAssert(engine.matchLayout(articleCard) == CardLayoutTemplate.WCArticleCard4x3FullImage)
+        XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
         
         articleCard.title = "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog"
-        XCTAssert(engine.matchLayout(articleCard) == CardLayoutTemplate.WCArticleCard4x3FloatRightImageTextWrap)
+        XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FloatRightImageTextWrap)
     }
     
     func testArticleGeneralSearch(){

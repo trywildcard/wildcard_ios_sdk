@@ -17,12 +17,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let google = NSURL(string: "http://www.google.com")
-        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.", title: "The Card Title -- Cards!", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
+        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards!.", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        let simple = SimpleDescriptionCardVisualSource(card: dummyCard!)
-        if let newCardView = CardView.createCardView(dummyCard!, visualSource: simple){
+        if let newCardView = CardView.createCardView(dummyCard!, template:.SummaryCardNoImage){
             view.addSubview(newCardView)
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-100)
@@ -32,22 +31,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        let simple = SimpleDescriptionCardVisualSource(card:dummyCard!)
-        presentCard(dummyCard!, customVisualSource: simple)
+        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FullImage)
+    }
+  
+    @IBAction func presentCardButtonTapped(sender: AnyObject) {
+        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FloatRightImageTextWrap)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        let thumbnailsource = ImageThumbnailFloatLeftVisualSource(card: dummyCard!)
-        
-        presentCard(dummyCard!, customVisualSource: thumbnailsource)
-    }
-    
-    @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        let fullsource = ImageFullFloatBottomVisualSource(card: dummyCard!)
-        
-        println("FULL SOURCE IMAGE")
-        println(fullsource)
-        presentCard(dummyCard!, customVisualSource: fullsource)
+        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FloatRightImage)
     }
     
     override func didReceiveMemoryWarning() {

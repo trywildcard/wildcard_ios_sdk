@@ -11,8 +11,13 @@ import Foundation
 extension UIButton {
     class func defaultViewOnWebButton() -> UIButton{
         var viewOnWebButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        viewOnWebButton.styleAsExternalLink("VIEW ON WEB")
+        return viewOnWebButton
+    }
+    
+    func styleAsExternalLink(text:String){
         
-        var buttonTitle = NSMutableAttributedString(string: "VIEW ON WEB")
+        var buttonTitle = NSMutableAttributedString(string: text)
         buttonTitle.setKerning(0.3)
         buttonTitle.setFont(UIFont.defaultCardActionButton())
         buttonTitle.setColor(UIColor.wildcardLightBlue())
@@ -21,9 +26,8 @@ extension UIButton {
         var highlightTitle = NSMutableAttributedString(attributedString: buttonTitle)
         highlightTitle.setColor(UIColor.wildcardDarkBlue())
         
-        viewOnWebButton.setAttributedTitle(buttonTitle, forState: .Normal)
-        viewOnWebButton.setAttributedTitle(highlightTitle, forState: .Highlighted)
-        return viewOnWebButton
+        setAttributedTitle(buttonTitle, forState: .Normal)
+        setAttributedTitle(highlightTitle, forState: .Highlighted)
     }
     
     class func defaultReadMoreButton()->UIButton{

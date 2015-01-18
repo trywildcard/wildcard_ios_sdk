@@ -49,15 +49,15 @@ public class ImageAndCaptionBody : CardViewElement{
         var imageUrl:NSURL?
         
         switch(cardView.backingCard.type){
-        case .WCCardTypeArticle:
+        case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             caption.text = articleCard.abstractContent
-        case .WCCardTypeSummary:
+        case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
             imageUrl = summaryCard.imageUrl
             caption.text = summaryCard.description
-        case .WCCardTypeUnknown:
+        case .Unknown:
             imageUrl = nil
         }
         
@@ -66,7 +66,7 @@ public class ImageAndCaptionBody : CardViewElement{
             imageView.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
                 if(image != nil){
                     self.imageView.image = image
-                    self.imageView.contentMode = UIViewContentMode.ScaleToFill
+                    self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
                 }else{
                     self.imageView.image = UIImage(named: "noImage")
                     self.imageView.contentMode = UIViewContentMode.Center

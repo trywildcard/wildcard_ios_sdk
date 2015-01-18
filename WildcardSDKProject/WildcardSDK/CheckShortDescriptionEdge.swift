@@ -14,21 +14,21 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
         super.init(description:"Does this card have a short description?")
     }
     
-    let DESCRIPTION_THRESHOLD = 140
+    let DESCRIPTION_THRESHOLD = 100
     
     override func evaluation(input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .WCCardTypeUnknown:
+            case .Unknown:
                 return false
-            case .WCCardTypeArticle:
+            case .Article:
                 let articleCard = card as ArticleCard
                 if articleCard.abstractContent != nil{
                     return countElements(articleCard.abstractContent!) < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
-            case .WCCardTypeSummary:
+            case .Summary:
                 let webLinkCard = card as SummaryCard
                 return countElements(webLinkCard.description) < DESCRIPTION_THRESHOLD
             }

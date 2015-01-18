@@ -16,6 +16,7 @@ FOUNDATION_EXPORT const unsigned char WildcardSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <WildcardSDK/PublicHeader.h>
 
-#import <WildcardSDK/CardLayouts.h>
+#import <WildcardSDK/CardTemplates.h>
 #import <WildcardSDK/CardTypes.h>
+#import <WildcardSDK/PublisherTypes.h>
 

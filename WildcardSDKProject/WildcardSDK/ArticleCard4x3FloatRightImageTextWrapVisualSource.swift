@@ -1,14 +1,15 @@
 //
-//  SquareArticleNoImageDataSource.swift
+//  ArticleCard4x3FloatRightImageTextWrapVisualSource.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/16/14.
+//  Created by David Xiang on 1/18/15.
 //
 //
 
 import Foundation
 
-public class SquareArticleVisualSource : CardViewVisualSource {
+public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualSource
+{
     
     var card:Card
     var header:FullCardHeader
@@ -18,8 +19,12 @@ public class SquareArticleVisualSource : CardViewVisualSource {
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+        self.header.bottomHairline.hidden = true
+        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
+        self.body.textContainerEdgeInsets = UIEdgeInsetsMake(5, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
+        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -48,7 +53,7 @@ public class SquareArticleVisualSource : CardViewVisualSource {
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return footer.optimizedHeight(widthForCard())
+        return 60
     }
     
     public func widthForCard()->CGFloat{
@@ -56,9 +61,5 @@ public class SquareArticleVisualSource : CardViewVisualSource {
         let defaultMargins:CGFloat = 15.0
         let cardWidth = screenBounds.width - (2*defaultMargins)
         return cardWidth
-    }
-    
-    public func backingCard() -> Card {
-        return card
     }
 }

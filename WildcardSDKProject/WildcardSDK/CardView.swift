@@ -106,7 +106,11 @@ public class CardView : UIView
     // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: card)
+        return CardView.createCardView(card, template: layoutToUse)
+    }
+    
+    public class func createCardView(card:Card, template:WCTemplate)->CardView?{
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(template, card: card)
         return CardView.createCardView(card, visualSource: datasource)
     }
     
@@ -162,6 +166,8 @@ public class CardView : UIView
         delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
         frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
         layoutIfNeeded()
+        
+        notifyCardViewElementsFinishedLayout()
         
         // reloaded
         delegate?.cardViewDidReload?(self)

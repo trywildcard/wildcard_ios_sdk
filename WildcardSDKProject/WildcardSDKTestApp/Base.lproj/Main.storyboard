@@ -87,16 +87,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Flourishes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-zw-cJo">
-                                <rect key="frame" x="240" y="50" width="121" height="21"/>
+                                <rect key="frame" x="240" y="50" width="120.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zp-Xs-c5N">
+                                <rect key="frame" x="203" y="80" width="195" height="30"/>
+                                <state key="normal" title="Present Article Full Template">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="present1ButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="zPZ-Mu-Dlz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jct-j4-ePO">
+                                <rect key="frame" x="180" y="115" width="240" height="30"/>
+                                <state key="normal" title="Present Article Text Wrap Template">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="present2ButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="LCD-qx-vJU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Jct-j4-ePO" firstAttribute="centerX" secondItem="5zp-Xs-c5N" secondAttribute="centerX" id="LuC-3f-EZS"/>
+                            <constraint firstItem="Jct-j4-ePO" firstAttribute="top" secondItem="5zp-Xs-c5N" secondAttribute="bottom" constant="5" id="OyI-Dp-mRM"/>
+                            <constraint firstItem="5zp-Xs-c5N" firstAttribute="top" secondItem="kMi-zw-cJo" secondAttribute="bottom" constant="10" id="dsN-Am-Ibn"/>
                             <constraint firstAttribute="centerX" secondItem="kMi-zw-cJo" secondAttribute="centerX" id="dza-2j-Aqd"/>
                             <constraint firstItem="kMi-zw-cJo" firstAttribute="top" secondItem="fhN-oy-XKG" secondAttribute="bottom" constant="30" id="gSX-jq-jhb"/>
+                            <constraint firstItem="kMi-zw-cJo" firstAttribute="centerX" secondItem="5zp-Xs-c5N" secondAttribute="centerX" id="nMs-qZ-He4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Demo 3" id="JcI-jH-HtG"/>

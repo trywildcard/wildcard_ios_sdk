@@ -49,13 +49,13 @@ public class ImageOnlyBody : CardViewElement{
         var imageUrl:NSURL?
         
         switch(cardView.backingCard.type){
-        case .WCCardTypeArticle:
+        case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
-        case .WCCardTypeSummary:
+        case .Summary:
             let webLinkCard = cardView.backingCard as SummaryCard
             imageUrl = webLinkCard.imageUrl
-        case .WCCardTypeUnknown:
+        case .Unknown:
             imageUrl = nil
         }
         

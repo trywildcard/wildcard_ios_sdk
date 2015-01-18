@@ -17,12 +17,12 @@ class CheckImageEdge : LayoutDecisionEdge
     override func evaluation(input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .WCCardTypeUnknown:
+            case .Unknown:
                 return false
-            case .WCCardTypeArticle:
+            case .Article:
                 let articleCard = card as ArticleCard
                 return articleCard.primaryImageURL != nil
-            case .WCCardTypeSummary:
+            case .Summary:
                 let webLinkCard = card as SummaryCard
                 return webLinkCard.imageUrl != nil
             }

@@ -8,36 +8,27 @@
 
 import Foundation
 
-
 class CardViewVisualSourceFactory {
     
-    class func visualSourceFromLayout(layout:CardLayoutTemplate, card:Card)->CardViewVisualSource{
+    class func visualSourceFromLayout(layout:WCTemplate, card:Card)->CardViewVisualSource{
         switch(layout){
+        case .SummaryCardNoImage:
+            return SummaryCardNoImageVisualSource(card:card)
+        case .SummaryCard4x3FullImage:
+            return SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
+        case .SummaryCard4x3FloatRightImage:
+            return SummaryCard4x3FloatRightImageVisualSource(card:card)
+        case .SummaryCard4x3FloatRightImageTextWrap:
+            return SummaryCard4x3FloatRightImageTextWrapVisualSource(card:card)
+        case .ArticleCardNoImage:
+            return ArticleCardNoImageVisualSource(card:card)
+        case .ArticleCard4x3FullImage:
+            return ArticleCardFullImageVisualSource(card:card, aspectRatio: 0.75)
+        case .ArticleCard4x3FloatRightImageTextWrap:
+            return ArticleCard4x3FloatRightImageTextWrapVisualSource(card:card)
         default:
-            return BareBonesCardVisualSource(card: card)
+            return PlaceholderCardVisualSource(card: card)
         }
     }
-    
-    /**
-    Creates a stock CardViewVisualSource from a Wildcard layout type
-    */
-    class func cardViewVisualSourceFromLayout(layout:CardLayout, card:Card)->CardViewVisualSource{
-        switch(layout){
-        case .Unknown:
-            return BareBonesCardVisualSource(card: card)
-        case .SummaryCardPortraitDefault:
-            return SimpleDescriptionCardVisualSource(card: card)
-        case .SummaryCardPortraitImageSmallFloatLeft:
-            return ImageThumbnailFloatLeftVisualSource(card: card)
-        case .SummaryCardPortraitImageFull:
-            return ImageFullFloatBottomVisualSource(card: card)
-        case .ArticleCardPortraitImage,
-        .ArticleCardPortraitNoImage:
-            return SquareArticleVisualSource(card:card)
-        case .MaximizedFullWebView:
-            return MaximizedArticleVisualSource(card:card)
-        default:
-            return BareBonesCardVisualSource(card: card)
-        }
-    }
+
 }

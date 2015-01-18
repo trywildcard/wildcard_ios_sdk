@@ -48,14 +48,17 @@ public class FullCardHeader :CardViewElement
     override func initializeElement() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
+        kicker.font = UIFont.defaultCardKickerFont()
         kicker.textColor = UIColor.wildcardMediumGray()
+        title.font = UIFont.defaultCardTitleFont()
+        title.textColor = UIColor.wildcardDarkBlue()
         bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
     override func update() {
         
         switch(backingCard.type){
-        case .WCCardTypeArticle:
+        case .Article:
             let articleCard = cardView.backingCard as ArticleCard
             kicker.text = articleCard.publisher.name
             title.text = articleCard.title
@@ -66,12 +69,12 @@ public class FullCardHeader :CardViewElement
                     }
                 })
             }
-        case .WCCardTypeSummary:
+        case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
             logo.image = UIImage(named: "wildcardSmallLogo")
-        case .WCCardTypeUnknown:
+        case .Unknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"
             logo.image = UIImage(named: "wildcardSmallLogo")

@@ -26,7 +26,7 @@ public extension UIColor{
         return UIColor(red: 213/255, green: 219/255, blue: 229/255, alpha: 1.0)
     }
     
-    public class func wildcardMediaBodyFont()->UIColor{
+    public class func wildcardMediaBodyColor()->UIColor{
         return UIColor(red: 98/255, green: 107/255, blue: 128/255, alpha: 1.0)
     }
 }

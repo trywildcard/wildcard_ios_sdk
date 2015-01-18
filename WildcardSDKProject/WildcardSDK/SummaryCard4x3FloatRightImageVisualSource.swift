@@ -1,32 +1,29 @@
 //
-//  BareBonesCardDataSource.swift
+//  SummaryCard4x3FloatRightImageVisualSource.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 12/16/14.
+//  Created by David Xiang on 1/18/15.
 //
 //
 
 import Foundation
 
-public class BareBonesCardVisualSource : CardViewVisualSource{
+public class SummaryCard4x3FloatRightImageVisualSource : CardViewVisualSource {
     
     var card:Card
+    var body:ImageThumbnail4x3FloatRight
     
     public init(card:Card){
         self.card = card
+        self.body = UIView.loadFromNibNamed("ImageThumbnail4x3FloatRight") as ImageThumbnail4x3FloatRight
     }
     
     public func viewForCardBody()->CardViewElement{
-        return PlaceholderCardBody(frame:CGRectZero)
+        return body
     }
     
     public func heightForCardBody()->CGFloat{
-        // 4 x 3
-        return  widthForCard() * (3/4)
-    }
-    
-    public func viewForBackOfCard()->CardViewElement?{
-        return EmptyCardBack(frame:CGRectZero)
+        return body.optimizedHeight(widthForCard())
     }
     
     public func widthForCard()->CGFloat{

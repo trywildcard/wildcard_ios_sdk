@@ -13,6 +13,7 @@ Publisher of a Card
 
 Any entity that owns Card content. This may be a company, specific website, or individual.
 */
+@objc
 public class Publisher : PlatformObject {
     
     public enum Type{

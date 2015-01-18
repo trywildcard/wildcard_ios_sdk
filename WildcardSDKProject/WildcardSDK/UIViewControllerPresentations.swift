@@ -10,17 +10,24 @@ import Foundation
 
 public extension UIViewController{
     
-    /**
-    Presents a Card modally. The visual source for the Card will be automatically selected.
+    /*
+    Presents a Card modally
     */
     public func presentCard(card:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: card)
+        presentCard(card, template:layoutToUse)
+    }
+    
+    /**
+    Presents a Card modally with a specific template
+    */
+    public func presentCard(card:Card, template:WCTemplate){
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(template, card: card)
         presentCard(card, customVisualSource: datasource)
     }
 
     /**
-    Presents a Card modally with a custom visual source.
+    Presents a Card modally with a custom visual source 
     */
     public func presentCard(card:Card, customVisualSource:CardViewVisualSource){
         let stockModal = StockModalCardViewController()
@@ -54,7 +61,7 @@ public extension UIViewController{
     This will use a stock Wildcard maximized visual source for Article Cards.
     */
     public func maximizeArticleCard(cardView:CardView){
-        if(cardView.backingCard.type != .WCCardTypeArticle){
+        if(cardView.backingCard.type != .Article){
             println("The backing Card for this CardView is not an Article Card!")
             return
         }
