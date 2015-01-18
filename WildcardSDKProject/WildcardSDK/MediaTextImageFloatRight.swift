@@ -60,8 +60,6 @@ public class MediaTextImageFloatRight : CardViewElement{
         
         if(abstractContent != nil){
             var attributedText = NSMutableAttributedString(string: abstractContent!)
-            //attributedText.setLineHeight(UIFont.wildcardStandardHeaderFontLineHeight())
-            //attributedText.setFont(UIFont.wildcardStandardMediaBodyFont())
             attributedText.setColor(UIColor.wildcardMediaBodyFont())
             textContainer.attributedText = attributedText
         }

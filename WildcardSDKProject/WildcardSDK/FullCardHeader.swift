@@ -21,6 +21,7 @@ public class FullCardHeader :CardViewElement
             kickerTitleVerticalSpacing.constant = newValue
         }
     }
+    
     /**
     Custom offset adjustments to the title label
     */
@@ -37,6 +38,7 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak public var logo: UIImageView!
     @IBOutlet weak public var kicker: UILabel!
     @IBOutlet weak public var title: UILabel!
+    public var bottomHairline:UIView!
     
     @IBOutlet weak var titleTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLeadingConstraint: NSLayoutConstraint!
@@ -46,6 +48,8 @@ public class FullCardHeader :CardViewElement
     override func initializeElement() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
+        kicker.textColor = UIColor.wildcardMediumGray()
+        bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
     override func update() {

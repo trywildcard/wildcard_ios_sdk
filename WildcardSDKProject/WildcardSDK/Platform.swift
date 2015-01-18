@@ -102,7 +102,7 @@ class Platform{
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         println(targetUrlEncoded)
-        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_article_card?url=" + targetUrlEncoded!
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/card_search?cardTypeName=article&url=" + targetUrlEncoded!
         let platformUrl = NSURL(string:urlString)
         
         self.getJsonResponseFromWebUrl(platformUrl!, completion: { (json:NSDictionary?, error: NSError?) -> Void in

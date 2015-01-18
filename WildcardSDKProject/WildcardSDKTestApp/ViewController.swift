@@ -38,11 +38,15 @@ class ViewController: UIViewController {
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
         let thumbnailsource = ImageThumbnailFloatLeftVisualSource(card: dummyCard!)
+        
         presentCard(dummyCard!, customVisualSource: thumbnailsource)
     }
     
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
         let fullsource = ImageFullFloatBottomVisualSource(card: dummyCard!)
+        
+        println("FULL SOURCE IMAGE")
+        println(fullsource)
         presentCard(dummyCard!, customVisualSource: fullsource)
     }
     

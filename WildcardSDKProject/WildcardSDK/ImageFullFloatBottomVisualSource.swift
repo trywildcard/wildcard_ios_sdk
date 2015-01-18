@@ -12,13 +12,15 @@ public class ImageFullFloatBottomVisualSource : CardViewVisualSource {
     
     var card:Card
     var header:FullCardHeader
-    var body:CenteredImageBody
+    var body:ImageAndCaptionBody
     var footer:ReadMoreFooter
     
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.body = CenteredImageBody(frame:CGRectZero)
+        self.header.bottomHairline.hidden = true
+        self.body = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
+        self.body.contentEdgeInset = UIEdgeInsetsMake(0, 10, 5, 10)
         self.footer = ReadMoreFooter(frame:CGRectZero)
     }
     

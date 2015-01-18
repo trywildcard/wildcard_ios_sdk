@@ -12,13 +12,13 @@ public class ReadMoreFooter: CardViewElement {
     
     public var readMoreButton:UIButton!
     
-    public var viewOnWebButtonOffset:UIOffset!{
+    public var readMoreButtonOffset:UIOffset!{
         get{
-            return UIOffset(horizontal: verticalCenterConstraint.constant, vertical: verticalCenterConstraint.constant)
+            return UIOffset(horizontal: leftConstraint.constant, vertical: verticalCenterConstraint.constant)
         }
         set{
             verticalCenterConstraint.constant = newValue.vertical
-            verticalCenterConstraint.constant = newValue.horizontal
+            leftConstraint.constant = newValue.horizontal
         }
     }
     
@@ -36,7 +36,7 @@ public class ReadMoreFooter: CardViewElement {
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 60
+        return 40
     }
     
     func readMoreButtonTapped(){

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class CenteredImageBody : CardViewElement{
+public class ImageOnlyBody : CardViewElement{
     
     public var image:UIImageView!
     public var imageAspectRatio:CGFloat = 0.75
