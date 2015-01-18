@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class ImageThumbnail4x3FloatRight : CardViewElement
 {
     

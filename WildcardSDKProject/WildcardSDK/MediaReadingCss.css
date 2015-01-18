@@ -1,9 +1,10 @@
 <style>
 
+/* Custom tags */
 #customWildcardHeader {
-    font-family:'Polaris-Bold', serif;
-    font-size:16px;
-    line-height:19px;
+    font-family:'Tiempos', 'Georgia', serif;
+    font-size:18px;
+    font-weight:bold;
     padding-top:2px;
     padding-left:0px;
     padding-right:30px;
@@ -11,10 +12,48 @@
 }
 
 #customWildcardByline {
-    font-family:'Tiempos', serif;
+    font-family:'Tiempos', 'Georgia', serif;
     font-size:14px;
     color:rgb(98,107,128);
 }
+
+#viewOnWeb{
+    display:inline;
+    font-family:'Arial', serif;
+    color:rgb(76,180,255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:14px;
+}
+
+#openInApp{
+    display:inline-block;
+    font-family:'Arial', serif;
+    color:rgb(76,180,255);
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:12px;
+    margin-left: 5px;
+    vertical-align: top;
+    line-height: 12px;
+}
+
+#openInAppImage{
+    display:inline-block;
+    width:15px;
+    height:15px;
+}
+
+.viewMore{
+    margin:20px auto;
+    width:100%;
+    display:block;
+    text-align:center;
+}
+
+/* General CSS */
 
 body{
     font-family:'Tiempos', 'Georgia', serif;
@@ -72,13 +111,9 @@ iframe{
 
 blockquote{
     margin:0px auto;
-    width:80%%;
+    width:90%%;
     display:block;
     font-style: italic;
-}
-
-strong{
-    font-family:'TiemposSemibold', serif;
 }
 
 a{
@@ -119,40 +154,5 @@ table{
     table-layout:fixed;
 }
 
-#viewOnWeb{
-    display:inline;
-    font-family:'Polaris-Medium', serif;
-    color:rgb(76,180,255);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    padding-bottom: 0px;
-    text-decoration: none;
-    font-size:12px;
-}
-
-#openInApp{
-    display:inline-block;
-    font-family:'Polaris-Medium', serif;
-    color:rgb(76,180,255);
-    padding-bottom: 0px;
-    text-decoration: none;
-    font-size:12px;
-    margin-left: 5px;
-    vertical-align: top;
-    line-height: 12px;
-}
-
-#openInAppImage{
-    display:inline-block;
-    width:15px;
-    height:15px;
-}
-
-.viewMore{
-    margin:10px auto;
-    width:100%;
-    display:block;
-    text-align:center;
-}
 
 </style>

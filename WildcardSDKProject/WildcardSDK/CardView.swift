@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 import QuartzCore
 
-/**
-The display and visuals behind a CardView.
-*/
 @objc
 public protocol CardViewVisualSource{
     
@@ -46,9 +43,6 @@ public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
     func applicationFrameEdgeInsets()->UIEdgeInsets
 }
 
-/**
-Delegation of CardView behavior
-*/
 @objc
 public protocol CardViewDelegate{
     

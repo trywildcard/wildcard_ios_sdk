@@ -40,7 +40,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         let rectConvert = maximizedController.calculateMaximizedFrame()
     
         containerView.addSubview(presentedControllerView)
-        
+  
         maximizedController.view.layoutIfNeeded()
         UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
     

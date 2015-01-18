@@ -147,7 +147,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         
         finalHtml += articleCard.html
         
-        finalHtml += "<div><center><span class=\"viewMore\"><a id=\"viewOnWeb\" href=\"\(articleCard.webUrl)\">VIEW ON WEB</a></span></div><br/>"
+        finalHtml += "<div><center><span class=\"viewMore\"><a id=\"viewOnWeb\" href=\"\(articleCard.webUrl)\">VIEW ON WEB</a></span></div><br></br>"
 
         return finalHtml
     }

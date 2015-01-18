@@ -35,7 +35,6 @@ class StockMaximizedCardPresentationController :UIPresentationController
         if !completed {
             blurView.removeFromSuperview()
         }
-        presentingCardView.fadeOut(0, delay: 0, completion: nil)
     }
     
     override func dismissalTransitionWillBegin()  {

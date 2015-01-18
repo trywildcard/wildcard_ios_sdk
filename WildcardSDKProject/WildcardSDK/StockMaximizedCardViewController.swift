@@ -53,11 +53,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
             }
         }
     }
- 
-    // MARK: CardPhysicsDelegate
-    func cardViewDropped(cardView: CardView, position: CGPoint) {
-        cardView.physics?.panGestureReset()
-    }
     
     // MARK:UIViewController
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -68,8 +63,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         super.viewDidLoad()
         
         maximizedCardView = CardView.createCardView(maximizedCard, visualSource: maximizedCardVisualSource)
-        
-        println(maximizedCardView!.frame)
         maximizedCardView?.delegate = self
         
         view.addSubview(maximizedCardView!)
@@ -79,43 +72,30 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         cardViewTopConstraint = maximizedCardView?.constrainTopToSuperView(initialCardFrame.origin.y)
         cardViewRightConstraint = maximizedCardView?.constrainRightToSuperView(view.frame.size.width - initialCardFrame.origin.x - initialCardFrame.size.width)
         cardViewBottomConstraint = maximizedCardView?.constrainBottomToSuperView(view.frame.size.height - initialCardFrame.origin.y - initialCardFrame.size.height)
-        view.addConstraint(cardViewLeftConstraint!)
-        view.addConstraint(cardViewTopConstraint!)
-        view.addConstraint(cardViewRightConstraint!)
-        view.addConstraint(cardViewBottomConstraint!)
         maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
         
         currentOrientation = UIApplication.sharedApplication().statusBarOrientation
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
-        view.layoutIfNeeded()
-        
-        println(maximizedCardView!.frame)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         if(!finishedLoadAnimation){
-            maximizedCardView?.fadeIn(0.2, delay: 0, completion: nil)
+            maximizedCardView?.fadeIn(0.3, delay: 0, completion: nil)
             finishedLoadAnimation = true
         }
     }
     
-    func cardViewWillReload(cardView: CardView) {
-    }
-    
-    func cardViewDidReload(cardView: CardView) {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func handleOrientationChange(notification:NSNotification){
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
             
-          //  maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
+            maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
             let destination = calculateMaximizedFrame()
             updateInternalCardConstraints(destination)
             

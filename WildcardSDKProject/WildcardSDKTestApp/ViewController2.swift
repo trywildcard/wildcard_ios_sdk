@@ -20,7 +20,6 @@ class ViewController2: UIViewController, CardViewDelegate {
     var mainCardHeightConstraint:NSLayoutConstraint!
     
     func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize){
-        
         mainCardWidthConstraint.constant = toSize.width
         mainCardHeightConstraint.constant = toSize.height
     }

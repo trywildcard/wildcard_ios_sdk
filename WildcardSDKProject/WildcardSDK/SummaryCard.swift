@@ -9,6 +9,7 @@
 /**
 Summary Card
 */
+@objc
 public class SummaryCard : Card {
     
     public let title:String

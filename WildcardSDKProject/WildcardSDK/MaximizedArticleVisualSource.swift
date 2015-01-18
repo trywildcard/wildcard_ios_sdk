@@ -37,8 +37,4 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
         let insets = applicationFrameEdgeInsets()
         return frame.width - insets.left - insets.right
     }
-    
-    public func backingCard() -> Card {
-        return card
-    }
 }

@@ -11,6 +11,7 @@ import Foundation
 /**
 Article Card
 */
+@objc
 public class ArticleCard : Card{
     
     public var title:String
