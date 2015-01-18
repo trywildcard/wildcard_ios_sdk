@@ -10,11 +10,17 @@ import Foundation
 
 public enum CardLayout {
     case Unknown
+    case SummaryNoImage
+    case Summary4x3FullImage
+    case Summary4x3FloatRightImage
+    case Summary4x3FloatRightImageTitleOnly
+    case MaximizedFullWebView
+    
+    
     case SummaryCardPortraitDefault
     case SummaryCardPortraitImageFull
     case SummaryCardPortraitImageSmallFloatLeft
     case ArticleCardPortraitNoImage
     case ArticleCardPortraitImage
-    case MaximizedFullWebView
 }
 

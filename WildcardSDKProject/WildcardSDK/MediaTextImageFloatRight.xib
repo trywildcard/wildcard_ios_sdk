@@ -18,10 +18,10 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-s7-zAG">
-                    <rect key="frame" x="455" y="5" width="125" height="85"/>
+                    <rect key="frame" x="460" y="5" width="120" height="90"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="125" id="ETy-Zb-NTC"/>
-                        <constraint firstAttribute="height" constant="85" id="fH3-th-QXq"/>
+                        <constraint firstAttribute="width" constant="120" id="ETy-Zb-NTC"/>
+                        <constraint firstAttribute="height" constant="90" id="fH3-th-QXq"/>
                     </constraints>
                 </imageView>
             </subviews>

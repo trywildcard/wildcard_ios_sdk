@@ -15,7 +15,7 @@ public extension UIViewController{
     */
     public func presentCard(card:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: card)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: card)
         presentCard(card, customVisualSource: datasource)
     }
 

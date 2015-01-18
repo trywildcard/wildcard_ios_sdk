@@ -106,7 +106,7 @@ public class CardView : UIView
     // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        let datasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: card)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: card)
         return CardView.createCardView(card, visualSource: datasource)
     }
     
@@ -140,7 +140,7 @@ public class CardView : UIView
     
     public func reloadWithCard(newCard:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
-        let autoDatasource = CardViewVisualSourceFactory.cardViewVisualSourceFromLayout(layoutToUse, card: newCard)
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: newCard)
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     

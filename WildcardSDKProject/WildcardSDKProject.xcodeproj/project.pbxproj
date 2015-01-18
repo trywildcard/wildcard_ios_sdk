@@ -106,6 +106,7 @@
 		1DF1B8821A69CC2F000EC76E /* ImageAndCaptionBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8811A69CC2F000EC76E /* ImageAndCaptionBody.swift */; };
 		1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
 		1DF1B8861A6B4990000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
+		1DF1B8C11A6B74C9000EC76E /* CardLayouts.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8871A6B71B7000EC76E /* CardLayouts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DFFEDD31A400843008E65BC /* BareBonesCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 		1DFFEDD71A400A4C008E65BC /* BareBonesCardVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */; };
@@ -238,6 +239,7 @@
 		1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonExtensions.swift; sourceTree = "<group>"; };
 		1DF1B8811A69CC2F000EC76E /* ImageAndCaptionBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAndCaptionBody.swift; sourceTree = "<group>"; };
 		1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAndCaptionBody.xib; sourceTree = "<group>"; };
+		1DF1B8871A6B71B7000EC76E /* CardLayouts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardLayouts.h; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardBody.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 		1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardVisualSource.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */,
 				1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */,
 				1D7EAC8E1A312B0000734B9A /* CardLayouts.swift */,
+				1DF1B8871A6B71B7000EC76E /* CardLayouts.h */,
 				1D7EAC901A312C7100734B9A /* CardLayoutEngine.swift */,
 			);
 			name = CardLayoutEngine;
@@ -562,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
+				1DF1B8C11A6B74C9000EC76E /* CardLayouts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1015,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1060,6 +1065,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

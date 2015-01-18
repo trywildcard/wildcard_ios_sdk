@@ -13,14 +13,14 @@ class LayoutDecisionNode
     let description:String?
     let input:AnyObject?
     var edges:[LayoutDecisionEdge] = []
-    var cardLayout:CardLayout!
+    var cardLayout:CardLayoutTemplate!
     
     init(description:String){
         self.description = description
-        self.cardLayout = CardLayout.Unknown
+        self.cardLayout = CardLayoutTemplate.WCUnknown
     }
     
-    init(description:String, layout:CardLayout){
+    init(description:String, layout:CardLayoutTemplate){
         self.description = description
         self.cardLayout = layout
     }

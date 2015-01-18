@@ -11,6 +11,13 @@ import Foundation
 
 class CardViewVisualSourceFactory {
     
+    class func visualSourceFromLayout(layout:CardLayoutTemplate, card:Card)->CardViewVisualSource{
+        switch(layout){
+        default:
+            return BareBonesCardVisualSource(card: card)
+        }
+    }
+    
     /**
     Creates a stock CardViewVisualSource from a Wildcard layout type
     */
@@ -29,6 +36,8 @@ class CardViewVisualSourceFactory {
             return SquareArticleVisualSource(card:card)
         case .MaximizedFullWebView:
             return MaximizedArticleVisualSource(card:card)
+        default:
+            return BareBonesCardVisualSource(card: card)
         }
     }
 }
