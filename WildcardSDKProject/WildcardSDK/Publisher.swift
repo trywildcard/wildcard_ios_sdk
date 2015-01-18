@@ -16,12 +16,6 @@ Any entity that owns Card content. This may be a company, specific website, or i
 @objc
 public class Publisher : PlatformObject {
     
-    public enum Type{
-        case Unknown
-        case Content
-        case Commerce
-    }
-    
     public var name:String
     public var domain:NSURL?
     public var smallLogoUrl:NSURL?
@@ -29,7 +23,7 @@ public class Publisher : PlatformObject {
     public var description:String?
     public var twitterHandle:String?
     public var pinterestHandle:String?
-    public var type:Type = .Unknown
+    public var type:WCPublisherType = .Unknown
     public var appStoreIconUrl:NSURL?
     public var appStoreUrl:NSURL?
     
@@ -77,7 +71,7 @@ public class Publisher : PlatformObject {
         }
     }
     
-    class func publisherTypeFromString(type:String) -> Type{
+    class func publisherTypeFromString(type:String) -> WCPublisherType{
         if(type == "Commerce"){
             return .Commerce
         }else if(type == "Content"){

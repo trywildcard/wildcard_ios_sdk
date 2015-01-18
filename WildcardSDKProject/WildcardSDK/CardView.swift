@@ -89,6 +89,7 @@ public protocol CardViewDelegate{
     
 }
 
+@objc
 public class CardView : UIView
 {
     // MARK: Public properties

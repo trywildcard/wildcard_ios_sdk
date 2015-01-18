@@ -15,6 +15,7 @@ public class CardViewAction{
         case Collapse
         case DownloadApp
         case Action
+        case ViewOnWeb
         case Custom
     }
     

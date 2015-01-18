@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public class CardViewElement : UIView {
     
     var cardView:CardView!
