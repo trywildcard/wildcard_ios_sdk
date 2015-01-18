@@ -19,16 +19,16 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
     override func evaluation(input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .Unknown:
+            case .WCCardTypeUnknown:
                 return false
-            case .Article:
+            case .WCCardTypeArticle:
                 let articleCard = card as ArticleCard
                 if articleCard.abstractContent != nil{
                     return countElements(articleCard.abstractContent!) < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
-            case .Summary:
+            case .WCCardTypeSummary:
                 let webLinkCard = card as SummaryCard
                 return countElements(webLinkCard.description) < DESCRIPTION_THRESHOLD
             }

@@ -58,7 +58,7 @@ public class OneLineCardHeader : CardViewElement {
     override func update() {
         
         switch(backingCard.type){
-        case .Article:
+        case .WCCardTypeArticle:
             let articleCard = cardView.backingCard as ArticleCard
             title.text = articleCard.title
             if let url = articleCard.publisher.smallLogoUrl{
@@ -68,11 +68,11 @@ public class OneLineCardHeader : CardViewElement {
                     }
                 })
             }
-        case .Summary:
+        case .WCCardTypeSummary:
             let summaryCard = cardView.backingCard as SummaryCard
             title.text = summaryCard.title
             logo.image = UIImage(named: "wildcardSmallLogo")
-        case .Unknown:
+        case .WCCardTypeUnknown:
             title.text = "Unknown Card Type!"
         }
     }

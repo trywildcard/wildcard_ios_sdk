@@ -54,7 +54,7 @@ public extension UIViewController{
     This will use a stock Wildcard maximized visual source for Article Cards.
     */
     public func maximizeArticleCard(cardView:CardView){
-        if(cardView.backingCard.type != .Article){
+        if(cardView.backingCard.type != .WCCardTypeArticle){
             println("The backing Card for this CardView is not an Article Card!")
             return
         }

@@ -17,12 +17,12 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
     override func evaluation(input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .Unknown:
+            case .WCCardTypeUnknown:
                 return false
-            case .Article:
+            case .WCCardTypeArticle:
                 let articleCard = card as ArticleCard
                 return countElements(articleCard.title) < 40
-            case .Summary:
+            case .WCCardTypeSummary:
                 let summaryCard = card as SummaryCard
                 return countElements(summaryCard.title) < 40
             }

@@ -51,13 +51,13 @@ public class SingleParagraphCardBody : CardViewElement {
         super.update()
         
         switch(backingCard.type){
-        case .Article:
+        case .WCCardTypeArticle:
             let articleCard = cardView.backingCard as ArticleCard
             paragraphLabel.text = articleCard.abstractContent
-        case .Summary:
+        case .WCCardTypeSummary:
             let webLinkCard = cardView.backingCard as SummaryCard
             paragraphLabel.text = webLinkCard.description
-        case .Unknown:
+        case .WCCardTypeUnknown:
             paragraphLabel.text = "Unknown Card Type"
         }
     }

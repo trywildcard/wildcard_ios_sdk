@@ -49,15 +49,15 @@ public class ImageAndCaptionBody : CardViewElement{
         var imageUrl:NSURL?
         
         switch(cardView.backingCard.type){
-        case .Article:
+        case .WCCardTypeArticle:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             caption.text = articleCard.abstractContent
-        case .Summary:
+        case .WCCardTypeSummary:
             let summaryCard = cardView.backingCard as SummaryCard
             imageUrl = summaryCard.imageUrl
             caption.text = summaryCard.description
-        case .Unknown:
+        case .WCCardTypeUnknown:
             imageUrl = nil
         }
         

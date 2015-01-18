@@ -107,6 +107,7 @@
 		1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
 		1DF1B8861A6B4990000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
 		1DF1B8C11A6B74C9000EC76E /* CardLayouts.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8871A6B71B7000EC76E /* CardLayouts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF1B8C41A6B84BA000EC76E /* CardTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C31A6B846A000EC76E /* CardTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DFFEDD31A400843008E65BC /* BareBonesCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 		1DFFEDD71A400A4C008E65BC /* BareBonesCardVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */; };
@@ -240,6 +241,7 @@
 		1DF1B8811A69CC2F000EC76E /* ImageAndCaptionBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAndCaptionBody.swift; sourceTree = "<group>"; };
 		1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAndCaptionBody.xib; sourceTree = "<group>"; };
 		1DF1B8871A6B71B7000EC76E /* CardLayouts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardLayouts.h; sourceTree = "<group>"; };
+		1DF1B8C31A6B846A000EC76E /* CardTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardTypes.h; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* BareBonesCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardBody.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 		1DFFEDD61A400A4C008E65BC /* BareBonesCardVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BareBonesCardVisualSource.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		1D3A28841A2E697700A9D4C1 /* WildcardSDK */ = {
 			isa = PBXGroup;
 			children = (
+				1DF1B8C21A6B8435000EC76E /* Public Enumerations */,
 				1D904F9A1A2FDD61001FFDEA /* Models */,
 				1D904F9B1A2FDD66001FFDEA /* Project */,
 				1D3A28871A2E697700A9D4C1 /* WildcardSDK.h */,
@@ -374,7 +377,6 @@
 				1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */,
 				1D7EAC8B1A31264800734B9A /* LayoutDecisionNode.swift */,
 				1D7EAC8E1A312B0000734B9A /* CardLayouts.swift */,
-				1DF1B8871A6B71B7000EC76E /* CardLayouts.h */,
 				1D7EAC901A312C7100734B9A /* CardLayoutEngine.swift */,
 			);
 			name = CardLayoutEngine;
@@ -524,6 +526,15 @@
 			name = Physics;
 			sourceTree = "<group>";
 		};
+		1DF1B8C21A6B8435000EC76E /* Public Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				1DF1B8871A6B71B7000EC76E /* CardLayouts.h */,
+				1DF1B8C31A6B846A000EC76E /* CardTypes.h */,
+			);
+			name = "Public Enumerations";
+			sourceTree = "<group>";
+		};
 		1DF62C1D1A65C7AA006C2CC3 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
+				1DF1B8C41A6B84BA000EC76E /* CardTypes.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* CardLayouts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

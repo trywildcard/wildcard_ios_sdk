@@ -17,7 +17,7 @@ class LayoutDecisionNode
     
     init(description:String){
         self.description = description
-        self.cardLayout = CardLayoutTemplate.WCUnknown
+        self.cardLayout = CardLayoutTemplate.WCUnknownTemplate
     }
     
     init(description:String, layout:CardLayoutTemplate){

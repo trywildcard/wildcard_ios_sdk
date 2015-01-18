@@ -11,15 +11,9 @@ import Foundation
 @objc
 public class Card : PlatformObject {
     
-    public enum Type{
-        case Unknown
-        case Summary
-        case Article
-    }
-    
     public let webUrl:NSURL
     public let cardType:String
-    public let type:Type
+    public let type:CardType
     
     init(webUrl:NSURL, cardType:String){
         self.webUrl = webUrl
@@ -27,23 +21,23 @@ public class Card : PlatformObject {
         self.type = Card.cardTypeFromString(cardType)
     }
     
-    public class func cardTypeFromString(name:String) -> Type{
+    public class func cardTypeFromString(name:String) -> CardType{
         if(name == "article"){
-            return .Article
+            return CardType.WCCardTypeArticle
         }else if(name == "summary"){
-            return .Summary
+            return CardType.WCCardTypeSummary
         }else{
-            return .Unknown
+            return CardType.WCCardTypeUnknown
         }
     }
     
-    public class func stringFromCardType(type:Type)->String{
+    public class func stringFromCardType(type:CardType)->String{
         switch(type){
-        case .Article:
+        case .WCCardTypeArticle:
             return "article"
-        case .Summary:
+        case .WCCardTypeSummary:
             return "summary"
-        case .Unknown:
+        case .WCCardTypeUnknown:
             return "unknown"
         }
     }

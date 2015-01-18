@@ -46,15 +46,15 @@ public class MediaTextImageFloatRight : CardViewElement{
         var abstractContent:String?
         
         switch(cardView.backingCard.type){
-        case .Article:
+        case .WCCardTypeArticle:
             let articleCard = cardView.backingCard as ArticleCard
             imageUrl = articleCard.primaryImageURL
             abstractContent = articleCard.abstractContent
-        case .Summary:
+        case .WCCardTypeSummary:
             let summaryCard = cardView.backingCard as SummaryCard
             imageUrl = summaryCard.imageUrl
             abstractContent = summaryCard.description
-        case .Unknown:
+        case .WCCardTypeUnknown:
             imageUrl = nil
         }
         

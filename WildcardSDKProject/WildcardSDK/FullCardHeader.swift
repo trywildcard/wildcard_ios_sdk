@@ -55,7 +55,7 @@ public class FullCardHeader :CardViewElement
     override func update() {
         
         switch(backingCard.type){
-        case .Article:
+        case .WCCardTypeArticle:
             let articleCard = cardView.backingCard as ArticleCard
             kicker.text = articleCard.publisher.name
             title.text = articleCard.title
@@ -66,12 +66,12 @@ public class FullCardHeader :CardViewElement
                     }
                 })
             }
-        case .Summary:
+        case .WCCardTypeSummary:
             let summaryCard = cardView.backingCard as SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
             logo.image = UIImage(named: "wildcardSmallLogo")
-        case .Unknown:
+        case .WCCardTypeUnknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"
             logo.image = UIImage(named: "wildcardSmallLogo")
