@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StockModalCardViewController : UIViewController, UIViewControllerTransitioningDelegate, CardPhysicsDelegate
+class StockModalCardViewController : UIViewController, UIViewControllerTransitioningDelegate, CardViewDelegate,CardPhysicsDelegate
 {
     var backgroundClearView:UIView?
     var backgroundTapRecognizer:UITapGestureRecognizer?
@@ -18,6 +18,11 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     var cardViewVerticalConstraint:NSLayoutConstraint?
     var cardViewHorizontalConstraint:NSLayoutConstraint?
     var closeButton:UIButton!
+    
+    // MARK: CardViewDelegate
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        handleCardAction(cardView, action: action)
+    }
 
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
@@ -95,6 +100,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
         cardView = CardView.createCardView(presentedCard, visualSource: cardVisualSource)
+        cardView?.delegate = self
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self
         

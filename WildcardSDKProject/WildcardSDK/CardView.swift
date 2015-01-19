@@ -73,7 +73,9 @@ public protocol CardViewDelegate{
     optional func cardViewDidReload(cardView:CardView)
     
     /**
-    Gating the CardView action, always called before an action is requested.
+    Optionally gates the CardView action, always called before an action is requested.
+    
+    If this function is not implemented the action will be requested.
     */
     optional func cardViewShouldPerformAction(cardView:CardView, action: CardViewAction) -> Bool
     
@@ -222,7 +224,7 @@ public class CardView : UIView
                 var params:NSDictionary = ["url":shareUrl]
                 let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)
                 let shouldPerform = self.delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-                if(shouldPerform == true){
+                if(shouldPerform == true || shouldPerform == nil){
                     self.delegate?.cardViewRequestedAction?(self, action: cardAction)
                 }
             }
@@ -233,7 +235,7 @@ public class CardView : UIView
         let params:NSDictionary = ["url":url]
         let cardAction = CardViewAction(type: WCCardAction.ViewOnWeb, parameters: params)
         let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-        if(shouldPerform == true){
+        if(shouldPerform == true || shouldPerform == nil){
             delegate?.cardViewRequestedAction?(self, action: cardAction)
         }
     }
@@ -247,7 +249,7 @@ public class CardView : UIView
                 
                 let cardAction = CardViewAction(type: WCCardAction.DownloadApp, parameters: params)
                 let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-                if(shouldPerform == true){
+                if(shouldPerform == true || shouldPerform == nil){
                     delegate?.cardViewRequestedAction?(self, action: cardAction)
                 }
             }

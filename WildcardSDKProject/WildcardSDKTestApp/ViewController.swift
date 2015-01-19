@@ -9,7 +9,7 @@
 import UIKit
 import WildcardSDK
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CardViewDelegate {
     
     var dummyCard:SummaryCard?
     
@@ -22,18 +22,17 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         if let newCardView = CardView.createCardView(dummyCard!, layout:.SummaryCardNoImage){
+            newCardView.delegate = self
             view.addSubview(newCardView)
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-100)
             newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
             view.layoutIfNeeded()
         }
-        
-        SummaryCard.createFromUrl(NSURL(string: "http://www.theatlantic.com")!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
-            if(card != nil){
-                self.presentCard(card!)
-            }
-        })
+    }
+    
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        handleCardAction(cardView, action: action)
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {

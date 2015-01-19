@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import StoreKit
 
 public extension UIViewController{
     
@@ -47,22 +48,66 @@ public extension UIViewController{
     }
     
     /**
-    Presents a view controller showing a maximized Article Card view for a full reading experience. A Card View with a backing Article Card must be provided.
+     The default way a UIViewController handle various Card Actions
     
-    This will use a stock Wildcard maximized visual source for Article Cards.
+     It is recommended you use this from your UIViewControler of choice unless you are doing custom action handling.
     */
-    public func maximizeArticleCard(cardView:CardView){
-        if(cardView.backingCard.type != .Article){
-            println("The backing Card for this CardView is not an Article Card!")
-            return
+    public func handleCardAction(cardView:CardView, action:CardViewAction){
+        switch(action.type){
+        case WCCardAction.Collapse:
+            if let maximizedController = self as? StockMaximizedCardViewController{
+                presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+            break
+        case WCCardAction.Share:
+            if let actionParams = action.parameters{
+                let url = actionParams["url"] as NSURL
+                let activityItems:[AnyObject] = [url]
+                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+                presentViewController(activityViewController, animated: true, completion: nil)
+            }
+            break
+        case WCCardAction.Maximize:
+            // only article cards can be maximized at the moment
+            if(cardView.backingCard.type == .Article){
+                let maximizeVisualSource = MaximizedArticleVisualSource(card: cardView.backingCard)
+                maximizeCardView(cardView, visualsource: maximizeVisualSource)
+            }
+            break
+        case WCCardAction.DownloadApp:
+            if let actionParams = action.parameters{
+                // can only use the Store Kit Controller if the current view controller conforms to delegate
+                if let storeControllerDelegate = self as? SKStoreProductViewControllerDelegate{
+                    let id = actionParams["id"] as NSString
+                    var parameters = NSMutableDictionary()
+                    parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
+                    var storeController = SKStoreProductViewController()
+                    storeController.delegate = storeControllerDelegate
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                    storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                        self.presentViewController(storeController, animated: true, completion: nil)
+                        return
+                    })
+                    
+                }else{
+                    println("Unable to present the download sheet. This view controller does not conform to SKStoreProductViewControllerDelegate.")
+                }
+            }
+            break
+        case WCCardAction.ViewOnWeb:
+            if let actionParams = action.parameters{
+                if let url = actionParams["url"] as? NSURL{
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            break
+        default:
+            break
         }
-        let maximizeVisualSource = MaximizedArticleVisualSource(card: cardView.backingCard)
-        maximizeCardView(cardView, visualsource: maximizeVisualSource)
     }
     
-    /**
-    Presents a view controller of a maximized Card with the given maximized visual source.
-    */
+    /// ALPHA: Maximizes a CardView with a customized visual source
     public func maximizeCardView(cardView:CardView, visualsource:MaximizedCardViewVisualSource){
         
         let viewController = StockMaximizedCardViewController()

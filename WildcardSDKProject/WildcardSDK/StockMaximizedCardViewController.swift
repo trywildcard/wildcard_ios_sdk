@@ -26,32 +26,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var currentOrientation:UIInterfaceOrientation!
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
-        if(action.type == .Collapse){
-            maximizedCardView?.fadeOut(0.2, delay: 0, completion: nil)
-            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }else if(action.type == .DownloadApp){
-            if let actionParams = action.parameters{
-                let id = actionParams["id"] as NSString
-                var parameters = NSMutableDictionary()
-                parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
-                
-                var storeController = SKStoreProductViewController()
-                storeController.delegate = self
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    self.presentViewController(storeController, animated: true, completion: nil)
-                    return
-                })
-            }
-        }else if(action.type == .Share){
-            if let actionParams = action.parameters{
-                let url = actionParams["url"] as NSURL
-                let activityItems:[AnyObject] = [url]
-                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-                presentViewController(activityViewController, animated: true, completion: nil)
-            }
-        }
+        handleCardAction(cardView, action: action)
     }
     
     // MARK:UIViewController

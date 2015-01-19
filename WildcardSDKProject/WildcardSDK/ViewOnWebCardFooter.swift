@@ -35,6 +35,7 @@ public class ViewOnWebCardFooter: CardViewElement {
         verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
         leftConstraint = viewOnWebButton?.constrainLeftToSuperView(10)
         hairline = addTopBorderWithWidth(0.5, color: UIColor.wildcardBackgroundGray())
+        viewOnWebButton.addTarget(self, action: "viewOnWebButtonTapped", forControlEvents: .TouchUpInside)
         
         shareButton = UIButton(frame: CGRectZero)
         shareButton.tintColor = UIColor.wildcardLightBlue()
@@ -49,6 +50,10 @@ public class ViewOnWebCardFooter: CardViewElement {
     
     func shareButtonTapped(){
         cardView.handleShare()
+    }
+    
+    func viewOnWebButtonTapped(){
+        cardView.handleViewOnWeb(backingCard.webUrl)
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{

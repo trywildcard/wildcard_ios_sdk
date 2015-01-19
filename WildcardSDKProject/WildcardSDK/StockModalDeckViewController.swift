@@ -33,10 +33,8 @@ class StockModalDeckViewController : UIViewController, UIViewControllerTransitio
     var closeButton:UIButton!
     
     // MARK: CardViewDelegate
-    func cardViewRequestedMaximize(cardView: CardView) {
-        if(cardView.backingCard.type == .Article){
-            maximizeArticleCard(cardView)
-        }
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        handleCardAction(cardView, action: action)
     }
     
     // MARK: CardPhysicsDelegate
