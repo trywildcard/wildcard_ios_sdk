@@ -144,7 +144,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         }
         
         dispatch_once(&Static.onceToken, { () -> Void in
-            var file = NSBundle.mainBundle().pathForResource("MediaReadingCss", ofType: "css")
+            var file = NSBundle.wildcardSDKBundle().pathForResource("MediaReadingCss", ofType: "css")
             var contents = NSString(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)
             Static.instance = contents as? String
         })
