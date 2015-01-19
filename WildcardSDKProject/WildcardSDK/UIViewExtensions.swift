@@ -10,10 +10,10 @@ import Foundation
 
 public extension UIView{
     
-    class func loadFromNibNamed(nibNamed: String, bundle : NSBundle? = nil) -> UIView? {
+    class func loadFromNibNamed(nibNamed: String) -> UIView? {
         return UINib(
             nibName: nibNamed,
-            bundle: bundle
+            bundle: NSBundle.wildcardSDKBundle()
             ).instantiateWithOwner(nil, options: nil)[0] as? UIView
     }
     

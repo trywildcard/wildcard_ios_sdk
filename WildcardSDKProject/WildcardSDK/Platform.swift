@@ -12,16 +12,10 @@ protocol PlatformObject{
     class func deserializeFromData(data:NSDictionary) -> AnyObject?
 }
 
-/*
-* Platform
-*
-* Any interaction we have with the Wildcard Platform should go here
-*/
 class Platform{
     
     let platformBaseURL = "https://platform-prod.trywildcard.com"
     
-    // swift doesn't support class constant variables yet, but you can do it in a struct
     class var sharedInstance : Platform{
         struct Static{
             static var instance : Platform = Platform()
@@ -49,27 +43,6 @@ class Platform{
                 completion(nil,error)
             }
         }
-    }
-    
-    private func getJsonResponseFromWebUrl(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
-    {
-        var session = NSURLSession.sharedSession()
-        
-        var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
-            if(error != nil){
-                completion(nil, error)
-            }else{
-                var jsonError:NSError?
-                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
-                if (jsonError != nil) {
-                    completion(nil, jsonError)
-                }
-                else {
-                    completion(json, nil)
-                }
-            }
-        })
-        task.resume()
     }
     
     func generalSearchFromQuery(query:String, limit:Int, type:String, completion: (([Card]?, NSError?)->Void)) -> Void
@@ -128,8 +101,46 @@ class Platform{
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
         let requestURL = NSURL(string:urlString)
         
-        var session = NSURLSession.sharedSession()
-        var task:NSURLSessionTask = session.dataTaskWithURL(requestURL!, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
+        getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error:NSError?) -> Void in
+            if(error == nil){
+                var card:SummaryCard?
+                let result:NSDictionary = json!
+                var cardImageUrl:NSURL?
+                var cardTitle:String?
+                var cardDescription:String?
+                if let image = result["primaryImageUrl"] as? String{
+                    cardImageUrl = NSURL(string: image)
+                }else if let image = result["og:image"] as? String{
+                    cardImageUrl = NSURL(string: image)
+                }
+                
+                if let title = result["title"] as? String {
+                    cardTitle = title
+                }else if let title = result["og:title"] as? String{
+                    cardTitle = title
+                }
+                
+                if let description = result["description"] as? String{
+                    cardDescription = description
+                }else if let description = result["og:description"] as? String{
+                    cardDescription = description
+                }
+                
+                if cardTitle != nil && cardDescription != nil{
+                    card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
+                }
+                completion(card, nil)
+            }else{
+                completion(nil,error)
+            }
+        })
+    }
+    
+    // MARK: Private
+    private func getJsonResponseFromWebUrl(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
+    {
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+        var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             if(error != nil){
                 completion(nil, error)
             }else{
@@ -139,40 +150,11 @@ class Platform{
                     completion(nil, jsonError)
                 }
                 else {
-                    var card:SummaryCard?
-                    if let result = json!["result"] as? NSDictionary{
-                        
-                        var cardImageUrl:NSURL?
-                        var cardTitle:String?
-                        var cardDescription:String?
-                        if let image = result["primaryImageUrl"] as? String{
-                            cardImageUrl = NSURL(string: image)
-                        }else if let image = result["og:image"] as? String{
-                            cardImageUrl = NSURL(string: image)
-                        }
-                        
-                        if let title = result["title"] as? String {
-                            cardTitle = title
-                        }else if let title = result["og:title"] as? String{
-                            cardTitle = title
-                        }
-                        
-                        if let description = result["description"] as? String{
-                            cardDescription = description
-                        }else if let description = result["og:description"] as? String{
-                            cardDescription = description
-                        }
-                        
-                        if cardTitle != nil && cardDescription != nil{
-                            card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
-                        }
-                    }
-                    completion(card, nil)
+                    completion(json, nil)
                 }
             }
         })
         task.resume()
-        
     }
     
 }

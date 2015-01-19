@@ -28,6 +28,12 @@ class ViewController: UIViewController {
             newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
             view.layoutIfNeeded()
         }
+        
+        SummaryCard.createFromUrl(NSURL(string: "http://www.cnn.com")!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
+            if(card != nil){
+                self.presentCard(card!)
+            }
+        })
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {

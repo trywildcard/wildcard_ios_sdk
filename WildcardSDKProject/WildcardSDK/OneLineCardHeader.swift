@@ -71,7 +71,7 @@ public class OneLineCardHeader : CardViewElement {
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
             title.text = summaryCard.title
-            logo.image = UIImage(named: "wildcardSmallLogo")
+            logo.image = UIImage.loadFrameworkImage("wildcardSmallLogo")
         case .Unknown:
             title.text = "Unknown Card Type!"
         }
