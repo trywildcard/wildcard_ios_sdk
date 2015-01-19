@@ -19,7 +19,6 @@ class ImageThumbnail4x3FloatRight : CardViewElement
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
     override func initializeElement() {
-        
         kicker.font = UIFont.defaultCardKickerFont()
         kicker.textColor = UIColor.wildcardMediumGray()
         title.font = UIFont.defaultCardTitleFont()
@@ -28,7 +27,7 @@ class ImageThumbnail4x3FloatRight : CardViewElement
     }
     
     @IBAction func viewOnWebButtonTapped(sender: AnyObject) {
-        
+        cardView.handleViewOnWeb(backingCard.webUrl)
     }
     
     override func update() {
@@ -36,9 +35,6 @@ class ImageThumbnail4x3FloatRight : CardViewElement
         if let summaryCard = cardView.backingCard as? SummaryCard{
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
-            
-            println("TITLE LENGTH IS ")
-            println(countElements(summaryCard.title))
             
             // download image
             if let imageUrl = summaryCard.imageUrl{

@@ -57,6 +57,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let containerView = transitionContext.containerView()
         
+        maximizedController.maximizedCardView?.fadeOut(duration/2, delay: 0, completion: nil)
         UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             
             // move card back to initial constraints
