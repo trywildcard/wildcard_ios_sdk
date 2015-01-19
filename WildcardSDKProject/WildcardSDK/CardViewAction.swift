@@ -10,19 +10,11 @@ import Foundation
 
 @objc
 public class CardViewAction{
-    public enum Type{
-        case Maximize
-        case Collapse
-        case DownloadApp
-        case Action
-        case ViewOnWeb
-        case Custom
-    }
     
     public var parameters:NSDictionary?
-    public var type:Type
+    public var type:WCCardAction
     
-    public init(type:Type, parameters:NSDictionary?){
+    public init(type:WCCardAction, parameters:NSDictionary?){
         self.type = type
         self.parameters = parameters
     }

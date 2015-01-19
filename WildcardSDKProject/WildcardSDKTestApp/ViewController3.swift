@@ -14,10 +14,10 @@ class ViewController3: UIViewController, CardViewDelegate {
     var articleCard:ArticleCard?
     
     @IBAction func present1ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, template:WCTemplate.ArticleCard4x3FullImage)
+        presentCard(articleCard!, layout:.ArticleCard4x3FullImage)
     }
     @IBAction func present2ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, template:WCTemplate.ArticleCard4x3FloatRightImageTextWrap)
+        presentCard(articleCard!, layout:.ArticleCard4x3FloatRightImageTextWrap)
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
@@ -36,7 +36,7 @@ class ViewController3: UIViewController, CardViewDelegate {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let articleCard = card {
                     self.articleCard = articleCard
-                    if let newCardView = CardView.createCardView(articleCard, template: WCTemplate.ArticleCardNoImage){
+                    if let newCardView = CardView.createCardView(articleCard, layout: .ArticleCardNoImage){
                         newCardView.delegate = self
                         self.view.addSubview(newCardView)
                         newCardView.horizontallyCenterToSuperView(0)

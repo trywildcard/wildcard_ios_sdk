@@ -37,7 +37,7 @@ public class SummaryCard4x3FloatRightImageTextWrapVisualSource: CardViewVisualSo
     }
     
     public func heightForCardBody()->CGFloat{
-        return (0.75 * widthForCard()) - heightForCardFooter()
+        return widthForCard() - heightForCardFooter() - heightForCardHeader()   
     }
     
     public func viewForCardFooter() -> CardViewElement? {

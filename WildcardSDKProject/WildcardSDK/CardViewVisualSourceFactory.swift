@@ -10,7 +10,7 @@ import Foundation
 
 class CardViewVisualSourceFactory {
     
-    class func visualSourceFromLayout(layout:WCTemplate, card:Card)->CardViewVisualSource{
+    class func visualSourceFromLayout(layout:WCCardLayout, card:Card)->CardViewVisualSource{
         switch(layout){
         case .SummaryCardNoImage:
             return SummaryCardNoImageVisualSource(card:card)

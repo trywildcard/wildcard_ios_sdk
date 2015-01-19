@@ -47,7 +47,7 @@ public class CardLayoutEngine{
         
         // MARK: Article Card Layout Decisions
         let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image")
-        let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: WCTemplate.ArticleCardNoImage)
+        let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
@@ -74,7 +74,7 @@ public class CardLayoutEngine{
         summaryCardLongTitle.addEdge(PassThroughEdge(), destination: summaryCardLongDescription)
     }
     
-    public func matchLayout(card:Card)->WCTemplate{
+    public func matchLayout(card:Card)->WCCardLayout{
         var node:LayoutDecisionNode = root
         while(true){
             let followEdge:LayoutDecisionEdge? = node.edgeToFollow(card)

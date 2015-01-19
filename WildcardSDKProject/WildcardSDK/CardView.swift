@@ -58,7 +58,7 @@ public protocol CardViewDelegate{
     optional func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize)
     
     /**
-    Simply just a hook into UIView.layoutSubviews()
+    Simply just a hook into UIView.layoutSubviews() for the CardView
     */
     optional func cardViewLayoutSubviews(cardView:CardView)
     
@@ -73,19 +73,14 @@ public protocol CardViewDelegate{
     optional func cardViewDidReload(cardView:CardView)
     
     /**
-    CardView has been requested to perform a specific action
+    Gating the CardView action, always called before an action is requested.
     */
-    optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction) 
+    optional func cardViewShouldPerformAction(cardView:CardView, action: CardViewAction) -> Bool
     
     /**
-    The CardView has been explicitly requested to open a URL. By default, Cards
-    will just call the standard UIApplication.openURL if this function is not implemented or
-    returns true. To do something custom, you may implement this function to do something custom
-    and return false.
-    
-    :param: url - The URL to be opened
+    CardView has been requested to perform a specific action.
     */
-    optional func cardViewShouldRedirectToURL(cardView:CardView, url:NSURL) -> Bool
+    optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction)
     
 }
 
@@ -101,11 +96,11 @@ public class CardView : UIView
     // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        return CardView.createCardView(card, template: layoutToUse)
+        return CardView.createCardView(card, layout: layoutToUse)
     }
     
-    public class func createCardView(card:Card, template:WCTemplate)->CardView?{
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(template, card: card)
+    public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
         return CardView.createCardView(card, visualSource: datasource)
     }
     
@@ -218,6 +213,45 @@ public class CardView : UIView
     required public init(coder: NSCoder) {
         super.init(coder: coder)
         convenienceInitialize()
+    }
+    
+    // MARK: Instance
+    func handleShare(){
+        Platform.sharedInstance.createWildcardShortLink(backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
+            if let shareUrl = url {
+                var params:NSDictionary = ["url":shareUrl]
+                let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)
+                let shouldPerform = self.delegate?.cardViewShouldPerformAction?(self, action: cardAction)
+                if(shouldPerform == true){
+                    self.delegate?.cardViewRequestedAction?(self, action: cardAction)
+                }
+            }
+        })
+    }
+    
+    func handleViewOnWeb(url:NSURL){
+        let params:NSDictionary = ["url":url]
+        let cardAction = CardViewAction(type: WCCardAction.ViewOnWeb, parameters: params)
+        let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
+        if(shouldPerform == true){
+            delegate?.cardViewRequestedAction?(self, action: cardAction)
+        }
+    }
+    
+    func handleDownloadApp(){
+        if let articleCard = backingCard as? ArticleCard{
+            if let url = articleCard.publisher.appStoreUrl {
+                var lastComponent:NSString = url.lastPathComponent!
+                var id = lastComponent.substringFromIndex(2) as NSString
+                var params:NSDictionary = ["id":id]
+                
+                let cardAction = CardViewAction(type: WCCardAction.DownloadApp, parameters: params)
+                let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
+                if(shouldPerform == true){
+                    delegate?.cardViewRequestedAction?(self, action: cardAction)
+                }
+            }
+        }
     }
     
     // MARK: Private

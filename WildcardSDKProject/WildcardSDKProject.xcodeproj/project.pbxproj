@@ -100,9 +100,9 @@
 		1DF1B8821A69CC2F000EC76E /* ImageAndCaptionBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8811A69CC2F000EC76E /* ImageAndCaptionBody.swift */; };
 		1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
 		1DF1B8861A6B4990000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
-		1DF1B8C11A6B74C9000EC76E /* WCCardTemplates.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8871A6B71B7000EC76E /* WCCardTemplates.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1DF1B8C41A6B84BA000EC76E /* WCCardTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C31A6B846A000EC76E /* WCCardTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1DF1B8C61A6B8D77000EC76E /* WCPublisherTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C51A6B8ADA000EC76E /* WCPublisherTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C31A6B846A000EC76E /* WCCardType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF1B8C61A6B8D77000EC76E /* WCPublisherType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */; };
 		1DF1B8CB1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */; };
 		1DF1B8CD1A6BF258000EC76E /* ImageThumbnail4x3FloatRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8CC1A6BF258000EC76E /* ImageThumbnail4x3FloatRight.swift */; };
@@ -113,6 +113,7 @@
 		1DF1B8D81A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */; };
 		1DF1B8DA1A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8D91A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift */; };
 		1DF1B8DC1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift */; };
+		1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF5B7161A6D602200788BCA /* WCCardAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DFFEDD31A400843008E65BC /* PlaceholderCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 		1DFFEDD71A400A4C008E65BC /* PlaceholderCardVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD61A400A4C008E65BC /* PlaceholderCardVisualSource.swift */; };
@@ -240,9 +241,9 @@
 		1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonExtensions.swift; sourceTree = "<group>"; };
 		1DF1B8811A69CC2F000EC76E /* ImageAndCaptionBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAndCaptionBody.swift; sourceTree = "<group>"; };
 		1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAndCaptionBody.xib; sourceTree = "<group>"; };
-		1DF1B8871A6B71B7000EC76E /* WCCardTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardTemplates.h; sourceTree = "<group>"; };
-		1DF1B8C31A6B846A000EC76E /* WCCardTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardTypes.h; sourceTree = "<group>"; };
-		1DF1B8C51A6B8ADA000EC76E /* WCPublisherTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPublisherTypes.h; sourceTree = "<group>"; };
+		1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardLayout.h; sourceTree = "<group>"; };
+		1DF1B8C31A6B846A000EC76E /* WCCardType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardType.h; sourceTree = "<group>"; };
+		1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPublisherType.h; sourceTree = "<group>"; };
 		1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardNoImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardFullImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8CC1A6BF258000EC76E /* ImageThumbnail4x3FloatRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageThumbnail4x3FloatRight.swift; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 		1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardNoImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8D91A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardFullImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCard4x3FloatRightImageTextWrapVisualSource.swift; sourceTree = "<group>"; };
+		1DF5B7161A6D602200788BCA /* WCCardAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardAction.h; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderCardBody.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 		1DFFEDD61A400A4C008E65BC /* PlaceholderCardVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderCardVisualSource.swift; sourceTree = "<group>"; };
@@ -344,7 +346,7 @@
 		1D3A28841A2E697700A9D4C1 /* WildcardSDK */ = {
 			isa = PBXGroup;
 			children = (
-				1DF1B8C21A6B8435000EC76E /* Public Enumerations */,
+				1DF1B8C21A6B8435000EC76E /* Public Headers */,
 				1D904F9A1A2FDD61001FFDEA /* Models */,
 				1D904F9B1A2FDD66001FFDEA /* Project */,
 				1D3A28871A2E697700A9D4C1 /* WildcardSDK.h */,
@@ -523,14 +525,15 @@
 			name = Physics;
 			sourceTree = "<group>";
 		};
-		1DF1B8C21A6B8435000EC76E /* Public Enumerations */ = {
+		1DF1B8C21A6B8435000EC76E /* Public Headers */ = {
 			isa = PBXGroup;
 			children = (
-				1DF1B8871A6B71B7000EC76E /* WCCardTemplates.h */,
-				1DF1B8C31A6B846A000EC76E /* WCCardTypes.h */,
-				1DF1B8C51A6B8ADA000EC76E /* WCPublisherTypes.h */,
+				1DF5B7161A6D602200788BCA /* WCCardAction.h */,
+				1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */,
+				1DF1B8C31A6B846A000EC76E /* WCCardType.h */,
+				1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */,
 			);
-			name = "Public Enumerations";
+			name = "Public Headers";
 			sourceTree = "<group>";
 		};
 		1DF1B8C91A6BEE81000EC76E /* Card View */ = {
@@ -607,9 +610,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
-				1DF1B8C61A6B8D77000EC76E /* WCPublisherTypes.h in Headers */,
-				1DF1B8C41A6B84BA000EC76E /* WCCardTypes.h in Headers */,
-				1DF1B8C11A6B74C9000EC76E /* WCCardTemplates.h in Headers */,
+				1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */,
+				1DF1B8C61A6B8D77000EC76E /* WCPublisherType.h in Headers */,
+				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
+				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

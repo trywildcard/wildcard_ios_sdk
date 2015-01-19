@@ -104,30 +104,31 @@ class Platform{
         getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error:NSError?) -> Void in
             if(error == nil){
                 var card:SummaryCard?
-                let result:NSDictionary = json!
-                var cardImageUrl:NSURL?
-                var cardTitle:String?
-                var cardDescription:String?
-                if let image = result["primaryImageUrl"] as? String{
-                    cardImageUrl = NSURL(string: image)
-                }else if let image = result["og:image"] as? String{
-                    cardImageUrl = NSURL(string: image)
-                }
-                
-                if let title = result["title"] as? String {
-                    cardTitle = title
-                }else if let title = result["og:title"] as? String{
-                    cardTitle = title
-                }
-                
-                if let description = result["description"] as? String{
-                    cardDescription = description
-                }else if let description = result["og:description"] as? String{
-                    cardDescription = description
-                }
-                
-                if cardTitle != nil && cardDescription != nil{
-                    card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
+                if let result = json!["result"] as? NSDictionary{
+                    var cardImageUrl:NSURL?
+                    var cardTitle:String?
+                    var cardDescription:String?
+                    if let image = result["primaryImageUrl"] as? String{
+                        cardImageUrl = NSURL(string: image)
+                    }else if let image = result["og:image"] as? String{
+                        cardImageUrl = NSURL(string: image)
+                    }
+                    
+                    if let title = result["title"] as? String {
+                        cardTitle = title
+                    }else if let title = result["og:title"] as? String{
+                        cardTitle = title
+                    }
+                    
+                    if let description = result["description"] as? String{
+                        cardDescription = description
+                    }else if let description = result["og:description"] as? String{
+                        cardDescription = description
+                    }
+                    
+                    if cardTitle != nil && cardDescription != nil{
+                        card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
+                    }
                 }
                 completion(card, nil)
             }else{

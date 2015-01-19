@@ -47,7 +47,7 @@ class ImageThumbnail4x3FloatRight : CardViewElement
                         self.imageView.image = image
                         self.imageView.contentMode = UIViewContentMode.ScaleToFill
                     }else{
-                        self.imageView.image = UIImage(named: "noImage")
+                        self.imageView.image = UIImage.loadFrameworkImage( "noImage")
                         self.imageView.contentMode = UIViewContentMode.Center
                     }
                 })

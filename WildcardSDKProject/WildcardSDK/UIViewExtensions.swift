@@ -89,7 +89,7 @@ public extension UIView{
     }
     
     // adds a blur overlay to the view and returns a reference to it.
-    public func addBlurOverlay(style:UIBlurEffectStyle)->UIView{
+    func addBlurOverlay(style:UIBlurEffectStyle)->UIView{
         let overlay = UIView(frame: CGRectZero)
         addSubview(overlay)
         overlay.constrainToSuperViewEdges()
@@ -101,7 +101,7 @@ public extension UIView{
         return overlay
     }
     
-    public func hasSuperview()->Bool{
+    func hasSuperview()->Bool{
         return superview != nil
     }
     

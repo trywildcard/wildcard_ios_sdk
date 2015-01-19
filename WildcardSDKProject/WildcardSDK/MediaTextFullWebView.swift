@@ -60,27 +60,12 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     }
     
     func actionButtonTapped(sender:AnyObject){
-        Platform.sharedInstance.createWildcardShortLink(cardView.backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
-            if let shareUrl = url {
-                var parameters = NSMutableDictionary()
-                parameters["url"] = shareUrl
-                self.cardView.delegate?.cardViewRequestedAction?(self.cardView, action: CardViewAction(type: .Action, parameters: parameters))
-            }
-        })
+        cardView.handleShare()
     }
     
     func downloadAppButtonTapped(sender:AnyObject){
-        if let articleCard = cardView.backingCard as? ArticleCard{
-            if let url = articleCard.publisher.appStoreUrl {
-                var lastComponent:NSString = url.lastPathComponent!
-                var id = lastComponent.substringFromIndex(2) as NSString
-                var parameters = NSMutableDictionary()
-                parameters["id"] = id
-                cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .DownloadApp, parameters: parameters))
-            }
-        }
+        cardView.handleDownloadApp()
     }
-  
     
     // MARK: Private
     func updateToolbar(){
@@ -169,9 +154,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     // MARK: UIWebViewDelegate
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if(navigationType == .LinkClicked){
-            if(cardView.delegate?.cardViewShouldRedirectToURL? == nil || cardView.delegate?.cardViewShouldRedirectToURL?(cardView, url: request.URL) == true){
-                UIApplication.sharedApplication().openURL(request.URL)
-            }
+            cardView.handleViewOnWeb(request.URL)
             return false
         }else{
             return true

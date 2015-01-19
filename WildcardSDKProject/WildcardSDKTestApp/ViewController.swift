@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        if let newCardView = CardView.createCardView(dummyCard!, template:.SummaryCardNoImage){
+        if let newCardView = CardView.createCardView(dummyCard!, layout:.SummaryCardNoImage){
             view.addSubview(newCardView)
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-100)
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             view.layoutIfNeeded()
         }
         
-        SummaryCard.createFromUrl(NSURL(string: "http://www.cnn.com")!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
+        SummaryCard.createFromUrl(NSURL(string: "http://www.theatlantic.com")!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
             if(card != nil){
                 self.presentCard(card!)
             }
@@ -37,15 +37,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FullImage)
+        presentCard(dummyCard!, layout:.SummaryCard4x3FullImage)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FloatRightImageTextWrap)
+        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImageTextWrap)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, template:WCTemplate.SummaryCard4x3FloatRightImage)
+        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImage)
     }
     
     override func didReceiveMemoryWarning() {

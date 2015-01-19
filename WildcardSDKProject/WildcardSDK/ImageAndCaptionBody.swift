@@ -68,7 +68,7 @@ public class ImageAndCaptionBody : CardViewElement{
                     self.imageView.image = image
                     self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
                 }else{
-                    self.imageView.image = UIImage(named: "noImage")
+                    self.imageView.image = UIImage.loadFrameworkImage("noImage")
                     self.imageView.contentMode = UIViewContentMode.Center
                 }
             })

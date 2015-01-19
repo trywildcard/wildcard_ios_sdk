@@ -86,7 +86,8 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         super.viewDidLoad()
         
         closeButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        closeButton.setImage(UIImage(named: "closeIcon"), forState: UIControlState.Normal)
+        closeButton.setImage(UIImage.loadFrameworkImage("closeIcon"), forState: UIControlState.Normal)
+        closeButton.tintColor = UIColor.whiteColor()
         view.addSubview(closeButton)
         closeButton.constrainTopToSuperView(15)
         closeButton.constrainLeftToSuperView(0)

@@ -44,7 +44,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
                     return
                 })
             }
-        }else if(action.type == .Action){
+        }else if(action.type == .Share){
             if let actionParams = action.parameters{
                 let url = actionParams["url"] as NSURL
                 let activityItems:[AnyObject] = [url]

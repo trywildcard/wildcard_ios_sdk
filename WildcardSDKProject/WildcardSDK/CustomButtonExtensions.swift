@@ -33,9 +33,8 @@ extension UIButton {
     class func defaultReadMoreButton()->UIButton{
         
         var readMoreButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        
-        readMoreButton.setBackgroundImage(UIImage(named: "borderedButtonBackground"), forState: UIControlState.Normal)
-        readMoreButton.setBackgroundImage(UIImage(named: "borderedButtonBackgroundTapped"), forState: UIControlState.Highlighted)
+        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackground"), forState: UIControlState.Normal)
+        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackgroundTapped"), forState: UIControlState.Highlighted)
         readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         let buttonTitle = NSMutableAttributedString(string: "READ MORE")
         buttonTitle.setFont(UIFont.defaultCardActionButton())

@@ -14,7 +14,8 @@ FOUNDATION_EXPORT double WildcardSDKVersionNumber;
 //! Project version string for WildcardSDK.
 FOUNDATION_EXPORT const unsigned char WildcardSDKVersionString[];
 
-#import <WildcardSDK/WCCardTemplates.h>
-#import <WildcardSDK/WCCardTypes.h>
-#import <WildcardSDK/WCPublisherTypes.h>
+#import <WildcardSDK/WCCardLayout.h>
+#import <WildcardSDK/WCCardType.h>
+#import <WildcardSDK/WCCardAction.h>
+#import <WildcardSDK/WCPublisherType.h>
 

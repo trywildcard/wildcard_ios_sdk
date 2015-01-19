@@ -10,25 +10,18 @@ import Foundation
 
 public extension UIViewController{
     
-    /*
-    Presents a Card modally
-    */
+    /// Presents a Card with a best-fit layout
     public func presentCard(card:Card){
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        presentCard(card, template:layoutToUse)
+        presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card))
     }
     
-    /**
-    Presents a Card modally with a specific template
-    */
-    public func presentCard(card:Card, template:WCTemplate){
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(template, card: card)
+    /// Presents a Card with a specific layout
+    public func presentCard(card:Card, layout:WCCardLayout){
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
         presentCard(card, customVisualSource: datasource)
     }
 
-    /**
-    Presents a Card modally with a custom visual source 
-    */
+    /// Presents a Card with a custom visual source
     public func presentCard(card:Card, customVisualSource:CardViewVisualSource){
         let stockModal = StockModalCardViewController()
         stockModal.modalPresentationStyle = .Custom
@@ -39,9 +32,7 @@ public extension UIViewController{
         presentViewController(stockModal, animated: true, completion: nil)
     }
     
-    /**
-    Presents an array of Cards as a swipe-able Stack
-    */
+    /// ALPHA: Presents an array of Cards as a swipeable Stack
     public func presentCardsAsStack(cards:[Card]){
         if(cards.count < 4){
             println("Can not present Deck with less than 4 Cards.")

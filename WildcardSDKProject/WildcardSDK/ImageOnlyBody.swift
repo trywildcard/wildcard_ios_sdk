@@ -66,7 +66,7 @@ public class ImageOnlyBody : CardViewElement{
                     self.image.image = image
                     self.image.contentMode = UIViewContentMode.ScaleToFill
                 }else{
-                    self.image.image = UIImage(named: "noImage")
+                    self.image.image = UIImage.loadFrameworkImage("noImage")
                     self.image.contentMode = UIViewContentMode.Center
                 }
             })

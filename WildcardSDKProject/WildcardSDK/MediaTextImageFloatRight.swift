@@ -71,7 +71,7 @@ public class MediaTextImageFloatRight : CardViewElement{
                 if(image != nil){
                     self.cardImage.image = image
                 }else{
-                    self.cardImage.image = UIImage(named: "noImage")
+                    self.cardImage.image = UIImage.loadFrameworkImage( "noImage")
                     self.cardImage.contentMode = UIViewContentMode.Center
                 }
             })

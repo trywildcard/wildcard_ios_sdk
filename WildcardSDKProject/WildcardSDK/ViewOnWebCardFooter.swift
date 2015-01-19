@@ -38,7 +38,7 @@ public class ViewOnWebCardFooter: CardViewElement {
         
         shareButton = UIButton(frame: CGRectZero)
         shareButton.tintColor = UIColor.wildcardLightBlue()
-        shareButton.setImage(UIImage(named: "shareIcon"), forState: .Normal)
+        shareButton.setImage(UIImage.loadFrameworkImage("shareIcon"), forState: .Normal)
         addSubview(shareButton)
         shareButtonRightConstraint = shareButton.constrainRightToSuperView(10)
         
@@ -48,13 +48,7 @@ public class ViewOnWebCardFooter: CardViewElement {
     }
     
     func shareButtonTapped(){
-        Platform.sharedInstance.createWildcardShortLink(cardView.backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
-            if let shareUrl = url {
-                var parameters = NSMutableDictionary()
-                parameters["url"] = shareUrl
-                self.cardView.delegate?.cardViewRequestedAction?(self.cardView, action: CardViewAction(type: .Action, parameters: parameters))
-            }
-        })
+        cardView.handleShare()
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{

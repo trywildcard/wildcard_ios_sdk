@@ -11,13 +11,13 @@ import Foundation
 public class SummaryCardNoImageVisualSource : CardViewVisualSource{
     
     var card:Card
-    var header:OneLineCardHeader
+    var header:FullCardHeader
     var body:SingleParagraphCardBody
     var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
-        self.header = OneLineCardHeader(frame:CGRectZero)
+        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
     }
