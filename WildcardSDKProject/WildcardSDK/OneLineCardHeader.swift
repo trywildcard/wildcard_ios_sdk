@@ -37,7 +37,7 @@ public class OneLineCardHeader : CardViewElement {
         title = UILabel(frame: CGRectZero)
         title.numberOfLines = 1
         title.textAlignment = NSTextAlignment.Left
-        title.font = UIFont.defaultCardTitleFont()
+        title.font = WildcardSDK.cardTitleFont
         title.textColor = UIColor.wildcardDarkBlue()
         addSubview(title)
         titleVerticalConstraint = title.verticallyCenterToSuperView(0)

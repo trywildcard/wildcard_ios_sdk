@@ -52,8 +52,7 @@ public class ArticleCardNoImageVisualSource : CardViewVisualSource {
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
+        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
         return cardWidth
     }
 }

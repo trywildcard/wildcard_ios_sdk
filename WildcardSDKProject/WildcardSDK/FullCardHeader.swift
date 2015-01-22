@@ -48,9 +48,9 @@ public class FullCardHeader :CardViewElement
     override func initializeElement() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
-        kicker.font = UIFont.defaultCardKickerFont()
+        kicker.font =  WildcardSDK.cardKickerFont
         kicker.textColor = UIColor.wildcardMediumGray()
-        title.font = UIFont.defaultCardTitleFont()
+        title.font = WildcardSDK.cardTitleFont
         title.textColor = UIColor.wildcardDarkBlue()
         bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }

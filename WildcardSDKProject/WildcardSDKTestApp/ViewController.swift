@@ -17,7 +17,7 @@ class ViewController: UIViewController, CardViewDelegate {
         super.viewDidLoad()
         
         let google = NSURL(string: "http://www.google.com")
-        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards!.", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
+        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
@@ -40,7 +40,7 @@ class ViewController: UIViewController, CardViewDelegate {
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImageTextWrap)
+        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImageDescription)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

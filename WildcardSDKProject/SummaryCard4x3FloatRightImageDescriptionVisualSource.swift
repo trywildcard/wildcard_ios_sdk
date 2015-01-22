@@ -8,20 +8,18 @@
 
 import Foundation
 
-public class SummaryCard4x3FloatRightImageTextWrapVisualSource: CardViewVisualSource
+public class SummaryCard4x3FloatRightImageDescriptionVisualSource: CardViewVisualSource
 {
     var card:Card
     var header:FullCardHeader
-    var body:MediaTextImageFloatRight
+    var body:SingleParagraphCardBody
     var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
-        self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
+        self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        
-        self.body.textContainerEdgeInsets = UIEdgeInsetsMake(5, 10, 0, 10)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -37,7 +35,7 @@ public class SummaryCard4x3FloatRightImageTextWrapVisualSource: CardViewVisualSo
     }
     
     public func heightForCardBody()->CGFloat{
-        return widthForCard() - heightForCardFooter() - heightForCardHeader()   
+        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter() -> CardViewElement? {
@@ -50,8 +48,7 @@ public class SummaryCard4x3FloatRightImageTextWrapVisualSource: CardViewVisualSo
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
+        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
         return cardWidth
     }
     

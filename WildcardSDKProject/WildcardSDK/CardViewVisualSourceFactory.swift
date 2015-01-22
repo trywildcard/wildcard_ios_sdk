@@ -18,8 +18,8 @@ class CardViewVisualSourceFactory {
             return SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
         case .SummaryCard4x3FloatRightImage:
             return SummaryCard4x3FloatRightImageVisualSource(card:card)
-        case .SummaryCard4x3FloatRightImageTextWrap:
-            return SummaryCard4x3FloatRightImageTextWrapVisualSource(card:card)
+        case .SummaryCard4x3FloatRightImageDescription:
+            return SummaryCard4x3FloatRightImageDescriptionVisualSource(card:card)
         case .ArticleCardNoImage:
             return ArticleCardNoImageVisualSource(card:card)
         case .ArticleCard4x3FullImage:

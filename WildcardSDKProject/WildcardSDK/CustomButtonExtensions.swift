@@ -19,7 +19,7 @@ extension UIButton {
         
         var buttonTitle = NSMutableAttributedString(string: text)
         buttonTitle.setKerning(0.3)
-        buttonTitle.setFont(UIFont.defaultCardActionButton())
+        buttonTitle.setFont(WildcardSDK.cardActionButtonFont)
         buttonTitle.setColor(UIColor.wildcardLightBlue())
         buttonTitle.setUnderline(NSUnderlineStyle.StyleSingle)
         
@@ -37,7 +37,7 @@ extension UIButton {
         readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackgroundTapped"), forState: UIControlState.Highlighted)
         readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         let buttonTitle = NSMutableAttributedString(string: "READ MORE")
-        buttonTitle.setFont(UIFont.defaultCardActionButton())
+        buttonTitle.setFont(WildcardSDK.cardActionButtonFont)
         buttonTitle.setColor(UIColor.wildcardLightBlue())
         buttonTitle.setKerning(0.3)
         

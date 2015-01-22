@@ -17,7 +17,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-s7-zAG">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-s7-zAG">
                     <rect key="frame" x="460" y="0.0" width="120" height="90"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="ETy-Zb-NTC"/>

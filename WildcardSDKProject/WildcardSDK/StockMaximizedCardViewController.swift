@@ -26,6 +26,10 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     var currentOrientation:UIInterfaceOrientation!
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        if(action.type == .Collapse){
+            // before collapse, re calc original frame
+            initialCardFrame = self.view.convertRect(presentingCardView.frame, fromView: presentingCardView.superview)
+        }
         handleCardAction(cardView, action: action)
     }
     
@@ -69,13 +73,9 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     func handleOrientationChange(notification:NSNotification){
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
-            
             maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
             let destination = calculateMaximizedFrame()
             updateInternalCardConstraints(destination)
-            
-            let initialFrame = view.convertRect(presentingCardView.frame, fromView: presentingCardView.superview)
-            initialCardFrame = initialFrame
         }
     }
     

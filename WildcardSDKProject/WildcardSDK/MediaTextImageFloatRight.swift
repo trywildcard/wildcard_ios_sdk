@@ -70,9 +70,7 @@ public class MediaTextImageFloatRight : CardViewElement{
             cardImage.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
                 if(image != nil){
                     self.cardImage.image = image
-                }else{
-                    self.cardImage.image = UIImage.loadFrameworkImage( "noImage")
-                    self.cardImage.contentMode = UIViewContentMode.Center
+                    self.cardImage.contentMode = UIViewContentMode.ScaleAspectFill
                 }
             })
         }else{

@@ -17,7 +17,9 @@ extension UIImageView{
         imageRequest.addValue("image/*", forHTTPHeaderField: "Accept")
         
         if let cachedImage = ImageCache.sharedInstance.cachedImageForRequest(imageRequest){
-            completion(cachedImage,nil)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(cachedImage,nil)
+            })
         }else{
             let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
             var downloadTask:NSURLSessionDownloadTask =

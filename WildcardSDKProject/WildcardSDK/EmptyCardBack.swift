@@ -19,7 +19,7 @@ class EmptyCardBack : CardViewElement {
         addSubview(titleLabel)
         titleLabel.verticallyCenterToSuperView(0)
         titleLabel.horizontallyCenterToSuperView(0)
-        titleLabel.font = UIFont.defaultCardTitleFont()
+        titleLabel.font = WildcardSDK.cardTitleFont
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.text = "The Back!"
         backgroundColor = UIColor.wildcardDarkBlue()

@@ -37,10 +37,14 @@ public class ImageAndCaptionBody : CardViewElement{
     @IBOutlet weak private var imageLeftConstraint: NSLayoutConstraint!
     
     override func initializeElement(){
-        caption.font = UIFont.defaultCardDescriptionFont()
+        caption.font = WildcardSDK.cardDescriptionFont
+        caption.textColor = UIColor.wildcardMediaBodyColor()
         
         // not ready to constrain height yet, set to 0 to get rid of
         imageHeightConstraint.constant = 0
+        imageView.backgroundColor = UIColor.wildcardBackgroundGray()
+        imageView.layer.cornerRadius = 2.0
+        imageView.layer.masksToBounds = true
     }
     
     override func update() {
@@ -67,9 +71,6 @@ public class ImageAndCaptionBody : CardViewElement{
                 if(image != nil){
                     self.imageView.image = image
                     self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
-                }else{
-                    self.imageView.image = UIImage.loadFrameworkImage("noImage")
-                    self.imageView.contentMode = UIViewContentMode.Center
                 }
             })
         }
