@@ -52,8 +52,11 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
-        return cardWidth
+        if(screenBounds.width > screenBounds.height){
+            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
+        }else{
+            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
+        }
     }
     
 }

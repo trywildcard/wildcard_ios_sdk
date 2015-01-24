@@ -16,7 +16,7 @@ class PortraitEdge : LayoutDecisionEdge {
     }
     
     override func evaluation(input:AnyObject)->Bool{
-        // TODO: always take
-        return true;
+        let bounds = UIScreen.mainScreen().bounds
+        return bounds.height > bounds.width
     }
 }

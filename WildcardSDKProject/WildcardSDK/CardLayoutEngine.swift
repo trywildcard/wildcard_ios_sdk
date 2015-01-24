@@ -37,13 +37,29 @@ public class CardLayoutEngine{
         root.addEdge(PortraitEdge(), destination: portraitNode)
         root.addEdge(LandscapeEdge(), destination: landscapeNode)
         
-        let cardTypeNode = LayoutDecisionNode(description: "Checking Card Type")
-        portraitNode.addEdge(PassThroughEdge(), destination: cardTypeNode)
+        // MARK: Landscape Decisions
+        let summaryCardLandscapeNode = LayoutDecisionNode(description: "It's a summary card landscape")
+        let articleCardLandscapeNode = LayoutDecisionNode(description: "It's an article card landscape")
+        landscapeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardLandscapeNode)
+        landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
+        
+        let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardLandscapeImage)
+        let summaryLandscapeHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
+        
+        summaryCardLandscapeNode.addEdge(CheckImageEdge(), destination: summaryLandscapeHasImage)
+        summaryCardLandscapeNode.addEdge(PassThroughEdge(), destination: summaryLandscapeHasNoImage)
+        
+        
+        
+        // MARK: Portrait Decisions
+        
+        //let cardTypeNode = LayoutDecisionNode(description: "Checking Card Type")
+        //portraitNode.addEdge(PassThroughEdge(), destination: cardTypeNode)
         
         let summaryCardNode = LayoutDecisionNode(description: "It's a summary link card")
         let articleCardNode = LayoutDecisionNode(description: "It's an article card")
-        cardTypeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardNode)
-        cardTypeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
+        portraitNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardNode)
+        portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
         // MARK: Article Card Layout Decisions
         let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3FullImage)

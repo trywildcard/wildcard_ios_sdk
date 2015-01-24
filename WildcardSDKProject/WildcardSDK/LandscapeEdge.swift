@@ -15,7 +15,7 @@ class LandscapeEdge : LayoutDecisionEdge {
     }
     
     override func evaluation(input:AnyObject)->Bool{
-        // TODO: never take for now
-        return false;
+        let bounds = UIScreen.mainScreen().bounds
+        return bounds.width > bounds.height
     }
 }

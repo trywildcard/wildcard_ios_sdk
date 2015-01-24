@@ -1,29 +1,28 @@
 //
-//  ArticleCardNoImageVisualSource.swift
+//  SummaryCardLandscapeImageVisualSource.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 1/18/15.
+//  Created by David Xiang on 1/24/15.
 //
 //
 
 import Foundation
 
-public class ArticleCardNoImageVisualSource : CardViewVisualSource {
-    
+public class SummaryCardLandscapeImageVisualSource : CardViewVisualSource
+{
     var card:Card
-    var header:FullCardHeader
+    var header:BigImageCardHeader
     var body:SingleParagraphCardBody
-    var footer:ReadMoreFooter
+    var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+        self.header = UIView.loadFromNibNamed("BigImageCardHeader") as BigImageCardHeader
         self.header.hairline.hidden = true
-        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
-        self.body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
-        self.footer = ReadMoreFooter(frame:CGRectZero)
-        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
+        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
+        self.footer.hairline.hidden = true
+        self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -47,12 +46,13 @@ public class ArticleCardNoImageVisualSource : CardViewVisualSource {
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return 60
+        return footer.optimizedHeight(widthForCard())
     }
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
+        let cardWidth = screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
         return cardWidth
     }
+    
 }

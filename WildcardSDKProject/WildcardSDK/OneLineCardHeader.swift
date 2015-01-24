@@ -11,8 +11,10 @@ import Foundation
 /**
 The most basic Card Header consisting of a 1 line title label and a logo
 */
+@objc
 public class OneLineCardHeader : CardViewElement {
     
+    public var logo:UIImageView!
     public var title:UILabel!
     public var titleOffset:UIOffset!{
         get{
@@ -23,8 +25,7 @@ public class OneLineCardHeader : CardViewElement {
             titleLeftConstraint.constant = newValue.horizontal
         }
     }
-    public var bottomHairline:UIView!
-    public var logo:UIImageView!
+    public var hairline:UIView!
     
     private var titleVerticalConstraint:NSLayoutConstraint!
     private var titleLeftConstraint:NSLayoutConstraint!
@@ -52,7 +53,7 @@ public class OneLineCardHeader : CardViewElement {
         logo.constrainRightToSuperView(10)
         logo.constrainTopToSuperView(7.5)
         
-        bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
+        hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
     override func update() {

@@ -8,54 +8,18 @@
 
 import Foundation
 
-//
-//  ImageCache.swift
-//  WildcardSDKProject
-//
-//  Created by David Xiang on 12/10/14.
-//
-//
-
-import Foundation
-import NotificationCenter
-
-
-/// Global properties to customize Card look and feel
+/// Global properties to customize Card Views
 @objc
 public class WildcardSDK {
     
-    // MARK: Private
-    var __cardHorizontalScreenMargin:CGFloat = 15
-    var __cardTitleFont:UIFont!
-    var __cardKickerFont:UIFont!
-    var __cardDescriptionFont:UIFont!
-    var __cardActionButtonFont:UIFont!
-
-    // swift doesn't support class constant variables yet, but you can do it in a struct
-    class var sharedInstance : WildcardSDK{
-        struct Static{
-            static var onceToken : dispatch_once_t = 0
-            static var instance : WildcardSDK? = nil
-        }
-        
-        dispatch_once(&Static.onceToken, { () -> Void in
-            Static.instance = WildcardSDK()
-            Static.instance!.__cardTitleFont = UIFont.boldSystemFontOfSize(16.0)
-            Static.instance!.__cardKickerFont = UIFont.systemFontOfSize(11.0)
-            Static.instance!.__cardDescriptionFont = UIFont.systemFontOfSize(12.0)
-            Static.instance!.__cardActionButtonFont = UIFont.boldSystemFontOfSize(12.0)
-        })
-        return Static.instance!
-    }
-    
     /**
-    Card widths are calculated relative to the screen width and is set at 15 points by default.
+    Card dimensions are calculated relative to the screen dimensions and is set at 15 points by default.
     
-    Assuming Card Views are placed in the middle of a particular view, this is the margin to the horizontal edges. You may use this convenience method to set a custom screen margin.
+    Assuming Card Views are placed in the middle of a particular view, this is the margin to the horizontal or vertical edges of screen. You may use this convenience method to set a custom screen margin. This is the easiest way to change Card dimensions.
     
     For full size customization, you must implement your own card visual source.
     */
-    public class var cardHorizontalScreenMargin:CGFloat{
+    public class var cardScreenMargin:CGFloat{
         get{
             return WildcardSDK.sharedInstance.__cardHorizontalScreenMargin
         }set{
@@ -97,5 +61,29 @@ public class WildcardSDK {
         }set{
             WildcardSDK.sharedInstance.__cardActionButtonFont = newValue
         }
+    }
+    
+    // MARK: Private
+    var __cardHorizontalScreenMargin:CGFloat = 15
+    var __cardTitleFont:UIFont!
+    var __cardKickerFont:UIFont!
+    var __cardDescriptionFont:UIFont!
+    var __cardActionButtonFont:UIFont!
+    
+    // swift doesn't support class constant variables yet, but you can do it in a struct
+    class var sharedInstance : WildcardSDK{
+        struct Static{
+            static var onceToken : dispatch_once_t = 0
+            static var instance : WildcardSDK? = nil
+        }
+        
+        dispatch_once(&Static.onceToken, { () -> Void in
+            Static.instance = WildcardSDK()
+            Static.instance!.__cardTitleFont = UIFont.boldSystemFontOfSize(16.0)
+            Static.instance!.__cardKickerFont = UIFont.systemFontOfSize(11.0)
+            Static.instance!.__cardDescriptionFont = UIFont.systemFontOfSize(12.0)
+            Static.instance!.__cardActionButtonFont = UIFont.boldSystemFontOfSize(12.0)
+        })
+        return Static.instance!
     }
 }

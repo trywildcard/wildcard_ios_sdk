@@ -40,7 +40,7 @@ class ViewController: UIViewController, CardViewDelegate {
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImageDescription)
+        presentCard(dummyCard!, layout: .SummaryCardNoImage)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

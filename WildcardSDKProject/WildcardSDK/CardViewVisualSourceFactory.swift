@@ -14,6 +14,8 @@ class CardViewVisualSourceFactory {
         switch(layout){
         case .SummaryCardNoImage:
             return SummaryCardNoImageVisualSource(card:card)
+        case .SummaryCardLandscapeImage:
+            return SummaryCardLandscapeImageVisualSource(card:card)
         case .SummaryCard4x3FullImage:
             return SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
         case .SummaryCard4x3FloatRightImage:

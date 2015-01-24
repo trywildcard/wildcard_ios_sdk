@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WildcardSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

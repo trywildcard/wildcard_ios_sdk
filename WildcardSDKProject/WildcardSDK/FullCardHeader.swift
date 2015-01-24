@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public class FullCardHeader :CardViewElement
 {
     /**
@@ -38,12 +39,12 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak public var logo: UIImageView!
     @IBOutlet weak public var kicker: UILabel!
     @IBOutlet weak public var title: UILabel!
-    public var bottomHairline:UIView!
+    public var hairline:UIView!
     
-    @IBOutlet weak var titleTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleTitleTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var kickerTitleVerticalSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var titleTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var titleTitleTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var kickerTitleVerticalSpacing: NSLayoutConstraint!
     
     override func initializeElement() {
         logo.layer.cornerRadius = 4.0
@@ -52,7 +53,7 @@ public class FullCardHeader :CardViewElement
         kicker.textColor = UIColor.wildcardMediumGray()
         title.font = WildcardSDK.cardTitleFont
         title.textColor = UIColor.wildcardDarkBlue()
-        bottomHairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
+        hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
     override func update() {

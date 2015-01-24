@@ -48,7 +48,7 @@ public class SummaryCard4x3FloatRightImageDescriptionVisualSource: CardViewVisua
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
+        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
         return cardWidth
     }
     

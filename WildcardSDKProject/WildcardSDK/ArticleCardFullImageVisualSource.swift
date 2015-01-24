@@ -20,7 +20,7 @@ public class ArticleCardFullImageVisualSource : CardViewVisualSource {
         self.card = card
         self.aspectRatio = aspectRatio
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.bottomHairline.hidden = true
+        self.header.hairline.hidden = true
         self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
@@ -55,7 +55,7 @@ public class ArticleCardFullImageVisualSource : CardViewVisualSource {
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
+        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
         return cardWidth
     }
 }

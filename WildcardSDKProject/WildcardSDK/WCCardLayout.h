@@ -9,6 +9,7 @@
 typedef NS_ENUM(NSInteger, WCCardLayout) {
     WCCardLayoutUnknown,
     WCCardLayoutSummaryCardNoImage,
+    WCCardLayoutSummaryCardLandscapeImage,
     WCCardLayoutSummaryCard4x3FullImage,
     WCCardLayoutSummaryCard4x3FloatRightImage,
     WCCardLayoutSummaryCard4x3FloatRightImageDescription,

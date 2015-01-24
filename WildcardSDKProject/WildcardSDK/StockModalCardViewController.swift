@@ -15,15 +15,15 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     var cardView:CardView?
     var presentedCard:Card!
     var cardVisualSource:CardViewVisualSource!
-    var cardViewVerticalConstraint:NSLayoutConstraint?
-    var cardViewHorizontalConstraint:NSLayoutConstraint?
     var closeButton:UIButton!
+    var closeButtonTopConstraint:NSLayoutConstraint!
+    var currentOrientation:UIInterfaceOrientation!
+    var initialOrientation:UIInterfaceOrientation!
+    var cardViewVerticalConstraint:NSLayoutConstraint!
+    var cardViewHorizontalConstraint:NSLayoutConstraint!
+    var cardHeightConstraint:NSLayoutConstraint!
+    var cardWidthConstraint:NSLayoutConstraint!
     
-    // MARK: CardViewDelegate
-    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
-        handleCardAction(cardView, action: action)
-    }
-
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
         
@@ -94,23 +94,23 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         closeButton.setImage(UIImage.loadFrameworkImage("closeIcon"), forState: UIControlState.Normal)
         closeButton.tintColor = UIColor.whiteColor()
         view.addSubview(closeButton)
-        closeButton.constrainTopToSuperView(15)
+        closeButtonTopConstraint = closeButton.constrainTopToSuperView(0)
         closeButton.constrainLeftToSuperView(0)
         closeButton.constrainWidth(50, height: 50)
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
+        // init card view
         cardView = CardView.createCardView(presentedCard, visualSource: cardVisualSource)
         cardView?.delegate = self
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self
         
-        // constrain card at the bottom controller view
+        // constrain card view at the bottom controller view to start
         view.addSubview(cardView!)
-        cardView?.constrainWidth(cardView!.frame.size.width, height: cardView!.frame.size.height)
+        cardHeightConstraint = cardView?.constrainHeight(cardView!.frame.size.height)
+        cardWidthConstraint = cardView?.constrainWidth(cardView!.frame.size.width)
         cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
-        
         cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
-        view.layoutIfNeeded()
         
         backgroundClearView = UIView(frame:CGRectZero)
         view.insertSubview(backgroundClearView!, belowSubview: cardView!)
@@ -118,9 +118,47 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "backgroundTapped")
         backgroundClearView!.addGestureRecognizer(backgroundTapRecognizer!)
         
+        currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        initialOrientation = currentOrientation
+        
+        if(UIApplication.sharedApplication().statusBarHidden){
+            closeButtonTopConstraint.constant = 0
+        }else{
+            closeButtonTopConstraint.constant = 15
+        }
+        
+        view.layoutIfNeeded()
     }
     
-    // MARK: Private
+    // MARK: CardViewDelegate
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        handleCardAction(cardView, action: action)
+    }
+    
+    func cardViewWillLayoutToNewSize(cardView: CardView, fromSize: CGSize, toSize: CGSize) {
+        cardHeightConstraint.constant = toSize.height
+        cardWidthConstraint.constant = toSize.width
+    }
+    
+    // MARK: Action Handlers
+    func handleOrientationChange(notification:NSNotification){
+        if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
+            currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+            
+            if(currentOrientation == initialOrientation){
+                cardView?.reloadWithCard(presentedCard, visualSource: cardVisualSource)
+            }else{
+                cardView?.reloadWithCard(presentedCard)
+            }
+            
+            if(UIApplication.sharedApplication().statusBarHidden){
+                closeButtonTopConstraint.constant = 0
+            }else{
+                closeButtonTopConstraint.constant = 15
+            }
+        }
+    }
     
     func closeButtonTapped(){
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)

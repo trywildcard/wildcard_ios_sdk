@@ -18,7 +18,7 @@ public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualS
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.bottomHairline.hidden = true
+        self.header.hairline.hidden = true
         self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
         self.body.textContainerEdgeInsets = UIEdgeInsetsMake(5, 15, 0, 15)
@@ -56,8 +56,12 @@ public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualS
     }
     
     public func widthForCard()->CGFloat{
+        // always a square, landscape or not
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardHorizontalScreenMargin)
-        return cardWidth
+        if(screenBounds.width > screenBounds.height){
+            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
+        }else{
+            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
+        }
     }
 }
