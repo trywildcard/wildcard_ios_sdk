@@ -22,7 +22,6 @@ public class SummaryCardLandscapeImageVisualSource : CardViewVisualSource
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
         self.footer.hairline.hidden = true
-        self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
     }
     
     public func viewForCardHeader()->CardViewElement?{

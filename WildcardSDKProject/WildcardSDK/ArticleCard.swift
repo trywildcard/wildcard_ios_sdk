@@ -102,7 +102,7 @@ public class ArticleCard : Card{
     Searches for Article Cards from a given query with an arbitrary limit.
     */
     public class func search(query:String, limit:Int, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
-        Platform.sharedInstance.generalSearchFromQuery(query, limit:limit, type:Card.stringFromCardType(.Article), completion: { (cards:[Card]?, error:NSError?) -> Void in
+        Platform.sharedInstance.generalSearchFromQuery(query, limit:limit, vertical:"news", completion: { (cards:[Card]?, error:NSError?) -> Void in
             if(error != nil){
                 completion(nil,error)
             }else{

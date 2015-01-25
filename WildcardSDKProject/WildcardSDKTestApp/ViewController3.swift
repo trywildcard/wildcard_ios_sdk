@@ -23,6 +23,9 @@ class ViewController3: UIViewController, CardViewDelegate {
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         handleCardAction(cardView, action: action)
     }
+    @IBAction func present3ButtonTapped(sender: AnyObject) {
+        presentCard(articleCard!, layout:.ArticleCardNoImage)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

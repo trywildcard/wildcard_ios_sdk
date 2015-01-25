@@ -53,9 +53,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         cardViewBottomConstraint = maximizedCardView?.constrainBottomToSuperView(view.frame.size.height - initialCardFrame.origin.y - initialCardFrame.size.height)
         maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
         
-        currentOrientation = UIApplication.sharedApplication().statusBarOrientation
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +61,14 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
             maximizedCardView?.fadeIn(0.3, delay: 0, completion: nil)
             finishedLoadAnimation = true
         }
+        
+        currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

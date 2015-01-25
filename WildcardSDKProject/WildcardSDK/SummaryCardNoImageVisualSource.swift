@@ -18,8 +18,13 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+        header.hairline.hidden = true
+        header.titleOffset = UIOffsetMake(15, header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
+        body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
+        self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
+        footer.hairline.hidden = true
     }
     
     public func viewForCardHeader()->CardViewElement?{

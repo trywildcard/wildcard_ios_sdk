@@ -66,7 +66,7 @@ public class SingleParagraphCardBody : CardViewElement {
         var height:CGFloat = 0
         height += topConstraint.constant
         let expectedParagraphSize = paragraphLabel.sizeThatFits(CGSizeMake(cardWidth - leftConstraint.constant - rightConstraint.constant, CGFloat.max))
-        height += expectedParagraphSize.height
+        height += ceil(expectedParagraphSize.height)
         height += bottomConstraint.constant
         return height
     }

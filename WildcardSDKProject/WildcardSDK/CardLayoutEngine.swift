@@ -43,38 +43,33 @@ public class CardLayoutEngine{
         landscapeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardLandscapeNode)
         landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
         
+        // MARK: Landscape - Summary Card
         let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardLandscapeImage)
         let summaryLandscapeHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardLandscapeNode.addEdge(CheckImageEdge(), destination: summaryLandscapeHasImage)
         summaryCardLandscapeNode.addEdge(PassThroughEdge(), destination: summaryLandscapeHasNoImage)
         
+        // MARK: Landscape - Article Card
+        let articleLandscapeHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3FloatRightImageTextWrap)
+        let articleLandscapeHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         
+        articleCardLandscapeNode.addEdge(CheckImageEdge(), destination: articleLandscapeHasImage)
+        articleCardLandscapeNode.addEdge(PassThroughEdge(), destination: articleLandscapeHasNoImage)
         
         // MARK: Portrait Decisions
-        
-        //let cardTypeNode = LayoutDecisionNode(description: "Checking Card Type")
-        //portraitNode.addEdge(PassThroughEdge(), destination: cardTypeNode)
-        
         let summaryCardNode = LayoutDecisionNode(description: "It's a summary link card")
         let articleCardNode = LayoutDecisionNode(description: "It's an article card")
         portraitNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardNode)
         portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
-        // MARK: Article Card Layout Decisions
+        // MARK: Portrait - Article Card
         let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3FullImage)
         let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
-        /*
-        let articleCardShortTitle = LayoutDecisionNode(description: "Article card has short title", layout:.ArticleCard4x3FullImage)
-        let articleCardLongTitle = LayoutDecisionNode(description: "Article card has long title", layout: .ArticleCard4x3FloatRightImageTextWrap)
-        articleCardHasImage.addEdge(CheckShortTitleEdge(), destination: articleCardShortTitle);
-        articleCardHasImage.addEdge(PassThroughEdge(), destination: articleCardLongTitle);
-        */
-        
-        // MARK: Summary Card Layout Decisions
+        // MARK: Portrait - Summary Card
         let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image")
         let summaryCardHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
@@ -85,13 +80,6 @@ public class CardLayoutEngine{
         let summaryCardLongTitle = LayoutDecisionNode(description: "Summary card has long title", layout:.SummaryCard4x3FullImage)
         summaryCardHasImage.addEdge(CheckShortTitleEdge(), destination: summaryCardShortTitle)
         summaryCardHasImage.addEdge(PassThroughEdge(), destination: summaryCardLongTitle)
-        
-        /*
-        let summaryCardShortDescription = LayoutDecisionNode(description: "Summary card has short desc", layout:.SummaryCard4x3FloatRightImageDescription)
-        let summaryCardLongDescription = LayoutDecisionNode(description: "Summary card has long desc", layout: .SummaryCard4x3FullImage)
-        summaryCardLongTitle.addEdge(CheckShortDescriptionEdge(), destination: summaryCardShortDescription)
-        summaryCardLongTitle.addEdge(PassThroughEdge(), destination: summaryCardLongDescription)
-        */
     }
     
     public func matchLayout(card:Card)->WCCardLayout{

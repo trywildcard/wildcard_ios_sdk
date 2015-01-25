@@ -8,6 +8,12 @@
 
 import Foundation
 
+/**
+Article Card Layout where the image floats to the top-right and the text wraps around it.
+
+This layout's dimensions are always calculated to be a square.
+*/
+@objc
 public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualSource
 {
     var card:Card
@@ -39,7 +45,6 @@ public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualS
     }
     
     public func heightForCardBody()->CGFloat{
-        // keeping it square
         return widthForCard() - heightForCardFooter() - heightForCardHeader()
     }
     
@@ -56,7 +61,6 @@ public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualS
     }
     
     public func widthForCard()->CGFloat{
-        // always a square, landscape or not
         let screenBounds = UIScreen.mainScreen().bounds
         if(screenBounds.width > screenBounds.height){
             return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)

@@ -82,14 +82,14 @@ public class ImageAndCaptionBody : CardViewElement{
         let contentInsets = contentEdgeInset
         
         let imageWidth = cardWidth - contentInsets.left - contentInsets.right
-        let imageHeight:CGFloat = imageAspectRatio * imageWidth
+        let imageHeight:CGFloat = ceil(imageAspectRatio * imageWidth)
         height += contentInsets.top
         height += imageHeight
         height += captionTopConstraint.constant
         
         // how tall would the caption need to be for this width
         let expectedCaptionSize = caption.sizeThatFits(CGSizeMake(cardWidth - contentInsets.left - contentInsets.right, CGFloat.max))
-        height += expectedCaptionSize.height
+        height += ceil(expectedCaptionSize.height)
         height += contentEdgeInset.bottom
         return height
     }

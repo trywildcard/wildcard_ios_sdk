@@ -37,10 +37,10 @@ class WildcardSDKTests: XCTestCase {
         let expectation = expectationWithDescription("Creates Article Card")
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
         
-        ArticleCard.search("isis", limit: 10) { (cards:[ArticleCard]?, error:NSError?) -> Void in
+        ArticleCard.search("isis", limit: 20) { (cards:[ArticleCard]?, error:NSError?) -> Void in
             XCTAssert(cards != nil)
             XCTAssert(error == nil)
-            XCTAssert(cards!.count == 10)
+            XCTAssert(cards!.count >= 10)
             expectation.fulfill()
         }
         waitForExpectationsWithTimeout(10, handler:{ error in
@@ -84,15 +84,15 @@ class WildcardSDKTests: XCTestCase {
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FullImage)
+        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FloatRightImage)
         
         // image with long title and short description
         let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard3) == .SummaryCard4x3FloatRightImage)
+        XCTAssert(engine.matchLayout(SummaryCard3) == .SummaryCard4x3FullImage)
         
         // image with long title and long description
         let SummaryCard4 = SummaryCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCard4x3FloatRightImageDescription)
+        XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCard4x3FullImage)
         
     }
     
@@ -109,7 +109,7 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
         
         articleCard.title = "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog"
-        //XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FloatRightImageTextWrap)
+        XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
     }
     
     func testArticleGeneralSearch(){

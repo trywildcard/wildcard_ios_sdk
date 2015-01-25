@@ -45,21 +45,23 @@ class Platform{
         }
     }
     
-    func generalSearchFromQuery(query:String, limit:Int, type:String, completion: (([Card]?, NSError?)->Void)) -> Void
+    func generalSearchFromQuery(query:String, limit:Int, vertical:String, completion: (([Card]?, NSError?)->Void)) -> Void
     {
         var queryParam = query.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         var urlString = Platform.sharedInstance.platformBaseURL +
-        "/v2.1/cross_brand_search?limit=\(limit)&q=\(queryParam)&cardTypeName=\(type)"
+        "/v2.2/cross_brand_search?limit=\(limit)&q=\(queryParam)&vertical=\(vertical)"
         
         let platformUrl = NSURL(string:urlString)!
         getJsonResponseFromWebUrl(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
             if(error == nil){
                 var results:[Card] = []
-                if let result = json!["result"] as? NSArray{
-                    for item in result{
-                        if let data = item as? NSDictionary{
-                            if let newCard = Card.deserializeFromData(data) as? Card{
-                                results.append(newCard)
+                if let result = json!["result"] as? NSDictionary{
+                    if let cards = result["cards"] as? NSArray{
+                        for item in cards{
+                            if let data = item as? NSDictionary{
+                                if let newCard = Card.deserializeFromData(data) as? Card{
+                                    results.append(newCard)
+                                }
                             }
                         }
                     }

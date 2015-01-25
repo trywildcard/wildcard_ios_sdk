@@ -20,16 +20,14 @@ class CardViewVisualSourceFactory {
             return SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
         case .SummaryCard4x3FloatRightImage:
             return SummaryCard4x3FloatRightImageVisualSource(card:card)
-        case .SummaryCard4x3FloatRightImageDescription:
-            return SummaryCard4x3FloatRightImageDescriptionVisualSource(card:card)
         case .ArticleCardNoImage:
             return ArticleCardNoImageVisualSource(card:card)
         case .ArticleCard4x3FullImage:
             return ArticleCardFullImageVisualSource(card:card, aspectRatio: 0.75)
         case .ArticleCard4x3FloatRightImageTextWrap:
             return ArticleCard4x3FloatRightImageTextWrapVisualSource(card:card)
-        default:
-            return PlaceholderCardVisualSource(card: card)
+        case .Unknown:
+            return PlaceholderCardVisualSource(card:card)
         }
     }
 

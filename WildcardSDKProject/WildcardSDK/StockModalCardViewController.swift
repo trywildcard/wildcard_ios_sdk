@@ -119,7 +119,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         backgroundClearView!.addGestureRecognizer(backgroundTapRecognizer!)
         
         currentOrientation = UIApplication.sharedApplication().statusBarOrientation
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
         initialOrientation = currentOrientation
         
         if(UIApplication.sharedApplication().statusBarHidden){
@@ -129,6 +128,16 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         }
         
         view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     // MARK: CardViewDelegate

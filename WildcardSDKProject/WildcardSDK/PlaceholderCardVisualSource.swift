@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+A Placeholder Visual Source. Do not use this.
+*/
+@objc
 public class PlaceholderCardVisualSource : CardViewVisualSource{
     
     var card:Card
@@ -21,18 +25,15 @@ public class PlaceholderCardVisualSource : CardViewVisualSource{
     }
     
     public func heightForCardBody()->CGFloat{
-        // 4 x 3
         return  widthForCard() * (3/4)
-    }
-    
-    public func viewForBackOfCard()->CardViewElement?{
-        return EmptyCardBack(frame:CGRectZero)
     }
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let defaultMargins:CGFloat = 15.0
-        let cardWidth = screenBounds.width - (2*defaultMargins)
-        return cardWidth
+        if(screenBounds.width > screenBounds.height){
+            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
+        }else{
+            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
+        }
     }
 }

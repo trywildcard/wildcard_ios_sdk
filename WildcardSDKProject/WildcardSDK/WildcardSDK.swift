@@ -13,17 +13,17 @@ import Foundation
 public class WildcardSDK {
     
     /**
-    Card dimensions are calculated relative to the screen dimensions and is set at 15 points by default.
+    Card dimensions are calculated relative to the screen dimensions with a default margin of 15 points.
     
-    Assuming Card Views are placed in the middle of a particular view, this is the margin to the horizontal or vertical edges of screen. You may use this convenience method to set a custom screen margin. This is the easiest way to change Card dimensions.
+    We assume the most common use-case where a Card View is center-aligned on screen. This is the margin from the card to the horizontal or vertical edges of screen. You may use this convenience method to set a custom margin.
     
-    For full size customization, you must implement your own card visual source.
+    This is the easiest way to change Card dimensions. For full dimension customization, you must implement your own card visual source.
     */
     public class var cardScreenMargin:CGFloat{
         get{
-            return WildcardSDK.sharedInstance.__cardHorizontalScreenMargin
+            return WildcardSDK.sharedInstance.__cardScreenMargin
         }set{
-            WildcardSDK.sharedInstance.__cardHorizontalScreenMargin = newValue
+            WildcardSDK.sharedInstance.__cardScreenMargin = newValue
         }
     }
     
@@ -64,13 +64,12 @@ public class WildcardSDK {
     }
     
     // MARK: Private
-    var __cardHorizontalScreenMargin:CGFloat = 15
+    var __cardScreenMargin:CGFloat = 15
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!
     var __cardActionButtonFont:UIFont!
     
-    // swift doesn't support class constant variables yet, but you can do it in a struct
     class var sharedInstance : WildcardSDK{
         struct Static{
             static var onceToken : dispatch_once_t = 0

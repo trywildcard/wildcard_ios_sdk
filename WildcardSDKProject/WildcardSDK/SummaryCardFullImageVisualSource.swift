@@ -26,8 +26,8 @@ public class SummaryCardFullImageVisualSource : CardViewVisualSource {
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
         self.body.imageAspectRatio = aspectRatio
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footer.hairline.hidden = true
         self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
+        self.footer.hairline.hidden = true
     }
     
     public func viewForCardHeader()->CardViewElement?{

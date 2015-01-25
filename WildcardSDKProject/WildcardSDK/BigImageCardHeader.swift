@@ -8,12 +8,32 @@
 
 import Foundation
 
-class BigImageCardHeader : CardViewElement
+@objc
+public class BigImageCardHeader : CardViewElement
 {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var kicker: UILabel!
-    var hairline:UIView!
+    @IBOutlet weak public var title: UILabel!
+    @IBOutlet weak public var imageView: UIImageView!
+    @IBOutlet weak public var kicker: UILabel!
+    public var hairline:UIView!
+    
+    public var contentEdgeInset:UIEdgeInsets{
+        get{
+            return UIEdgeInsetsMake(imageViewTopConstraint.constant, titleLeadingConstraint.constant, bottomPadding, imageViewRightConstraint.constant)
+        }
+        set{
+            imageViewTopConstraint.constant = newValue.top
+            titleLeadingConstraint.constant = newValue.left
+            imageViewRightConstraint.constant = newValue.right
+            bottomPadding = newValue.bottom
+        }
+    }
+    
+    @IBOutlet weak private var imageViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var imageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var imageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var imageViewHeightConstraint: NSLayoutConstraint!
+    private var bottomPadding:CGFloat = 10
     
     override func initializeElement() {
         
@@ -58,7 +78,6 @@ class BigImageCardHeader : CardViewElement
     }
     
     override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        
-        return 110
+        return imageViewTopConstraint.constant + imageViewHeightConstraint.constant + bottomPadding;
     }
 }

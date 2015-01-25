@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Wildcard default colors
 public extension UIColor{
     
     public class func wildcardDarkBlue()->UIColor{

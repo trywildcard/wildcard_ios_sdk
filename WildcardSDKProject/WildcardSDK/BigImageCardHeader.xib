@@ -44,8 +44,13 @@
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="imageView" destination="0lL-qk-Mov" id="r4h-a1-qCC"/>
+                <outlet property="imageViewHeightConstraint" destination="eTI-Ro-ava" id="rcs-FF-31M"/>
+                <outlet property="imageViewRightConstraint" destination="aYx-ed-e6F" id="DhK-sZ-2XM"/>
+                <outlet property="imageViewTopConstraint" destination="y54-sY-xOb" id="Uql-sX-d5j"/>
+                <outlet property="imageViewWidthConstraint" destination="Upj-mV-LeT" id="gnO-vT-6fb"/>
                 <outlet property="kicker" destination="mgm-YP-OI3" id="BdU-fv-8wW"/>
                 <outlet property="title" destination="bcR-BO-eFy" id="JVC-9b-Eo2"/>
+                <outlet property="titleLeadingConstraint" destination="VLG-9m-0Yg" id="RPv-tn-744"/>
             </connections>
         </view>
     </objects>
