@@ -48,10 +48,6 @@ public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualS
         return widthForCard() - heightForCardFooter() - heightForCardHeader()
     }
     
-    public func viewForBackOfCard()->CardViewElement?{
-        return EmptyCardBack(frame:CGRectZero)
-    }
-    
     public func viewForCardFooter() -> CardViewElement? {
         return footer
     }

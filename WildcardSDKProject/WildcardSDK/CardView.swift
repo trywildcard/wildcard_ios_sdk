@@ -202,13 +202,18 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        convenienceInitialize()
+    }
+    
     override public func layoutSubviews(){
         super.layoutSubviews()
         
         delegate?.cardViewLayoutSubviews?(self)
         
         // reset shadow path to whatever bounds card is taking up
-        let path = UIBezierPath(rect: bounds)
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: WildcardSDK.cardCornerRadius)
         layer.shadowPath = path.CGPath
     }
     
@@ -304,7 +309,7 @@ public class CardView : UIView
             backView.update()
             insertSubview(backView, belowSubview:containerView)
             backView.constrainToSuperViewEdges()
-            backView.layer.cornerRadius = 2.0
+            backView.layer.cornerRadius = WildcardSDK.cardCornerRadius
             backView.layer.masksToBounds = true
             back = backView
         }
@@ -325,7 +330,7 @@ public class CardView : UIView
         // always have a white container view holder card elements
         containerView = UIView(frame: CGRectZero)
         containerView.backgroundColor = UIColor.whiteColor()
-        containerView.layer.cornerRadius = 2.0
+        containerView.layer.cornerRadius = WildcardSDK.cardCornerRadius
         containerView.layer.masksToBounds = true
         addSubview(containerView)
         containerView.constrainToSuperViewEdges()

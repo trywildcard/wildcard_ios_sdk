@@ -6,16 +6,15 @@
 //
 //
 
-import Foundation
 import UIKit
 
 @objc
 public protocol CardPhysicsDelegate{
     optional func cardViewDragged(cardView:CardView, position:CGPoint)
     optional func cardViewDropped(cardView:CardView, position:CGPoint)
-    optional func cardViewLongPressed(cardView:CardView)
 }
 
+@objc
 public class CardPhysics : NSObject {
     
     // MARK: Public properties
@@ -40,19 +39,12 @@ public class CardPhysics : NSObject {
         }
     }
     
-    public func attachMovementToCardView(cardView:CardView){
-        attachedCard = cardView
-    }
-    
     // MARK: Private properties
     var flipBoolean = false
-    var cardLongPressGestureRecognizer:UILongPressGestureRecognizer?
     var cardPanGestureRecognizer:UIPanGestureRecognizer?
     var cardDoubleTapGestureRecognizer:UITapGestureRecognizer?
     var touchPosition:CGPoint = CGPointZero
     var originalPosition:CGPoint = CGPointZero
-    var attachedCard:CardView?
-    var pulsing:Bool = false
     
     // MARK: Initializers
     init(cardView:CardView){
@@ -142,7 +134,6 @@ public class CardPhysics : NSObject {
     
     // MARK: Instance
     func setup(){
-        
         cardDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cardDoubleTapped:")
         cardDoubleTapGestureRecognizer?.numberOfTapsRequired = 2
         self.cardView.addGestureRecognizer(cardDoubleTapGestureRecognizer!)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SummaryCardLandscapeImageVisualSource : CardViewVisualSource
+public class SummaryCardSmallImageVisualSource : CardViewVisualSource
 {
     var card:Card
     var header:BigImageCardHeader
@@ -50,8 +50,11 @@ public class SummaryCardLandscapeImageVisualSource : CardViewVisualSource
     
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
-        return cardWidth
+        if(screenBounds.width > screenBounds.height){
+            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
+        }else{
+            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
+        }
     }
     
 }

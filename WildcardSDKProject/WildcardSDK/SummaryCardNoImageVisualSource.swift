@@ -51,10 +51,6 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
         return footer.optimizedHeight(widthForCard())
     }
     
-    public func viewForBackOfCard()->CardViewElement?{
-        return EmptyCardBack(frame:CGRectZero)
-    }
-    
     public func widthForCard()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
         if(screenBounds.width > screenBounds.height){

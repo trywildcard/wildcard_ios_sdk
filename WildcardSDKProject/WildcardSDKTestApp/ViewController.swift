@@ -46,7 +46,7 @@ class ViewController: UIViewController, CardViewDelegate {
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3FloatRightImage)
+        presentCard(dummyCard!, layout:.SummaryCard4x3SmallImage)
     }
     
     override func didReceiveMemoryWarning() {

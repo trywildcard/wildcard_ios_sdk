@@ -44,7 +44,7 @@ public class CardLayoutEngine{
         landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
         
         // MARK: Landscape - Summary Card
-        let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardLandscapeImage)
+        let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCard4x3SmallImage)
         let summaryLandscapeHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardLandscapeNode.addEdge(CheckImageEdge(), destination: summaryLandscapeHasImage)
@@ -70,16 +70,12 @@ public class CardLayoutEngine{
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
         // MARK: Portrait - Summary Card
-        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image")
+        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCard4x3FullImage)
         let summaryCardHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardNode.addEdge(CheckImageEdge(), destination: summaryCardHasImage)
         summaryCardNode.addEdge(PassThroughEdge(), destination: summaryCardHasNoImage)
         
-        let summaryCardShortTitle = LayoutDecisionNode(description: "Summary card has short title", layout:.SummaryCard4x3FloatRightImage)
-        let summaryCardLongTitle = LayoutDecisionNode(description: "Summary card has long title", layout:.SummaryCard4x3FullImage)
-        summaryCardHasImage.addEdge(CheckShortTitleEdge(), destination: summaryCardShortTitle)
-        summaryCardHasImage.addEdge(PassThroughEdge(), destination: summaryCardLongTitle)
     }
     
     public func matchLayout(card:Card)->WCCardLayout{

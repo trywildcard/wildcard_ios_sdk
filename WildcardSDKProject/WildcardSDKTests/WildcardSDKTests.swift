@@ -84,7 +84,7 @@ class WildcardSDKTests: XCTestCase {
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FloatRightImage)
+        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3SmallImage)
         
         // image with long title and short description
         let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", imageUrl:imageUrl)
