@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-i2-k3m">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-i2-k3m" customClass="WCImageView" customModule="WildcardSDK">
                     <rect key="frame" x="458" y="10" width="132" height="99"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="99" id="aSc-fv-hcQ"/>
@@ -65,7 +65,7 @@
             </variation>
             <connections>
                 <outlet property="descriptionLabel" destination="Lhj-JJ-klp" id="Np2-9h-f3r"/>
-                <outlet property="imageView" destination="Xf1-i2-k3m" id="BrO-Ns-ysk"/>
+                <outlet property="imageView" destination="Xf1-i2-k3m" id="rud-Ic-YXR"/>
                 <outlet property="imageViewHeight" destination="aSc-fv-hcQ" id="Vd3-zT-i2o"/>
                 <outlet property="imageViewWidth" destination="wPB-QD-JBg" id="NUR-yR-yZy"/>
                 <outlet property="kicker" destination="Q3D-Wj-hJC" id="k5y-W5-FFu"/>

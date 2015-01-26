@@ -36,7 +36,7 @@ public class FullCardHeader :CardViewElement
         }
     }
     
-    @IBOutlet weak public var logo: UIImageView!
+    @IBOutlet weak var logo: WCImageView!
     @IBOutlet weak public var kicker: UILabel!
     @IBOutlet weak public var title: UILabel!
     public var hairline:UIView!
@@ -64,11 +64,7 @@ public class FullCardHeader :CardViewElement
             kicker.text = articleCard.publisher.name
             title.text = articleCard.title
             if let url = articleCard.publisher.smallLogoUrl{
-                logo.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                    if(image != nil){
-                        self.logo.image = image!
-                    }
-                })
+                logo.setImageWithURL(url,mode:.ScaleToFill)
             }
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard

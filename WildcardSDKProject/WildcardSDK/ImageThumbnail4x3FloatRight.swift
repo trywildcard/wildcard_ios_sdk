@@ -11,9 +11,9 @@ import Foundation
 class ImageThumbnail4x3FloatRight : CardViewElement
 {
     
+    @IBOutlet weak var imageView: WCImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var kicker: UILabel!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
@@ -39,12 +39,7 @@ class ImageThumbnail4x3FloatRight : CardViewElement
             
             // download image
             if let imageUrl = summaryCard.imageUrl{
-                imageView.downloadImageWithURL(imageUrl, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                    if(image != nil){
-                        self.imageView.image = image
-                        self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
-                    }
-                })
+                imageView.setImageWithURL(imageUrl, mode:.ScaleAspectFill)
             }
         }
     }

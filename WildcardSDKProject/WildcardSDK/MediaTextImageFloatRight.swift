@@ -10,8 +10,8 @@ import Foundation
 
 public class MediaTextImageFloatRight : CardViewElement{
     
+    @IBOutlet weak public var cardImage: WCImageView!
     @IBOutlet weak public var textContainer: UITextView!
-    @IBOutlet weak public var cardImage: UIImageView!
     
     public var textContainerEdgeInsets:UIEdgeInsets{
         get{
@@ -66,15 +66,7 @@ public class MediaTextImageFloatRight : CardViewElement{
         
         // download image
         if imageUrl != nil {
-            cardImage.hidden = false
-            cardImage.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                if(image != nil){
-                    self.cardImage.image = image
-                    self.cardImage.contentMode = UIViewContentMode.ScaleAspectFill
-                }
-            })
-        }else{
-            cardImage.hidden = true
+            cardImage.setImageWithURL(imageUrl!, mode:.ScaleAspectFill)
         }
     }
     

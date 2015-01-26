@@ -14,7 +14,7 @@ The most basic Card Header consisting of a 1 line title label and a logo
 @objc
 public class OneLineCardHeader : CardViewElement {
     
-    public var logo:UIImageView!
+    public var logo:WCImageView!
     public var title:UILabel!
     public var titleOffset:UIOffset!{
         get{
@@ -45,7 +45,7 @@ public class OneLineCardHeader : CardViewElement {
         titleLeftConstraint = title.constrainLeftToSuperView(10)
         titleRightConstraint = title.constrainRightToSuperView(45)
         
-        logo = UIImageView(frame: CGRectMake(0, 0, 25, 25))
+        logo = WCImageView(frame: CGRectMake(0, 0, 25, 25))
         logo.constrainWidth(25, height: 25)
         logo.layer.cornerRadius = 3.0
         logo.layer.masksToBounds = true
@@ -63,11 +63,7 @@ public class OneLineCardHeader : CardViewElement {
             let articleCard = cardView.backingCard as ArticleCard
             title.text = articleCard.title
             if let url = articleCard.publisher.smallLogoUrl{
-                logo.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                    if(image != nil){
-                        self.logo.image = image!
-                    }
-                })
+                logo.setImageWithURL(url, mode: .ScaleToFill)
             }
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard

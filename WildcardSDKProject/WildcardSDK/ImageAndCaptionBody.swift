@@ -10,7 +10,7 @@ import Foundation
 
 public class ImageAndCaptionBody : CardViewElement{
     
-    @IBOutlet weak public var imageView: UIImageView!
+    @IBOutlet weak public var imageView: WCImageView!
     @IBOutlet weak public var caption: UILabel!
     public var imageAspectRatio:CGFloat = 0.75
     
@@ -67,12 +67,7 @@ public class ImageAndCaptionBody : CardViewElement{
         
         // download image
         if imageUrl != nil {
-            imageView.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                if(image != nil){
-                    self.imageView.image = image
-                    self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
-                }
-            })
+            imageView.setImageWithURL(imageUrl!, mode:.ScaleAspectFill)
         }
     }
     

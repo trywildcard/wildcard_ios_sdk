@@ -14,7 +14,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-bR-gqC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-bR-gqC" customClass="WCImageView" customModule="WildcardSDK">
                     <rect key="frame" x="565" y="7" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="bGK-EF-rUQ"/>
@@ -52,7 +52,7 @@
             </variation>
             <connections>
                 <outlet property="bottomToolbar" destination="Dkp-q3-6nl" id="4H3-mg-XgZ"/>
-                <outlet property="favicon" destination="XCi-bR-gqC" id="Q41-Wi-MTx"/>
+                <outlet property="logo" destination="XCi-bR-gqC" id="cZ7-Uu-rUD"/>
                 <outlet property="webview" destination="hkD-Es-DQB" id="trC-sx-zOx"/>
             </connections>
         </view>

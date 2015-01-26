@@ -10,7 +10,7 @@ import Foundation
 
 class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
-    @IBOutlet weak var favicon: UIImageView!
+    @IBOutlet weak var logo: WCImageView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
     var downloadAppBarButton:UIBarButtonItem!
@@ -18,8 +18,8 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     
     // MARK: CardViewElement
     override func initializeElement() {
-        favicon.layer.cornerRadius = 4.0
-        favicon.layer.masksToBounds = true
+        logo.layer.cornerRadius = 3.0
+        logo.layer.masksToBounds = true
         webview.delegate = self
         bottomToolbar.tintColor = UIColor.wildcardLightBlue()
         
@@ -42,9 +42,9 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         if let articleCard = cardView.backingCard as? ArticleCard{
             // top right favicon
             if let url = articleCard.publisher.smallLogoUrl{
-                favicon.downloadImageWithURL(url, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
+                logo.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
                     if(image != nil){
-                        self.favicon.image = image!
+                        self.logo.image = image!
                         self.downloadAppIcon.image = image!
                     }
                 })

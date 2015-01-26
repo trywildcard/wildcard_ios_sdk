@@ -73,12 +73,12 @@ public class WildcardSDK {
     }
     
     // MARK: Private
-    var __cardScreenMargin:CGFloat = 15
+    var __cardScreenMargin:CGFloat = 15.0
+    var __cardCornerRadius:CGFloat = 2.0
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!
     var __cardActionButtonFont:UIFont!
-    var __cardCornerRadius:CGFloat!
     
     class var sharedInstance : WildcardSDK{
         struct Static{
@@ -92,7 +92,6 @@ public class WildcardSDK {
             Static.instance!.__cardKickerFont = UIFont.systemFontOfSize(11.0)
             Static.instance!.__cardDescriptionFont = UIFont.systemFontOfSize(12.0)
             Static.instance!.__cardActionButtonFont = UIFont.boldSystemFontOfSize(12.0)
-            Static.instance!.__cardCornerRadius = 2.0
         })
         return Static.instance!
     }

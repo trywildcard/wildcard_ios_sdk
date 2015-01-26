@@ -15,7 +15,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="umf-aI-At1">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="umf-aI-At1" customClass="WCImageView" customModule="WildcardSDK">
                     <rect key="frame" x="10" y="10" width="580" height="561"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="561" id="9Bc-lm-KGp"/>
@@ -40,7 +40,7 @@
                 <outlet property="imageLeftConstraint" destination="nKq-US-1xO" id="qak-Qg-a82"/>
                 <outlet property="imageRightConstraint" destination="Psh-kz-k0S" id="O5Q-fk-R9t"/>
                 <outlet property="imageTopConstraint" destination="zb9-l8-IPM" id="LaL-IV-gcT"/>
-                <outlet property="imageView" destination="umf-aI-At1" id="kun-Xn-LaL"/>
+                <outlet property="imageView" destination="umf-aI-At1" id="YZq-OH-HR6"/>
             </connections>
         </view>
     </objects>

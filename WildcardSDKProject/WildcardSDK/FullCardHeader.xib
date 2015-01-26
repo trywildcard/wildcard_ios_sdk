@@ -22,7 +22,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfn-Ef-UIw">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfn-Ef-UIw" customClass="WCImageView" customModule="WildcardSDK">
                     <rect key="frame" x="565" y="7" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="Z3D-cN-Ls8"/>
@@ -44,7 +44,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="kicker" destination="gC4-RJ-dh4" id="QES-ij-EJU"/>
-                <outlet property="logo" destination="rfn-Ef-UIw" id="Zxm-Ef-rde"/>
+                <outlet property="logo" destination="rfn-Ef-UIw" id="Cu6-vw-P2I"/>
                 <outlet property="title" destination="yL9-2c-bsw" id="cFw-F0-Q6D"/>
                 <outlet property="titleLeadingConstraint" destination="8u6-cy-oGA" id="HUd-g0-qVt"/>
                 <outlet property="titleTitleTopConstraint" destination="knP-UJ-8he" id="1er-cL-lPu"/>

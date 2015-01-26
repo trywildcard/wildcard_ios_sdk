@@ -10,7 +10,7 @@ import Foundation
 
 public class ImageOnlyBody : CardViewElement{
     
-    public var image:UIImageView!
+    public var image:WCImageView!
     public var imageAspectRatio:CGFloat = 0.75
     public var imageEdgeInsets:UIEdgeInsets{
         get{
@@ -31,7 +31,7 @@ public class ImageOnlyBody : CardViewElement{
     
     override func initializeElement(){
         
-        image = UIImageView(frame: CGRectZero)
+        image = WCImageView(frame: CGRectZero)
         image.layer.cornerRadius = 2.0
         image.layer.masksToBounds = true
         image.backgroundColor = UIColor.whiteColor()
@@ -60,13 +60,8 @@ public class ImageOnlyBody : CardViewElement{
         }
         
         // download image
-        if imageUrl != nil {
-            image.downloadImageWithURL(imageUrl!, scale: UIScreen.mainScreen().scale, completion: { (image:UIImage?, error:NSError?) -> Void in
-                if(image != nil){
-                    self.image.image = image
-                    self.image.contentMode = UIViewContentMode.ScaleToFill
-                }
-            })
+        if let url = imageUrl {
+            image.setImageWithURL(url, mode: .ScaleAspectFill)
         }
     }
     
