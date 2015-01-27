@@ -108,8 +108,8 @@ class WildcardSDKTests: XCTestCase {
         articleCard.primaryImageURL = NSURL(string:"http://www.dummyimage.com")
         XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
         
-        articleCard.title = "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog"
-        XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
+        let articleCard2 = ArticleCard(title: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog", html: "", url: url!, publisher:publisher)
+        XCTAssert(engine.matchLayout(articleCard2) == .ArticleCard4x3FullImage)
     }
     
     func testArticleGeneralSearch(){

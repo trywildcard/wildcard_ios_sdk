@@ -14,9 +14,9 @@ Article Card
 @objc
 public class ArticleCard : Card{
     
-    public var title:String
-    public var html:String
-    public var publisher:Publisher
+    public let title:String
+    public let html:String
+    public let publisher:Publisher
     
     public var publicationDate:NSDate?
     public var isBreaking:Bool?

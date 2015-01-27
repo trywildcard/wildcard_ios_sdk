@@ -11,7 +11,6 @@ import Foundation
 @objc
 public class WCImageView : UIImageView
 {
-    private var downloadTask:NSURLSessionDownloadTask?
     
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode){
         setImageWithURL(url, mode:mode, completion: nil)
@@ -55,22 +54,28 @@ public class WCImageView : UIImageView
                             if let cb = completion{
                                 cb(nil,error)
                             }else{
-                                self.image = UIImage(named: "noImage")
-                                self.contentMode = .Center
+                                self.setNoImage()
                             }
                         }
                     }else{
                         if let cb = completion{
                             cb(nil,error)
                         }else{
-                            self.image = UIImage(named: "noImage")
-                            self.contentMode = .Center
+                            self.setNoImage()
                         }
                     }
             })
             downloadTask?.resume()
         }
     }
+    
+    private func setNoImage(){
+        self.image = UIImage.loadFrameworkImage("noImage")
+        self.contentMode = .Center
+        
+    }
+    
+    private var downloadTask:NSURLSessionDownloadTask?
     
     private func cancelRequest(){
         downloadTask?.cancel()

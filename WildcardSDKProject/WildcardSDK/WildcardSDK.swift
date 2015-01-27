@@ -72,6 +72,11 @@ public class WildcardSDK {
         }
     }
     
+    /// Initialize the SDK
+    public class func initializeWithApiKey(key:String){
+        WildcardSDK.sharedInstance.__applicationKey = key
+    }
+    
     // MARK: Private
     var __cardScreenMargin:CGFloat = 15.0
     var __cardCornerRadius:CGFloat = 2.0
@@ -79,6 +84,7 @@ public class WildcardSDK {
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!
     var __cardActionButtonFont:UIFont!
+    var __applicationKey:String?
     
     class var sharedInstance : WildcardSDK{
         struct Static{

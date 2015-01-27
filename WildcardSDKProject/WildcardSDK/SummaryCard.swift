@@ -24,8 +24,30 @@ public class SummaryCard : Card {
     }
     
     override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
-        // TODO when there's real Summary Cards
-        return nil;
+        var summaryCard:SummaryCard?
+        var startURL:NSURL?
+        var title:String?
+        var description:String?
+        
+        if let urlString = data["startUrl"] as? String{
+            startURL = NSURL(string:urlString)
+        }
+        
+        if let summary = data["summary"] as? NSDictionary{
+            title = summary["title"] as? String
+            description = summary["description"] as? String
+            if(title != nil && startURL != nil && description != nil){
+                
+                var imageURL:NSURL?
+                if let image = summary["image"] as? NSDictionary{
+                    if let imageSrc = image["src"] as? String{
+                        imageURL = NSURL(string:imageSrc)
+                    }
+                }
+                summaryCard = SummaryCard(url: startURL!, description: description!, title: title!, imageUrl: imageURL)
+            }
+        }
+        return summaryCard
     }
     
     public class func createFromUrl(url:NSURL, completion: ((SummaryCard?, NSError?)->Void)) -> Void{

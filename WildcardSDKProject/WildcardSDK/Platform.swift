@@ -100,9 +100,29 @@ class Platform{
     func createSummaryCardFromUrl(url:NSURL, completion: ((SummaryCard?, NSError?)->Void)) -> Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/extractmetatags/cardpress/?url=" + targetUrlEncoded!
+        var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_web_summary_card?url=" + targetUrlEncoded!
         let requestURL = NSURL(string:urlString)
         
+        println("CREATE SUMMARY CARD WITH")
+        println(url)
+        
+        self.getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error: NSError?) -> Void in
+            if(error == nil){
+                var summaryCard:SummaryCard?
+                if let result = json!["result"] as? NSArray{
+                    if result.count > 0 && result[0] is NSDictionary{
+                        if let card = SummaryCard.deserializeFromData(result[0] as NSDictionary) as? SummaryCard{
+                            summaryCard = card
+                        }
+                    }
+                }
+                completion(summaryCard, nil)
+            }else{
+                completion(nil,error)
+            }
+        })
+        
+        /*
         getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error:NSError?) -> Void in
             if(error == nil){
                 var card:SummaryCard?
@@ -137,6 +157,7 @@ class Platform{
                 completion(nil,error)
             }
         })
+        */
     }
     
     // MARK: Private
