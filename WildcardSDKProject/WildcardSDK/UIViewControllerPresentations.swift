@@ -24,6 +24,9 @@ public extension UIViewController{
 
     /// Presents a Card with a custom visual source
     public func presentCard(card:Card, customVisualSource:CardViewVisualSource){
+        
+        WildcardSDK.analytics?.trackEvent("PresentCard", withProperties: nil, withCard: card)
+        
         let stockModal = StockModalCardViewController()
         stockModal.modalPresentationStyle = .Custom
         stockModal.transitioningDelegate = stockModal

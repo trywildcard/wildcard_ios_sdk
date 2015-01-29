@@ -17,7 +17,7 @@ class ViewController3: UIViewController, CardViewDelegate {
         presentCard(articleCard!, layout:.ArticleCard4x3FullImage)
     }
     @IBAction func present2ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCard4x3FloatRightImageTextWrap)
+        presentCard(articleCard!, layout:.ArticleCard4x3SmallImageSquare)
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

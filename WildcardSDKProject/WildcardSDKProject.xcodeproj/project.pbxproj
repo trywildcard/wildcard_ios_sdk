@@ -29,6 +29,13 @@
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
+		1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C5051A7972D90021D27A /* Mixpanel.h */; };
+		1D32C5081A7972D90021D27A /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C5061A7972D90021D27A /* Mixpanel.m */; };
+		1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C50B1A7982320021D27A /* NSData+MPBase64.h */; };
+		1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C50C1A7982320021D27A /* NSData+MPBase64.m */; };
+		1D32C5121A7982A10021D27A /* MPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C5111A7982A10021D27A /* MPLogger.h */; };
+		1D32C5181A799BDD0021D27A /* WCAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C5161A799BDD0021D27A /* WCAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C5171A799BDD0021D27A /* WCAnalytics.m */; };
 		1D3401521A6CB0760075FE69 /* NSBundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3401511A6CB0760075FE69 /* NSBundleExtensions.swift */; };
 		1D3401541A6CB2870075FE69 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3401531A6CB2870075FE69 /* UIImageExtensions.swift */; };
 		1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */; };
@@ -113,7 +120,7 @@
 		1DF1B8D01A6BF2AD000EC76E /* ImageThumbnail4x3FloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8CE1A6BF297000EC76E /* ImageThumbnail4x3FloatRight.xib */; };
 		1DF1B8D81A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */; };
 		1DF1B8DA1A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8D91A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift */; };
-		1DF1B8DC1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift */; };
+		1DF1B8DC1A6C2E3E000EC76E /* ArticleCard4x3SmallImageSquareVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3SmallImageSquareVisualSource.swift */; };
 		1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF5B7161A6D602200788BCA /* WCCardAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF623831A76031800382E81 /* WCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF623821A76031800382E81 /* WCImageView.swift */; };
 		1DFFEDD31A400843008E65BC /* PlaceholderCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */; };
@@ -173,6 +180,13 @@
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		1D32C5051A7972D90021D27A /* Mixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixpanel.h; sourceTree = "<group>"; };
+		1D32C5061A7972D90021D27A /* Mixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixpanel.m; sourceTree = "<group>"; };
+		1D32C50B1A7982320021D27A /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
+		1D32C50C1A7982320021D27A /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
+		1D32C5111A7982A10021D27A /* MPLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPLogger.h; sourceTree = "<group>"; };
+		1D32C5161A799BDD0021D27A /* WCAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAnalytics.h; sourceTree = "<group>"; };
+		1D32C5171A799BDD0021D27A /* WCAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAnalytics.m; sourceTree = "<group>"; };
 		1D3401511A6CB0760075FE69 /* NSBundleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleExtensions.swift; sourceTree = "<group>"; };
 		1D3401531A6CB2870075FE69 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		1D3A285B1A2E696A00A9D4C1 /* WildcardSDKTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildcardSDKTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,7 +268,7 @@
 		1DF1B8CE1A6BF297000EC76E /* ImageThumbnail4x3FloatRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageThumbnail4x3FloatRight.xib; sourceTree = "<group>"; };
 		1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardNoImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8D91A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardFullImageVisualSource.swift; sourceTree = "<group>"; };
-		1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCard4x3FloatRightImageTextWrapVisualSource.swift; sourceTree = "<group>"; };
+		1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3SmallImageSquareVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCard4x3SmallImageSquareVisualSource.swift; sourceTree = "<group>"; };
 		1DF5B7161A6D602200788BCA /* WCCardAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardAction.h; sourceTree = "<group>"; };
 		1DF623821A76031800382E81 /* WCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCImageView.swift; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderCardBody.swift; sourceTree = "<group>"; };
@@ -297,6 +311,20 @@
 				1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		1D32C5041A7972AE0021D27A /* Mix Panel */ = {
+			isa = PBXGroup;
+			children = (
+				1D32C5111A7982A10021D27A /* MPLogger.h */,
+				1D32C50B1A7982320021D27A /* NSData+MPBase64.h */,
+				1D32C50C1A7982320021D27A /* NSData+MPBase64.m */,
+				1D32C5051A7972D90021D27A /* Mixpanel.h */,
+				1D32C5061A7972D90021D27A /* Mixpanel.m */,
+				1D32C5161A799BDD0021D27A /* WCAnalytics.h */,
+				1D32C5171A799BDD0021D27A /* WCAnalytics.m */,
+			);
+			name = "Mix Panel";
 			sourceTree = "<group>";
 		};
 		1D3A28501A2E695D00A9D4C1 = {
@@ -362,6 +390,7 @@
 		1D3A28851A2E697700A9D4C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D32C5041A7972AE0021D27A /* Mix Panel */,
 				1D58732F1A374AA500C3EAF3 /* Media.xcassets */,
 				1D3A28861A2E697700A9D4C1 /* Info.plist */,
 			);
@@ -569,7 +598,7 @@
 			children = (
 				1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */,
 				1DF1B8D91A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift */,
-				1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift */,
+				1DF1B8DB1A6C2E3E000EC76E /* ArticleCard4x3SmallImageSquareVisualSource.swift */,
 			);
 			name = "Article Card Visual Sources";
 			sourceTree = "<group>";
@@ -613,11 +642,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D32C5181A799BDD0021D27A /* WCAnalytics.h in Headers */,
+				1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */,
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
 				1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */,
 				1DF1B8C61A6B8D77000EC76E /* WCPublisherType.h in Headers */,
 				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
+				1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */,
+				1D32C5121A7982A10021D27A /* MPLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,7 +860,7 @@
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
-				1DF1B8DC1A6C2E3E000EC76E /* ArticleCard4x3FloatRightImageTextWrapVisualSource.swift in Sources */,
+				1DF1B8DC1A6C2E3E000EC76E /* ArticleCard4x3SmallImageSquareVisualSource.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DF1B8DA1A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift in Sources */,
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
@@ -836,6 +869,7 @@
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */,
 				1DFFEDD71A400A4C008E65BC /* PlaceholderCardVisualSource.swift in Sources */,
+				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,
 				1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
@@ -850,9 +884,11 @@
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1D97647F1A43470A00E51FE5 /* MediaTextFullWebView.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
+				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
 				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,
+				1D32C5081A7972D90021D27A /* Mixpanel.m in Sources */,
 				1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */,
 				1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */,
 				1DF1B8801A699CB5000EC76E /* CustomButtonExtensions.swift in Sources */,

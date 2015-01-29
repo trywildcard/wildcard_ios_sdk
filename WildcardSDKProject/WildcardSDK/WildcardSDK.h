@@ -18,4 +18,5 @@ FOUNDATION_EXPORT const unsigned char WildcardSDKVersionString[];
 #import <WildcardSDK/WCCardType.h>
 #import <WildcardSDK/WCCardAction.h>
 #import <WildcardSDK/WCPublisherType.h>
+#import <WildcardSDK/WCAnalytics.h>
 

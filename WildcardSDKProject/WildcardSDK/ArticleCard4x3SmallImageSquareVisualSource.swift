@@ -14,7 +14,7 @@ Article Card Layout where the image floats to the top-right and the text wraps a
 This layout's dimensions are always calculated to be a square.
 */
 @objc
-public class ArticleCard4x3FloatRightImageTextWrapVisualSource : CardViewVisualSource
+public class ArticleCard4x3SmallImageSquareVisualSource : CardViewVisualSource
 {
     var card:Card
     var header:FullCardHeader

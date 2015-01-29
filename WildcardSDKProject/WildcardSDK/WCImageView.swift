@@ -72,7 +72,6 @@ public class WCImageView : UIImageView
     private func setNoImage(){
         self.image = UIImage.loadFrameworkImage("noImage")
         self.contentMode = .Center
-        
     }
     
     private var downloadTask:NSURLSessionDownloadTask?

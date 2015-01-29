@@ -51,7 +51,7 @@ public class CardLayoutEngine{
         summaryCardLandscapeNode.addEdge(PassThroughEdge(), destination: summaryLandscapeHasNoImage)
         
         // MARK: Landscape - Article Card
-        let articleLandscapeHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3FloatRightImageTextWrap)
+        let articleLandscapeHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3SmallImageSquare)
         let articleLandscapeHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         
         articleCardLandscapeNode.addEdge(CheckImageEdge(), destination: articleLandscapeHasImage)

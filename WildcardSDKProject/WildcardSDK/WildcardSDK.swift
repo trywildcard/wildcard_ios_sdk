@@ -75,6 +75,13 @@ public class WildcardSDK {
     /// Initialize the SDK
     public class func initializeWithApiKey(key:String){
         WildcardSDK.sharedInstance.__applicationKey = key
+        WildcardSDK.sharedInstance.__analytics = WCAnalytics(key: key)
+    }
+    
+    class var analytics:WCAnalytics?{
+        get{
+            return WildcardSDK.sharedInstance.__analytics;
+        }
     }
     
     // MARK: Private
@@ -85,6 +92,7 @@ public class WildcardSDK {
     var __cardDescriptionFont:UIFont!
     var __cardActionButtonFont:UIFont!
     var __applicationKey:String?
+    var __analytics:WCAnalytics?
     
     class var sharedInstance : WildcardSDK{
         struct Static{
