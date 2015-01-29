@@ -14,5 +14,6 @@
 - (instancetype)initWithKey:(NSString *)apiKey;
 
 -(void)trackEvent:(NSString*)event withProperties:(NSDictionary*)properties withCard:(Card*)card;
+-(void)timeEvent:(NSString*)event;
 
 @end

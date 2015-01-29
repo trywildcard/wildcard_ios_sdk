@@ -75,7 +75,7 @@ public class WildcardSDK {
     /// Initialize the SDK
     public class func initializeWithApiKey(key:String){
         WildcardSDK.sharedInstance.__applicationKey = key
-        WildcardSDK.sharedInstance.__analytics = WCAnalytics(key: key)
+        WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
     }
     
     class var analytics:WCAnalytics?{

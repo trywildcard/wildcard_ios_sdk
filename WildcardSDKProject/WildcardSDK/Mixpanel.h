@@ -567,7 +567,7 @@
  This method allows you to explicitly show a named survey at the time of your choosing.
 
  */
-- (void)showSurveyWithID:(NSUInteger)ID;
+//- (void)showSurveyWithID:(NSUInteger)ID;
 
 /*!
  @method
@@ -581,7 +581,7 @@
  setting <code>showSurveyOnActive = NO;</code> so that the survey won't show automatically.
 
  */
-- (void)showSurvey;
+//- (void)showSurvey;
 
 
 /*!
@@ -593,7 +593,7 @@
  @discussion
  You do not need to call this method on the main thread.
  */
-- (void)showNotificationWithID:(NSUInteger)ID;
+//- (void)showNotificationWithID:(NSUInteger)ID;
 
 
 /*!
@@ -607,7 +607,7 @@
 
  @param type The type of notification to show, either @"mini", or @"takeover"
  */
-- (void)showNotificationWithType:(NSString *)type;
+//- (void)showNotificationWithType:(NSString *)type;
 
 /*!
  @method
@@ -618,7 +618,7 @@
  @discussion
  You do not need to call this method on the main thread.
  */
-- (void)showNotification;
+//- (void)showNotification;
 
 /*!
  @method
@@ -633,7 +633,7 @@
 
  You do not need to call this method on the main thread.
  */
-- (void)joinExperiments;
+//- (void)joinExperiments;
 
 /*!
  @method
@@ -645,7 +645,7 @@
  Same as joinExperiments but will fire the given callback after all experiments
  have been loaded and applied.
  */
-- (void)joinExperimentsWithCallback:(void(^)())experimentsLoadedCallback;
+//- (void)joinExperimentsWithCallback:(void(^)())experimentsLoadedCallback;
 
 - (void)createAlias:(NSString *)alias forDistinctID:(NSString *)distinctID;
 

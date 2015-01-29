@@ -86,10 +86,12 @@
 
 @end
 
+/*
 static NSString *MPURLEncode(NSString *s)
 {
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)s, NULL, CFSTR("!*'();:@&=+$,/?%#[]"), kCFStringEncodingUTF8));
 }
+*/
 
 @implementation Mixpanel
 
@@ -277,6 +279,7 @@ static Mixpanel *sharedInstance = nil;
                                name:@"com.parse.bolts.measurement_event"
                              object:nil];
 
+    /*
 #ifndef DISABLE_MIXPANEL_AB_DESIGNER
     dispatch_async(dispatch_get_main_queue(), ^{
         UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(connectGestureRecognized:)];
@@ -290,6 +293,7 @@ static Mixpanel *sharedInstance = nil;
         [[UIApplication sharedApplication].keyWindow addGestureRecognizer:recognizer];
     });
 #endif
+     */
 }
 
 - (NSString *)description
