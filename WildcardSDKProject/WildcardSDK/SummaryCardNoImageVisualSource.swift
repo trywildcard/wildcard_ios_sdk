@@ -19,6 +19,7 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         header.hairline.hidden = true
+        header.logo.hidden = true
         header.titleOffset = UIOffsetMake(15, header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)

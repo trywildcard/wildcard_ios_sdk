@@ -29,10 +29,6 @@ class ViewController: UIViewController, CardViewDelegate {
             newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
             view.layoutIfNeeded()
         }
-        SummaryCard.createFromUrl(NSURL(string: "http://www.viralforest.com/subway-cars-dumped-coral-reef/?sc_ref=facebook")!, completion: { (card:SummaryCard?, error:NSError?) -> Void in
-            
-            self.presentCard(card!)
-        })
       
     }
     

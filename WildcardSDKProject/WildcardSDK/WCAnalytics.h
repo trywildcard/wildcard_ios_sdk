@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WildcardSDK/WildcardSDK-Swift.h>
+
+@class Card;
 
 @interface WCAnalytics : NSObject
 

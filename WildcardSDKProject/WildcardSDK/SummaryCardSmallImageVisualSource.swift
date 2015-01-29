@@ -11,15 +11,15 @@ import Foundation
 public class SummaryCardSmallImageVisualSource : CardViewVisualSource
 {
     var card:Card
-    var header:BigImageCardHeader
-    var body:SingleParagraphCardBody
+    var header:FullCardHeader
+    var body:ImageFloatRightBody
     var footer:ViewOnWebCardFooter
     
     public init(card:Card){
         self.card = card
-        self.header = UIView.loadFromNibNamed("BigImageCardHeader") as BigImageCardHeader
+        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        self.body = SingleParagraphCardBody(frame:CGRectZero)
+        self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
         self.footer.hairline.hidden = true
     }

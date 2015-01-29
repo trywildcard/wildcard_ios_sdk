@@ -56,7 +56,7 @@ public class SingleParagraphCardBody : CardViewElement {
             paragraphLabel.text = articleCard.abstractContent
         case .Summary:
             let webLinkCard = cardView.backingCard as SummaryCard
-            paragraphLabel.text = webLinkCard.description
+            paragraphLabel.text = webLinkCard.abstractContent
         case .Unknown:
             paragraphLabel.text = "Unknown Card Type"
         }

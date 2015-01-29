@@ -60,7 +60,7 @@ public class ImageAndCaptionBody : CardViewElement{
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
             imageUrl = summaryCard.imageUrl
-            caption.text = summaryCard.description
+            caption.text = summaryCard.abstractContent
         case .Unknown:
             imageUrl = nil
         }

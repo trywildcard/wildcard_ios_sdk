@@ -70,11 +70,9 @@ public class FullCardHeader :CardViewElement
             let summaryCard = cardView.backingCard as SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
-            logo.image = UIImage.loadFrameworkImage("wildcardSmallLogo")
         case .Unknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"
-            logo.image = UIImage.loadFrameworkImage("wildcardSmallLogo")
         }
     }
     

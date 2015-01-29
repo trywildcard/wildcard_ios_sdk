@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageFloatRightBody" customModule="WildcardSDK">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-i2-k3m" customClass="WCImageView" customModule="WildcardSDK">
+                    <rect key="frame" x="470" y="10" width="120" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="aSc-fv-hcQ"/>
+                        <constraint firstAttribute="width" constant="120" id="wPB-QD-JBg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhj-JJ-klp">
+                    <rect key="frame" x="10" y="10" width="450" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Lhj-JJ-klp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Eyc-oD-YAk"/>
+                <constraint firstItem="Xf1-i2-k3m" firstAttribute="leading" secondItem="Lhj-JJ-klp" secondAttribute="trailing" constant="10" id="YN6-vP-CLb"/>
+                <constraint firstItem="Xf1-i2-k3m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dyD-vF-dFc"/>
+                <constraint firstItem="Lhj-JJ-klp" firstAttribute="top" secondItem="Xf1-i2-k3m" secondAttribute="top" id="m30-G9-cx1"/>
+                <constraint firstAttribute="centerY" secondItem="Xf1-i2-k3m" secondAttribute="centerY" id="tCA-A7-X0v"/>
+                <constraint firstAttribute="trailing" secondItem="Xf1-i2-k3m" secondAttribute="trailing" constant="10" id="vUN-aM-Kqd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="tCA-A7-X0v"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="descriptionLabel" destination="Lhj-JJ-klp" id="Np2-9h-f3r"/>
+                <outlet property="imageView" destination="Xf1-i2-k3m" id="rud-Ic-YXR"/>
+                <outlet property="imageViewHeight" destination="aSc-fv-hcQ" id="Vd3-zT-i2o"/>
+                <outlet property="imageViewWidth" destination="wPB-QD-JBg" id="NUR-yR-yZy"/>
+            </connections>
+        </view>
+    </objects>
+</document>
