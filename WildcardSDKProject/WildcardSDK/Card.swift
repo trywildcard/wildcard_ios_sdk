@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class Card : PlatformObject {
+public class Card : NSObject, PlatformObject {
     
     public let webUrl:NSURL
     public let cardType:String

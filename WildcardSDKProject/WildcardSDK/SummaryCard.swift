@@ -13,12 +13,12 @@ Summary Card
 public class SummaryCard : Card {
     
     public let title:String
-    public let description:String
+    public let abstractContent:String
     public let imageUrl:NSURL?
     
     public init(url:NSURL, description:String, title:String, imageUrl:NSURL?){
         self.title = String(htmlEncodedString: title)
-        self.description = String(htmlEncodedString: description)
+        self.abstractContent = String(htmlEncodedString: description)
         self.imageUrl = imageUrl
         super.init(webUrl: url, cardType: "summary")
     }
