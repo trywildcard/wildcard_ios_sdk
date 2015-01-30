@@ -8,15 +8,13 @@
 
 import Foundation
 
-public class SummaryCardNoImageVisualSource : CardViewVisualSource{
+public class SummaryCardNoImageVisualSource : BaseVisualSource{
     
-    var card:Card
     var header:FullCardHeader
     var body:SingleParagraphCardBody
     var footer:ViewOnWebCardFooter
     
-    public init(card:Card){
-        self.card = card
+    public override init(card:Card){
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         header.hairline.hidden = true
         header.logo.hidden = true
@@ -26,6 +24,7 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
         self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
         footer.hairline.hidden = true
+        super.init(card:card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -36,11 +35,11 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
         return header.optimizedHeight(widthForCard())
     }
     
-    public func viewForCardBody()->CardViewElement{
+    public override func viewForCardBody()->CardViewElement{
         return body;
     }
     
-    public func heightForCardBody()->CGFloat{
+    public override func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -51,14 +50,4 @@ public class SummaryCardNoImageVisualSource : CardViewVisualSource{
     public func heightForCardFooter()->CGFloat{
         return footer.optimizedHeight(widthForCard())
     }
-    
-    public func widthForCard()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        if(screenBounds.width > screenBounds.height){
-            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
-        }else{
-            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
-        }
-    }
-    
 }

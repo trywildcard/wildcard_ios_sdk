@@ -25,7 +25,8 @@ class CardViewVisualSourceFactory {
         case .ArticleCard4x3SmallImage:
             return ArticleCardSmallImageVisualSource(card:card)
         case .Unknown:
-            return PlaceholderCardVisualSource(card:card)
+            // Shouldn't happen
+            return BaseVisualSource(card:card)
         }
     }
 

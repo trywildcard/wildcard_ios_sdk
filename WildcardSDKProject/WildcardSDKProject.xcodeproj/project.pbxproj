@@ -89,6 +89,7 @@
 		1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
 		1DC39A6C1A7B3FFD007BBEBE /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */; };
+		1DC39A6E1A7BD72E007BBEBE /* BaseVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6D1A7BD72E007BBEBE /* BaseVisualSource.swift */; };
 		1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */; };
 		1DC9287A1A4089160040DAD0 /* CardViewVisualSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */; };
 		1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */; };
@@ -122,7 +123,6 @@
 		1DF623831A76031800382E81 /* WCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF623821A76031800382E81 /* WCImageView.swift */; };
 		1DFFEDD31A400843008E65BC /* PlaceholderCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
-		1DFFEDD71A400A4C008E65BC /* PlaceholderCardVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD61A400A4C008E65BC /* PlaceholderCardVisualSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +238,7 @@
 		1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		1DC39A6D1A7BD72E007BBEBE /* BaseVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVisualSource.swift; sourceTree = "<group>"; };
 		1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWebCardFooter.swift; sourceTree = "<group>"; };
 		1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewVisualSourceFactory.swift; sourceTree = "<group>"; };
 		1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullCardHeader.swift; sourceTree = "<group>"; };
@@ -268,7 +269,6 @@
 		1DF623821A76031800382E81 /* WCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCImageView.swift; sourceTree = "<group>"; };
 		1DFFEDD21A400843008E65BC /* PlaceholderCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderCardBody.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
-		1DFFEDD61A400A4C008E65BC /* PlaceholderCardVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderCardVisualSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,8 +608,8 @@
 		1DFFEDD01A400803008E65BC /* Stock Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1DFFEDD61A400A4C008E65BC /* PlaceholderCardVisualSource.swift */,
 				1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */,
+				1DC39A6D1A7BD72E007BBEBE /* BaseVisualSource.swift */,
 				1DF1B8D61A6C27ED000EC76E /* Article Card Visual Sources */,
 				1DF1B8D31A6C19A2000EC76E /* Summary Card Visual Sources */,
 				1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */,
@@ -856,11 +856,11 @@
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
 				1DF1B8DA1A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift in Sources */,
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
+				1DC39A6E1A7BD72E007BBEBE /* BaseVisualSource.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */,
-				1DFFEDD71A400A4C008E65BC /* PlaceholderCardVisualSource.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,
 				1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,

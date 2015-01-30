@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import QuartzCore
 
+/**
+The visual source of a CardView.
+
+Every CardView is associated with a visual source to provide views for its various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own.
+*/
 @objc
 public protocol CardViewVisualSource{
     
@@ -38,7 +43,7 @@ public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
     /**
     This represents the edge insets of the maximized CardView to the application frame.
     
-    This must be defined carefully with the width / height protocol functions since both will dictate the eventual size of the card.
+    This must be defined carefully with the width / height protocol functions since both will dictate the eventual size of the maximized card.
     */
     func applicationFrameEdgeInsets()->UIEdgeInsets
 }
@@ -89,13 +94,20 @@ public protocol CardViewDelegate{
 @objc
 public class CardView : UIView
 {
-    // MARK: Public properties
+    // MARK: Public
+    
+    /// ALPHA: See CardPhysics
     public var physics:CardPhysics?
+    
+    /// See CardViewDelegate
     public var delegate:CardViewDelegate?
+    
+    /// The visual source associated with this CardView
     public var visualSource:CardViewVisualSource!
+    
+    /// The backing card for this CardView
     public var backingCard:Card!
     
-    // MARK: Public Class Functions
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         return CardView.createCardView(card, layout: layoutToUse)

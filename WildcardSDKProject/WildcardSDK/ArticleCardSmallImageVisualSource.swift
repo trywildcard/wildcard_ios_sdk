@@ -9,21 +9,20 @@
 import Foundation
 
 @objc
-public class ArticleCardSmallImageVisualSource : CardViewVisualSource
+public class ArticleCardSmallImageVisualSource : BaseVisualSource
 {
-    var card:Card
     var header:FullCardHeader
     var body:ImageFloatRightBody
     var footer:ReadMoreFooter
     
-    public init(card:Card){
-        self.card = card
+    public override init(card:Card){
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
         self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
         self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
+        super.init(card: card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -34,11 +33,11 @@ public class ArticleCardSmallImageVisualSource : CardViewVisualSource
         return header.optimizedHeight(widthForCard())
     }
     
-    public func viewForCardBody()->CardViewElement{
+    public override func viewForCardBody()->CardViewElement{
         return body
     }
     
-    public func heightForCardBody()->CGFloat{
+    public override func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -48,14 +47,5 @@ public class ArticleCardSmallImageVisualSource : CardViewVisualSource
     
     public func heightForCardFooter() -> CGFloat {
         return 60
-    }
-    
-    public func widthForCard()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        if(screenBounds.width > screenBounds.height){
-            return screenBounds.height - (2 * WildcardSDK.cardScreenMargin)
-        }else{
-            return screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
-        }
     }
 }

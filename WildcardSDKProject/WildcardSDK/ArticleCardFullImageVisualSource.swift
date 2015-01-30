@@ -8,16 +8,14 @@
 
 import Foundation
 
-public class ArticleCardFullImageVisualSource : CardViewVisualSource {
+public class ArticleCardFullImageVisualSource : BaseVisualSource {
     
-    var card:Card
     var header:FullCardHeader
     var body:ImageAndCaptionBody
     var footer:ReadMoreFooter
     var aspectRatio:CGFloat
     
     public init(card:Card, aspectRatio:CGFloat){
-        self.card = card
         self.aspectRatio = aspectRatio
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
@@ -27,6 +25,7 @@ public class ArticleCardFullImageVisualSource : CardViewVisualSource {
         self.body.imageAspectRatio = aspectRatio
         self.footer = ReadMoreFooter(frame:CGRectZero)
         self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
+        super.init(card:card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -37,11 +36,11 @@ public class ArticleCardFullImageVisualSource : CardViewVisualSource {
         return header.optimizedHeight(widthForCard())
     }
     
-    public func viewForCardBody()->CardViewElement{
+    public override func viewForCardBody()->CardViewElement{
         return body
     }
     
-    public func heightForCardBody()->CGFloat{
+    public override func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -51,11 +50,5 @@ public class ArticleCardFullImageVisualSource : CardViewVisualSource {
     
     public func heightForCardFooter() -> CGFloat {
         return 60
-    }
-    
-    public func widthForCard()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
-        let cardWidth = screenBounds.width - (2 * WildcardSDK.cardScreenMargin)
-        return cardWidth
     }
 }

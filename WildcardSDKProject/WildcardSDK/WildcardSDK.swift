@@ -11,22 +11,7 @@ import Foundation
 /// Global properties to customize Card Views
 @objc
 public class WildcardSDK {
-    
-    /**
-    Card dimensions are calculated relative to the screen dimensions with a default margin of 15 points.
-    
-    We assume the most common use-case where a Card View is center-aligned on screen. This is the margin from the card to the horizontal or vertical edges of screen. You may use this convenience method to set a custom margin.
-    
-    This is the easiest way to change Card dimensions. For full dimension customization, you must implement your own card visual source.
-    */
-    public class var cardScreenMargin:CGFloat{
-        get{
-            return WildcardSDK.sharedInstance.__cardScreenMargin
-        }set{
-            WildcardSDK.sharedInstance.__cardScreenMargin = newValue
-        }
-    }
-    
+ 
     /// Custom font for Card titles
     public class var cardTitleFont:UIFont{
         get{
@@ -78,13 +63,13 @@ public class WildcardSDK {
         WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
     }
     
+    // MARK: Private
     class var analytics:WCAnalytics?{
         get{
             return WildcardSDK.sharedInstance.__analytics;
         }
     }
     
-    // MARK: Private
     var __cardScreenMargin:CGFloat = 15.0
     var __cardCornerRadius:CGFloat = 4.0
     var __cardTitleFont:UIFont!
