@@ -86,7 +86,7 @@ public class WildcardSDK {
     
     // MARK: Private
     var __cardScreenMargin:CGFloat = 15.0
-    var __cardCornerRadius:CGFloat = 3.0
+    var __cardCornerRadius:CGFloat = 4.0
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!

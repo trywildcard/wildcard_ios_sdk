@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+Card Body with an image and a caption under it.
+*/
+@objc
 public class ImageAndCaptionBody : CardViewElement{
     
     @IBOutlet weak public var imageView: WCImageView!
@@ -26,6 +30,16 @@ public class ImageAndCaptionBody : CardViewElement{
             imageLeftConstraint.constant = newValue.left
             imageRightConstraint.constant = newValue.right
             captionBottomConstraint.constant = newValue.bottom
+        }
+    }
+    
+    /// Controls the spacing between the caption and the image
+    public var captionSpacing:CGFloat!{
+        get{
+            return captionTopConstraint.constant
+        }
+        set{
+            captionTopConstraint.constant = newValue
         }
     }
     
@@ -77,7 +91,7 @@ public class ImageAndCaptionBody : CardViewElement{
         let contentInsets = contentEdgeInset
         
         let imageWidth = cardWidth - contentInsets.left - contentInsets.right
-        let imageHeight:CGFloat = ceil(imageAspectRatio * imageWidth)
+        let imageHeight:CGFloat = round(imageAspectRatio * imageWidth)
         height += contentInsets.top
         height += imageHeight
         height += captionTopConstraint.constant
@@ -91,6 +105,6 @@ public class ImageAndCaptionBody : CardViewElement{
     
     override public func cardViewFinishedLayout() {
         // once the parent card view has finished laying out, we can constrain the height of image properly
-        imageHeightConstraint.constant = imageAspectRatio * imageView.frame.width
+        imageHeightConstraint.constant = round(imageAspectRatio * imageView.frame.width)
     }
 }

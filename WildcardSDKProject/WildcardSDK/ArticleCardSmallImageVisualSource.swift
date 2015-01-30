@@ -8,26 +8,20 @@
 
 import Foundation
 
-/**
-Article Card Layout where the image floats to the top-right and the text wraps around it.
-
-This layout's dimensions are always calculated to be a square.
-*/
 @objc
 public class ArticleCardSmallImageVisualSource : CardViewVisualSource
 {
     var card:Card
     var header:FullCardHeader
-    var body:MediaTextImageFloatRight
+    var body:ImageFloatRightBody
     var footer:ReadMoreFooter
     
     public init(card:Card){
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        //self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
-        self.body = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
-        self.body.textContainerEdgeInsets = UIEdgeInsetsMake(5, 15, 0, 15)
+        self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
+        self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
         self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
     }
@@ -45,7 +39,7 @@ public class ArticleCardSmallImageVisualSource : CardViewVisualSource
     }
     
     public func heightForCardBody()->CGFloat{
-        return widthForCard() - heightForCardFooter() - heightForCardHeader()
+        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter() -> CardViewElement? {

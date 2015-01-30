@@ -8,7 +8,12 @@
 
 import Foundation
 
-class Utilities{
+/// Public Bag of Tricks
+public class Utilities{
+    
+    // MARK: Public
+    
+    /// Prints the font families available
     class func printFontFamilies(){
         for name in UIFont.familyNames()
         {
@@ -20,7 +25,8 @@ class Utilities{
         }
     }
     
-    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat, maxHeight:CGFloat)->CGFloat{
+    /// Get the height required for a specific text string, with a max height
+    public class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat, maxHeight:CGFloat)->CGFloat{
         let nsStr = NSString(string: text)
         var paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = lineHeight
@@ -39,14 +45,13 @@ class Utilities{
         return bounds.size.height;
     }
     
-    class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
+    /// Get the height required for a specific text string with unbounded height
+    public class func heightRequiredForText(text:String, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
     
-    /**
-    Calculates a CGSize from a given visual source
-    */
-    class func sizeFromVisualSource(visualSource:CardViewVisualSource)->CGSize{
+    // Returns a CGSize from a visual source
+    public class func sizeFromVisualSource(visualSource:CardViewVisualSource)->CGSize{
         let width = visualSource.widthForCard()
         var height:CGFloat = 0
         if let headerHeight = visualSource.heightForCardHeader?(){
@@ -58,6 +63,8 @@ class Utilities{
         height += visualSource.heightForCardBody()
         return CGSizeMake(width, height)
     }
+    
+    // MARK: Private
     
     /**
     Verifies the integrity of the maximize visual size
