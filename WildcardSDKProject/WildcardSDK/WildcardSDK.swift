@@ -86,7 +86,7 @@ public class WildcardSDK {
     
     // MARK: Private
     var __cardScreenMargin:CGFloat = 15.0
-    var __cardCornerRadius:CGFloat = 2.0
+    var __cardCornerRadius:CGFloat = 3.0
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!
@@ -102,10 +102,10 @@ public class WildcardSDK {
         
         dispatch_once(&Static.onceToken, { () -> Void in
             Static.instance = WildcardSDK()
-            Static.instance!.__cardTitleFont = UIFont.boldSystemFontOfSize(16.0)
-            Static.instance!.__cardKickerFont = UIFont.systemFontOfSize(11.0)
-            Static.instance!.__cardDescriptionFont = UIFont.systemFontOfSize(12.0)
-            Static.instance!.__cardActionButtonFont = UIFont.boldSystemFontOfSize(12.0)
+            Static.instance!.__cardTitleFont = UIFont(name:"HelveticaNeue-Medium", size: 16.0)!
+            Static.instance!.__cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+            Static.instance!.__cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
+            Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
         })
         return Static.instance!
     }

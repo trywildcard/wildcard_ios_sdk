@@ -90,6 +90,9 @@ public class FullCardHeader :CardViewElement
   
         // bottom margin below the title
         height += bottomPadding
+        
+        Utilities.printFontFamilies()
+        
         return height
     }
     
