@@ -21,16 +21,16 @@ public class FullCardHeader :CardViewElement
         }
     }
     
-    /**
-    Custom offset adjustments to the title label
-    */
-    public var titleOffset:UIOffset!{
+    /// Content inset for the header
+    public var contentEdgeInset:UIEdgeInsets{
         get{
-            return UIOffset(horizontal: titleLeadingConstraint.constant, vertical: titleTitleTopConstraint.constant)
+            return UIEdgeInsetsMake(kickerTopConstraint.constant, titleLeadingConstraint.constant, bottomPadding, titleTrailingConstraint.constant)
         }
         set{
-            titleTitleTopConstraint.constant = newValue.vertical
-            titleLeadingConstraint.constant = newValue.horizontal
+            kickerTopConstraint.constant = newValue.top
+            titleLeadingConstraint.constant = newValue.left
+            titleTrailingConstraint.constant = newValue.right
+            bottomPadding = newValue.bottom
         }
     }
     
@@ -39,19 +39,22 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak public var title: UILabel!
     public var hairline:UIView!
     
+    @IBOutlet weak private var kickerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var titleTitleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var kickerTitleVerticalSpacing: NSLayoutConstraint!
+    private var bottomPadding:CGFloat = 10
     
     override public func initializeElement() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
         kicker.font =  WildcardSDK.cardKickerFont
+        kicker.numberOfLines = 1
         kicker.textColor = UIColor.wildcardMediumGray()
         title.font = WildcardSDK.cardTitleFont
         title.textColor = UIColor.wildcardDarkBlue()
         hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
+        contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
     }
     
     override public func update() {
@@ -77,14 +80,16 @@ public class FullCardHeader :CardViewElement
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         
         var height:CGFloat = 0
-        height += titleOffset.vertical
+        height += kickerTopConstraint.constant
+        height += kicker.font.lineHeight
+        height += kickerSpacing
         
         // how tall would the title need to be for this width
         let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
         height += ceil(expectedTitleSize.height)
   
         // bottom margin below the title
-        height += 10
+        height += bottomPadding
         return height
     }
     

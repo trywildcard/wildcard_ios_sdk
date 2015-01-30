@@ -19,7 +19,7 @@ public class SummaryCardSmallImageVisualSource : CardViewVisualSource
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
+        //self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)

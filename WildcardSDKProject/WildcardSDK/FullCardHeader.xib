@@ -39,15 +39,16 @@
                 <constraint firstItem="yL9-2c-bsw" firstAttribute="top" secondItem="gC4-RJ-dh4" secondAttribute="bottom" constant="3" id="GAr-gr-EbD"/>
                 <constraint firstItem="rfn-Ef-UIw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Oes-F7-Zfy"/>
                 <constraint firstAttribute="trailing" secondItem="rfn-Ef-UIw" secondAttribute="trailing" constant="10" id="TXr-Y0-tkr"/>
-                <constraint firstItem="yL9-2c-bsw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="knP-UJ-8he"/>
+                <constraint firstItem="gC4-RJ-dh4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="zrZ-BC-1Ob"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="kicker" destination="gC4-RJ-dh4" id="QES-ij-EJU"/>
+                <outlet property="kickerTitleVerticalSpacing" destination="GAr-gr-EbD" id="tTG-hj-2R4"/>
+                <outlet property="kickerTopConstraint" destination="zrZ-BC-1Ob" id="KhD-X2-gHW"/>
                 <outlet property="logo" destination="rfn-Ef-UIw" id="Cu6-vw-P2I"/>
                 <outlet property="title" destination="yL9-2c-bsw" id="cFw-F0-Q6D"/>
                 <outlet property="titleLeadingConstraint" destination="8u6-cy-oGA" id="HUd-g0-qVt"/>
-                <outlet property="titleTitleTopConstraint" destination="knP-UJ-8he" id="1er-cL-lPu"/>
                 <outlet property="titleTrailingConstraint" destination="9bs-6j-V47" id="XkZ-wF-EFz"/>
             </connections>
         </view>

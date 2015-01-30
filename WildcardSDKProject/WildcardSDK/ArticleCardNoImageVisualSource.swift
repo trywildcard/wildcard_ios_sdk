@@ -19,7 +19,7 @@ public class ArticleCardNoImageVisualSource : CardViewVisualSource {
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
+        //self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
