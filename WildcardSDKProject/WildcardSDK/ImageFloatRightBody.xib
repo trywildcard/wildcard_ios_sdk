@@ -18,7 +18,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhj-JJ-klp">
-                    <rect key="frame" x="10" y="10" width="450" height="20.5"/>
+                    <rect key="frame" x="10" y="10" width="450" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -30,20 +30,17 @@
                 <constraint firstItem="Xf1-i2-k3m" firstAttribute="leading" secondItem="Lhj-JJ-klp" secondAttribute="trailing" constant="10" id="YN6-vP-CLb"/>
                 <constraint firstItem="Xf1-i2-k3m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dyD-vF-dFc"/>
                 <constraint firstItem="Lhj-JJ-klp" firstAttribute="top" secondItem="Xf1-i2-k3m" secondAttribute="top" id="m30-G9-cx1"/>
-                <constraint firstAttribute="centerY" secondItem="Xf1-i2-k3m" secondAttribute="centerY" id="tCA-A7-X0v"/>
                 <constraint firstAttribute="trailing" secondItem="Xf1-i2-k3m" secondAttribute="trailing" constant="10" id="vUN-aM-Kqd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="tCA-A7-X0v"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="descriptionLabel" destination="Lhj-JJ-klp" id="Np2-9h-f3r"/>
+                <outlet property="imageHeightConstraint" destination="aSc-fv-hcQ" id="84l-Rj-Rp5"/>
+                <outlet property="imageLeadingConstraint" destination="Eyc-oD-YAk" id="JaH-ff-Nj7"/>
+                <outlet property="imageTopConstraint" destination="dyD-vF-dFc" id="dOI-K7-9hf"/>
+                <outlet property="imageTrailingConstraint" destination="vUN-aM-Kqd" id="tDf-8B-mqi"/>
                 <outlet property="imageView" destination="Xf1-i2-k3m" id="rud-Ic-YXR"/>
-                <outlet property="imageViewHeight" destination="aSc-fv-hcQ" id="Vd3-zT-i2o"/>
-                <outlet property="imageViewWidth" destination="wPB-QD-JBg" id="NUR-yR-yZy"/>
+                <outlet property="imageWidthConstraint" destination="wPB-QD-JBg" id="r0Z-df-aoT"/>
             </connections>
         </view>
     </objects>

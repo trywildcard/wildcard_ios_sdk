@@ -36,7 +36,7 @@ public class ImageAndCaptionBody : CardViewElement{
     @IBOutlet weak private var imageRightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageLeftConstraint: NSLayoutConstraint!
     
-    override func initializeElement(){
+    override public func initializeElement(){
         caption.font = WildcardSDK.cardDescriptionFont
         caption.textColor = UIColor.wildcardMediaBodyColor()
         
@@ -47,7 +47,7 @@ public class ImageAndCaptionBody : CardViewElement{
         imageView.layer.masksToBounds = true
     }
     
-    override func update() {
+    override public func update() {
         super.update()
         
         var imageUrl:NSURL?
@@ -71,7 +71,7 @@ public class ImageAndCaptionBody : CardViewElement{
         }
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         
         let contentInsets = contentEdgeInset
@@ -89,7 +89,7 @@ public class ImageAndCaptionBody : CardViewElement{
         return height
     }
     
-    override func cardViewFinishedLayout() {
+    override public func cardViewFinishedLayout() {
         // once the parent card view has finished laying out, we can constrain the height of image properly
         imageHeightConstraint.constant = imageAspectRatio * imageView.frame.width
     }

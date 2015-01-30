@@ -11,37 +11,38 @@ import Foundation
 @objc
 public class CardViewElement : UIView {
     
-    var cardView:CardView!
-    var backingCard:Card{
+    public var cardView:CardView!
+    public var backingCard:Card{
         get{
             return cardView.backingCard
         }
     }
     
-    /**
-    Override this function to update the CardViewElement based on the current backing Card
-    */
-    func update(){
+    /// Called after the CardViewElement is initialized or after awakeFromNib
+    public func initializeElement(){
     }
     
     /**
-    Override to initialize any parts of the CardViewElement. This is called automatically 
-    whenever the view is initialized.
+    Update the CardViewElement with the current backing card. 
+
+    Layout has not finished yet so can not make any assumptions about frames or sizes
     */
-    func initializeElement(){
+    public func update(){
     }
     
     /**
-    Override this function to get notified when the card view finishes laying out
-    */
-    func cardViewFinishedLayout(){
-    }
+    Return an optimized height for the CardViewElement based on a given width.
     
-    /**
-    Optionally return an optimized height for this element given a width
+    This is called after an update(), but before the CardView has finished layingout. Use autolayout constraints, width, and most recent data to determine a height.
     */
-    func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return CGFloat.min
+    }
+    
+    /**
+    The CardView has finished laying out. Can do any last minute changes to the CardViewElement that may depend on frame sizes e.g. exclusion paths, etc.
+    */
+    public func cardViewFinishedLayout(){
     }
     
     required public init(coder: NSCoder) {

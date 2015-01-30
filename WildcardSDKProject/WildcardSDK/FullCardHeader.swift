@@ -11,9 +11,7 @@ import Foundation
 @objc
 public class FullCardHeader :CardViewElement
 {
-    /**
-    Spacing between kicker and the title
-    */
+    /// Controls the spacing between the kicker and the title
     public var kickerSpacing:CGFloat!{
         get{
             return kickerTitleVerticalSpacing.constant
@@ -46,7 +44,7 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak private var titleTitleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var kickerTitleVerticalSpacing: NSLayoutConstraint!
     
-    override func initializeElement() {
+    override public func initializeElement() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
         kicker.font =  WildcardSDK.cardKickerFont
@@ -56,7 +54,7 @@ public class FullCardHeader :CardViewElement
         hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
-    override func update() {
+    override public func update() {
         
         switch(backingCard.type){
         case .Article:
@@ -76,7 +74,7 @@ public class FullCardHeader :CardViewElement
         }
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         
         var height:CGFloat = 0
         height += titleOffset.vertical

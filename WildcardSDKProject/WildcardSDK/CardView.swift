@@ -276,9 +276,10 @@ public class CardView : UIView
         if let headerView = visualSource.viewForCardHeader?(){
             headerView.cardView = self
             headerView.update()
-            if(visualSource.heightForCardHeader?() > 0){
-                constrainSubComponent(headerView, offset: currentHeightOffset, height: visualSource.heightForCardHeader!())
-                currentHeightOffset += visualSource.heightForCardHeader!()
+            let headerHeight = visualSource.heightForCardHeader?()
+            if(headerHeight != nil && headerHeight > 0){
+                constrainSubComponent(headerView, offset: currentHeightOffset, height: headerHeight!)
+                currentHeightOffset += headerHeight!
                 header = headerView
             }
         }
@@ -286,20 +287,22 @@ public class CardView : UIView
         let bodyView = visualSource.viewForCardBody()
         bodyView.cardView = self
         bodyView.update()
-        if(visualSource.heightForCardBody() > 0){
-            constrainSubComponent(bodyView, offset: currentHeightOffset, height: visualSource.heightForCardBody())
-            currentHeightOffset += visualSource.heightForCardBody()
+        let bodyHeight = visualSource.heightForCardBody()
+        if(bodyHeight > 0){
+            constrainSubComponent(bodyView, offset: currentHeightOffset, height: bodyHeight)
+            currentHeightOffset += bodyHeight
             body = bodyView
         }else{
-            println("Card layout error: height for card body should not be 0")
+            println("Card layout error: height for card body can't be 0")
         }
         
         if let footerView = visualSource.viewForCardFooter?(){
             footerView.cardView = self
             footerView.update()
-            if(visualSource.heightForCardFooter?() > 0){
-                constrainSubComponent(footerView, offset: currentHeightOffset, height: visualSource.heightForCardFooter!())
-                currentHeightOffset += visualSource.heightForCardFooter!()
+            let footerHeight = visualSource.heightForCardFooter?()
+            if(footerHeight != nil && footerHeight > 0){
+                constrainSubComponent(footerView, offset: currentHeightOffset, height: footerHeight!)
+                currentHeightOffset += footerHeight!
                 footer = footerView
             }
         }

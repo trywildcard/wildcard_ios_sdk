@@ -30,7 +30,7 @@ public class MediaTextImageFloatRight : CardViewElement{
     @IBOutlet weak private var rightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var bottomConstraint: NSLayoutConstraint!
     
-    override func initializeElement(){
+    override public func initializeElement(){
         textContainer.scrollEnabled = false
         textContainer.textContainer.lineFragmentPadding = 0
         textContainer.textContainerInset = UIEdgeInsetsZero
@@ -39,7 +39,7 @@ public class MediaTextImageFloatRight : CardViewElement{
         cardImage.layer.masksToBounds = true
     }
     
-    override func update() {
+    override public func update() {
         super.update()
         
         var imageUrl:NSURL?
@@ -70,7 +70,7 @@ public class MediaTextImageFloatRight : CardViewElement{
         }
     }
     
-    override func cardViewFinishedLayout() {
+    override public func cardViewFinishedLayout() {
         let convert = textContainer.convertRect(cardImage.frame, fromView: self)
         let exclusionRect = CGRectMake(convert.origin.x - 10, 0, convert.size.width + 10, convert.size.height)
         let exclusionPath = UIBezierPath(rect: exclusionRect)

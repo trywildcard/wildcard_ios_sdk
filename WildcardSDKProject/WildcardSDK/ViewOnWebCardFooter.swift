@@ -29,7 +29,7 @@ public class ViewOnWebCardFooter: CardViewElement {
     private var leftConstraint:NSLayoutConstraint!
     private var shareButtonRightConstraint:NSLayoutConstraint!
     
-    override func initializeElement() {
+    override public func initializeElement() {
         viewOnWebButton = UIButton.defaultViewOnWebButton()
         addSubview(viewOnWebButton!)
         verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
@@ -56,7 +56,7 @@ public class ViewOnWebCardFooter: CardViewElement {
         cardView.handleViewOnWeb(backingCard.webUrl)
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return 44
     }
 }

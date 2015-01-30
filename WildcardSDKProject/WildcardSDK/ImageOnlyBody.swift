@@ -29,7 +29,7 @@ public class ImageOnlyBody : CardViewElement{
     private var rightConstraint:NSLayoutConstraint!
     private var bottomConstraint:NSLayoutConstraint!
     
-    override func initializeElement(){
+    override public func initializeElement(){
         
         image = WCImageView(frame: CGRectZero)
         image.layer.cornerRadius = 2.0
@@ -43,7 +43,7 @@ public class ImageOnlyBody : CardViewElement{
         bottomConstraint = image.constrainBottomToSuperView(10)
     }
     
-    override func update() {
+    override public func update() {
         super.update()
         
         var imageUrl:NSURL?
@@ -65,7 +65,7 @@ public class ImageOnlyBody : CardViewElement{
         }
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         height += topConstraint.constant
         height += bottomConstraint.constant

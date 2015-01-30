@@ -31,7 +31,7 @@ public class OneLineCardHeader : CardViewElement {
     private var titleLeftConstraint:NSLayoutConstraint!
     private var titleRightConstraint:NSLayoutConstraint!
     
-    override func initializeElement() {
+    override public func initializeElement() {
         
         backgroundColor = UIColor.whiteColor()
         
@@ -56,7 +56,7 @@ public class OneLineCardHeader : CardViewElement {
         hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
     }
     
-    override func update() {
+    override public func update() {
         
         switch(backingCard.type){
         case .Article:
@@ -74,7 +74,7 @@ public class OneLineCardHeader : CardViewElement {
         }
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return 41
     }
 }

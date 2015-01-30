@@ -25,7 +25,7 @@ public class ReadMoreFooter: CardViewElement {
     private var verticalCenterConstraint:NSLayoutConstraint!
     private var leftConstraint:NSLayoutConstraint!
     
-    override func initializeElement() {
+    override public func initializeElement() {
         readMoreButton = UIButton.defaultReadMoreButton()
         addSubview(readMoreButton!)
         
@@ -35,8 +35,8 @@ public class ReadMoreFooter: CardViewElement {
         readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
-    override func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 40
+    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+        return 44
     }
     
     func readMoreButtonTapped(){

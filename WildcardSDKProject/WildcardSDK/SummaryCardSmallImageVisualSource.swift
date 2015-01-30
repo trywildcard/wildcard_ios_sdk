@@ -19,9 +19,12 @@ public class SummaryCardSmallImageVisualSource : CardViewVisualSource
         self.card = card
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
+        self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
+        self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
         self.footer.hairline.hidden = true
+        self.footer.viewOnWebButtonOffset = UIOffsetMake(15, self.footer.viewOnWebButtonOffset.vertical)
     }
     
     public func viewForCardHeader()->CardViewElement?{
@@ -45,7 +48,7 @@ public class SummaryCardSmallImageVisualSource : CardViewVisualSource
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return footer.optimizedHeight(widthForCard())
+        return 50
     }
     
     public func widthForCard()->CGFloat{
