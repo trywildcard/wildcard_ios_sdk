@@ -108,16 +108,25 @@ public class CardView : UIView
     /// The backing card for this CardView
     public var backingCard:Card!
     
+    /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned framed at default size.
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         return CardView.createCardView(card, layout: layoutToUse)
     }
     
+    /// Creates a CardView from a card with a prechosen layout. See WCCardLayout for layouts.
     public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
+        return CardView.createCardView(card, visualSource: datasource)
+    }
+
+    /// Creates a CardView from a card with a prechosen layout and width. The card's height will be calculated optimally from the width. You may choose various layouts to a get a height that is suitable.
+    public class func createCardView(card:Card, layout:WCCardLayout, cardWidth:CGFloat)->CardView?{
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:cardWidth)
         return CardView.createCardView(card, visualSource: datasource)
     }
     
+    /// Creates a CardView with a customized visual source. See tutorials on how to create your own visual source.
     public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
         let newCardView = CardView(frame: CGRectZero)
         
@@ -148,7 +157,7 @@ public class CardView : UIView
     
     public func reloadWithCard(newCard:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: newCard)
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: newCard, width:nil)
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     

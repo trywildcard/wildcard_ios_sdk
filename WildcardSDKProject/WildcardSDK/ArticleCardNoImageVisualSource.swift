@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ArticleCardNoImageVisualSource : BaseVisualSource {
+public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader
     var body:SingleParagraphCardBody
@@ -17,7 +17,6 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource {
     public override init(card:Card){
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        //self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
@@ -34,11 +33,11 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource {
         return header.optimizedHeight(widthForCard())
     }
     
-    public override func viewForCardBody()->CardViewElement{
+    public func viewForCardBody()->CardViewElement{
         return body
     }
     
-    public override func heightForCardBody()->CGFloat{
+    public func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -48,5 +47,9 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource {
     
     public func heightForCardFooter() -> CGFloat {
         return 60
+    }
+    
+    public override func widthForCard() -> CGFloat {
+        return super.widthForCard();
     }
 }

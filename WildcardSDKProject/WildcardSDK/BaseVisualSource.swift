@@ -9,7 +9,7 @@
 import Foundation
 
 /// Do not instantiate. You may derive from this if you are customizing your own visual source.
-public class BaseVisualSource: CardViewVisualSource
+public class BaseVisualSource
 {
     var card:Card
     var widthOverride:CGFloat? = nil
@@ -23,16 +23,6 @@ public class BaseVisualSource: CardViewVisualSource
     public init(card:Card){
         self.card = card
         self.defaultCardMargin = 15.0
-    }
-    
-    /// override
-    public func viewForCardBody()->CardViewElement{
-        return PlaceholderCardBody(frame:CGRectZero)
-    }
-    
-    /// override
-    public func heightForCardBody()->CGFloat{
-        return widthForCard()
     }
 
     /**
@@ -54,5 +44,4 @@ public class BaseVisualSource: CardViewVisualSource
             return widthOverride!
         }
     }
-    
 }

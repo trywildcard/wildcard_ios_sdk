@@ -29,7 +29,6 @@ class ViewController: UIViewController, CardViewDelegate {
             newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
             view.layoutIfNeeded()
         }
-      
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

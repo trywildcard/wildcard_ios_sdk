@@ -18,7 +18,7 @@ public extension UIViewController{
     
     /// Presents a Card with a specific layout
     public func presentCard(card:Card, layout:WCCardLayout){
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
         presentCard(card, customVisualSource: datasource)
     }
 
@@ -66,7 +66,11 @@ public extension UIViewController{
             if let actionParams = action.parameters{
                 let url = actionParams["url"] as NSURL
                 let activityItems:[AnyObject] = [url]
-                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+                let appActivity = SafariActivity()
+                let applicationActivities:[AnyObject] = [appActivity]
+                let exclusionActivities:[AnyObject] = [UIActivityTypeAirDrop]
+                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+                activityViewController.excludedActivityTypes = exclusionActivities
                 presentViewController(activityViewController, animated: true, completion: nil)
             }
             break

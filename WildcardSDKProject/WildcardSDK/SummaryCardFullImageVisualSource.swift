@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SummaryCardFullImageVisualSource : BaseVisualSource {
+public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader
     var body:ImageAndCaptionBody
@@ -19,7 +19,6 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource {
         self.aspectRatio = aspectRatio
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         self.header.hairline.hidden = true
-        //self.header.titleOffset = UIOffsetMake(15, self.header.titleOffset.vertical)
         self.body = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
         self.body.imageAspectRatio = aspectRatio
@@ -37,11 +36,11 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource {
         return header.optimizedHeight(widthForCard())
     }
     
-    public override func viewForCardBody()->CardViewElement{
+    public func viewForCardBody()->CardViewElement{
         return body
     }
     
-    public override func heightForCardBody()->CGFloat{
+    public func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -51,6 +50,10 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource {
     
     public func heightForCardFooter() -> CGFloat {
         return footer.optimizedHeight(widthForCard())
+    }
+    
+    public override func widthForCard() -> CGFloat {
+        return super.widthForCard();
     }
     
 }

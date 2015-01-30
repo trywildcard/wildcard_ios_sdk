@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class ArticleCardSmallImageVisualSource : BaseVisualSource
+public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:FullCardHeader
     var body:ImageFloatRightBody
@@ -33,11 +33,11 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource
         return header.optimizedHeight(widthForCard())
     }
     
-    public override func viewForCardBody()->CardViewElement{
+    public func viewForCardBody()->CardViewElement{
         return body
     }
     
-    public override func heightForCardBody()->CGFloat{
+    public func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -47,5 +47,9 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource
     
     public func heightForCardFooter() -> CGFloat {
         return 60
+    }
+    
+    public override func widthForCard() -> CGFloat {
+        return super.widthForCard();
     }
 }

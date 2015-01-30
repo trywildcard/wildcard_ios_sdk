@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SummaryCardNoImageVisualSource : BaseVisualSource{
+public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource{
     
     var header:FullCardHeader
     var body:SingleParagraphCardBody
@@ -18,7 +18,6 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource{
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         header.hairline.hidden = true
         header.logo.hidden = true
-        //header.titleOffset = UIOffsetMake(15, header.titleOffset.vertical)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
@@ -35,11 +34,11 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource{
         return header.optimizedHeight(widthForCard())
     }
     
-    public override func viewForCardBody()->CardViewElement{
+    public func viewForCardBody()->CardViewElement{
         return body;
     }
     
-    public override func heightForCardBody()->CGFloat{
+    public func heightForCardBody()->CGFloat{
         return body.optimizedHeight(widthForCard())
     }
     
@@ -49,5 +48,9 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource{
     
     public func heightForCardFooter()->CGFloat{
         return footer.optimizedHeight(widthForCard())
+    }
+    
+    public override func widthForCard() -> CGFloat {
+        return super.widthForCard();
     }
 }
