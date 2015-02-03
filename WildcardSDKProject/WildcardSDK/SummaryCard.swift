@@ -50,6 +50,12 @@ public class SummaryCard : Card {
         return summaryCard
     }
     
+    public override func supportsLayout(layout: WCCardLayout) -> Bool {
+        return layout == WCCardLayout.SummaryCard4x3FullImage ||
+            layout == WCCardLayout.SummaryCard4x3SmallImage ||
+            layout == WCCardLayout.SummaryCardNoImage
+    }
+    
     public class func createFromUrl(url:NSURL, completion: ((SummaryCard?, NSError?)->Void)) -> Void{
         Platform.sharedInstance.createSummaryCardFromUrl(url,completion:completion)
     }

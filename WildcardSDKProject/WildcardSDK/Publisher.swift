@@ -80,4 +80,5 @@ public class Publisher : PlatformObject {
             return .Unknown
         }
     }
+    
 }

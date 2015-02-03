@@ -84,6 +84,12 @@ public class ArticleCard : Card{
         return articleCard
     }
     
+    public override func supportsLayout(layout: WCCardLayout) -> Bool {
+        return layout == WCCardLayout.ArticleCard4x3FullImage ||
+            layout == WCCardLayout.ArticleCard4x3SmallImage ||
+            layout == WCCardLayout.ArticleCardNoImage
+    }
+    
     /**
     Attempts to create an Article Card from a URL.
     */

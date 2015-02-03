@@ -116,12 +116,20 @@ public class CardView : UIView
     
     /// Creates a CardView from a card with a prechosen layout. See WCCardLayout for layouts.
     public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
+        if(!card.supportsLayout(layout)){
+            println("Unsupported layout for this card type, returning nil.")
+            return nil
+        }
         let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
         return CardView.createCardView(card, visualSource: datasource)
     }
 
     /// Creates a CardView from a card with a prechosen layout and width. The card's height will be calculated optimally from the width. You may choose various layouts to a get a height that is suitable.
     public class func createCardView(card:Card, layout:WCCardLayout, cardWidth:CGFloat)->CardView?{
+        if(!card.supportsLayout(layout)){
+            println("Unsupported layout for this card type, returning nil.")
+            return nil
+        }
         let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:cardWidth)
         return CardView.createCardView(card, visualSource: datasource)
     }
@@ -147,20 +155,33 @@ public class CardView : UIView
         return newCardView
     }
     
-    // MARK: Public Instance
-    public func refresh(){
-        var cardViews:[CardViewElement?] = [header, body, footer, back]
-        for view in cardViews{
-            view?.update()
-        }
-    }
-    
+    /// ALPHA: Reloads the CardView with a new card. Autogenerates a layout
     public func reloadWithCard(newCard:Card){
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layoutToUse, card: newCard, width:nil)
+        return reloadWithCard(newCard, layout: layoutToUse)
+    }
+    
+    /// ALPHA: Reloads the CardView with a new card and specified layout.
+    public func reloadWithCard(newCard:Card, layout:WCCardLayout){
+        if(!newCard.supportsLayout(layout)){
+            println("Unsupported layout for this card type, nothing reloaded.")
+            return
+        }
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard, width:nil)
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     
+    /// ALPHA: Reloads the CardView with a new card, specified layout, and width.
+    public func reloadWithCard(newCard:Card, layout:WCCardLayout, cardWidth:CGFloat){
+        if(!newCard.supportsLayout(layout)){
+            println("Unsupported layout for this card type, nothing reloaded.")
+            return
+        }
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard, width:cardWidth)
+        reloadWithCard(newCard, visualSource: autoDatasource)
+    }
+    
+    /// ALPHA: Reloads the CardView with a custom visual source. See CardViewDelegate for callbacks.
     public func reloadWithCard(card:Card, visualSource:CardViewVisualSource){
         
         backingCard = card

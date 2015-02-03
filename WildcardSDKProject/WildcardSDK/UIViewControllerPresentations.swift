@@ -53,7 +53,7 @@ public extension UIViewController{
     /**
      The default way a UIViewController handle various Card Actions
     
-     It is recommended you use this from your UIViewControler of choice unless you are doing custom action handling.
+     It is recommended you use this from your UIViewController of choice unless you are doing custom action handling.
     */
     public func handleCardAction(cardView:CardView, action:CardViewAction){
         switch(action.type){

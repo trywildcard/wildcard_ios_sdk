@@ -86,12 +86,12 @@ public class FullCardHeader :CardViewElement
         
         // how tall would the title need to be for this width
         let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
-        height += ceil(expectedTitleSize.height)
+        height += expectedTitleSize.height
   
         // bottom margin below the title
         height += bottomPadding
         
-        return height
+        return ceil(height)
     }
     
 }

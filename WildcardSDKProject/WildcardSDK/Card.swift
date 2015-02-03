@@ -55,4 +55,8 @@ public class Card : NSObject, PlatformObject {
         }
         return nil
     }
+    
+    public func supportsLayout(layout:WCCardLayout)->Bool{
+        return false;
+    }
 }
