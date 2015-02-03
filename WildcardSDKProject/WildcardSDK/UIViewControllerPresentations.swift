@@ -39,20 +39,7 @@ public extension UIViewController{
         presentViewController(stockModal, animated: animated, completion: completion)
     }
     
-    /// ALPHA: Presents an array of Cards as a swipeable Stack
-    public func presentCardsAsStack(cards:[Card]){
-        if(cards.count < 4){
-            println("Can not present Deck with less than 4 Cards.")
-            return
-        }
-        let deckController = StockModalDeckViewController()
-        deckController.modalPresentationStyle = .Custom
-        deckController.transitioningDelegate = deckController
-        deckController.modalPresentationCapturesStatusBarAppearance = true
-        deckController.cards = cards
-        presentViewController(deckController, animated: true, completion: nil)
-    }
-    
+
     /**
      The default way a UIViewController handles various Card Actions
     
@@ -128,13 +115,25 @@ public extension UIViewController{
         viewController.maximizedCard = cardView.backingCard
         viewController.maximizedCardVisualSource = visualsource
         
-        let initialFrame = view.convertRect(cardView.frame, fromView: cardView.superview)
-        viewController.initialCardFrame = initialFrame
-        
         if( Utilities.validateMaximizeVisualSource(visualsource)){
             presentViewController(viewController, animated: true, completion: nil)
         }else{
             println("Can not maximize CardView due to dimension mismatch")
         }
     }
+    
+    /// ALPHA: Presents an array of Cards as a swipeable Stack
+    public func presentCardsAsStack(cards:[Card]){
+        if(cards.count < 4){
+            println("Can not present Deck with less than 4 Cards.")
+            return
+        }
+        let deckController = StockModalDeckViewController()
+        deckController.modalPresentationStyle = .Custom
+        deckController.transitioningDelegate = deckController
+        deckController.modalPresentationCapturesStatusBarAppearance = true
+        deckController.cards = cards
+        presentViewController(deckController, animated: true, completion: nil)
+    }
+    
 }

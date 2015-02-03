@@ -46,6 +46,8 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         
         view.addSubview(maximizedCardView!)
         
+        initialCardFrame = presentingViewController!.view.convertRect(presentingCardView.frame, fromView: presentingCardView.superview)
+        
         //initiailize constraints
         cardViewLeftConstraint = maximizedCardView?.constrainLeftToSuperView(initialCardFrame.origin.x)
         cardViewTopConstraint = maximizedCardView?.constrainTopToSuperView(initialCardFrame.origin.y)

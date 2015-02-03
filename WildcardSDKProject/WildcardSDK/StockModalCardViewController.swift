@@ -19,6 +19,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     var closeButtonTopConstraint:NSLayoutConstraint!
     var currentOrientation:UIInterfaceOrientation!
     var initialOrientation:UIInterfaceOrientation!
+    
     var cardViewVerticalConstraint:NSLayoutConstraint!
     var cardViewHorizontalConstraint:NSLayoutConstraint!
     var cardHeightConstraint:NSLayoutConstraint!

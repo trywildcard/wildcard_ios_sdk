@@ -12,7 +12,7 @@ import UIKit
 class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
-    let duration :NSTimeInterval = 0.4
+    let duration :NSTimeInterval = 0.5
     
     init(isPresenting: Bool) {
         self.isPresenting = isPresenting
@@ -42,7 +42,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         containerView.addSubview(presentedControllerView)
   
         maximizedController.view.layoutIfNeeded()
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
     
             // move card to maximized constraints
             maximizedController.updateInternalCardConstraints(rectConvert)
@@ -58,7 +58,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         let containerView = transitionContext.containerView()
         
         maximizedController.maximizedCardView?.fadeOut(duration/2, delay: 0, completion: nil)
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             
             // move card back to initial constraints
             maximizedController.updateInternalCardConstraints(maximizedController.initialCardFrame)
