@@ -14,17 +14,17 @@ class ViewController3: UIViewController, CardViewDelegate {
     var articleCard:ArticleCard?
     
     @IBAction func present1ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCard4x3FullImage)
+        presentCard(articleCard!, layout:.ArticleCard4x3FullImage, animated:true, completion:nil)
     }
     @IBAction func present2ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCard4x3SmallImage)
+        presentCard(articleCard!, layout:.ArticleCard4x3SmallImage, animated:true, completion:nil)
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         handleCardAction(cardView, action: action)
     }
     @IBAction func present3ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCardNoImage)
+        presentCard(articleCard!, layout:.ArticleCardNoImage, animated:true, completion:nil)
     }
     
     override func viewDidLoad() {

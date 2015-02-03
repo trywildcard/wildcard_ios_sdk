@@ -41,6 +41,8 @@ class StockModalCardAnimationController: NSObject,UIViewControllerAnimatedTransi
         
         if let stockModalController = presentedController as? StockModalCardViewController{
             // pop up the card
+            stockModalController.cardViewVerticalConstraint.constant = stockModalController.view.frame.size.height
+            stockModalController.view.layoutIfNeeded()
             if(stockModalController.cardView != nil){
                 UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                     stockModalController.cardViewVerticalConstraint!.constant = 0

@@ -27,7 +27,6 @@ class ViewController: UIViewController, CardViewDelegate {
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-50)
             newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
-            view.layoutIfNeeded()
         }
     }
     
@@ -36,17 +35,17 @@ class ViewController: UIViewController, CardViewDelegate {
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3FullImage)
+        presentCard(dummyCard!, layout:WCCardLayout.SummaryCard4x3FullImage, animated:true, completion:nil)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
         let google = NSURL(string: "http://www.google.com")
         let noImage = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", imageUrl:nil)
-        presentCard(noImage, layout: .SummaryCardNoImage)
+        presentCard(noImage, layout: .SummaryCardNoImage, animated:true, completion:nil)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3SmallImage)
+        presentCard(dummyCard!, layout:.SummaryCard4x3SmallImage, animated:true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -108,7 +108,7 @@ public class CardView : UIView
     /// The backing card for this CardView
     public var backingCard:Card!
     
-    /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned framed at default size.
+    /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned framed at a default size.
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
         return CardView.createCardView(card, layout: layoutToUse)

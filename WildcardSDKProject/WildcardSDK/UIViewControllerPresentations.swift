@@ -12,19 +12,22 @@ import StoreKit
 public extension UIViewController{
     
     /// Presents a Card with a best-fit layout
-    public func presentCard(card:Card){
-        presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card))
+    public func presentCard(card:Card, animated:Bool, completion:(() -> Void)?){
+        presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion)
     }
     
     /// Presents a Card with a specific layout
-    public func presentCard(card:Card, layout:WCCardLayout){
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
-        presentCard(card, customVisualSource: datasource)
+    public func presentCard(card:Card, layout:WCCardLayout, animated:Bool, completion:(() -> Void)?){
+        if(!card.supportsLayout(layout)){
+            println("Unsupported layout for this card type, can't present.")
+            return
+        }
+        let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
+        presentCard(card, customVisualSource: visualsource, animated: animated, completion: completion)
     }
 
     /// Presents a Card with a custom visual source
-    public func presentCard(card:Card, customVisualSource:CardViewVisualSource){
-        
+    public func presentCard(card:Card, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
         WildcardSDK.analytics?.trackEvent("PresentCard", withProperties: nil, withCard: card)
         
         let stockModal = StockModalCardViewController()
@@ -33,7 +36,7 @@ public extension UIViewController{
         stockModal.modalPresentationCapturesStatusBarAppearance = true
         stockModal.presentedCard = card
         stockModal.cardVisualSource = customVisualSource
-        presentViewController(stockModal, animated: true, completion: nil)
+        presentViewController(stockModal, animated: animated, completion: completion)
     }
     
     /// ALPHA: Presents an array of Cards as a swipeable Stack
@@ -51,7 +54,7 @@ public extension UIViewController{
     }
     
     /**
-     The default way a UIViewController handle various Card Actions
+     The default way a UIViewController handles various Card Actions
     
      It is recommended you use this from your UIViewController of choice unless you are doing custom action handling.
     */
