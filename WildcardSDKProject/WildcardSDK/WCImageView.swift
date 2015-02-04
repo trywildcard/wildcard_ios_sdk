@@ -34,7 +34,7 @@ public class WCImageView : UIImageView
             }
         }else{
             backgroundColor = UIColor.wildcardBackgroundGray()
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
             downloadTask =
             session.downloadTaskWithRequest(imageRequest,
                 completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
