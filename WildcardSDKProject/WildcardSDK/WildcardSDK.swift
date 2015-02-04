@@ -57,20 +57,37 @@ public class WildcardSDK {
         }
     }
     
-    /// Initialize the SDK
-    public class func initializeWithApiKey(key:String){
-        WildcardSDK.sharedInstance.__applicationKey = key
-        WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
+    /// Delegate queue for network request callbacks
+    public class var networkDelegateQueue:NSOperationQueue{
+        get{
+            return WildcardSDK.sharedInstance.__networkDelegateQueue;
+        }set{
+            WildcardSDK.sharedInstance.__networkDelegateQueue = newValue;
+        }
     }
     
-    // MARK: Private
+    /// Initialize the SDK
+    public class func initializeWithApiKey(key:String){
+        if(WildcardSDK.sharedInstance.__applicationKey == nil){
+            WildcardSDK.sharedInstance.__applicationKey = key
+            WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
+        }else{
+            println("Wildcard SDK can only be initialized once.")
+        }
+    }
+    
     class var analytics:WCAnalytics?{
         get{
             return WildcardSDK.sharedInstance.__analytics;
         }
     }
     
-    var __cardScreenMargin:CGFloat = 15.0
+    class var apiKey:String?{
+        get{
+            return WildcardSDK.sharedInstance.__applicationKey;
+        }
+    }
+    
     var __cardCornerRadius:CGFloat = 4.0
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
@@ -78,6 +95,7 @@ public class WildcardSDK {
     var __cardActionButtonFont:UIFont!
     var __applicationKey:String?
     var __analytics:WCAnalytics?
+    var __networkDelegateQueue:NSOperationQueue!
     
     class var sharedInstance : WildcardSDK{
         struct Static{
@@ -91,6 +109,7 @@ public class WildcardSDK {
             Static.instance!.__cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
             Static.instance!.__cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
             Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+            Static.instance!.__networkDelegateQueue = NSOperationQueue.mainQueue()
         })
         return Static.instance!
     }

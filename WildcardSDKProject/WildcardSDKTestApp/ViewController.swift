@@ -9,7 +9,7 @@
 import UIKit
 import WildcardSDK
 
-class ViewController: UIViewController, CardViewDelegate {
+class ViewController: UIViewController, CardViewDelegate, UITextViewDelegate {
     
     var dummyCard:SummaryCard?
     
@@ -50,6 +50,18 @@ class ViewController: UIViewController, CardViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        
+        ArticleCard.createFromUrl(URL, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+            if let card = card {
+                self.presentCard(card, animated: true, completion: nil)
+            }else{
+                UIApplication.sharedApplication().openURL(URL)
+            }
+        })
+        return false
     }
 }
 

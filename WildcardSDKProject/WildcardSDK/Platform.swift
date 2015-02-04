@@ -103,9 +103,6 @@ class Platform{
         var urlString = Platform.sharedInstance.platformBaseURL + "/v1.0/create_web_summary_card?url=" + targetUrlEncoded!
         let requestURL = NSURL(string:urlString)
         
-        println("CREATE SUMMARY CARD WITH")
-        println(url)
-        
         self.getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error: NSError?) -> Void in
             if(error == nil){
                 var summaryCard:SummaryCard?
@@ -121,49 +118,12 @@ class Platform{
                 completion(nil,error)
             }
         })
-        
-        /*
-        getJsonResponseFromWebUrl(requestURL!, completion: { (json:NSDictionary?, error:NSError?) -> Void in
-            if(error == nil){
-                var card:SummaryCard?
-                if let result = json!["result"] as? NSDictionary{
-                    var cardImageUrl:NSURL?
-                    var cardTitle:String?
-                    var cardDescription:String?
-                    if let image = result["primaryImageUrl"] as? String{
-                        cardImageUrl = NSURL(string: image)
-                    }else if let image = result["og:image"] as? String{
-                        cardImageUrl = NSURL(string: image)
-                    }
-                    
-                    if let title = result["title"] as? String {
-                        cardTitle = title
-                    }else if let title = result["og:title"] as? String{
-                        cardTitle = title
-                    }
-                    
-                    if let description = result["description"] as? String{
-                        cardDescription = description
-                    }else if let description = result["og:description"] as? String{
-                        cardDescription = description
-                    }
-                    
-                    if cardTitle != nil && cardDescription != nil{
-                        card = SummaryCard(url: url,description:cardDescription!, title:cardTitle!, imageUrl:cardImageUrl)
-                    }
-                }
-                completion(card, nil)
-            }else{
-                completion(nil,error)
-            }
-        })
-        */
     }
     
     // MARK: Private
     private func getJsonResponseFromWebUrl(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
     {
-        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue:WildcardSDK.networkDelegateQueue)
         var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             if(error != nil){
                 completion(nil, error)

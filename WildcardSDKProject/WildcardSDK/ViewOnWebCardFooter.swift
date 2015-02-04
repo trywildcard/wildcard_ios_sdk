@@ -49,10 +49,12 @@ public class ViewOnWebCardFooter: CardViewElement {
     }
     
     func shareButtonTapped(){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: backingCard)
         cardView.handleShare()
     }
     
     func viewOnWebButtonTapped(){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"viewOnWeb"], withCard: backingCard)
         cardView.handleViewOnWeb(backingCard.webUrl)
     }
     

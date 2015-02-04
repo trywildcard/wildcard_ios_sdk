@@ -28,7 +28,7 @@ public extension UIViewController{
 
     /// Presents a Card with a custom visual source
     public func presentCard(card:Card, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
-        WildcardSDK.analytics?.trackEvent("PresentCard", withProperties: nil, withCard: card)
+        WildcardSDK.analytics?.trackEvent("CardPresented", withProperties: nil, withCard: card)
         
         let stockModal = StockModalCardViewController()
         stockModal.modalPresentationStyle = .Custom
@@ -38,12 +38,11 @@ public extension UIViewController{
         stockModal.cardVisualSource = customVisualSource
         presentViewController(stockModal, animated: animated, completion: completion)
     }
-    
 
     /**
-     The default way a UIViewController handles various Card Actions
+     Default handling of various Card Actions by a UIViewController. Includes presenting share sheets, appstore sheets, etc.
     
-     It is recommended you use this from your UIViewController of choice unless you are doing custom action handling.
+     It is recommended you use this UIViewController extension/category to handle card actions. If a UIViewController is a CardViewDelegate, you can use this function directly in cardViewRequestedAction. This is essential to making the buttons on your cards responsive.
     */
     public func handleCardAction(cardView:CardView, action:CardViewAction){
         switch(action.type){

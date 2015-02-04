@@ -40,6 +40,7 @@ public class ReadMoreFooter: CardViewElement {
     }
     
     func readMoreButtonTapped(){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"readMore"], withCard: backingCard)
         cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Maximize, parameters: nil))
     }
 }

@@ -60,10 +60,12 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     }
     
     func actionButtonTapped(sender:AnyObject){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: backingCard)
         cardView.handleShare()
     }
     
     func downloadAppButtonTapped(sender:AnyObject){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"downloadApp"], withCard: backingCard)
         cardView.handleDownloadApp()
     }
     

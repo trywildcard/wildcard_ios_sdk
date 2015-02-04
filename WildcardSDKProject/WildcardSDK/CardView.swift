@@ -136,6 +136,12 @@ public class CardView : UIView
     
     /// Creates a CardView with a customized visual source. See tutorials on how to create your own visual source.
     public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
+        
+        if(WildcardSDK.apiKey == nil){
+            println("Wildcard API Key not initialized -- returning nil.")
+            return nil
+        }
+        
         let newCardView = CardView(frame: CGRectZero)
         
         // init data and visuals
@@ -242,6 +248,15 @@ public class CardView : UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
         convenienceInitialize()
+    }
+    
+    override public func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        // tracks a card impression when it gets added to a superview
+        if(hasSuperview()){
+            WildcardSDK.analytics?.trackEvent("CardViewMovedToSuperview", withProperties: nil, withCard: backingCard)
+        }
     }
     
     override public func awakeFromNib() {
