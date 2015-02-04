@@ -84,7 +84,7 @@ class WildcardSDKTests: XCTestCase {
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", imageUrl:imageUrl)
-        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3SmallImage)
+        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FullImage)
         
         // image with long title and short description
         let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", imageUrl:imageUrl)
@@ -109,7 +109,7 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
         
         let articleCard2 = ArticleCard(title: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog", html: "", url: url!, publisher:publisher)
-        XCTAssert(engine.matchLayout(articleCard2) == .ArticleCard4x3FullImage)
+        XCTAssert(engine.matchLayout(articleCard2) == .ArticleCardNoImage)
     }
     
     func testArticleGeneralSearch(){
@@ -122,6 +122,29 @@ class WildcardSDKTests: XCTestCase {
  
         waitForExpectationsWithTimeout(10, handler:{ error in
         })
+        
+    }
+    
+    func testBasicCardViews(){
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")
+        let publisher = Publisher(name:"Google")
+        
+        // no image results in default lay out
+        let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", imageUrl:nil)
+        
+        let view1:CardView = CardView.createCardView(SummaryCard1)!
+        XCTAssert(view1.frame.origin.x == 0)
+        XCTAssert(view1.frame.origin.y == 0)
+        XCTAssert(view1.frame.size.width > 0)
+        XCTAssert(view1.frame.size.height > 0)
+        
+        let view2:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.ArticleCard4x3FullImage)
+        XCTAssert(view2 == nil)
+        
+        let view3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, cardWidth:300)
+        XCTAssert(view3 != nil)
+        XCTAssert(view3!.frame.size.width  == 300)
         
     }
     

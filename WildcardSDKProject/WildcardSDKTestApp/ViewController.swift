@@ -21,12 +21,12 @@ class ViewController: UIViewController, CardViewDelegate{
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        if let newCardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage, cardWidth:250){
+        if let newCardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage){
             newCardView.delegate = self
             view.addSubview(newCardView)
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-50)
-            newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height + 300)
+            newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
         }
     }
     

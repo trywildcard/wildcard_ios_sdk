@@ -272,7 +272,6 @@ public class CardView : UIView
     override public func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        // tracks a card impression when it gets added to a superview
         if(hasSuperview()){
             WildcardSDK.analytics?.trackEvent("CardViewMovedToSuperview", withProperties: nil, withCard: backingCard)
         }
