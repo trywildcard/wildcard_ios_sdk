@@ -9,24 +9,24 @@
 import UIKit
 import WildcardSDK
 
-class ViewController: UIViewController, CardViewDelegate, UITextViewDelegate {
+class ViewController: UIViewController, CardViewDelegate{
     
-    var dummyCard:SummaryCard?
+    var card:SummaryCard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let google = NSURL(string: "http://www.google.com")
-        dummyCard = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
+        let google = NSURL(string: "http://www.yahoo.com")
+        card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        if let newCardView = CardView.createCardView(dummyCard!, layout:.SummaryCardNoImage){
+        if let newCardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage, cardWidth:250){
             newCardView.delegate = self
             view.addSubview(newCardView)
             newCardView.horizontallyCenterToSuperView(0)
             newCardView.verticallyCenterToSuperView(-50)
-            newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height)
+            newCardView.constrainWidth(newCardView.frame.size.width,height:newCardView.frame.size.height + 300)
         }
     }
     
@@ -35,7 +35,7 @@ class ViewController: UIViewController, CardViewDelegate, UITextViewDelegate {
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:WCCardLayout.SummaryCard4x3FullImage, animated:true, completion:nil)
+        presentCard(card!, layout:WCCardLayout.SummaryCard4x3FullImage, animated:true, completion:nil)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
@@ -45,23 +45,11 @@ class ViewController: UIViewController, CardViewDelegate, UITextViewDelegate {
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        presentCard(dummyCard!, layout:.SummaryCard4x3SmallImage, animated:true, completion:nil)
+        presentCard(card!, layout:.SummaryCard4x3SmallImage, animated:true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        
-        ArticleCard.createFromUrl(URL, completion: { (card:ArticleCard?, error:NSError?) -> Void in
-            if let card = card {
-                self.presentCard(card, animated: true, completion: nil)
-            }else{
-                UIApplication.sharedApplication().openURL(URL)
-            }
-        })
-        return false
     }
 }
 

@@ -18,6 +18,7 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
         header.hairline.hidden = true
         header.logo.hidden = true
+        header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
