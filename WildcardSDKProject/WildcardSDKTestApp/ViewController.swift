@@ -36,6 +36,7 @@ class ViewController: UIViewController, CardViewDelegate{
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
         presentCard(card!, layout:WCCardLayout.SummaryCard4x3FullImage, animated:true, completion:nil)
+        presentCard(card, animated: true, completion: nil)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {

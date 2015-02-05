@@ -23,9 +23,17 @@ class WildcardSDKTests: XCTestCase {
     func testArticleCard(){
         let expectation = expectationWithDescription("Creates Article Card")
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html")
-        ArticleCard.createFromUrl(articleUrl!, completion: { (card:ArticleCard?, error:NSError?) -> Void in
+        Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
             XCTAssert(card != nil)
             XCTAssert(error == nil)
+            XCTAssert(card?.cardType == "article")
+            
+            if let articleCard = card as? ArticleCard{
+                XCTAssert(true)
+                
+            }else{
+                XCTFail("not article")
+            }
             
             expectation.fulfill()
         })
@@ -33,6 +41,32 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
+    func testBogusArticleCard(){
+        let expectation = expectationWithDescription("Bogus Article Card")
+        let articleUrl = NSURL(string: "http://www.cnn.com/garbagegarbagebarge")
+        Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
+            XCTAssert(card == nil)
+            XCTAssert(error != nil)
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
+    func testSummaryCard(){
+        let expectation = expectationWithDescription("Bogus Article Card")
+        let articleUrl = NSURL(string: "http://www.cnn.com")
+        Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
+            XCTAssert(card == nil)
+            XCTAssert(error != nil)
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
+    
+    /*
     func testArticleCardLimitSearch(){
         let expectation = expectationWithDescription("Creates Article Card")
         let articleUrl = NSURL(string: "http://www.cnn.com/2014/12/03/justice/new-york-grand-jury-chokehold/index.html?hpt=ju_c2")
@@ -70,11 +104,12 @@ class WildcardSDKTests: XCTestCase {
         waitForExpectationsWithTimeout(10, handler:{ error in
         })
     }
+*/
     
     func testSummaryCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Publisher(name:"Google")
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
         
         // no image results in default lay out
         let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", imageUrl:nil)
@@ -99,36 +134,33 @@ class WildcardSDKTests: XCTestCase {
     func testArticleCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Publisher(name:"Google")
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
         
         // article card no image has default
-        let articleCard = ArticleCard(title: "default", html: "", url: url!, publisher:publisher)
+        let articleCard = ArticleCard(title: "default", abstractContent: "", url: url!, creator:publisher, data:NSDictionary())
         XCTAssert(engine.matchLayout(articleCard) == .ArticleCardNoImage)
         
-        articleCard.primaryImageURL = NSURL(string:"http://www.dummyimage.com")
-        XCTAssert(engine.matchLayout(articleCard) == .ArticleCard4x3FullImage)
-        
-        let articleCard2 = ArticleCard(title: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog", html: "", url: url!, publisher:publisher)
+        let articleCard2 = ArticleCard(title: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the dog", abstractContent: "", url: url!, creator:publisher, data:NSDictionary())
         XCTAssert(engine.matchLayout(articleCard2) == .ArticleCardNoImage)
-    }
-    
-    func testArticleGeneralSearch(){
-        let expectation = expectationWithDescription("General Article")
-        ArticleCard.search("isis") { (articleCards:[ArticleCard]?, error:NSError?) -> Void in
-            XCTAssert(error == nil)
-            XCTAssert(articleCards?.count > 0)
-            expectation.fulfill()
-        }
- 
-        waitForExpectationsWithTimeout(10, handler:{ error in
-        })
+        
+        let media:NSMutableDictionary = NSMutableDictionary()
+        media["imageUrl"] = "http://www.google.com"
+        media["type"] = "image"
+        
+        let articleData:NSMutableDictionary = NSMutableDictionary()
+        articleData["media"] = media
+        
+        let data:NSMutableDictionary = NSMutableDictionary()
+        data["article"] = articleData
+        let articleCard3 = ArticleCard(title: "default", abstractContent: "", url: url!, creator:publisher, data:data)
+        XCTAssert(engine.matchLayout(articleCard3) == WCCardLayout.ArticleCard4x3FullImage)
         
     }
     
     func testBasicCardViews(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Publisher(name:"Google")
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
         
         // no image results in default lay out
         let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", imageUrl:nil)

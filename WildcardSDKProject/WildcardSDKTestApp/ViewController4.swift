@@ -20,6 +20,7 @@ class ViewController4: UIViewController, CardViewDelegate {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         presentButton.enabled = false
+        /*
         ArticleCard.search("isis", completion: { (cards:[ArticleCard]?, error:NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.presentButton.enabled = true
@@ -28,6 +29,7 @@ class ViewController4: UIViewController, CardViewDelegate {
                 }
             })
         })
+*/
     }
     
     override func didReceiveMemoryWarning() {

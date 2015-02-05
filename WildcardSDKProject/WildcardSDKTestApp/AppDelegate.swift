@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        WildcardSDK.initializeWithApiKey("1337")
+        WildcardSDK.initializeWithApiKey("b17442d4-5ca1-4173-bc90-bb9ee60086ab")
         return true
     }
 

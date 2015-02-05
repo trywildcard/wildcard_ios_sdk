@@ -322,7 +322,7 @@ public class CardView : UIView
     
     func handleDownloadApp(){
         if let articleCard = backingCard as? ArticleCard{
-            if let url = articleCard.publisher.appStoreUrl {
+            if let url = articleCard.creator.iosAppStoreUrl {
                 var lastComponent:NSString = url.lastPathComponent!
                 var id = lastComponent.substringFromIndex(2) as NSString
                 var params:NSDictionary = ["id":id]

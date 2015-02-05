@@ -52,10 +52,11 @@
 		1D3ECFC41A40EC3F0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
 		1D3ECFC51A40ED6A0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
 		1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */; };
-		1D3ECFC91A4151370001BF7A /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC81A4151370001BF7A /* Publisher.swift */; };
+		1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC81A4151370001BF7A /* Creator.swift */; };
 		1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */; };
+		1D66D4B71A840AD900DCDFC8 /* WCErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D6719AC1A44A952006DA49A /* StockModalCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */; };
 		1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */; };
 		1D6719B01A44AA7A006DA49A /* StockModalCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */; };
@@ -203,9 +204,10 @@
 		1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextImageFloatRight.swift; sourceTree = "<group>"; };
 		1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextImageFloatRight.xib; sourceTree = "<group>"; };
 		1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMoreCardFooter.swift; sourceTree = "<group>"; };
-		1D3ECFC81A4151370001BF7A /* Publisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		1D3ECFC81A4151370001BF7A /* Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCErrorCode.h; sourceTree = "<group>"; };
 		1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardPresentationController.swift; sourceTree = "<group>"; };
 		1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardViewController.swift; sourceTree = "<group>"; };
 		1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardAnimationController.swift; sourceTree = "<group>"; };
@@ -426,7 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				1D904F981A2FDD5B001FFDEA /* Card.swift */,
-				1D3ECFC81A4151370001BF7A /* Publisher.swift */,
+				1D3ECFC81A4151370001BF7A /* Creator.swift */,
 				1DF62C1D1A65C7AA006C2CC3 /* Cards */,
 			);
 			name = Models;
@@ -562,6 +564,7 @@
 				1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */,
 				1DF1B8C31A6B846A000EC76E /* WCCardType.h */,
 				1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */,
+				1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */,
 			);
 			name = "Public Headers";
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D66D4B71A840AD900DCDFC8 /* WCErrorCode.h in Headers */,
 				1D32C5181A799BDD0021D27A /* WCAnalytics.h in Headers */,
 				1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */,
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
@@ -837,7 +841,7 @@
 				1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
-				1D3ECFC91A4151370001BF7A /* Publisher.swift in Sources */,
+				1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */,
 				1DA163901A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift in Sources */,
 				1DF1B8CB1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,

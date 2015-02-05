@@ -15,24 +15,58 @@ Article Card
 public class ArticleCard : Card{
     
     public let title:String
-    public let html:String
-    public let publisher:Publisher
+    public let creator:Creator
+    public let abstractContent:String?
     
-    public var publicationDate:NSDate?
-    public var isBreaking:Bool?
-    public var abstractContent:String?
-    public var source:String?
-    public var author:String?
-    public var updatedDate:NSDate?
-    public var media:[NSDictionary]?
-    public var appLinkAndroid:NSURL?
-    public var appLinkIOS:NSURL?
-    public var primaryImageURL:NSURL?
+    public let keywords:[String]?
+    public let html:String?
+    public let publicationDate:NSDate?
+    public let isBreaking:Bool?
+    public let source:String?
+    public let author:String?
+    public let updatedDate:NSDate?
+    public let media:NSDictionary?
+    public let appLinkAndroid:NSURL?
+    public let appLinkIos:NSURL?
+    public let primaryImageURL:NSURL?
     
-    public init(title:String,html:String, url:NSURL,publisher:Publisher){
+    public init(title:String, abstractContent:String, url:NSURL,creator:Creator, data:NSDictionary){
         self.title = title
-        self.html = html
-        self.publisher = publisher
+        self.abstractContent = abstractContent
+        self.creator = creator
+        self.keywords = data["keywords"] as? [String]
+        
+        if let url = data["appLinkAndroid"] as? String{
+            self.appLinkAndroid = NSURL(string: url)
+        }
+        if let url = data["appLinkIos"] as? String{
+            self.appLinkIos = NSURL(string: url)
+        }
+        
+        // optional fields from article data
+        if let article = data["article"] as? NSDictionary{
+            if let epochTime = article["publicationDate"] as? NSTimeInterval{
+                self.publicationDate = NSDate(timeIntervalSince1970: epochTime/1000)
+            }
+            
+            if let epochTime = article["updatedDate"] as? NSTimeInterval{
+                self.updatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
+            }
+            
+            self.html = article["html"] as? String
+            self.author = article["author"] as? String
+            self.source = article["source"] as? String
+            self.isBreaking = article["isBreaking"] as? Bool
+            self.media = article["media"] as? NSDictionary
+            
+            if self.media != nil{
+                if self.media!["type"] as String == "image"{
+                    let imageUrl = self.media!["imageUrl"] as String
+                    self.primaryImageURL = NSURL(string:imageUrl)
+                }
+            }
+        }
+        
         super.init(webUrl: url, cardType: "article")
     }
     
@@ -41,44 +75,21 @@ public class ArticleCard : Card{
         
         var startURL:NSURL?
         var title:String?
-        var html:String?
-        var publisher:Publisher?
-        if let urlString = data["startUrl"] as? String{
+        var abstractContent:String?
+        var creator:Creator?
+        if let urlString = data["webUrl"] as? String{
             startURL = NSURL(string:urlString)
         }
         
-        if let brandData = data["brand"] as? NSDictionary{
-            publisher = Publisher.deserializeFromData(brandData) as? Publisher
+        if let creatorData = data["creator"] as? NSDictionary{
+            creator = Creator.deserializeFromData(creatorData) as? Creator
         }
         
         if let article = data["article"] as? NSDictionary{
             title = article["title"] as? String
-            html = article["html"] as? String
-            if(title != nil && html != nil && startURL != nil && publisher != nil){
-                articleCard = ArticleCard(title: title!, html: html!, url: startURL!, publisher:publisher!)
-                
-                if let epochTime = article["publishedAt"] as? NSTimeInterval{
-                    articleCard?.publicationDate = NSDate(timeIntervalSince1970: epochTime/1000)
-                }
-                
-                if let epochTime = article["lastUpdatedAt"] as? NSTimeInterval{
-                    articleCard?.updatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
-                }
-                
-                articleCard?.abstractContent = article["description"] as? String
-                articleCard?.author = article["author"] as? String
-                articleCard?.source = article["source"] as? String
-                articleCard?.isBreaking = article["breaking"] as? Bool
-                articleCard?.media = article["media"] as? [NSDictionary]
-                
-                if articleCard?.media != nil && articleCard?.media?.count > 0{
-                    if let mediaDictionary = articleCard?.media![0]{
-                        if mediaDictionary["type"] as String == "image"{
-                            let src = mediaDictionary["src"] as String
-                            articleCard?.primaryImageURL = NSURL(string:src)
-                        }
-                    }
-                }
+            abstractContent = article["abstractContent"] as? String
+            if(title != nil && abstractContent != nil && startURL != nil && creator != nil){
+                articleCard = ArticleCard(title: title!, abstractContent: abstractContent!, url: startURL!, creator:creator!, data:data)
             }
         }
         return articleCard
@@ -89,39 +100,5 @@ public class ArticleCard : Card{
             layout == WCCardLayout.ArticleCard4x3SmallImage ||
             layout == WCCardLayout.ArticleCardNoImage
     }
-    
-    /**
-    Attempts to create an Article Card from a URL.
-    */
-    public class func createFromUrl(url:NSURL, completion: ((ArticleCard?, NSError?)->Void)) -> Void{
-        Platform.sharedInstance.getArticleCardFromWebUrl(url,completion:completion)
-    }
-    
-    /**
-    Searches for Article Cards from a given query. Caps out at 10 cards.
-    */
-    public class func search(query:String, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
-        search(query, limit: 10, completion: completion)
-    }
-    
-    /**
-    Searches for Article Cards from a given query with an arbitrary limit.
-    */
-    public class func search(query:String, limit:Int, completion: (([ArticleCard]?, NSError?)->Void)) -> Void{
-        Platform.sharedInstance.generalSearchFromQuery(query, limit:limit, vertical:"news", completion: { (cards:[Card]?, error:NSError?) -> Void in
-            if(error != nil){
-                completion(nil,error)
-            }else{
-                var articleCards:[ArticleCard] = []
-                for card in cards!{
-                    if let articleCard = card as? ArticleCard{
-                        articleCards.append(articleCard)
-                    }
-                }
-                completion(articleCards,nil)
-            }
-        })
-    }
-    
     
 }

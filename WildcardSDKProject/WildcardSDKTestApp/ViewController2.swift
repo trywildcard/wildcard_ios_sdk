@@ -101,6 +101,7 @@ class ViewController2: UIViewController, CardViewDelegate {
                         reRenderButton.enabled = false
                         spinner.startAnimating()
                         
+                        /*
                         SummaryCard.createFromUrl(url, completion: { (card:SummaryCard?, error:NSError?) -> Void in
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 self.spinner.stopAnimating()
@@ -110,6 +111,7 @@ class ViewController2: UIViewController, CardViewDelegate {
                                 }
                             })
                         })
+                        */
                     }
                 }
             }

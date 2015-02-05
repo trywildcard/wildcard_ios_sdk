@@ -62,9 +62,9 @@ public class FullCardHeader :CardViewElement
         switch(backingCard.type){
         case .Article:
             let articleCard = cardView.backingCard as ArticleCard
-            kicker.text = articleCard.publisher.name
+            kicker.text = articleCard.creator.name
             title.text = articleCard.title
-            if let url = articleCard.publisher.smallLogoUrl{
+            if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleToFill)
             }
         case .Summary:

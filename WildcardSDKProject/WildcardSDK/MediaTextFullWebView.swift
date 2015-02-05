@@ -41,7 +41,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     override func update() {
         if let articleCard = cardView.backingCard as? ArticleCard{
             // top right favicon
-            if let url = articleCard.publisher.smallLogoUrl{
+            if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
                     if(image != nil){
                         self.logo.image = image!
@@ -80,7 +80,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         barButtonItems.append(flexSpace)
         
         if let articleCard = cardView.backingCard as? ArticleCard{
-            if let appStoreUrl = articleCard.publisher.appStoreUrl {
+            if let appStoreUrl = articleCard.creator.iosAppStoreUrl {
                 
                 // publisher logo
                 var imageButton = UIBarButtonItem(customView: downloadAppIcon)
@@ -132,7 +132,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
              finalHtml +=  "<div id=\"customWildcardByline\">\(bylineDisplay!)</div>"
         }
         
-        finalHtml += articleCard.html
+        finalHtml += articleCard.html!
         
         finalHtml += "<div><center><span class=\"viewMore\"><a id=\"viewOnWeb\" href=\"\(articleCard.webUrl)\">VIEW ON WEB</a></span></div><br></br>"
 

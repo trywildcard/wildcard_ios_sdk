@@ -41,16 +41,21 @@ public class Card : NSObject, PlatformObject {
             return "unknown"
         }
     }
+
+    /// Gets a card from the specified URL
+    public class func getFromUrl(url:NSURL, completion: ((Card?, NSError?)->Void)) -> Void{
+        Platform.sharedInstance.getFromUrl(url, completion:completion)
+    }
     
     class func deserializeFromData(data: NSDictionary) -> AnyObject? {
-        if let cardTypeDict = data["cardType"] as? NSDictionary{
-            if let cardTypeValue = cardTypeDict["name"] as? String{
-                switch(cardTypeValue){
-                case "article":
-                    return ArticleCard.deserializeFromData(data) as? ArticleCard
-                default:
-                    return nil
-                }
+        if let cardType = data["cardType"] as? String{
+            switch(cardType){
+            case "article":
+                return ArticleCard.deserializeFromData(data) as? ArticleCard
+            case "summary":
+                return SummaryCard.deserializeFromData(data) as? SummaryCard
+            default:
+                return nil
             }
         }
         return nil
@@ -59,4 +64,6 @@ public class Card : NSObject, PlatformObject {
     public func supportsLayout(layout:WCCardLayout)->Bool{
         return false;
     }
+    
+    
 }
