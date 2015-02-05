@@ -23,8 +23,8 @@ class CheckImageEdge : LayoutDecisionEdge
                 let articleCard = card as ArticleCard
                 return articleCard.primaryImageURL != nil
             case .Summary:
-                let webLinkCard = card as SummaryCard
-                return webLinkCard.imageUrl != nil
+                let summaryCard = card as SummaryCard
+                return summaryCard.primaryImageURL != nil
             }
         }
         return false

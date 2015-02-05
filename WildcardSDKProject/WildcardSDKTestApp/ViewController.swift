@@ -16,8 +16,13 @@ class ViewController: UIViewController, CardViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let media:NSMutableDictionary = NSMutableDictionary()
+        media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
+        media["type"] = "image"
+        
+        
         let google = NSURL(string: "http://www.yahoo.com")
-        card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", imageUrl:NSURL(string: "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"))
+        card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
@@ -41,7 +46,7 @@ class ViewController: UIViewController, CardViewDelegate{
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
         let google = NSURL(string: "http://www.google.com")
-        let noImage = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", imageUrl:nil)
+        let noImage = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", media:nil, data:nil)
         presentCard(noImage, layout: .SummaryCardNoImage, animated:true, completion:nil)
     }
     

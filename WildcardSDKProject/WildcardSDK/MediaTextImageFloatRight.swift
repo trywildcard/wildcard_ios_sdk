@@ -52,7 +52,7 @@ public class MediaTextImageFloatRight : CardViewElement{
             abstractContent = articleCard.abstractContent
         case .Summary:
             let summaryCard = cardView.backingCard as SummaryCard
-            imageUrl = summaryCard.imageUrl
+            imageUrl = summaryCard.primaryImageURL
             abstractContent = summaryCard.description
         case .Unknown:
             imageUrl = nil

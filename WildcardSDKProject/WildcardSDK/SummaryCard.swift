@@ -14,12 +14,32 @@ public class SummaryCard : Card {
     
     public let title:String
     public let abstractContent:String
-    public let imageUrl:NSURL?
+    public let media:NSDictionary?
+    public let primaryImageURL:NSURL?
+    public let appLinkAndroid:NSURL?
+    public let appLinkIos:NSURL?
     
-    public init(url:NSURL, description:String, title:String, imageUrl:NSURL?){
+    public init(url:NSURL, description:String, title:String, media:NSDictionary?, data:NSDictionary?){
         self.title = String(htmlEncodedString: title)
         self.abstractContent = String(htmlEncodedString: description)
-        self.imageUrl = imageUrl
+        self.media = media
+        
+        if let dataDict = data{
+            if let url = dataDict["appLinkAndroid"] as? String{
+                self.appLinkAndroid = NSURL(string: url)
+            }
+            if let url = dataDict["appLinkIos"] as? String{
+                self.appLinkIos = NSURL(string: url)
+            }
+        }
+        
+        if self.media != nil {
+            if self.media!["type"] as String == "image"{
+                let imageUrl = self.media!["imageUrl"] as String
+                self.primaryImageURL = NSURL(string:imageUrl)
+            }
+        }
+        
         super.init(webUrl: url, cardType: "summary")
     }
     
@@ -29,7 +49,7 @@ public class SummaryCard : Card {
         var title:String?
         var description:String?
         
-        if let urlString = data["startUrl"] as? String{
+        if let urlString = data["webUrl"] as? String{
             startURL = NSURL(string:urlString)
         }
         
@@ -37,14 +57,8 @@ public class SummaryCard : Card {
             title = summary["title"] as? String
             description = summary["description"] as? String
             if(title != nil && startURL != nil && description != nil){
-                
-                var imageURL:NSURL?
-                if let image = summary["image"] as? NSDictionary{
-                    if let imageSrc = image["src"] as? String{
-                        imageURL = NSURL(string:imageSrc)
-                    }
-                }
-                summaryCard = SummaryCard(url: startURL!, description: description!, title: title!, imageUrl: imageURL)
+                let media = summary["media"] as? NSDictionary
+                summaryCard = SummaryCard(url: startURL!, description: description!, title: title!, media:media, data:data)
             }
         }
         return summaryCard

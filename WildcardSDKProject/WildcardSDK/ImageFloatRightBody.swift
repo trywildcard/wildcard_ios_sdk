@@ -59,7 +59,7 @@ public class ImageFloatRightBody : CardViewElement
             descriptionLabel.text = summaryCard.abstractContent
             
             // download image
-            if let imageUrl = summaryCard.imageUrl{
+            if let imageUrl = summaryCard.primaryImageURL{
                 imageView.setImageWithURL(imageUrl, mode:.ScaleAspectFill)
             }
         }else if let articleCard = cardView.backingCard as? ArticleCard{

@@ -563,8 +563,8 @@
 				1DF5B7161A6D602200788BCA /* WCCardAction.h */,
 				1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */,
 				1DF1B8C31A6B846A000EC76E /* WCCardType.h */,
-				1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */,
 				1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */,
+				1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */,
 			);
 			name = "Public Headers";
 			sourceTree = "<group>";

@@ -54,7 +54,7 @@ public class ImageOnlyBody : CardViewElement{
             imageUrl = articleCard.primaryImageURL
         case .Summary:
             let webLinkCard = cardView.backingCard as SummaryCard
-            imageUrl = webLinkCard.imageUrl
+            imageUrl = webLinkCard.primaryImageURL
         case .Unknown:
             imageUrl = nil
         }

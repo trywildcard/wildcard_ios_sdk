@@ -30,7 +30,7 @@ class ViewController2: UIViewController, CardViewDelegate {
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let google = NSURL(string: "http://www.google.com")
-        let dummyCard = SummaryCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", imageUrl:nil)
+        let dummyCard = SummaryCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", media:nil, data:nil)
         let bareBones = SummaryCardNoImageVisualSource(card:dummyCard)
         if let cardView = CardView.createCardView(dummyCard, visualSource: bareBones){
             view.addSubview(cardView)
@@ -94,7 +94,7 @@ class ViewController2: UIViewController, CardViewDelegate {
                     if (urlString.rangeOfString("jpg") != nil || urlString.rangeOfString("png") != nil){
                         let params = NSMutableDictionary()
                         params["primaryImageUrl"] = urlString
-                        let webLinkCard = SummaryCard(url: url, description: title, title: title, imageUrl:nil)
+                        let webLinkCard = SummaryCard(url: url, description: title, title: title, media:nil, data:nil)
                         self.mainCardView!.reloadWithCard(webLinkCard)
                     }
                     else{
