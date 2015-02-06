@@ -38,19 +38,27 @@ static NSString* WildcardSDKMixPanelToken = @"cf7fb0f874022223ca36a735676aea25";
     [self.mp timeEvent:event];
 }
 
+-(void)trackEvent:(NSString*)event withProperties:(NSDictionary*)properties
+{
+    [self trackEvent:event withProperties:properties withCard:nil];
+}
+
 -(void)trackEvent:(NSString*)event withProperties:(NSDictionary*)properties withCard:(Card*)card
 {
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionary];
-    dictionary[@"cardType"] = card.cardType;
-    dictionary[@"webURL"] = card.webUrl.absoluteString;
-    dictionary[@"apiKey"] = self.apiKey;
     
-    if([card isKindOfClass:[ArticleCard class]]){
-        ArticleCard* articleCard = (ArticleCard*)card;
-        dictionary[@"cardTitle"] = articleCard.title;
-    }else if([card isKindOfClass:[SummaryCard class]]){
-        SummaryCard* summaryCard = (SummaryCard*)card;
-        dictionary[@"cardTitle"] = summaryCard.title;
+    if(card != nil){
+        dictionary[@"cardType"] = card.cardType;
+        dictionary[@"webURL"] = card.webUrl.absoluteString;
+        dictionary[@"apiKey"] = self.apiKey;
+        
+        if([card isKindOfClass:[ArticleCard class]]){
+            ArticleCard* articleCard = (ArticleCard*)card;
+            dictionary[@"cardTitle"] = articleCard.title;
+        }else if([card isKindOfClass:[SummaryCard class]]){
+            SummaryCard* summaryCard = (SummaryCard*)card;
+            dictionary[@"cardTitle"] = summaryCard.title;
+        }
     }
     [dictionary addEntriesFromDictionary:properties];
     [self.mp track:event properties:dictionary];

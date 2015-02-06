@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public class MediaTextImageFloatRight : CardViewElement{
     
     @IBOutlet weak public var cardImage: WCImageView!

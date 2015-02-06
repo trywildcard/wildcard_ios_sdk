@@ -9,6 +9,7 @@
 import Foundation
 
 /// Do not instantiate. You may derive from this if you are customizing your own visual source.
+@objc
 public class BaseVisualSource
 {
     var card:Card

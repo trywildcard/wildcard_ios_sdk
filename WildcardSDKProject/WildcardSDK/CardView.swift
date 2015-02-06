@@ -155,6 +155,8 @@ public class CardView : UIView
             return nil
         }
         
+        WildcardSDK.analytics?.trackEvent("CardViewCreated", withProperties: nil, withCard: card)
+        
         let newCardView = CardView(frame: CGRectZero)
         
         // init data and visuals

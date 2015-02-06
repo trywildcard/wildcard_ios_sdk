@@ -8,7 +8,8 @@
 
 import Foundation
 
-class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
+@objc
+public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
     @IBOutlet weak var logo: WCImageView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
@@ -17,7 +18,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     var downloadAppIcon:UIImageView!
     
     // MARK: CardViewElement
-    override func initializeElement() {
+    override public func initializeElement() {
         logo.layer.cornerRadius = 3.0
         logo.layer.masksToBounds = true
         webview.delegate = self
@@ -38,7 +39,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         downloadAppIcon.layer.masksToBounds = true
     }
     
-    override func update() {
+    override public func update() {
         if let articleCard = cardView.backingCard as? ArticleCard{
             // top right favicon
             if let url = articleCard.creator.favicon{
@@ -154,7 +155,7 @@ class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     }
     
     // MARK: UIWebViewDelegate
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if(navigationType == .LinkClicked){
             cardView.handleViewOnWeb(request.URL)
             return false

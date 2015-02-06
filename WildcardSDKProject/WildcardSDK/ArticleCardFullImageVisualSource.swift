@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader

@@ -11,6 +11,7 @@ import Foundation
 /**
 Most basic card body consisting of just a paragraph label
 */
+@objc
 public class SingleParagraphCardBody : CardViewElement {
     
     public var paragraphLabel:UILabel!

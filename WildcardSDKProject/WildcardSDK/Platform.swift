@@ -49,6 +49,11 @@ class Platform{
     func getFromUrl(url:NSURL, completion: ((card:Card?, error:NSError?)->Void)) -> Void
     {
         if (WildcardSDK.apiKey != nil){
+            
+            let params = NSMutableDictionary()
+            params["url"] = url.absoluteString
+            WildcardSDK.analytics?.trackEvent("GetCardCalled", withProperties: params, withCard: nil)
+            
             var urlParam = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             var urlString = Platform.sharedInstance.PLATFORM_BASE_URL +
             "/public/\(API_VERSION)/get_card?api_key=\(WildcardSDK.apiKey!)&web_url=\(urlParam)"
@@ -61,6 +66,7 @@ class Platform{
                         let deserializeError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.CardDeserializationError.rawValue, userInfo: nil)
                         completion(card:nil,error:deserializeError)
                     }else{
+                        WildcardSDK.analytics?.trackEvent("GetCardSuccess", withProperties: nil, withCard: returnCard!)
                         completion(card:returnCard,error:nil)
                     }
                 }else{
@@ -74,7 +80,6 @@ class Platform{
         }
     }
     
-    
     // MARK: Private
     private func getCardJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
     {
@@ -86,7 +91,6 @@ class Platform{
                 var jsonError:NSError?
                 var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
                 if (jsonError == nil) {
-                    // if let result = json!["result"] as? NSDictionary{
                     let httpResponse = response as NSHTTPURLResponse
                     if(httpResponse.statusCode == 400){
                         let badRequestError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.BadRequest.rawValue, userInfo: json!)
