@@ -64,13 +64,13 @@ public class CardLayoutEngine{
         portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
         // MARK: Portrait - Article Card
-        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCardShort)
+        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCardTall)
         let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
         // MARK: Portrait - Summary Card
-        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCardShort)
+        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCardTall)
         let summaryCardHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardNode.addEdge(CheckImageEdge(), destination: summaryCardHasImage)

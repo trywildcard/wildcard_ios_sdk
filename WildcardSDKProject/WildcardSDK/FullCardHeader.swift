@@ -39,6 +39,8 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak public var title: UILabel!
     public var hairline:UIView!
     
+    
+    // MARK: Private
     @IBOutlet weak private var kickerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!

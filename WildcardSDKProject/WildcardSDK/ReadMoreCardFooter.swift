@@ -8,11 +8,11 @@
 
 import Foundation
 
+@objc
 public class ReadMoreFooter: CardViewElement {
     
     public var readMoreButton:UIButton!
-    
-    public var readMoreButtonOffset:UIOffset!{
+    public var buttonOffset:UIOffset!{
         get{
             return UIOffset(horizontal: leftConstraint.constant, vertical: verticalCenterConstraint.constant)
         }
@@ -22,6 +22,7 @@ public class ReadMoreFooter: CardViewElement {
         }
     }
     
+    // MARK: Private
     private var verticalCenterConstraint:NSLayoutConstraint!
     private var leftConstraint:NSLayoutConstraint!
     
@@ -30,7 +31,7 @@ public class ReadMoreFooter: CardViewElement {
         addSubview(readMoreButton!)
         
         verticalCenterConstraint = readMoreButton.verticallyCenterToSuperView(0)
-        leftConstraint = readMoreButton.constrainLeftToSuperView(10)
+        leftConstraint = readMoreButton.constrainLeftToSuperView(15)
         
         readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }

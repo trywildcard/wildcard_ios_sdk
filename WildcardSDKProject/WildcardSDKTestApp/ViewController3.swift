@@ -35,10 +35,13 @@ class ViewController3: UIViewController, CardViewDelegate {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.wildcardBackgroundGray()
-
-        let articleUrl = NSURL(string: "http://pitchfork.com/news/58110-aap-mob-founder-aap-yams-has-died/")
+        
+        let articleUrl = NSURL(string: "http://www.engadget.com/2015/02/05/one-dollar-lightning-cable/")
+        
+        //let articleUrl = NSURL(string: "http://pitchfork.com/news/58110-aap-mob-founder-aap-yams-has-died/")
         Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
             if(card != nil){
+                self.articleCard = card as? ArticleCard
                 if let newCardView = CardView.createCardView(card!, layout: .ArticleCardNoImage){
                     newCardView.delegate = self
                     self.view.addSubview(newCardView)

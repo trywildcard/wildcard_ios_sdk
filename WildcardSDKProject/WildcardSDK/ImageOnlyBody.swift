@@ -8,11 +8,12 @@
 
 import Foundation
 
+@objc
 public class ImageOnlyBody : CardViewElement{
     
-    public var image:WCImageView!
+    public var imageView:WCImageView!
     public var imageAspectRatio:CGFloat = 0.75
-    public var imageEdgeInsets:UIEdgeInsets{
+    public var contentEdgeInsets:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
@@ -31,16 +32,16 @@ public class ImageOnlyBody : CardViewElement{
     
     override public func initializeElement(){
         
-        image = WCImageView(frame: CGRectZero)
-        image.layer.cornerRadius = 2.0
-        image.layer.masksToBounds = true
-        image.backgroundColor = UIColor.whiteColor()
-        addSubview(image)
+        imageView = WCImageView(frame: CGRectZero)
+        imageView.layer.cornerRadius = 2.0
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = UIColor.whiteColor()
+        addSubview(imageView)
         
-        leftConstraint = image.constrainLeftToSuperView(10)
-        rightConstraint = image.constrainRightToSuperView(10)
-        topConstraint = image.constrainTopToSuperView(10)
-        bottomConstraint = image.constrainBottomToSuperView(10)
+        leftConstraint = imageView.constrainLeftToSuperView(10)
+        rightConstraint = imageView.constrainRightToSuperView(10)
+        topConstraint = imageView.constrainTopToSuperView(10)
+        bottomConstraint = imageView.constrainBottomToSuperView(10)
     }
     
     override public func update() {
@@ -61,7 +62,7 @@ public class ImageOnlyBody : CardViewElement{
         
         // download image
         if let url = imageUrl {
-            image.setImageWithURL(url, mode: .ScaleAspectFill)
+            imageView.setImageWithURL(url, mode: .ScaleAspectFill)
         }
     }
     

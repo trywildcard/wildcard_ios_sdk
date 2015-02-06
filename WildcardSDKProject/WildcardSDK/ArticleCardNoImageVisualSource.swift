@@ -13,6 +13,7 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     var header:FullCardHeader
     var body:SingleParagraphCardBody
     var footer:ReadMoreFooter
+    var footerWeb:ViewOnWebCardFooter
     
     public override init(card:Card){
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
@@ -20,7 +21,8 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         self.body = SingleParagraphCardBody(frame:CGRectZero)
         self.body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
-        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
+        self.footerWeb = ViewOnWebCardFooter(frame:CGRectZero)
+        self.footerWeb.hairline.hidden = true
         
         super.init(card: card)
     }
@@ -42,11 +44,16 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        return footer
+        let articleCard = card as ArticleCard
+        if(articleCard.html == nil){
+            return footerWeb
+        }else{
+            return footer
+        }
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return 60
+        return 50
     }
     
     public override func widthForCard() -> CGFloat {

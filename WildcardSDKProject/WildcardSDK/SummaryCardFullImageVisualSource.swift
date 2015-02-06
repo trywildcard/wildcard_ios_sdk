@@ -23,7 +23,6 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisual
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
         self.body.imageAspectRatio = aspectRatio
         self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footer.viewOnWebButtonOffset = UIOffsetMake(15, 0)
         self.footer.hairline.hidden = true
         super.init(card: card)
     }

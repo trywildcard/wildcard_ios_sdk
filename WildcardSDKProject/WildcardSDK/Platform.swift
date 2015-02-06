@@ -54,7 +54,7 @@ class Platform{
             "/public/\(API_VERSION)/get_card?api_key=\(WildcardSDK.apiKey!)&web_url=\(urlParam)"
             
             let platformUrl = NSURL(string:urlString)!
-            getJsonResponseFromPlatform(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
+            getCardJsonResponseFromPlatform(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
                 if(error == nil){
                     var returnCard = Card.deserializeFromData(json!) as? Card
                     if (returnCard == nil){
@@ -76,7 +76,7 @@ class Platform{
     
     
     // MARK: Private
-    private func getJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
+    private func getCardJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
     {
         var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue:WildcardSDK.networkDelegateQueue)
         var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
@@ -111,6 +111,26 @@ class Platform{
                         let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.Unknown.rawValue, userInfo: json!)
                         completion(nil,error)
                     }
+                }
+                else {
+                    completion(nil,jsonError)
+                }
+            }
+        })
+        task.resume()
+    }
+    
+    private func getJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
+    {
+        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue:WildcardSDK.networkDelegateQueue)
+        var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
+            if(error != nil){
+                completion(nil, error)
+            }else{
+                var jsonError:NSError?
+                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
+                if (jsonError == nil) {
+                    completion(json!,nil)
                 }
                 else {
                     completion(nil,jsonError)

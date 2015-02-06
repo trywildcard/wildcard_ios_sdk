@@ -57,6 +57,7 @@
 		1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
 		1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */; };
 		1D66D4B71A840AD900DCDFC8 /* WCErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D66D4C21A856DF600DCDFC8 /* SummaryCardImageOnlyVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66D4C11A856DF500DCDFC8 /* SummaryCardImageOnlyVisualSource.swift */; };
 		1D6719AC1A44A952006DA49A /* StockModalCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */; };
 		1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */; };
 		1D6719B01A44AA7A006DA49A /* StockModalCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */; };
@@ -208,6 +209,7 @@
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCErrorCode.h; sourceTree = "<group>"; };
+		1D66D4C11A856DF500DCDFC8 /* SummaryCardImageOnlyVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardImageOnlyVisualSource.swift; sourceTree = "<group>"; };
 		1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardPresentationController.swift; sourceTree = "<group>"; };
 		1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardViewController.swift; sourceTree = "<group>"; };
 		1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalCardAnimationController.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */,
 				1DA1638F1A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift */,
 				1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */,
+				1D66D4C11A856DF500DCDFC8 /* SummaryCardImageOnlyVisualSource.swift */,
 			);
 			name = "Summary Card Visual Sources";
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
 				1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */,
+				1D66D4C21A856DF600DCDFC8 /* SummaryCardImageOnlyVisualSource.swift in Sources */,
 				1DFFEDD31A400843008E65BC /* PlaceholderCardBody.swift in Sources */,
 				1D9764861A43747C00E51FE5 /* StockMaximizedCardViewController.swift in Sources */,
 				1D6719B01A44AA7A006DA49A /* StockModalCardAnimationController.swift in Sources */,

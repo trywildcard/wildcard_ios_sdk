@@ -40,14 +40,11 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(card!, layout:WCCardLayout.SummaryCardTall, animated:true, completion:nil)
-        presentCard(card, animated: true, completion: nil)
+        presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {
-        let google = NSURL(string: "http://www.google.com")
-        let noImage = SummaryCard(url:google!, description: "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.er the lazy dog.er the lazy dog.", title: "The Card Title -- Cards! Oh Yea!", media:nil, data:nil)
-        presentCard(noImage, layout: .SummaryCardNoImage, animated:true, completion:nil)
+        presentCard(card!, layout: .SummaryCardImageOnly, animated:true, completion:nil)
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {

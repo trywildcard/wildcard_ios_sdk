@@ -21,7 +21,6 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
         self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
-        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
         super.init(card: card)
     }
     

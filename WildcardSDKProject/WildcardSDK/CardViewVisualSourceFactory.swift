@@ -26,6 +26,10 @@ class CardViewVisualSourceFactory {
             var source = SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
             source.widthOverride = width
             return source
+        case .SummaryCardImageOnly:
+            var source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.75)
+            source.widthOverride = width
+            return source
         case .ArticleCardNoImage:
             var source = ArticleCardNoImageVisualSource(card:card)
             source.widthOverride = width

@@ -23,7 +23,6 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
         self.body.imageAspectRatio = aspectRatio
         self.footer = ReadMoreFooter(frame:CGRectZero)
-        self.footer.readMoreButtonOffset = UIOffsetMake(15, 0)
         super.init(card:card)
     }
     
