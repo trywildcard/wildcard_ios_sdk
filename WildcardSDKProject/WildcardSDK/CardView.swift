@@ -305,7 +305,9 @@ public class CardView : UIView
     
     // MARK: Instance
     func handleShare(){
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         Platform.sharedInstance.createWildcardShortLink(backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             if let shareUrl = url {
                 var params:NSDictionary = ["url":shareUrl]
                 let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)

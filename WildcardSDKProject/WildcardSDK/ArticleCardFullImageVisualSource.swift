@@ -14,6 +14,7 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
     var body:ImageAndCaptionBody
     var footer:ReadMoreFooter
     var aspectRatio:CGFloat
+    var footerWeb:ViewOnWebCardFooter
     
     public init(card:Card, aspectRatio:CGFloat){
         self.aspectRatio = aspectRatio
@@ -23,6 +24,8 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
         self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
         self.body.imageAspectRatio = aspectRatio
         self.footer = ReadMoreFooter(frame:CGRectZero)
+        self.footerWeb = ViewOnWebCardFooter(frame:CGRectZero)
+        self.footerWeb.hairline.hidden = true
         super.init(card:card)
     }
     
@@ -43,11 +46,16 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        return footer
+        let articleCard = card as ArticleCard
+        if(articleCard.html == nil){
+            return footerWeb
+        }else{
+            return footer
+        }
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return 60
+        return 50
     }
     
     public override func widthForCard() -> CGFloat {

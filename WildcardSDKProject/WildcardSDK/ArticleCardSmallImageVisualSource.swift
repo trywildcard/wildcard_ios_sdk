@@ -14,6 +14,7 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
     var header:FullCardHeader
     var body:ImageFloatRightBody
     var footer:ReadMoreFooter
+    var footerWeb:ViewOnWebCardFooter
     
     public override init(card:Card){
         self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
@@ -21,6 +22,8 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
         self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 0, 15)
         self.footer = ReadMoreFooter(frame:CGRectZero)
+        self.footerWeb = ViewOnWebCardFooter(frame:CGRectZero)
+        self.footerWeb.hairline.hidden = true
         super.init(card: card)
     }
     
@@ -41,11 +44,16 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        return footer
+        let articleCard = card as ArticleCard
+        if(articleCard.html == nil){
+            return footerWeb
+        }else{
+            return footer
+        }
     }
     
     public func heightForCardFooter() -> CGFloat {
-        return 60
+        return 50
     }
     
     public override func widthForCard() -> CGFloat {
