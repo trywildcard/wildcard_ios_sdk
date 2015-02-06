@@ -90,29 +90,15 @@ class ViewController2: UIViewController, CardViewDelegate {
         if let urlString = data["url"] as? String{
             if let title = data["title"] as? String{
                 if let url = NSURL(string: urlString) {
-                    // manually create a card if the url is just a jpg or png
-                    if (urlString.rangeOfString("jpg") != nil || urlString.rangeOfString("png") != nil){
-                        let params = NSMutableDictionary()
-                        params["primaryImageUrl"] = urlString
-                        let webLinkCard = SummaryCard(url: url, description: title, title: title, media:nil, data:nil)
-                        self.mainCardView!.reloadWithCard(webLinkCard)
-                    }
-                    else{
-                        reRenderButton.enabled = false
-                        spinner.startAnimating()
-                        
-                        /*
-                        SummaryCard.createFromUrl(url, completion: { (card:SummaryCard?, error:NSError?) -> Void in
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.spinner.stopAnimating()
-                                self.reRenderButton.enabled = true
-                                if (error == nil && card != nil){
-                                    self.mainCardView!.reloadWithCard(card!)
-                                }
-                            })
-                        })
-                        */
-                    }
+                    reRenderButton.enabled = false
+                    spinner.startAnimating()
+                    Card.getFromUrl(url, completion: { (card:Card?, error:NSError?) -> Void in
+                        self.reRenderButton.enabled = true
+                        self.spinner.stopAnimating()
+                        if(error == nil && card != nil){
+                            self.mainCardView!.reloadWithCard(card!)
+                        }
+                    })
                 }
             }
         }

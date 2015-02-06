@@ -151,7 +151,7 @@ public class CardView : UIView
     public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
         
         if(WildcardSDK.apiKey == nil){
-            println("Wildcard API Key not initialized -- returning nil.")
+            println("Wildcard API Key not initialized -- can't create CardView.")
             return nil
         }
         
@@ -161,20 +161,23 @@ public class CardView : UIView
         newCardView.backingCard = card
         newCardView.visualSource = visualSource
         
-        // layout card elements
-        if (newCardView.layoutCardComponents() == false){
+        if(newCardView.initializeCardComponents()){
+            let currentSize = newCardView.calculateCurrentSize()
+            
+            // layout card elements
+            newCardView.frame = CGRectMake(0, 0, currentSize.width, currentSize.height)
+            newCardView.layoutCardComponents()
+            
+            // layout the card view before returning
+            newCardView.layoutIfNeeded()
+            
+            newCardView.notifyCardViewElementsFinishedLayout()
+            
+            return newCardView
+        }else{
             println("Could not create CardView -- layout problem in visual source.")
             return nil
         }
-        
-        // layout the card view before returning
-        let size = Utilities.sizeFromVisualSource(visualSource)
-        newCardView.frame = CGRectMake(0, 0, size.width, size.height)
-        newCardView.layoutIfNeeded()
-        
-        newCardView.notifyCardViewElementsFinishedLayout()
-        
-        return newCardView
     }
     
     /// ALPHA: Reloads the CardView with a new card. Autogenerates a layout
@@ -203,7 +206,7 @@ public class CardView : UIView
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     
-    /// ALPHA: Reloads the CardView with a custom visual source. See CardViewDelegate for callbacks.
+    /// ALPHA: Reloads the CardView with a custom visual source.
     public func reloadWithCard(card:Card, visualSource:CardViewVisualSource){
         
         backingCard = card
@@ -214,16 +217,15 @@ public class CardView : UIView
         // remove old card subviews
         removeCardSubviews()
         
-        // layout components
-        if(layoutCardComponents() == false){
+        if(initializeCardComponents() == false){
             println("Could not reload CardView -- layout problem in visual source.")
             return
         }
         
-        // calculate new card frame, let delegate prepare
-        let newSize = Utilities.sizeFromVisualSource(visualSource)
+        // let delegate prepare before layout happens
+        let newSize = calculateCurrentSize()
         delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
-        frame = CGRectMake(frame.origin.x, frame.origin.y, newSize.width, newSize.height)
+        layoutCardComponents()
         layoutIfNeeded()
         
         notifyCardViewElementsFinishedLayout()
@@ -260,8 +262,12 @@ public class CardView : UIView
     var containerView:UIView!
     var back:CardViewElement?
     var header:CardViewElement?
+    var headerHeight:CGFloat?
     var body:CardViewElement!
+    var bodyHeight:CGFloat!
     var footer:CardViewElement?
+    var footerHeight:CGFloat?
+    var width:CGFloat!
     
     // MARK: UIView
     override init(frame: CGRect) {
@@ -273,7 +279,7 @@ public class CardView : UIView
         super.didMoveToSuperview()
         
         if(hasSuperview()){
-            WildcardSDK.analytics?.trackEvent("CardViewMovedToSuperview", withProperties: nil, withCard: backingCard)
+            WildcardSDK.analytics?.trackEvent("CardViewDisplayed", withProperties: nil, withCard: backingCard)
         }
     }
     
@@ -344,14 +350,45 @@ public class CardView : UIView
         }
     }
     
-    private func layoutCardComponents()->Bool{
-        // validity checks
-        var headerHeight:CGFloat! = visualSource.heightForCardHeader?()
-        var bodyHeight:CGFloat = visualSource.heightForCardBody()
-        var footerHeight:CGFloat! = visualSource.heightForCardFooter?()
+    private func calculateCurrentSize()->CGSize{
+        var height:CGFloat = 0.0
+        
+        if(headerHeight != nil){
+            height += headerHeight!
+        }
+        
+        height += bodyHeight
+        
+        if(footerHeight != nil){
+            height += footerHeight!
+        }
+        
+        return CGSizeMake(width, height)
+    }
+    
+    private func initializeCardComponents()->Bool{
         header = visualSource.viewForCardHeader?()
         body = visualSource.viewForCardBody()
         footer = visualSource.viewForCardFooter?()
+        
+        // initialize and update before height calculations
+        body.cardView = self
+        body.update()
+        header?.cardView = self
+        header?.update()
+        footer?.cardView = self
+        footer?.update()
+        
+        // validity checks
+        headerHeight = visualSource.heightForCardHeader?()
+        bodyHeight = visualSource.heightForCardBody()
+        footerHeight = visualSource.heightForCardFooter?()
+        width = visualSource.widthForCard()
+        
+        if(width <= 0){
+            println("Visual source width must be greater than 0.")
+            return false
+        }
         
         if(bodyHeight <= 0){
             println("Visual source body height must be greater than 0.")
@@ -370,7 +407,7 @@ public class CardView : UIView
             }
         }
         
-        if(footer != nil && footerHeight? <= 0){
+        if(footer != nil){
             if(footerHeight == nil){
                 println("Visual source defines a footer but footer height is nil.")
                 return false
@@ -381,22 +418,17 @@ public class CardView : UIView
                 }
             }
         }
-        
-        // initialize
-        body.cardView = self
-        body.update()
-        header?.cardView = self
-        header?.update()
-        footer?.cardView = self
-        footer?.update()
-        
+        return true
+    }
+    
+    private func layoutCardComponents()->Bool{
         // header and footer always stick to top and bottom
         if(header != nil){
             containerView.addSubview(header!)
             header!.constrainLeftToSuperView(0)
             header!.constrainRightToSuperView(0)
             header!.constrainTopToSuperView(0)
-            header!.constrainHeight(headerHeight)
+            header!.constrainHeight(headerHeight!)
         }
         
         if(footer != nil){
@@ -404,13 +436,14 @@ public class CardView : UIView
             footer!.constrainLeftToSuperView(0)
             footer!.constrainRightToSuperView(0)
             footer!.constrainBottomToSuperView(0)
-            footer!.constrainHeight(footerHeight)
+            footer!.constrainHeight(footerHeight!)
         }
         
-        // card body layout has 4 possibilities
         containerView.addSubview(body)
         body.constrainLeftToSuperView(0)
         body.constrainRightToSuperView(0)
+        
+        // card body layout has 4 height layout possibilities
         if(header == nil && footer == nil){
             body.constrainToSuperViewEdges()
         }else if(header != nil && footer == nil){

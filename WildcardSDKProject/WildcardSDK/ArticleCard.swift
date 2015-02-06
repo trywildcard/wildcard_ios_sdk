@@ -53,7 +53,7 @@ public class ArticleCard : Card{
                 self.updatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
             }
             
-            self.html = article["html"] as? String
+            self.html = article["htmlContent"] as? String
             self.author = article["author"] as? String
             self.source = article["source"] as? String
             self.isBreaking = article["isBreaking"] as? Bool
