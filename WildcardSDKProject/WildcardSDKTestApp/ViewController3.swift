@@ -14,13 +14,17 @@ class ViewController3: UIViewController, CardViewDelegate {
     var articleCard:ArticleCard?
     
     @IBAction func present1ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCard4x3FullImage, animated:true, completion:nil)
+        presentCard(articleCard!, layout:.ArticleCardTall, animated:true, completion:nil)
     }
     @IBAction func present2ButtonTapped(sender: AnyObject) {
-        presentCard(articleCard!, layout:.ArticleCard4x3SmallImage, animated:true, completion:nil)
+        presentCard(articleCard!, layout:.ArticleCardShort, animated:true, completion:nil)
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        
+        // any custom actions handling, analytics, etc.
+        
+        // Let Wildcard handle the Card Action
         handleCardAction(cardView, action: action)
     }
     @IBAction func present3ButtonTapped(sender: AnyObject) {

@@ -46,7 +46,7 @@ class Platform{
         }
     }
     
-    func getFromUrl(url:NSURL, completion: ((Card?, NSError?)->Void)) -> Void
+    func getFromUrl(url:NSURL, completion: ((card:Card?, error:NSError?)->Void)) -> Void
     {
         if (WildcardSDK.apiKey != nil){
             var urlParam = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
@@ -59,18 +59,18 @@ class Platform{
                     var returnCard = Card.deserializeFromData(json!) as? Card
                     if (returnCard == nil){
                         let deserializeError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.CardDeserializationError.rawValue, userInfo: nil)
-                        completion(nil,deserializeError)
+                        completion(card:nil,error:deserializeError)
                     }else{
-                        completion(returnCard,nil)
+                        completion(card:returnCard,error:nil)
                     }
                 }else{
-                    completion(nil,error)
+                    completion(card:nil,error:error)
                 }
             }
             
         }else{
             let notInitializedError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.UninitializedAPIKey.rawValue, userInfo:nil)
-            completion(nil,notInitializedError)
+            completion(card:nil,error:notInitializedError)
         }
     }
     

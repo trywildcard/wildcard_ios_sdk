@@ -43,7 +43,7 @@ public class Card : NSObject, PlatformObject {
     }
 
     /// Gets a card from the specified URL
-    public class func getFromUrl(url:NSURL, completion: ((Card?, NSError?)->Void)) -> Void{
+    public class func getFromUrl(url:NSURL, completion: ((card:Card?, completion:NSError?)->Void)) -> Void{
         Platform.sharedInstance.getFromUrl(url, completion:completion)
     }
     

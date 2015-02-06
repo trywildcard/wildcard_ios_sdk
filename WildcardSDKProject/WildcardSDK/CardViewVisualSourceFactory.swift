@@ -18,11 +18,11 @@ class CardViewVisualSourceFactory {
             var source = SummaryCardNoImageVisualSource(card:card)
             source.widthOverride = width
             return source
-        case .SummaryCard4x3SmallImage:
+        case .SummaryCardShort:
             var source = SummaryCardSmallImageVisualSource(card:card)
             source.widthOverride = width
             return source
-        case .SummaryCard4x3FullImage:
+        case .SummaryCardTall:
             var source = SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
             source.widthOverride = width
             return source
@@ -30,11 +30,11 @@ class CardViewVisualSourceFactory {
             var source = ArticleCardNoImageVisualSource(card:card)
             source.widthOverride = width
             return source
-        case .ArticleCard4x3FullImage:
+        case .ArticleCardTall:
             var source = ArticleCardFullImageVisualSource(card:card, aspectRatio: 0.75)
             source.widthOverride = width
             return source
-        case .ArticleCard4x3SmallImage:
+        case .ArticleCardShort:
             var source = ArticleCardSmallImageVisualSource(card:card)
             source.widthOverride = width
             return source

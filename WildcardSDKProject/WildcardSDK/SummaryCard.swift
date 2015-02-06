@@ -65,8 +65,8 @@ public class SummaryCard : Card {
     }
     
     public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.SummaryCard4x3FullImage ||
-            layout == WCCardLayout.SummaryCard4x3SmallImage ||
+        return layout == WCCardLayout.SummaryCardTall ||
+            layout == WCCardLayout.SummaryCardShort ||
             layout == WCCardLayout.SummaryCardNoImage
     }
 }

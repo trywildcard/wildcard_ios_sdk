@@ -93,8 +93,6 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
-   
-    
     func testSummaryCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
@@ -112,15 +110,15 @@ class WildcardSDKTests: XCTestCase {
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", media:media, data:nil)
-        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCard4x3FullImage)
+        XCTAssert(engine.matchLayout(SummaryCard2) == .SummaryCardTall)
         
         // image with long title and short description
         let SummaryCard3 = SummaryCard(url: url!, description: "test2", title: "longer title generates a different layout", media:media, data:nil)
-        XCTAssert(engine.matchLayout(SummaryCard3) == .SummaryCard4x3FullImage)
+        XCTAssert(engine.matchLayout(SummaryCard3) == .SummaryCardTall)
         
         // image with long title and long description
         let SummaryCard4 = SummaryCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", media:media, data:nil)
-        XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCard4x3FullImage)
+        XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCardTall)
         
     }
     
@@ -146,7 +144,7 @@ class WildcardSDKTests: XCTestCase {
         let data:NSMutableDictionary = NSMutableDictionary()
         data["article"] = articleData
         let articleCard3 = ArticleCard(title: "default", abstractContent: "", url: url!, creator:publisher, data:data)
-        XCTAssert(engine.matchLayout(articleCard3) == WCCardLayout.ArticleCard4x3FullImage)
+        XCTAssert(engine.matchLayout(articleCard3) == WCCardLayout.ArticleCardTall)
         
     }
     
@@ -156,7 +154,7 @@ class WildcardSDKTests: XCTestCase {
         let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
         
         // no image results in default lay out
-        let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", media:nil, data:nil)
+        let SummaryCard1 = SummaryCard(url: url!, description: "The quick brown fox jumped over the lazy dog. This is a long description.", title: "test1", media:nil, data:nil)
         
         let view1:CardView = CardView.createCardView(SummaryCard1)!
         XCTAssert(view1.frame.origin.x == 0)
@@ -164,12 +162,17 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(view1.frame.size.width > 0)
         XCTAssert(view1.frame.size.height > 0)
         
-        let view2:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.ArticleCard4x3FullImage)
+        let view2:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.ArticleCardTall)
         XCTAssert(view2 == nil)
         
         let view3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, cardWidth:300)
         XCTAssert(view3 != nil)
         XCTAssert(view3!.frame.size.width  == 300)
+        
+        let fatterView3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, cardWidth:150)
+        XCTAssert(fatterView3 != nil)
+        XCTAssert(fatterView3!.frame.size.width == 150)
+        XCTAssert(fatterView3!.frame.size.height > view3!.frame.size.height)
         
     }
     

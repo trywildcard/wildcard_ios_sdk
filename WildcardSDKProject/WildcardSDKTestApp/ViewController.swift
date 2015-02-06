@@ -40,7 +40,7 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(card!, layout:WCCardLayout.SummaryCard4x3FullImage, animated:true, completion:nil)
+        presentCard(card!, layout:WCCardLayout.SummaryCardTall, animated:true, completion:nil)
         presentCard(card, animated: true, completion: nil)
     }
   
@@ -51,7 +51,7 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     @IBAction func secondButtonTapped(sender: AnyObject) {
-        presentCard(card!, layout:.SummaryCard4x3SmallImage, animated:true, completion:nil)
+        presentCard(card!, layout:.SummaryCardShort, animated:true, completion:nil)
     }
     
     override func didReceiveMemoryWarning() {

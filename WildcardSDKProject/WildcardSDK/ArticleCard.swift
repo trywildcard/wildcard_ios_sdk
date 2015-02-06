@@ -96,8 +96,8 @@ public class ArticleCard : Card{
     }
     
     public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.ArticleCard4x3FullImage ||
-            layout == WCCardLayout.ArticleCard4x3SmallImage ||
+        return layout == WCCardLayout.ArticleCardTall ||
+            layout == WCCardLayout.ArticleCardShort ||
             layout == WCCardLayout.ArticleCardNoImage
     }
     

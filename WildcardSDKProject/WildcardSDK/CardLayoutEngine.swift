@@ -44,14 +44,14 @@ public class CardLayoutEngine{
         landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
         
         // MARK: Landscape - Summary Card
-        let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCard4x3SmallImage)
+        let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardShort)
         let summaryLandscapeHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardLandscapeNode.addEdge(CheckImageEdge(), destination: summaryLandscapeHasImage)
         summaryCardLandscapeNode.addEdge(PassThroughEdge(), destination: summaryLandscapeHasNoImage)
         
         // MARK: Landscape - Article Card
-        let articleLandscapeHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3SmallImage)
+        let articleLandscapeHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCardShort)
         let articleLandscapeHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         
         articleCardLandscapeNode.addEdge(CheckImageEdge(), destination: articleLandscapeHasImage)
@@ -64,13 +64,13 @@ public class CardLayoutEngine{
         portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
         
         // MARK: Portrait - Article Card
-        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCard4x3FullImage)
+        let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCardShort)
         let articleCardHasNoImage = LayoutDecisionNode(description: "Article card has no image", layout: .ArticleCardNoImage)
         articleCardNode.addEdge(CheckImageEdge(), destination: articleCardHasImage)
         articleCardNode.addEdge(PassThroughEdge(), destination: articleCardHasNoImage)
         
         // MARK: Portrait - Summary Card
-        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCard4x3FullImage)
+        let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCardShort)
         let summaryCardHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
         
         summaryCardNode.addEdge(CheckImageEdge(), destination: summaryCardHasImage)
