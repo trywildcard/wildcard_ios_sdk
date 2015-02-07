@@ -60,15 +60,4 @@ public class Creator : PlatformObject {
             return nil
         }
     }
-    
-    class func publisherTypeFromString(type:String) -> WCPublisherType{
-        if(type == "Commerce"){
-            return .Commerce
-        }else if(type == "Content"){
-            return .Content
-        }else{
-            return .Unknown
-        }
-    }
-    
 }

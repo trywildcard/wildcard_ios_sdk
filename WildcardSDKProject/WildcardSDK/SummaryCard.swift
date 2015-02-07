@@ -20,8 +20,8 @@ public class SummaryCard : Card {
     public let appLinkIos:NSURL?
     
     public init(url:NSURL, description:String, title:String, media:NSDictionary?, data:NSDictionary?){
-        self.title = String(htmlEncodedString: title)
-        self.abstractContent = String(htmlEncodedString: description)
+        self.title = title
+        self.abstractContent = description
         self.media = media
         
         if let dataDict = data{

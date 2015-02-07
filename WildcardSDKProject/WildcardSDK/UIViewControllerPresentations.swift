@@ -30,6 +30,10 @@ public extension UIViewController{
     public func presentCard(card:Card, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
         WildcardSDK.analytics?.trackEvent("CardPresented", withProperties: nil, withCard: card)
         
+        let testCrash:String? = nil
+        println(testCrash!)
+        
+        
         let stockModal = StockModalCardViewController()
         stockModal.modalPresentationStyle = .Custom
         stockModal.transitioningDelegate = stockModal

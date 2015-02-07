@@ -127,6 +127,12 @@ public class CardView : UIView
         return CardView.createCardView(card, layout: layoutToUse)
     }
     
+    /// Creates a CardView from a card with specified width. A layout will be chosen automatically.
+    public class func createCardView(card:Card, cardWidth:CGFloat)->CardView?{
+        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+        return CardView.createCardView(card, layout: layoutToUse, cardWidth:cardWidth)
+    }
+    
     /// Creates a CardView from a card with a prechosen layout. See WCCardLayout for layouts.
     public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
         if(!card.supportsLayout(layout)){

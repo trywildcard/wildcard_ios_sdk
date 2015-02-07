@@ -24,25 +24,26 @@ class Platform{
         return Static.instance
     }
     
-    func createWildcardShortLink(url:NSURL, completion:((NSURL?,NSError?)->Void)) ->Void
+    func createWildcardShortLink(url:NSURL, completion:((url:NSURL?,error:NSError?)->Void)) ->Void
     {
         var targetUrlEncoded = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var urlString = Platform.sharedInstance.PLATFORM_BASE_URL + "/v1.0/shortlink?url=" + targetUrlEncoded!
-        let shortLinkPlatformUrl = NSURL(string:urlString)!
-        getJsonResponseFromPlatform(shortLinkPlatformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
-            if(error == nil){
-                if(json != nil){
+        if let shortLinkPlatformUrl = NSURL(string:urlString){
+            getJsonResponseFromPlatform(shortLinkPlatformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
+                if(error == nil){
                     if let shortLink = json!["short_link_result"] as? String{
-                        completion(NSURL(string: shortLink),nil)
+                        completion(url:NSURL(string: shortLink),error:nil)
                     }else{
-                        completion(nil,NSError())
+                        let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedResponse.rawValue, userInfo: nil)
+                        completion(url:nil, error:error)
                     }
                 }else{
-                    completion(nil,NSError())
+                    completion(url:nil,error:error)
                 }
-            }else{
-                completion(nil,error)
             }
+        }else{
+            let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedRequest.rawValue, userInfo: nil)
+            completion(url:nil,error:error)
         }
     }
     
@@ -58,20 +59,24 @@ class Platform{
             var urlString = Platform.sharedInstance.PLATFORM_BASE_URL +
             "/public/\(API_VERSION)/get_card?api_key=\(WildcardSDK.apiKey!)&web_url=\(urlParam)"
             
-            let platformUrl = NSURL(string:urlString)!
-            getCardJsonResponseFromPlatform(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
-                if(error == nil){
-                    var returnCard = Card.deserializeFromData(json!) as? Card
-                    if (returnCard == nil){
-                        let deserializeError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.CardDeserializationError.rawValue, userInfo: nil)
-                        completion(card:nil,error:deserializeError)
+            if let platformUrl = NSURL(string:urlString){
+                getCardJsonResponseFromPlatform(platformUrl) { (json:NSDictionary?, error:NSError?) -> Void in
+                    if(error == nil){
+                        var returnCard = Card.deserializeFromData(json!) as? Card
+                        if (returnCard == nil){
+                            let deserializeError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.CardDeserializationError.rawValue, userInfo: nil)
+                            completion(card:nil,error:deserializeError)
+                        }else{
+                            WildcardSDK.analytics?.trackEvent("GetCardSuccess", withProperties: nil, withCard: returnCard!)
+                            completion(card:returnCard,error:nil)
+                        }
                     }else{
-                        WildcardSDK.analytics?.trackEvent("GetCardSuccess", withProperties: nil, withCard: returnCard!)
-                        completion(card:returnCard,error:nil)
+                        completion(card:nil,error:error)
                     }
-                }else{
-                    completion(card:nil,error:error)
                 }
+            }else{
+                let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedRequest.rawValue, userInfo: nil)
+                completion(card:nil,error:error)
             }
             
         }else{

@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, WCErrorCode) {
     WCErrorCodeBadRequest = 3,
     WCErrorCodeNotImplemented = 4,
     WCErrorCodeInternalServerError = 5,
-    WCErrorCodeCardDeserializationError = 6
+    WCErrorCodeCardDeserializationError = 6,
+    WCErrorCodeMalformedRequest = 7
 };
 
 

@@ -113,7 +113,6 @@
 		1DF1B8861A6B4990000EC76E /* ImageAndCaptionBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */; };
 		1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C31A6B846A000EC76E /* WCCardType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1DF1B8C61A6B8D77000EC76E /* WCPublisherType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */; };
 		1DF1B8CB1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */; };
 		1DF1B8CD1A6BF258000EC76E /* ImageFloatRightBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8CC1A6BF258000EC76E /* ImageFloatRightBody.swift */; };
@@ -262,7 +261,6 @@
 		1DF1B8831A6B475C000EC76E /* ImageAndCaptionBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAndCaptionBody.xib; sourceTree = "<group>"; };
 		1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardLayout.h; sourceTree = "<group>"; };
 		1DF1B8C31A6B846A000EC76E /* WCCardType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardType.h; sourceTree = "<group>"; };
-		1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCPublisherType.h; sourceTree = "<group>"; };
 		1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardNoImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardFullImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF1B8CC1A6BF258000EC76E /* ImageFloatRightBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFloatRightBody.swift; sourceTree = "<group>"; };
@@ -563,7 +561,6 @@
 				1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */,
 				1DF1B8C31A6B846A000EC76E /* WCCardType.h */,
 				1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */,
-				1DF1B8C51A6B8ADA000EC76E /* WCPublisherType.h */,
 			);
 			name = "Public Headers";
 			sourceTree = "<group>";
@@ -646,7 +643,6 @@
 				1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */,
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
 				1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */,
-				1DF1B8C61A6B8D77000EC76E /* WCPublisherType.h in Headers */,
 				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
 				1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */,
@@ -1143,6 +1139,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
