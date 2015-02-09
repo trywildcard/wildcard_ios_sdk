@@ -27,7 +27,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         // initialize a download app button in case publisher has an app store link
         var downloadAppButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
         downloadAppButton?.setTitle("DOWNLOAD APP", forState: UIControlState.Normal)
-        downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 1, 0)
+        downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
         downloadAppButton?.titleLabel!.font = WildcardSDK.cardActionButtonFont
         downloadAppButton?.setTitleColor(UIColor.wildcardLightBlue(), forState: UIControlState.Normal)
         downloadAppButton?.addTarget(self, action: "downloadAppButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -157,6 +157,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     // MARK: UIWebViewDelegate
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if(navigationType == .LinkClicked){
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], withCard: backingCard)
             cardView.handleViewOnWeb(request.URL)
             return false
         }else{

@@ -44,7 +44,7 @@ public protocol CardViewVisualSource{
 }
 
 /**
-The visual source of a maximized CardView extends from the standard visual source.
+ALPHA: The visual source of a maximized CardView extends from the standard visual source.
 
 The maximized visual source should always be used with the extension UIView.maximizeCardView. This visual source is responsible for displaying a Card during its 'maximized state'. In this state, the Card takes up the entire application frame, and is owned by a fully presented view controller.
 

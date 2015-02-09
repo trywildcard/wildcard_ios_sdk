@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Global properties to customize Card Views
+/// Global convenience settings
 @objc
 public class WildcardSDK {
  
