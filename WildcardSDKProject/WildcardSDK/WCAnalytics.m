@@ -10,7 +10,7 @@
 #import "Mixpanel.h"
 #import <WildcardSDK/WildcardSDK-Swift.h>
 
-static NSString* WildcardSDKMixPanelToken = @"cf7fb0f874022223ca36a735676aea25";
+static NSString* WildcardSDKMixPanelToken = @"d7250e25e828b7c00158b28ec8d7525f";
 
 @interface WCAnalytics ()
 
