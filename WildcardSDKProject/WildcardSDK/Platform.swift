@@ -88,6 +88,9 @@ class Platform{
     // MARK: Private
     private func getCardJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
     {
+        let params = NSMutableDictionary()
+        params["url"] = url.absoluteString
+        
         var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue:WildcardSDK.networkDelegateQueue)
         var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
             if(error != nil){
@@ -104,9 +107,11 @@ class Platform{
                         let permissionDenied = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.PermissionDenied.rawValue, userInfo: json!)
                         completion(nil,permissionDenied)
                     }else if(httpResponse.statusCode == 501){
+                        WildcardSDK.analytics?.trackEvent("GetCardFailedNotImplemented", withProperties: params, withCard: nil)
                         let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.NotImplemented.rawValue, userInfo: json!)
                         completion(nil,error)
                     }else if(httpResponse.statusCode == 500){
+                        WildcardSDK.analytics?.trackEvent("GetCardFailedInternalError", withProperties: params, withCard: nil)
                         let error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.InternalServerError.rawValue, userInfo: json!)
                         completion(nil,error)
                     }else if(httpResponse.statusCode == 200){
