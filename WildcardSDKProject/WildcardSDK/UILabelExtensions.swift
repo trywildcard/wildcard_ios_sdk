@@ -10,9 +10,9 @@ import Foundation
 
 extension UILabel{
     
-    func setRequiredNumberOfLines(maxHeight:CGFloat){
+    func setRequiredNumberOfLines(width:CGFloat, maxHeight:CGFloat){
         if let labelText = text{
-            let height = Utilities.heightRequiredForText(labelText, lineHeight: font.lineHeight, font: font, width: frame.width, maxHeight:maxHeight)
+            let height = Utilities.heightRequiredForText(labelText, lineHeight: font.lineHeight, font: font, width: width, maxHeight:maxHeight)
             let rawValue:Float = roundf(Float(height) / Float(font.lineHeight));
             numberOfLines = Int(rawValue)
         }else{

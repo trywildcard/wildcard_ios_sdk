@@ -11,21 +11,20 @@ import Foundation
 @objc
 public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisualSource
 {
-    var header:FullCardHeader
-    var body:ImageFloatRightBody
-    var footer:ViewOnWebCardFooter
+    var header:FullCardHeader!
+    var body:ImageFloatRightBody!
+    var footer:ViewOnWebCardFooter!
     
     public override init(card:Card){
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.hairline.hidden = true
-        self.body = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
-        self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
-        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footer.hairline.hidden = true
         super.init(card: card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
+        if(header == nil){
+            self.header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            self.header.hairline.hidden = true
+            
+        }
         return header
     }
     
@@ -34,6 +33,10 @@ public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
     }
     
     public func viewForCardBody()->CardViewElement{
+        if(body == nil){
+            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatsRight, preferredWidth:widthForCard()) as ImageFloatRightBody
+            self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
+        }
         return body
     }
     
@@ -42,6 +45,10 @@ public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
     }
     
     public func viewForCardFooter() -> CardViewElement? {
+        if(footer == nil){
+            self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+            self.footer.hairline.hidden = true
+        }
         return footer
     }
     

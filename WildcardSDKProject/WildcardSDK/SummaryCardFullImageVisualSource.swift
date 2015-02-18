@@ -11,24 +11,23 @@ import Foundation
 @objc
 public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
-    var header:FullCardHeader
-    var body:ImageAndCaptionBody
-    var footer:ViewOnWebCardFooter
+    var header:FullCardHeader!
+    var body:ImageAndCaptionBody!
+    var footer:ViewOnWebCardFooter!
     var aspectRatio:CGFloat
     
     public init(card:Card, aspectRatio:CGFloat){
         self.aspectRatio = aspectRatio
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.hairline.hidden = true
-        self.body = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
-        self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
-        self.body.imageAspectRatio = aspectRatio
-        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footer.hairline.hidden = true
         super.init(card: card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
+        if(header == nil){
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            header.hairline.hidden = true
+            header.logo.hidden = true
+            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
+        }
         return header
     }
     
@@ -37,6 +36,11 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisual
     }
     
     public func viewForCardBody()->CardViewElement{
+        if(body == nil){
+            body = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption, preferredWidth:widthForCard()) as ImageAndCaptionBody
+            body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
+            body.imageAspectRatio = aspectRatio
+        }
         return body
     }
     
@@ -45,6 +49,10 @@ public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisual
     }
     
     public func viewForCardFooter() -> CardViewElement? {
+        if(footer == nil){
+            self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+            self.footer.hairline.hidden = true
+        }
         return footer
     }
     

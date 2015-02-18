@@ -11,23 +11,21 @@ import Foundation
 @objc
 public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource{
     
-    var header:FullCardHeader
-    var body:SingleParagraphCardBody
-    var footer:ViewOnWebCardFooter
+    var header:FullCardHeader!
+    var body:SingleParagraphCardBody!
+    var footer:ViewOnWebCardFooter!
     
     public override init(card:Card){
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        header.hairline.hidden = true
-        header.logo.hidden = true
-        header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
-        self.body = SingleParagraphCardBody(frame:CGRectZero)
-        body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)
-        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        footer.hairline.hidden = true
         super.init(card:card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
+        if(header == nil){
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            header.hairline.hidden = true
+            header.logo.hidden = true
+            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
+        }
         return header
     }
     
@@ -36,6 +34,10 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     }
     
     public func viewForCardBody()->CardViewElement{
+        if(body == nil){
+            body = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph, preferredWidth:widthForCard()) as SingleParagraphCardBody
+            body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
+        }
         return body;
     }
     
@@ -44,6 +46,10 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     }
     
     public func viewForCardFooter()->CardViewElement?{
+        if(footer == nil){
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+            footer.hairline.hidden = true
+        }
         return footer
     }
     

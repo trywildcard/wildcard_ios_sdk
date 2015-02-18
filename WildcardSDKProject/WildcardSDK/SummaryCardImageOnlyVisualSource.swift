@@ -11,24 +11,21 @@ import Foundation
 @objc
 public class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
 {
-    var header:FullCardHeader
-    var body:ImageOnlyBody
-    var footer:ViewOnWebCardFooter
+    var header:FullCardHeader!
+    var body:ImageOnlyBody!
+    var footer:ViewOnWebCardFooter!
     var aspectRatio:CGFloat
     
     public init(card:Card, aspectRatio:CGFloat){
         self.aspectRatio = aspectRatio
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.hairline.hidden = true
-        self.body = ImageOnlyBody(frame:CGRectZero)
-        self.body.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 5, 15)
-        self.body.imageAspectRatio = aspectRatio
-        self.footer = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footer.hairline.hidden = true
         super.init(card: card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
+        if(header == nil){
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            header.hairline.hidden = true
+        }
         return header
     }
     
@@ -37,6 +34,11 @@ public class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisual
     }
     
     public func viewForCardBody()->CardViewElement{
+        if(body == nil){
+            body = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly, preferredWidth:widthForCard()) as ImageOnlyBody
+            body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
+            body.imageAspectRatio = aspectRatio
+        }
         return body
     }
     
@@ -45,6 +47,10 @@ public class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisual
     }
     
     public func viewForCardFooter() -> CardViewElement? {
+        if(footer == nil){
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+            footer.hairline.hidden = true
+        }
         return footer
     }
     

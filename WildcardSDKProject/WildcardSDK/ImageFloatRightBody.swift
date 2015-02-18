@@ -24,10 +24,12 @@ public class ImageFloatRightBody : CardViewElement
             imageLeadingConstraint.constant = newValue.left
             imageTrailingConstraint.constant = newValue.right
             bottomPadding = newValue.bottom
+            updateDescriptionAttributes()
+            invalidateIntrinsicContentSize()
         }
     }
     
-    /// Set this variable to control the image size. Do not attempt to reframe or relayout the imageView
+    /// Set this variable to control the image size. Do not attempt to reframe or relayout the imageView itself
     public var imageViewSize:CGSize{
         get{
             return CGSizeMake(imageWidthConstraint.constant, imageHeightConstraint.constant)
@@ -35,9 +37,12 @@ public class ImageFloatRightBody : CardViewElement
         set{
             imageWidthConstraint.constant = newValue.width
             imageHeightConstraint.constant = newValue.height
+            updateDescriptionAttributes()
+            invalidateIntrinsicContentSize()
         }
     }
     
+    @IBOutlet weak private var descriptionImageHorizontalSpacing: NSLayoutConstraint!
     @IBOutlet weak private var imageLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageTopConstraint: NSLayoutConstraint!
@@ -69,6 +74,11 @@ public class ImageFloatRightBody : CardViewElement
                 imageView.setImageWithURL(imageUrl, mode: .ScaleAspectFill)
             }
         }
+        updateDescriptionAttributes()
+    }
+    
+    override public func intrinsicContentSize() -> CGSize {
+        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
@@ -76,7 +86,12 @@ public class ImageFloatRightBody : CardViewElement
     }
     
     override public func cardViewFinishedLayout() {
-        // we're laid out now, can calculate the lines now
-        descriptionLabel.setRequiredNumberOfLines(imageView.frame.size.height)
+        
+    }
+    
+    private func updateDescriptionAttributes(){
+        // description label preferred width + number of lines re calculation
+        descriptionLabel.preferredMaxLayoutWidth = preferredWidth - imageLeadingConstraint.constant - descriptionImageHorizontalSpacing.constant - imageViewSize.width - imageTrailingConstraint.constant
+        descriptionLabel.setRequiredNumberOfLines(descriptionLabel.preferredMaxLayoutWidth, maxHeight: imageHeightConstraint.constant)
     }
 }

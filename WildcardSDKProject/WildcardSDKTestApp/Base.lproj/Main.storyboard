@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xW5-S8-vzb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xW5-S8-vzb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -45,11 +45,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Basic Card Added Inline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-W7-4cb">
-                                <rect key="frame" x="199" y="50" width="202" height="21"/>
+                                <rect key="frame" x="200" y="50" width="202" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrK-ey-Thy">
+                                <rect key="frame" x="409" y="45" width="30" height="30"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeTitleButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WhN-Uy-rVX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -57,14 +66,20 @@
                             <constraint firstAttribute="centerX" secondItem="mxQ-x2-z6p" secondAttribute="centerX" id="8aZ-Nr-76X"/>
                             <constraint firstItem="IO0-Rv-PYu" firstAttribute="top" secondItem="mxQ-x2-z6p" secondAttribute="bottom" constant="15" id="Kbs-X8-XzY"/>
                             <constraint firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="Mrn-Cw-J9Q"/>
+                            <constraint firstItem="HrK-ey-Thy" firstAttribute="leading" secondItem="5Nn-W7-4cb" secondAttribute="trailing" constant="8" id="Q96-ks-1go"/>
                             <constraint firstItem="5Nn-W7-4cb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="apy-cC-nB8"/>
+                            <constraint firstItem="HrK-ey-Thy" firstAttribute="leading" secondItem="mxQ-x2-z6p" secondAttribute="trailing" constant="10" id="axZ-Af-QUi"/>
                             <constraint firstAttribute="centerY" secondItem="IO0-Rv-PYu" secondAttribute="centerY" id="eTT-zk-unx"/>
+                            <constraint firstItem="HrK-ey-Thy" firstAttribute="centerY" secondItem="mxQ-x2-z6p" secondAttribute="centerY" id="eyF-eb-jQY"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="fM2-rn-VGX" secondAttribute="bottom" constant="20" id="h2R-cM-pse"/>
                             <constraint firstItem="fM2-rn-VGX" firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="iEC-ZA-vAl"/>
                             <constraint firstAttribute="centerX" secondItem="5Nn-W7-4cb" secondAttribute="centerX" id="qsm-ZB-9fO"/>
+                            <constraint firstItem="HrK-ey-Thy" firstAttribute="centerY" secondItem="5Nn-W7-4cb" secondAttribute="centerY" id="udm-eZ-KSI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="axZ-Af-QUi"/>
+                                <exclude reference="eyF-eb-jQY"/>
                                 <exclude reference="eTT-zk-unx"/>
                             </mask>
                         </variation>
@@ -87,14 +102,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Flourishes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-zw-cJo">
-                                <rect key="frame" x="240" y="50" width="121" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Card Flourishes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-zw-cJo">
+                                <rect key="frame" x="241" y="50" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zp-Xs-c5N">
-                                <rect key="frame" x="203" y="81" width="195" height="30"/>
+                                <rect key="frame" x="202.5" y="80.5" width="195" height="30"/>
                                 <state key="normal" title="Present Article Full Template">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -103,7 +118,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jct-j4-ePO">
-                                <rect key="frame" x="180" y="115" width="240" height="30"/>
+                                <rect key="frame" x="179.5" y="115.5" width="240" height="30"/>
                                 <state key="normal" title="Present Article Text Wrap Template">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -120,9 +135,19 @@
                                     <action selector="present3ButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="s3w-Lq-2aJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhU-EJ-bgN">
+                                <rect key="frame" x="201" y="45" width="30" height="30"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testButtonTapped:" destination="TcV-Vj-cbZ" eventType="touchUpInside" id="csT-d0-E1A"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kMi-zw-cJo" firstAttribute="centerY" secondItem="BhU-EJ-bgN" secondAttribute="centerY" id="7Sj-z2-bhH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ziB-VW-TSO" secondAttribute="trailing" id="JJq-zw-LOc"/>
                             <constraint firstItem="ziB-VW-TSO" firstAttribute="centerX" secondItem="Jct-j4-ePO" secondAttribute="centerX" id="KBO-K6-biz"/>
                             <constraint firstItem="Jct-j4-ePO" firstAttribute="centerX" secondItem="5zp-Xs-c5N" secondAttribute="centerX" id="LuC-3f-EZS"/>
@@ -132,6 +157,7 @@
                             <constraint firstAttribute="centerX" secondItem="kMi-zw-cJo" secondAttribute="centerX" id="dza-2j-Aqd"/>
                             <constraint firstItem="kMi-zw-cJo" firstAttribute="top" secondItem="fhN-oy-XKG" secondAttribute="bottom" constant="30" id="gSX-jq-jhb"/>
                             <constraint firstItem="kMi-zw-cJo" firstAttribute="centerX" secondItem="5zp-Xs-c5N" secondAttribute="centerX" id="nMs-qZ-He4"/>
+                            <constraint firstItem="kMi-zw-cJo" firstAttribute="leading" secondItem="BhU-EJ-bgN" secondAttribute="trailing" constant="10" id="qFG-Fl-3nU"/>
                             <constraint firstItem="ziB-VW-TSO" firstAttribute="top" secondItem="Jct-j4-ePO" secondAttribute="bottom" constant="5" id="yKi-RU-Pqx"/>
                         </constraints>
                         <variation key="default">

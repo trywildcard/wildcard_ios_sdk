@@ -12,7 +12,7 @@ import Foundation
 @objc
 public class BaseVisualSource
 {
-    var card:Card
+    let card:Card
     var widthOverride:CGFloat? = nil
     let defaultCardMargin:CGFloat
     

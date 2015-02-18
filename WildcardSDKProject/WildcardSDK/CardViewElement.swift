@@ -11,7 +11,9 @@ import Foundation
 @objc
 public class CardViewElement : UIView {
     
+    /// Reference to CardView if the CardViewElement has been laid out inside one
     public var cardView:CardView!
+    public var preferredWidth:CGFloat!
     public var backingCard:Card{
         get{
             return cardView.backingCard
@@ -45,6 +47,7 @@ public class CardViewElement : UIView {
     public func cardViewFinishedLayout(){
     }
     
+    /*
     required public init(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -58,4 +61,6 @@ public class CardViewElement : UIView {
         super.awakeFromNib()
         initializeElement()
     }
+    */
+    
 }

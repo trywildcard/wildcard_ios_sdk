@@ -11,24 +11,21 @@ import Foundation
 @objc
 public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
-    var header:FullCardHeader
-    var body:SingleParagraphCardBody
-    var footer:ReadMoreFooter
-    var footerWeb:ViewOnWebCardFooter
+    var header:FullCardHeader!
+    var body:SingleParagraphCardBody!
+    var footer:ReadMoreFooter!
+    var footerWeb:ViewOnWebCardFooter!
     
     public override init(card:Card){
-        self.header = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
-        self.header.hairline.hidden = true
-        self.body = SingleParagraphCardBody(frame:CGRectZero)
-        self.body.paragraphLabelEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
-        self.footer = ReadMoreFooter(frame:CGRectZero)
-        self.footerWeb = ViewOnWebCardFooter(frame:CGRectZero)
-        self.footerWeb.hairline.hidden = true
         
         super.init(card: card)
     }
     
     public func viewForCardHeader()->CardViewElement?{
+        if(header == nil){
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            header.hairline.hidden = true
+        }
         return header
     }
     
@@ -37,6 +34,10 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     }
     
     public func viewForCardBody()->CardViewElement{
+        if(body == nil){
+            body = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph, preferredWidth:widthForCard()) as SingleParagraphCardBody
+            body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        }
         return body
     }
     
@@ -45,11 +46,22 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     }
     
     public func viewForCardFooter() -> CardViewElement? {
-        let articleCard = card as ArticleCard
-        if(articleCard.html == nil){
-            return footerWeb
+        if let articleCard = card as? ArticleCard{
+            if(articleCard.html == nil){
+                if(footerWeb == nil){
+                    self.footerWeb = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+                    self.footerWeb.hairline.hidden = true
+                }
+                return footerWeb
+            }else{
+                if(footer == nil){
+                    self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ReadMoreFooter, preferredWidth:widthForCard()) as ReadMoreFooter
+                    self.footer.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
+                }
+                return footer
+            }
         }else{
-            return footer
+            return nil
         }
     }
     

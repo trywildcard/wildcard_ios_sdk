@@ -11,33 +11,47 @@ import Foundation
 @objc
 public class ReadMoreFooter: CardViewElement {
     
+    /// Read More Button. Always left aligned at the moment.
     public var readMoreButton:UIButton!
-    public var buttonOffset:UIOffset!{
+    
+    /// Content insets. Right inset for this element does nothing at the moment.
+    public var contentEdgeInset:UIEdgeInsets{
         get{
-            return UIOffset(horizontal: leftConstraint.constant, vertical: verticalCenterConstraint.constant)
+            return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, 0)
         }
         set{
-            verticalCenterConstraint.constant = newValue.vertical
-            leftConstraint.constant = newValue.horizontal
+            leftConstraint.constant = newValue.left
+            bottomConstraint.constant = newValue.bottom
+            topConstraint.constant = newValue.top
         }
     }
     
     // MARK: Private
-    private var verticalCenterConstraint:NSLayoutConstraint!
     private var leftConstraint:NSLayoutConstraint!
+    private var topConstraint:NSLayoutConstraint!
+    private var bottomConstraint:NSLayoutConstraint!
     
     override public func initializeElement() {
         readMoreButton = UIButton.defaultReadMoreButton()
         addSubview(readMoreButton!)
         
-        verticalCenterConstraint = readMoreButton.verticallyCenterToSuperView(0)
-        leftConstraint = readMoreButton.constrainLeftToSuperView(15)
+        leftConstraint = readMoreButton?.constrainLeftToSuperView(15)
+        topConstraint = readMoreButton?.constrainTopToSuperView(10)
+        bottomConstraint = readMoreButton?.constrainBottomToSuperView(10)
         
         readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 44
+        var height:CGFloat = 0
+        height += topConstraint.constant
+        height += readMoreButton.intrinsicContentSize().height
+        height += bottomConstraint.constant
+        return round(height)
+    }
+    
+    override public func intrinsicContentSize() -> CGSize {
+        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
     }
     
     func readMoreButtonTapped(){

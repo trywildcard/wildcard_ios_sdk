@@ -9,28 +9,36 @@
 import Foundation
 
 @objc
-public class FullCardHeader :CardViewElement
+public class FullCardHeader : CardViewElement
 {
-    /// Controls the spacing between the kicker and the title
-    public var kickerSpacing:CGFloat!{
+    /// Use this to change the vertical spacing between the kicker and title
+    public var kickerSpacing:CGFloat{
         get{
-            return kickerTitleVerticalSpacing.constant
+            return kickerToTitleSpacing.constant
         }
         set{
-            kickerTitleVerticalSpacing.constant = newValue
+            kickerToTitleSpacing.constant = newValue
+            invalidateIntrinsicContentSize()
         }
     }
     
-    /// Content inset for the header
+    /// Content insets of card card content
     public var contentEdgeInset:UIEdgeInsets{
         get{
-            return UIEdgeInsetsMake(kickerTopConstraint.constant, titleLeadingConstraint.constant, bottomPadding, titleTrailingConstraint.constant)
+            return UIEdgeInsetsMake(kickerTopConstraint.constant, titleLeadingConstraint.constant, titleBottomConstraint.constant, titleTrailingConstraint.constant)
         }
         set{
             kickerTopConstraint.constant = newValue.top
             titleLeadingConstraint.constant = newValue.left
             titleTrailingConstraint.constant = newValue.right
-            bottomPadding = newValue.bottom
+            titleBottomConstraint.constant = newValue.bottom
+            
+            // content insets affect the preferred width of the labels
+            title.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
+            kicker.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
+            
+            // intrinsic size is invalid
+            invalidateIntrinsicContentSize()
         }
     }
     
@@ -39,13 +47,12 @@ public class FullCardHeader :CardViewElement
     @IBOutlet weak public var title: UILabel!
     public var hairline:UIView!
     
-    
     // MARK: Private
+    @IBOutlet weak private var kickerToTitleSpacing: NSLayoutConstraint!
+    @IBOutlet weak private var titleBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak private var kickerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var kickerTitleVerticalSpacing: NSLayoutConstraint!
-    private var bottomPadding:CGFloat = 10
     
     override public func initializeElement() {
         logo.layer.cornerRadius = 4.0
@@ -57,6 +64,11 @@ public class FullCardHeader :CardViewElement
         title.textColor = UIColor.wildcardDarkBlue()
         hairline = addBottomBorderWithWidth(1.0, color: UIColor.wildcardBackgroundGray())
         contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
+    }
+    
+    override public func intrinsicContentSize() -> CGSize {
+        let size = CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+        return size
     }
     
     override public func update() {
@@ -84,16 +96,16 @@ public class FullCardHeader :CardViewElement
         var height:CGFloat = 0
         height += kickerTopConstraint.constant
         height += kicker.font.lineHeight
-        height += kickerSpacing
+        height += kickerToTitleSpacing.constant
         
         // how tall would the title need to be for this width
         let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
         height += expectedTitleSize.height
   
         // bottom margin below the title
-        height += bottomPadding
+        height += titleBottomConstraint.constant
         
-        return ceil(height)
+        return round(height)
     }
     
 }

@@ -11,13 +11,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Kicker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-RJ-dh4">
-                    <rect key="frame" x="15" y="14" width="540" height="14"/>
+                    <rect key="frame" x="15" y="15" width="540" height="14"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL9-2c-bsw">
-                    <rect key="frame" x="15" y="30" width="540" height="20"/>
+                    <rect key="frame" x="15" y="566" width="540" height="20"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -36,18 +36,21 @@
                 <constraint firstItem="yL9-2c-bsw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="8u6-cy-oGA"/>
                 <constraint firstAttribute="trailing" secondItem="gC4-RJ-dh4" secondAttribute="trailing" constant="45" id="9bs-6j-V47"/>
                 <constraint firstItem="gC4-RJ-dh4" firstAttribute="trailing" secondItem="yL9-2c-bsw" secondAttribute="trailing" id="AhN-f6-oRZ"/>
-                <constraint firstItem="yL9-2c-bsw" firstAttribute="top" secondItem="gC4-RJ-dh4" secondAttribute="bottom" constant="3" id="GAr-gr-EbD"/>
                 <constraint firstItem="rfn-Ef-UIw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Oes-F7-Zfy"/>
                 <constraint firstAttribute="trailing" secondItem="rfn-Ef-UIw" secondAttribute="trailing" constant="10" id="TXr-Y0-tkr"/>
-                <constraint firstItem="gC4-RJ-dh4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="zrZ-BC-1Ob"/>
+                <constraint firstItem="yL9-2c-bsw" firstAttribute="top" secondItem="gC4-RJ-dh4" secondAttribute="bottom" priority="250" constant="3" id="qFQ-i9-uaA"/>
+                <constraint firstAttribute="bottom" secondItem="yL9-2c-bsw" secondAttribute="bottom" constant="15" id="z4Y-mU-Uy1"/>
+                <constraint firstItem="gC4-RJ-dh4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="zrZ-BC-1Ob"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="kicker" destination="gC4-RJ-dh4" id="QES-ij-EJU"/>
-                <outlet property="kickerTitleVerticalSpacing" destination="GAr-gr-EbD" id="tTG-hj-2R4"/>
+                <outlet property="kickerToTitleSpacing" destination="qFQ-i9-uaA" id="Aqy-B0-sRI"/>
                 <outlet property="kickerTopConstraint" destination="zrZ-BC-1Ob" id="KhD-X2-gHW"/>
                 <outlet property="logo" destination="rfn-Ef-UIw" id="Cu6-vw-P2I"/>
                 <outlet property="title" destination="yL9-2c-bsw" id="cFw-F0-Q6D"/>
+                <outlet property="titleBottomConstraint" destination="z4Y-mU-Uy1" id="fd8-zX-LTD"/>
                 <outlet property="titleLeadingConstraint" destination="8u6-cy-oGA" id="HUd-g0-qVt"/>
                 <outlet property="titleTrailingConstraint" destination="9bs-6j-V47" id="XkZ-wF-EFz"/>
             </connections>

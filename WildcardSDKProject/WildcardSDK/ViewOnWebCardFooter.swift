@@ -15,27 +15,32 @@ public class ViewOnWebCardFooter: CardViewElement {
     public var shareButton:UIButton!
     public var hairline:UIView!
     
-    public var buttonOffset:UIOffset!{
+    public var contentEdgeInset:UIEdgeInsets{
         get{
-            return UIOffset(horizontal: leftConstraint.constant, vertical: verticalCenterConstraint.constant)
+            return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
         set{
-            verticalCenterConstraint.constant = newValue.vertical
-            leftConstraint.constant = newValue.horizontal
-            shareButtonRightConstraint.constant = newValue.horizontal
+            topConstraint.constant = newValue.top
+            leftConstraint.constant = newValue.left
+            rightConstraint.constant = newValue.right
+            bottomConstraint.constant = newValue.bottom
         }
     }
     
     // MARK: Private
-    private var verticalCenterConstraint:NSLayoutConstraint!
+    private var topConstraint:NSLayoutConstraint!
+    private var bottomConstraint:NSLayoutConstraint!
     private var leftConstraint:NSLayoutConstraint!
-    private var shareButtonRightConstraint:NSLayoutConstraint!
+    private var rightConstraint:NSLayoutConstraint!
     
     override public func initializeElement() {
         viewOnWebButton = UIButton.defaultViewOnWebButton()
         addSubview(viewOnWebButton!)
-        verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
+        //verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
         leftConstraint = viewOnWebButton?.constrainLeftToSuperView(15)
+        topConstraint = viewOnWebButton?.constrainTopToSuperView(10)
+        bottomConstraint = viewOnWebButton?.constrainBottomToSuperView(10)
+        
         hairline = addTopBorderWithWidth(0.5, color: UIColor.wildcardBackgroundGray())
         viewOnWebButton.addTarget(self, action: "viewOnWebButtonTapped", forControlEvents: .TouchUpInside)
         
@@ -43,7 +48,8 @@ public class ViewOnWebCardFooter: CardViewElement {
         shareButton.tintColor = UIColor.wildcardLightBlue()
         shareButton.setImage(UIImage.loadFrameworkImage("shareIcon"), forState: .Normal)
         addSubview(shareButton)
-        shareButtonRightConstraint = shareButton.constrainRightToSuperView(15)
+        //shareButtonRightConstraint = shareButton.constrainRightToSuperView(15)
+        rightConstraint = shareButton.constrainRightToSuperView(15)
         
         addConstraint(NSLayoutConstraint(item: shareButton, attribute: .CenterY, relatedBy: .Equal, toItem: viewOnWebButton, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
@@ -60,7 +66,15 @@ public class ViewOnWebCardFooter: CardViewElement {
         cardView.handleViewOnWeb(backingCard.webUrl)
     }
     
+    override public func intrinsicContentSize() -> CGSize {
+        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+    }
+    
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return 44
+        var height:CGFloat = 0
+        height += topConstraint.constant
+        height += viewOnWebButton.intrinsicContentSize().height
+        height += bottomConstraint.constant
+        return round(height)
     }
 }

@@ -176,9 +176,6 @@ public class CardView : UIView
             newCardView.frame = CGRectMake(0, 0, currentSize.width, currentSize.height)
             newCardView.layoutCardComponents()
             
-            // layout the card view before returning
-            newCardView.layoutIfNeeded()
-            
             newCardView.notifyCardViewElementsFinishedLayout()
             
             return newCardView
@@ -234,7 +231,6 @@ public class CardView : UIView
         let newSize = calculateCurrentSize()
         delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
         layoutCardComponents()
-        layoutIfNeeded()
         
         notifyCardViewElementsFinishedLayout()
         
@@ -373,7 +369,7 @@ public class CardView : UIView
             height += footerHeight!
         }
         
-        return CGSizeMake(width, height)
+        return CGSizeMake(visualSource.widthForCard(), height)
     }
     
     private func initializeCardComponents()->Bool{
@@ -431,6 +427,24 @@ public class CardView : UIView
         return true
     }
     
+    override public func intrinsicContentSize() -> CGSize {
+        
+        println("IN TRINSIC SIZE FOR CARD VIEW")
+        var width:CGFloat = visualSource.widthForCard()
+        var height:CGFloat = 0
+        
+        if(header != nil){
+            height += header!.intrinsicContentSize().height
+        }
+        height += body.intrinsicContentSize().height
+        if(footer != nil){
+            height += footer!.intrinsicContentSize().height
+        }
+        
+        let size = CGSizeMake(width, height)
+        return size
+    }
+    
     private func layoutCardComponents()->Bool{
         // header and footer always stick to top and bottom
         if(header != nil){
@@ -438,7 +452,6 @@ public class CardView : UIView
             header!.constrainLeftToSuperView(0)
             header!.constrainRightToSuperView(0)
             header!.constrainTopToSuperView(0)
-            header!.constrainHeight(headerHeight!)
         }
         
         if(footer != nil){
@@ -446,7 +459,6 @@ public class CardView : UIView
             footer!.constrainLeftToSuperView(0)
             footer!.constrainRightToSuperView(0)
             footer!.constrainBottomToSuperView(0)
-            footer!.constrainHeight(footerHeight!)
         }
         
         containerView.addSubview(body)
@@ -455,7 +467,8 @@ public class CardView : UIView
         
         // card body layout has 4 height layout possibilities
         if(header == nil && footer == nil){
-            body.constrainToSuperViewEdges()
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: 0))
         }else if(header != nil && footer == nil){
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: header!, attribute: .Bottom, multiplier: 1.0, constant: 0))
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: 0))
@@ -478,6 +491,8 @@ public class CardView : UIView
             backView.layer.masksToBounds = true
             back = backView
         }
+        
+        layoutIfNeeded()
         
         return true
     }

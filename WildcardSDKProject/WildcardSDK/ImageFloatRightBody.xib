@@ -34,6 +34,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
+                <outlet property="descriptionImageHorizontalSpacing" destination="YN6-vP-CLb" id="eTW-zy-aia"/>
                 <outlet property="descriptionLabel" destination="Lhj-JJ-klp" id="Np2-9h-f3r"/>
                 <outlet property="imageHeightConstraint" destination="aSc-fv-hcQ" id="84l-Rj-Rp5"/>
                 <outlet property="imageLeadingConstraint" destination="Eyc-oD-YAk" id="JaH-ff-Nj7"/>

@@ -46,10 +46,8 @@ extension UIButton {
         
         readMoreButton.setAttributedTitle(buttonTitle, forState: .Normal)
         readMoreButton.setAttributedTitle(highlightedTitle, forState: .Highlighted)
-        readMoreButton.constrainWidth(90, height:25)
+        readMoreButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
         
         return readMoreButton
     }
-    
-    
 }

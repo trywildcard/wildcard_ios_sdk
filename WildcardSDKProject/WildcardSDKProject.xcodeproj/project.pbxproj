@@ -29,6 +29,8 @@
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
+		1D32482B1A8EB348004F753B /* CardViewElementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32482A1A8EB348004F753B /* CardViewElementFactory.swift */; };
+		1D32482D1A8EB425004F753B /* WCElementType.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32482C1A8EB425004F753B /* WCElementType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C5051A7972D90021D27A /* Mixpanel.h */; };
 		1D32C5081A7972D90021D27A /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C5061A7972D90021D27A /* Mixpanel.m */; };
 		1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D32C50B1A7982320021D27A /* NSData+MPBase64.h */; };
@@ -178,6 +180,8 @@
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		1D32482A1A8EB348004F753B /* CardViewElementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElementFactory.swift; sourceTree = "<group>"; };
+		1D32482C1A8EB425004F753B /* WCElementType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCElementType.h; sourceTree = "<group>"; };
 		1D32C5051A7972D90021D27A /* Mixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixpanel.h; sourceTree = "<group>"; };
 		1D32C5061A7972D90021D27A /* Mixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixpanel.m; sourceTree = "<group>"; };
 		1D32C50B1A7982320021D27A /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
@@ -462,18 +466,19 @@
 		1DAC26921A3631AC0005C4BE /* Utilities and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */,
 				1DE218481A38C103007746B4 /* ImageCache.swift */,
+				1D3401511A6CB0760075FE69 /* NSBundleExtensions.swift */,
 				1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */,
+				1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */,
 				1DF0BA951A3935D300EE9645 /* StringExtensions.swift */,
 				1DAC269B1A3641850005C4BE /* UIColorExtension.swift */,
 				1D5873371A379DC600C3EAF3 /* UIFontExtension.swift */,
+				1D3401531A6CB2870075FE69 /* UIImageExtensions.swift */,
+				1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */,
 				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
-				1D3401511A6CB0760075FE69 /* NSBundleExtensions.swift */,
-				1D3401531A6CB2870075FE69 /* UIImageExtensions.swift */,
 				1DF623821A76031800382E81 /* WCImageView.swift */,
-				1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */,
-				1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */,
 			);
 			name = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -507,7 +512,6 @@
 		1DC928831A40994E0040DAD0 /* Footers */ = {
 			isa = PBXGroup;
 			children = (
-				1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */,
 				1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */,
 				1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */,
 			);
@@ -561,6 +565,7 @@
 				1DF1B8871A6B71B7000EC76E /* WCCardLayout.h */,
 				1DF1B8C31A6B846A000EC76E /* WCCardType.h */,
 				1D66D4B61A840ACD00DCDFC8 /* WCErrorCode.h */,
+				1D32482C1A8EB425004F753B /* WCElementType.h */,
 			);
 			name = "Public Headers";
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 			children = (
 				1DAC26951A36321B0005C4BE /* CardView.swift */,
 				1DFFEDD41A40086D008E65BC /* CardViewElement.swift */,
+				1D32482A1A8EB348004F753B /* CardViewElementFactory.swift */,
 				1D6F801F1A5CA20900B765B5 /* CardViewAction.swift */,
 				1DF0BA971A394AF500EE9645 /* Physics */,
 				1DFFEDD11A400818008E65BC /* Card View Elements */,
@@ -646,6 +652,7 @@
 				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
 				1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */,
+				1D32482D1A8EB425004F753B /* WCElementType.h in Headers */,
 				1D32C5121A7982A10021D27A /* MPLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,6 +837,7 @@
 			files = (
 				1DF1B8CD1A6BF258000EC76E /* ImageFloatRightBody.swift in Sources */,
 				1D3401521A6CB0760075FE69 /* NSBundleExtensions.swift in Sources */,
+				1D32482B1A8EB348004F753B /* CardViewElementFactory.swift in Sources */,
 				1DE218491A38C103007746B4 /* ImageCache.swift in Sources */,
 				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
 				1DF623831A76031800382E81 /* WCImageView.swift in Sources */,

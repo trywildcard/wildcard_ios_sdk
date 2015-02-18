@@ -16,11 +16,20 @@ public class ImageAndCaptionBody : CardViewElement{
     
     @IBOutlet weak public var imageView: WCImageView!
     @IBOutlet weak public var caption: UILabel!
-    public var imageAspectRatio:CGFloat = 0.75
     
-    /**
-    Content inset which includes the image view and caption
-    */
+    /// Adjusts the aspect ratio of the image view.
+    public var imageAspectRatio:CGFloat{
+        get{
+            return __imageAspectRatio
+        }
+        set{
+            __imageAspectRatio = newValue
+            imageHeightConstraint.constant = round(imageWidthConstraint.constant * __imageAspectRatio)
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    /// Content inset for image view and caption
     public var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(imageTopConstraint.constant, imageLeftConstraint.constant, captionBottomConstraint.constant, imageRightConstraint.constant)
@@ -30,6 +39,12 @@ public class ImageAndCaptionBody : CardViewElement{
             imageLeftConstraint.constant = newValue.left
             imageRightConstraint.constant = newValue.right
             captionBottomConstraint.constant = newValue.bottom
+            
+            imageWidthConstraint.constant = preferredWidth - imageLeftConstraint.constant - imageRightConstraint.constant
+            imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
+            caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
+            
+            invalidateIntrinsicContentSize()
         }
     }
     
@@ -40,15 +55,18 @@ public class ImageAndCaptionBody : CardViewElement{
         }
         set{
             captionTopConstraint.constant = newValue
+            invalidateIntrinsicContentSize()
         }
     }
     
+    @IBOutlet weak private var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var captionBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak private var captionTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageRightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var imageLeftConstraint: NSLayoutConstraint!
+    private var __imageAspectRatio:CGFloat = 0.75
     
     override public func initializeElement(){
         caption.font = WildcardSDK.cardDescriptionFont
@@ -59,6 +77,10 @@ public class ImageAndCaptionBody : CardViewElement{
         imageView.backgroundColor = UIColor.wildcardBackgroundGray()
         imageView.layer.cornerRadius = 2.0
         imageView.layer.masksToBounds = true
+        
+        imageWidthConstraint.constant = preferredWidth - imageLeftConstraint.constant - imageRightConstraint.constant
+        imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
+        caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
     }
     
     override public func update() {
@@ -85,26 +107,27 @@ public class ImageAndCaptionBody : CardViewElement{
         }
     }
     
+    override public func intrinsicContentSize() -> CGSize {
+        let size =  CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+        return size
+    }
+    
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         
-        let contentInsets = contentEdgeInset
-        
-        let imageWidth = cardWidth - contentInsets.left - contentInsets.right
-        let imageHeight:CGFloat = round(imageAspectRatio * imageWidth)
-        height += contentInsets.top
-        height += imageHeight
+        height += imageTopConstraint.constant
+        height += imageHeightConstraint.constant
         height += captionTopConstraint.constant
         
         // how tall would the caption need to be for this width
-        let expectedCaptionSize = caption.sizeThatFits(CGSizeMake(cardWidth - contentInsets.left - contentInsets.right, CGFloat.max))
-        height += ceil(expectedCaptionSize.height)
-        height += contentEdgeInset.bottom
+        let expectedCaptionSize = caption.sizeThatFits(CGSizeMake(imageWidthConstraint.constant, CGFloat.max))
+        height += round(expectedCaptionSize.height)
+        height += captionBottomConstraint.constant
         return height
     }
     
     override public func cardViewFinishedLayout() {
-        // once the parent card view has finished laying out, we can constrain the height of image properly
-        imageHeightConstraint.constant = round(imageAspectRatio * imageView.frame.width)
     }
+    
+    
 }
