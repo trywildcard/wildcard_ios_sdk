@@ -102,6 +102,7 @@ class ViewController: UIViewController, CardViewDelegate{
 
         
             cardView.invalidateIntrinsicContentSize()
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

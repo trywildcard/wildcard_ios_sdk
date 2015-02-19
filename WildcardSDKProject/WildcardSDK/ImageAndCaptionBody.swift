@@ -49,7 +49,7 @@ public class ImageAndCaptionBody : CardViewElement{
     }
     
     /// Controls the spacing between the caption and the image
-    public var captionSpacing:CGFloat!{
+    public var captionSpacing:CGFloat{
         get{
             return captionTopConstraint.constant
         }

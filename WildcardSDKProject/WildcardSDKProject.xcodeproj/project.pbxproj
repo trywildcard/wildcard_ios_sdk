@@ -26,6 +26,7 @@
 		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
 		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
 		1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */; };
+		1D0BEDD21A968242000BA999 /* WildcardSDKElementSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
@@ -178,6 +179,7 @@
 		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
 		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
+		1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildcardSDKElementSizingTests.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		1D32482A1A8EB348004F753B /* CardViewElementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElementFactory.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		1D3A28931A2E697700A9D4C1 /* WildcardSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */,
 				1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */,
 				1D3A28941A2E697700A9D4C1 /* Supporting Files */,
 			);
@@ -909,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D3A28971A2E697700A9D4C1 /* WildcardSDKTests.swift in Sources */,
+				1D0BEDD21A968242000BA999 /* WildcardSDKElementSizingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

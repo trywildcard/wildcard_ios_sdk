@@ -37,11 +37,11 @@ public protocol CardViewVisualSource{
 }
 
 /**
-ALPHA: The visual source of a maximized CardView extends from the standard visual source.
+ALPHA: The visual source of a maximized CardView
 
 The maximized visual source should always be used with the extension UIView.maximizeCardView. This visual source is responsible for displaying a Card during its 'maximized state'. In this state, the Card takes up the entire application frame, and is owned by a fully presented view controller.
 
-This visual source may never be used for an inline card. 
+This visual source may never be used for an inline card. widthForCard() is a noop for a maximized card visual source as the size is always determined relative to the application frame.
 */
 @objc
 public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
@@ -58,30 +58,9 @@ public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
 public protocol CardViewDelegate{
     
     /**
-    The CardView is about to go through re-layout. For example, if a CardView is reloaded
-    with a brand new Card and visual source, a re-layout of the CardView will happen. This lets
-    the delegate prepare for the re-layout given the old and new-size for any elements dependent
-    on the CardView
-    
-    :param: fromSize - The previous size of the CardView
-    :param: toSize - The new size of the CardView
-    */
-    optional func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize)
-    
-    /**
     Simply just a hook into UIView.layoutSubviews() for the CardView
     */
     optional func cardViewLayoutSubviews(cardView:CardView)
-    
-    /**
-    CardView is about to be reloaded.
-    */
-    optional func cardViewWillReload(cardView:CardView)
-
-    /**
-    CardView has reloaded.
-    */
-    optional func cardViewDidReload(cardView:CardView)
     
     /**
     Optionally gates the CardView action, always called before an action is requested.
@@ -94,6 +73,16 @@ public protocol CardViewDelegate{
     CardView has been requested to perform a specific action.
     */
     optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction)
+    
+    /**
+    CardView is about to be reloaded.
+    */
+    optional func cardViewWillReload(cardView:CardView)
+    
+    /**
+    CardView has reloaded.
+    */
+    optional func cardViewDidReload(cardView:CardView)
     
 }
 
@@ -248,12 +237,8 @@ public class CardView : UIView
     var containerView:UIView!
     var back:CardViewElement?
     var header:CardViewElement?
-   // var headerHeight:CGFloat?
     var body:CardViewElement!
-   // var bodyHeight:CGFloat!
     var footer:CardViewElement?
-    //var footerHeight:CGFloat?
-    var width:CGFloat!
     
     // MARK: UIView
     override init(frame: CGRect) {
