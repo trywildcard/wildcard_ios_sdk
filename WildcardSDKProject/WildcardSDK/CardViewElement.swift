@@ -45,22 +45,6 @@ public class CardViewElement : UIView {
     The CardView has finished laying out. Can do any last minute changes to the CardViewElement that may depend on frame sizes e.g. exclusion paths, etc.
     */
     public func cardViewFinishedLayout(){
+        
     }
-    
-    /*
-    required public init(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initializeElement()
-    }
-    
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        initializeElement()
-    }
-    */
-    
 }

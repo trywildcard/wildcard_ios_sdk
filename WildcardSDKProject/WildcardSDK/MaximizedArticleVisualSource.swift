@@ -11,6 +11,7 @@ import Foundation
 public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     
     var card:Card
+    var body:MediaTextFullWebView!
     
     public init(card:Card){
         self.card = card
@@ -21,7 +22,10 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     }
     
     public func viewForCardBody()->CardViewElement{
-        return UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
+        if(body == nil){
+            body = CardViewElementFactory.createCardViewElement(WCElementType.MediaTextFullWebView, preferredWidth: widthForCard()) as MediaTextFullWebView
+        }
+        return body
     }
     
     public func heightForCardBody()->CGFloat{

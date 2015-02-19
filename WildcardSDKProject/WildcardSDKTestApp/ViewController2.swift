@@ -16,12 +16,12 @@ class ViewController2: UIViewController, CardViewDelegate {
     var counter = 0
     var mainCardView:CardView?
     @IBOutlet weak var reRenderButton: UIButton!
-    var mainCardWidthConstraint:NSLayoutConstraint!
-    var mainCardHeightConstraint:NSLayoutConstraint!
+    //var mainCardWidthConstraint:NSLayoutConstraint!
+    //var mainCardHeightConstraint:NSLayoutConstraint!
     
     func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize){
-        mainCardWidthConstraint.constant = toSize.width
-        mainCardHeightConstraint.constant = toSize.height
+      //  mainCardWidthConstraint.constant = toSize.width
+      //  mainCardHeightConstraint.constant = toSize.height
     }
 
     override func viewDidLoad() {
@@ -36,8 +36,8 @@ class ViewController2: UIViewController, CardViewDelegate {
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(-50)
-            mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
-            mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
+           // mainCardWidthConstraint = cardView.constrainWidth(cardView.frame.size.width)
+           // mainCardHeightConstraint = cardView.constrainHeight(cardView.frame.size.height)
             cardView.delegate = self
             mainCardView = cardView
         }

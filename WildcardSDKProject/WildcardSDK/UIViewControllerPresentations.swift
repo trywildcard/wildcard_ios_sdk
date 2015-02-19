@@ -114,11 +114,11 @@ public extension UIViewController{
         viewController.maximizedCard = cardView.backingCard
         viewController.maximizedCardVisualSource = visualsource
         
-        if( Utilities.validateMaximizeVisualSource(visualsource)){
+       // if( Utilities.validateMaximizeVisualSource(visualsource)){
             presentViewController(viewController, animated: true, completion: nil)
-        }else{
-            println("Can not maximize CardView due to dimension mismatch")
-        }
+        //}else{
+        //    println("Can not maximize CardView due to dimension mismatch")
+       // }
     }
     
     /// ALPHA: Presents an array of Cards as a swipeable Stack

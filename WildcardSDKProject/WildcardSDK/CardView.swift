@@ -13,33 +13,26 @@ import QuartzCore
 /**
 The visual source of a CardView.
 
-Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own.
+Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
+
+Any CardViewElement returned from this visual source must implement intrinsicContentSize()
 */
 @objc
 public protocol CardViewVisualSource{
     
-    /// Width for the card
+    /// Width for the card.
     func widthForCard()->CGFloat
     
     /// CardViewElement for the card body
     func viewForCardBody()->CardViewElement
     
-    /// Height for the card body, must be >0
-    func heightForCardBody()->CGFloat
-    
     /// Optional CardViewElement for header
     optional func viewForCardHeader()->CardViewElement?
-    
-    /// Height for card header, must be >0 if header is not nil
-    optional func heightForCardHeader()->CGFloat
     
     /// Optional CardViewElement for footer
     optional func viewForCardFooter()->CardViewElement?
     
-    /// Height for card footer, must be >0 if footer is not nil
-    optional func heightForCardFooter()->CGFloat
-    
-    /// Optional CardViewElement for the back of the card. Height is always full card height.
+    /// ALPHA: Optional CardViewElement for the back of the card. Always spans the full card
     optional func viewForBackOfCard()->CardViewElement?
 }
 
@@ -168,21 +161,16 @@ public class CardView : UIView
         // init data and visuals
         newCardView.backingCard = card
         newCardView.visualSource = visualSource
+        newCardView.initializeCardComponents()
         
-        if(newCardView.initializeCardComponents()){
-            let currentSize = newCardView.calculateCurrentSize()
-            
-            // layout card elements
-            newCardView.frame = CGRectMake(0, 0, currentSize.width, currentSize.height)
-            newCardView.layoutCardComponents()
-            
-            newCardView.notifyCardViewElementsFinishedLayout()
-            
-            return newCardView
-        }else{
-            println("Could not create CardView -- layout problem in visual source.")
-            return nil
-        }
+        // set frame to default at intrinsic size
+        let size = newCardView.intrinsicContentSize()
+        newCardView.frame = CGRectMake(0, 0, size.width, size.height)
+        
+        // lays out card components
+        newCardView.layoutCardComponents()
+        
+        return newCardView
     }
     
     /// ALPHA: Reloads the CardView with a new card. Autogenerates a layout
@@ -222,17 +210,11 @@ public class CardView : UIView
         // remove old card subviews
         removeCardSubviews()
         
-        if(initializeCardComponents() == false){
-            println("Could not reload CardView -- layout problem in visual source.")
-            return
-        }
+        initializeCardComponents()
         
-        // let delegate prepare before layout happens
-        let newSize = calculateCurrentSize()
-        delegate?.cardViewWillLayoutToNewSize?(self, fromSize: bounds.size, toSize: newSize)
         layoutCardComponents()
         
-        notifyCardViewElementsFinishedLayout()
+        invalidateIntrinsicContentSize()
         
         // reloaded
         delegate?.cardViewDidReload?(self)
@@ -266,11 +248,11 @@ public class CardView : UIView
     var containerView:UIView!
     var back:CardViewElement?
     var header:CardViewElement?
-    var headerHeight:CGFloat?
+   // var headerHeight:CGFloat?
     var body:CardViewElement!
-    var bodyHeight:CGFloat!
+   // var bodyHeight:CGFloat!
     var footer:CardViewElement?
-    var footerHeight:CGFloat?
+    //var footerHeight:CGFloat?
     var width:CGFloat!
     
     // MARK: UIView
@@ -356,23 +338,7 @@ public class CardView : UIView
         }
     }
     
-    private func calculateCurrentSize()->CGSize{
-        var height:CGFloat = 0.0
-        
-        if(headerHeight != nil){
-            height += headerHeight!
-        }
-        
-        height += bodyHeight
-        
-        if(footerHeight != nil){
-            height += footerHeight!
-        }
-        
-        return CGSizeMake(visualSource.widthForCard(), height)
-    }
-    
-    private func initializeCardComponents()->Bool{
+    private func initializeCardComponents(){
         header = visualSource.viewForCardHeader?()
         body = visualSource.viewForCardBody()
         footer = visualSource.viewForCardFooter?()
@@ -384,52 +350,9 @@ public class CardView : UIView
         header?.update()
         footer?.cardView = self
         footer?.update()
-        
-        // validity checks
-        headerHeight = visualSource.heightForCardHeader?()
-        bodyHeight = visualSource.heightForCardBody()
-        footerHeight = visualSource.heightForCardFooter?()
-        width = visualSource.widthForCard()
-        
-        if(width <= 0){
-            println("Visual source width must be greater than 0.")
-            return false
-        }
-        
-        if(bodyHeight <= 0){
-            println("Visual source body height must be greater than 0.")
-            return false
-        }
-        
-        if(header != nil){
-            if(headerHeight == nil){
-                println("Visual source defines a header but header height is nil.")
-                return false
-            }else{
-                if(headerHeight <= 0){
-                    println("Visual source header height must be greater than 0.")
-                    return false
-                }
-            }
-        }
-        
-        if(footer != nil){
-            if(footerHeight == nil){
-                println("Visual source defines a footer but footer height is nil.")
-                return false
-            }else{
-                if(footerHeight <= 0){
-                    println("Visual source footer height must be greater than 0.")
-                    return false
-                }
-            }
-        }
-        return true
     }
     
     override public func intrinsicContentSize() -> CGSize {
-        
-        println("IN TRINSIC SIZE FOR CARD VIEW")
         var width:CGFloat = visualSource.widthForCard()
         var height:CGFloat = 0
         
@@ -445,7 +368,7 @@ public class CardView : UIView
         return size
     }
     
-    private func layoutCardComponents()->Bool{
+    private func layoutCardComponents(){
         // header and footer always stick to top and bottom
         if(header != nil){
             containerView.addSubview(header!)
@@ -494,7 +417,7 @@ public class CardView : UIView
         
         layoutIfNeeded()
         
-        return true
+        notifyCardViewElementsFinishedLayout()
     }
     
     private func convenienceInitialize(){

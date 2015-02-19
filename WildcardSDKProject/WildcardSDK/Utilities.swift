@@ -50,6 +50,7 @@ public class Utilities{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
     
+    /*
     // Returns a CGSize from a visual source
     public class func sizeFromVisualSource(visualSource:CardViewVisualSource)->CGSize{
         let width = visualSource.widthForCard()
@@ -63,6 +64,7 @@ public class Utilities{
         height += visualSource.heightForCardBody()
         return CGSizeMake(width, height)
     }
+*/
     
     // MARK: Private
     
@@ -70,6 +72,8 @@ public class Utilities{
     Verifies the integrity of the maximize visual size
     */
     class func validateMaximizeVisualSource(visualSource:MaximizedCardViewVisualSource)->Bool{
+        return true
+        /*
         let appFrame = UIScreen.mainScreen().applicationFrame
         let insets = visualSource.applicationFrameEdgeInsets()
         let size = sizeFromVisualSource(visualSource)
@@ -87,6 +91,7 @@ public class Utilities{
             valid = false
         }
         return valid
+*/
     }
     
 }
