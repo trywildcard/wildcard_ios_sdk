@@ -26,8 +26,7 @@ public class SingleParagraphCardBody : CardViewElement {
             rightConstraint.constant = newValue.right
             bottomConstraint.constant = newValue.bottom
             
-            // content insets affect the preferred width of the labels
-            paragraphLabel.preferredMaxLayoutWidth = preferredWidth - leftConstraint.constant - rightConstraint.constant
+            adjustForPreferredWidth(preferredWidth)
         }
     }
     
@@ -50,8 +49,11 @@ public class SingleParagraphCardBody : CardViewElement {
         topConstraint = paragraphLabel.constrainTopToSuperView(5)
         bottomConstraint = paragraphLabel.constrainBottomToSuperView(5)
         
-         // content insets affect the preferred width of the labels
-        paragraphLabel.preferredMaxLayoutWidth = preferredWidth - leftConstraint.constant - rightConstraint.constant
+    }
+    
+    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        paragraphLabel.preferredMaxLayoutWidth = cardWidth - leftConstraint.constant - rightConstraint.constant
+        invalidateIntrinsicContentSize()
     }
     
     override public func update(card:Card) {

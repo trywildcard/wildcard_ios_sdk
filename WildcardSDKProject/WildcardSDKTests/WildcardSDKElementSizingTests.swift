@@ -72,6 +72,34 @@ class WildcardSDKElementSizingTests: XCTestCase {
         body.captionSpacing -= 5
         XCTAssert(body.intrinsicContentSize().height < currentSize.height)
     }
+    
+    func testImage(){
+        var body:ImageOnlyBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly, preferredWidth: 300) as ImageOnlyBody
+        
+        var currentSize:CGSize = body.intrinsicContentSize()
+        XCTAssert(currentSize.width == 300)
+        
+        // aspect ratio changes size
+        body.imageAspectRatio = body.imageAspectRatio * 1.1
+        XCTAssert(body.intrinsicContentSize().height > currentSize.height)
+        currentSize = body.intrinsicContentSize()
+        
+        // caption spacing increases height
+        body.imageAspectRatio = body.imageAspectRatio * 0.9
+        XCTAssert(body.intrinsicContentSize().height < currentSize.height)
+        currentSize = body.intrinsicContentSize()
+        
+        // content inset changes height
+        var currentInset = body.contentEdgeInset
+        body.contentEdgeInset = UIEdgeInsetsMake(currentInset.top + 10, currentInset.left, currentInset.bottom, currentInset.right)
+        XCTAssert(body.intrinsicContentSize().height > currentSize.height)
+        currentSize = body.intrinsicContentSize()
+        
+        body.contentEdgeInset = UIEdgeInsetsMake(currentInset.top, currentInset.left + 10, currentInset.bottom, currentInset.right + 10)
+        println(body.intrinsicContentSize().height)
+        println(currentSize.height)
+        XCTAssert(body.intrinsicContentSize().height < currentSize.height)
+    }
 
 
 }

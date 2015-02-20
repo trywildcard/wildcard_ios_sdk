@@ -81,6 +81,10 @@ public class ImageFloatRightBody : CardViewElement
         return imageHeightConstraint.constant + imageTopConstraint.constant + bottomPadding;
     }
     
+    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        updateDescriptionAttributes()
+    }
+    
     private func updateDescriptionAttributes(){
         // description label preferred width + number of lines re calculation
         descriptionLabel.preferredMaxLayoutWidth = preferredWidth - imageLeadingConstraint.constant - descriptionImageHorizontalSpacing.constant - imageViewSize.width - imageTrailingConstraint.constant

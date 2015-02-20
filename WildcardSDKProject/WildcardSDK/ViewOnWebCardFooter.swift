@@ -48,7 +48,6 @@ public class ViewOnWebCardFooter: CardViewElement {
         shareButton.tintColor = UIColor.wildcardLightBlue()
         shareButton.setImage(UIImage.loadFrameworkImage("shareIcon"), forState: .Normal)
         addSubview(shareButton)
-        //shareButtonRightConstraint = shareButton.constrainRightToSuperView(15)
         rightConstraint = shareButton.constrainRightToSuperView(15)
         
         addConstraint(NSLayoutConstraint(item: shareButton, attribute: .CenterY, relatedBy: .Equal, toItem: viewOnWebButton, attribute: .CenterY, multiplier: 1.0, constant: 0))
@@ -70,8 +69,7 @@ public class ViewOnWebCardFooter: CardViewElement {
         }
     }
     
-    override public func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
