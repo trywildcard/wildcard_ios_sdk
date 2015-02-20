@@ -43,7 +43,6 @@ public class ImageAndCaptionBody : CardViewElement{
             imageWidthConstraint.constant = preferredWidth - imageLeftConstraint.constant - imageRightConstraint.constant
             imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
             caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
-            
             invalidateIntrinsicContentSize()
         }
     }
@@ -68,7 +67,7 @@ public class ImageAndCaptionBody : CardViewElement{
     @IBOutlet weak private var imageLeftConstraint: NSLayoutConstraint!
     private var __imageAspectRatio:CGFloat = 0.75
     
-    override public func initializeElement(){
+    override public func initialize(){
         caption.font = WildcardSDK.cardDescriptionFont
         caption.textColor = UIColor.wildcardMediaBodyColor()
         
@@ -77,24 +76,19 @@ public class ImageAndCaptionBody : CardViewElement{
         imageView.backgroundColor = UIColor.wildcardBackgroundGray()
         imageView.layer.cornerRadius = 2.0
         imageView.layer.masksToBounds = true
-        
-        imageWidthConstraint.constant = preferredWidth - imageLeftConstraint.constant - imageRightConstraint.constant
-        imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
-        caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
     }
     
-    override public func update() {
-        super.update()
+    override public func update(card:Card) {
         
         var imageUrl:NSURL?
         
-        switch(cardView.backingCard.type){
+        switch(card.type){
         case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
+            let articleCard = card as ArticleCard
             imageUrl = articleCard.primaryImageURL
             caption.text = articleCard.abstractContent
         case .Summary:
-            let summaryCard = cardView.backingCard as SummaryCard
+            let summaryCard = card as SummaryCard
             imageUrl = summaryCard.primaryImageURL
             caption.text = summaryCard.abstractContent
         case .Unknown:
@@ -105,6 +99,13 @@ public class ImageAndCaptionBody : CardViewElement{
         if imageUrl != nil {
             imageView.setImageWithURL(imageUrl!, mode:.ScaleAspectFill)
         }
+    }
+    
+    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        imageWidthConstraint.constant = cardWidth - imageLeftConstraint.constant - imageRightConstraint.constant
+        imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
+        caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
+        invalidateIntrinsicContentSize()
     }
     
     override public func intrinsicContentSize() -> CGSize {
@@ -125,9 +126,4 @@ public class ImageAndCaptionBody : CardViewElement{
         height += captionBottomConstraint.constant
         return height
     }
-    
-    override public func cardViewFinishedLayout() {
-    }
-    
-    
 }

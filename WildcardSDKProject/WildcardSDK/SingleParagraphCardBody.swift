@@ -36,7 +36,7 @@ public class SingleParagraphCardBody : CardViewElement {
     private var rightConstraint:NSLayoutConstraint!
     private var bottomConstraint:NSLayoutConstraint!
     
-    override public func initializeElement() {
+    override public func initialize() {
         backgroundColor = UIColor.whiteColor()
         
         paragraphLabel = UILabel(frame: CGRectZero)
@@ -54,23 +54,18 @@ public class SingleParagraphCardBody : CardViewElement {
         paragraphLabel.preferredMaxLayoutWidth = preferredWidth - leftConstraint.constant - rightConstraint.constant
     }
     
-    override public func update() {
-        super.update()
+    override public func update(card:Card) {
         
-        switch(backingCard.type){
+        switch(card.type){
         case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
+            let articleCard = card as ArticleCard
             paragraphLabel.text = articleCard.abstractContent
         case .Summary:
-            let webLinkCard = cardView.backingCard as SummaryCard
+            let webLinkCard = card as SummaryCard
             paragraphLabel.text = webLinkCard.abstractContent
         case .Unknown:
             paragraphLabel.text = "Unknown Card Type"
         }
-    }
-    
-    override public func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{

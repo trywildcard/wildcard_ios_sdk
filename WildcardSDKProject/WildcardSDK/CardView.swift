@@ -15,7 +15,7 @@ The visual source of a CardView.
 
 Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
 
-Any CardViewElement returned from this visual source must implement intrinsicContentSize()
+Any CardViewElement returned from this visual should must implement intrinsicContentSize()
 */
 @objc
 public protocol CardViewVisualSource{
@@ -330,11 +330,11 @@ public class CardView : UIView
         
         // initialize and update before height calculations
         body.cardView = self
-        body.update()
+        body.update(backingCard)
         header?.cardView = self
-        header?.update()
+        header?.update(backingCard)
         footer?.cardView = self
-        footer?.update()
+        footer?.update(backingCard)
     }
     
     override public func intrinsicContentSize() -> CGSize {
@@ -392,7 +392,7 @@ public class CardView : UIView
         // Back of the card always constrain to edges if it exists
         if let backView = visualSource.viewForBackOfCard?(){
             backView.cardView = self
-            backView.update()
+            backView.update(backingCard)
             insertSubview(backView, belowSubview:containerView)
             backView.constrainToSuperViewEdges()
             backView.layer.cornerRadius = WildcardSDK.cardCornerRadius

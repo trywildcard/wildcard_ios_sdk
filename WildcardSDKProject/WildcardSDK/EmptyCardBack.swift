@@ -12,7 +12,7 @@ class EmptyCardBack : CardViewElement {
     
     var titleLabel:UILabel!
     
-    override func initializeElement() {
+    override func initialize() {
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center

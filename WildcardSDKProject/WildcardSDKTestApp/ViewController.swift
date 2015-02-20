@@ -34,7 +34,7 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
-            self.cardView.invalidateIntrinsicContentSize()
+            //self.cardView.invalidateIntrinsicContentSize()
         }
     }
     

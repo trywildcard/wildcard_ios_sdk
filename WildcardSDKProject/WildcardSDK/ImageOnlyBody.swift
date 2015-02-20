@@ -36,10 +36,8 @@ public class ImageOnlyBody : CardViewElement{
             rightConstraint.constant = newValue.right
             bottomConstraint.constant = newValue.bottom
             
-            imageWidthConstraint.constant = preferredWidth - leftConstraint.constant - rightConstraint.constant
-            imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
-            
-            invalidateIntrinsicContentSize()
+            //needs re adjust if content insets change
+            adjustForPreferredWidth(preferredWidth)
         }
     }
     
@@ -51,7 +49,7 @@ public class ImageOnlyBody : CardViewElement{
     private var imageWidthConstraint:NSLayoutConstraint!
     private var __imageAspectRatio:CGFloat = 0.75
     
-    override public func initializeElement(){
+    override public func initialize(){
         
         imageView = WCImageView(frame: CGRectZero)
         imageView.layer.cornerRadius = 2.0
@@ -64,23 +62,28 @@ public class ImageOnlyBody : CardViewElement{
         topConstraint = imageView.constrainTopToSuperView(10)
         bottomConstraint = imageView.constrainBottomToSuperView(10)
         
-        imageWidthConstraint = imageView.constrainWidth(preferredWidth - leftConstraint.constant - rightConstraint.constant)
+        imageWidthConstraint = imageView.constrainWidth(0)
         imageWidthConstraint.priority = 999
-        imageHeightConstraint = imageView.constrainHeight(round(imageWidthConstraint.constant * imageAspectRatio))
+        imageHeightConstraint = imageView.constrainHeight(0)
         imageHeightConstraint.priority = 999
     }
     
-    override public func update() {
-        super.update()
+    public override func adjustForPreferredWidth(cardWidth: CGFloat) {
+        imageWidthConstraint.constant = cardWidth - leftConstraint.constant - rightConstraint.constant
+        imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
+        invalidateIntrinsicContentSize()
+    }
+    
+    override public func update(card:Card) {
         
         var imageUrl:NSURL?
         
-        switch(cardView.backingCard.type){
+        switch(card.type){
         case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
+            let articleCard = card as ArticleCard
             imageUrl = articleCard.primaryImageURL
         case .Summary:
-            let webLinkCard = cardView.backingCard as SummaryCard
+            let webLinkCard = card as SummaryCard
             imageUrl = webLinkCard.primaryImageURL
         case .Unknown:
             imageUrl = nil
@@ -90,13 +93,6 @@ public class ImageOnlyBody : CardViewElement{
         if let url = imageUrl {
             imageView.setImageWithURL(url, mode: .ScaleAspectFill)
         }
-    }
-    
-    override public func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
-    }
-    
-    override public  func cardViewFinishedLayout() {
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{

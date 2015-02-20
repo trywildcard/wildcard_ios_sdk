@@ -50,7 +50,7 @@ public class ImageFloatRightBody : CardViewElement
     @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
     private var bottomPadding:CGFloat = 10.0
     
-    override public func initializeElement() {
+    override public func initialize() {
         descriptionLabel.font = WildcardSDK.cardDescriptionFont
         descriptionLabel.textColor = UIColor.wildcardMediaBodyColor()
         imageView.layer.cornerRadius = 2.0
@@ -59,15 +59,15 @@ public class ImageFloatRightBody : CardViewElement
         imageViewSize = CGSizeMake(120,90)
     }
     
-    override public func update() {
-        if let summaryCard = cardView.backingCard as? SummaryCard{
+    override public func update(card:Card) {
+        if let summaryCard = card as? SummaryCard{
             descriptionLabel.text = summaryCard.abstractContent
             
             // download image
             if let imageUrl = summaryCard.primaryImageURL{
                 imageView.setImageWithURL(imageUrl, mode:.ScaleAspectFill)
             }
-        }else if let articleCard = cardView.backingCard as? ArticleCard{
+        }else if let articleCard = card as? ArticleCard{
             descriptionLabel.text = articleCard.abstractContent
             
             if let imageUrl = articleCard.primaryImageURL{
@@ -77,16 +77,8 @@ public class ImageFloatRightBody : CardViewElement
         updateDescriptionAttributes()
     }
     
-    override public func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
-    }
-    
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return imageHeightConstraint.constant + imageTopConstraint.constant + bottomPadding;
-    }
-    
-    override public func cardViewFinishedLayout() {
-        
     }
     
     private func updateDescriptionAttributes(){

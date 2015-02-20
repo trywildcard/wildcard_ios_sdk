@@ -18,7 +18,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     var downloadAppIcon:UIImageView!
     
     // MARK: CardViewElement
-    override public func initializeElement() {
+    override public func initialize() {
         logo.layer.cornerRadius = 3.0
         logo.layer.masksToBounds = true
         webview.delegate = self
@@ -39,8 +39,8 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         downloadAppIcon.layer.masksToBounds = true
     }
     
-    override public func update() {
-        if let articleCard = cardView.backingCard as? ArticleCard{
+    override public func update(card:Card) {
+        if let articleCard = card as? ArticleCard{
             // top right favicon
             if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
@@ -51,27 +51,33 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
                 })
             }
             webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: nil)
-            updateToolbar()
+            updateToolbar(articleCard)
         }
     }
     
     // MARK: Action
     func closeButtonTapped(sender: AnyObject) {
-        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Collapse, parameters: nil))
+        if(cardView != nil){
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .Collapse, parameters: nil))
+        }
     }
     
     func actionButtonTapped(sender:AnyObject){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: backingCard)
-        cardView.handleShare()
+        if(cardView != nil){
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: cardView!.backingCard)
+            cardView!.handleShare()
+        }
     }
     
     func downloadAppButtonTapped(sender:AnyObject){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"downloadApp"], withCard: backingCard)
-        cardView.handleDownloadApp()
+        if(cardView != nil){
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"downloadApp"], withCard: cardView!.backingCard)
+            cardView!.handleDownloadApp()
+        }
     }
     
     // MARK: Private
-    func updateToolbar(){
+    func updateToolbar(card:Card){
         
         var barButtonItems:[AnyObject] = []
         var closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
@@ -80,7 +86,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         barButtonItems.append(flexSpace)
         
-        if let articleCard = cardView.backingCard as? ArticleCard{
+        if let articleCard = card as? ArticleCard{
             if let appStoreUrl = articleCard.creator.iosAppStoreUrl {
                 
                 // publisher logo
@@ -157,8 +163,10 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     // MARK: UIWebViewDelegate
     public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if(navigationType == .LinkClicked){
-            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], withCard: backingCard)
-            cardView.handleViewOnWeb(request.URL)
+            if(cardView != nil){
+                WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], withCard: cardView!.backingCard)
+                cardView!.handleViewOnWeb(request.URL)
+            }
             return false
         }else{
             return true

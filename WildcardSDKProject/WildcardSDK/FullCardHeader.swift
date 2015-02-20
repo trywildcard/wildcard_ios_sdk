@@ -32,13 +32,7 @@ public class FullCardHeader : CardViewElement
             titleLeadingConstraint.constant = newValue.left
             titleTrailingConstraint.constant = newValue.right
             titleBottomConstraint.constant = newValue.bottom
-            
-            // content insets affect the preferred width of the labels
-            title.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
-            kicker.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
-            
-            // intrinsic size is invalid
-            invalidateIntrinsicContentSize()
+            adjustLabelLayoutWidths()
         }
     }
     
@@ -54,7 +48,7 @@ public class FullCardHeader : CardViewElement
     @IBOutlet weak private var titleTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
     
-    override public func initializeElement() {
+    override public func initialize() {
         logo.layer.cornerRadius = 4.0
         logo.layer.masksToBounds = true
         kicker.font =  WildcardSDK.cardKickerFont
@@ -71,18 +65,22 @@ public class FullCardHeader : CardViewElement
         return size
     }
     
-    override public func update() {
+    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        adjustLabelLayoutWidths()
+    }
+    
+    override public func update(card:Card) {
         
-        switch(backingCard.type){
+        switch(card.type){
         case .Article:
-            let articleCard = cardView.backingCard as ArticleCard
+            let articleCard = card as ArticleCard
             kicker.text = articleCard.creator.name
             title.text = articleCard.title
             if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleToFill)
             }
         case .Summary:
-            let summaryCard = cardView.backingCard as SummaryCard
+            let summaryCard = card as SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
         case .Unknown:
@@ -106,6 +104,15 @@ public class FullCardHeader : CardViewElement
         height += titleBottomConstraint.constant
         
         return round(height)
+    }
+    
+    private func adjustLabelLayoutWidths(){
+        // preferred width affects preferred layout widths of labels
+        title.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
+        kicker.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
+        
+        // intrinsic size is invalid
+        invalidateIntrinsicContentSize()
     }
     
 }

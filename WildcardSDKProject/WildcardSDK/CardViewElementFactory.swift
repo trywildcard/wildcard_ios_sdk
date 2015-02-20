@@ -12,7 +12,7 @@ import Foundation
 public class CardViewElementFactory{
     
     /** 
-    Creates a CardViewElement by enumeration. You may not make any assumptions about the size after this call.
+    Creates a CardViewElement from WCElementType. You may not make any assumptions about the size after this call.
     
     Use only for initialization
     */
@@ -29,8 +29,6 @@ public class CardViewElementFactory{
             cardViewElement = ImageOnlyBody(frame:CGRectZero);
         case .MediaTextFullWebView:
             cardViewElement = UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
-        case .MediaTextWrapImageFloatsRight:
-            cardViewElement = UIView.loadFromNibNamed("MediaTextImageFloatRight") as MediaTextImageFloatRight
         case .ImageFloatsRight:
             cardViewElement = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
         case .ReadMoreFooter:
@@ -42,8 +40,6 @@ public class CardViewElementFactory{
         }
         
         cardViewElement.preferredWidth = preferredWidth
-        cardViewElement.initializeElement()
         return cardViewElement
-        
     }
 }

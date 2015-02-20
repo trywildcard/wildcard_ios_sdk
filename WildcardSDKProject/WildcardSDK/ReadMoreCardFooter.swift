@@ -31,7 +31,7 @@ public class ReadMoreFooter: CardViewElement {
     private var topConstraint:NSLayoutConstraint!
     private var bottomConstraint:NSLayoutConstraint!
     
-    override public func initializeElement() {
+    override public func initialize() {
         readMoreButton = UIButton.defaultReadMoreButton()
         addSubview(readMoreButton!)
         
@@ -55,7 +55,9 @@ public class ReadMoreFooter: CardViewElement {
     }
     
     func readMoreButtonTapped(){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"readMore"], withCard: backingCard)
-        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .Maximize, parameters: nil))
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"readMore"], withCard: cardView?.backingCard)
+        if(cardView != nil){
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .Maximize, parameters: nil))
+        }
     }
 }

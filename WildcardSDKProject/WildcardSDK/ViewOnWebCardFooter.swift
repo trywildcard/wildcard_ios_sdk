@@ -33,7 +33,7 @@ public class ViewOnWebCardFooter: CardViewElement {
     private var leftConstraint:NSLayoutConstraint!
     private var rightConstraint:NSLayoutConstraint!
     
-    override public func initializeElement() {
+    override public func initialize() {
         viewOnWebButton = UIButton.defaultViewOnWebButton()
         addSubview(viewOnWebButton!)
         //verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
@@ -57,13 +57,17 @@ public class ViewOnWebCardFooter: CardViewElement {
     }
     
     func shareButtonTapped(){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: backingCard)
-        cardView.handleShare()
+        if(cardView != nil){
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: cardView!.backingCard)
+            cardView!.handleShare()
+        }
     }
     
     func viewOnWebButtonTapped(){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"viewOnWeb"], withCard: backingCard)
-        cardView.handleViewOnWeb(backingCard.webUrl)
+        if(cardView != nil){
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"viewOnWeb"], withCard: cardView!.backingCard)
+            cardView!.handleViewOnWeb(cardView!.backingCard.webUrl)
+        }
     }
     
     override public func intrinsicContentSize() -> CGSize {

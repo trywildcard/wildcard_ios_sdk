@@ -51,9 +51,6 @@
 		1D3A28971A2E697700A9D4C1 /* WildcardSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */; };
 		1D3A289A1A2E697700A9D4C1 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; };
 		1D3A289B1A2E697700A9D4C1 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A28831A2E697700A9D4C1 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */; };
-		1D3ECFC41A40EC3F0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
-		1D3ECFC51A40ED6A0001BF7A /* MediaTextImageFloatRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */; };
 		1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */; };
 		1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ECFC81A4151370001BF7A /* Creator.swift */; };
 		1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D58732F1A374AA500C3EAF3 /* Media.xcassets */; };
@@ -206,8 +203,6 @@
 		1D3A288D1A2E697700A9D4C1 /* WildcardSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WildcardSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D3A28951A2E697700A9D4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D3A28961A2E697700A9D4C1 /* WildcardSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildcardSDKTests.swift; sourceTree = "<group>"; };
-		1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextImageFloatRight.swift; sourceTree = "<group>"; };
-		1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextImageFloatRight.xib; sourceTree = "<group>"; };
 		1D3ECFC61A40FB260001BF7A /* ReadMoreCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMoreCardFooter.swift; sourceTree = "<group>"; };
 		1D3ECFC81A4151370001BF7A /* Creator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		1D58732F1A374AA500C3EAF3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -503,8 +498,6 @@
 				1DC928881A409CC00040DAD0 /* ImageOnlyBody.swift */,
 				1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */,
 				1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */,
-				1D3ECFC11A40E85C0001BF7A /* MediaTextImageFloatRight.swift */,
-				1D3ECFC31A40EC3F0001BF7A /* MediaTextImageFloatRight.xib */,
 				1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */,
 				1DF1B8CE1A6BF297000EC76E /* ImageFloatRightBody.xib */,
 				1DF1B8CC1A6BF258000EC76E /* ImageFloatRightBody.swift */,
@@ -777,7 +770,6 @@
 				1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */,
-				1D3ECFC51A40ED6A0001BF7A /* MediaTextImageFloatRight.xib in Resources */,
 				1D3A28681A2E696A00A9D4C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,7 +781,6 @@
 				1DF1B8CF1A6BF297000EC76E /* ImageFloatRightBody.xib in Resources */,
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
 				1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */,
-				1D3ECFC41A40EC3F0001BF7A /* MediaTextImageFloatRight.xib in Resources */,
 				1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,
 				1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */,
@@ -875,7 +866,6 @@
 				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
-				1D3ECFC21A40E85C0001BF7A /* MediaTextImageFloatRight.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,
 				1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
