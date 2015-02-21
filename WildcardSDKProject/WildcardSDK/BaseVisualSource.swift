@@ -13,38 +13,30 @@ import Foundation
 public class BaseVisualSource
 {
     let card:Card
-    var widthOverride:CGFloat? = nil
-    let defaultCardMargin:CGFloat
+    var preferredWidth:CGFloat? = nil
     
-    /// Initiailize with backing card and card margin to screen bounds
-    public init(card:Card, margin:CGFloat){
-        self.card = card
-        self.defaultCardMargin = margin;
-    }
-    
-    /// Initialize with backing card and default card margin of 15
+    /// Initialize with backing card a
     public init(card:Card){
         self.card = card
-        self.defaultCardMargin = 15.0
     }
 
     /**
-    If portrait, the width is defaulted to the screen width - (2 * margin)
+    If portrait, the width is defaulted to the screen width - (2 * WildcardSDK.defaultScreenMargin)
     
-    If landscape, the width is defaulted to the screen height - (2 * margin)
+    If landscape, the width is defaulted to the screen height - (2 * WildcardSDK.defaultScreenMargin)
     
-    widthOverride is used if it's set.
+    preferredWidth is used if it's set.
     */
     public func widthForCard()->CGFloat{
-        if(widthOverride == nil){
+        if(preferredWidth == nil){
             let screenBounds = UIScreen.mainScreen().bounds
             if(screenBounds.width > screenBounds.height){
-                return screenBounds.height - (2 * defaultCardMargin)
+                return screenBounds.height - (2 * WildcardSDK.defaultScreenMargin)
             }else{
-                return screenBounds.width - (2 * defaultCardMargin)
+                return screenBounds.width - (2 * WildcardSDK.defaultScreenMargin)
             }
         }else{
-            return widthOverride!
+            return preferredWidth!
         }
     }
 }

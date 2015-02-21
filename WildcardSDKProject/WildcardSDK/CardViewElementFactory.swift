@@ -29,8 +29,10 @@ public class CardViewElementFactory{
             cardViewElement = ImageOnlyBody(frame:CGRectZero);
         case .MediaTextFullWebView:
             cardViewElement = UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
-        case .ImageFloatsRight:
+        case .ImageFloatRight:
             cardViewElement = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
+        case .ImageFloatLeft:
+            cardViewElement = UIView.loadFromNibNamed("ImageFloatLeftBody") as ImageFloatLeftBody
         case .ReadMoreFooter:
             cardViewElement = ReadMoreFooter(frame:CGRectZero);
         case .ViewOnWebFooter:

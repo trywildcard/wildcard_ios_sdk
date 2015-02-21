@@ -12,7 +12,8 @@ typedef NS_ENUM(NSInteger, WCElementType){
     WCElementTypeImageOnly,
     WCElementTypeMediaTextFullWebView,
     WCElementTypeSimpleParagraph,
-    WCElementTypeImageFloatsRight,
+    WCElementTypeImageFloatRight,
+    WCElementTypeImageFloatLeft,
     WCElementTypeReadMoreFooter,
     WCElementTypeViewOnWebFooter
 };

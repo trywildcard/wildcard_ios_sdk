@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisualSource
+public class SummaryCardShortVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:FullCardHeader!
     var body:ImageFloatRightBody!
@@ -28,20 +28,12 @@ public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
         return header
     }
     
-    public func heightForCardHeader()->CGFloat{
-        return header.optimizedHeight(widthForCard())
-    }
-    
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatsRight, preferredWidth:widthForCard()) as ImageFloatRightBody
+            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatRight, preferredWidth:widthForCard()) as ImageFloatRightBody
             self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
         }
         return body
-    }
-    
-    public func heightForCardBody()->CGFloat{
-        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter() -> CardViewElement? {
@@ -50,10 +42,6 @@ public class SummaryCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
             self.footer.hairline.hidden = true
         }
         return footer
-    }
-    
-    public func heightForCardFooter() -> CGFloat {
-        return 50
     }
     
     public override func widthForCard() -> CGFloat {

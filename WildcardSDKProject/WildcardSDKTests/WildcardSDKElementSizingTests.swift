@@ -84,7 +84,6 @@ class WildcardSDKElementSizingTests: XCTestCase {
         XCTAssert(body.intrinsicContentSize().height > currentSize.height)
         currentSize = body.intrinsicContentSize()
         
-        // caption spacing increases height
         body.imageAspectRatio = body.imageAspectRatio * 0.9
         XCTAssert(body.intrinsicContentSize().height < currentSize.height)
         currentSize = body.intrinsicContentSize()
@@ -99,6 +98,24 @@ class WildcardSDKElementSizingTests: XCTestCase {
         println(body.intrinsicContentSize().height)
         println(currentSize.height)
         XCTAssert(body.intrinsicContentSize().height < currentSize.height)
+    }
+    
+    func testSingleParagraph(){
+        var body:SingleParagraphCardBody = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph, preferredWidth: 300) as SingleParagraphCardBody
+        
+        var currentSize:CGSize = body.intrinsicContentSize()
+        XCTAssert(currentSize.width == 300)
+        
+        // content inset changes height
+        var currentInset = body.contentEdgeInset
+        body.contentEdgeInset = UIEdgeInsetsMake(currentInset.top + 10, currentInset.left, currentInset.bottom, currentInset.right)
+        XCTAssert(body.intrinsicContentSize().height > currentSize.height)
+        currentSize = body.intrinsicContentSize()
+        
+        currentInset = body.contentEdgeInset
+        body.contentEdgeInset = UIEdgeInsetsMake(currentInset.top, currentInset.left, currentInset.bottom + 5, currentInset.right)
+        XCTAssert(body.intrinsicContentSize().height > currentSize.height)
+        currentSize = body.intrinsicContentSize()
     }
 
 

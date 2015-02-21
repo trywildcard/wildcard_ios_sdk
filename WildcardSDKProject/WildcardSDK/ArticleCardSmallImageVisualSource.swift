@@ -34,7 +34,7 @@ public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisua
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatsRight, preferredWidth:widthForCard()) as ImageFloatRightBody
+            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatRight, preferredWidth:widthForCard()) as ImageFloatRightBody
             self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 0, 15)
         }
         return body

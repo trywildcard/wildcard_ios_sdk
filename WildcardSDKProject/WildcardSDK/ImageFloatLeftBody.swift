@@ -1,15 +1,15 @@
 //
-//  ImageThumbnailFloatRight.swift
+//  ImageFloatLeftBody.swift
 //  WildcardSDKProject
 //
-//  Created by David Xiang on 1/18/15.
+//  Created by David Xiang on 2/20/15.
 //
 //
 
 import Foundation
 
 @objc
-public class ImageFloatRightBody : CardViewElement
+public class ImageFloatLeftBody : CardViewElement
 {
     @IBOutlet weak public var imageView: WCImageView!
     @IBOutlet weak public var descriptionLabel: UILabel!

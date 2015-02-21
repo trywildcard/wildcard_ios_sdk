@@ -8,13 +8,18 @@
 
 import Foundation
 
+/// The basic subcomponent of a CardView
 @objc
 public class CardViewElement : UIView {
     
     /// Reference to the parent CardView of the CardViewElement. Nil if this element has not been added to any CardView yet.
     public var cardView:CardView?
     
-    /// Used to determine variable height based on content. Returns UIViewNoIntrinsicMetric if no preferred width is set.
+    /**
+    Used to determine variable height based on content. Returns UIViewNoIntrinsicMetric if no preferred width is set.
+    
+    Similar to UILabel.preferredMaxLayoutWidth, this width and is used in conjunction with optimizedHeight() to determine the intrinsic size of the CardViewElement
+    */
     public var preferredWidth:CGFloat{
         get{
             return __preferredWidth
@@ -24,19 +29,14 @@ public class CardViewElement : UIView {
         }
     }
     
-    /// Called after the CardViewElement is initialized or after awakeFromNib
-    public func initialize(){
-    }
-    
     /**
     Update the CardViewElement with the given card.
 
-    Layout has not finished yet so can not make any assumptions about frames or sizes
+    This always happens before a final layout pass so you should not make any assumptions about frames or sizes during this call.
     */
     public func update(card:Card){
     }
     
-    // Intrinsic content size of a card element will always be the preferredWidth w/ optimizedHeight(preferredWidth) as the height
     public override func intrinsicContentSize() -> CGSize {
         return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
     }
@@ -44,28 +44,23 @@ public class CardViewElement : UIView {
     /**
     Return an optimized height for the CardViewElement based on a given width. 
     
-    This should be implemented to give each card element a proper intrinsic size.
+    This function should be overriden to provide a proper intrinsic size for this CardViewElement.
     */
     public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         return CGFloat.min
     }
     
     /**
-    The CardView parent has finished laying out. 
-    
-    Can do any last minute changes to the CardViewElement that may depend on frame/bounds e.g. exclusion paths, etc.
-    */
-    public func cardViewFinishedLayout(){
-    }
-
-    /**
     The preferred width of the card view element has just been updated, make any necessary adjustments
 
-    e.g. if a UILabel has a preferredMaxLayoutWidth that depends on the preferred width
+    e.g. Resassign a UILabel's preferredMaxLayoutWidth if it depends on the CardViewElement's preferredWidth
     */
-    
     public func adjustForPreferredWidth(cardWidth:CGFloat){
         // override
+    }
+    
+    /// Called automatically on init() or awakeFromNib()
+    public func initialize(){
     }
     
     public required init(coder aDecoder: NSCoder) {

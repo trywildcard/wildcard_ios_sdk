@@ -66,6 +66,24 @@ public class WildcardSDK {
         }
     }
     
+    /// Custom corner radius for images shown in cards
+    public class var imageCornerRadius:CGFloat{
+        get{
+            return WildcardSDK.sharedInstance.__imageCornerRadius;
+        }set{
+            WildcardSDK.sharedInstance.__imageCornerRadius = newValue;
+        }
+    }
+    
+    /// This value is used to calculate a default preferred width for a CardView if none is explicilty given.
+    public class var defaultScreenMargin:CGFloat{
+        get{
+            return WildcardSDK.sharedInstance.__defaultScreenMargin
+        }set{
+            WildcardSDK.sharedInstance.__defaultScreenMargin = newValue;
+        }
+    }
+    
     /// Initialize the SDK
     public class func initializeWithApiKey(key:String){
         if(WildcardSDK.sharedInstance.__applicationKey == nil){
@@ -88,7 +106,9 @@ public class WildcardSDK {
         }
     }
     
-    var __cardCornerRadius:CGFloat = 4.0
+    var __imageCornerRadius:CGFloat = 1.0
+    var __defaultScreenMargin:CGFloat = 15.0
+    var __cardCornerRadius:CGFloat = 2.0
     var __cardTitleFont:UIFont!
     var __cardKickerFont:UIFont!
     var __cardDescriptionFont:UIFont!

@@ -15,12 +15,12 @@ The visual source of a CardView.
 
 Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
 
-Any CardViewElement returned from this visual should must implement intrinsicContentSize()
+The subviews of a CardView are CardViewElements. 
 */
 @objc
 public protocol CardViewVisualSource{
     
-    /// Width for the card.
+    /// Width for the card. 
     func widthForCard()->CGFloat
     
     /// CardViewElement for the card body

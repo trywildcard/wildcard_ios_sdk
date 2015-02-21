@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="nsO-le-2iI" customClass="ImageFloatLeftBody" customModule="WildcardSDK">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOe-GK-OD3" customClass="WCImageView" customModule="WildcardSDK">
+                    <rect key="frame" x="10" y="10" width="120" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="mn0-F8-oKD"/>
+                        <constraint firstAttribute="height" constant="90" id="pEG-f0-kEJ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfR-94-VjZ">
+                    <rect key="frame" x="140" y="10" width="450" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kfR-94-VjZ" firstAttribute="leading" secondItem="aOe-GK-OD3" secondAttribute="trailing" constant="10" id="Cqs-Rn-Zab"/>
+                <constraint firstItem="aOe-GK-OD3" firstAttribute="top" secondItem="nsO-le-2iI" secondAttribute="top" constant="10" id="ZR2-G1-jdG"/>
+                <constraint firstItem="aOe-GK-OD3" firstAttribute="leading" secondItem="nsO-le-2iI" secondAttribute="leading" constant="10" id="cci-ge-XT0"/>
+                <constraint firstItem="kfR-94-VjZ" firstAttribute="top" secondItem="aOe-GK-OD3" secondAttribute="top" id="goi-8f-2gA"/>
+                <constraint firstAttribute="trailing" secondItem="kfR-94-VjZ" secondAttribute="trailing" constant="10" id="pFg-xx-GkK"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="descriptionImageHorizontalSpacing" destination="Cqs-Rn-Zab" id="LMP-Xu-prD"/>
+                <outlet property="descriptionLabel" destination="kfR-94-VjZ" id="GkS-Dh-UJj"/>
+                <outlet property="imageHeightConstraint" destination="pEG-f0-kEJ" id="gYO-Z8-gUN"/>
+                <outlet property="imageLeadingConstraint" destination="cci-ge-XT0" id="QSr-Xb-Ck0"/>
+                <outlet property="imageTopConstraint" destination="ZR2-G1-jdG" id="TLa-Ic-RXK"/>
+                <outlet property="imageTrailingConstraint" destination="pFg-xx-GkK" id="W6S-9k-8wu"/>
+                <outlet property="imageView" destination="aOe-GK-OD3" id="T7k-Ha-RrD"/>
+                <outlet property="imageWidthConstraint" destination="mn0-F8-oKD" id="RQM-6b-KLR"/>
+            </connections>
+        </view>
+    </objects>
+</document>

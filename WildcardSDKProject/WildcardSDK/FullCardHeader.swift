@@ -49,7 +49,7 @@ public class FullCardHeader : CardViewElement
     @IBOutlet weak private var titleLeadingConstraint: NSLayoutConstraint!
     
     override public func initialize() {
-        logo.layer.cornerRadius = 4.0
+        logo.layer.cornerRadius = 3.0
         logo.layer.masksToBounds = true
         kicker.font =  WildcardSDK.cardKickerFont
         kicker.numberOfLines = 1

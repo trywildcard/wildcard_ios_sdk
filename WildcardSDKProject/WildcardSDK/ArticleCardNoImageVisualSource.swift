@@ -16,11 +16,6 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     var footer:ReadMoreFooter!
     var footerWeb:ViewOnWebCardFooter!
     
-    public override init(card:Card){
-        
-        super.init(card: card)
-    }
-    
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
@@ -29,20 +24,12 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         return header
     }
     
-    public func heightForCardHeader()->CGFloat{
-        return header.optimizedHeight(widthForCard())
-    }
-    
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph, preferredWidth:widthForCard()) as SingleParagraphCardBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
         }
         return body
-    }
-    
-    public func heightForCardBody()->CGFloat{
-        return body.optimizedHeight(widthForCard())
     }
     
     public func viewForCardFooter() -> CardViewElement? {
@@ -63,13 +50,5 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         }else{
             return nil
         }
-    }
-    
-    public func heightForCardFooter() -> CGFloat {
-        return 50
-    }
-    
-    public override func widthForCard() -> CGFloat {
-        return super.widthForCard();
     }
 }

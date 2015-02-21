@@ -27,6 +27,10 @@
 		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
 		1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */; };
 		1D0BEDD21A968242000BA999 /* WildcardSDKElementSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */; };
+		1D0BEDD41A97AD81000BA999 /* ImageFloatLeftBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD31A97AD81000BA999 /* ImageFloatLeftBody.xib */; };
+		1D0BEDD61A97AD90000BA999 /* ImageFloatLeftBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD51A97AD90000BA999 /* ImageFloatLeftBody.swift */; };
+		1D0BEDD81A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD71A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift */; };
+		1D0BEDD91A97B19B000BA999 /* ImageFloatLeftBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD31A97AD81000BA999 /* ImageFloatLeftBody.xib */; };
 		1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */; };
 		1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3064761A3B83B100D99F6E /* ViewController3.swift */; };
@@ -75,7 +79,7 @@
 		1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764841A4356B200E51FE5 /* MaximizedArticleVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */; };
 		1D9764861A43747C00E51FE5 /* StockMaximizedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */; };
-		1DA163901A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1638F1A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift */; };
+		1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */; };
 		1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */; };
 		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
 		1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */; };
@@ -177,6 +181,9 @@
 		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
 		1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildcardSDKElementSizingTests.swift; sourceTree = "<group>"; };
+		1D0BEDD31A97AD81000BA999 /* ImageFloatLeftBody.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageFloatLeftBody.xib; sourceTree = "<group>"; };
+		1D0BEDD51A97AD90000BA999 /* ImageFloatLeftBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFloatLeftBody.swift; sourceTree = "<group>"; };
+		1D0BEDD71A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardShortLeftVisualSource.swift; sourceTree = "<group>"; };
 		1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MediaReadingCss.css; sourceTree = "<group>"; };
 		1D3064761A3B83B100D99F6E /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		1D32482A1A8EB348004F753B /* CardViewElementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElementFactory.swift; sourceTree = "<group>"; };
@@ -226,7 +233,7 @@
 		1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextFullWebView.xib; sourceTree = "<group>"; };
 		1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximizedArticleVisualSource.swift; sourceTree = "<group>"; };
 		1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardViewController.swift; sourceTree = "<group>"; };
-		1DA1638F1A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardSmallImageVisualSource.swift; sourceTree = "<group>"; };
+		1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardShortVisualSource.swift; sourceTree = "<group>"; };
 		1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughEdge.swift; sourceTree = "<group>"; };
 		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
 		1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitEdge.swift; sourceTree = "<group>"; };
@@ -501,6 +508,8 @@
 				1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */,
 				1DF1B8CE1A6BF297000EC76E /* ImageFloatRightBody.xib */,
 				1DF1B8CC1A6BF258000EC76E /* ImageFloatRightBody.swift */,
+				1D0BEDD31A97AD81000BA999 /* ImageFloatLeftBody.xib */,
+				1D0BEDD51A97AD90000BA999 /* ImageFloatLeftBody.swift */,
 			);
 			name = Bodies;
 			sourceTree = "<group>";
@@ -584,9 +593,10 @@
 			isa = PBXGroup;
 			children = (
 				1DF1B8CA1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift */,
-				1DA1638F1A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift */,
-				1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */,
 				1D66D4C11A856DF500DCDFC8 /* SummaryCardImageOnlyVisualSource.swift */,
+				1DF1B8C71A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift */,
+				1D0BEDD71A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift */,
+				1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */,
 			);
 			name = "Summary Card Visual Sources";
 			sourceTree = "<group>";
@@ -767,6 +777,7 @@
 				1D3A28661A2E696A00A9D4C1 /* Main.storyboard in Resources */,
 				1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */,
 				1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */,
+				1D0BEDD91A97B19B000BA999 /* ImageFloatLeftBody.xib in Resources */,
 				1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */,
@@ -781,6 +792,7 @@
 				1DF1B8CF1A6BF297000EC76E /* ImageFloatRightBody.xib in Resources */,
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
 				1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */,
+				1D0BEDD41A97AD81000BA999 /* ImageFloatLeftBody.xib in Resources */,
 				1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,
 				1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */,
@@ -840,7 +852,7 @@
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
 				1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */,
-				1DA163901A73FB290020E0C6 /* SummaryCardSmallImageVisualSource.swift in Sources */,
+				1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */,
 				1DF1B8CB1A6BEF30000EC76E /* SummaryCardFullImageVisualSource.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,
 				1DAC268E1A3564170005C4BE /* CheckShortTitleEdge.swift in Sources */,
@@ -860,6 +872,7 @@
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DF1B8DC1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,
+				1D0BEDD61A97AD90000BA999 /* ImageFloatLeftBody.swift in Sources */,
 				1DF1B8DA1A6C2B01000EC76E /* ArticleCardFullImageVisualSource.swift in Sources */,
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
 				1DC39A6E1A7BD72E007BBEBE /* BaseVisualSource.swift in Sources */,
@@ -878,6 +891,7 @@
 				1DC928891A409CC00040DAD0 /* ImageOnlyBody.swift in Sources */,
 				1DAC26961A36321B0005C4BE /* CardView.swift in Sources */,
 				1D97647F1A43470A00E51FE5 /* MediaTextFullWebView.swift in Sources */,
+				1D0BEDD81A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
 				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,

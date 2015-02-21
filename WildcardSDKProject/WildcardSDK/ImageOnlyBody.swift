@@ -52,7 +52,7 @@ public class ImageOnlyBody : CardViewElement{
     override public func initialize(){
         
         imageView = WCImageView(frame: CGRectZero)
-        imageView.layer.cornerRadius = 2.0
+        imageView.layer.cornerRadius = WildcardSDK.imageCornerRadius
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = UIColor.whiteColor()
         addSubview(imageView)

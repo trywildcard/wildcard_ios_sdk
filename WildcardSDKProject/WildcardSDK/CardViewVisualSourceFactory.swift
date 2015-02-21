@@ -12,39 +12,44 @@ class CardViewVisualSourceFactory {
     
     /// Returns a stock visual source from a given card layout. If width is specified, we'll use the override width
     class func visualSourceFromLayout(layout:WCCardLayout, card:Card, width:CGFloat?)->CardViewVisualSource{
-        
         switch(layout){
         case .SummaryCardNoImage:
             var source = SummaryCardNoImageVisualSource(card:card)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .SummaryCardShort:
-            var source = SummaryCardSmallImageVisualSource(card:card)
-            source.widthOverride = width
+            var source = SummaryCardShortVisualSource(card:card)
+            source.preferredWidth = width
+            return source
+        case .SummaryCardShortLeft:
+            var source = SummaryCardShortLeftVisualSource(card:card)
+            source.preferredWidth = width
             return source
         case .SummaryCardTall:
             var source = SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .SummaryCardImageOnly:
             var source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.75)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .ArticleCardNoImage:
             var source = ArticleCardNoImageVisualSource(card:card)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .ArticleCardTall:
             var source = ArticleCardFullImageVisualSource(card:card, aspectRatio: 0.75)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .ArticleCardShort:
             var source = ArticleCardSmallImageVisualSource(card:card)
-            source.widthOverride = width
+            source.preferredWidth = width
             return source
         case .Unknown:
-            // Shouldn't happen
-            return SummaryCardNoImageVisualSource(card:card)
+            // shouldn't happen
+            var source = SummaryCardNoImageVisualSource(card:card)
+            source.preferredWidth = width
+            return source
         }
     }
     

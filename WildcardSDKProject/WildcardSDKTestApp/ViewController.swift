@@ -28,13 +28,12 @@ class ViewController: UIViewController, CardViewDelegate{
         
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShortLeft){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
-            //self.cardView.invalidateIntrinsicContentSize()
         }
     }
     
@@ -77,12 +76,13 @@ class ViewController: UIViewController, CardViewDelegate{
             //view.layoutIfNeeded()
         }
         
-        if let body = cardView.visualSource.viewForCardBody() as? ImageAndCaptionBody{
+        if let body = cardView.visualSource.viewForCardBody() as? ImageFloatLeftBody{
            // body.caption.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
            // body.imageViewSize = CGSizeMake(200, 200)
             //body.contentEdgeInset = UIEdgeInsetsMake(20, 30, 20, 30)
-            body.imageAspectRatio = 0.5
+            //body.imageViewSize = CGSizeMake(40, 160)
+            //body.imageAspectRatio = 0.5
             //body.captionSpacing = 30
             //body.imageAspectRatio = 0.5
  //           body.descriptionLabel.font = UIFont(name:"HelveticaNeue-Medium", size: 36.0)!

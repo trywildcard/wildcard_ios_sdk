@@ -74,7 +74,7 @@ public class ImageAndCaptionBody : CardViewElement{
         // not ready to constrain height yet, set to 0 to get rid of
         imageHeightConstraint.constant = 0
         imageView.backgroundColor = UIColor.wildcardBackgroundGray()
-        imageView.layer.cornerRadius = 2.0
+        imageView.layer.cornerRadius = WildcardSDK.imageCornerRadius
         imageView.layer.masksToBounds = true
     }
     
