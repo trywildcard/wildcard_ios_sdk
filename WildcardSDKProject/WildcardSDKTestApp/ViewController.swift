@@ -81,7 +81,7 @@ class ViewController: UIViewController, CardViewDelegate{
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
            // body.imageViewSize = CGSizeMake(200, 200)
             //body.contentEdgeInset = UIEdgeInsetsMake(20, 30, 20, 30)
-            //body.imageViewSize = CGSizeMake(40, 160)
+            body.imageViewSize = CGSizeMake(40, 160)
             //body.imageAspectRatio = 0.5
             //body.captionSpacing = 30
             //body.imageAspectRatio = 0.5

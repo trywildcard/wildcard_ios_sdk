@@ -165,11 +165,11 @@ class WildcardSDKTests: XCTestCase {
         let view2:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.ArticleCardTall)
         XCTAssert(view2 == nil)
         
-        let view3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, cardWidth:300)
+        let view3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, preferredWidth:300)
         XCTAssert(view3 != nil)
         XCTAssert(view3!.frame.size.width  == 300)
         
-        let fatterView3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, cardWidth:150)
+        let fatterView3:CardView? = CardView.createCardView(SummaryCard1, layout: WCCardLayout.SummaryCardNoImage, preferredWidth:150)
         XCTAssert(fatterView3 != nil)
         XCTAssert(fatterView3!.frame.size.width == 150)
         XCTAssert(fatterView3!.frame.size.height > view3!.frame.size.height)

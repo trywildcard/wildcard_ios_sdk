@@ -16,7 +16,7 @@ public class CardViewElementFactory{
     
     Use only for initialization
     */
-    public class func createCardViewElement(type:WCElementType, preferredWidth:CGFloat)->CardViewElement{
+    public class func createCardViewElement(type:WCElementType)->CardViewElement{
         
         var cardViewElement:CardViewElement!
         
@@ -40,8 +40,6 @@ public class CardViewElementFactory{
         case .SimpleParagraph:
             cardViewElement = SingleParagraphCardBody(frame:CGRectZero);
         }
-        
-        cardViewElement.preferredWidth = preferredWidth
         return cardViewElement
     }
 }

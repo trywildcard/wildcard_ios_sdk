@@ -22,7 +22,7 @@ public extension UIViewController{
             println("Unsupported layout for this card type, can't present.")
             return
         }
-        let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
+        let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
         presentCard(card, customVisualSource: visualsource, animated: animated, completion: completion)
     }
 

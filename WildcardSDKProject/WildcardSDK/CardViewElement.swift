@@ -16,7 +16,7 @@ public class CardViewElement : UIView {
     public var cardView:CardView?
     
     /**
-    Used to determine variable height based on content. Returns UIViewNoIntrinsicMetric if no preferred width is set.
+    Preferred width for the CardViewElement. Returns UIViewNoIntrinsicMetric if no preferred width is set.
     
     Similar to UILabel.preferredMaxLayoutWidth, this width and is used in conjunction with optimizedHeight() to determine the intrinsic size of the CardViewElement
     */
@@ -30,24 +30,20 @@ public class CardViewElement : UIView {
     }
     
     /**
+    Return an optimized height for the CardViewElement based on a given width.
+    
+    This function should be overriden to provide a proper intrinsic size for this CardViewElement. This height also affects the intrinsic size of a CardView if this element has been added to one
+    */
+    public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+        return CGFloat.min
+    }
+    
+    /**
     Update the CardViewElement with the given card.
 
     This always happens before a final layout pass so you should not make any assumptions about frames or sizes during this call.
     */
     public func update(card:Card){
-    }
-    
-    public override func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
-    }
-    
-    /**
-    Return an optimized height for the CardViewElement based on a given width. 
-    
-    This function should be overriden to provide a proper intrinsic size for this CardViewElement.
-    */
-    public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return CGFloat.min
     }
     
     /**
@@ -57,6 +53,10 @@ public class CardViewElement : UIView {
     */
     public func adjustForPreferredWidth(cardWidth:CGFloat){
         // override
+    }
+    
+    public override func intrinsicContentSize() -> CGSize {
+        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
     }
     
     /// Called automatically on init() or awakeFromNib()

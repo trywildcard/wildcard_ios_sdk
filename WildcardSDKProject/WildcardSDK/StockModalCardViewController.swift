@@ -101,7 +101,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         closeButton.addTarget(self, action: "closeButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
         
         // init card view
-        cardView = CardView.createCardView(presentedCard, visualSource: cardVisualSource)
+        cardView = CardView.createCardView(presentedCard, visualSource: cardVisualSource, preferredWidth:UIViewNoIntrinsicMetric)
         cardView?.delegate = self
         cardView?.physics?.enableDragging = true
         cardView?.physics?.delegate = self

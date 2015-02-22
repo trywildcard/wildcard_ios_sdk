@@ -15,37 +15,27 @@ public class SummaryCardShortVisualSource : BaseVisualSource, CardViewVisualSour
     var body:ImageFloatRightBody!
     var footer:ViewOnWebCardFooter!
     
-    public override init(card:Card){
-        super.init(card: card)
-    }
-    
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            self.header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
-            self.header.hairline.hidden = true
-            
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+            header.hairline.hidden = true
         }
         return header
     }
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatRight, preferredWidth:widthForCard()) as ImageFloatRightBody
-            self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
+            body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatRight) as ImageFloatRightBody
+            body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
         }
         return body
     }
     
     public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
-            self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
-            self.footer.hairline.hidden = true
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as ViewOnWebCardFooter
+            footer.hairline.hidden = true
         }
         return footer
     }
-    
-    public override func widthForCard() -> CGFloat {
-        return super.widthForCard();
-    }
-    
 }

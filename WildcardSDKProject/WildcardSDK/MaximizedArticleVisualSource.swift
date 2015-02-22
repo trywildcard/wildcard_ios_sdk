@@ -23,7 +23,7 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(WCElementType.MediaTextFullWebView, preferredWidth: widthForCard()) as MediaTextFullWebView
+            body = CardViewElementFactory.createCardViewElement(WCElementType.MediaTextFullWebView) as MediaTextFullWebView
         }
         return body
     }

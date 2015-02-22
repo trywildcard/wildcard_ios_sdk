@@ -31,8 +31,7 @@ class ViewController2: UIViewController, CardViewDelegate {
         
         let google = NSURL(string: "http://www.google.com")
         let dummyCard = SummaryCard(url:google!, description: "Demonstrates re-rendering different cards in the same view", title: "One Card View, Multiple Cards", media:nil, data:nil)
-        let bareBones = SummaryCardNoImageVisualSource(card:dummyCard)
-        if let cardView = CardView.createCardView(dummyCard, visualSource: bareBones){
+        if let cardView = CardView.createCardView(dummyCard, layout:WCCardLayout.SummaryCardNoImage){
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(-50)

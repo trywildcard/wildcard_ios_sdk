@@ -24,40 +24,32 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
     
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth:widthForCard()) as FullCardHeader
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
             header.hairline.hidden = true
         }
         return header
     }
     
-    public func heightForCardHeader()->CGFloat{
-        return header.optimizedHeight(widthForCard())
-    }
-    
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption, preferredWidth:widthForCard()) as ImageAndCaptionBody
+            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption) as ImageAndCaptionBody
             self.body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
             self.body.imageAspectRatio = aspectRatio
         }
         return body
     }
     
-    public func heightForCardBody()->CGFloat{
-        return body.optimizedHeight(widthForCard())
-    }
-    
     public func viewForCardFooter() -> CardViewElement? {
         if let articleCard = card as? ArticleCard{
             if(articleCard.html == nil){
                 if(footerWeb == nil){
-                    self.footerWeb = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter, preferredWidth:widthForCard()) as ViewOnWebCardFooter
+                    self.footerWeb = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as ViewOnWebCardFooter
                     self.footerWeb.hairline.hidden = true
                 }
                 return footerWeb
             }else{
                 if(footer == nil){
-                    self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ReadMoreFooter, preferredWidth:widthForCard()) as ReadMoreFooter
+                    self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ReadMoreFooter) as ReadMoreFooter
                     self.footer.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
                 }
                 return footer
@@ -65,13 +57,5 @@ public class ArticleCardFullImageVisualSource : BaseVisualSource, CardViewVisual
         }else{
             return nil
         }
-    }
-    
-    public func heightForCardFooter() -> CGFloat {
-        return 50
-    }
-    
-    public override func widthForCard() -> CGFloat {
-        return super.widthForCard();
     }
 }

@@ -15,13 +15,10 @@ The visual source of a CardView.
 
 Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
 
-The subviews of a CardView are CardViewElements. 
+Each subcomponent of a CardView must extend CardViewElement.
 */
 @objc
 public protocol CardViewVisualSource{
-    
-    /// Width for the card. 
-    func widthForCard()->CGFloat
     
     /// CardViewElement for the card body
     func viewForCardBody()->CardViewElement
@@ -32,7 +29,7 @@ public protocol CardViewVisualSource{
     /// Optional CardViewElement for footer
     optional func viewForCardFooter()->CardViewElement?
     
-    /// ALPHA: Optional CardViewElement for the back of the card. Always spans the full card
+    /// ALPHA: Optional CardViewElement for the back of the card. Spans the full card, shown on double tap
     optional func viewForBackOfCard()->CardViewElement?
 }
 
@@ -41,7 +38,7 @@ ALPHA: The visual source of a maximized CardView
 
 The maximized visual source should always be used with the extension UIView.maximizeCardView. This visual source is responsible for displaying a Card during its 'maximized state'. In this state, the Card takes up the entire application frame, and is owned by a fully presented view controller.
 
-This visual source may never be used for an inline card. widthForCard() is a noop for a maximized card visual source as the size is always determined relative to the application frame.
+This visual source may never be used for an inline card. widthForCard() is a no-op for a maximized card visual source as the size is always determined relative to the application frame with applicationFrameEdgeInsets
 */
 @objc
 public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
@@ -49,7 +46,7 @@ public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
     /**
     This represents the edge insets of the maximized CardView to the application frame.
     
-    This must be defined carefully with the width / height protocol functions since both will dictate the eventual size of the maximized card.
+    This is essentially how inset the CardView is from the screen
     */
     func applicationFrameEdgeInsets()->UIEdgeInsets
 }
@@ -103,40 +100,62 @@ public class CardView : UIView
     /// The backing card for this CardView
     public var backingCard:Card!
     
-    /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned framed at a default size.
+    /**
+    Preferred width for the CardView. When a CardView lays out its subcomponents from a visual source, each subcomponent will also be assigned this preferred width.
+    
+    Changing the preferredWidth for the CardView will affect the intrinsic size of the subcomponents and the CardView itself.
+    */
+    public var preferredWidth:CGFloat{
+        get{
+            return __preferredWidth
+        }set{
+            __preferredWidth = newValue
+            
+            var elements:[CardViewElement?] = [header, body, footer, back]
+            for element in elements{
+                element?.preferredWidth = __preferredWidth
+            }
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    
+    /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned with a default size.
     public class func createCardView(card:Card)->CardView?{
         let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        return CardView.createCardView(card, layout: layoutToUse)
+        return CardView.createCardView(card, layout: layoutToUse, preferredWidth:UIViewNoIntrinsicMetric)
     }
     
-    /// Creates a CardView from a card with specified width. A layout will be chosen automatically.
-    public class func createCardView(card:Card, cardWidth:CGFloat)->CardView?{
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        return CardView.createCardView(card, layout: layoutToUse, cardWidth:cardWidth)
-    }
-    
-    /// Creates a CardView from a card with a prechosen layout. See WCCardLayout for layouts.
+    /// Creates a CardView from a card with a prechosen layout. The CardView will be returned with a default size.
     public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
         if(!card.supportsLayout(layout)){
             println("Unsupported layout for this card type, returning nil.")
             return nil
         }
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:nil)
-        return CardView.createCardView(card, visualSource: datasource)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+        return CardView.createCardView(card, visualSource: datasource, preferredWidth:UIViewNoIntrinsicMetric)
     }
 
-    /// Creates a CardView from a card with a prechosen layout and width. The card's height will be calculated optimally from the width. You may choose various layouts to a get a height that is suitable.
-    public class func createCardView(card:Card, layout:WCCardLayout, cardWidth:CGFloat)->CardView?{
+    /**
+    Creates a CardView from a card with a prechosen layout and width. 
+    
+    The card's size will be calculated optimally from the preferredWidth. You may choose various layouts and widths to a get a height that is suitable.
+    */
+    public class func createCardView(card:Card, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
         if(!card.supportsLayout(layout)){
             println("Unsupported layout for this card type, returning nil.")
             return nil
         }
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card, width:cardWidth)
-        return CardView.createCardView(card, visualSource: datasource)
+        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+        return CardView.createCardView(card, visualSource: datasource, preferredWidth:preferredWidth)
     }
     
-    /// Creates a CardView with a customized visual source. See tutorials on how to create your own visual source.
-    public class func createCardView(card:Card, visualSource:CardViewVisualSource)->CardView?{
+    /**
+    Creates a CardView with a customized visual source. See tutorials on how to create your own visual source.
+    
+    Passing in UIViewNoIntrinsicMetric for the width will result in a default width calculation based on screen size
+    */
+    public class func createCardView(card:Card, visualSource:CardViewVisualSource, preferredWidth:CGFloat)->CardView?{
         
         if(WildcardSDK.apiKey == nil){
             println("Wildcard API Key not initialized -- can't create CardView.")
@@ -146,6 +165,13 @@ public class CardView : UIView
         WildcardSDK.analytics?.trackEvent("CardViewCreated", withProperties: nil, withCard: card)
         
         let newCardView = CardView(frame: CGRectZero)
+        
+        // default width if necessary
+        if(preferredWidth == UIViewNoIntrinsicMetric){
+            newCardView.preferredWidth = CardView.defaultWidth()
+        }else{
+            newCardView.preferredWidth = preferredWidth
+        }
         
         // init data and visuals
         newCardView.backingCard = card
@@ -174,7 +200,7 @@ public class CardView : UIView
             println("Unsupported layout for this card type, nothing reloaded.")
             return
         }
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard, width:nil)
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     
@@ -184,7 +210,7 @@ public class CardView : UIView
             println("Unsupported layout for this card type, nothing reloaded.")
             return
         }
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard, width:cardWidth)
+        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
         reloadWithCard(newCard, visualSource: autoDatasource)
     }
     
@@ -239,10 +265,16 @@ public class CardView : UIView
     var header:CardViewElement?
     var body:CardViewElement!
     var footer:CardViewElement?
+    private var __preferredWidth:CGFloat = UIViewNoIntrinsicMetric
     
     // MARK: UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
+        convenienceInitialize()
+    }
+    
+    required public init(coder: NSCoder) {
+        super.init(coder: coder)
         convenienceInitialize()
     }
     
@@ -267,11 +299,6 @@ public class CardView : UIView
         // reset shadow path to whatever bounds card is taking up
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: WildcardSDK.cardCornerRadius)
         layer.shadowPath = path.CGPath
-    }
-    
-    required public init(coder: NSCoder) {
-        super.init(coder: coder)
-        convenienceInitialize()
     }
     
     // MARK: Instance
@@ -315,20 +342,36 @@ public class CardView : UIView
         }
     }
     
+    class func defaultWidth()->CGFloat{
+        let screenBounds = UIScreen.mainScreen().bounds
+        if(screenBounds.width > screenBounds.height){
+            return screenBounds.height - (2 * WildcardSDK.defaultScreenMargin)
+        }else{
+            return screenBounds.width - (2 * WildcardSDK.defaultScreenMargin)
+        }
+        
+    }
+    
     // MARK: Private
+    
+    /*
     public func notifyCardViewElementsFinishedLayout(){
         var cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
-            view?.cardViewFinishedLayout()
+           // view?.cardViewFinishedLayout()
         }
     }
+    */
     
     private func initializeCardComponents(){
         header = visualSource.viewForCardHeader?()
+        header?.preferredWidth = preferredWidth
         body = visualSource.viewForCardBody()
+        body.preferredWidth = preferredWidth
         footer = visualSource.viewForCardFooter?()
+        footer?.preferredWidth = preferredWidth
         
-        // initialize and update before height calculations
+        // initialize and update
         body.cardView = self
         body.update(backingCard)
         header?.cardView = self
@@ -338,18 +381,19 @@ public class CardView : UIView
     }
     
     override public func intrinsicContentSize() -> CGSize {
-        var width:CGFloat = visualSource.widthForCard()
         var height:CGFloat = 0
         
         if(header != nil){
-            height += header!.intrinsicContentSize().height
-        }
-        height += body.intrinsicContentSize().height
-        if(footer != nil){
-            height += footer!.intrinsicContentSize().height
+            height += header!.optimizedHeight(preferredWidth)
         }
         
-        let size = CGSizeMake(width, height)
+        height += body.optimizedHeight(preferredWidth)
+        
+        if(footer != nil){
+            height += footer!.optimizedHeight(preferredWidth)
+        }
+        
+        let size = CGSizeMake(preferredWidth, height)
         return size
     }
     
@@ -388,7 +432,6 @@ public class CardView : UIView
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: footer!, attribute: .Top, multiplier: 1.0, constant: 0))
         }
         
-        
         // Back of the card always constrain to edges if it exists
         if let backView = visualSource.viewForBackOfCard?(){
             backView.cardView = self
@@ -400,9 +443,6 @@ public class CardView : UIView
             back = backView
         }
         
-        layoutIfNeeded()
-        
-        notifyCardViewElementsFinishedLayout()
     }
     
     private func convenienceInitialize(){

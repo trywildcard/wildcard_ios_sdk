@@ -23,7 +23,8 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testHeaderSizing(){
-        var header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader, preferredWidth: 300) as FullCardHeader
+        var header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+        header.preferredWidth = 300
         var currentSize:CGSize = header.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
         
@@ -47,7 +48,8 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testImageCaptionBody(){
-        var body:ImageAndCaptionBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption, preferredWidth: 300) as ImageAndCaptionBody
+        var body:ImageAndCaptionBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption) as ImageAndCaptionBody
+        body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
@@ -74,7 +76,8 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testImage(){
-        var body:ImageOnlyBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly, preferredWidth: 300) as ImageOnlyBody
+        var body:ImageOnlyBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as ImageOnlyBody
+        body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
@@ -101,7 +104,8 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testSingleParagraph(){
-        var body:SingleParagraphCardBody = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph, preferredWidth: 300) as SingleParagraphCardBody
+        var body:SingleParagraphCardBody = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as SingleParagraphCardBody
+        body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
