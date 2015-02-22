@@ -110,13 +110,8 @@ public class CardView : UIView
             return __preferredWidth
         }set{
             __preferredWidth = newValue
-            
-            var elements:[CardViewElement?] = [header, body, footer, back]
-            for element in elements{
-                println(element)
+            for element in [header, body, footer, back]{
                 element?.preferredWidth = __preferredWidth
-                
-                println(element?.intrinsicContentSize())
             }
             invalidateIntrinsicContentSize()
         }
@@ -204,26 +199,33 @@ public class CardView : UIView
             return
         }
         let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
-        reloadWithCard(newCard, visualSource: autoDatasource)
+        reloadWithCard(newCard, visualSource: autoDatasource, preferredWidth:UIViewNoIntrinsicMetric)
     }
     
-    /// ALPHA: Reloads the CardView with a new card, specified layout, and width.
-    public func reloadWithCard(newCard:Card, layout:WCCardLayout, cardWidth:CGFloat){
+    /// ALPHA: Reloads the CardView with a new card, specified layout, and preferredWidth.
+    public func reloadWithCard(newCard:Card, layout:WCCardLayout, preferredWidth:CGFloat){
         if(!newCard.supportsLayout(layout)){
             println("Unsupported layout for this card type, nothing reloaded.")
             return
         }
         let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
-        reloadWithCard(newCard, visualSource: autoDatasource)
+        reloadWithCard(newCard, visualSource: autoDatasource, preferredWidth:preferredWidth)
     }
     
-    /// ALPHA: Reloads the CardView with a custom visual source.
-    public func reloadWithCard(card:Card, visualSource:CardViewVisualSource){
+    /// ALPHA: Reloads the CardView with a new card, custom visual source, and preferredWidth
+    public func reloadWithCard(card:Card, visualSource:CardViewVisualSource, preferredWidth:CGFloat){
+        
+        delegate?.cardViewWillReload?(self)
+        
+        // default width if necessary
+        if(preferredWidth == UIViewNoIntrinsicMetric){
+            self.preferredWidth = CardView.defaultWidth()
+        }else{
+            self.preferredWidth = preferredWidth
+        }
         
         backingCard = card
         self.visualSource = visualSource
-        
-        delegate?.cardViewWillReload?(self)
         
         // remove old card subviews
         removeCardSubviews()
@@ -356,15 +358,6 @@ public class CardView : UIView
     }
     
     // MARK: Private
-    
-    /*
-    public func notifyCardViewElementsFinishedLayout(){
-        var cardViews:[CardViewElement?] = [header, body, footer, back]
-        for view in cardViews{
-           // view?.cardViewFinishedLayout()
-        }
-    }
-    */
     
     private func initializeCardComponents(){
         header = visualSource.viewForCardHeader?()

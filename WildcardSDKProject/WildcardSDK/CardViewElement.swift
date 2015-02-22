@@ -26,6 +26,7 @@ public class CardViewElement : UIView {
         }set{
             __preferredWidth = newValue
             adjustForPreferredWidth(__preferredWidth)
+            invalidateIntrinsicContentSize()
         }
     }
     

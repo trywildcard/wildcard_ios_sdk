@@ -80,7 +80,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     func handleOrientationChange(notification:NSNotification){
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
-            maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource)
+            maximizedCardView?.reloadWithCard(maximizedCard, visualSource: maximizedCardVisualSource, preferredWidth:UIViewNoIntrinsicMetric)
             let destination = calculateMaximizedFrame()
             updateInternalCardConstraints(destination)
         }

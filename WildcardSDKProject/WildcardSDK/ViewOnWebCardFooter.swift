@@ -69,7 +69,6 @@ public class ViewOnWebCardFooter: CardViewElement {
     }
     
     override public func adjustForPreferredWidth(cardWidth: CGFloat) {
-        invalidateIntrinsicContentSize()
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{

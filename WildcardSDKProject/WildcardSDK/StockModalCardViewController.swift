@@ -22,8 +22,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     
     var cardViewVerticalConstraint:NSLayoutConstraint!
     var cardViewHorizontalConstraint:NSLayoutConstraint!
-    var cardHeightConstraint:NSLayoutConstraint!
-    var cardWidthConstraint:NSLayoutConstraint!
     
     // MARK: CardPhysicsDelegate
     func cardViewDropped(cardView: CardView, position: CGPoint) {
@@ -108,8 +106,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         
         // constrain card view at the bottom controller view to start
         view.addSubview(cardView!)
-        cardHeightConstraint = cardView?.constrainHeight(cardView!.frame.size.height)
-        cardWidthConstraint = cardView?.constrainWidth(cardView!.frame.size.width)
         cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(0)
         cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
         
@@ -146,18 +142,13 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         handleCardAction(cardView, action: action)
     }
     
-    func cardViewWillLayoutToNewSize(cardView: CardView, fromSize: CGSize, toSize: CGSize) {
-        cardHeightConstraint.constant = toSize.height
-        cardWidthConstraint.constant = toSize.width
-    }
-    
     // MARK: Action Handlers
     func handleOrientationChange(notification:NSNotification){
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
             
             if(currentOrientation == initialOrientation){
-                cardView?.reloadWithCard(presentedCard, visualSource: cardVisualSource)
+                cardView?.reloadWithCard(presentedCard, visualSource: cardVisualSource, preferredWidth:UIViewNoIntrinsicMetric)
             }else{
                 cardView?.reloadWithCard(presentedCard)
             }
