@@ -43,7 +43,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
                     cardView.removeFromSuperview()
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
-            
         }else if(position.x > (view.bounds.width - horizontalThreshold)){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
                 if let constraint = self.cardViewHorizontalConstraint {
@@ -54,7 +53,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
                     cardView.removeFromSuperview()
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
-            
         }else if(position.y < verticalThreshold){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
                 if let constraint =  self.cardViewVerticalConstraint{
@@ -65,7 +63,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
                     cardView.removeFromSuperview()
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
-            
         }else if(position.y > (view.bounds.height - verticalThreshold)){
             UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
                 if let constraint = self.cardViewVerticalConstraint{
@@ -106,7 +103,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         
         // constrain card view at the bottom controller view to start
         view.addSubview(cardView!)
-        cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(0)
+        cardViewVerticalConstraint = cardView?.verticallyCenterToSuperView(view.frame.size.height)
         cardViewHorizontalConstraint = cardView?.horizontallyCenterToSuperView(0)
         
         backgroundClearView = UIView(frame:CGRectZero)
@@ -123,7 +120,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         }else{
             closeButtonTopConstraint.constant = 15
         }
-        
         view.layoutIfNeeded()
     }
     

@@ -27,18 +27,4 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
         }
         return body
     }
-    
-    public func heightForCardBody()->CGFloat{
-        // must be relative to application frame and insets
-        let frame = UIScreen.mainScreen().applicationFrame
-        let insets = applicationFrameEdgeInsets()
-        return frame.size.height - insets.top - insets.bottom
-    }
-    
-    public func widthForCard()->CGFloat{
-        // must be relative to application frame and insets
-        let frame = UIScreen.mainScreen().applicationFrame
-        let insets = applicationFrameEdgeInsets()
-        return frame.width - insets.left - insets.right
-    }
 }

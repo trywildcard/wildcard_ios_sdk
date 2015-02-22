@@ -67,7 +67,7 @@ public extension UIViewController{
             // only article cards can be maximized at the moment
             if(cardView.backingCard.type == .Article){
                 let maximizeVisualSource = MaximizedArticleVisualSource(card: cardView.backingCard)
-                maximizeCardView(cardView, visualsource: maximizeVisualSource)
+                maximizeCardView(cardView, maximizedVisualSource: maximizeVisualSource)
             }
             break
         case WCCardAction.DownloadApp:
@@ -104,7 +104,7 @@ public extension UIViewController{
     }
     
     /// ALPHA: Maximizes a CardView with a customized visual source
-    public func maximizeCardView(cardView:CardView, visualsource:MaximizedCardViewVisualSource){
+    public func maximizeCardView(cardView:CardView, maximizedVisualSource:MaximizedCardViewVisualSource){
         
         let viewController = StockMaximizedCardViewController()
         viewController.presentingCardView = cardView
@@ -112,7 +112,7 @@ public extension UIViewController{
         viewController.transitioningDelegate = viewController
         viewController.modalPresentationCapturesStatusBarAppearance = true
         viewController.maximizedCard = cardView.backingCard
-        viewController.maximizedCardVisualSource = visualsource
+        viewController.maximizedCardVisualSource = maximizedVisualSource
         
         presentViewController(viewController, animated: true, completion: nil)
     }

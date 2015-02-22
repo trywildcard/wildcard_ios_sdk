@@ -26,7 +26,7 @@ class StockMaximizedCardPresentationController :UIPresentationController
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {
             transitionCoordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
-                self.blurView.alpha = 0.75
+                self.blurView.alpha = 1.0
                 }, completion:nil)
         }
     }
