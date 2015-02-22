@@ -113,7 +113,10 @@ public class CardView : UIView
             
             var elements:[CardViewElement?] = [header, body, footer, back]
             for element in elements{
+                println(element)
                 element?.preferredWidth = __preferredWidth
+                
+                println(element?.intrinsicContentSize())
             }
             invalidateIntrinsicContentSize()
         }
@@ -394,6 +397,9 @@ public class CardView : UIView
         }
         
         let size = CGSizeMake(preferredWidth, height)
+        
+        println("intrinsic size for card view")
+        println(size)
         return size
     }
     

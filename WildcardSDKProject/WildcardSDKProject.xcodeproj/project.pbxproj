@@ -108,6 +108,7 @@
 		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
 		1DE218491A38C103007746B4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218481A38C103007746B4 /* ImageCache.swift */; };
 		1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2184A1A38DCA6007746B4 /* ViewController2.swift */; };
+		1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEADBD91A9959C700489448 /* BaseVisualSource.swift */; };
 		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
 		1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */; };
 		1DF1B8801A699CB5000EC76E /* CustomButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */; };
@@ -260,6 +261,7 @@
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
 		1DE218481A38C103007746B4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		1DE2184A1A38DCA6007746B4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		1DEADBD91A9959C700489448 /* BaseVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVisualSource.swift; sourceTree = "<group>"; };
 		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhysics.swift; sourceTree = "<group>"; };
 		1DF1B87F1A699CB5000EC76E /* CustomButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonExtensions.swift; sourceTree = "<group>"; };
@@ -621,10 +623,11 @@
 		1DFFEDD01A400803008E65BC /* Stock Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1DEADBD91A9959C700489448 /* BaseVisualSource.swift */,
 				1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */,
 				1DF1B8D61A6C27ED000EC76E /* Article Card Visual Sources */,
-				1DF1B8D31A6C19A2000EC76E /* Summary Card Visual Sources */,
 				1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */,
+				1DF1B8D31A6C19A2000EC76E /* Summary Card Visual Sources */,
 			);
 			name = "Stock Visual Sources";
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
 				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,
+				1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,
 				1D32C5081A7972D90021D27A /* Mixpanel.m in Sources */,

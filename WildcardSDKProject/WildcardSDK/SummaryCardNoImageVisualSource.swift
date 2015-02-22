@@ -15,10 +15,6 @@ public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     var body:SingleParagraphCardBody!
     var footer:ViewOnWebCardFooter!
     
-    public override init(card:Card){
-        super.init(card:card)
-    }
-    
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader

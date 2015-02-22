@@ -60,7 +60,9 @@ class ViewController: UIViewController, CardViewDelegate{
     
     @IBAction func changeTitleButtonTapped(sender: AnyObject) {
         println("Change title tapped")
+        println(cardView.frame)
        // println(cardView.visualSource)
+        cardView.preferredWidth = 200
         if let header = cardView.visualSource.viewForCardHeader?() as? FullCardHeader{
             
             //println(header)
@@ -81,8 +83,8 @@ class ViewController: UIViewController, CardViewDelegate{
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
            // body.imageViewSize = CGSizeMake(200, 200)
             //body.contentEdgeInset = UIEdgeInsetsMake(20, 30, 20, 30)
-            body.imageViewSize = CGSizeMake(40, 160)
-            //body.imageAspectRatio = 0.5
+            //body.imageViewSize = CGSizeMake(40, 160)
+            //body.imageAspectRatio = 0.5/
             //body.captionSpacing = 30
             //body.imageAspectRatio = 0.5
  //           body.descriptionLabel.font = UIFont(name:"HelveticaNeue-Medium", size: 36.0)!
@@ -100,7 +102,6 @@ class ViewController: UIViewController, CardViewDelegate{
         //    body.paragraphLabel.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
         // }
 
-        
             cardView.invalidateIntrinsicContentSize()
 
     }

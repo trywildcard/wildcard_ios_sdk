@@ -25,7 +25,6 @@ public class ImageFloatRightBody : CardViewElement
             imageTrailingConstraint.constant = newValue.right
             bottomPadding = newValue.bottom
             updateDescriptionAttributes()
-            invalidateIntrinsicContentSize()
         }
     }
     
@@ -38,7 +37,6 @@ public class ImageFloatRightBody : CardViewElement
             imageWidthConstraint.constant = newValue.width
             imageHeightConstraint.constant = newValue.height
             updateDescriptionAttributes()
-            invalidateIntrinsicContentSize()
         }
     }
     
@@ -89,5 +87,6 @@ public class ImageFloatRightBody : CardViewElement
         // description label preferred width + number of lines re calculation
         descriptionLabel.preferredMaxLayoutWidth = preferredWidth - imageLeadingConstraint.constant - descriptionImageHorizontalSpacing.constant - imageViewSize.width - imageTrailingConstraint.constant
         descriptionLabel.setRequiredNumberOfLines(descriptionLabel.preferredMaxLayoutWidth, maxHeight: imageHeightConstraint.constant)
+        invalidateIntrinsicContentSize()
     }
 }

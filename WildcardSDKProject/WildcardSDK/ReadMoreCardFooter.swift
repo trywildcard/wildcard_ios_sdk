@@ -51,6 +51,7 @@ public class ReadMoreFooter: CardViewElement {
     }
     
     override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        invalidateIntrinsicContentSize()
     }
     
     func readMoreButtonTapped(){

@@ -36,7 +36,6 @@ public class ViewOnWebCardFooter: CardViewElement {
     override public func initialize() {
         viewOnWebButton = UIButton.defaultViewOnWebButton()
         addSubview(viewOnWebButton!)
-        //verticalCenterConstraint = viewOnWebButton?.verticallyCenterToSuperView(0)
         leftConstraint = viewOnWebButton?.constrainLeftToSuperView(15)
         topConstraint = viewOnWebButton?.constrainTopToSuperView(10)
         bottomConstraint = viewOnWebButton?.constrainBottomToSuperView(10)
@@ -70,6 +69,7 @@ public class ViewOnWebCardFooter: CardViewElement {
     }
     
     override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+        invalidateIntrinsicContentSize()
     }
     
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
