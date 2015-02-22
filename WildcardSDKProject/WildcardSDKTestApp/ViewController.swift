@@ -41,11 +41,6 @@ class ViewController: UIViewController, CardViewDelegate{
         handleCardAction(cardView, action: action)
     }
     
-    func cardViewLayoutSubviews(cardView: CardView) {
-        println("CARD VIEW LAYOUT SUBVIEWS")
-        
-    }
-    
     @IBAction func firstButtonTapped(sender: AnyObject) {
         presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)
     }

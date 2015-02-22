@@ -390,9 +390,6 @@ public class CardView : UIView
         }
         
         let size = CGSizeMake(preferredWidth, height)
-        
-        println("intrinsic size for card view")
-        println(size)
         return size
     }
     

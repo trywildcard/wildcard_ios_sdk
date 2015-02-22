@@ -122,5 +122,4 @@ class WildcardSDKElementSizingTests: XCTestCase {
         currentSize = body.intrinsicContentSize()
     }
 
-
 }

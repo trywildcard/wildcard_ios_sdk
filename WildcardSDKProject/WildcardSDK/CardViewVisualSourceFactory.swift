@@ -23,7 +23,7 @@ class CardViewVisualSourceFactory {
             var source = SummaryCardShortLeftVisualSource(card:card)
             return source
         case .SummaryCardTall:
-            var source = SummaryCardFullImageVisualSource(card:card,aspectRatio:0.75)
+            var source = SummaryCardTallVisualSource(card:card,aspectRatio:0.75)
             return source
         case .SummaryCardImageOnly:
             var source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.75)
@@ -32,10 +32,10 @@ class CardViewVisualSourceFactory {
             var source = ArticleCardNoImageVisualSource(card:card)
             return source
         case .ArticleCardTall:
-            var source = ArticleCardFullImageVisualSource(card:card, aspectRatio: 0.75)
+            var source = ArticleCardTallVisualSource(card:card, aspectRatio: 0.75)
             return source
         case .ArticleCardShort:
-            var source = ArticleCardSmallImageVisualSource(card:card)
+            var source = ArticleCardShortVisualSource(card:card)
             return source
         case .Unknown:
             // shouldn't happen

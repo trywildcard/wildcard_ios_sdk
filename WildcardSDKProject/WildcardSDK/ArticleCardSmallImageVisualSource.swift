@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class ArticleCardSmallImageVisualSource : BaseVisualSource, CardViewVisualSource
+public class ArticleCardShortVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:FullCardHeader!
     var body:ImageFloatRightBody!

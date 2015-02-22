@@ -173,7 +173,29 @@ class WildcardSDKTests: XCTestCase {
         XCTAssert(fatterView3 != nil)
         XCTAssert(fatterView3!.frame.size.width == 150)
         XCTAssert(fatterView3!.frame.size.height > view3!.frame.size.height)
-        
     }
+    
+    func testBasicCardViewIntrinsicSizing(){
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        
+        // no image results in default lay out
+        let SummaryCard1 = SummaryCard(url: url!, description: "The quick brown fox jumped over the lazy dog. This is a long description.", title: "test1", media:nil, data:nil)
+        
+        let view1:CardView = CardView.createCardView(SummaryCard1)!
+        XCTAssert(view1.frame.origin.x == 0)
+        XCTAssert(view1.frame.origin.y == 0)
+        XCTAssert(view1.frame.size.width > 0)
+        XCTAssert(view1.frame.size.height > 0)
+        
+        XCTAssert(view1.intrinsicContentSize().width > 0)
+        
+        // adjust width lower
+        var currentSize = view1.intrinsicContentSize()
+        view1.preferredWidth = view1.preferredWidth - 50
+        XCTAssert(view1.intrinsicContentSize().width == (currentSize.width - 50))
+    }
+    
     
 }

@@ -17,7 +17,8 @@ class ViewController2: UIViewController, CardViewDelegate {
     var mainCardView:CardView?
     @IBOutlet weak var reRenderButton: UIButton!
     
-    func cardViewWillLayoutToNewSize(cardView:CardView, fromSize:CGSize, toSize:CGSize){
+    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        handleCardAction(cardView, action: action)
     }
 
     override func viewDidLoad() {

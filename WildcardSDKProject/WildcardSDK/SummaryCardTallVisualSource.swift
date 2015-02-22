@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class SummaryCardFullImageVisualSource : BaseVisualSource, CardViewVisualSource {
+public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader!
     var body:ImageAndCaptionBody!

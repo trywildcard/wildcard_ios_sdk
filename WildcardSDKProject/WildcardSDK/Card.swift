@@ -8,10 +8,13 @@
 
 import Foundation
 
+/// Card base class
 @objc
 public class Card : NSObject, PlatformObject {
     
+    /// Associated web url for this card
     public let webUrl:NSURL
+    
     public let cardType:String
     public let type:WCCardType
     

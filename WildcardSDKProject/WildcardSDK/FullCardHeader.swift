@@ -33,6 +33,7 @@ public class FullCardHeader : CardViewElement
             titleTrailingConstraint.constant = newValue.right
             titleBottomConstraint.constant = newValue.bottom
             adjustLabelLayoutWidths()
+            invalidateIntrinsicContentSize()
         }
     }
     
@@ -108,19 +109,8 @@ public class FullCardHeader : CardViewElement
     
     private func adjustLabelLayoutWidths(){
         // preferred width affects preferred layout widths of labels
-        
-        println("HERE")
-        println(titleLeadingConstraint.constant)
-        println(title.preferredMaxLayoutWidth)
-        
         title.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
         kicker.preferredMaxLayoutWidth = preferredWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant
-        
-        println(titleLeadingConstraint.constant)
-        println(title.preferredMaxLayoutWidth)
-        
-        // intrinsic size is invalid
-        invalidateIntrinsicContentSize()
     }
     
 }
