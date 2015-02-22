@@ -597,8 +597,8 @@
 			isa = PBXGroup;
 			children = (
 				1DF1B8D71A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift */,
-				1DF1B8D91A6C2B01000EC76E /* ArticleCardTallVisualSource.swift */,
 				1DF1B8DB1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift */,
+				1DF1B8D91A6C2B01000EC76E /* ArticleCardTallVisualSource.swift */,
 			);
 			name = "Article Card Visual Sources";
 			sourceTree = "<group>";

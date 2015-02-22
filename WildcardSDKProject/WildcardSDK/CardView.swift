@@ -38,7 +38,7 @@ ALPHA: The visual source of a maximized CardView
 
 The maximized visual source should always be used with the extension UIView.maximizeCardView. This visual source is responsible for displaying a Card during its 'maximized state'. In this state, the Card takes up the entire application frame, and is owned by a fully presented view controller.
 
-This visual source may never be used for an inline card. widthForCard() is a no-op for a maximized card visual source as the size is always determined relative to the application frame with applicationFrameEdgeInsets
+This visual source may never be used for an inline card. The size is always determined relative to the application frame using applicationFrameEdgeInsets
 */
 @objc
 public protocol MaximizedCardViewVisualSource : CardViewVisualSource {
