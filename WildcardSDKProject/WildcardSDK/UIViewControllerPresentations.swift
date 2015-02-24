@@ -12,31 +12,42 @@ import StoreKit
 public extension UIViewController{
     
     /// Presents a Card with a best-fit layout
-    public func presentCard(card:Card, animated:Bool, completion:(() -> Void)?){
-        presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion)
+    public func presentCard(card:Card!, animated:Bool, completion:(() -> Void)?){
+        if let card = card {
+            presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion)
+        }else{
+            println("Can't present a nil card")
+        }
     }
     
     /// Presents a Card with a specific layout
-    public func presentCard(card:Card, layout:WCCardLayout, animated:Bool, completion:(() -> Void)?){
-        if(!card.supportsLayout(layout)){
-            println("Unsupported layout for this card type, can't present.")
-            return
+    public func presentCard(card:Card!, layout:WCCardLayout, animated:Bool, completion:(() -> Void)?){
+        if let card = card{
+            if(!card.supportsLayout(layout)){
+                println("Unsupported layout for this card type, can't present.")
+                return
+            }
+            let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+            presentCard(card, customVisualSource: visualsource, animated: animated, completion: completion)
+        }else{
+            println("Can't present a nil card")
         }
-        let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
-        presentCard(card, customVisualSource: visualsource, animated: animated, completion: completion)
     }
 
     /// Presents a Card with a custom visual source
-    public func presentCard(card:Card, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
+    public func presentCard(card:Card!, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
         WildcardSDK.analytics?.trackEvent("CardPresented", withProperties: nil, withCard: card)
-        
-        let stockModal = StockModalCardViewController()
-        stockModal.modalPresentationStyle = .Custom
-        stockModal.transitioningDelegate = stockModal
-        stockModal.modalPresentationCapturesStatusBarAppearance = true
-        stockModal.presentedCard = card
-        stockModal.cardVisualSource = customVisualSource
-        presentViewController(stockModal, animated: animated, completion: completion)
+        if let card = card{
+            let stockModal = StockModalCardViewController()
+            stockModal.modalPresentationStyle = .Custom
+            stockModal.transitioningDelegate = stockModal
+            stockModal.modalPresentationCapturesStatusBarAppearance = true
+            stockModal.presentedCard = card
+            stockModal.cardVisualSource = customVisualSource
+            presentViewController(stockModal, animated: animated, completion: completion)
+        }else{
+            println("Can't present a nil card")
+        }
     }
 
     /**

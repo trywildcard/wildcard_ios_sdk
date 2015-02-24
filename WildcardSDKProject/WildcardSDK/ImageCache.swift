@@ -30,7 +30,6 @@ class ImageCache: NSCache {
     }
     
     func memoryWarningReceived(){
-        println("ImageCache received a memory warning")
         ImageCache.sharedInstance.removeAllObjects()
     }
     

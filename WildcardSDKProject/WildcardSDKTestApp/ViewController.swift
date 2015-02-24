@@ -35,6 +35,10 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
+        
+        Card.getFromUrl(NSURL(string: "http://www.espn.com")!, completion: { (card:Card?, error:NSError?) -> Void in
+                self.presentCard(card!, animated: true, completion: nil)
+        })
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

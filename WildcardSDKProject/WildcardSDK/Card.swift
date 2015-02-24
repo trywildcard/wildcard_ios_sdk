@@ -24,11 +24,15 @@ public class Card : NSObject, PlatformObject {
         self.type = Card.cardTypeFromString(cardType)
     }
     
-    public class func cardTypeFromString(name:String) -> WCCardType{
-        if(name == "article"){
-            return .Article
-        }else if(name == "summary"){
-            return .Summary
+    public class func cardTypeFromString(name:String!) -> WCCardType{
+        if let name = name{
+            if(name == "article"){
+                return .Article
+            }else if(name == "summary"){
+                return .Summary
+            }else{
+                return .Unknown
+            }
         }else{
             return .Unknown
         }
@@ -46,8 +50,12 @@ public class Card : NSObject, PlatformObject {
     }
 
     /// Gets a card from the specified URL
-    public class func getFromUrl(url:NSURL, completion: ((card:Card?, completion:NSError?)->Void)) -> Void{
-        Platform.sharedInstance.getFromUrl(url, completion:completion)
+    public class func getFromUrl(url:NSURL!, completion: ((card:Card?, completion:NSError?)->Void)?) -> Void{
+        if let url = url{
+            Platform.sharedInstance.getFromUrl(url, completion:completion)
+        }else{
+            println("getFromUrl() failed, url is nil.")
+        }
     }
     
     class func deserializeFromData(data: NSDictionary) -> AnyObject? {

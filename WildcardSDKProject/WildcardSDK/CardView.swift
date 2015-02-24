@@ -119,19 +119,29 @@ public class CardView : UIView
     
     
     /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned with a default size.
-    public class func createCardView(card:Card)->CardView?{
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
-        return CardView.createCardView(card, layout: layoutToUse, preferredWidth:UIViewNoIntrinsicMetric)
+    public class func createCardView(card:Card!)->CardView?{
+        if let card = card {
+            let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+            return CardView.createCardView(card, layout: layoutToUse, preferredWidth:UIViewNoIntrinsicMetric)
+        }else{
+            println("Can't create CardView from nil card")
+            return nil
+        }
     }
     
     /// Creates a CardView from a card with a prechosen layout. The CardView will be returned with a default size.
-    public class func createCardView(card:Card, layout:WCCardLayout)->CardView?{
-        if(!card.supportsLayout(layout)){
-            println("Unsupported layout for this card type, returning nil.")
+    public class func createCardView(card:Card!, layout:WCCardLayout)->CardView?{
+        if let card = card {
+            if(!card.supportsLayout(layout)){
+                println("Unsupported layout for this card type, returning nil.")
+                return nil
+            }
+            let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+            return CardView.createCardView(card, visualSource: datasource, preferredWidth:UIViewNoIntrinsicMetric)
+        }else{
+            println("Can't create CardView from nil card")
             return nil
         }
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
-        return CardView.createCardView(card, visualSource: datasource, preferredWidth:UIViewNoIntrinsicMetric)
     }
 
     /**
@@ -139,13 +149,18 @@ public class CardView : UIView
     
     The card's size will be calculated optimally from the preferredWidth. You may choose various layouts and widths to a get a height that is suitable.
     */
-    public class func createCardView(card:Card, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
-        if(!card.supportsLayout(layout)){
-            println("Unsupported layout for this card type, returning nil.")
+    public class func createCardView(card:Card!, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
+        if let card = card {
+            if(!card.supportsLayout(layout)){
+                println("Unsupported layout for this card type, returning nil.")
+                return nil
+            }
+            let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+            return CardView.createCardView(card, visualSource: datasource, preferredWidth:preferredWidth)
+        }else{
+            println("Can't create CardView from nil card")
             return nil
         }
-        let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
-        return CardView.createCardView(card, visualSource: datasource, preferredWidth:preferredWidth)
     }
     
     /**
@@ -153,9 +168,15 @@ public class CardView : UIView
     
     Passing in UIViewNoIntrinsicMetric for the width will result in a default width calculation based on screen size
     */
-    public class func createCardView(card:Card, visualSource:CardViewVisualSource, preferredWidth:CGFloat)->CardView?{
+    public class func createCardView(card:Card!, visualSource:CardViewVisualSource!, preferredWidth:CGFloat)->CardView?{
         
-        if(WildcardSDK.apiKey == nil){
+        if(card == nil){
+            println("Card is nil -- can't create CardView.")
+            return nil
+        }else if(visualSource == nil){
+            println("Visual source is nil -- can't create CardView.")
+            return nil
+        }else if(WildcardSDK.apiKey == nil){
             println("Wildcard API Key not initialized -- can't create CardView.")
             return nil
         }
@@ -187,57 +208,72 @@ public class CardView : UIView
     }
     
     /// ALPHA: Reloads the CardView with a new card. Autogenerates a layout
-    public func reloadWithCard(newCard:Card){
-        let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(newCard)
-        return reloadWithCard(newCard, layout: layoutToUse)
+    public func reloadWithCard(newCard:Card!){
+        if let card = newCard {
+            let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
+            return reloadWithCard(card, layout: layoutToUse)
+        }else{
+            println("Can't reload with nil card")
+        }
     }
     
     /// ALPHA: Reloads the CardView with a new card and specified layout.
-    public func reloadWithCard(newCard:Card, layout:WCCardLayout){
-        if(!newCard.supportsLayout(layout)){
-            println("Unsupported layout for this card type, nothing reloaded.")
-            return
+    public func reloadWithCard(newCard:Card!, layout:WCCardLayout){
+        if let card = newCard {
+            if(!card.supportsLayout(layout)){
+                println("Unsupported layout for this card type, nothing reloaded.")
+                return
+            }
+            let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+            reloadWithCard(card, visualSource: autoDatasource, preferredWidth:UIViewNoIntrinsicMetric)
+        }else{
+            println("Can't reload with nil card")
         }
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
-        reloadWithCard(newCard, visualSource: autoDatasource, preferredWidth:UIViewNoIntrinsicMetric)
     }
     
     /// ALPHA: Reloads the CardView with a new card, specified layout, and preferredWidth.
-    public func reloadWithCard(newCard:Card, layout:WCCardLayout, preferredWidth:CGFloat){
-        if(!newCard.supportsLayout(layout)){
-            println("Unsupported layout for this card type, nothing reloaded.")
-            return
+    public func reloadWithCard(newCard:Card!, layout:WCCardLayout, preferredWidth:CGFloat){
+        if let card = newCard {
+            if(!card.supportsLayout(layout)){
+                println("Unsupported layout for this card type, nothing reloaded.")
+                return
+            }
+            let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
+            reloadWithCard(card, visualSource: autoDatasource, preferredWidth:preferredWidth)
+        }else{
+            println("Can't reload with nil card")
         }
-        let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: newCard)
-        reloadWithCard(newCard, visualSource: autoDatasource, preferredWidth:preferredWidth)
     }
     
     /// ALPHA: Reloads the CardView with a new card, custom visual source, and preferredWidth
-    public func reloadWithCard(card:Card, visualSource:CardViewVisualSource, preferredWidth:CGFloat){
-        
-        delegate?.cardViewWillReload?(self)
-        
-        // default width if necessary
-        if(preferredWidth == UIViewNoIntrinsicMetric){
-            self.preferredWidth = CardView.defaultWidth()
+    public func reloadWithCard(newCard:Card!, visualSource:CardViewVisualSource, preferredWidth:CGFloat){
+        if let card = newCard {
+            delegate?.cardViewWillReload?(self)
+            
+            // default width if necessary
+            if(preferredWidth == UIViewNoIntrinsicMetric){
+                self.preferredWidth = CardView.defaultWidth()
+            }else{
+                self.preferredWidth = preferredWidth
+            }
+            
+            backingCard = card
+            self.visualSource = visualSource
+            
+            // remove old card subviews
+            removeCardSubviews()
+            
+            initializeCardComponents()
+            
+            layoutCardComponents()
+            
+            invalidateIntrinsicContentSize()
+            
+            // reloaded
+            delegate?.cardViewDidReload?(self)
         }else{
-            self.preferredWidth = preferredWidth
+            println("Can't reload with nil card")
         }
-        
-        backingCard = card
-        self.visualSource = visualSource
-        
-        // remove old card subviews
-        removeCardSubviews()
-        
-        initializeCardComponents()
-        
-        layoutCardComponents()
-        
-        invalidateIntrinsicContentSize()
-        
-        // reloaded
-        delegate?.cardViewDidReload?(self)
     }
     
     public func fadeOut(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
