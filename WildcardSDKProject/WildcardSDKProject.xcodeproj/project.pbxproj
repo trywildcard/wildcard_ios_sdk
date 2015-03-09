@@ -67,6 +67,7 @@
 		1D6719B01A44AA7A006DA49A /* StockModalCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */; };
 		1D6F80201A5CA20900B765B5 /* CardViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F801F1A5CA20900B765B5 /* CardViewAction.swift */; };
 		1D6F88661AADED6700D73668 /* VideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F88651AADED6700D73668 /* VideoCard.swift */; };
+		1D6F88691AAE206500D73668 /* VideoCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */; };
 		1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7417071A40145100281714 /* EmptyCardBack.swift */; };
 		1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */; };
 		1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */; };
@@ -223,6 +224,7 @@
 		1D6F801F1A5CA20900B765B5 /* CardViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewAction.swift; sourceTree = "<group>"; };
 		1D6F80211A5CF03000B765B5 /* WildcardSDKTestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WildcardSDKTestApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D6F88651AADED6700D73668 /* VideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCard.swift; sourceTree = "<group>"; };
+		1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardShortVisualSource.swift; sourceTree = "<group>"; };
 		1D7417071A40145100281714 /* EmptyCardBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardBack.swift; sourceTree = "<group>"; };
 		1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleParagraphCardBody.swift; sourceTree = "<group>"; };
 		1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionEdge.swift; sourceTree = "<group>"; };
@@ -420,6 +422,14 @@
 				1D3A28951A2E697700A9D4C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D6F88671AAE203600D73668 /* Video Card Visual Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */,
+			);
+			name = "Video Card Visual Sources";
 			sourceTree = "<group>";
 		};
 		1D7EAC881A31258100734B9A /* CardLayoutEngine */ = {
@@ -622,6 +632,7 @@
 				1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */,
 				1DF1B8D61A6C27ED000EC76E /* Article Card Visual Sources */,
 				1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */,
+				1D6F88671AAE203600D73668 /* Video Card Visual Sources */,
 				1DF1B8D31A6C19A2000EC76E /* Summary Card Visual Sources */,
 			);
 			name = "Stock Visual Sources";
@@ -864,6 +875,7 @@
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
+				1D6F88691AAE206500D73668 /* VideoCardShortVisualSource.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DF1B8DC1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,

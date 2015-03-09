@@ -17,7 +17,9 @@ class ViewController: UIViewController, CardViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.wildcardBackgroundGray()
         
+        /*
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
         media["type"] = "image"
@@ -26,7 +28,7 @@ class ViewController: UIViewController, CardViewDelegate{
         let google = NSURL(string: "http://www.yahoo.com")
         card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
         
-        view.backgroundColor = UIColor.wildcardBackgroundGray()
+
         
         if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShortLeft){
             cardView.delegate = self
@@ -35,6 +37,21 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
+        */
+        
+        Card.getFromUrl(NSURL(string: "http://youtu.be/zMr_IZ9dQJw")!, completion: { (card, error) -> Void in
+            if let card = card as? VideoCard {
+                if let cardView = CardView.createCardView(card){
+                    cardView.delegate = self
+                    self.view.addSubview(cardView)
+                    cardView.horizontallyCenterToSuperView(0)
+                    cardView.verticallyCenterToSuperView(0)
+                    self.cardView = cardView
+                }
+            }
+        })
+        
+        
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

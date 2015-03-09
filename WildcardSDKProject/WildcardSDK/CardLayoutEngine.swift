@@ -40,8 +40,10 @@ public class CardLayoutEngine{
         // MARK: Landscape Decisions
         let summaryCardLandscapeNode = LayoutDecisionNode(description: "It's a summary card landscape")
         let articleCardLandscapeNode = LayoutDecisionNode(description: "It's an article card landscape")
+        let videoCardLandscapeNode = LayoutDecisionNode(description: "It's an video card landscape", layout: .VideoCardShort)
         landscapeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardLandscapeNode)
         landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
+        landscapeNode.addEdge(CardTypeEdge(cardType: "video"), destination: videoCardLandscapeNode)
         
         // MARK: Landscape - Summary Card
         let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardShort)
@@ -60,8 +62,10 @@ public class CardLayoutEngine{
         // MARK: Portrait Decisions
         let summaryCardNode = LayoutDecisionNode(description: "It's a summary link card")
         let articleCardNode = LayoutDecisionNode(description: "It's an article card")
+        let videoCardNode = LayoutDecisionNode(description: "It's an video card", layout: .VideoCardShort)
         portraitNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardNode)
         portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
+        portraitNode.addEdge(CardTypeEdge(cardType: "video"), destination: videoCardNode)
         
         // MARK: Portrait - Article Card
         let articleCardHasImage = LayoutDecisionNode(description: "Article card has an image", layout: .ArticleCardTall)
