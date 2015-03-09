@@ -84,6 +84,10 @@ public class FullCardHeader : CardViewElement
             let summaryCard = card as SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
+        case .Video:
+            let videoCard = card as VideoCard
+            kicker.text = videoCard.webUrl.host
+            title.text = videoCard.title
         case .Unknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"

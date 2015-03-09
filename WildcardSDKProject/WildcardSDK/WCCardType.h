@@ -9,6 +9,7 @@
 typedef NS_ENUM(NSInteger, WCCardType) {
     WCCardTypeUnknown,
     WCCardTypeSummary,
-    WCCardTypeArticle
+    WCCardTypeArticle,
+    WCCardTypeVideo
 };
 

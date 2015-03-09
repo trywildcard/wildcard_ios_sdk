@@ -25,6 +25,9 @@ class CheckImageEdge : LayoutDecisionEdge
             case .Summary:
                 let summaryCard = card as SummaryCard
                 return summaryCard.primaryImageURL != nil
+            case .Video:
+                let videoCard = card as VideoCard
+                
             }
         }
         return false

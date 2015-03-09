@@ -25,6 +25,9 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
             case .Summary:
                 let summaryCard = card as SummaryCard
                 return countElements(summaryCard.title) < 40
+            case .Video:
+                let videoCard = card as VideoCard
+                return countElements(videoCard.title) < 40
             }
         }
         return false

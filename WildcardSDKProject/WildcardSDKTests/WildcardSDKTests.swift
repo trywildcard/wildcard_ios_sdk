@@ -41,6 +41,27 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
+    func testVideoCard(){
+        let expectation = expectationWithDescription("Creates Article Card")
+        let articleUrl = NSURL(string: "https://www.youtube.com/watch?v=swZz-QvP7lY")
+        Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
+            XCTAssert(card != nil)
+            XCTAssert(error == nil)
+            XCTAssert(card?.cardType == "video")
+            
+            if let articleCard = card as? VideoCard{
+                XCTAssert(true)
+                
+            }else{
+                XCTFail("not article")
+            }
+            
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
     func testBogusArticleCard(){
         let expectation = expectationWithDescription("Bogus Article Card")
         let articleUrl = NSURL(string: "http://www.badurl.com")

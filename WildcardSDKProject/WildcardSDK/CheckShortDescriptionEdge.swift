@@ -29,8 +29,15 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
                     return false
                 }
             case .Summary:
-                let webLinkCard = card as SummaryCard
-                return countElements(webLinkCard.description) < DESCRIPTION_THRESHOLD
+                let summaryCard = card as SummaryCard
+                return countElements(summaryCard.description) < DESCRIPTION_THRESHOLD
+            case .Video:
+                let videoCard = card as VideoCard
+                if videoCard.abstractContent != nil{
+                    return countElements(videoCard.abstractContent!) < DESCRIPTION_THRESHOLD
+                }else{
+                    return false
+                }
             }
         }
         return false

@@ -30,6 +30,8 @@ public class Card : NSObject, PlatformObject {
                 return .Article
             }else if(name == "summary"){
                 return .Summary
+            }else if(name == "video"){
+                return .Video
             }else{
                 return .Unknown
             }
@@ -44,13 +46,15 @@ public class Card : NSObject, PlatformObject {
             return "article"
         case .Summary:
             return "summary"
+        case .Video:
+            return "video"
         case .Unknown:
             return "unknown"
         }
     }
 
     /// Gets a card from the specified URL
-    public class func getFromUrl(url:NSURL!, completion: ((card:Card?, completion:NSError?)->Void)?) -> Void{
+    public class func getFromUrl(url:NSURL!, completion: ((card:Card?, error:NSError?)->Void)?) -> Void{
         if let url = url{
             Platform.sharedInstance.getFromUrl(url, completion:completion)
         }else{
@@ -65,6 +69,8 @@ public class Card : NSObject, PlatformObject {
                 return ArticleCard.deserializeFromData(data) as? ArticleCard
             case "summary":
                 return SummaryCard.deserializeFromData(data) as? SummaryCard
+            case "video":
+                return VideoCard.deserializeFromData(data) as? VideoCard
             default:
                 return nil
             }
