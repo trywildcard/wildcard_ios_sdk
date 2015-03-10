@@ -88,6 +88,9 @@ public class FullCardHeader : CardViewElement
             let videoCard = card as VideoCard
             kicker.text = videoCard.webUrl.host
             title.text = videoCard.title
+            if let url = videoCard.creator.favicon{
+                logo.setImageWithURL(url,mode:.ScaleToFill)
+            }
         case .Unknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"

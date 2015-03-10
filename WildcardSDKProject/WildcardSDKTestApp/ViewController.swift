@@ -30,16 +30,16 @@ class ViewController: UIViewController, CardViewDelegate{
         
 
         
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShortLeft){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardTall){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-        */
-        
-        Card.getFromUrl(NSURL(string: "http://youtu.be/zMr_IZ9dQJw")!, completion: { (card, error) -> Void in
+*/
+
+        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=swZz-QvP7lY")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
@@ -48,6 +48,8 @@ class ViewController: UIViewController, CardViewDelegate{
                     cardView.verticallyCenterToSuperView(0)
                     self.cardView = cardView
                 }
+            }else{
+                self.presentCard(card, animated: true, completion: nil)
             }
         })
         
@@ -55,6 +57,17 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+        let cardAction = action
+        switch(action.type){
+        case .VideoStartedPlaying:
+            println("video started playing")
+        case .VideoStoppedPlaying:
+            println("video stopped playing")
+        default:
+            break
+        }
+  
+        
         handleCardAction(cardView, action: action)
     }
     
@@ -74,7 +87,7 @@ class ViewController: UIViewController, CardViewDelegate{
         println("Change title tapped")
         println(cardView.frame)
        // println(cardView.visualSource)
-        cardView.preferredWidth = 200
+        //cardView.preferredWidth = 200
         if let header = cardView.visualSource.viewForCardHeader?() as? FullCardHeader{
             
             //println(header)
@@ -90,7 +103,10 @@ class ViewController: UIViewController, CardViewDelegate{
             //view.layoutIfNeeded()
         }
         
-        if let body = cardView.visualSource.viewForCardBody() as? ImageFloatLeftBody{
+        if let body = cardView.visualSource.viewForCardBody() as? VideoCardBody {
+            
+           // body.preferredWidth = 300
+            body.videoAspectRatio = 0.50
            // body.caption.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
            // body.imageViewSize = CGSizeMake(200, 200)

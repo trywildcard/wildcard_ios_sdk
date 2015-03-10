@@ -166,7 +166,19 @@ class WildcardSDKTests: XCTestCase {
         data["article"] = articleData
         let articleCard3 = ArticleCard(title: "default", abstractContent: "", url: url!, creator:publisher, data:data)
         XCTAssert(engine.matchLayout(articleCard3) == WCCardLayout.ArticleCardTall)
+    }
+    
+    func testVideoCardLayouts(){
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")!
+        let publisher = Creator(name:"Google", url:url, favicon:nil, iosStore:nil, androidStore:nil)
         
+        // article card no image has default
+        let data:NSMutableDictionary = NSMutableDictionary()
+        let videoCard = VideoCard(title: "default", embedUrl: url, url: url, creator: publisher, data: data)
+        
+        XCTAssert(engine.matchLayout(videoCard) == WCCardLayout.VideoCardShort)
+ 
     }
     
     func testBasicCardViews(){

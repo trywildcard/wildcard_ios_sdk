@@ -39,6 +39,8 @@ public class CardViewElementFactory{
             cardViewElement = ViewOnWebCardFooter(frame:CGRectZero);
         case .SimpleParagraph:
             cardViewElement = SingleParagraphCardBody(frame:CGRectZero);
+        case .VideoBody:
+            cardViewElement = VideoCardBody(frame:CGRectZero);
         }
         return cardViewElement
     }

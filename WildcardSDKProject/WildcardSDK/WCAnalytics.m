@@ -52,12 +52,24 @@ static NSString* WildcardSDKMixPanelToken = @"d7250e25e828b7c00158b28ec8d7525f";
         dictionary[@"cardType"] = card.cardType;
         dictionary[@"webURL"] = card.webUrl.absoluteString;
         
-        if([card isKindOfClass:[ArticleCard class]]){
-            ArticleCard* articleCard = (ArticleCard*)card;
-            dictionary[@"cardTitle"] = articleCard.title;
-        }else if([card isKindOfClass:[SummaryCard class]]){
-            SummaryCard* summaryCard = (SummaryCard*)card;
-            dictionary[@"cardTitle"] = summaryCard.title;
+        switch(card.type){
+            case WCCardTypeArticle:{
+                ArticleCard* articleCard = (ArticleCard*)card;
+                dictionary[@"cardTitle"] = articleCard.title;
+                break;
+            }
+            case WCCardTypeSummary:{
+                SummaryCard* summaryCard = (SummaryCard*)card;
+                dictionary[@"cardTitle"] = summaryCard.title;
+                break;
+            }
+            case WCCardTypeVideo:{
+                VideoCard* videoCard = (VideoCard*)card;
+                dictionary[@"cardTitle"] = videoCard.title;
+                break;
+            }
+            case WCCardTypeUnknown:
+                break;
         }
     }
     [dictionary addEntriesFromDictionary:properties];

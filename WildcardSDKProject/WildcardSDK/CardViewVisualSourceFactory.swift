@@ -10,7 +10,7 @@ import Foundation
 
 class CardViewVisualSourceFactory {
     
-    /// Returns a stock visual source from a given card layout. If width is specified, we'll use the override width
+    /// Returns a stock visual source from a given card layout.
     class func visualSourceFromLayout(layout:WCCardLayout, card:Card)->CardViewVisualSource{
         switch(layout){
         case .SummaryCardNoImage:
