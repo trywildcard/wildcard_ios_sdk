@@ -9,10 +9,12 @@
 import Foundation
 import WebKit
 
+/// A Card Body which contains a WKWebView which is responsible for playing videos.
 @objc
-public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRecognizerDelegate {
+public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate, WKScriptMessageHandler {
     
     public var videoWKView:WKWebView!
+    //public var videoWKView:UIWebView!
     public var spinner:UIActivityIndicatorView!
     
     /// Adjusts the aspect ratio of the video
@@ -52,7 +54,6 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
     private var __videoAspectRatio:CGFloat = 0.75
     private var posterView:WCImageView!
     private var tapGestureRecognizer:UITapGestureRecognizer!
-    private var videoTapped:Bool = false
     private var videoActionButton:UIButton!
     private var passthroughView:PassthroughView!
     private var videoActionImage:UIImageView!
@@ -63,13 +64,21 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         // initializes the video wkwebview
         var configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = false
-        configuration.mediaPlaybackRequiresUserAction = true
+        configuration.mediaPlaybackRequiresUserAction = false
+        
+        let controller = WKUserContentController()
+        controller.addScriptMessageHandler(self, name: "observe")
+        
+        configuration.userContentController = controller
+        
         videoWKView = WKWebView(frame: CGRectZero, configuration: configuration)
+        //videoWKView = UIWebView(frame: CGRectZero)
         videoWKView.layer.cornerRadius = WildcardSDK.imageCornerRadius
         videoWKView.layer.masksToBounds = true
         videoWKView.backgroundColor = UIColor.blackColor()
         videoWKView.scrollView.scrollEnabled = false
         videoWKView.scrollView.bounces = false
+        //videoWKView.delegate = self
         videoWKView.navigationDelegate = self
         videoWKView.userInteractionEnabled = true
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "videoTapped:");
@@ -123,8 +132,12 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterY, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
         // observers when video is tapped
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "videoExitFullScreen:", name: UIWindowDidBecomeHiddenNotification, object: self.window)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "videoEnterFullScreen:", name: UIWindowDidBecomeVisibleNotification, object: self.window)
+       // NSNotificationCenter.defaultCenter().addObserver(self, selector: "videoExitFullScreen:", name: UIWindowDidBecomeHiddenNotification, object: self.window)
+       // NSNotificationCenter.defaultCenter().addObserver(self, selector: "videoEnterFullScreen:", name: UIWindowDidBecomeVisibleNotification, object: self.window)
+    }
+    
+    func test(){
+        println("test")
     }
     
     public override func adjustForPreferredWidth(cardWidth: CGFloat) {
@@ -138,27 +151,17 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
             let request = NSURLRequest(URL: videoCard.embedUrl)
             
             videoWKView.loadRequest(request)
-            
+        
             if let posterImageUrl = videoCard.posterImageUrl {
                 passthroughView.hidden = false
                 posterView.image = nil;
+                spinner.startAnimating()
                 posterView.setImageWithURL(posterImageUrl, mode: .ScaleAspectFill, completion: { (image, error) -> Void in
-                    
-                    // if webview is done loading, stop the spinner
-                    if(!self.videoWKView.loading){
-                        self.spinner.stopAnimating()
-                    }
-                    
+                    self.spinner.stopAnimating()
                     if(image != nil && error == nil){
                         self.posterView.image = image
                         self.posterView.contentMode = .ScaleAspectFill
-                        
-                        if(!self.videoWKView.loading){
-                            self.videoActionImage.hidden = false
-                        }
                     }else{
-                        // error downloading poster image, hide it to just show web view
-                       // self.passthroughView.hidden = true
                         self.posterView.setNoImage()
                     }
                 })
@@ -167,6 +170,7 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
                 // there isn't a poster image, hiding this just shows the webview
                 passthroughView.hidden = true
             }
+
         }else{
             println("VideoCardBody element should only be used with a video card.")
         }
@@ -194,42 +198,79 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
     func videoTapped(recognizer:UITapGestureRecognizer!){
         // our custom gesture recognizer on the wkwebview just to capture this engagement and flag
         WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], withCard:cardView?.backingCard)
-        videoTapped = true
-        
+       
         passthroughView.hidden = true
     }
     
-    func videoEnterFullScreen(notification:NSNotification!){
-        if(videoTapped){
-            if(cardView != nil){
-                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoStartedPlaying, parameters: nil))
-            }
-        }
-    }
-    
-    func videoExitFullScreen(notification:NSNotification!){
-        if(videoTapped){
-            if(cardView != nil){
-                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoStoppedPlaying, parameters: nil))
-            }
-            videoTapped = false
-        }
-    }
-    
     // MARK: WKNavigationDelegate
+    
+    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        println("should start load request with url")
+        
+        println(request.URL.absoluteString)
+        
+        return true
+    }
+    
+    public func webViewDidFinishLoad(webView: UIWebView) {
+        println("web view finished load")
+        
+        let javascript = " for (var i = 0, videos = document.getElementsByTagName('video'); i < videos.length; i++) {" +
+        "      videos[i].addEventListener('webkitbeginfullscreen', function(){ " +
+        "           window.location = 'videohandler://begin-fullscreen';" +
+        "      }, false);" +
+        "      videos[i].addEventListener('webkitendfullscreen', function(){ " +
+        "           window.location = 'videohandler://end-fullscreen';" +
+        "      }, false);" +
+        " }"
+        
+        let jstest = " for (var i = 0, videos = document.getElementsByTagName('video'); i < videos.length; i++) {" +
+            "      alert(videos[i]);" +
+            "      videos[i].addEventListener('webkitbeginfullscreen', function(){ " +
+            "      alert('BEGIN');" +
+            "           window.location.href = 'videohandler://begin-fullscreen';" +
+            "      }, true);" +
+            "      videos[i].addEventListener('webkitendfullscreen', function(){ " +
+            "      alert('END');" +
+            "           window.location.href = 'videohandler://end-fullscreen';" +
+            "      }, true);" +
+        " }"
+        
+        //let jstest = "var x=document.getElementsByTagName('video'); alert(x.length)"
+        
+        
+       // println(webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML"))
+      //  videoWKView.stringByEvaluatingJavaScriptFromString(javascript)
+        
+       // videoWKView.stringByEvaluatingJavaScriptFromString(jstest)
+      //
+        //videoWKView.stringByEvaluatingJavaScriptFromString("alert('hi')")
+        
+        /*
+        [_webView stringByEvaluatingJavaScriptFromString:@" for (var i = 0, videos = document.getElementsByTagName('video'); i < videos.length; i++) {"
+        @"      videos[i].addEventListener('webkitbeginfullscreen', function(){ "
+        @"           window.location = 'videohandler://begin-fullscreen';"
+        @"      }, false);"
+        @""
+        @"      videos[i].addEventListener('webkitendfullscreen', function(){ "
+        @"           window.location = 'videohandler://end-fullscreen';"
+        @"      }, false);"
+        @" }"
+        ];
+*/
+        
+    }
+    
     public func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!){
         spinner.startAnimating()
     }
     
     public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!){
-        if(passthroughView.hidden){
-            spinner.stopAnimating()
-        }else{
-            if(posterView.image != nil){
-                self.videoActionImage.hidden = false
-                spinner.stopAnimating()
-            }
-        }
+        spinner.stopAnimating()
+        self.videoActionImage.hidden = false
+
+        // add some listeners to html5 video tag to get call backs for full screen
+        videoWKView.evaluateJavaScript(getHtml5ListenerJS(), completionHandler: nil)
     }
     
     public func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
@@ -248,6 +289,32 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         posterView.image = nil
         videoActionImage.hidden = false
         videoActionImage.image = UIImage(named: "noVideoFound")
+    }
+    
+    private func getHtml5ListenerJS()->String{
+        var script:String?
+        if let file = NSBundle.wildcardSDKBundle().pathForResource("html5VideoListeners", ofType: "js"){
+            script = String(contentsOfFile: file, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        return script!
+    }
+    
+    // MARK: WKScriptMessageHandler
+    public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)
+    {
+        if let body = message.body as? String{
+            if(body == "webkitbeginfullscreen"){
+                if(cardView != nil){
+                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoBeginFullScreen, parameters: nil))
+                }
+            }else if(body == "webkitendfullscreen"){
+                if(cardView != nil){
+                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoEndFullScreen, parameters: nil))
+                }
+                
+            }
+        }
+        
     }
 
 }

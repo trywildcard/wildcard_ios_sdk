@@ -19,6 +19,7 @@ public class WCImageView : UIImageView
     
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
     {
+        backgroundColor = UIColor.wildcardBackgroundGray()
         let imageRequest = NSMutableURLRequest(URL: url)
         imageRequest.addValue("image/*", forHTTPHeaderField: "Accept")
         
@@ -34,12 +35,11 @@ public class WCImageView : UIImageView
                 contentMode = mode
             }
         }else{
-            backgroundColor = UIColor.wildcardBackgroundGray()
             let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
             downloadTask =
             session.downloadTaskWithRequest(imageRequest,
                 completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
-                    self.backgroundColor = UIColor.clearColor()
+                    //self.backgroundColor = UIColor.clearColor()
                     if(error == nil){
                         let data:NSData? = NSData(contentsOfURL: location)
                         if let newImage = UIImage(data: data!){

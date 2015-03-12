@@ -98,6 +98,7 @@
 		1DAC26B11A3649EA0005C4BE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B01A3649EA0005C4BE /* Utilities.swift */; };
 		1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
+		1DC309421AB243D3000B133E /* html5VideoListeners.js in Resources */ = {isa = PBXBuildFile; fileRef = 1DC309411AB243D3000B133E /* html5VideoListeners.js */; };
 		1DC39A6C1A7B3FFD007BBEBE /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */; };
 		1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */; };
 		1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */; };
@@ -256,6 +257,7 @@
 		1DAC26B01A3649EA0005C4BE /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1DC309411AB243D3000B133E /* html5VideoListeners.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = html5VideoListeners.js; sourceTree = "<group>"; };
 		1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariActivity.swift; sourceTree = "<group>"; };
 		1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWebCardFooter.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				1D1A286B1A43F0B0007D3E64 /* MediaReadingCss.css */,
+				1DC309411AB243D3000B133E /* html5VideoListeners.js */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				1DF1B8CF1A6BF297000EC76E /* ImageFloatRightBody.xib in Resources */,
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
 				1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */,
+				1DC309421AB243D3000B133E /* html5VideoListeners.js in Resources */,
 				1D0BEDD41A97AD81000BA999 /* ImageFloatLeftBody.xib in Resources */,
 				1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */,
 				1D5873301A374AA500C3EAF3 /* Media.xcassets in Resources */,

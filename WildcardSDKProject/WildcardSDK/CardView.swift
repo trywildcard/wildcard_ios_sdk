@@ -60,13 +60,6 @@ public protocol CardViewDelegate{
     optional func cardViewLayoutSubviews(cardView:CardView)
     
     /**
-    Optionally gates the CardView action, always called before an action is requested.
-    
-    If this function is not implemented the action will be requested.
-    */
-    optional func cardViewShouldPerformAction(cardView:CardView, action: CardViewAction) -> Bool
-    
-    /**
     CardView has been requested to perform a specific action.
     */
     optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction)
@@ -350,10 +343,7 @@ public class CardView : UIView
             if let shareUrl = url {
                 var params:NSDictionary = ["url":shareUrl]
                 let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)
-                let shouldPerform = self.delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-                if(shouldPerform == true || shouldPerform == nil){
-                    self.delegate?.cardViewRequestedAction?(self, action: cardAction)
-                }
+                self.delegate?.cardViewRequestedAction?(self, action: cardAction)
             }
         })
     }
@@ -361,10 +351,7 @@ public class CardView : UIView
     func handleViewOnWeb(url:NSURL){
         let params:NSDictionary = ["url":url]
         let cardAction = CardViewAction(type: WCCardAction.ViewOnWeb, parameters: params)
-        let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-        if(shouldPerform == true || shouldPerform == nil){
-            delegate?.cardViewRequestedAction?(self, action: cardAction)
-        }
+        delegate?.cardViewRequestedAction?(self, action: cardAction)
     }
     
     func handleDownloadApp(){
@@ -375,10 +362,7 @@ public class CardView : UIView
                 var params:NSDictionary = ["id":id]
                 
                 let cardAction = CardViewAction(type: WCCardAction.DownloadApp, parameters: params)
-                let shouldPerform = delegate?.cardViewShouldPerformAction?(self, action: cardAction)
-                if(shouldPerform == true || shouldPerform == nil){
-                    delegate?.cardViewRequestedAction?(self, action: cardAction)
-                }
+                delegate?.cardViewRequestedAction?(self, action: cardAction)
             }
         }
     }

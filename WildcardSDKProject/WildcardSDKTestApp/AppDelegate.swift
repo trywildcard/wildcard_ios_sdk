@@ -13,7 +13,12 @@ import WildcardSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var allowLandscape:Bool?
 
+    class func sharedInstance() -> AppDelegate
+    {
+        return UIApplication.sharedApplication().delegate as AppDelegate
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -47,6 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
+        var returnValue:Int = Int(UIInterfaceOrientationMask.Portrait.rawValue)
+        if let allowLandscape = allowLandscape {
+            if(allowLandscape){
+                returnValue = Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+            }
+        }
+        return returnValue
+    }
+    
 
 }
 

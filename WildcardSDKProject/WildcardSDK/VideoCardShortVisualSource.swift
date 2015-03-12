@@ -19,7 +19,7 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
             header.hairline.hidden = true
-            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
+            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
         }
         return header
     }

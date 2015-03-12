@@ -19,10 +19,10 @@ class ViewController: UIViewController, CardViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
+        /*
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
         media["type"] = "image"
-        
         
         let google = NSURL(string: "http://www.yahoo.com")
         card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
@@ -34,9 +34,9 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
+*/
 
-        /*
-        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=qzkZ468_XQw")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "https://vimeo.com/channels/staffpicks/121159129")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
@@ -49,16 +49,33 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.presentCard(card, animated: true, completion: nil)
             }
         })
-*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         let cardAction = action
         switch(action.type){
-        case .VideoStartedPlaying:
+        case .VideoBeginFullScreen:
             println("video started playing")
-        case .VideoStoppedPlaying:
+            AppDelegate.sharedInstance().allowLandscape = true
+        case .VideoEndFullScreen:
+        //{
             println("video stopped playing")
+        
+            AppDelegate.sharedInstance().allowLandscape = false
+            //let orientationVal:NSNumber = NSNumber(integer: UIInterfaceOrientation.Portrait.rawValue)
+            //UIDevice.currentDevice().setValue(orientationVal, forKey: "orientation")
+            
+            //supportedInterfaceOrientations()
+            //shouldAutorotate()
+            
+            
+            //UIApplication.sharedApplication().setStatusBarOrientation(UIInterfaceOrientation.Portrait, animated: false)
+            let vc = UIViewController()
+            presentViewController(vc, animated: false, completion: nil)
+            dismissViewControllerAnimated(false, completion: nil)
+            break
+            
+        //}
         default:
             break
         }
@@ -66,6 +83,15 @@ class ViewController: UIViewController, CardViewDelegate{
         
         handleCardAction(cardView, action: action)
     }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return UIInterfaceOrientation.Portrait.rawValue
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
         presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)

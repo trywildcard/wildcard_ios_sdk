@@ -58,7 +58,9 @@ public class VideoCard : Card{
                 self.streamUrl = NSURL(string: streamUrlString)
             }
         }
-
+        
+        self.posterImageUrl = nil
+        
         super.init(webUrl: url, cardType: "video")
     }
     
