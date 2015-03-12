@@ -19,7 +19,6 @@ class ViewController: UIViewController, CardViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        /*
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
         media["type"] = "image"
@@ -28,18 +27,16 @@ class ViewController: UIViewController, CardViewDelegate{
         let google = NSURL(string: "http://www.yahoo.com")
         card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
         
-
-        
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardTall){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-*/
 
-        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=swZz-QvP7lY")!, completion: { (card, error) -> Void in
+        /*
+        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=qzkZ468_XQw")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
@@ -52,8 +49,7 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.presentCard(card, animated: true, completion: nil)
             }
         })
-        
-        
+*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

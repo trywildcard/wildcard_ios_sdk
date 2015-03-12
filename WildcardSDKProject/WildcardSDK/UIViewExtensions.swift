@@ -17,13 +17,24 @@ public extension UIView{
             ).instantiateWithOwner(nil, options: nil)[0] as? UIView
     }
     
-    // for any view with a superview, constrain all edges flush with superview
+    /// For any view with a superview, constrain all edges flush with superview. e.g. Leading, Top, Bottom, Right all 0
     public func constrainToSuperViewEdges(){
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        setTranslatesAutoresizingMaskIntoConstraints(false)
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0))
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0))
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0))
         superview?.addConstraint(NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.superview, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0))
+    }
+    
+    /// Given a reference view, constrain this view to be exactly the same size and position (Useful for overlays that aren't child views). Superviews must be the same
+    public func constrainExactlyToView(view:UIView){
+        if(hasSuperview() && (superview == view.superview)){
+            setTranslatesAutoresizingMaskIntoConstraints(false)
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1.0, constant: 0.0))
+        }
     }
     
     public func constrainLeftToSuperView(offset:CGFloat)->NSLayoutConstraint{

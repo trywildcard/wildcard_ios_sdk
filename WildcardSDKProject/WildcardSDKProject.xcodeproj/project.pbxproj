@@ -69,7 +69,7 @@
 		1D6F88661AADED6700D73668 /* VideoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F88651AADED6700D73668 /* VideoCard.swift */; };
 		1D6F88691AAE206500D73668 /* VideoCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */; };
 		1D6F886B1AAE21F100D73668 /* VideoCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F886A1AAE21F100D73668 /* VideoCardBody.swift */; };
-		1D6F886D1AAE397400D73668 /* RedirectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F886C1AAE397400D73668 /* RedirectView.swift */; };
+		1D6F886D1AAE397400D73668 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F886C1AAE397400D73668 /* PassthroughView.swift */; };
 		1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7417071A40145100281714 /* EmptyCardBack.swift */; };
 		1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */; };
 		1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */; };
@@ -228,7 +228,7 @@
 		1D6F88651AADED6700D73668 /* VideoCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCard.swift; sourceTree = "<group>"; };
 		1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardShortVisualSource.swift; sourceTree = "<group>"; };
 		1D6F886A1AAE21F100D73668 /* VideoCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardBody.swift; sourceTree = "<group>"; };
-		1D6F886C1AAE397400D73668 /* RedirectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedirectView.swift; sourceTree = "<group>"; };
+		1D6F886C1AAE397400D73668 /* PassthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
 		1D7417071A40145100281714 /* EmptyCardBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardBack.swift; sourceTree = "<group>"; };
 		1D74170B1A40761600281714 /* SingleParagraphCardBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleParagraphCardBody.swift; sourceTree = "<group>"; };
 		1D7EAC891A31263800734B9A /* LayoutDecisionEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDecisionEdge.swift; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
 				1DF623821A76031800382E81 /* WCImageView.swift */,
-				1D6F886C1AAE397400D73668 /* RedirectView.swift */,
+				1D6F886C1AAE397400D73668 /* PassthroughView.swift */,
 			);
 			name = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -883,7 +883,7 @@
 				1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D6F88691AAE206500D73668 /* VideoCardShortVisualSource.swift in Sources */,
-				1D6F886D1AAE397400D73668 /* RedirectView.swift in Sources */,
+				1D6F886D1AAE397400D73668 /* PassthroughView.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DF1B8DC1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift in Sources */,
 				1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */,

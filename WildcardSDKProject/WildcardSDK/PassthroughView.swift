@@ -10,12 +10,14 @@ import Foundation
 
 class PassthroughView: UIView {
     
+    var otherView:UIView?
+    
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView?
     {
         // pass through touches
         let hitView = super.hitTest(point, withEvent:event)
         if(hitView == self){
-            return nil
+            return otherView
         }
         return hitView
     }

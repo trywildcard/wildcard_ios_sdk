@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Wildcard Extension of UIImageView with a few extra functions
 @objc
 public class WCImageView : UIImageView
 {
@@ -69,14 +70,19 @@ public class WCImageView : UIImageView
         }
     }
     
-    private func setNoImage(){
+    /// Set the default place holder image, use this when there was a problem downloading or loading an image
+    public func setNoImage(){
+        backgroundColor = UIColor.wildcardBackgroundGray()
         self.image = UIImage.loadFrameworkImage("noImage")
+        self.tintColor = UIColor.whiteColor()
         self.contentMode = .Center
     }
     
+    
     private var downloadTask:NSURLSessionDownloadTask?
     
-    private func cancelRequest(){
+    /// cancel any pending image requests
+    public func cancelRequest(){
         downloadTask?.cancel()
         downloadTask = nil;
     }
