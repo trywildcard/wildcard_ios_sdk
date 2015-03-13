@@ -36,7 +36,7 @@ class ViewController: UIViewController, CardViewDelegate{
         }
 */
 
-        Card.getFromUrl(NSURL(string: "https://vimeo.com/channels/staffpicks/121159129")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "https://vine.co/v/OT39IZdiElh")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
@@ -58,24 +58,15 @@ class ViewController: UIViewController, CardViewDelegate{
             println("video started playing")
             AppDelegate.sharedInstance().allowLandscape = true
         case .VideoEndFullScreen:
-        //{
             println("video stopped playing")
         
             AppDelegate.sharedInstance().allowLandscape = false
-            //let orientationVal:NSNumber = NSNumber(integer: UIInterfaceOrientation.Portrait.rawValue)
-            //UIDevice.currentDevice().setValue(orientationVal, forKey: "orientation")
             
-            //supportedInterfaceOrientations()
-            //shouldAutorotate()
-            
-            
-            //UIApplication.sharedApplication().setStatusBarOrientation(UIInterfaceOrientation.Portrait, animated: false)
             let vc = UIViewController()
             presentViewController(vc, animated: false, completion: nil)
             dismissViewControllerAnimated(false, completion: nil)
             break
             
-        //}
         default:
             break
         }

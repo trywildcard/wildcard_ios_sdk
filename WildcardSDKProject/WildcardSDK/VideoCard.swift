@@ -59,8 +59,6 @@ public class VideoCard : Card{
             }
         }
         
-        self.posterImageUrl = nil
-        
         super.init(webUrl: url, cardType: "video")
     }
     
@@ -96,8 +94,25 @@ public class VideoCard : Card{
         
     }
     
+    public func isYoutube()->Bool{
+        return creator.name == "Youtube"
+    }
+    
+    public func getYoutubeId()->String?{
+        let ytEmbedRegex = "^http(s)://(www.)youtube.com/embed/(.*)$"
+        let regex = NSRegularExpression(pattern: ytEmbedRegex, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
+        
+        let length:Int = embedUrl.absoluteString!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        let ytMatch = regex?.firstMatchInString(embedUrl.absoluteString!, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, length))
+        if(ytMatch != nil){
+            return embedUrl.absoluteString!.lastPathComponent
+        }else{
+            return nil
+        }
+    }
+
     public override func supportsLayout(layout: WCCardLayout) -> Bool {
         return layout == WCCardLayout.VideoCardShort
     }
-    
+
 }

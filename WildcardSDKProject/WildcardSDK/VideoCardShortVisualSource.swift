@@ -13,7 +13,6 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
     
     var header:FullCardHeader!
     var body:VideoCardBody!
-    var footer:ViewOnWebCardFooter!
     
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
@@ -32,15 +31,4 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
         }
         return body;
     }
-    
-    /*
-    public func viewForCardFooter()->CardViewElement?{
-        if(footer == nil){
-            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as ViewOnWebCardFooter
-            footer.hairline.hidden = true
-            footer.viewOnWebButton.hidden = true
-        }
-        return footer
-    }
-*/
 }

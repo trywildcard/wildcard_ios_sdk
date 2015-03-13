@@ -99,6 +99,9 @@
 		1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */; };
 		1DAC26ED1A3657860005C4BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DAC26EC1A3657860005C4BE /* UIKit.framework */; };
 		1DC309421AB243D3000B133E /* html5VideoListeners.js in Resources */ = {isa = PBXBuildFile; fileRef = 1DC309411AB243D3000B133E /* html5VideoListeners.js */; };
+		1DC3095A1AB35A92000B133E /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 1DC309571AB35A92000B133E /* YTPlayerView-iframe-player.html */; };
+		1DC3095B1AB35A92000B133E /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC309581AB35A92000B133E /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DC3095C1AB35A92000B133E /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC309591AB35A92000B133E /* YTPlayerView.m */; };
 		1DC39A6C1A7B3FFD007BBEBE /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */; };
 		1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */; };
 		1DC928781A40861B0040DAD0 /* ViewOnWebCardFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */; };
@@ -258,6 +261,9 @@
 		1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCard.swift; sourceTree = "<group>"; };
 		1DAC26EC1A3657860005C4BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1DC309411AB243D3000B133E /* html5VideoListeners.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = html5VideoListeners.js; sourceTree = "<group>"; };
+		1DC309571AB35A92000B133E /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		1DC309581AB35A92000B133E /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		1DC309591AB35A92000B133E /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		1DC39A6F1A7C2F2F007BBEBE /* SafariActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariActivity.swift; sourceTree = "<group>"; };
 		1DC928771A40861B0040DAD0 /* ViewOnWebCardFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewOnWebCardFooter.swift; sourceTree = "<group>"; };
@@ -406,6 +412,7 @@
 		1D3A28851A2E697700A9D4C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1DC309431AB3274C000B133E /* youtube-ios-player-helper */,
 				1D32C5041A7972AE0021D27A /* Mix Panel */,
 				1D58732F1A374AA500C3EAF3 /* Media.xcassets */,
 				1D3A28861A2E697700A9D4C1 /* Info.plist */,
@@ -506,6 +513,16 @@
 				1D6F886C1AAE397400D73668 /* PassthroughView.swift */,
 			);
 			name = "Utilities and Extensions";
+			sourceTree = "<group>";
+		};
+		1DC309431AB3274C000B133E /* youtube-ios-player-helper */ = {
+			isa = PBXGroup;
+			children = (
+				1DC309571AB35A92000B133E /* YTPlayerView-iframe-player.html */,
+				1DC309581AB35A92000B133E /* YTPlayerView.h */,
+				1DC309591AB35A92000B133E /* YTPlayerView.m */,
+			);
+			name = "youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
 		1DC928811A4099430040DAD0 /* Headers */ = {
@@ -669,6 +686,7 @@
 				1D32C5181A799BDD0021D27A /* WCAnalytics.h in Headers */,
 				1D32C5071A7972D90021D27A /* Mixpanel.h in Headers */,
 				1D3A28881A2E697700A9D4C1 /* WildcardSDK.h in Headers */,
+				1DC3095B1AB35A92000B133E /* YTPlayerView.h in Headers */,
 				1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */,
 				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
@@ -806,6 +824,7 @@
 			files = (
 				1DF1B8CF1A6BF297000EC76E /* ImageFloatRightBody.xib in Resources */,
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
+				1DC3095A1AB35A92000B133E /* YTPlayerView-iframe-player.html in Resources */,
 				1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */,
 				1DC309421AB243D3000B133E /* html5VideoListeners.js in Resources */,
 				1D0BEDD41A97AD81000BA999 /* ImageFloatLeftBody.xib in Resources */,
@@ -895,6 +914,7 @@
 				1DF1B8DA1A6C2B01000EC76E /* ArticleCardTallVisualSource.swift in Sources */,
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
+				1DC3095C1AB35A92000B133E /* YTPlayerView.m in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,
