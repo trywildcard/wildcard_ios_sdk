@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import MediaPlayer
 import WebKit
 
-/// A Card Body which contains a WKWebView which is responsible for playing videos.
+/// A Card Body which can play various Video Cards
 @objc
 public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRecognizerDelegate, WKScriptMessageHandler, YTPlayerViewDelegate {
     
@@ -62,6 +63,8 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
     private var videoActionImage:UIImageView!
     private var tintOverlay:UIView!
     private var spinner:UIActivityIndicatorView!
+    private var moviePlayer:MPMoviePlayerViewController?
+    private var streamUrl:NSURL?
    
     override public func initialize(){
         
@@ -104,6 +107,7 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         ytPlayer.backgroundColor = UIColor.blackColor()
         ytPlayer.userInteractionEnabled = true
         ytTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "videoTapped:");
+        ytTapGestureRecognizer.delegate = self
         ytPlayer.addGestureRecognizer(ytTapGestureRecognizer)
         insertSubview(ytPlayer, belowSubview: videoWKView)
         ytPlayer.constrainExactlyToView(videoWKView)
@@ -143,6 +147,7 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         insertSubview(spinner, aboveSubview: passthroughView)
         addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterX, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterX, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterY, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterY, multiplier: 1.0, constant: 0))
+        
     }
     
     public override func adjustForPreferredWidth(cardWidth: CGFloat) {
@@ -165,6 +170,8 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
                     setError()
                     return
                 }
+            }else if(videoCard.streamUrl != nil){
+                streamUrl = videoCard.streamUrl
             }else{
                 // most general case we load embedded URL into webview
                 videoWKView.hidden = false
@@ -212,7 +219,7 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
     
     // MARK: UIGestureRecognizerDelegate
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool{
-        if(gestureRecognizer == tapGestureRecognizer || gestureRecognizer == ytTapGestureRecognizer){
+        if(gestureRecognizer == tapGestureRecognizer || gestureRecognizer == ytTapGestureRecognizer || otherGestureRecognizer == tapGestureRecognizer || otherGestureRecognizer == ytTapGestureRecognizer){
             // we want our tap gesture to be recognized alongside the WKWebView's default one
             return true;
         }else{
@@ -220,13 +227,43 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         }
     }
     
+    // MARK: Notification Handling
+    func moviePlayerDidFinish(notification:NSNotification){
+        if(cardView != nil){
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoWillEndPlaying, parameters: nil))
+        }
+        
+        if let vc = parentViewController(){
+            vc.dismissMoviePlayerViewControllerAnimated()
+        }
+        
+        // remove notifications
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+    }
+    
     // MARK: Action
     func videoTapped(recognizer:UITapGestureRecognizer!){
         // our custom gesture recognizer on the wkwebview just to capture this engagement and flag
         WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], withCard:cardView?.backingCard)
        
-        // hide pass through to show current video state
-        passthroughView.hidden = true
+        if(streamUrl != nil){
+            // have a stream url, can show a movie player automatically
+            moviePlayer = MPMoviePlayerViewController(contentURL: streamUrl!)
+            NSNotificationCenter.defaultCenter().removeObserver(moviePlayer!, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+            moviePlayer!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+            moviePlayer!.moviePlayer.play()
+            
+            if let vc = parentViewController(){
+                vc.presentMoviePlayerViewControllerAnimated(moviePlayer!)
+                if(self.cardView != nil){
+                    self.cardView!.delegate?.cardViewRequestedAction?(self.cardView!, action: CardViewAction(type: .VideoDidStartPlaying, parameters: nil))
+                }
+            }
+        }else{
+            // using a webview, hide the poster image
+            passthroughView.hidden = true
+        }
     }
     
     // MARK: WKNavigationDelegate
@@ -257,11 +294,11 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
         if let body = message.body as? String{
             if(body == "webkitbeginfullscreen"){
                 if(cardView != nil){
-                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoBeginFullScreen, parameters: nil))
+                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoDidStartPlaying, parameters: nil))
                 }
             }else if(body == "webkitendfullscreen"){
                 if(cardView != nil){
-                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoEndFullScreen, parameters: nil))
+                    cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoWillEndPlaying, parameters: nil))
                 }
             }
         }
@@ -282,11 +319,11 @@ public class VideoCardBody : CardViewElement, WKNavigationDelegate, UIGestureRec
     public func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
         if(state.value == kYTPlayerStatePlaying.value){
             if(cardView != nil){
-                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoBeginFullScreen, parameters: nil))
+                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoDidStartPlaying, parameters: nil))
             }
         }else if(state.value == kYTPlayerStatePaused.value){
             if(cardView != nil){
-                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoEndFullScreen, parameters: nil))
+                cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoWillEndPlaying, parameters: nil))
             }
         }
     }
