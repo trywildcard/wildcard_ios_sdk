@@ -47,7 +47,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Basic Card Added Inline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nn-W7-4cb">
                                 <rect key="frame" x="199" y="50" width="202" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrK-ey-Thy">
@@ -105,7 +105,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Flourishes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-zw-cJo">
                                 <rect key="frame" x="240" y="50" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zp-Xs-c5N">
@@ -173,43 +173,6 @@
             </objects>
             <point key="canvasLocation" x="251" y="1075"/>
         </scene>
-        <!--Demo4-->
-        <scene sceneID="D3G-GM-wI6">
-            <objects>
-                <viewController id="ccK-gt-S2t" customClass="ViewController4" customModule="WildcardSDKTestApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ahs-4c-umI"/>
-                        <viewControllerLayoutGuide type="bottom" id="19U-7q-BAu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HPI-5J-gU0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-Hb-wtG">
-                                <rect key="frame" x="174" y="50" width="251" height="30"/>
-                                <state key="normal" title="Present Cards as a Swipe-able Deck">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="presentButtonTapped:" destination="ccK-gt-S2t" eventType="touchUpInside" id="nlr-KM-YU9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="JuO-Hb-wtG" firstAttribute="top" secondItem="Ahs-4c-umI" secondAttribute="bottom" constant="30" id="H4a-FJ-SoQ"/>
-                            <constraint firstAttribute="centerX" secondItem="JuO-Hb-wtG" secondAttribute="centerX" id="Ou9-Ad-AAa"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Demo4" id="YTi-WH-rab"/>
-                    <connections>
-                        <outlet property="presentButton" destination="JuO-Hb-wtG" id="yKg-3B-Tng"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NMQ-wK-0NA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-434" y="917"/>
-        </scene>
         <!--Demo 2-->
         <scene sceneID="RG1-W1-Znq">
             <objects>
@@ -238,7 +201,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Card View Reloaded w/ Different Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpJ-pC-4Be">
                                 <rect key="frame" x="132" y="50" width="336" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -282,7 +245,6 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="CGU-sq-D68"/>
                         <segue destination="54Z-eI-u65" kind="relationship" relationship="viewControllers" id="Gmh-Le-eQn"/>
                         <segue destination="TcV-Vj-cbZ" kind="relationship" relationship="viewControllers" id="lQH-kC-TuZ"/>
-                        <segue destination="ccK-gt-S2t" kind="relationship" relationship="viewControllers" id="Psv-1R-Rd9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POJ-el-vHh" userLabel="First Responder" sceneMemberID="firstResponder"/>

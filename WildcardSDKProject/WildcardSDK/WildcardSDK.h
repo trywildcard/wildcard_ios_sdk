@@ -21,4 +21,5 @@ FOUNDATION_EXPORT const unsigned char WildcardSDKVersionString[];
 #import <WildcardSDK/WCErrorCode.h>
 #import <WildcardSDK/WCElementType.h>
 #import <WildcardSDK/YTPlayerView.h>
+#import <WildcardSDK/YTVimeoExtractor.h>
 

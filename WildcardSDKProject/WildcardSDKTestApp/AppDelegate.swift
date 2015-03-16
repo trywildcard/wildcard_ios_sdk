@@ -24,9 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         WildcardSDK.initializeWithApiKey("b17442d4-5ca1-4173-bc90-bb9ee60086ab")
-        WildcardSDK.cardCornerRadius = 2.0
+        //WildcardSDK.cardCornerRadius = 2.0
         
-        println(WildcardSDKVersionNumber)
         return true
     }
 
@@ -52,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /*
     func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
         var returnValue:Int = Int(UIInterfaceOrientationMask.Portrait.rawValue)
         if let allowLandscape = allowLandscape {
@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return returnValue
     }
+*/
     
 
 }

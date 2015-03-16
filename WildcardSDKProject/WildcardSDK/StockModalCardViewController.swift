@@ -143,12 +143,6 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
             currentOrientation = UIApplication.sharedApplication().statusBarOrientation
             
-            if(currentOrientation == initialOrientation){
-                cardView?.reloadWithCard(presentedCard, visualSource: cardVisualSource, preferredWidth:UIViewNoIntrinsicMetric)
-            }else{
-                cardView?.reloadWithCard(presentedCard)
-            }
-            
             if(UIApplication.sharedApplication().statusBarHidden){
                 closeButtonTopConstraint.constant = 0
             }else{

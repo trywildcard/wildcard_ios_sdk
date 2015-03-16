@@ -59,6 +59,8 @@ public class VideoCard : Card{
             }
         }
         
+        //self.posterImageUrl = nil
+        
         super.init(webUrl: url, cardType: "video")
     }
     
@@ -96,6 +98,10 @@ public class VideoCard : Card{
     
     public func isYoutube()->Bool{
         return creator.name == "Youtube"
+    }
+    
+    public func isVimeo()->Bool{
+        return creator.name == "Vimeo"
     }
     
     public func getYoutubeId()->String?{

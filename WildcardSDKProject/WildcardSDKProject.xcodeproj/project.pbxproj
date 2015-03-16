@@ -22,8 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */; };
-		1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */; };
 		1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */; };
 		1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */; };
 		1D0BEDD21A968242000BA999 /* WildcardSDKElementSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */; };
@@ -83,6 +81,9 @@
 		1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764841A4356B200E51FE5 /* MaximizedArticleVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */; };
 		1D9764861A43747C00E51FE5 /* StockMaximizedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */; };
+		1D984EF21AB722CD00AFC9FF /* WCVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D984EF11AB722CD00AFC9FF /* WCVideoView.swift */; };
+		1D984EF61AB74DFC00AFC9FF /* YTVimeoExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D984EF41AB74DFC00AFC9FF /* YTVimeoExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D984EF71AB74DFC00AFC9FF /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */; };
 		1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */; };
 		1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */; };
 		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
@@ -110,7 +111,6 @@
 		1DC928861A409A590040DAD0 /* FullCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC928851A409A590040DAD0 /* FullCardHeader.xib */; };
 		1DC928871A409A5F0040DAD0 /* FullCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC928851A409A590040DAD0 /* FullCardHeader.xib */; };
 		1DC928891A409CC00040DAD0 /* ImageOnlyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC928881A409CC00040DAD0 /* ImageOnlyBody.swift */; };
-		1DCA935C1A47D35100782193 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA935B1A47D35100782193 /* ViewController4.swift */; };
 		1DCFD1A81A719A0100D44BD0 /* WildcardSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCFD1A71A719A0100D44BD0 /* WildcardSDK.swift */; };
 		1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */; };
 		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
@@ -184,8 +184,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckViewController.swift; sourceTree = "<group>"; };
-		1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModalDeckAnimationController.swift; sourceTree = "<group>"; };
 		1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardAnimationController.swift; sourceTree = "<group>"; };
 		1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardPresentationController.swift; sourceTree = "<group>"; };
 		1D0BEDD11A968241000BA999 /* WildcardSDKElementSizingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildcardSDKElementSizingTests.swift; sourceTree = "<group>"; };
@@ -245,6 +243,9 @@
 		1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextFullWebView.xib; sourceTree = "<group>"; };
 		1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximizedArticleVisualSource.swift; sourceTree = "<group>"; };
 		1D9764851A43747C00E51FE5 /* StockMaximizedCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMaximizedCardViewController.swift; sourceTree = "<group>"; };
+		1D984EF11AB722CD00AFC9FF /* WCVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCVideoView.swift; sourceTree = "<group>"; };
+		1D984EF41AB74DFC00AFC9FF /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
+		1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
 		1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardShortVisualSource.swift; sourceTree = "<group>"; };
 		1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughEdge.swift; sourceTree = "<group>"; };
 		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
@@ -271,7 +272,6 @@
 		1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullCardHeader.swift; sourceTree = "<group>"; };
 		1DC928851A409A590040DAD0 /* FullCardHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullCardHeader.xib; sourceTree = "<group>"; };
 		1DC928881A409CC00040DAD0 /* ImageOnlyBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOnlyBody.swift; sourceTree = "<group>"; };
-		1DCA935B1A47D35100782193 /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		1DCFD1A71A719A0100D44BD0 /* WildcardSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildcardSDK.swift; sourceTree = "<group>"; };
 		1DE2183C1A380036007746B4 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
@@ -378,7 +378,6 @@
 				1D3A28621A2E696A00A9D4C1 /* ViewController.swift */,
 				1DE2184A1A38DCA6007746B4 /* ViewController2.swift */,
 				1D3064761A3B83B100D99F6E /* ViewController3.swift */,
-				1DCA935B1A47D35100782193 /* ViewController4.swift */,
 				1D3A28641A2E696A00A9D4C1 /* Main.storyboard */,
 				1D3A28671A2E696A00A9D4C1 /* Images.xcassets */,
 				1D3A28691A2E696A00A9D4C1 /* LaunchScreen.xib */,
@@ -412,6 +411,7 @@
 		1D3A28851A2E697700A9D4C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D984EF31AB74DDE00AFC9FF /* YTVimeoExtractor */,
 				1DC309431AB3274C000B133E /* youtube-ios-player-helper */,
 				1D32C5041A7972AE0021D27A /* Mix Panel */,
 				1D58732F1A374AA500C3EAF3 /* Media.xcassets */,
@@ -473,11 +473,31 @@
 				1DF1B8C91A6BEE81000EC76E /* Card View */,
 				1DE2183E1A38073B007746B4 /* Stock Presentations */,
 				1D1A286A1A43F080007D3E64 /* Resources */,
+				1D984EFB1AB760A500AFC9FF /* Custom Views */,
 				1DAC26921A3631AC0005C4BE /* Utilities and Extensions */,
 				1D7EAC881A31258100734B9A /* CardLayoutEngine */,
 				1D904F9E1A302937001FFDEA /* Platform.swift */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		1D984EF31AB74DDE00AFC9FF /* YTVimeoExtractor */ = {
+			isa = PBXGroup;
+			children = (
+				1D984EF41AB74DFC00AFC9FF /* YTVimeoExtractor.h */,
+				1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */,
+			);
+			name = YTVimeoExtractor;
+			sourceTree = "<group>";
+		};
+		1D984EFB1AB760A500AFC9FF /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				1DF623821A76031800382E81 /* WCImageView.swift */,
+				1D984EF11AB722CD00AFC9FF /* WCVideoView.swift */,
+				1D6F886C1AAE397400D73668 /* PassthroughView.swift */,
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 		1DAC267E1A326B620005C4BE /* Edges */ = {
@@ -509,8 +529,6 @@
 				1DC39A6B1A7B3FFD007BBEBE /* UILabelExtensions.swift */,
 				1DAC26931A3631B90005C4BE /* UIViewExtensions.swift */,
 				1DAC26B01A3649EA0005C4BE /* Utilities.swift */,
-				1DF623821A76031800382E81 /* WCImageView.swift */,
-				1D6F886C1AAE397400D73668 /* PassthroughView.swift */,
 			);
 			name = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -586,8 +604,6 @@
 				1D6719AF1A44AA7A006DA49A /* StockModalCardAnimationController.swift */,
 				1D6719AB1A44A952006DA49A /* StockModalCardPresentationController.swift */,
 				1D6719AD1A44A9DD006DA49A /* StockModalCardViewController.swift */,
-				1D014AB71A44C94A004A29B5 /* StockModalDeckAnimationController.swift */,
-				1D014AB51A44C6EA004A29B5 /* StockModalDeckViewController.swift */,
 				1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */,
 			);
 			name = "Stock Presentations";
@@ -691,6 +707,7 @@
 				1DF1B8C41A6B84BA000EC76E /* WCCardType.h in Headers */,
 				1DF1B8C11A6B74C9000EC76E /* WCCardLayout.h in Headers */,
 				1D32C50F1A7982320021D27A /* NSData+MPBase64.h in Headers */,
+				1D984EF61AB74DFC00AFC9FF /* YTVimeoExtractor.h in Headers */,
 				1D32482D1A8EB425004F753B /* WCElementType.h in Headers */,
 				1D32C5121A7982A10021D27A /* MPLogger.h in Headers */,
 			);
@@ -868,7 +885,6 @@
 				1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */,
 				1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */,
 				1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */,
-				1DCA935C1A47D35100782193 /* ViewController4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,9 +915,10 @@
 				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
 				1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */,
-				1D014AB81A44C94A004A29B5 /* StockModalDeckAnimationController.swift in Sources */,
 				1DF1B8D81A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
+				1D984EF71AB74DFC00AFC9FF /* YTVimeoExtractor.m in Sources */,
+				1D984EF21AB722CD00AFC9FF /* WCVideoView.swift in Sources */,
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
@@ -932,7 +949,6 @@
 				1D0BEDD81A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
-				1D014AB61A44C6EA004A29B5 /* StockModalDeckViewController.swift in Sources */,
 				1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,

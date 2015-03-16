@@ -7,19 +7,18 @@ All targets are included in **WildcardSDKProject.xcodeproj**
 <h4>TARGETS</h4>
 
 <h5>Framework</h5>
+
+Produces framework packages
+
 * Set target to **Framework**
 * Clean/Build
-* **WildcardSDK.framework** should be placed in project directory and your desktop
-* This is a multiplatform framework that should be distributed
+* Script produces one framework package for a "fat" binary that is built for Simulator + Device, and another package that is only built for Device.
+* Both should appear on the desktop
 
 <h5>WildcardSDK</h5>
 
-Core SDK
-
-<h5>WildcardSDKTests</h5>
-
-Unit tests on Core SDK
+Core SDK. This is an iOS Framework target.
 
 <h5>WildcardSDKTestApp</h5>
 
-Simple app in the project to test and dev the framework
+Development app in the project to test and dev the framework

@@ -36,8 +36,9 @@ class ViewController: UIViewController, CardViewDelegate{
         }
 */
 
-        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=VWLwP7wDoV0")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "http://www.dailymotion.com/video/x2iit27_trine-3-the-artifacts-of-power-announcement-trailer_videogames")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
+                /*
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
                     self.view.addSubview(cardView)
@@ -45,6 +46,8 @@ class ViewController: UIViewController, CardViewDelegate{
                     cardView.verticallyCenterToSuperView(0)
                     self.cardView = cardView
                 }
+                */
+                self.presentCard(card, animated:true, completion:nil)
             }else{
                 self.presentCard(card, animated: true, completion: nil)
             }
@@ -121,7 +124,8 @@ class ViewController: UIViewController, CardViewDelegate{
         if let body = cardView.visualSource.viewForCardBody() as? VideoCardBody {
             
            // body.preferredWidth = 300
-            body.videoAspectRatio = 0.50
+           // body.videoAspectRatio = 0.50
+            cardView.preferredWidth = 200
            // body.caption.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
            // body.imageViewSize = CGSizeMake(200, 200)

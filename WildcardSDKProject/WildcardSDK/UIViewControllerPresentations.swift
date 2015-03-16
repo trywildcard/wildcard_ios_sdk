@@ -128,18 +128,4 @@ public extension UIViewController{
         presentViewController(viewController, animated: true, completion: nil)
     }
     
-    /// ALPHA: Presents an array of Cards as a swipeable Stack
-    public func presentCardsAsStack(cards:[Card]){
-        if(cards.count < 4){
-            println("Can not present Deck with less than 4 Cards.")
-            return
-        }
-        let deckController = StockModalDeckViewController()
-        deckController.modalPresentationStyle = .Custom
-        deckController.transitioningDelegate = deckController
-        deckController.modalPresentationCapturesStatusBarAppearance = true
-        deckController.cards = cards
-        presentViewController(deckController, animated: true, completion: nil)
-    }
-    
 }
