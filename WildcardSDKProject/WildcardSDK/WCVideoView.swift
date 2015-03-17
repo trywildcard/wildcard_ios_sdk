@@ -122,8 +122,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
             posterView.setImageWithURL(posterImageUrl, mode: .ScaleAspectFill, completion: { (image, error) -> Void in
                 if(self.inError == false){
                     if(image != nil && error == nil){
-                        self.posterView.image = image
-                        self.posterView.contentMode = .ScaleAspectFill
+                        self.posterView.setImage(image!, mode:.ScaleAspectFill)
                     }else{
                         self.posterView.setNoImage()
                     }
