@@ -19,26 +19,24 @@ class ViewController: UIViewController, CardViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        /*
         let media:NSMutableDictionary = NSMutableDictionary()
-        media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
+        media["imageUrl"] = "http://images.mid-day.com/2013/mar/shark-attack.jpg"
         media["type"] = "image"
         
         let google = NSURL(string: "http://www.yahoo.com")
         card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
         
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardNoImage){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardTall){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-*/
 
+        /*
         Card.getFromUrl(NSURL(string: "http://www.dailymotion.com/video/x2iit27_trine-3-the-artifacts-of-power-announcement-trailer_videogames")!, completion: { (card, error) -> Void in
             if let card = card as? VideoCard {
-                /*
                 if let cardView = CardView.createCardView(card){
                     cardView.delegate = self
                     self.view.addSubview(cardView)
@@ -46,12 +44,12 @@ class ViewController: UIViewController, CardViewDelegate{
                     cardView.verticallyCenterToSuperView(0)
                     self.cardView = cardView
                 }
-                */
-                self.presentCard(card, animated:true, completion:nil)
+               // self.presentCard(card, animated:true, completion:nil)
             }else{
                 self.presentCard(card, animated: true, completion: nil)
             }
         })
+*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
