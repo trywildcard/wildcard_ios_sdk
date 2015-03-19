@@ -34,20 +34,15 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-*/
-
-        Card.getFromUrl(NSURL(string: "http://www.dailymotion.com/video/x2iit27_trine-3-the-artifacts-of-power-announcement-trailer_videogames")!, completion: { (card, error) -> Void in
-            if let card = card as? VideoCard {
-                if let cardView = CardView.createCardView(card){
-                    cardView.delegate = self
-                    self.view.addSubview(cardView)
-                    cardView.horizontallyCenterToSuperView(0)
-                    cardView.verticallyCenterToSuperView(0)
-                    self.cardView = cardView
-                }
-                //self.presentCard(card, animated:true, completion:nil)
-            }else{
-                self.presentCard(card, animated: true, completion: nil)
+        */
+        
+        Card.getFromUrl(NSURL(string: "http://www.theatlantic.com")!, completion: { (card, error) -> Void in
+            if let card = card {
+                self.cardView = CardView.createCardView(card)
+                self.cardView.delegate = self
+                self.view.addSubview(self.cardView)
+                self.cardView.horizontallyCenterToSuperView(0)
+                self.cardView.verticallyCenterToSuperView(0)
             }
         })
     }
@@ -56,24 +51,15 @@ class ViewController: UIViewController, CardViewDelegate{
         let cardAction = action
         switch(action.type){
         case .VideoDidStartPlaying:
-            println("video started playing")
             AppDelegate.sharedInstance().allowLandscape = true
         case .VideoWillEndPlaying:
-            println("video stopped playing")
-        
             AppDelegate.sharedInstance().allowLandscape = false
             let value = UIInterfaceOrientation.Portrait.rawValue
             UIDevice.currentDevice().setValue(value, forKey: "orientation")
-            
-            //let vc = UIViewController()
-            //presentViewController(vc, animated: false, completion: nil)
-            //dismissViewControllerAnimated(false, completion: nil)
             break
-            
         default:
             break
         }
-  
         
         handleCardAction(cardView, action: action)
     }

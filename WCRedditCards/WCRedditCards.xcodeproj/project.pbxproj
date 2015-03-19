@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DC999651ABA2EEA006BA880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999641ABA2EEA006BA880 /* main.m */; };
+		1DC999681ABA2EEA006BA880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999671ABA2EEA006BA880 /* AppDelegate.m */; };
+		1DC9996E1ABA2EEA006BA880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC9996C1ABA2EEA006BA880 /* Main.storyboard */; };
+		1DC999701ABA2EEA006BA880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC9996F1ABA2EEA006BA880 /* Images.xcassets */; };
+		1DC999731ABA2EEA006BA880 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC999711ABA2EEA006BA880 /* LaunchScreen.xib */; };
+		1DC9997F1ABA2EEA006BA880 /* WCRedditCardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */; };
+		1DC999891ABA2F22006BA880 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999881ABA2F22006BA880 /* WildcardSDK.framework */; };
+		1DC9998A1ABA2F22006BA880 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999881ABA2F22006BA880 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DC9998E1ABA2F70006BA880 /* __swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9998D1ABA2F70006BA880 /* __swift.swift */; };
+		1DC999911ABA2FB5006BA880 /* WCRedditCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1DC999791ABA2EEA006BA880 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DC999571ABA2EEA006BA880 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DC9995E1ABA2EEA006BA880;
+			remoteInfo = WCRedditCards;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1DC9998B1ABA2F22006BA880 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1DC9998A1ABA2F22006BA880 /* WildcardSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRedditCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC999631ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC999641ABA2EEA006BA880 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1DC999661ABA2EEA006BA880 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1DC999671ABA2EEA006BA880 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1DC9996D1ABA2EEA006BA880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1DC9996F1ABA2EEA006BA880 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1DC999721ABA2EEA006BA880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1DC999781ABA2EEA006BA880 /* WCRedditCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCRedditCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC9997D1ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTests.m; sourceTree = "<group>"; };
+		1DC999881ABA2F22006BA880 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
+		1DC9998C1ABA2F70006BA880 /* WCRedditCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRedditCards-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DC9998D1ABA2F70006BA880 /* __swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __swift.swift; sourceTree = "<group>"; };
+		1DC9998F1ABA2FB5006BA880 /* WCRedditCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRedditCardsTableViewController.h; sourceTree = "<group>"; };
+		1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DC9995C1ABA2EEA006BA880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC999891ABA2F22006BA880 /* WildcardSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC999751ABA2EEA006BA880 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DC999561ABA2EEA006BA880 = {
+			isa = PBXGroup;
+			children = (
+				1DC999881ABA2F22006BA880 /* WildcardSDK.framework */,
+				1DC999611ABA2EEA006BA880 /* WCRedditCards */,
+				1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */,
+				1DC999601ABA2EEA006BA880 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1DC999601ABA2EEA006BA880 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */,
+				1DC999781ABA2EEA006BA880 /* WCRedditCardsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DC999611ABA2EEA006BA880 /* WCRedditCards */ = {
+			isa = PBXGroup;
+			children = (
+				1DC999661ABA2EEA006BA880 /* AppDelegate.h */,
+				1DC999671ABA2EEA006BA880 /* AppDelegate.m */,
+				1DC9998F1ABA2FB5006BA880 /* WCRedditCardsTableViewController.h */,
+				1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */,
+				1DC9996C1ABA2EEA006BA880 /* Main.storyboard */,
+				1DC9996F1ABA2EEA006BA880 /* Images.xcassets */,
+				1DC999711ABA2EEA006BA880 /* LaunchScreen.xib */,
+				1DC999621ABA2EEA006BA880 /* Supporting Files */,
+				1DC9998D1ABA2F70006BA880 /* __swift.swift */,
+				1DC9998C1ABA2F70006BA880 /* WCRedditCards-Bridging-Header.h */,
+			);
+			path = WCRedditCards;
+			sourceTree = "<group>";
+		};
+		1DC999621ABA2EEA006BA880 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1DC999631ABA2EEA006BA880 /* Info.plist */,
+				1DC999641ABA2EEA006BA880 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */,
+				1DC9997C1ABA2EEA006BA880 /* Supporting Files */,
+			);
+			path = WCRedditCardsTests;
+			sourceTree = "<group>";
+		};
+		1DC9997C1ABA2EEA006BA880 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1DC9997D1ABA2EEA006BA880 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DC9995E1ABA2EEA006BA880 /* WCRedditCards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC999821ABA2EEA006BA880 /* Build configuration list for PBXNativeTarget "WCRedditCards" */;
+			buildPhases = (
+				1DC9995B1ABA2EEA006BA880 /* Sources */,
+				1DC9995C1ABA2EEA006BA880 /* Frameworks */,
+				1DC9995D1ABA2EEA006BA880 /* Resources */,
+				1DC9998B1ABA2F22006BA880 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WCRedditCards;
+			productName = WCRedditCards;
+			productReference = 1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1DC999771ABA2EEA006BA880 /* WCRedditCardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC999851ABA2EEA006BA880 /* Build configuration list for PBXNativeTarget "WCRedditCardsTests" */;
+			buildPhases = (
+				1DC999741ABA2EEA006BA880 /* Sources */,
+				1DC999751ABA2EEA006BA880 /* Frameworks */,
+				1DC999761ABA2EEA006BA880 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1DC9997A1ABA2EEA006BA880 /* PBXTargetDependency */,
+			);
+			name = WCRedditCardsTests;
+			productName = WCRedditCardsTests;
+			productReference = 1DC999781ABA2EEA006BA880 /* WCRedditCardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DC999571ABA2EEA006BA880 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = com.trywildcard;
+				TargetAttributes = {
+					1DC9995E1ABA2EEA006BA880 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					1DC999771ABA2EEA006BA880 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 1DC9995E1ABA2EEA006BA880;
+					};
+				};
+			};
+			buildConfigurationList = 1DC9995A1ABA2EEA006BA880 /* Build configuration list for PBXProject "WCRedditCards" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DC999561ABA2EEA006BA880;
+			productRefGroup = 1DC999601ABA2EEA006BA880 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DC9995E1ABA2EEA006BA880 /* WCRedditCards */,
+				1DC999771ABA2EEA006BA880 /* WCRedditCardsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DC9995D1ABA2EEA006BA880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC9996E1ABA2EEA006BA880 /* Main.storyboard in Resources */,
+				1DC999731ABA2EEA006BA880 /* LaunchScreen.xib in Resources */,
+				1DC999701ABA2EEA006BA880 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC999761ABA2EEA006BA880 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DC9995B1ABA2EEA006BA880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC999681ABA2EEA006BA880 /* AppDelegate.m in Sources */,
+				1DC999651ABA2EEA006BA880 /* main.m in Sources */,
+				1DC999911ABA2FB5006BA880 /* WCRedditCardsTableViewController.m in Sources */,
+				1DC9998E1ABA2F70006BA880 /* __swift.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC999741ABA2EEA006BA880 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC9997F1ABA2EEA006BA880 /* WCRedditCardsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1DC9997A1ABA2EEA006BA880 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1DC9995E1ABA2EEA006BA880 /* WCRedditCards */;
+			targetProxy = 1DC999791ABA2EEA006BA880 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1DC9996C1ABA2EEA006BA880 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DC9996D1ABA2EEA006BA880 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1DC999711ABA2EEA006BA880 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DC999721ABA2EEA006BA880 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DC999801ABA2EEA006BA880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DC999811ABA2EEA006BA880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DC999831ABA2EEA006BA880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = WCRedditCards/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WCRedditCards/WCRedditCards-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1DC999841ABA2EEA006BA880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = WCRedditCards/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WCRedditCards/WCRedditCards-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		1DC999861ABA2EEA006BA880 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WCRedditCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WCRedditCards.app/WCRedditCards";
+			};
+			name = Debug;
+		};
+		1DC999871ABA2EEA006BA880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WCRedditCardsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WCRedditCards.app/WCRedditCards";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DC9995A1ABA2EEA006BA880 /* Build configuration list for PBXProject "WCRedditCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC999801ABA2EEA006BA880 /* Debug */,
+				1DC999811ABA2EEA006BA880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC999821ABA2EEA006BA880 /* Build configuration list for PBXNativeTarget "WCRedditCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC999831ABA2EEA006BA880 /* Debug */,
+				1DC999841ABA2EEA006BA880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1DC999851ABA2EEA006BA880 /* Build configuration list for PBXNativeTarget "WCRedditCardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC999861ABA2EEA006BA880 /* Debug */,
+				1DC999871ABA2EEA006BA880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DC999571ABA2EEA006BA880 /* Project object */;
+}

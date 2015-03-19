@@ -1,0 +1,10 @@
+framework module WildcardSDK {
+  umbrella header "WildcardSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module WildcardSDK.Swift {
+    header "WildcardSDK-Swift.h"
+}

@@ -1,0 +1,158 @@
+<style>
+
+/* Custom tags */
+#customWildcardHeader {
+    font-family:'Tiempos', 'Georgia', serif;
+    font-size:18px;
+    font-weight:bold;
+    padding-top:2px;
+    padding-left:0px;
+    padding-right:30px;
+    padding-bottom:7px;
+}
+
+#customWildcardByline {
+    font-family:'Tiempos', 'Georgia', serif;
+    font-size:14px;
+    color:rgb(98,107,128);
+}
+
+#viewOnWeb{
+    display:inline;
+    font-family:'Arial', serif;
+    color:rgb(76,180,255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:14px;
+}
+
+#openInApp{
+    display:inline-block;
+    font-family:'Arial', serif;
+    color:rgb(76,180,255);
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size:12px;
+    margin-left: 5px;
+    vertical-align: top;
+    line-height: 12px;
+}
+
+#openInAppImage{
+    display:inline-block;
+    width:15px;
+    height:15px;
+}
+
+.viewMore{
+    margin:20px auto;
+    width:100%;
+    display:block;
+    text-align:center;
+}
+
+/* General CSS */
+
+body{
+    font-family:'Tiempos', 'Georgia', serif;
+    font-weight:400;
+    font-size:15px;
+    line-height:22px;
+    color:rgb(40,47,60);
+    word-break:keep-all;
+    word-wrap:break-word;
+    margin-left:auto;
+    margin-right:auto;
+    width:90%%;
+}
+
+figure{
+    margin:0px auto;
+    display:block;
+}
+
+figcaption {
+    padding: 2px;
+    color: rgb(155,163,178);
+    font-family: 'Tiempos', 'Georgia', serif;
+    font-size: 12px;
+    line-height:16px;
+    font-style: italic;
+    border: none;
+    background: transparent;
+    word-wrap:normal;
+    text-align: center;
+    margin-bottom:15px;
+}
+
+img{
+    margin:0px auto;
+    width:100%%;
+    display:block;
+    border-radius:4px;
+    height:auto;
+}
+
+video{
+    margin:0px auto;
+    width:100%%;
+    display:block;
+    height:auto;
+}
+
+iframe{
+    margin:0px auto;
+    width:100%%;
+    display:block;
+    height:auto;
+}
+
+blockquote{
+    margin:0px auto;
+    width:90%%;
+    display:block;
+    font-style: italic;
+}
+
+a{
+    color:rgb(76,180,255);
+    text-decoration:underline;
+}
+
+ul, ol{
+    padding: 0 0 25px 30px;
+}
+
+li{
+    font-family:'Tiempos', 'Georgia', serif;
+    font-weight:400;
+    font-size:15px;
+}
+
+h1{
+    font-size:18px;
+    line-height:24px;
+}
+
+h2{
+    font-size:18px;
+    line-height:24px;
+}
+
+h3{
+    font-size:18px;
+    line-height:24px;
+}
+
+table{
+    width:100%%;
+    font-size:10px;
+    display:block;
+    word-break:break-all;
+    table-layout:fixed;
+}
+
+
+</style>
