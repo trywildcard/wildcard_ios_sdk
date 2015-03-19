@@ -59,8 +59,6 @@ public class VideoCard : Card{
             }
         }
         
-        //self.posterImageUrl = nil
-        
         super.init(webUrl: url, cardType: "video")
     }
     

@@ -36,7 +36,7 @@ class ViewController: UIViewController, CardViewDelegate{
         }
         */
         
-        Card.getFromUrl(NSURL(string: "http://www.theatlantic.com")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=jedzDs1Yl-4")!, completion: { (card, error) -> Void in
             if let card = card {
                 self.cardView = CardView.createCardView(card)
                 self.cardView.delegate = self

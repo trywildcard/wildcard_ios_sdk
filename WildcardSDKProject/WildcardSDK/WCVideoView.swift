@@ -273,7 +273,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         posterView.cancelRequest()
         posterView.image = nil
         videoActionImage.hidden = false
-        videoActionImage.image = UIImage(named: "noVideoFound")
+        videoActionImage.image = UIImage.loadFrameworkImage("noVideoFound")
         inError = true
     }
     
