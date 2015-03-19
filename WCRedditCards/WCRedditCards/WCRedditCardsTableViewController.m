@@ -76,6 +76,7 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
 
 - (IBAction)refreshButtonTapped:(id)sender {
     [self.cardViews removeAllObjects];
+    [self.redditLinks removeAllObjects];
     [self.tableView reloadData];
     [self loadRedditLinks];
 }
@@ -88,7 +89,7 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
         NSURL* url = [self.redditLinks firstObject];
         [self.redditLinks removeObjectAtIndex:0];
         
-        // 2. attempt to make a card
+        // 2. attempt to get a card
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [Card getFromUrl:url completion:^(Card *card, NSError *error) {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
