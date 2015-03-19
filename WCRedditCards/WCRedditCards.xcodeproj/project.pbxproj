@@ -13,10 +13,10 @@
 		1DC999701ABA2EEA006BA880 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC9996F1ABA2EEA006BA880 /* Images.xcassets */; };
 		1DC999731ABA2EEA006BA880 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DC999711ABA2EEA006BA880 /* LaunchScreen.xib */; };
 		1DC9997F1ABA2EEA006BA880 /* WCRedditCardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */; };
-		1DC999891ABA2F22006BA880 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999881ABA2F22006BA880 /* WildcardSDK.framework */; };
-		1DC9998A1ABA2F22006BA880 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999881ABA2F22006BA880 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DC9998E1ABA2F70006BA880 /* __swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9998D1ABA2F70006BA880 /* __swift.swift */; };
 		1DC999911ABA2FB5006BA880 /* WCRedditCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */; };
+		1DC999931ABB4D73006BA880 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999921ABB4D73006BA880 /* WildcardSDK.framework */; };
+		1DC999941ABB4D73006BA880 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC999921ABB4D73006BA880 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1DC9998A1ABA2F22006BA880 /* WildcardSDK.framework in Embed Frameworks */,
+				1DC999941ABB4D73006BA880 /* WildcardSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,11 +55,11 @@
 		1DC999781ABA2EEA006BA880 /* WCRedditCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WCRedditCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC9997D1ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTests.m; sourceTree = "<group>"; };
-		1DC999881ABA2F22006BA880 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		1DC9998C1ABA2F70006BA880 /* WCRedditCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRedditCards-Bridging-Header.h"; sourceTree = "<group>"; };
 		1DC9998D1ABA2F70006BA880 /* __swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __swift.swift; sourceTree = "<group>"; };
 		1DC9998F1ABA2FB5006BA880 /* WCRedditCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRedditCardsTableViewController.h; sourceTree = "<group>"; };
 		1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTableViewController.m; sourceTree = "<group>"; };
+		1DC999921ABB4D73006BA880 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DC999891ABA2F22006BA880 /* WildcardSDK.framework in Frameworks */,
+				1DC999931ABB4D73006BA880 /* WildcardSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 		1DC999561ABA2EEA006BA880 = {
 			isa = PBXGroup;
 			children = (
-				1DC999881ABA2F22006BA880 /* WildcardSDK.framework */,
+				1DC999921ABB4D73006BA880 /* WildcardSDK.framework */,
 				1DC999611ABA2EEA006BA880 /* WCRedditCards */,
 				1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */,
 				1DC999601ABA2EEA006BA880 /* Products */,
@@ -453,6 +453,7 @@
 				1DC999841ABA2EEA006BA880 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DC999851ABA2EEA006BA880 /* Build configuration list for PBXNativeTarget "WCRedditCardsTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +462,7 @@
 				1DC999871ABA2EEA006BA880 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
