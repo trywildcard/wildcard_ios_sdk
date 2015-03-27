@@ -116,6 +116,8 @@
 		1DE218401A380789007746B4 /* UIViewControllerPresentations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */; };
 		1DE218491A38C103007746B4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE218481A38C103007746B4 /* ImageCache.swift */; };
 		1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2184A1A38DCA6007746B4 /* ViewController2.swift */; };
+		1DE8ED801AC5FF8F00B994C9 /* VideoCardThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8ED7F1AC5FF8F00B994C9 /* VideoCardThumbnail.swift */; };
+		1DE8ED821AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8ED811AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift */; };
 		1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEADBD91A9959C700489448 /* BaseVisualSource.swift */; };
 		1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA951A3935D300EE9645 /* StringExtensions.swift */; };
 		1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */; };
@@ -277,6 +279,8 @@
 		1DE2183F1A380789007746B4 /* UIViewControllerPresentations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPresentations.swift; sourceTree = "<group>"; };
 		1DE218481A38C103007746B4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		1DE2184A1A38DCA6007746B4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		1DE8ED7F1AC5FF8F00B994C9 /* VideoCardThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardThumbnail.swift; sourceTree = "<group>"; };
+		1DE8ED811AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardThumbnailVisualSource.swift; sourceTree = "<group>"; };
 		1DEADBD91A9959C700489448 /* BaseVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVisualSource.swift; sourceTree = "<group>"; };
 		1DF0BA951A3935D300EE9645 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1DF0BA981A394B4D00EE9645 /* CardPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPhysics.swift; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */,
+				1DE8ED811AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift */,
 			);
 			name = "Video Card Visual Sources";
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				1D0BEDD31A97AD81000BA999 /* ImageFloatLeftBody.xib */,
 				1D0BEDD51A97AD90000BA999 /* ImageFloatLeftBody.swift */,
 				1D6F886A1AAE21F100D73668 /* VideoCardBody.swift */,
+				1DE8ED7F1AC5FF8F00B994C9 /* VideoCardThumbnail.swift */,
 			);
 			name = Bodies;
 			sourceTree = "<group>";
@@ -900,6 +906,7 @@
 				1DF623831A76031800382E81 /* WCImageView.swift in Sources */,
 				1DF1B8821A69CC2F000EC76E /* ImageAndCaptionBody.swift in Sources */,
 				1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */,
+				1DE8ED801AC5FF8F00B994C9 /* VideoCardThumbnail.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
 				1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */,
@@ -932,6 +939,7 @@
 				1D014ABA1A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift in Sources */,
 				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
 				1DC3095C1AB35A92000B133E /* YTPlayerView.m in Sources */,
+				1DE8ED821AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,

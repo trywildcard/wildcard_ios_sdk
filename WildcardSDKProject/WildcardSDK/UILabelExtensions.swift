@@ -20,4 +20,15 @@ extension UILabel{
         }
     }
     
+    func setDefaultKickerStyling(){
+        font =  WildcardSDK.cardKickerFont
+        numberOfLines = 1
+        textColor = UIColor.wildcardMediumGray()
+    }
+    
+    func setDefaultTitleStyling(){
+        font = WildcardSDK.cardTitleFont
+        textColor = UIColor.wildcardDarkBlue()
+    }
+    
 }

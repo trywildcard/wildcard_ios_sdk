@@ -19,23 +19,25 @@ class ViewController: UIViewController, CardViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
-        /*
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://images.mid-day.com/2013/mar/shark-attack.jpg"
         media["type"] = "image"
         
-        let google = NSURL(string: "http://www.yahoo.com")
-        card = SummaryCard(url:google!, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
+        let google = NSURL(string: "http://www.yahoo.com")!
+        card = SummaryCard(url:google, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
         
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardTall){
+        let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil, androidStore: nil)
+        let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
+        
+        if let cardView = CardView.createCardView(vidCard, layout: WCCardLayout.VideoCardThumbnail){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-        */
         
+        /*
         Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=jedzDs1Yl-4")!, completion: { (card, error) -> Void in
             if let card = card {
                 self.cardView = CardView.createCardView(card)
@@ -45,6 +47,7 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
+*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
@@ -105,13 +108,10 @@ class ViewController: UIViewController, CardViewDelegate{
             //view.layoutIfNeeded()
         }
         
-        if let body = cardView.visualSource.viewForCardBody() as? VideoCardBody {
+        if let body = cardView.visualSource.viewForCardBody() as? VideoCardThumbnail {
             
-           // body.preferredWidth = 300
-           // body.videoAspectRatio = 0.50
-            cardView.preferredWidth = 200
-           // body.caption.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
-            //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
+            body.labelToVideoPadding = 50
+            
            // body.imageViewSize = CGSizeMake(200, 200)
             //body.contentEdgeInset = UIEdgeInsetsMake(20, 30, 20, 30)
             //body.imageViewSize = CGSizeMake(40, 160)

@@ -116,7 +116,8 @@ public class VideoCard : Card{
     }
 
     public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.VideoCardShort
+        return layout == WCCardLayout.VideoCardShort ||
+               layout == WCCardLayout.VideoCardThumbnail
     }
 
 }

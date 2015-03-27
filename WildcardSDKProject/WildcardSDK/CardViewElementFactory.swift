@@ -41,6 +41,8 @@ public class CardViewElementFactory{
             cardViewElement = SingleParagraphCardBody(frame:CGRectZero);
         case .VideoBody:
             cardViewElement = VideoCardBody(frame:CGRectZero);
+        case .VideoThumbnailBody:
+            cardViewElement = VideoCardThumbnail(frame:CGRectZero);
         }
         return cardViewElement
     }

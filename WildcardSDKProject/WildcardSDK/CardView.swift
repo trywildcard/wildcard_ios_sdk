@@ -13,7 +13,7 @@ import QuartzCore
 /**
 The visual source of a CardView.
 
-Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
+Every CardView is associated with a visual source and provides views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own.
 
 Each subcomponent of a CardView must extend CardViewElement.
 */
