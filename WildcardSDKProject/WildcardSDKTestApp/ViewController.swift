@@ -20,8 +20,11 @@ class ViewController: UIViewController, CardViewDelegate{
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
         let media:NSMutableDictionary = NSMutableDictionary()
+        let mediaDescription:NSMutableDictionary = NSMutableDictionary()
+        mediaDescription["description"] = "Shar attack the quick brown fox jumped over he alzy dog. this is a test description"
         media["imageUrl"] = "http://images.mid-day.com/2013/mar/shark-attack.jpg"
         media["type"] = "image"
+        media["media"] = mediaDescription
         
         let google = NSURL(string: "http://www.yahoo.com")!
         card = SummaryCard(url:google, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)

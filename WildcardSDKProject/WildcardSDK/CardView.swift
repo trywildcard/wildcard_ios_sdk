@@ -387,13 +387,17 @@ public class CardView : UIView
         footer = visualSource.viewForCardFooter?()
         footer?.preferredWidth = preferredWidth
         
+        back = visualSource.viewForBackOfCard?()
+        back?.preferredWidth = preferredWidth
+        back?.layer.cornerRadius = WildcardSDK.cardCornerRadius
+        back?.layer.masksToBounds = true
+        
         // initialize and update
-        body.cardView = self
-        body.update(backingCard)
-        header?.cardView = self
-        header?.update(backingCard)
-        footer?.cardView = self
-        footer?.update(backingCard)
+        var cardViews:[CardViewElement?] = [header, body, footer, back]
+        for view in cardViews{
+            view?.cardView = self
+            view?.update(backingCard)
+        }
     }
     
     override public func intrinsicContentSize() -> CGSize {
@@ -449,14 +453,9 @@ public class CardView : UIView
         }
         
         // Back of the card always constrain to edges if it exists
-        if let backView = visualSource.viewForBackOfCard?(){
-            backView.cardView = self
-            backView.update(backingCard)
-            insertSubview(backView, belowSubview:containerView)
-            backView.constrainToSuperViewEdges()
-            backView.layer.cornerRadius = WildcardSDK.cardCornerRadius
-            backView.layer.masksToBounds = true
-            back = backView
+        if(back != nil){
+            insertSubview(back!, belowSubview:containerView)
+            back!.constrainToSuperViewEdges()
         }
         
     }
