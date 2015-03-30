@@ -437,7 +437,7 @@ public class CardView : UIView
         body.constrainLeftToSuperView(0)
         body.constrainRightToSuperView(0)
         
-        // card body layout has 4 height layout possibilities
+        // card body layout has 4 vertical layout possibilities
         if(header == nil && footer == nil){
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: 0))
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: 0))

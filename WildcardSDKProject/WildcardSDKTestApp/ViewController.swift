@@ -21,7 +21,7 @@ class ViewController: UIViewController, CardViewDelegate{
         
         let media:NSMutableDictionary = NSMutableDictionary()
         let mediaDescription:NSMutableDictionary = NSMutableDictionary()
-        mediaDescription["description"] = "Shar attack the quick brown fox jumped over he alzy dog. this is a test description"
+        mediaDescription["description"] = "Shar attack the quick brown fox jumped over he alzy dog. this is a test description. The quick brown fox jumped over the lazy dog. "
         media["imageUrl"] = "http://images.mid-day.com/2013/mar/shark-attack.jpg"
         media["type"] = "image"
         media["media"] = mediaDescription
@@ -32,6 +32,7 @@ class ViewController: UIViewController, CardViewDelegate{
         let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil, androidStore: nil)
         let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
         
+        /*
         if let cardView = CardView.createCardView(vidCard, layout: WCCardLayout.VideoCardThumbnail){
             cardView.delegate = self
             view.addSubview(cardView)
@@ -39,18 +40,17 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
+*/
         
-        /*
-        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=jedzDs1Yl-4")!, completion: { (card, error) -> Void in
-            if let card = card {
-                self.cardView = CardView.createCardView(card)
+        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=r16ndBiHC-0")!, completion: { (card, error) -> Void in
+            if let card = card  as? VideoCard{
+                self.cardView = CardView.createCardView(card, layout: WCCardLayout.VideoCardThumbnail)
                 self.cardView.delegate = self
                 self.view.addSubview(self.cardView)
                 self.cardView.horizontallyCenterToSuperView(0)
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
-*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {

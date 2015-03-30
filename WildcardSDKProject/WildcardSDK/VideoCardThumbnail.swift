@@ -105,14 +105,15 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
             videoView.loadVideoCard(videoCard)
             kicker.text = videoCard.creator.name
             title.text = videoCard.title
-            updateDescriptionAttributes()
+            updateLabelAttributes()
         }else{
             println("VideoCardThumbnail element should only be used with a video card.")
         }
     }
     
-    private func updateDescriptionAttributes(){
+    private func updateLabelAttributes(){
         
+        // the space available for the labels in this element
         let labelPreferredWidth = preferredWidth -
             rightConstraint.constant -
             leftConstraint.constant -
@@ -126,7 +127,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
     }
     
     public override func adjustForPreferredWidth(cardWidth: CGFloat) {
-        updateDescriptionAttributes()
+        updateLabelAttributes()
     }
     
     // MARK: WCVideoViewDelegate

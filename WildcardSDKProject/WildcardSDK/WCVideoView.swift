@@ -115,6 +115,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     
     func loadVideoCard(videoCard:VideoCard){
         inError = false
+        self.videoCard = videoCard
 
         // poster image if available
         if let posterImageUrl = videoCard.posterImageUrl {
@@ -200,21 +201,28 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         
         delegate?.videoViewTapped?(self)
         
-        if(streamUrl != nil){
-            // have a stream url, can show a movie player automatically
-            moviePlayer = MPMoviePlayerViewController(contentURL: streamUrl!)
-            NSNotificationCenter.defaultCenter().removeObserver(moviePlayer!, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
-            moviePlayer!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-            moviePlayer!.moviePlayer.play()
-            
-            if let vc = parentViewController(){
-                vc.presentMoviePlayerViewControllerAnimated(moviePlayer!)
-                delegate?.videoViewDidStartPlaying?(self)
+        if(inError){
+            // attempt reload if we're in error state
+            if let card = videoCard {
+                loadVideoCard(card)
             }
         }else{
-            // using a webview, hide the poster image
-            passthroughView.hidden = true
+            if(streamUrl != nil){
+                // have a stream url, can show a movie player automatically
+                moviePlayer = MPMoviePlayerViewController(contentURL: streamUrl!)
+                NSNotificationCenter.defaultCenter().removeObserver(moviePlayer!, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+                moviePlayer!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                moviePlayer!.moviePlayer.play()
+                
+                if let vc = parentViewController(){
+                    vc.presentMoviePlayerViewControllerAnimated(moviePlayer!)
+                    delegate?.videoViewDidStartPlaying?(self)
+                }
+            }else{
+                // using a webview, hide the poster image
+                passthroughView.hidden = true
+            }
         }
     }
     
@@ -238,8 +246,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     }
     
     // MARK: WKScriptMessageHandler
-    public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)
-    {
+    public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage){
         if let body = message.body as? String{
             if(body == "webkitbeginfullscreen"){
                 delegate?.videoViewDidStartPlaying?(self)
