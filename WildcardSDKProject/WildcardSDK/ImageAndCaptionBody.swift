@@ -12,7 +12,7 @@ import Foundation
 Card Body with an image and a caption under it.
 */
 @objc
-public class ImageAndCaptionBody : CardViewElement{
+public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     
     @IBOutlet weak public var imageView: WCImageView!
     @IBOutlet weak public var caption: UILabel!
@@ -73,9 +73,7 @@ public class ImageAndCaptionBody : CardViewElement{
         
         // not ready to constrain height yet, set to 0 to get rid of
         imageHeightConstraint.constant = 0
-        imageView.backgroundColor = UIColor.wildcardBackgroundGray()
-        imageView.layer.cornerRadius = WildcardSDK.imageCornerRadius
-        imageView.layer.masksToBounds = true
+        imageView.delegate = self
     }
     
     override public func update(card:Card) {
@@ -125,5 +123,16 @@ public class ImageAndCaptionBody : CardViewElement{
         height += round(expectedCaptionSize.height)
         height += captionBottomConstraint.constant
         return height
+    }
+    
+    // MARK: WCImageViewDelegate
+    public func imageViewTapped(imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+        
+        if(cardView != nil){
+            var parameters = NSMutableDictionary()
+            parameters["tappedImageView"] = imageView
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+        }
     }
 }

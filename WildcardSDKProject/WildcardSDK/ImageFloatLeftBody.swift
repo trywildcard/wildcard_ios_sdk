@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class ImageFloatLeftBody : CardViewElement
+public class ImageFloatLeftBody : CardViewElement, WCImageViewDelegate
 {
     @IBOutlet weak public var imageView: WCImageView!
     @IBOutlet weak public var descriptionLabel: UILabel!
@@ -51,10 +51,8 @@ public class ImageFloatLeftBody : CardViewElement
     override public func initialize() {
         descriptionLabel.font = WildcardSDK.cardDescriptionFont
         descriptionLabel.textColor = UIColor.wildcardMediaBodyColor()
-        imageView.layer.cornerRadius = WildcardSDK.imageCornerRadius
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor = UIColor.wildcardBackgroundGray()
         imageViewSize = CGSizeMake(120,90)
+        imageView.delegate = self
     }
     
     override public func update(card:Card) {
@@ -88,5 +86,16 @@ public class ImageFloatLeftBody : CardViewElement
         descriptionLabel.preferredMaxLayoutWidth = preferredWidth - imageLeadingConstraint.constant - descriptionImageHorizontalSpacing.constant - imageViewSize.width - imageTrailingConstraint.constant
         descriptionLabel.setRequiredNumberOfLines(descriptionLabel.preferredMaxLayoutWidth, maxHeight: imageHeightConstraint.constant)
         invalidateIntrinsicContentSize()
+    }
+    
+    // MARK: WCImageViewDelegate
+    public func imageViewTapped(imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+        
+        if(cardView != nil){
+            var parameters = NSMutableDictionary()
+            parameters["tappedImageView"] = imageView
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+        }
     }
 }

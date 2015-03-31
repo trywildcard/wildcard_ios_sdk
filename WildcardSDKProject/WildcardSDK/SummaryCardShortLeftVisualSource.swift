@@ -22,24 +22,26 @@ public class SummaryCardShortLeftVisualSource : BaseVisualSource, CardViewVisual
     
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            self.header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
-            self.header.hairline.hidden = true
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+            header.logo.hidden = true
+            header.hairline.hidden = true
+            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
         }
         return header
     }
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            self.body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatLeft) as ImageFloatLeftBody
-            self.body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
+            body = CardViewElementFactory.createCardViewElement(WCElementType.ImageFloatLeft) as ImageFloatLeftBody
+            body.contentEdgeInset = UIEdgeInsetsMake(5, 15, 5, 15)
         }
         return body
     }
     
     public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
-            self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as ViewOnWebCardFooter
-            self.footer.hairline.hidden = true
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as ViewOnWebCardFooter
+            footer.hairline.hidden = true
         }
         return footer
     }

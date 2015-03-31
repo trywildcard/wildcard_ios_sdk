@@ -28,21 +28,20 @@ class ViewController: UIViewController, CardViewDelegate{
         media["media"] = mediaDescription
         
         let google = NSURL(string: "http://www.yahoo.com")!
-        card = SummaryCard(url:google, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "Yahoo Spinning Off SpinCo", media:media, data:nil)
+        card = SummaryCard(url:google, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "The quick brown fox jumped over the lazy dog. Yahoo Spinning Off SpinCo", media:media, data:nil)
         
         let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil, androidStore: nil)
         let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
         
-        /*
-        if let cardView = CardView.createCardView(vidCard, layout: WCCardLayout.VideoCardThumbnail){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShort){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-*/
  
+        /*
         Card.getFromUrl(NSURL(string: "http://imgur.com/gallery/ZoLUQOS")!, completion: { (card, error) -> Void in
             if let card = card  as? ImageCard {
                 self.imageCard = card
@@ -53,6 +52,7 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
+*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
@@ -77,14 +77,6 @@ class ViewController: UIViewController, CardViewDelegate{
         }
         
         handleCardAction(cardView, action: action)
-    }
-    
-    override func supportedInterfaceOrientations() -> Int {
-        return UIInterfaceOrientation.Portrait.rawValue
-    }
-    
-    override func shouldAutorotate() -> Bool {
-        return false
     }
     
     

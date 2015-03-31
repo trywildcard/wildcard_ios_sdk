@@ -18,7 +18,9 @@ public class SummaryCardShortVisualSource : BaseVisualSource, CardViewVisualSour
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+            header.logo.hidden = true
             header.hairline.hidden = true
+            header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
         }
         return header
     }
