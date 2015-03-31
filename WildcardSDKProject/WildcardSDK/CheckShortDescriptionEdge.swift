@@ -38,6 +38,13 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
                 }else{
                     return false
                 }
+            case .Image:
+                let imageCard = card as ImageCard
+                if imageCard.imageCaption != nil{
+                    return countElements(imageCard.imageCaption!) < DESCRIPTION_THRESHOLD
+                }else{
+                    return false
+                }
             }
         }
         return false

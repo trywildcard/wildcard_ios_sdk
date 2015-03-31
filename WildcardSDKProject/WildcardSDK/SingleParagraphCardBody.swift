@@ -68,6 +68,9 @@ public class SingleParagraphCardBody : CardViewElement {
         case .Video:
             let videoCard = card as VideoCard
             paragraphLabel.text = videoCard.abstractContent
+        case .Image:
+            let imageCard = card as ImageCard
+            paragraphLabel.text = imageCard.imageCaption
         case .Unknown:
             paragraphLabel.text = "Unknown Card Type"
         }

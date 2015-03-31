@@ -137,6 +137,7 @@
 		1DF1B8DC1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF1B8DB1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift */; };
 		1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF5B7161A6D602200788BCA /* WCCardAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF623831A76031800382E81 /* WCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF623821A76031800382E81 /* WCImageView.swift */; };
+		1DF760DC1ACAF9F50098F6E8 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760DB1ACAF9F50098F6E8 /* ImageCard.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -298,6 +299,7 @@
 		1DF1B8DB1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCardSmallImageVisualSource.swift; sourceTree = "<group>"; };
 		1DF5B7161A6D602200788BCA /* WCCardAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardAction.h; sourceTree = "<group>"; };
 		1DF623821A76031800382E81 /* WCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCImageView.swift; sourceTree = "<group>"; };
+		1DF760DB1ACAF9F50098F6E8 /* ImageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -669,6 +671,7 @@
 				1D904F9C1A2FE0D2001FFDEA /* ArticleCard.swift */,
 				1DAC26B21A364B4A0005C4BE /* SummaryCard.swift */,
 				1D6F88651AADED6700D73668 /* VideoCard.swift */,
+				1DF760DB1ACAF9F50098F6E8 /* ImageCard.swift */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 				1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */,
 				1DE8ED801AC5FF8F00B994C9 /* VideoCardThumbnail.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
+				1DF760DC1ACAF9F50098F6E8 /* ImageCard.swift in Sources */,
 				1DAC268C1A355DEF0005C4BE /* CheckImageEdge.swift in Sources */,
 				1D3ECFC91A4151370001BF7A /* Creator.swift in Sources */,
 				1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */,
@@ -1155,10 +1159,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1.1;
-				DYLIB_CURRENT_VERSION = 1.1;
+				DYLIB_COMPATIBILITY_VERSION = 1.2;
+				DYLIB_CURRENT_VERSION = 1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1212,10 +1216,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1.1;
-				DYLIB_CURRENT_VERSION = 1.1;
+				DYLIB_COMPATIBILITY_VERSION = 1.2;
+				DYLIB_CURRENT_VERSION = 1.2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

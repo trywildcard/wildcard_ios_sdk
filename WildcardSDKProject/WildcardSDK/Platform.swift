@@ -15,7 +15,7 @@ protocol PlatformObject{
 class Platform{
     
     let PLATFORM_BASE_URL = "https://platform-prod.trywildcard.com"
-    let API_VERSION = "v1.1"
+    let API_VERSION = "v1.2"
     
     class var sharedInstance : Platform{
         struct Static{

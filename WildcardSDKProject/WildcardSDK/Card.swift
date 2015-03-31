@@ -32,6 +32,8 @@ public class Card : NSObject, PlatformObject {
                 return .Summary
             }else if(name == "video"){
                 return .Video
+            }else if(name == "image"){
+                return .Image
             }else{
                 return .Unknown
             }
@@ -48,6 +50,8 @@ public class Card : NSObject, PlatformObject {
             return "summary"
         case .Video:
             return "video"
+        case .Image:
+            return "image"
         case .Unknown:
             return "unknown"
         }
@@ -71,6 +75,8 @@ public class Card : NSObject, PlatformObject {
                 return SummaryCard.deserializeFromData(data) as? SummaryCard
             case "video":
                 return VideoCard.deserializeFromData(data) as? VideoCard
+            case "image":
+                return ImageCard.deserializeFromData(data) as? ImageCard
             default:
                 return nil
             }

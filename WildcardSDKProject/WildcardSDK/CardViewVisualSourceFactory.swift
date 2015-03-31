@@ -43,6 +43,10 @@ class CardViewVisualSourceFactory {
         case .VideoCardThumbnail:
             var source = VideoCardThumbnailImageSource(card:card)
             return source
+        case .ImageCardTall:
+            // TODO
+            var source = SummaryCardNoImageVisualSource(card:card)
+            return source
         case .Unknown:
             // shouldn't happen
             var source = SummaryCardNoImageVisualSource(card:card)

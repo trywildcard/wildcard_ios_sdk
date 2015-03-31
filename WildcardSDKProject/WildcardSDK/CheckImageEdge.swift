@@ -28,6 +28,8 @@ class CheckImageEdge : LayoutDecisionEdge
             case .Video:
                 let videoCard = card as VideoCard
                 return videoCard.posterImageUrl != nil
+            case .Image:
+                return true
             }
         }
         return false

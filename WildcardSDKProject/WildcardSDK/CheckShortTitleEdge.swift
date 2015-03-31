@@ -14,6 +14,8 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
         super.init(description:"Does this card have a short title?")
     }
     
+    let TITLE_THRESHOLD = 40
+    
     override func evaluation(input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
@@ -21,13 +23,16 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
                 return false
             case .Article:
                 let articleCard = card as ArticleCard
-                return countElements(articleCard.title) < 40
+                return countElements(articleCard.title) < TITLE_THRESHOLD
             case .Summary:
                 let summaryCard = card as SummaryCard
-                return countElements(summaryCard.title) < 40
+                return countElements(summaryCard.title) < TITLE_THRESHOLD
             case .Video:
                 let videoCard = card as VideoCard
-                return countElements(videoCard.title) < 40
+                return countElements(videoCard.title) < TITLE_THRESHOLD
+            case .Image:
+                let imageCard = card as ImageCard
+                return countElements(imageCard.title) < TITLE_THRESHOLD
             }
         }
         return false
