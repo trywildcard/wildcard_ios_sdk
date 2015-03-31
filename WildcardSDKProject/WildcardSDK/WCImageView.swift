@@ -9,6 +9,11 @@
 import Foundation
 import QuartzCore
 
+@objc
+public protocol WCImageViewDelegate{
+    optional func imageViewTapped(imageView:WCImageView)
+}
+
 /// Wildcard Extension of UIImageView with a few extra functions
 @objc
 public class WCImageView : UIImageView
@@ -20,6 +25,9 @@ public class WCImageView : UIImageView
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode){
         setImageWithURL(url, mode:mode, completion: nil)
     }
+    
+    /// See WCImageViewDelegate
+    public var delegate:WCImageViewDelegate?
     
     /// Set image to URL with a completion block. This does not automatically set the image -- more suitable for re-use scenarios
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
@@ -40,7 +48,7 @@ public class WCImageView : UIImageView
         }else{
             startPulsing()
             let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
-            downloadTask =
+            _downloadTask =
                 session.downloadTaskWithRequest(imageRequest,
                     completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
                         self.stopPulsing()
@@ -70,7 +78,7 @@ public class WCImageView : UIImageView
                             }
                         }
                 })
-            downloadTask?.resume()
+            _downloadTask?.resume()
         }
     }
     
@@ -82,8 +90,8 @@ public class WCImageView : UIImageView
     
     /// Cancel any pending image requests
     public func cancelRequest(){
-        downloadTask?.cancel()
-        downloadTask = nil;
+        _downloadTask?.cancel()
+        _downloadTask = nil;
     }
     
     /// Set image with a content mode. Does a cross fade animation by default
@@ -96,7 +104,8 @@ public class WCImageView : UIImageView
             completion: nil)
     }
     
-    private var downloadTask:NSURLSessionDownloadTask?
+    private var _downloadTask:NSURLSessionDownloadTask?
+    private var _tapGesture:UITapGestureRecognizer!
     
     private func startPulsing(){
         var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
@@ -113,12 +122,18 @@ public class WCImageView : UIImageView
         layer.removeAllAnimations()
     }
     
-    /// Called automatically on init() or awakeFromNib()
+    func imageViewTapped(recognizer:UITapGestureRecognizer!){
+        delegate?.imageViewTapped?(self)
+    }
+    
     public func setup(){
         backgroundColor = UIColor.wildcardBackgroundGray()
         layer.cornerRadius = WildcardSDK.imageCornerRadius
         layer.masksToBounds = true
         userInteractionEnabled = true
+        
+        _tapGesture = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
+        addGestureRecognizer(_tapGesture)
     }
     
     public required init(coder aDecoder: NSCoder) {

@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class ImageOnlyBody : CardViewElement{
+public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
     
     public var imageView:WCImageView!
     
@@ -52,6 +52,7 @@ public class ImageOnlyBody : CardViewElement{
     override public func initialize(){
         
         imageView = WCImageView(frame: CGRectZero)
+        imageView.delegate = self
         addSubview(imageView)
         
         leftConstraint = imageView.constrainLeftToSuperView(10)
@@ -101,6 +102,17 @@ public class ImageOnlyBody : CardViewElement{
         height += imageHeightConstraint.constant
         height += bottomConstraint.constant
         return height
+    }
+    
+    // MARK: WCImageViewDelegate
+    public func imageViewTapped(imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+        
+        if(cardView != nil){
+            var parameters = NSMutableDictionary()
+            parameters["tappedImageView"] = imageView
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+        }
     }
     
 }

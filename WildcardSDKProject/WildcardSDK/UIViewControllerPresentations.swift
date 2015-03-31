@@ -109,6 +109,18 @@ public extension UIViewController{
                 }
             }
             break
+        case WCCardAction.ImageTapped:
+            if let actionParams = action.parameters{
+                if let imageView = actionParams["tappedImageView"] as? WCImageView{
+                    var controller = StockImageViewViewController()
+                    controller.fromCardView = cardView
+                    controller.fromImageView = imageView
+                    presentViewController(controller, animated: true, completion: { () -> Void in
+                        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: WCCardAction.DidEnterFullScreenImage, parameters: nil))
+                        return
+                    })
+                }
+            }
         default:
             break
         }
