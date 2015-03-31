@@ -50,7 +50,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(card?.cardType == "image")
             
             if let card = card as? ImageCard{
-                XCTAssert(countElements(card.title) > 0)
+                XCTAssert(countElements(card.title!) > 0)
                 XCTAssert(card.imageSize.height != -1)
                 XCTAssert(card.imageSize.width != -1)
                 
@@ -167,6 +167,34 @@ class WildcardSDKTests: XCTestCase {
         let SummaryCard4 = SummaryCard(url: url!, description: "long description that has to be over 140 characters the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog", title: "longer title generates a different layout", media:media, data:nil)
         XCTAssert(engine.matchLayout(SummaryCard4) == .SummaryCardTall)
         
+    }
+    
+    func testImageCardLayouts(){
+        
+        let engine = CardLayoutEngine.sharedInstance
+        let url = NSURL(string: "http://www.google.com")
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        
+        // article card no title goes to image only layout
+        let mediaEmpty:NSMutableDictionary = NSMutableDictionary()
+        let articleCard = ImageCard(imageUrl: url!, url: url!, creator: publisher, data: mediaEmpty)
+        XCTAssert(engine.matchLayout(articleCard) == .ImageCardImageOnly)
+        
+        // title on card but no dimensions defaults to 4x3
+        var data = NSMutableDictionary()
+        var mediaWithAspect = NSMutableDictionary()
+        data["media"] = mediaWithAspect
+        mediaWithAspect["title"] = "test title"
+        
+        let articleCard2 = ImageCard(imageUrl: url!, url: url!, creator: publisher, data: data)
+        XCTAssert(engine.matchLayout(articleCard2) == .ImageCard4x3)
+        
+        // add dimensions we should get aspect fit
+        mediaWithAspect["width"] = 50
+        mediaWithAspect["height"] = 400
+        let articleCard3 = ImageCard(imageUrl: url!, url: url!, creator: publisher, data: data)
+        XCTAssert(engine.matchLayout(articleCard3) == .ImageCardAspectFit)
+
     }
     
     func testArticleCardLayouts(){

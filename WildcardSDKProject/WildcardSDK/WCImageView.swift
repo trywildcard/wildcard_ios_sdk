@@ -24,7 +24,6 @@ public class WCImageView : UIImageView
     /// Set image to URL with a completion block. This does not automatically set the image -- more suitable for re-use scenarios
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
     {
-        backgroundColor = UIColor.wildcardBackgroundGray()
         let imageRequest = NSMutableURLRequest(URL: url)
         imageRequest.addValue("image/*", forHTTPHeaderField: "Accept")
         
@@ -77,7 +76,6 @@ public class WCImageView : UIImageView
     
     /// Set the default place holder image, use this when there was a problem downloading or loading an image
     public func setNoImage(){
-        backgroundColor = UIColor.wildcardBackgroundGray()
         tintColor = UIColor.whiteColor()
         setImage(UIImage.loadFrameworkImage("noImage")!, mode: .Center)
     }
@@ -113,6 +111,33 @@ public class WCImageView : UIImageView
 
     private func stopPulsing(){
         layer.removeAllAnimations()
+    }
+    
+    /// Called automatically on init() or awakeFromNib()
+    public func setup(){
+        backgroundColor = UIColor.wildcardBackgroundGray()
+        layer.cornerRadius = WildcardSDK.imageCornerRadius
+        layer.masksToBounds = true
+        userInteractionEnabled = true
+    }
+    
+    public required init(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame:frame)
+        setup()
+    }
+    
+    public override init(){
+        super.init()
+        setup()
+    }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
     }
     
 }

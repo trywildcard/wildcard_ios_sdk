@@ -43,9 +43,14 @@ class CardViewVisualSourceFactory {
         case .VideoCardThumbnail:
             var source = VideoCardThumbnailImageSource(card:card)
             return source
-        case .ImageCardTall:
-            // TODO
-            var source = SummaryCardNoImageVisualSource(card:card)
+        case .ImageCard4x3:
+            var source = ImageCardTallVisualSource(card:card, aspectRatio:0.75)
+            return source
+        case .ImageCardAspectFit:
+            var source = ImageCardTallVisualSource(card:card)
+            return source
+        case .ImageCardImageOnly:
+            var source = ImageCardImageOnlyVisualSource(card:card, aspectRatio:0.75)
             return source
         case .Unknown:
             // shouldn't happen

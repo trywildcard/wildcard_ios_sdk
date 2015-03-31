@@ -70,7 +70,10 @@ static NSString* WildcardSDKMixPanelToken = @"d7250e25e828b7c00158b28ec8d7525f";
             }
             case WCCardTypeImage:{
                 ImageCard* imageCard = (ImageCard*)card;
-                dictionary[@"cardTitle"] = imageCard.title;
+                if(imageCard.title != nil){
+                    dictionary[@"cardTitle"] = imageCard.title;
+                }
+                
                 break;
             }
             case WCCardTypeUnknown:

@@ -32,7 +32,11 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
                 return countElements(videoCard.title) < TITLE_THRESHOLD
             case .Image:
                 let imageCard = card as ImageCard
-                return countElements(imageCard.title) < TITLE_THRESHOLD
+                if imageCard.title != nil {
+                    return countElements(imageCard.title!) < TITLE_THRESHOLD
+                }else{
+                    return false
+                }
             }
         }
         return false

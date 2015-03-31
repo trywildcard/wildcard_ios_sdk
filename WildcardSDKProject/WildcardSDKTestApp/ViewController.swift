@@ -14,6 +14,7 @@ class ViewController: UIViewController, CardViewDelegate{
     var card:SummaryCard!
     var cardView:CardView!
     var newView:FullCardHeader!
+    var imageCard:ImageCard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,11 @@ class ViewController: UIViewController, CardViewDelegate{
             self.cardView = cardView
         }
 */
-        
-        Card.getFromUrl(NSURL(string: "https://www.youtube.com/watch?v=r16ndBiHC-0")!, completion: { (card, error) -> Void in
-            if let card = card  as? VideoCard{
-                self.cardView = CardView.createCardView(card, layout: WCCardLayout.VideoCardThumbnail)
+ 
+        Card.getFromUrl(NSURL(string: "http://i.imgur.com/ZoLUQOS.jpg")!, completion: { (card, error) -> Void in
+            if let card = card  as? ImageCard {
+                self.imageCard = card
+                self.cardView = CardView.createCardView(card)
                 self.cardView.delegate = self
                 self.view.addSubview(self.cardView)
                 self.cardView.horizontallyCenterToSuperView(0)
@@ -80,7 +82,8 @@ class ViewController: UIViewController, CardViewDelegate{
     
     
     @IBAction func firstButtonTapped(sender: AnyObject) {
-        presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)
+       // presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)
+        presentCard(imageCard!, animated: true, completion: nil)
     }
   
     @IBAction func presentCardButtonTapped(sender: AnyObject) {

@@ -52,9 +52,6 @@ public class ImageOnlyBody : CardViewElement{
     override public func initialize(){
         
         imageView = WCImageView(frame: CGRectZero)
-        imageView.layer.cornerRadius = WildcardSDK.imageCornerRadius
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor = UIColor.whiteColor()
         addSubview(imageView)
         
         leftConstraint = imageView.constrainLeftToSuperView(10)
@@ -85,7 +82,10 @@ public class ImageOnlyBody : CardViewElement{
         case .Summary:
             let webLinkCard = card as SummaryCard
             imageUrl = webLinkCard.primaryImageURL
-        case .Unknown, .Video, .Image:
+        case .Image:
+            let imageCard = card as ImageCard
+            imageUrl = imageCard.imageUrl
+        case .Unknown, .Video:
             imageUrl = nil
         }
         

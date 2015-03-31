@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xW5-S8-vzb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xW5-S8-vzb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -17,15 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-x2-z6p">
-                                <rect key="frame" x="229" y="411" width="141" height="30"/>
-                                <state key="normal" title="Present Card Style 1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="firstButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hEL-Yt-aqq"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IO0-Rv-PYu">
                                 <rect key="frame" x="229" y="456" width="141" height="30"/>
                                 <state key="normal" title="Present Card Style 2">
@@ -59,6 +50,15 @@
                                     <action selector="changeTitleButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WhN-Uy-rVX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-x2-z6p">
+                                <rect key="frame" x="16" y="20" width="141" height="30"/>
+                                <state key="normal" title="Present Card Style 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="firstButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hEL-Yt-aqq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -73,13 +73,17 @@
                             <constraint firstItem="HrK-ey-Thy" firstAttribute="centerY" secondItem="mxQ-x2-z6p" secondAttribute="centerY" id="eyF-eb-jQY"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="fM2-rn-VGX" secondAttribute="bottom" constant="20" id="h2R-cM-pse"/>
                             <constraint firstItem="fM2-rn-VGX" firstAttribute="centerX" secondItem="IO0-Rv-PYu" secondAttribute="centerX" id="iEC-ZA-vAl"/>
+                            <constraint firstItem="mxQ-x2-z6p" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="jts-UF-KMn"/>
+                            <constraint firstItem="mxQ-x2-z6p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ncW-pE-a5J"/>
                             <constraint firstAttribute="centerX" secondItem="5Nn-W7-4cb" secondAttribute="centerX" id="qsm-ZB-9fO"/>
                             <constraint firstItem="HrK-ey-Thy" firstAttribute="centerY" secondItem="5Nn-W7-4cb" secondAttribute="centerY" id="udm-eZ-KSI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="8aZ-Nr-76X"/>
                                 <exclude reference="axZ-Af-QUi"/>
                                 <exclude reference="eyF-eb-jQY"/>
+                                <exclude reference="Kbs-X8-XzY"/>
                                 <exclude reference="eTT-zk-unx"/>
                             </mask>
                         </variation>

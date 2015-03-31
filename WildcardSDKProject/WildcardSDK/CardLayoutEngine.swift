@@ -41,8 +41,19 @@ public class CardLayoutEngine{
         let summaryCardLandscapeNode = LayoutDecisionNode(description: "It's a summary card landscape")
         let articleCardLandscapeNode = LayoutDecisionNode(description: "It's an article card landscape")
         let videoCardLandscapeNode = LayoutDecisionNode(description: "It's an video card landscape", layout: .VideoCardShort)
+        let imageCardLandscapeNode = LayoutDecisionNode(description: "It's an image card landscape")
         landscapeNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardLandscapeNode)
         landscapeNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardLandscapeNode)
+        
+        // MARK: Landscape - Image Card
+        landscapeNode.addEdge(CardTypeEdge(cardType: "image"), destination: imageCardLandscapeNode)
+        
+        let imageCardTitlePresentLandscape = LayoutDecisionNode(description: "Image card has title", layout: .ImageCard4x3)
+        let imageCardTitleNotPresentLandscape = LayoutDecisionNode(description: "Image card doesn't have title", layout: .ImageCardImageOnly)
+        imageCardLandscapeNode.addEdge(CheckTitlePresentEdge(), destination: imageCardTitlePresentLandscape)
+        imageCardLandscapeNode.addEdge(PassThroughEdge(), destination: imageCardTitleNotPresentLandscape)
+        
+        // MARK: Landscape - Video Card
         landscapeNode.addEdge(CardTypeEdge(cardType: "video"), destination: videoCardLandscapeNode)
         
         // MARK: Landscape - Summary Card
@@ -63,8 +74,24 @@ public class CardLayoutEngine{
         let summaryCardNode = LayoutDecisionNode(description: "It's a summary link card")
         let articleCardNode = LayoutDecisionNode(description: "It's an article card")
         let videoCardNode = LayoutDecisionNode(description: "It's an video card", layout: .VideoCardShort)
+        let imageCardNode = LayoutDecisionNode(description: "It's an image card")
         portraitNode.addEdge(CardTypeEdge(cardType: "summary"), destination: summaryCardNode)
         portraitNode.addEdge(CardTypeEdge(cardType: "article"), destination: articleCardNode)
+        
+        // MARK: Portrait - Image Card
+        portraitNode.addEdge(CardTypeEdge(cardType: "image"), destination: imageCardNode)
+        
+        let imageCardTitlePresent = LayoutDecisionNode(description: "Image card has title")
+        let imageCardTitleNotPresent = LayoutDecisionNode(description: "Image card doesn't have title", layout: .ImageCardImageOnly)
+        imageCardNode.addEdge(CheckTitlePresentEdge(), destination: imageCardTitlePresent)
+        imageCardNode.addEdge(PassThroughEdge(), destination: imageCardTitleNotPresent)
+        
+        let imageCardAspectPresent = LayoutDecisionNode(description: "Image card has aspect ratio", layout: .ImageCardAspectFit)
+        let imageCardAspectNotPresent = LayoutDecisionNode(description: "Image card doesn't have aspect ratio", layout: .ImageCard4x3)
+        imageCardTitlePresent.addEdge(CheckAspectRatioPresentEdge(), destination: imageCardAspectPresent)
+        imageCardTitlePresent.addEdge(PassThroughEdge(), destination: imageCardAspectNotPresent)
+        
+        // MARK: Portrait - Video Card
         portraitNode.addEdge(CardTypeEdge(cardType: "video"), destination: videoCardNode)
         
         // MARK: Portrait - Article Card

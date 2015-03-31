@@ -92,6 +92,9 @@ public class FullCardHeader : CardViewElement
             let imageCard = card as ImageCard
             kicker.text = imageCard.creator.name
             title.text = imageCard.title
+            if let url = imageCard.creator.favicon{
+                logo.setImageWithURL(url,mode:.ScaleToFill)
+            }
         case .Unknown:
             title.text = "Unknown Card Type"
             kicker.text = "Unknown Card Type"

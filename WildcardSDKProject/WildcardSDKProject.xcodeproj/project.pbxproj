@@ -138,6 +138,10 @@
 		1DF5B7171A6D602B00788BCA /* WCCardAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF5B7161A6D602200788BCA /* WCCardAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF623831A76031800382E81 /* WCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF623821A76031800382E81 /* WCImageView.swift */; };
 		1DF760DC1ACAF9F50098F6E8 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760DB1ACAF9F50098F6E8 /* ImageCard.swift */; };
+		1DF760DF1ACB01D90098F6E8 /* ImageCardTallVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760DE1ACB01D90098F6E8 /* ImageCardTallVisualSource.swift */; };
+		1DF760E11ACB16160098F6E8 /* CheckAspectRatioPresentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E01ACB16160098F6E8 /* CheckAspectRatioPresentEdge.swift */; };
+		1DF760E31ACB1D660098F6E8 /* CheckTitlePresentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */; };
+		1DF760E51ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E41ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +304,10 @@
 		1DF5B7161A6D602200788BCA /* WCCardAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCardAction.h; sourceTree = "<group>"; };
 		1DF623821A76031800382E81 /* WCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCImageView.swift; sourceTree = "<group>"; };
 		1DF760DB1ACAF9F50098F6E8 /* ImageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
+		1DF760DE1ACB01D90098F6E8 /* ImageCardTallVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCardTallVisualSource.swift; sourceTree = "<group>"; };
+		1DF760E01ACB16160098F6E8 /* CheckAspectRatioPresentEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAspectRatioPresentEdge.swift; sourceTree = "<group>"; };
+		1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTitlePresentEdge.swift; sourceTree = "<group>"; };
+		1DF760E41ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCardImageOnlyVisualSource.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -511,9 +519,11 @@
 			isa = PBXGroup;
 			children = (
 				1DAC26891A355BB70005C4BE /* CardTypeEdge.swift */,
+				1DF760E01ACB16160098F6E8 /* CheckAspectRatioPresentEdge.swift */,
 				1DAC268B1A355DEF0005C4BE /* CheckImageEdge.swift */,
 				1DAC268F1A3569DB0005C4BE /* CheckShortDescriptionEdge.swift */,
 				1DAC268D1A3564170005C4BE /* CheckShortTitleEdge.swift */,
+				1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */,
 				1DAC26851A326E530005C4BE /* LandscapeEdge.swift */,
 				1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */,
 				1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */,
@@ -676,12 +686,22 @@
 			name = Cards;
 			sourceTree = "<group>";
 		};
+		1DF760DD1ACB01C50098F6E8 /* Image Card Visual Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1DF760DE1ACB01D90098F6E8 /* ImageCardTallVisualSource.swift */,
+				1DF760E41ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift */,
+			);
+			name = "Image Card Visual Sources";
+			sourceTree = "<group>";
+		};
 		1DFFEDD01A400803008E65BC /* Stock Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
 				1DEADBD91A9959C700489448 /* BaseVisualSource.swift */,
 				1DC928791A4089160040DAD0 /* CardViewVisualSourceFactory.swift */,
 				1DF1B8D61A6C27ED000EC76E /* Article Card Visual Sources */,
+				1DF760DD1ACB01C50098F6E8 /* Image Card Visual Sources */,
 				1DDFEFF81A6067FB0049556C /* Maximized Visual Sources */,
 				1D6F88671AAE203600D73668 /* Video Card Visual Sources */,
 				1DF1B8D31A6C19A2000EC76E /* Summary Card Visual Sources */,
@@ -909,6 +929,7 @@
 				1DF623831A76031800382E81 /* WCImageView.swift in Sources */,
 				1DF1B8821A69CC2F000EC76E /* ImageAndCaptionBody.swift in Sources */,
 				1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */,
+				1DF760E51ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift in Sources */,
 				1DE8ED801AC5FF8F00B994C9 /* VideoCardThumbnail.swift in Sources */,
 				1D7EAC8C1A31264800734B9A /* LayoutDecisionNode.swift in Sources */,
 				1DF760DC1ACAF9F50098F6E8 /* ImageCard.swift in Sources */,
@@ -929,6 +950,7 @@
 				1DF1B8D81A6C2801000EC76E /* ArticleCardNoImageVisualSource.swift in Sources */,
 				1D5873381A379DC600C3EAF3 /* UIFontExtension.swift in Sources */,
 				1D984EF71AB74DFC00AFC9FF /* YTVimeoExtractor.m in Sources */,
+				1DF760E31ACB1D660098F6E8 /* CheckTitlePresentEdge.swift in Sources */,
 				1D984EF21AB722CD00AFC9FF /* WCVideoView.swift in Sources */,
 				1DAC26901A3569DB0005C4BE /* CheckShortDescriptionEdge.swift in Sources */,
 				1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */,
@@ -947,9 +969,11 @@
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,
+				1DF760E11ACB16160098F6E8 /* CheckAspectRatioPresentEdge.swift in Sources */,
 				1D3ECFC71A40FB260001BF7A /* ReadMoreCardFooter.swift in Sources */,
 				1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */,
 				1D904F991A2FDD5B001FFDEA /* Card.swift in Sources */,
+				1DF760DF1ACB01D90098F6E8 /* ImageCardTallVisualSource.swift in Sources */,
 				1D7EAC8A1A31263800734B9A /* LayoutDecisionEdge.swift in Sources */,
 				1DF0BA961A3935D300EE9645 /* StringExtensions.swift in Sources */,
 				1D66D4C21A856DF600DCDFC8 /* SummaryCardImageOnlyVisualSource.swift in Sources */,

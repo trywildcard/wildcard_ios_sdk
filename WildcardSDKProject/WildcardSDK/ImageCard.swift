@@ -14,22 +14,23 @@ Image Card
 @objc
 public class ImageCard : Card{
     
-    public let title:String
     public let creator:Creator
     public let imageUrl:NSURL
     
     /// optional size for the image. will be (-1,-1) if size is unavailable
     public let imageSize:CGSize
     
+    public let title:String?
     public let imageCaption:String?
     public let keywords:[String]?
     public let appLinkAndroid:NSURL?
     public let appLinkIos:NSURL?
     
     
-    public init(title:String, imageUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
+    public init(imageUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
         
-        self.title = title
+   
+        
         self.creator = creator
         self.keywords = data["keywords"] as? [String]
         self.imageUrl = imageUrl
@@ -43,6 +44,10 @@ public class ImageCard : Card{
         }
         
         if let media = data["media"] as? NSDictionary{
+            
+            if let title = media["title"] as? String{
+                self.title = title
+            }
             
             if let caption = media["imageCaption"] as? String{
                 self.imageCaption = caption
@@ -63,7 +68,6 @@ public class ImageCard : Card{
         var imageCard:ImageCard?
         
         var startURL:NSURL?
-        var title:String?
         var creator:Creator?
         var imageUrl:NSURL?
         
@@ -76,14 +80,13 @@ public class ImageCard : Card{
         }
         
         if let media = data["media"] as? NSDictionary{
-            title = media["title"] as? String
             
             if let urlString = media["imageUrl"] as? String{
                 imageUrl = NSURL(string:urlString)
             }
             
-            if(title != nil && startURL != nil && creator != nil && imageUrl != nil){
-                imageCard = ImageCard(title: title!, imageUrl:imageUrl!, url: startURL!, creator:creator!, data:data)
+            if(startURL != nil && creator != nil && imageUrl != nil){
+                imageCard = ImageCard(imageUrl:imageUrl!, url: startURL!, creator:creator!, data:data)
             }
         }
         return imageCard
@@ -91,6 +94,8 @@ public class ImageCard : Card{
     }
     
     public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.ImageCardTall
+        return  layout == .ImageCard4x3 ||
+                layout == .ImageCardAspectFit ||
+                layout == .ImageCardImageOnly
     }
 }
