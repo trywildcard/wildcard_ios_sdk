@@ -65,7 +65,7 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
         if(self.scrollView.zoomScale != 1.0){
             doubleTapped()
         }else{
-            fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: WCCardAction.WillExitFullScreenImage, parameters:nil))
+            fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: .ImageWillExitFullScreen, parameters:nil))
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }

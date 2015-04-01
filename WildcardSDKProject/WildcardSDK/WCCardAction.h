@@ -16,8 +16,8 @@ typedef NS_ENUM(NSInteger, WCCardAction) {
     WCCardActionVideoDidStartPlaying,
     WCCardActionVideoWillEndPlaying,
     WCCardActionImageTapped,
-    WCCardActionDidEnterFullScreenImage,
-    WCCardActionWillExitFullScreenImage,
+    WCCardActionImageDidEnterFullScreen,
+    WCCardActionImageWillExitFullScreen,
     WCCardActionCustom
 };
 

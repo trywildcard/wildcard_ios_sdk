@@ -33,6 +33,7 @@ class ViewController: UIViewController, CardViewDelegate{
         let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil, androidStore: nil)
         let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
         
+        /*
         if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShort){
             cardView.delegate = self
             view.addSubview(cardView)
@@ -40,9 +41,9 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
+*/
  
-        /*
-        Card.getFromUrl(NSURL(string: "http://i.imgur.com/ZoLUQOS.jpg")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "http://imgur.com/gallery/Yw4EjbT")!, completion: { (card, error) -> Void in
             if let card = card  as? ImageCard {
                 self.imageCard = card
                 self.cardView = CardView.createCardView(card)
@@ -52,7 +53,6 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
-*/
     }
     
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
@@ -65,12 +65,12 @@ class ViewController: UIViewController, CardViewDelegate{
             let value = UIInterfaceOrientation.Portrait.rawValue
             UIDevice.currentDevice().setValue(value, forKey: "orientation")
             break
-        case .DidEnterFullScreenImage:
+        case .ImageDidEnterFullScreen:
             AppDelegate.sharedInstance().allowLandscape = true
-        case .WillExitFullScreenImage:
+        case .ImageWillExitFullScreen:
             AppDelegate.sharedInstance().allowLandscape = false
-           // let value = UIInterfaceOrientation.Portrait.rawValue
-           // UIDevice.currentDevice().setValue(value, forKey: "orientation")
+            let value = UIInterfaceOrientation.Portrait.rawValue
+            UIDevice.currentDevice().setValue(value, forKey: "orientation")
             break
         default:
             break

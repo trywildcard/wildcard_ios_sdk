@@ -121,7 +121,7 @@ public extension UIViewController{
                         controller.modalPresentationStyle = .Custom
                         controller.transitioningDelegate = controller
                         presentViewController(controller, animated: true, completion: { () -> Void in
-                            cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: WCCardAction.DidEnterFullScreenImage, parameters: nil))
+                            cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: .ImageDidEnterFullScreen, parameters: nil))
                             return
                         })
                     }
