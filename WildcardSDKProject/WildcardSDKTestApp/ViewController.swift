@@ -42,7 +42,7 @@ class ViewController: UIViewController, CardViewDelegate{
         }
  
         /*
-        Card.getFromUrl(NSURL(string: "http://imgur.com/gallery/ZoLUQOS")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "http://i.imgur.com/ZoLUQOS.jpg")!, completion: { (card, error) -> Void in
             if let card = card  as? ImageCard {
                 self.imageCard = card
                 self.cardView = CardView.createCardView(card)
@@ -69,8 +69,8 @@ class ViewController: UIViewController, CardViewDelegate{
             AppDelegate.sharedInstance().allowLandscape = true
         case .WillExitFullScreenImage:
             AppDelegate.sharedInstance().allowLandscape = false
-            let value = UIInterfaceOrientation.Portrait.rawValue
-            UIDevice.currentDevice().setValue(value, forKey: "orientation")
+           // let value = UIInterfaceOrientation.Portrait.rawValue
+           // UIDevice.currentDevice().setValue(value, forKey: "orientation")
             break
         default:
             break

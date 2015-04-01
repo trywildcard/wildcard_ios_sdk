@@ -26,10 +26,7 @@ public class ImageCard : Card{
     public let appLinkAndroid:NSURL?
     public let appLinkIos:NSURL?
     
-    
     public init(imageUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
-        
-   
         
         self.creator = creator
         self.keywords = data["keywords"] as? [String]

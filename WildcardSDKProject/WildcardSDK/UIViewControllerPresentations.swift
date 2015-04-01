@@ -117,6 +117,7 @@ public extension UIViewController{
                         var controller = StockImageViewViewController()
                         controller.fromCardView = cardView
                         controller.fromImageView = imageView
+                        controller.modalPresentationCapturesStatusBarAppearance = true
                         controller.modalPresentationStyle = .Custom
                         controller.transitioningDelegate = controller
                         presentViewController(controller, animated: true, completion: { () -> Void in
