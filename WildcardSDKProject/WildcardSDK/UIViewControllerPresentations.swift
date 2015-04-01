@@ -110,15 +110,20 @@ public extension UIViewController{
             }
             break
         case WCCardAction.ImageTapped:
+            // default behavior for this action is to present a full screen view of the image. entering and exiting full screen will have callbacks
             if let actionParams = action.parameters{
                 if let imageView = actionParams["tappedImageView"] as? WCImageView{
-                    var controller = StockImageViewViewController()
-                    controller.fromCardView = cardView
-                    controller.fromImageView = imageView
-                    presentViewController(controller, animated: true, completion: { () -> Void in
-                        cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: WCCardAction.DidEnterFullScreenImage, parameters: nil))
-                        return
-                    })
+                    if(imageView.image != nil){
+                        var controller = StockImageViewViewController()
+                        controller.fromCardView = cardView
+                        controller.fromImageView = imageView
+                        controller.modalPresentationStyle = .Custom
+                        controller.transitioningDelegate = controller
+                        presentViewController(controller, animated: true, completion: { () -> Void in
+                            cardView.delegate?.cardViewRequestedAction?(cardView, action: CardViewAction(type: WCCardAction.DidEnterFullScreenImage, parameters: nil))
+                            return
+                        })
+                    }
                 }
             }
         default:

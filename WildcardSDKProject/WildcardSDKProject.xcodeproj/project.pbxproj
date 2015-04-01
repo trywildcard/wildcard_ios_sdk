@@ -143,6 +143,8 @@
 		1DF760E31ACB1D660098F6E8 /* CheckTitlePresentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */; };
 		1DF760E51ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E41ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift */; };
 		1DF760E71ACB2C330098F6E8 /* StockImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E61ACB2C330098F6E8 /* StockImageViewViewController.swift */; };
+		1DF760E91ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760E81ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift */; };
+		1DF760EB1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF760EA1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift */; };
 		1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFFEDD41A40086D008E65BC /* CardViewElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -310,6 +312,8 @@
 		1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTitlePresentEdge.swift; sourceTree = "<group>"; };
 		1DF760E41ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCardImageOnlyVisualSource.swift; sourceTree = "<group>"; };
 		1DF760E61ACB2C330098F6E8 /* StockImageViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockImageViewViewController.swift; sourceTree = "<group>"; };
+		1DF760E81ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockImageViewAnimationController.swift; sourceTree = "<group>"; };
+		1DF760EA1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockImageViewPresentationController.swift; sourceTree = "<group>"; };
 		1DFFEDD41A40086D008E65BC /* CardViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -618,6 +622,8 @@
 		1DE2183E1A38073B007746B4 /* Stock Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				1DF760E81ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift */,
+				1DF760EA1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift */,
 				1DF760E61ACB2C330098F6E8 /* StockImageViewViewController.swift */,
 				1D014AB91A461BBB004A29B5 /* StockMaximizedCardAnimationController.swift */,
 				1D014ABB1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift */,
@@ -947,6 +953,7 @@
 				1DAC268A1A355BB70005C4BE /* CardTypeEdge.swift in Sources */,
 				1D9764841A4356B200E51FE5 /* MaximizedArticleVisualSource.swift in Sources */,
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
+				1DF760EB1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift in Sources */,
 				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
 				1DAC269C1A3641850005C4BE /* UIColorExtension.swift in Sources */,
 				1DFFEDD51A40086D008E65BC /* CardViewElement.swift in Sources */,
@@ -989,6 +996,7 @@
 				1D0BEDD81A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift in Sources */,
 				1DE2183D1A380036007746B4 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
+				1DF760E91ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift in Sources */,
 				1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,

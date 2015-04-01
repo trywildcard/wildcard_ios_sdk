@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
+class StockImageViewViewController: UIViewController,UIViewControllerTransitioningDelegate, UIScrollViewDelegate {
     
     var scrollView:UIScrollView!
     var imageView:WCImageView!
@@ -20,8 +20,9 @@ class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.clearColor()
         
+        // scroll view for zooming
         scrollView = UIScrollView(frame: CGRectZero)
         scrollView.backgroundColor = UIColor.clearColor()
         scrollView.delegate = self
@@ -33,6 +34,7 @@ class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
         scrollView.constrainToSuperViewEdges()
 
+        // main image view
         imageView = WCImageView(frame: CGRectZero)
         imageView.image = fromImageView.image
         imageView.backgroundColor = UIColor.clearColor()
@@ -43,6 +45,7 @@ class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0))
         scrollView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 1.0, constant: 0))
         
+        // gesture recognizers
         tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
         scrollView.addGestureRecognizer(tapGesture!)
         
@@ -59,8 +62,12 @@ class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func tapped(){
-        fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: WCCardAction.WillExitFullScreenImage, parameters:nil))
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        if(self.scrollView.zoomScale != 1.0){
+            doubleTapped()
+        }else{
+            fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: WCCardAction.WillExitFullScreenImage, parameters:nil))
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func doubleTapped(){
@@ -78,6 +85,34 @@ class StockImageViewViewController: UIViewController, UIScrollViewDelegate {
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+        
+        if presented == self {
+            return StockImageViewPresentationController(presentedViewController: presented, presentingViewController: presenting)
+        }else{
+            return nil
+        }
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        
+        if presented == self {
+            return StockImageViewAnimationController(isPresenting: true)
+        }else {
+            return nil
+        }
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        
+        if dismissed == self {
+            return StockImageViewAnimationController(isPresenting: false)
+        }else {
+            return nil
+        }
     }
 
 }
