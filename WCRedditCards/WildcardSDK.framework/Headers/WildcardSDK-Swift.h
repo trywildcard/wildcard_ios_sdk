@@ -124,7 +124,7 @@ SWIFT_CLASS("_TtC11WildcardSDK11ArticleCard")
 
 /// The visual source of a CardView.
 ///
-/// Every CardView is associated with a visual source to provide layout guidelines as well as views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own. 
+/// Every CardView is associated with a visual source and provides views for various subcomponents. If you choose to completely customize a card, you will have to implement a visual source of your own.
 ///
 /// Each subcomponent of a CardView must extend CardViewElement.
 SWIFT_PROTOCOL("_TtP11WildcardSDK20CardViewVisualSource_")
@@ -381,10 +381,17 @@ SWIFT_CLASS("_TtC11WildcardSDK14FullCardHeader")
 
 @class WCImageView;
 
+SWIFT_PROTOCOL("_TtP11WildcardSDK19WCImageViewDelegate_")
+@protocol WCImageViewDelegate
+@optional
+- (void)imageViewTapped:(WCImageView *)imageView;
+@end
+
+
 
 /// Card Body with an image and a caption under it.
 SWIFT_CLASS("_TtC11WildcardSDK19ImageAndCaptionBody")
-@interface ImageAndCaptionBody : CardViewElement
+@interface ImageAndCaptionBody : CardViewElement <WCImageViewDelegate>
 @property (nonatomic, weak) IBOutlet WCImageView * imageView;
 @property (nonatomic, weak) IBOutlet UILabel * caption;
 
@@ -401,14 +408,50 @@ SWIFT_CLASS("_TtC11WildcardSDK19ImageAndCaptionBody")
 - (void)adjustForPreferredWidth:(CGFloat)cardWidth;
 - (CGSize)intrinsicContentSize;
 - (CGFloat)optimizedHeight:(CGFloat)cardWidth;
+- (void)imageViewTapped:(WCImageView *)imageView;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+
+/// Image Card
+SWIFT_CLASS("_TtC11WildcardSDK9ImageCard")
+@interface ImageCard : Card
+@property (nonatomic, readonly) Creator * creator;
+@property (nonatomic, readonly) NSURL * imageUrl;
+
+/// optional size for the image. will be (-1,-1) if size is unavailable
+@property (nonatomic, readonly) CGSize imageSize;
+@property (nonatomic, readonly, copy) NSString * title;
+@property (nonatomic, readonly, copy) NSString * imageCaption;
+@property (nonatomic, readonly, copy) NSArray * keywords;
+@property (nonatomic, readonly) NSURL * appLinkAndroid;
+@property (nonatomic, readonly) NSURL * appLinkIos;
+- (instancetype)initWithImageUrl:(NSURL *)imageUrl url:(NSURL *)url creator:(Creator *)creator data:(NSDictionary *)data OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)supportsLayout:(WCCardLayout)layout;
+@end
+
+
+SWIFT_CLASS("_TtC11WildcardSDK30ImageCardImageOnlyVisualSource")
+@interface ImageCardImageOnlyVisualSource : BaseVisualSource <CardViewVisualSource>
+- (instancetype)initWithCard:(Card *)card aspectRatio:(CGFloat)aspectRatio OBJC_DESIGNATED_INITIALIZER;
+- (CardViewElement *)viewForCardBody;
+@end
+
+
+SWIFT_CLASS("_TtC11WildcardSDK25ImageCardTallVisualSource")
+@interface ImageCardTallVisualSource : BaseVisualSource <CardViewVisualSource>
+- (instancetype)initWithCard:(Card *)card aspectRatio:(CGFloat)aspectRatio OBJC_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCard:(Card *)card OBJC_DESIGNATED_INITIALIZER;
+- (CardViewElement *)viewForCardHeader;
+- (CardViewElement *)viewForCardBody;
+@end
+
+
 SWIFT_CLASS("_TtC11WildcardSDK18ImageFloatLeftBody")
-@interface ImageFloatLeftBody : CardViewElement
+@interface ImageFloatLeftBody : CardViewElement <WCImageViewDelegate>
 @property (nonatomic, weak) IBOutlet WCImageView * imageView;
 @property (nonatomic, weak) IBOutlet UILabel * descriptionLabel;
 
@@ -421,6 +464,7 @@ SWIFT_CLASS("_TtC11WildcardSDK18ImageFloatLeftBody")
 - (void)update:(Card *)card;
 - (CGFloat)optimizedHeight:(CGFloat)cardWidth;
 - (void)adjustForPreferredWidth:(CGFloat)cardWidth;
+- (void)imageViewTapped:(WCImageView *)imageView;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -428,7 +472,7 @@ SWIFT_CLASS("_TtC11WildcardSDK18ImageFloatLeftBody")
 
 
 SWIFT_CLASS("_TtC11WildcardSDK19ImageFloatRightBody")
-@interface ImageFloatRightBody : CardViewElement
+@interface ImageFloatRightBody : CardViewElement <WCImageViewDelegate>
 @property (nonatomic, weak) IBOutlet WCImageView * imageView;
 @property (nonatomic, weak) IBOutlet UILabel * descriptionLabel;
 
@@ -441,6 +485,7 @@ SWIFT_CLASS("_TtC11WildcardSDK19ImageFloatRightBody")
 - (void)update:(Card *)card;
 - (CGFloat)optimizedHeight:(CGFloat)cardWidth;
 - (void)adjustForPreferredWidth:(CGFloat)cardWidth;
+- (void)imageViewTapped:(WCImageView *)imageView;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -448,7 +493,7 @@ SWIFT_CLASS("_TtC11WildcardSDK19ImageFloatRightBody")
 
 
 SWIFT_CLASS("_TtC11WildcardSDK13ImageOnlyBody")
-@interface ImageOnlyBody : CardViewElement
+@interface ImageOnlyBody : CardViewElement <WCImageViewDelegate>
 @property (nonatomic) WCImageView * imageView;
 
 /// Adjusts the aspect ratio of the image view.
@@ -460,6 +505,7 @@ SWIFT_CLASS("_TtC11WildcardSDK13ImageOnlyBody")
 - (void)adjustForPreferredWidth:(CGFloat)cardWidth;
 - (void)update:(Card *)card;
 - (CGFloat)optimizedHeight:(CGFloat)cardWidth;
+- (void)imageViewTapped:(WCImageView *)imageView;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -635,6 +681,18 @@ SWIFT_CLASS("_TtC11WildcardSDK27SummaryCardTallVisualSource")
 
 /// Given a reference view, constrain this view to be exactly the same size and position (Useful for overlays that aren't child views). Superviews must be the same
 - (void)constrainExactlyToView:(UIView *)view;
+
+/// Given a reference view, align left. Superviews must be the same.
+- (void)alignLeftToView:(UIView *)view;
+
+/// Given a reference view, align right. Superviews must be the same.
+- (void)alignRightToView:(UIView *)view;
+
+/// Given a reference view, align top. Superviews must be the same.
+- (void)alignTopToView:(UIView *)view;
+
+/// Given a reference view, align bottom. Superviews must be the same.
+- (void)alignBottomToView:(UIView *)view;
 - (NSLayoutConstraint *)constrainLeftToSuperView:(CGFloat)offset;
 - (NSLayoutConstraint *)constrainRightToSuperView:(CGFloat)offset;
 - (NSLayoutConstraint *)constrainTopToSuperView:(CGFloat)offset;
@@ -647,7 +705,17 @@ SWIFT_CLASS("_TtC11WildcardSDK27SummaryCardTallVisualSource")
 - (UIView *)addBlurOverlay:(UIBlurEffectStyle)style;
 - (BOOL)hasSuperview;
 - (UIViewController *)parentViewController;
+
+/// Adds a bottom border with specified width and color
 - (UIView *)addBottomBorderWithWidth:(CGFloat)width color:(UIColor *)color;
+
+/// Adds a left border with specified width and color
+- (UIView *)addLeftBorderWithWidth:(CGFloat)width color:(UIColor *)color;
+
+/// Adds a right border with specified width and color
+- (UIView *)addRightBorderWithWidth:(CGFloat)width color:(UIColor *)color;
+
+/// Adds a top border with specified width and color
 - (UIView *)addTopBorderWithWidth:(CGFloat)width color:(UIColor *)color;
 @end
 
@@ -737,6 +805,41 @@ SWIFT_CLASS("_TtC11WildcardSDK25VideoCardShortImageSource")
 @end
 
 
+SWIFT_CLASS("_TtC11WildcardSDK18VideoCardThumbnail")
+@interface VideoCardThumbnail : CardViewElement <WCVideoViewDelegate>
+@property (nonatomic) WCVideoView * videoView;
+@property (nonatomic) UILabel * title;
+@property (nonatomic) UILabel * kicker;
+
+/// Content insets
+@property (nonatomic) UIEdgeInsets contentEdgeInset;
+
+/// Use this to change the vertical spacing between the kicker and title
+@property (nonatomic) CGFloat kickerSpacing;
+
+/// Use this to change the horizontal padding between the label and the video view
+@property (nonatomic) CGFloat labelToVideoPadding;
+- (void)initialize;
+- (CGFloat)optimizedHeight:(CGFloat)cardWidth;
+- (void)update:(Card *)card;
+- (void)adjustForPreferredWidth:(CGFloat)cardWidth;
+- (void)videoViewTapped:(WCVideoView *)videoView;
+- (void)videoViewDidStartPlaying:(WCVideoView *)videoView;
+- (void)videoViewWillEndPlaying:(WCVideoView *)videoView;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC11WildcardSDK29VideoCardThumbnailImageSource")
+@interface VideoCardThumbnailImageSource : BaseVisualSource <CardViewVisualSource>
+- (CardViewElement *)viewForCardBody;
+- (CardViewElement *)viewForBackOfCard;
+- (instancetype)initWithCard:(Card *)card OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC11WildcardSDK19ViewOnWebCardFooter")
 @interface ViewOnWebCardFooter : CardViewElement
 @property (nonatomic) UIButton * viewOnWebButton;
@@ -763,6 +866,9 @@ SWIFT_CLASS("_TtC11WildcardSDK11WCImageView")
 /// Set image to URL and automatically set the image
 - (void)setImageWithURL:(NSURL *)url mode:(UIViewContentMode)mode;
 
+/// See WCImageViewDelegate
+@property (nonatomic) id <WCImageViewDelegate> delegate;
+
 /// Set image to URL with a completion block. This does not automatically set the image -- more suitable for re-use scenarios
 - (void)setImageWithURL:(NSURL *)url mode:(UIViewContentMode)mode completion:(void (^)(UIImage *, NSError *))completion;
 
@@ -774,12 +880,13 @@ SWIFT_CLASS("_TtC11WildcardSDK11WCImageView")
 
 /// Set image with a content mode. Does a cross fade animation by default
 - (void)setImage:(UIImage *)image mode:(UIViewContentMode)mode;
-- (instancetype)initWithImage:(UIImage *)image OBJC_DESIGNATED_INITIALIZER;
-- (instancetype)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage OBJC_DESIGNATED_INITIALIZER;
+- (void)setup;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (instancetype)initWithCoder:(NSCoder *)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
 @end
+
 
 @class UIGestureRecognizer;
 @class WKWebView;
