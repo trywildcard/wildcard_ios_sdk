@@ -311,10 +311,10 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         initialize()
     }
     
-    public override init(){
-        super.init()
-        initialize()
-    }
+   // public override init(){
+   //     super.init()
+   //     initialize()
+   // }
     
     public override func awakeFromNib() {
         super.awakeFromNib()

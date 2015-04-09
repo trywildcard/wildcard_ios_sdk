@@ -20,13 +20,13 @@ class CheckImageEdge : LayoutDecisionEdge
             case .Unknown:
                 return false
             case .Article:
-                let articleCard = card as ArticleCard
+                let articleCard = card as! ArticleCard
                 return articleCard.primaryImageURL != nil
             case .Summary:
-                let summaryCard = card as SummaryCard
+                let summaryCard = card as! SummaryCard
                 return summaryCard.primaryImageURL != nil
             case .Video:
-                let videoCard = card as VideoCard
+                let videoCard = card as! VideoCard
                 return videoCard.posterImageUrl != nil
             case .Image:
                 return true

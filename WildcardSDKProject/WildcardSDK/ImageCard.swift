@@ -23,7 +23,6 @@ public class ImageCard : Card{
     public let title:String?
     public let imageCaption:String?
     public let keywords:[String]?
-    public let appLinkAndroid:NSURL?
     public let appLinkIos:NSURL?
     
     public init(imageUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
@@ -31,31 +30,32 @@ public class ImageCard : Card{
         self.creator = creator
         self.keywords = data["keywords"] as? [String]
         self.imageUrl = imageUrl
-        self.imageSize = CGSizeMake(-1.0, -1.0)
+        var imageSize = CGSizeMake(-1.0,-1.0)
+        var cardTitle:String?
+        var cardImageCaption:String?
         
-        if let url = data["appLinkAndroid"] as? String{
-            self.appLinkAndroid = NSURL(string: url)
-        }
         if let url = data["appLinkIos"] as? String{
             self.appLinkIos = NSURL(string: url)
+        }else{
+            self.appLinkIos = nil
         }
         
         if let media = data["media"] as? NSDictionary{
             
-            if let title = media["title"] as? String{
-                self.title = title
-            }
+            cardTitle = media["title"] as? String
+            cardImageCaption = media["imageCaption"] as? String
             
-            if let caption = media["imageCaption"] as? String{
-                self.imageCaption = caption
-            }
             
             if let width = media["width"] as? CGFloat {
                 if let height = media["height"] as? CGFloat {
-                    self.imageSize = CGSizeMake(width, height)
+                    imageSize = CGSizeMake(width, height)
                 }
             }
         }
+        
+        self.imageSize = imageSize
+        self.title = cardTitle
+        self.imageCaption = cardImageCaption
         
         super.init(webUrl: url, cardType: "image")
     }

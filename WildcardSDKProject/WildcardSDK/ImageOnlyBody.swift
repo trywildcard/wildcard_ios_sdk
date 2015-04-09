@@ -78,13 +78,13 @@ public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
         
         switch(card.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = card as! ArticleCard
             imageUrl = articleCard.primaryImageURL
         case .Summary:
-            let webLinkCard = card as SummaryCard
+            let webLinkCard = card as! SummaryCard
             imageUrl = webLinkCard.primaryImageURL
         case .Image:
-            let imageCard = card as ImageCard
+            let imageCard = card as! ImageCard
             imageUrl = imageCard.imageUrl
         case .Unknown, .Video:
             imageUrl = nil

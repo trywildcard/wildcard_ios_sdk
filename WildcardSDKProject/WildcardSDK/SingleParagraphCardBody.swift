@@ -60,16 +60,16 @@ public class SingleParagraphCardBody : CardViewElement {
         
         switch(card.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = card as! ArticleCard
             paragraphLabel.text = articleCard.abstractContent
         case .Summary:
-            let webLinkCard = card as SummaryCard
+            let webLinkCard = card as! SummaryCard
             paragraphLabel.text = webLinkCard.abstractContent
         case .Video:
-            let videoCard = card as VideoCard
+            let videoCard = card as! VideoCard
             paragraphLabel.text = videoCard.abstractContent
         case .Image:
-            let imageCard = card as ImageCard
+            let imageCard = card as! ImageCard
             paragraphLabel.text = imageCard.imageCaption
         case .Unknown:
             paragraphLabel.text = "Unknown Card Type"

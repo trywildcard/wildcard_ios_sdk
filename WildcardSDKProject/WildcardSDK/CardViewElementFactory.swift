@@ -22,17 +22,17 @@ public class CardViewElementFactory{
         
         switch(type){
         case .FullHeader:
-            cardViewElement = UIView.loadFromNibNamed("FullCardHeader") as FullCardHeader
+            cardViewElement = UIView.loadFromNibNamed("FullCardHeader") as! FullCardHeader
         case .ImageAndCaption:
-            cardViewElement = UIView.loadFromNibNamed("ImageAndCaptionBody") as ImageAndCaptionBody
+            cardViewElement = UIView.loadFromNibNamed("ImageAndCaptionBody") as! ImageAndCaptionBody
         case .ImageOnly:
             cardViewElement = ImageOnlyBody(frame:CGRectZero);
         case .MediaTextFullWebView:
-            cardViewElement = UIView.loadFromNibNamed("MediaTextFullWebView") as MediaTextFullWebView
+            cardViewElement = UIView.loadFromNibNamed("MediaTextFullWebView") as! MediaTextFullWebView
         case .ImageFloatRight:
-            cardViewElement = UIView.loadFromNibNamed("ImageFloatRightBody") as ImageFloatRightBody
+            cardViewElement = UIView.loadFromNibNamed("ImageFloatRightBody") as! ImageFloatRightBody
         case .ImageFloatLeft:
-            cardViewElement = UIView.loadFromNibNamed("ImageFloatLeftBody") as ImageFloatLeftBody
+            cardViewElement = UIView.loadFromNibNamed("ImageFloatLeftBody") as! ImageFloatLeftBody
         case .ReadMoreFooter:
             cardViewElement = ReadMoreFooter(frame:CGRectZero);
         case .ViewOnWebFooter:

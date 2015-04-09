@@ -10,7 +10,7 @@ import Foundation
 
 extension UIButton {
     class func defaultViewOnWebButton() -> UIButton{
-        var viewOnWebButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        var viewOnWebButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         viewOnWebButton.styleAsExternalLink("VIEW ON WEB")
         return viewOnWebButton
     }
@@ -32,7 +32,7 @@ extension UIButton {
     
     class func defaultReadMoreButton()->UIButton{
         
-        var readMoreButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        var readMoreButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackground"), forState: UIControlState.Normal)
         readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackgroundTapped"), forState: UIControlState.Highlighted)
         readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center

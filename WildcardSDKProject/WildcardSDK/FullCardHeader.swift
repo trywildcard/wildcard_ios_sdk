@@ -71,25 +71,25 @@ public class FullCardHeader : CardViewElement
         
         switch(card.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = card as! ArticleCard
             kicker.text = articleCard.creator.name
             title.text = articleCard.title
             if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleToFill)
             }
         case .Summary:
-            let summaryCard = card as SummaryCard
+            let summaryCard = card as! SummaryCard
             kicker.text = summaryCard.webUrl.host
             title.text = summaryCard.title
         case .Video:
-            let videoCard = card as VideoCard
+            let videoCard = card as! VideoCard
             kicker.text = videoCard.webUrl.host
             title.text = videoCard.title
             if let url = videoCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleToFill)
             }
         case .Image:
-            let imageCard = card as ImageCard
+            let imageCard = card as! ImageCard
             kicker.text = imageCard.creator.name
             title.text = imageCard.title
             if let url = imageCard.creator.favicon{

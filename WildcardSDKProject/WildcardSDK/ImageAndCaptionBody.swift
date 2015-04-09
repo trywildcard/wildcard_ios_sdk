@@ -82,11 +82,11 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
         
         switch(card.type){
         case .Article:
-            let articleCard = card as ArticleCard
+            let articleCard = card as! ArticleCard
             imageUrl = articleCard.primaryImageURL
             caption.text = articleCard.abstractContent
         case .Summary:
-            let summaryCard = card as SummaryCard
+            let summaryCard = card as! SummaryCard
             imageUrl = summaryCard.primaryImageURL
             caption.text = summaryCard.abstractContent
         case .Unknown, .Video, .Image:

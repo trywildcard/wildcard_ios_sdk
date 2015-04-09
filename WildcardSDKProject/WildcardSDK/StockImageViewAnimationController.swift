@@ -36,7 +36,7 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         let presentedController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         let containerView = transitionContext.containerView()
-        let stockImageController = presentedController as StockImageViewViewController
+        let stockImageController = presentedController as! StockImageViewViewController
         
         // temp image framed at where the fromImageView is
         let tempImage = WCImageView(frame: containerView.convertRect(stockImageController.fromImageView.frame, fromView: stockImageController.fromImageView.superview))
@@ -77,7 +77,7 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         let presentedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let containerView = transitionContext.containerView()
-        let stockImageController = presentedController as StockImageViewViewController
+        let stockImageController = presentedController as! StockImageViewViewController
         
         // from image size
         let imageSize = stockImageController.fromImageView.image!.size

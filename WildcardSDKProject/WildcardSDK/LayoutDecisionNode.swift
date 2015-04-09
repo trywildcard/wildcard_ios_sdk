@@ -11,7 +11,7 @@ import Foundation
 class LayoutDecisionNode
 {
     let description:String?
-    let input:AnyObject?
+    //let input:AnyObject?
     var edges:[LayoutDecisionEdge] = []
     var cardLayout:WCCardLayout
     

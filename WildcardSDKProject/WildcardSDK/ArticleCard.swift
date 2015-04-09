@@ -26,7 +26,6 @@ public class ArticleCard : Card{
     public let author:String?
     public let updatedDate:NSDate?
     public let media:NSDictionary?
-    public let appLinkAndroid:NSURL?
     public let appLinkIos:NSURL?
     public let primaryImageURL:NSURL?
     
@@ -36,36 +35,53 @@ public class ArticleCard : Card{
         self.creator = creator
         self.keywords = data["keywords"] as? [String]
         
-        if let url = data["appLinkAndroid"] as? String{
-            self.appLinkAndroid = NSURL(string: url)
-        }
         if let url = data["appLinkIos"] as? String{
             self.appLinkIos = NSURL(string: url)
+        }else{
+            self.appLinkIos = nil
         }
+        
+        var cardHtml:String?
+        var cardPublicationDate:NSDate?
+        var cardUpdatedDate:NSDate?
+        var cardIsBreaking:Bool?
+        var cardAuthor:String?
+        var cardSource:String?
+        var cardMedia:NSDictionary?
+        var cardPrimaryImageURL:NSURL?
         
         // optional fields from article data
         if let article = data["article"] as? NSDictionary{
             if let epochTime = article["publicationDate"] as? NSTimeInterval{
-                self.publicationDate = NSDate(timeIntervalSince1970: epochTime/1000)
+                cardPublicationDate = NSDate(timeIntervalSince1970: epochTime/1000)
             }
             
             if let epochTime = article["updatedDate"] as? NSTimeInterval{
-                self.updatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
+                cardUpdatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
             }
             
-            self.html = article["htmlContent"] as? String
-            self.author = article["author"] as? String
-            self.source = article["source"] as? String
-            self.isBreaking = article["isBreaking"] as? Bool
-            self.media = article["media"] as? NSDictionary
+            cardHtml = article["htmlContent"] as? String
+            cardAuthor = article["author"] as? String
+            cardSource = article["source"] as? String
+            cardIsBreaking = article["isBreaking"] as? Bool
+            cardMedia = article["media"] as? NSDictionary
             
-            if self.media != nil{
-                if self.media!["type"] as String == "image"{
-                    let imageUrl = self.media!["imageUrl"] as String
-                    self.primaryImageURL = NSURL(string:imageUrl)
+            if let media = cardMedia{
+                if media["type"] as! String == "image"{
+                    let imageUrl = media["imageUrl"] as! String
+                    cardPrimaryImageURL = NSURL(string:imageUrl)
                 }
             }
         }
+        
+        self.html = cardHtml
+        self.publicationDate = cardPublicationDate;
+        self.updatedDate = cardUpdatedDate
+        self.isBreaking = cardIsBreaking;
+        self.source = cardSource
+        self.author = cardAuthor
+        self.media = cardMedia
+        self.primaryImageURL = cardPrimaryImageURL
         
         super.init(webUrl: url, cardType: "article")
     }

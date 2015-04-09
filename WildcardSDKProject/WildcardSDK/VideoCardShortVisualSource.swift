@@ -16,7 +16,7 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
     
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             header.hairline.hidden = true
             header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
         }
@@ -25,7 +25,7 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(WCElementType.VideoBody) as VideoCardBody
+            body = CardViewElementFactory.createCardViewElement(WCElementType.VideoBody) as! VideoCardBody
             body.videoAspectRatio = 0.5625 // 16:9 default for videos
             body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 15, 15)
         }

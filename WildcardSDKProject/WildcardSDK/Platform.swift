@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PlatformObject{
-    class func deserializeFromData(data:NSDictionary) -> AnyObject?
+    static func deserializeFromData(data:NSDictionary) -> AnyObject?
 }
 
 class Platform{
@@ -51,8 +51,12 @@ class Platform{
     {
         if (WildcardSDK.apiKey != nil){
             
-            let params = NSMutableDictionary()
-            params["url"] = url.absoluteString
+        //    let params = NSMutableDictionary()
+          //  params["url"] = url.absoluteString
+            var params = [NSObject:AnyObject]()
+            params["url"] = url.absoluteString!
+            
+            
             WildcardSDK.analytics?.trackEvent("GetCardCalled", withProperties: params, withCard: nil)
             
             var urlParam = url.absoluteString!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
@@ -88,8 +92,8 @@ class Platform{
     // MARK: Private
     private func getCardJsonResponseFromPlatform(url:NSURL, completion:((NSDictionary?, NSError?)->Void)) -> Void
     {
-        let params = NSMutableDictionary()
-        params["url"] = url.absoluteString
+        var params = [NSObject:AnyObject]()
+        params["url"] = url.absoluteString!
         
         var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue:WildcardSDK.networkDelegateQueue)
         var task:NSURLSessionTask = session.dataTaskWithURL(url, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
@@ -97,9 +101,9 @@ class Platform{
                 completion(nil, error)
             }else{
                 var jsonError:NSError?
-                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? Dictionary<NSObject,AnyObject>
                 if (jsonError == nil) {
-                    let httpResponse = response as NSHTTPURLResponse
+                    let httpResponse = response as! NSHTTPURLResponse
                     if(httpResponse.statusCode == 400){
                         let badRequestError = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.BadRequest.rawValue, userInfo: json!)
                         completion(nil,badRequestError)

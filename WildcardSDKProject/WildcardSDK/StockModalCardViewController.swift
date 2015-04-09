@@ -86,7 +86,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        closeButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         closeButton.setImage(UIImage.loadFrameworkImage("closeIcon"), forState: UIControlState.Normal)
         closeButton.tintColor = UIColor.whiteColor()
         view.addSubview(closeButton)
@@ -160,7 +160,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
     }
     
     // MARK: UIViewControllerTransitioningDelegate
-    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         
         if presented == self {
             return StockModalCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
@@ -169,7 +169,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         }
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if presented == self {
             return StockModalCardAnimationController(isPresenting: true)
@@ -178,7 +178,7 @@ class StockModalCardViewController : UIViewController, UIViewControllerTransitio
         }
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
         if dismissed == self {
             return StockModalCardAnimationController(isPresenting: false)

@@ -16,14 +16,14 @@ public class VideoCardThumbnailImageSource : BaseVisualSource, CardViewVisualSou
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(.VideoThumbnailBody) as VideoCardThumbnail
+            body = CardViewElementFactory.createCardViewElement(.VideoThumbnailBody) as! VideoCardThumbnail
         }
         return body;
     }
     
     public func viewForBackOfCard() -> CardViewElement? {
         if(back == nil){
-            back = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as SingleParagraphCardBody
+            back = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as! SingleParagraphCardBody
         }
         return back;
     }

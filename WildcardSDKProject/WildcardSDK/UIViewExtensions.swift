@@ -160,7 +160,7 @@ public extension UIView{
             }
             parentResponder = parentResponder!.nextResponder()
             if parentResponder is UIViewController {
-                return (parentResponder as UIViewController)
+                return (parentResponder as! UIViewController)
             }
         }
     }

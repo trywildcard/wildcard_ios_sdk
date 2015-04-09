@@ -165,7 +165,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         if(navigationType == .LinkClicked){
             if(cardView != nil){
                 WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], withCard: cardView!.backingCard)
-                cardView!.handleViewOnWeb(request.URL)
+                cardView!.handleViewOnWeb(request.URL!)
             }
             return false
         }else{

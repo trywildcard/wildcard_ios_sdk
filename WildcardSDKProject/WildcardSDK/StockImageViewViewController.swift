@@ -88,7 +88,7 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
     }
     
     // MARK: UIViewControllerTransitioningDelegate
-    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         
         if presented == self {
             return StockImageViewPresentationController(presentedViewController: presented, presentingViewController: presenting)
@@ -97,7 +97,7 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
         }
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if presented == self {
             return StockImageViewAnimationController(isPresenting: true)
@@ -106,7 +106,7 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
         }
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if dismissed == self {
             return StockImageViewAnimationController(isPresenting: false)

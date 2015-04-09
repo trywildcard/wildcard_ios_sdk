@@ -145,10 +145,12 @@ public class WCImageView : UIImageView
         setup()
     }
     
+    /*
     public override init(){
         super.init()
         setup()
     }
+*/
     
     public override func awakeFromNib() {
         super.awakeFromNib()

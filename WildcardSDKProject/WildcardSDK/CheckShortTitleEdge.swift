@@ -22,18 +22,18 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
             case .Unknown:
                 return false
             case .Article:
-                let articleCard = card as ArticleCard
-                return countElements(articleCard.title) < TITLE_THRESHOLD
+                let articleCard = card as! ArticleCard
+                return count(articleCard.title) < TITLE_THRESHOLD
             case .Summary:
-                let summaryCard = card as SummaryCard
-                return countElements(summaryCard.title) < TITLE_THRESHOLD
+                let summaryCard = card as! SummaryCard
+                return count(summaryCard.title) < TITLE_THRESHOLD
             case .Video:
-                let videoCard = card as VideoCard
-                return countElements(videoCard.title) < TITLE_THRESHOLD
+                let videoCard = card as! VideoCard
+                return count(videoCard.title) < TITLE_THRESHOLD
             case .Image:
-                let imageCard = card as ImageCard
+                let imageCard = card as! ImageCard
                 if imageCard.title != nil {
-                    return countElements(imageCard.title!) < TITLE_THRESHOLD
+                    return count(imageCard.title!) < TITLE_THRESHOLD
                 }else{
                     return false
                 }

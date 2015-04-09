@@ -50,7 +50,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(card?.cardType == "image")
             
             if let card = card as? ImageCard{
-                XCTAssert(countElements(card.title!) > 0)
+                XCTAssert(count(card.title!) > 0)
                 XCTAssert(card.imageSize.height != -1)
                 XCTAssert(card.imageSize.width != -1)
                 

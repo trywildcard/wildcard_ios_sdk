@@ -21,7 +21,7 @@ public class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSo
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(.ImageOnly) as ImageOnlyBody
+            body = CardViewElementFactory.createCardViewElement(.ImageOnly) as! ImageOnlyBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0)
             body.imageAspectRatio = aspectRatio
         }

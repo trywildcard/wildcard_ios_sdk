@@ -113,7 +113,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     }
     
     // MARK: UIViewControllerTransitioningDelegate
-    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         
         if presented == self {
             let presentationController = StockMaximizedCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
@@ -124,7 +124,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         }
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if presented == self {
             return StockMaximizedCardAnimationController(isPresenting: true)
@@ -133,7 +133,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         }
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if dismissed == self {
             return StockMaximizedCardAnimationController(isPresenting: false)

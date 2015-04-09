@@ -19,7 +19,7 @@ class CheckTitlePresentEdge : LayoutDecisionEdge
         if let card = input as? Card{
             switch card.type{
             case .Image:
-                let imageCard = card as ImageCard
+                let imageCard = card as! ImageCard
                 if imageCard.title != nil{
                     return true
                 }else{

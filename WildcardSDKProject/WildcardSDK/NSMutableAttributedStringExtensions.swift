@@ -17,28 +17,28 @@ extension NSMutableAttributedString{
         
         self.addAttribute(NSParagraphStyleAttributeName,
             value: paragraphStyle,
-            range: NSMakeRange(0, countElements(self.string)))
+            range: NSMakeRange(0, count(self.string)))
     }
     
     func setFont(font:UIFont){
         self.addAttribute(NSFontAttributeName,
             value: font,
-            range: NSMakeRange(0, countElements(self.string)))
+            range: NSMakeRange(0, count(self.string)))
     }
     
     func setColor(color:UIColor){
         self.addAttribute(NSForegroundColorAttributeName,
             value: color,
-            range: NSMakeRange(0, countElements(self.string)))
+            range: NSMakeRange(0, count(self.string)))
     }
     
     func setKerning(kerning:Float){
-        self.addAttribute(NSKernAttributeName, value: NSNumber(float:kerning), range: NSMakeRange(0, countElements(self.string)))
+        self.addAttribute(NSKernAttributeName, value: NSNumber(float:kerning), range: NSMakeRange(0, count(self.string)))
         
     }
     
     func setUnderline(style:NSUnderlineStyle){
-        self.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(long:style.rawValue), range: NSMakeRange(0,countElements(self.string)))
+        self.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(long:style.rawValue), range: NSMakeRange(0,count(self.string)))
     }
 }
 

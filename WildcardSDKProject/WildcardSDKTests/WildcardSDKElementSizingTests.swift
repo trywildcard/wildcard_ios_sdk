@@ -23,7 +23,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testHeaderSizing(){
-        var header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as FullCardHeader
+        var header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
         header.preferredWidth = 300
         var currentSize:CGSize = header.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
@@ -48,7 +48,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testImageCaptionBody(){
-        var body:ImageAndCaptionBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption) as ImageAndCaptionBody
+        var body:ImageAndCaptionBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption) as! ImageAndCaptionBody
         body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
@@ -76,7 +76,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testImage(){
-        var body:ImageOnlyBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as ImageOnlyBody
+        var body:ImageOnlyBody = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as! ImageOnlyBody
         body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
@@ -104,7 +104,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testSingleParagraph(){
-        var body:SingleParagraphCardBody = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as SingleParagraphCardBody
+        var body:SingleParagraphCardBody = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as! SingleParagraphCardBody
         body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()
@@ -123,7 +123,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testVideoBodySizing(){
-        var body:VideoCardBody = CardViewElementFactory.createCardViewElement(WCElementType.VideoBody) as VideoCardBody
+        var body:VideoCardBody = CardViewElementFactory.createCardViewElement(WCElementType.VideoBody) as! VideoCardBody
         body.preferredWidth = 300
         
         var currentSize:CGSize = body.intrinsicContentSize()

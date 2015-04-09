@@ -14,7 +14,7 @@ public extension UIViewController{
     /// Presents a Card with a best-fit layout
     public func presentCard(card:Card!, animated:Bool, completion:(() -> Void)?){
         if let card = card {
-            presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion)
+            presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion:completion)
         }else{
             println("Can't present a nil card")
         }
@@ -64,14 +64,15 @@ public extension UIViewController{
             break
         case WCCardAction.Share:
             if let actionParams = action.parameters{
-                let url = actionParams["url"] as NSURL
-                let activityItems:[AnyObject] = [url]
-                let appActivity = SafariActivity()
-                let applicationActivities:[AnyObject] = [appActivity]
-                let exclusionActivities:[AnyObject] = [UIActivityTypeAirDrop]
-                let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
-                activityViewController.excludedActivityTypes = exclusionActivities
-                presentViewController(activityViewController, animated: true, completion: nil)
+                if let url = actionParams["url"] as? NSURL{
+                    let activityItems:[AnyObject] = [url]
+                    let appActivity = SafariActivity()
+                    let applicationActivities:[AnyObject] = [appActivity]
+                    let exclusionActivities:[AnyObject] = [UIActivityTypeAirDrop]
+                    let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+                    activityViewController.excludedActivityTypes = exclusionActivities
+                    presentViewController(activityViewController, animated: true, completion: nil)
+                }
             }
             break
         case WCCardAction.Maximize:
@@ -85,18 +86,18 @@ public extension UIViewController{
             if let actionParams = action.parameters{
                 // can only use the Store Kit Controller if the current view controller conforms to delegate
                 if let storeControllerDelegate = self as? SKStoreProductViewControllerDelegate{
-                    let id = actionParams["id"] as NSString
-                    var parameters = NSMutableDictionary()
-                    parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
-                    var storeController = SKStoreProductViewController()
-                    storeController.delegate = storeControllerDelegate
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                    storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        self.presentViewController(storeController, animated: true, completion: nil)
-                        return
-                    })
-                    
+                    if let id = actionParams["id"] as? NSString{
+                        var parameters = [NSObject:AnyObject]()
+                        parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
+                        var storeController = SKStoreProductViewController()
+                        storeController.delegate = storeControllerDelegate
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+                        storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                            self.presentViewController(storeController, animated: true, completion: nil)
+                            return
+                        })
+                    }
                 }else{
                     println("Unable to present the download sheet. This view controller does not conform to SKStoreProductViewControllerDelegate.")
                 }

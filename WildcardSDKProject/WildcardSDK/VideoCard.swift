@@ -20,7 +20,6 @@ public class VideoCard : Card{
     
     public let abstractContent:String?
     public let keywords:[String]?
-    public let appLinkAndroid:NSURL?
     public let appLinkIos:NSURL?
     public let streamUrl:NSURL?
     public let streamContentType:String?
@@ -33,31 +32,40 @@ public class VideoCard : Card{
         self.embedUrl = embedUrl
         self.keywords = data["keywords"] as? [String]
         
-        if let url = data["appLinkAndroid"] as? String{
-            self.appLinkAndroid = NSURL(string: url)
-        }
         if let url = data["appLinkIos"] as? String{
             self.appLinkIos = NSURL(string: url)
+        }else{
+            self.appLinkIos = nil
         }
+        
+        var cardAbstractContent:String?
+        var cardPosterImageUrl:NSURL?
+        var cardStreamContentType:String?
+        var cardStreamUrl:NSURL?
         
         if let media = data["media"] as? NSDictionary{
             
             if let description = media["description"] as? String{
-                self.abstractContent = description
+                cardAbstractContent = description
             }
             
             if let imageUrl = media["posterImageUrl"] as? String{
-                self.posterImageUrl = NSURL(string:imageUrl);
+                cardPosterImageUrl = NSURL(string:imageUrl);
             }
             
             if let contentType = media["streamContentType"] as? String{
-                self.streamContentType = contentType
+                cardStreamContentType = contentType
             }
             
             if let streamUrlString = media["streamUrl"] as? String{
-                self.streamUrl = NSURL(string: streamUrlString)
+                cardStreamUrl = NSURL(string: streamUrlString)
             }
         }
+        
+        self.abstractContent = cardAbstractContent
+        self.posterImageUrl = cardPosterImageUrl
+        self.streamContentType = cardStreamContentType
+        self.streamUrl = cardStreamUrl
         
         super.init(webUrl: url, cardType: "video")
     }

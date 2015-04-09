@@ -33,7 +33,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
     }
     
     func animatePresentationWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
-        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)! as StockMaximizedCardViewController
+        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)! as! StockMaximizedCardViewController
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         let containerView = transitionContext.containerView()
         
@@ -53,7 +53,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
     }
     
     func animateDismissalWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
-        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)! as StockMaximizedCardViewController
+        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)! as! StockMaximizedCardViewController
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let containerView = transitionContext.containerView()
         
