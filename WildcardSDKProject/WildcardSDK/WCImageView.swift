@@ -19,7 +19,7 @@ public protocol WCImageViewDelegate{
 public class WCImageView : UIImageView
 {
     /// Default cross fade animation duration when setting an image
-    public var crossFadeDuration:NSTimeInterval = 0.3
+    public var crossFadeDuration:NSTimeInterval = 0.8
     
     /// Set image to URL and automatically set the image
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode){
@@ -144,13 +144,6 @@ public class WCImageView : UIImageView
         super.init(frame:frame)
         setup()
     }
-    
-    /*
-    public override init(){
-        super.init()
-        setup()
-    }
-*/
     
     public override func awakeFromNib() {
         super.awakeFromNib()

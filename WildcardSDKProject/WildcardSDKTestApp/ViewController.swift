@@ -34,18 +34,18 @@ class ViewController: UIViewController, CardViewDelegate{
         let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
         
         /*
-        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardShort){
+        if let cardView = CardView.createCardView(card, layout: WCCardLayout.SummaryCardTall){
             cardView.delegate = self
             view.addSubview(cardView)
             cardView.horizontallyCenterToSuperView(0)
             cardView.verticallyCenterToSuperView(0)
             self.cardView = cardView
         }
-*/
+        */
  
-        Card.getFromUrl(NSURL(string: "http://imgur.com/gallery/Yw4EjbT")!, completion: { (card, error) -> Void in
-            if let card = card  as? ImageCard {
-                self.imageCard = card
+        Card.getFromUrl(NSURL(string: "http://www.dailymotion.com/video/x2j0q4g_first-solar-powered-plane-takes-off-for-epic-flight_fun")!, completion: { (card, error) -> Void in
+            if let card = card  as? VideoCard {
+                //self.imageCard = card
                 self.cardView = CardView.createCardView(card)
                 self.cardView.delegate = self
                 self.view.addSubview(self.cardView)

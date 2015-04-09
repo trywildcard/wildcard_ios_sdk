@@ -41,6 +41,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     func initialize(){
         
         backgroundColor = UIColor.blackColor()
+        userInteractionEnabled = true
         
         // initializes the video wkwebview
         let controller = WKUserContentController()
@@ -77,6 +78,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         
         // pass through view on top of webview for a poster image
         passthroughView = PassthroughView(frame:CGRectZero)
+        passthroughView.userInteractionEnabled = false
         insertSubview(passthroughView, aboveSubview: videoWKView)
         passthroughView.constrainExactlyToView(videoWKView)
         passthroughView.backgroundColor = UIColor.blackColor()
@@ -310,11 +312,6 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         super.init(frame:frame)
         initialize()
     }
-    
-   // public override init(){
-   //     super.init()
-   //     initialize()
-   // }
     
     public override func awakeFromNib() {
         super.awakeFromNib()
