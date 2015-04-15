@@ -87,6 +87,8 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
     }else{
         // 1. grab the a reddit link
         NSURL* url = [self.redditLinks firstObject];
+        
+        NSLog(@"url cardifying is %@", url);
         [self.redditLinks removeObjectAtIndex:0];
         
         // 2. attempt to get a card

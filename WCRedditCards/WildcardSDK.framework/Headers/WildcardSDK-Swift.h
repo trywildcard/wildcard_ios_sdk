@@ -370,8 +370,7 @@ SWIFT_CLASS("_TtC11WildcardSDK7Creator")
 @property (nonatomic, readonly) NSURL * __nonnull url;
 @property (nonatomic, readonly) NSURL * __nullable favicon;
 @property (nonatomic, readonly) NSURL * __nullable iosAppStoreUrl;
-@property (nonatomic, readonly) NSURL * __nullable androidAppStoreUrl;
-- (SWIFT_NULLABILITY(nonnull) instancetype)initWithName:(NSString * __nonnull)name url:(NSURL * __nonnull)url favicon:(NSURL * __nullable)favicon iosStore:(NSURL * __nullable)iosStore androidStore:(NSURL * __nullable)androidStore OBJC_DESIGNATED_INITIALIZER;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithName:(NSString * __nonnull)name url:(NSURL * __nonnull)url favicon:(NSURL * __nullable)favicon iosStore:(NSURL * __nullable)iosStore OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UILabel;
@@ -812,6 +811,14 @@ SWIFT_CLASS("_TtC11WildcardSDK13VideoCardBody")
 @end
 
 
+SWIFT_CLASS("_TtC11WildcardSDK30VideoCardShortFullVisualSource")
+@interface VideoCardShortFullVisualSource : BaseVisualSource <CardViewVisualSource>
+- (CardViewElement * __nullable)viewForCardHeader;
+- (CardViewElement * __nonnull)viewForCardBody;
+- (SWIFT_NULLABILITY(nonnull) instancetype)initWithCard:(Card * __nonnull)card OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC11WildcardSDK25VideoCardShortImageSource")
 @interface VideoCardShortImageSource : BaseVisualSource <CardViewVisualSource>
 - (CardViewElement * __nullable)viewForCardHeader;
@@ -939,13 +946,25 @@ SWIFT_CLASS("_TtC11WildcardSDK11WildcardSDK")
 + (UIFont * __nonnull)cardTitleFont;
 + (void)setCardTitleFont:(UIFont * __nonnull)newValue;
 
+/// Custom color for Card titles
++ (UIColor * __nonnull)cardTitleColor;
++ (void)setCardTitleColor:(UIColor * __nonnull)newValue;
+
 /// Custom font for Card kickers
 + (UIFont * __nonnull)cardKickerFont;
 + (void)setCardKickerFont:(UIFont * __nonnull)newValue;
 
+/// Custom color for Card kickers
++ (UIColor * __nonnull)cardKickerColor;
++ (void)setCardKickerColor:(UIColor * __nonnull)newValue;
+
 /// Custom font for Card descriptions
 + (UIFont * __nonnull)cardDescriptionFont;
 + (void)setCardDescriptionFont:(UIFont * __nonnull)newValue;
+
+/// Custom color for Card descriptions
++ (UIColor * __nonnull)cardDescriptionColor;
++ (void)setCardDescriptionColor:(UIColor * __nonnull)newValue;
 
 /// Custom font for Card Action Buttons
 + (UIFont * __nonnull)cardActionButtonFont;
