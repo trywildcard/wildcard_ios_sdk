@@ -43,6 +43,9 @@ class CardViewVisualSourceFactory {
         case .VideoCardThumbnail:
             var source = VideoCardThumbnailImageSource(card:card)
             return source
+        case .VideoCardShortFull:
+            var source = VideoCardShortFullVisualSource(card:card)
+            return source
         case .ImageCard4x3:
             var source = ImageCardTallVisualSource(card:card, aspectRatio:0.75)
             return source

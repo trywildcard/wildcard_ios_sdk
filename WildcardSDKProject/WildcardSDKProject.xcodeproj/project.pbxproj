@@ -86,6 +86,7 @@
 		1D984EF71AB74DFC00AFC9FF /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */; };
 		1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */; };
 		1DAB8B0A1ADEA5D8003EF36D /* LayoutDemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB8B091ADEA5D8003EF36D /* LayoutDemoTableViewController.swift */; };
+		1DAB8B0C1ADED98A003EF36D /* VideoCardShortFullVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB8B0B1ADED98A003EF36D /* VideoCardShortFullVisualSource.swift */; };
 		1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */; };
 		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
 		1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */; };
@@ -259,6 +260,7 @@
 		1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
 		1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardShortVisualSource.swift; sourceTree = "<group>"; };
 		1DAB8B091ADEA5D8003EF36D /* LayoutDemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDemoTableViewController.swift; sourceTree = "<group>"; };
+		1DAB8B0B1ADED98A003EF36D /* VideoCardShortFullVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCardShortFullVisualSource.swift; sourceTree = "<group>"; };
 		1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughEdge.swift; sourceTree = "<group>"; };
 		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
 		1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitEdge.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		1D6F88671AAE203600D73668 /* Video Card Visual Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1DAB8B0B1ADED98A003EF36D /* VideoCardShortFullVisualSource.swift */,
 				1D6F88681AAE206500D73668 /* VideoCardShortVisualSource.swift */,
 				1DE8ED811AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift */,
 			);
@@ -980,6 +983,7 @@
 				1DAC26B31A364B4A0005C4BE /* SummaryCard.swift in Sources */,
 				1DC3095C1AB35A92000B133E /* YTPlayerView.m in Sources */,
 				1DE8ED821AC5FFE300B994C9 /* VideoCardThumbnailVisualSource.swift in Sources */,
+				1DAB8B0C1ADED98A003EF36D /* VideoCardShortFullVisualSource.swift in Sources */,
 				1D6719AE1A44A9DD006DA49A /* StockModalCardViewController.swift in Sources */,
 				1DAC26941A3631B90005C4BE /* UIViewExtensions.swift in Sources */,
 				1D32C5191A799BDD0021D27A /* WCAnalytics.m in Sources */,

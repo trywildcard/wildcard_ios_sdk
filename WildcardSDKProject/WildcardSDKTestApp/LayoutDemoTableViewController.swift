@@ -23,6 +23,7 @@ class LayoutDemoTableViewController: UITableViewController {
         "SummaryCard",
         "VideoCard",
         "VideoCard",
+        "VideoCard",
         "ImageCard",
         "ImageCard",
         "ImageCard"]
@@ -33,6 +34,7 @@ class LayoutDemoTableViewController: UITableViewController {
         "Short Left",
         "Image Only",
         "Short",
+        "Short Full Bleed",
         "Thumbnail",
         "4x3",
         "Aspect Fit",
@@ -112,12 +114,14 @@ class LayoutDemoTableViewController: UITableViewController {
         }else if(indexPath.row == 5){
             presentCard(videoCard, layout: .VideoCardShort, animated: true, completion: nil)
         }else if(indexPath.row == 6){
-            presentCard(videoCard, layout: .VideoCardThumbnail, animated: true, completion: nil)
+            presentCard(videoCard, layout: .VideoCardShortFull, animated: true, completion: nil)
         }else if(indexPath.row == 7){
-            presentCard(imageCard, layout: .ImageCard4x3, animated: true, completion: nil)
+            presentCard(videoCard, layout: .VideoCardThumbnail, animated: true, completion: nil)
         }else if(indexPath.row == 8){
-            presentCard(imageCard, layout: .ImageCardAspectFit, animated: true, completion: nil)
+            presentCard(imageCard, layout: .ImageCard4x3, animated: true, completion: nil)
         }else if(indexPath.row == 9){
+            presentCard(imageCard, layout: .ImageCardAspectFit, animated: true, completion: nil)
+        }else if(indexPath.row == 10){
             presentCard(imageCard, layout: .ImageCardImageOnly, animated: true, completion: nil)
         }
     }
