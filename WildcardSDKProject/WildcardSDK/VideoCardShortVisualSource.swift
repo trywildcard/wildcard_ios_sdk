@@ -19,6 +19,7 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             header.hairline.hidden = true
             header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
+            header.title.numberOfLines = 2
         }
         return header
     }

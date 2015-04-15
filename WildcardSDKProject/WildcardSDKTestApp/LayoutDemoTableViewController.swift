@@ -83,6 +83,7 @@ class LayoutDemoTableViewController: UITableViewController {
         
         imageCard = ImageCard(imageUrl: NSURL(string:"https://i.imgur.com/ZvEWNki.png")!, url: NSURL(string:"http://imgur.com/gallery/ZvEWNki")!, creator: imgur, data: imageData)
         
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

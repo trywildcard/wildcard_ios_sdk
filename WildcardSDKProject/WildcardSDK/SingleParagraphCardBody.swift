@@ -39,8 +39,7 @@ public class SingleParagraphCardBody : CardViewElement {
         backgroundColor = UIColor.whiteColor()
         
         paragraphLabel = UILabel(frame: CGRectZero)
-        paragraphLabel.textColor = UIColor.wildcardMediaBodyColor()
-        paragraphLabel.font = WildcardSDK.cardDescriptionFont
+        paragraphLabel.setDefaultDescriptionStyling()
         paragraphLabel.textAlignment = NSTextAlignment.Left
         paragraphLabel.numberOfLines = 0
         addSubview(paragraphLabel)

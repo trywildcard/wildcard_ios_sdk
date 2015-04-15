@@ -49,8 +49,7 @@ public class ImageFloatLeftBody : CardViewElement, WCImageViewDelegate
     private var bottomPadding:CGFloat = 10.0
     
     override public func initialize() {
-        descriptionLabel.font = WildcardSDK.cardDescriptionFont
-        descriptionLabel.textColor = UIColor.wildcardMediaBodyColor()
+        descriptionLabel.setDefaultDescriptionStyling()
         imageViewSize = CGSizeMake(120,90)
         imageView.delegate = self
     }

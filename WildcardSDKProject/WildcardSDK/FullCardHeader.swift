@@ -109,8 +109,18 @@ public class FullCardHeader : CardViewElement
         height += kickerToTitleSpacing.constant
         
         // how tall would the title need to be for this width
-        let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
-        height += expectedTitleSize.height
+        var titleHeight:CGFloat = 0
+        if(title.numberOfLines == 0){
+            // unbounded height
+            titleHeight = Utilities.heightRequiredForText(title.text, lineHeight: title.font.lineHeight, font: title.font, width: cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant)
+        }else{
+            let maxHeight:CGFloat = CGFloat(title.numberOfLines) * title.font.lineHeight
+            titleHeight = Utilities.heightRequiredForText(title.text, lineHeight: title.font.lineHeight, font: title.font, width: cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, maxHeight:maxHeight)
+            
+        }
+        //let expectedTitleSize = title.sizeThatFits(CGSizeMake(cardWidth - titleLeadingConstraint.constant - titleTrailingConstraint.constant, CGFloat.max))
+        println("line height is \(title.font.lineHeight) expected title isze is \(titleHeight)")
+        height += titleHeight
   
         // bottom margin below the title
         height += titleBottomConstraint.constant
