@@ -14,9 +14,11 @@ class LayoutDemoTableViewController: UITableViewController {
     var summaryCard:SummaryCard!
     var videoCard:VideoCard!
     var imageCard:ImageCard!
+    var articleCard:ArticleCard!
     
     var layoutLabels:[String] =
-    ["SummaryCard",
+    [
+        "SummaryCard",
         "SummaryCard",
         "SummaryCard",
         "SummaryCard",
@@ -26,9 +28,15 @@ class LayoutDemoTableViewController: UITableViewController {
         "VideoCard",
         "ImageCard",
         "ImageCard",
-        "ImageCard"]
+        "ImageCard",
+        "ArticleCard",
+        "ArticleCard",
+        "ArticleCard"
+    ]
+    
     var layoutLabelsSubtexts:[String] =
-    ["No Image",
+    [
+        "No Image",
         "Tall",
         "Short",
         "Short Left",
@@ -38,7 +46,11 @@ class LayoutDemoTableViewController: UITableViewController {
         "Thumbnail",
         "4x3",
         "Aspect Fit",
-        "Image Only"]
+        "Image Only",
+        "No Image",
+        "Tall",
+        "Short"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +97,22 @@ class LayoutDemoTableViewController: UITableViewController {
         
         imageCard = ImageCard(imageUrl: NSURL(string:"https://i.imgur.com/ZvEWNki.png")!, url: NSURL(string:"http://imgur.com/gallery/ZvEWNki")!, creator: imgur, data: imageData)
         
+        let cnnUrl = NSURL(string: "http://www.cnn.com")!
+        let cnn = Creator(name:"CNN", url:imgurUrl, favicon:NSURL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-cnn.png"), iosStore:nil)
         
+        
+        let articleURL = NSURL(string:"http://money.cnn.com/2015/04/14/technology/high-there-dating-app/index.html")!
+        let articleData:NSMutableDictionary = NSMutableDictionary()
+        let articleBaseData:NSMutableDictionary = NSMutableDictionary()
+        articleData["htmlContent"] = "<div>Some Content</div>"
+        articleData["publicationDate"] = 1429063354000
+        let articleMedia:NSMutableDictionary = NSMutableDictionary()
+        articleMedia["imageUrl"] =  "http://i2.cdn.turner.com/money/dam/assets/150414182846-high-there-image-1024x576.jpeg"
+        articleMedia["type"] = "image"
+        articleData["media"] = articleMedia
+        articleBaseData["article"] = articleData
+        
+        articleCard = ArticleCard(title: "The surprising backstory of Tinder for pot smokers", abstractContent: "That's what co-founder Todd Mitchem hopes to create with High There -- \"a social connection app for cannabis consumers.\" Users can look for dates or simply other like-minded people. But for those used to dating apps like Tinder or OkCupid, the questions will probably be a bit unfamiliar.", url: articleURL, creator: cnn, data: articleBaseData)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,6 +150,12 @@ class LayoutDemoTableViewController: UITableViewController {
             presentCard(imageCard, layout: .ImageCardAspectFit, animated: true, completion: nil)
         }else if(indexPath.row == 10){
             presentCard(imageCard, layout: .ImageCardImageOnly, animated: true, completion: nil)
+        }else if(indexPath.row == 11){
+            presentCard(articleCard, layout: .ArticleCardNoImage, animated: true, completion: nil)
+        }else if(indexPath.row == 12){
+            presentCard(articleCard, layout: .ArticleCardTall, animated: true, completion: nil)
+        }else if(indexPath.row == 13){
+            presentCard(articleCard, layout: .ArticleCardShort, animated: true, completion: nil)
         }
     }
 
