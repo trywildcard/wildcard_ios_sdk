@@ -26,7 +26,7 @@ class CardViewVisualSourceFactory {
             var source = SummaryCardTallVisualSource(card:card,aspectRatio:0.75)
             return source
         case .SummaryCardImageOnly:
-            var source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.75)
+            var source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.5625)
             return source
         case .ArticleCardNoImage:
             var source = ArticleCardNoImageVisualSource(card:card)

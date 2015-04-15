@@ -40,7 +40,6 @@ public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSourc
         return body
     }
     
-    
     public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
             self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as! ViewOnWebCardFooter
