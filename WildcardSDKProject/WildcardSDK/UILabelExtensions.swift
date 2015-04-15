@@ -23,12 +23,17 @@ extension UILabel{
     func setDefaultKickerStyling(){
         font =  WildcardSDK.cardKickerFont
         numberOfLines = 1
-        textColor = UIColor.wildcardMediumGray()
+        textColor = WildcardSDK.cardKickerColor
     }
     
     func setDefaultTitleStyling(){
         font = WildcardSDK.cardTitleFont
-        textColor = UIColor.wildcardDarkBlue()
+        textColor = WildcardSDK.cardTitleColor
+    }
+    
+    func setDefaultDescriptionStyling(){
+        font = WildcardSDK.cardDescriptionFont
+        textColor = WildcardSDK.cardDescriptionColor
     }
     
 }

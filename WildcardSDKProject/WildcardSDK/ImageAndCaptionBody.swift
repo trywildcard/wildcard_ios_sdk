@@ -68,8 +68,7 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     private var __imageAspectRatio:CGFloat = 0.75
     
     override public func initialize(){
-        caption.font = WildcardSDK.cardDescriptionFont
-        caption.textColor = UIColor.wildcardMediaBodyColor()
+        caption.setDefaultDescriptionStyling()
         
         // not ready to constrain height yet, set to 0 to get rid of
         imageHeightConstraint.constant = 0

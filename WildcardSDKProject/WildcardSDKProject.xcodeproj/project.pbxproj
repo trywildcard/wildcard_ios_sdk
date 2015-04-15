@@ -85,6 +85,7 @@
 		1D984EF61AB74DFC00AFC9FF /* YTVimeoExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D984EF41AB74DFC00AFC9FF /* YTVimeoExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D984EF71AB74DFC00AFC9FF /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */; };
 		1DA163901A73FB290020E0C6 /* SummaryCardShortVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */; };
+		1DAB8B0A1ADEA5D8003EF36D /* LayoutDemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB8B091ADEA5D8003EF36D /* LayoutDemoTableViewController.swift */; };
 		1DAC26801A326B790005C4BE /* PassThroughEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */; };
 		1DAC26861A326E530005C4BE /* LandscapeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26851A326E530005C4BE /* LandscapeEdge.swift */; };
 		1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */; };
@@ -257,6 +258,7 @@
 		1D984EF41AB74DFC00AFC9FF /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
 		1D984EF51AB74DFC00AFC9FF /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
 		1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardShortVisualSource.swift; sourceTree = "<group>"; };
+		1DAB8B091ADEA5D8003EF36D /* LayoutDemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDemoTableViewController.swift; sourceTree = "<group>"; };
 		1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassThroughEdge.swift; sourceTree = "<group>"; };
 		1DAC26851A326E530005C4BE /* LandscapeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeEdge.swift; sourceTree = "<group>"; };
 		1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitEdge.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		1D3A285D1A2E696A00A9D4C1 /* WildcardSDKTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				1DAB8B091ADEA5D8003EF36D /* LayoutDemoTableViewController.swift */,
 				1D3A28601A2E696A00A9D4C1 /* AppDelegate.swift */,
 				1D3A28621A2E696A00A9D4C1 /* ViewController.swift */,
 				1DE2184A1A38DCA6007746B4 /* ViewController2.swift */,
@@ -922,6 +925,7 @@
 				1D3A28631A2E696A00A9D4C1 /* ViewController.swift in Sources */,
 				1D3A28611A2E696A00A9D4C1 /* AppDelegate.swift in Sources */,
 				1D3064771A3B83B100D99F6E /* ViewController3.swift in Sources */,
+				1DAB8B0A1ADEA5D8003EF36D /* LayoutDemoTableViewController.swift in Sources */,
 				1DE2184B1A38DCA6007746B4 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

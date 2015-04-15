@@ -21,6 +21,15 @@ public class WildcardSDK {
         }
     }
     
+    /// Custom color for Card titles
+    public class var cardTitleColor:UIColor{
+        get{
+            return WildcardSDK.sharedInstance.__cardTitleColor
+        }set{
+            WildcardSDK.sharedInstance.__cardTitleColor = newValue
+        }
+    }
+    
     /// Custom font for Card kickers
     public class var cardKickerFont:UIFont{
         get{
@@ -30,12 +39,30 @@ public class WildcardSDK {
         }
     }
     
+    /// Custom color for Card kickers
+    public class var cardKickerColor:UIColor{
+        get{
+            return WildcardSDK.sharedInstance.__cardKickerColor
+        }set{
+            WildcardSDK.sharedInstance.__cardKickerColor = newValue
+        }
+    }
+    
     /// Custom font for Card descriptions
     public class var cardDescriptionFont:UIFont{
         get{
             return WildcardSDK.sharedInstance.__cardDescriptionFont
         }set{
             WildcardSDK.sharedInstance.__cardDescriptionFont = newValue
+        }
+    }
+    
+    /// Custom color for Card descriptions
+    public class var cardDescriptionColor:UIColor{
+        get{
+            return WildcardSDK.sharedInstance.__cardDescriptionColor
+        }set{
+            WildcardSDK.sharedInstance.__cardDescriptionColor = newValue
         }
     }
     
@@ -110,8 +137,11 @@ public class WildcardSDK {
     var __defaultScreenMargin:CGFloat = 15.0
     var __cardCornerRadius:CGFloat = 2.0
     var __cardTitleFont:UIFont!
+    var __cardTitleColor:UIColor!
     var __cardKickerFont:UIFont!
+    var __cardKickerColor:UIColor!
     var __cardDescriptionFont:UIFont!
+    var __cardDescriptionColor:UIColor!
     var __cardActionButtonFont:UIFont!
     var __applicationKey:String?
     var __analytics:WCAnalytics?
@@ -126,8 +156,11 @@ public class WildcardSDK {
         dispatch_once(&Static.onceToken, { () -> Void in
             Static.instance = WildcardSDK()
             Static.instance!.__cardTitleFont = UIFont(name:"HelveticaNeue-Medium", size: 16.0)!
+            Static.instance!.__cardTitleColor = UIColor.wildcardDarkBlue()
             Static.instance!.__cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+            Static.instance!.__cardKickerColor = UIColor.wildcardMediumGray()
             Static.instance!.__cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
+            Static.instance!.__cardDescriptionColor = UIColor.wildcardMediaBodyColor()
             Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
             Static.instance!.__networkDelegateQueue = NSOperationQueue.mainQueue()
         })
