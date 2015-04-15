@@ -20,6 +20,8 @@ class ViewController: UIViewController, CardViewDelegate{
         super.viewDidLoad()
         view.backgroundColor = UIColor.wildcardBackgroundGray()
         
+        title = "Test Bench"
+        
         let media:NSMutableDictionary = NSMutableDictionary()
         let mediaDescription:NSMutableDictionary = NSMutableDictionary()
         mediaDescription["description"] = "Shar attack the quick brown fox jumped over he alzy dog. this is a test description. The quick brown fox jumped over the lazy dog. "
@@ -30,7 +32,7 @@ class ViewController: UIViewController, CardViewDelegate{
         let google = NSURL(string: "http://www.yahoo.com")!
         card = SummaryCard(url:google, description: "Yahoo is a veteran of the Internet. They recently spinned off a company called SpinCo to avoid paying billions of dollars in taxes for their stake in Alibaba.", title: "The quick brown fox jumped over the lazy dog. Yahoo Spinning Off SpinCo", media:media, data:nil)
         
-        let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil, androidStore: nil)
+        let creator = Creator(name: "Youtube", url: google, favicon: nil, iosStore: nil)
         let vidCard = VideoCard(title: "Title of a video card. The quick bronw fox jumped over th elzzy dog. ", embedUrl: google, url: google, creator: creator, data: media)
         
         /*
@@ -55,6 +57,10 @@ class ViewController: UIViewController, CardViewDelegate{
         })
     }
     
+    @IBAction func testButtonTapped(sender: AnyObject) {
+        println("tapped test button")
+        
+    }
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         let cardAction = action
         switch(action.type){
@@ -80,6 +86,7 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     
+    /*
     @IBAction func firstButtonTapped(sender: AnyObject) {
        // presentCard(card!, layout: .SummaryCardTall, animated:true, completion:nil)
         presentCard(imageCard!, animated: true, completion: nil)
@@ -141,8 +148,6 @@ class ViewController: UIViewController, CardViewDelegate{
             cardView.invalidateIntrinsicContentSize()
 
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+*/
 }
 

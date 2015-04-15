@@ -143,7 +143,7 @@ class WildcardSDKTests: XCTestCase {
     func testSummaryCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
@@ -173,7 +173,7 @@ class WildcardSDKTests: XCTestCase {
         
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         // article card no title goes to image only layout
         let mediaEmpty:NSMutableDictionary = NSMutableDictionary()
@@ -200,7 +200,7 @@ class WildcardSDKTests: XCTestCase {
     func testArticleCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         // article card no image has default
         let articleCard = ArticleCard(title: "default", abstractContent: "", url: url!, creator:publisher, data:NSDictionary())
@@ -225,7 +225,7 @@ class WildcardSDKTests: XCTestCase {
     func testVideoCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")!
-        let publisher = Creator(name:"Google", url:url, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url, favicon:nil, iosStore:nil)
         
         // article card no image has default
         let data:NSMutableDictionary = NSMutableDictionary()
@@ -238,7 +238,7 @@ class WildcardSDKTests: XCTestCase {
     func testBasicCardViews(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         // no image results in default lay out
         let SummaryCard1 = SummaryCard(url: url!, description: "The quick brown fox jumped over the lazy dog. This is a long description.", title: "test1", media:nil, data:nil)
@@ -265,7 +265,7 @@ class WildcardSDKTests: XCTestCase {
     func testBasicCardViewIntrinsicSizing(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil, androidStore:nil)
+        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         // no image results in default lay out
         let SummaryCard1 = SummaryCard(url: url!, description: "The quick brown fox jumped over the lazy dog. This is a long description.", title: "test1", media:nil, data:nil)

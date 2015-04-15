@@ -20,14 +20,12 @@ public class Creator : PlatformObject {
     public let url:NSURL
     public let favicon:NSURL?
     public let iosAppStoreUrl:NSURL?
-    public let androidAppStoreUrl:NSURL?
     
-    public init(name:String, url:NSURL, favicon:NSURL?, iosStore:NSURL?, androidStore:NSURL?){
+    public init(name:String, url:NSURL, favicon:NSURL?, iosStore:NSURL?){
         self.name = name
         self.url = url
         self.favicon = favicon
         self.iosAppStoreUrl = iosStore
-        self.androidAppStoreUrl = androidStore
     }
     
     class func deserializeFromData(data: NSDictionary) -> AnyObject? {
@@ -47,15 +45,11 @@ public class Creator : PlatformObject {
                 favicon = NSURL(string: fav)
             }
             
-            if let androidStore = data["androidAppStoreUrl"] as? String{
-                androidStoreUrl = NSURL(string:androidStore)
-            }
-            
             if let iosStore = data["iosAppStoreUrl"] as? String{
                 iosStoreUrl = NSURL(string:iosStore)
             }
             
-            return Creator(name:name!, url:creatorUrl!, favicon:favicon, iosStore:iosStoreUrl, androidStore:androidStoreUrl)
+            return Creator(name:name!, url:creatorUrl!, favicon:favicon, iosStore:iosStoreUrl)
         }else{
             return nil
         }

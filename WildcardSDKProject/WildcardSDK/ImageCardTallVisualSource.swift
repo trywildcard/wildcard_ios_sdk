@@ -37,7 +37,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as! ImageOnlyBody
-            header.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
+            header.contentEdgeInset = UIEdgeInsetsMake(0,0,0,0)
             header.imageAspectRatio = aspectRatio
         }
         return header
@@ -46,7 +46,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
-            body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 15, 15)
+            body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
             body.logo.hidden = true
         }
         return body
