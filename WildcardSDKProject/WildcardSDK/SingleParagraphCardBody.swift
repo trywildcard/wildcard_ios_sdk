@@ -78,8 +78,9 @@ public class SingleParagraphCardBody : CardViewElement {
     override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0
         height += topConstraint.constant
-        let expectedParagraphSize = paragraphLabel.sizeThatFits(CGSizeMake(cardWidth - leftConstraint.constant - rightConstraint.constant, CGFloat.max))
-        height += expectedParagraphSize.height
+        
+        height += Utilities.fittedHeightForLabel(paragraphLabel, labelWidth: cardWidth - leftConstraint.constant - rightConstraint.constant)
+        
         height += bottomConstraint.constant
         return round(height)
     }

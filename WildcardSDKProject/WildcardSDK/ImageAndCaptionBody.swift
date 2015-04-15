@@ -117,11 +117,10 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
         height += imageHeightConstraint.constant
         height += captionTopConstraint.constant
         
-        // how tall would the caption need to be for this width
-        let expectedCaptionSize = caption.sizeThatFits(CGSizeMake(imageWidthConstraint.constant, CGFloat.max))
-        height += round(expectedCaptionSize.height)
+        height += Utilities.fittedHeightForLabel(caption, labelWidth: imageWidthConstraint.constant)
+        
         height += captionBottomConstraint.constant
-        return height
+        return round(height)
     }
     
     // MARK: WCImageViewDelegate

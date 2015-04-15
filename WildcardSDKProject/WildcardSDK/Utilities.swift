@@ -53,4 +53,20 @@ public class Utilities{
     public class func heightRequiredForText(text:String?, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
         return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
     }
+    
+    /// Gets the fitted height for a label given a specific width
+    public class func fittedHeightForLabel(label:UILabel, labelWidth:CGFloat)->CGFloat{
+        
+        var titleHeight:CGFloat = 0
+        if(label.numberOfLines == 0){
+            // unbounded height
+            titleHeight = Utilities.heightRequiredForText(label.text, lineHeight: label.font.lineHeight, font: label.font, width: labelWidth)
+        }else{
+            // set number of lines, must cap the height
+            let maxHeight:CGFloat = CGFloat(label.numberOfLines) * label.font.lineHeight
+            titleHeight = Utilities.heightRequiredForText(label.text, lineHeight: label.font.lineHeight, font: label.font, width: labelWidth, maxHeight:maxHeight)
+        }
+        return titleHeight
+        
+    }
 }
