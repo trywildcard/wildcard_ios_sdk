@@ -12,8 +12,8 @@ import Foundation
 public class SummaryCardTwitterProfileVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:ImageOnlyBody!
-    var body:FullCardHeader!
-    var footer:ViewOnWebCardFooter!
+    var body:TwitterHeader!
+    var footer:SingleParagraphCardBody!
     
     public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
@@ -25,20 +25,19 @@ public class SummaryCardTwitterProfileVisualSource : BaseVisualSource, CardViewV
     
     public func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(.FullHeader) as! FullCardHeader
-            body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 0, 15)
-            body.logo.hidden = true
-            body.hairline.hidden = true
+            body = CardViewElementFactory.createCardViewElement(.TwitterHeader) as! TwitterHeader
         }
         return body
     }
     
     public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
-            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as! ViewOnWebCardFooter
-            footer.hairline.hidden = true
-            footer.contentEdgeInset = UIEdgeInsetsMake(15, 15, 10, 15)
+            footer = CardViewElementFactory.createCardViewElement(.SimpleParagraph) as! SingleParagraphCardBody
+            footer.contentEdgeInset = UIEdgeInsetsMake(0, 20, 22, 20)
+            footer.paragraphLabel.textColor = UIColor.wildcardDarkBlue()
+            footer.paragraphLabel.font = UIFont(name:"HelveticaNeue-Light", size: 18.0)!
         }
         return footer
+        
     }
 }

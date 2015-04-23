@@ -125,6 +125,17 @@ class LayoutDemoTableViewController: UITableViewController {
         summaryData["subtitle"] = "maxbulger"
         summaryBaseData["summary"] = summaryData
         summaryCardTwitterTweet = SummaryCard(url: NSURL(string: "https://twitter.com/maxbulger/status/590358976023396352")!, description: "We have our fingers in the dike. Hold steady. Keep faving. pic.twitter.com/ndpCXpRSgj", title: "Mɐx Bulger", media: nil, data: summaryBaseData)
+        
+        
+        let summaryDataProfile:NSMutableDictionary = NSMutableDictionary()
+        let summaryBaseDataProfile:NSMutableDictionary = NSMutableDictionary()
+        summaryDataProfile["subtitle"] = "maxbulger"
+        summaryBaseDataProfile["summary"] = summaryDataProfile
+        
+        let profileMedia:NSMutableDictionary = NSMutableDictionary()
+        profileMedia["type"] = "image"
+        profileMedia["imageUrl"] = "https://pbs.twimg.com/profile_images/378800000169457538/09928cb66a148bb81ca85ff9828d50ac_400x400.jpeg"
+        summaryCardTwitterProfile = SummaryCard(url: NSURL(string: "https://twitter.com/maxbulger")!, description: "@trywildcard. product, permaculture. made in rhode island and the commonwealth.", title: "Mɐx Bulger", media: profileMedia, data: summaryBaseDataProfile)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,6 +181,8 @@ class LayoutDemoTableViewController: UITableViewController {
             presentCard(articleCard, layout: .ArticleCardShort, animated: true, completion: nil)
         }else if(indexPath.row == 14){
             presentCard(summaryCardTwitterTweet, layout:.SummaryCardTwitterTweet, animated:true, completion:nil)
+        }else if(indexPath.row == 15){
+            presentCard(summaryCardTwitterProfile, layout:.SummaryCardTwitterProfile, animated:true, completion:nil)
         }
     }
 

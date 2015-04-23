@@ -58,6 +58,8 @@ public class TwitterHeader : CardViewElement
             }else{
                 kicker.text = summaryCard.webUrl.host!
             }
+        }else{
+            println("This header element is not supported for type \(card.cardType) yet")
         }
     }
     
