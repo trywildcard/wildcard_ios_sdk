@@ -23,6 +23,8 @@ public class CardViewElementFactory{
         switch(type){
         case .FullHeader:
             cardViewElement = UIView.loadFromNibNamed("FullCardHeader") as! FullCardHeader
+        case .TwitterHeader:
+            cardViewElement = UIView.loadFromNibNamed("TwitterHeader") as! TwitterHeader
         case .ImageAndCaption:
             cardViewElement = UIView.loadFromNibNamed("ImageAndCaptionBody") as! ImageAndCaptionBody
         case .ImageOnly:

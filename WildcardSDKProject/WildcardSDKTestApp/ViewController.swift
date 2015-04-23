@@ -22,6 +22,7 @@ class ViewController: UIViewController, CardViewDelegate{
         
         title = "Test Bench"
  
+        /*
         Card.getFromUrl(NSURL(string: "http://money.cnn.com/2015/04/14/technology/high-there-dating-app/index.html")!, completion: { (card, error) -> Void in
             if let card = card  as? ArticleCard {
                 //self.imageCard = card
@@ -32,6 +33,7 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
+*/
     }
     
     @IBAction func testButtonTapped(sender: AnyObject) {

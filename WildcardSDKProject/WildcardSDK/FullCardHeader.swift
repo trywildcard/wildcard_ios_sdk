@@ -58,11 +58,6 @@ public class FullCardHeader : CardViewElement
         contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 45)
     }
     
-    override public func intrinsicContentSize() -> CGSize {
-        let size = CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
-        return size
-    }
-    
     override public func adjustForPreferredWidth(cardWidth: CGFloat) {
         adjustLabelLayoutWidths()
     }

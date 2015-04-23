@@ -8,6 +8,7 @@
 
 typedef NS_ENUM(NSInteger, WCElementType){
     WCElementTypeFullHeader,
+    WCElementTypeTwitterHeader,
     WCElementTypeImageAndCaption,
     WCElementTypeImageOnly,
     WCElementTypeMediaTextFullWebView,

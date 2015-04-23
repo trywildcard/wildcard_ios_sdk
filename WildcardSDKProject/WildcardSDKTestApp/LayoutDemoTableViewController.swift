@@ -15,6 +15,8 @@ class LayoutDemoTableViewController: UITableViewController {
     var videoCard:VideoCard!
     var imageCard:ImageCard!
     var articleCard:ArticleCard!
+    var summaryCardTwitterTweet:SummaryCard!
+    var summaryCardTwitterProfile:SummaryCard!
     
     var layoutLabels:[String] =
     [
@@ -31,7 +33,9 @@ class LayoutDemoTableViewController: UITableViewController {
         "ImageCard",
         "ArticleCard",
         "ArticleCard",
-        "ArticleCard"
+        "ArticleCard",
+        "SummaryCard",
+        "SummaryCard"
     ]
     
     var layoutLabelsSubtexts:[String] =
@@ -49,7 +53,9 @@ class LayoutDemoTableViewController: UITableViewController {
         "Image Only",
         "No Image",
         "Tall",
-        "Short"
+        "Short",
+        "Twitter Tweet",
+        "Twitter Profile"
     ]
     
     override func viewDidLoad() {
@@ -113,6 +119,12 @@ class LayoutDemoTableViewController: UITableViewController {
         articleBaseData["article"] = articleData
         
         articleCard = ArticleCard(title: "The surprising backstory of Tinder for pot smokers", abstractContent: "That's what co-founder Todd Mitchem hopes to create with High There -- \"a social connection app for cannabis consumers.\" Users can look for dates or simply other like-minded people. But for those used to dating apps like Tinder or OkCupid, the questions will probably be a bit unfamiliar.", url: articleURL, creator: cnn, data: articleBaseData)
+        
+        let summaryData:NSMutableDictionary = NSMutableDictionary()
+        let summaryBaseData:NSMutableDictionary = NSMutableDictionary()
+        summaryData["subtitle"] = "maxbulger"
+        summaryBaseData["summary"] = summaryData
+        summaryCardTwitterTweet = SummaryCard(url: NSURL(string: "https://twitter.com/maxbulger/status/590358976023396352")!, description: "We have our fingers in the dike. Hold steady. Keep faving. pic.twitter.com/ndpCXpRSgj", title: "Mɐx Bulger", media: nil, data: summaryBaseData)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,6 +168,8 @@ class LayoutDemoTableViewController: UITableViewController {
             presentCard(articleCard, layout: .ArticleCardTall, animated: true, completion: nil)
         }else if(indexPath.row == 13){
             presentCard(articleCard, layout: .ArticleCardShort, animated: true, completion: nil)
+        }else if(indexPath.row == 14){
+            presentCard(summaryCardTwitterTweet, layout:.SummaryCardTwitterTweet, animated:true, completion:nil)
         }
     }
 

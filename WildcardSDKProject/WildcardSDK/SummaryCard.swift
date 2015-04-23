@@ -77,6 +77,8 @@ public class SummaryCard : Card {
             layout == WCCardLayout.SummaryCardShort ||
             layout == WCCardLayout.SummaryCardShortLeft ||
             layout == WCCardLayout.SummaryCardNoImage ||
-            layout == WCCardLayout.SummaryCardImageOnly
+            layout == WCCardLayout.SummaryCardImageOnly ||
+            layout == WCCardLayout.SummaryCardTwitterProfile ||
+            layout == WCCardLayout.SummaryCardTwitterTweet
     }
 }

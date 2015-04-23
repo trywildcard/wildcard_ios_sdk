@@ -30,4 +30,8 @@ public extension UIColor{
     public class func wildcardMediaBodyColor()->UIColor{
         return UIColor(red: 98/255, green: 107/255, blue: 128/255, alpha: 1.0)
     }
+    
+    public class func twitterBlue()->UIColor{
+        return UIColor(red: 50/255, green: 222/255, blue: 244/255, alpha: 1.0)
+    }
 }

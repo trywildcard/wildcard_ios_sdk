@@ -55,6 +55,12 @@ class CardViewVisualSourceFactory {
         case .ImageCardImageOnly:
             var source = ImageCardImageOnlyVisualSource(card:card, aspectRatio:0.75)
             return source
+        case .SummaryCardTwitterProfile:
+            var source = SummaryCardTwitterProfileVisualSource(card:card)
+            return source
+        case .SummaryCardTwitterTweet:
+            var source = SummaryCardTwitterTweetVisualSource(card:card)
+            return source
         case .Unknown:
             // shouldn't happen
             var source = SummaryCardNoImageVisualSource(card:card)

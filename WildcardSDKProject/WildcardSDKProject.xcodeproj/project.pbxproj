@@ -78,6 +78,11 @@
 		1D904F9F1A302937001FFDEA /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D904F9E1A302937001FFDEA /* Platform.swift */; };
 		1D9194801AE9768600355015 /* NSURLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D91947F1AE9768600355015 /* NSURLExtensions.swift */; };
 		1D9194821AE9779F00355015 /* WildcardSDKExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9194811AE9779F00355015 /* WildcardSDKExtensionTests.swift */; };
+		1D9194841AE9852000355015 /* SummaryCardTwitterTweetVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9194831AE9852000355015 /* SummaryCardTwitterTweetVisualSource.swift */; };
+		1D9194861AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9194851AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift */; };
+		1D9194881AE9899600355015 /* TwitterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9194871AE9899600355015 /* TwitterHeader.xib */; };
+		1D91948A1AE989AF00355015 /* TwitterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9194891AE989AF00355015 /* TwitterHeader.swift */; };
+		1D91948B1AE98C3D00355015 /* TwitterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9194871AE9899600355015 /* TwitterHeader.xib */; };
 		1D97647F1A43470A00E51FE5 /* MediaTextFullWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */; };
 		1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
@@ -255,6 +260,10 @@
 		1D904F9E1A302937001FFDEA /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		1D91947F1AE9768600355015 /* NSURLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtensions.swift; sourceTree = "<group>"; };
 		1D9194811AE9779F00355015 /* WildcardSDKExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildcardSDKExtensionTests.swift; sourceTree = "<group>"; };
+		1D9194831AE9852000355015 /* SummaryCardTwitterTweetVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardTwitterTweetVisualSource.swift; sourceTree = "<group>"; };
+		1D9194851AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardTwitterProfileVisualSource.swift; sourceTree = "<group>"; };
+		1D9194871AE9899600355015 /* TwitterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterHeader.xib; sourceTree = "<group>"; };
+		1D9194891AE989AF00355015 /* TwitterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHeader.swift; sourceTree = "<group>"; };
 		1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextFullWebView.swift; sourceTree = "<group>"; };
 		1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextFullWebView.xib; sourceTree = "<group>"; };
 		1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximizedArticleVisualSource.swift; sourceTree = "<group>"; };
@@ -583,6 +592,8 @@
 			children = (
 				1DC9287F1A40993B0040DAD0 /* FullCardHeader.swift */,
 				1DC928851A409A590040DAD0 /* FullCardHeader.xib */,
+				1D9194871AE9899600355015 /* TwitterHeader.xib */,
+				1D9194891AE989AF00355015 /* TwitterHeader.swift */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -682,6 +693,8 @@
 				1D0BEDD71A97B14E000BA999 /* SummaryCardShortLeftVisualSource.swift */,
 				1DA1638F1A73FB290020E0C6 /* SummaryCardShortVisualSource.swift */,
 				1DF1B8CA1A6BEF30000EC76E /* SummaryCardTallVisualSource.swift */,
+				1D9194851AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift */,
+				1D9194831AE9852000355015 /* SummaryCardTwitterTweetVisualSource.swift */,
 			);
 			name = "Summary Card Visual Sources";
 			sourceTree = "<group>";
@@ -879,6 +892,7 @@
 				1D5873311A374B2B00C3EAF3 /* Media.xcassets in Resources */,
 				1D0BEDD91A97B19B000BA999 /* ImageFloatLeftBody.xib in Resources */,
 				1D1A286D1A43F219007D3E64 /* MediaReadingCss.css in Resources */,
+				1D91948B1AE98C3D00355015 /* TwitterHeader.xib in Resources */,
 				1D3A286B1A2E696A00A9D4C1 /* LaunchScreen.xib in Resources */,
 				1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */,
 				1D3A28681A2E696A00A9D4C1 /* Images.xcassets in Resources */,
@@ -893,6 +907,7 @@
 				1D1A286C1A43F0B0007D3E64 /* MediaReadingCss.css in Resources */,
 				1DC3095A1AB35A92000B133E /* YTPlayerView-iframe-player.html in Resources */,
 				1DF1B8841A6B475C000EC76E /* ImageAndCaptionBody.xib in Resources */,
+				1D9194881AE9899600355015 /* TwitterHeader.xib in Resources */,
 				1DC309421AB243D3000B133E /* html5VideoListeners.js in Resources */,
 				1D0BEDD41A97AD81000BA999 /* ImageFloatLeftBody.xib in Resources */,
 				1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */,
@@ -963,9 +978,11 @@
 				1D6F886B1AAE21F100D73668 /* VideoCardBody.swift in Sources */,
 				1D904F9D1A2FE0D2001FFDEA /* ArticleCard.swift in Sources */,
 				1DAC268E1A3564170005C4BE /* CheckShortTitleEdge.swift in Sources */,
+				1D9194841AE9852000355015 /* SummaryCardTwitterTweetVisualSource.swift in Sources */,
 				1DC39A6C1A7B3FFD007BBEBE /* UILabelExtensions.swift in Sources */,
 				1DAC268A1A355BB70005C4BE /* CardTypeEdge.swift in Sources */,
 				1D9764841A4356B200E51FE5 /* MaximizedArticleVisualSource.swift in Sources */,
+				1D91948A1AE989AF00355015 /* TwitterHeader.swift in Sources */,
 				1D904F9F1A302937001FFDEA /* Platform.swift in Sources */,
 				1DF760EB1ACC3F1B0098F6E8 /* StockImageViewPresentationController.swift in Sources */,
 				1DF0BA991A394B4D00EE9645 /* CardPhysics.swift in Sources */,
@@ -1013,6 +1030,7 @@
 				1D32C5101A7982320021D27A /* NSData+MPBase64.m in Sources */,
 				1DF760E91ACC3F0F0098F6E8 /* StockImageViewAnimationController.swift in Sources */,
 				1DEADBDA1A9959C700489448 /* BaseVisualSource.swift in Sources */,
+				1D9194861AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift in Sources */,
 				1D74170C1A40761600281714 /* SingleParagraphCardBody.swift in Sources */,
 				1D014ABC1A46A689004A29B5 /* StockMaximizedCardPresentationController.swift in Sources */,
 				1D32C5081A7972D90021D27A /* Mixpanel.m in Sources */,

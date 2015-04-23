@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, WCCardLayout) {
     WCCardLayoutSummaryCardShort,
     WCCardLayoutSummaryCardShortLeft,
     WCCardLayoutSummaryCardImageOnly,
+    WCCardLayoutSummaryCardTwitterTweet,
+    WCCardLayoutSummaryCardTwitterProfile,
     WCCardLayoutArticleCardNoImage,
     WCCardLayoutArticleCardTall,
     WCCardLayoutArticleCardShort,
