@@ -43,6 +43,7 @@ public class CardPhysics : NSObject {
     var flipBoolean = false
     var cardPanGestureRecognizer:UIPanGestureRecognizer?
     var cardDoubleTapGestureRecognizer:UITapGestureRecognizer?
+    var cardTapGestureRecognizer:UITapGestureRecognizer?
     var touchPosition:CGPoint = CGPointZero
     var originalPosition:CGPoint = CGPointZero
     
@@ -114,6 +115,7 @@ public class CardPhysics : NSObject {
     }
     
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"cardDoubleTapped"], withCard: cardView.backingCard)
         if(cardView.back != nil){
             // these built in transitions automatically re assign super views, so gotta re constrain every time
             if(!flipBoolean){
@@ -132,11 +134,27 @@ public class CardPhysics : NSObject {
         }
     }
     
+    func cardTapped(recognizer:UITapGestureRecognizer!){
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"cardTapped"], withCard: cardView.backingCard)
+        
+        // full card is tapped, depending on the layout we can do different things
+        if cardView.visualSource is SummaryCardTwitterTweetVisualSource{
+            cardView.handleViewOnWeb(cardView.backingCard.webUrl)
+        }else if cardView.visualSource is SummaryCardTwitterProfileVisualSource{
+            cardView.handleViewOnWeb(cardView.backingCard.webUrl)
+        }
+       
+    }
+    
     // MARK: Instance
     func setup(){
         cardDoubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cardDoubleTapped:")
         cardDoubleTapGestureRecognizer?.numberOfTapsRequired = 2
-        self.cardView.addGestureRecognizer(cardDoubleTapGestureRecognizer!)
+        cardView.addGestureRecognizer(cardDoubleTapGestureRecognizer!)
+        
+        cardTapGestureRecognizer = UITapGestureRecognizer(target:self, action: "cardTapped:")
+        cardTapGestureRecognizer?.numberOfTapsRequired = 1
+        cardView.addGestureRecognizer(cardTapGestureRecognizer!)
     }
     
 }

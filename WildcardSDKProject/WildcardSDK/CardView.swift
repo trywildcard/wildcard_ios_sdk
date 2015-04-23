@@ -451,13 +451,6 @@ public class CardView : UIView
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: header!, attribute: .Bottom, multiplier: 1.0, constant: 0))
             containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: footer!, attribute: .Top, multiplier: 1.0, constant: 0))
         }
-        
-        // Back of the card always constrain to edges if it exists
-        //if(back != nil){
-        //    insertSubview(back!, belowSubview:containerView)
-        //    back!.constrainToSuperViewEdges()
-       // }
-        
     }
     
     private func convenienceInitialize(){
