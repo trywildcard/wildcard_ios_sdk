@@ -119,6 +119,26 @@ class WildcardSDKTests: XCTestCase {
         })
     }
     
+    func testTwitterSummaryCard(){
+        let expectation = expectationWithDescription("Bogus Article Card")
+        let articleUrl = NSURL(string: "https://twitter.com/maxbulger")
+        Card.getFromUrl(articleUrl!, completion: { (card:Card?, error:NSError?) -> Void in
+            XCTAssert(card != nil)
+            XCTAssert(error == nil)
+            
+            if let summaryCard = card as? SummaryCard{
+                XCTAssert(true)
+                XCTAssert(summaryCard.subtitle != nil)
+            }else{
+                XCTFail("not summary")
+            }
+            
+            expectation.fulfill()
+        })
+        waitForExpectationsWithTimeout(10, handler:{ error in
+        })
+    }
+    
     func testSummaryCardTryWildcard(){
         let expectation = expectationWithDescription("Bogus Article Card")
         let articleUrl = NSURL(string: "http://www.trywildcard.com")
