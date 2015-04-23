@@ -453,20 +453,20 @@ public class CardView : UIView
         }
         
         // Back of the card always constrain to edges if it exists
-        if(back != nil){
-            insertSubview(back!, belowSubview:containerView)
-            back!.constrainToSuperViewEdges()
-        }
+        //if(back != nil){
+        //    insertSubview(back!, belowSubview:containerView)
+        //    back!.constrainToSuperViewEdges()
+       // }
         
     }
     
     private func convenienceInitialize(){
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = WildcardSDK.cardBackgroundColor
         
         // always have a white container view holder card elements
         containerView = UIView(frame: CGRectZero)
-        containerView.backgroundColor = UIColor.whiteColor()
+        containerView.backgroundColor = UIColor.clearColor()
         containerView.layer.cornerRadius = WildcardSDK.cardCornerRadius
         containerView.layer.masksToBounds = true
         addSubview(containerView)

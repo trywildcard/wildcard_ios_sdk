@@ -111,6 +111,15 @@ public class WildcardSDK {
         }
     }
     
+    /// The default background color for any card view
+    public class var cardBackgroundColor:UIColor{
+        get{
+            return WildcardSDK.sharedInstance.__cardBackgroundColor
+        }set{
+            WildcardSDK.sharedInstance.__cardBackgroundColor = newValue
+        }
+    }
+    
     /// Initialize the SDK
     public class func initializeWithApiKey(key:String){
         if(WildcardSDK.sharedInstance.__applicationKey == nil){
@@ -143,6 +152,7 @@ public class WildcardSDK {
     var __cardDescriptionFont:UIFont!
     var __cardDescriptionColor:UIColor!
     var __cardActionButtonFont:UIFont!
+    var __cardBackgroundColor:UIColor!
     var __applicationKey:String?
     var __analytics:WCAnalytics?
     var __networkDelegateQueue:NSOperationQueue!
@@ -163,6 +173,7 @@ public class WildcardSDK {
             Static.instance!.__cardDescriptionColor = UIColor.wildcardMediaBodyColor()
             Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
             Static.instance!.__networkDelegateQueue = NSOperationQueue.mainQueue()
+            Static.instance!.__cardBackgroundColor = UIColor.whiteColor()
         })
         return Static.instance!
     }
