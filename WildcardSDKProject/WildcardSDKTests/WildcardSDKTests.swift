@@ -42,7 +42,7 @@ class WildcardSDKTests: XCTestCase {
     }
     
     func testImageCard(){
-        let expectation = expectationWithDescription("Creates Article Card")
+        let expectation = expectationWithDescription("Creates Image Card")
         let imageUrl = NSURL(string: "http://imgur.com/gallery/ZoLUQOS")
         Card.getFromUrl(imageUrl!, completion: { (card:Card?, error:NSError?) -> Void in
             XCTAssert(card != nil)

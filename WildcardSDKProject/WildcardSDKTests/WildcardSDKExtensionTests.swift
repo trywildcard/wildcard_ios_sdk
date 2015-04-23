@@ -34,6 +34,14 @@ class WildcardSDKExtensionTests: XCTestCase {
         XCTAssert(url?.isTwitterProfileURL() == false)
         url = NSURL(string: "https://www.facebook.com/maxbulger/asdfa/asdfa")
         XCTAssert(url?.isTwitterProfileURL() == false)
+        url = NSURL(string: "https://twitter.com/NateChaseH")
+        XCTAssert(url?.isTwitterProfileURL() == true)
+        url = NSURL(string: "https://twitter.com/maxbulger")
+        XCTAssert(url?.isTwitterProfileURL() == true)
+        url = NSURL(string: "https://twitter.com/maxbulger/")
+        XCTAssert(url?.isTwitterProfileURL() == true)
+        url = NSURL(string: "https://twitter.com/maxbulger/status/23234234/")
+        XCTAssert(url?.isTwitterProfileURL() == false)
     }
     
     func testTwitterTweetURL(){
@@ -53,6 +61,22 @@ class WildcardSDKExtensionTests: XCTestCase {
         url = NSURL(string: "https://www.facebook.com/maxbulger/status/notnumbers")
         XCTAssert(url?.isTwitterTweetURL() == false)
         url = NSURL(string: "https://www.facebook.com/maxbulger/status/notnumbers/")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://twitter.com/maxbulger")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://twitter.com/maxbulger/")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://twitter.com/maxbulger/status/23234234/")
+        XCTAssert(url?.isTwitterTweetURL() == true)
+        url = NSURL(string: "https://twitter.com/maxbulger/status/23234234")
+        XCTAssert(url?.isTwitterTweetURL() == true)
+        url = NSURL(string: "https://facebook.com/maxbulger")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://facebook.com/maxbulger/asdfa/asdfa")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://facebook.com/maxbulger/status/notnumbers")
+        XCTAssert(url?.isTwitterTweetURL() == false)
+        url = NSURL(string: "https://facebook.com/maxbulger/status/notnumbers/")
         XCTAssert(url?.isTwitterTweetURL() == false)
         
     }

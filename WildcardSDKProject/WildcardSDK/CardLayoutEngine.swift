@@ -59,7 +59,11 @@ public class CardLayoutEngine{
         // MARK: Landscape - Summary Card
         let summaryLandscapeHasImage = LayoutDecisionNode(description: "Summary card has an image", layout: .SummaryCardShort)
         let summaryLandscapeHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
+        let summaryLandScapeTwitterProfile = LayoutDecisionNode(description: "Twitter Profile", layout:.SummaryCardTwitterProfile)
+        let summaryLandScapeTwitterTweet = LayoutDecisionNode(description: "Twitter Tweet", layout:.SummaryCardTwitterTweet)
         
+        summaryCardLandscapeNode.addEdge(CheckTwitterTweetEdge(), destination: summaryLandScapeTwitterTweet)
+        summaryCardLandscapeNode.addEdge(CheckTwitterProfileEdge(), destination: summaryLandScapeTwitterProfile)
         summaryCardLandscapeNode.addEdge(CheckImageEdge(), destination: summaryLandscapeHasImage)
         summaryCardLandscapeNode.addEdge(PassThroughEdge(), destination: summaryLandscapeHasNoImage)
         
@@ -103,7 +107,11 @@ public class CardLayoutEngine{
         // MARK: Portrait - Summary Card
         let summaryCardHasImage = LayoutDecisionNode(description: "Summary card has image", layout: .SummaryCardTall)
         let summaryCardHasNoImage = LayoutDecisionNode(description: "Summary card has no image", layout: .SummaryCardNoImage)
+        let summaryCardTwitterProfile = LayoutDecisionNode(description: "Twitter Profile", layout:.SummaryCardTwitterProfile)
+        let summaryCardTwitterTweet = LayoutDecisionNode(description: "Twitter Tweet", layout:.SummaryCardTwitterTweet)
         
+        summaryCardNode.addEdge(CheckTwitterTweetEdge(), destination: summaryCardTwitterTweet)
+        summaryCardNode.addEdge(CheckTwitterProfileEdge(), destination: summaryCardTwitterProfile)
         summaryCardNode.addEdge(CheckImageEdge(), destination: summaryCardHasImage)
         summaryCardNode.addEdge(PassThroughEdge(), destination: summaryCardHasNoImage)
         

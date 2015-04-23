@@ -63,11 +63,6 @@
                     <view key="view" contentMode="scaleToFill" id="YTX-U4-oZ7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Wt3-LD-j3H">
-                                <rect key="frame" x="55" y="106" width="233" height="124"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -103,7 +98,4 @@
             <point key="canvasLocation" x="150" y="-498"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="twitterIcon" width="32" height="25"/>
-    </resources>
 </document>

@@ -51,8 +51,6 @@ class Platform{
     {
         if (WildcardSDK.apiKey != nil){
             
-        //    let params = NSMutableDictionary()
-          //  params["url"] = url.absoluteString
             var params = [NSObject:AnyObject]()
             params["url"] = url.absoluteString!
             

@@ -22,10 +22,8 @@ class ViewController: UIViewController, CardViewDelegate{
         
         title = "Test Bench"
  
-        /*
-        Card.getFromUrl(NSURL(string: "http://money.cnn.com/2015/04/14/technology/high-there-dating-app/index.html")!, completion: { (card, error) -> Void in
-            if let card = card  as? ArticleCard {
-                //self.imageCard = card
+        Card.getFromUrl(NSURL(string: "https://twitter.com/NateChaseH/status/590022123760046080")!, completion: { (card, error) -> Void in
+            if let card = card{
                 self.cardView = CardView.createCardView(card)
                 self.cardView.delegate = self
                 self.view.addSubview(self.cardView)
@@ -33,7 +31,6 @@ class ViewController: UIViewController, CardViewDelegate{
                 self.cardView.verticallyCenterToSuperView(0)
             }
         })
-*/
     }
     
     @IBAction func testButtonTapped(sender: AnyObject) {

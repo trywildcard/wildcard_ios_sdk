@@ -83,6 +83,8 @@
 		1D9194881AE9899600355015 /* TwitterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9194871AE9899600355015 /* TwitterHeader.xib */; };
 		1D91948A1AE989AF00355015 /* TwitterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9194891AE989AF00355015 /* TwitterHeader.swift */; };
 		1D91948B1AE98C3D00355015 /* TwitterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9194871AE9899600355015 /* TwitterHeader.xib */; };
+		1D91948D1AE99C9500355015 /* CheckTwitterProfileEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D91948C1AE99C9500355015 /* CheckTwitterProfileEdge.swift */; };
+		1D91948F1AE99CA100355015 /* CheckTwitterTweetEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D91948E1AE99CA100355015 /* CheckTwitterTweetEdge.swift */; };
 		1D97647F1A43470A00E51FE5 /* MediaTextFullWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */; };
 		1D9764811A43475800E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
 		1D9764821A4347A200E51FE5 /* MediaTextFullWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */; };
@@ -264,6 +266,8 @@
 		1D9194851AE9853500355015 /* SummaryCardTwitterProfileVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCardTwitterProfileVisualSource.swift; sourceTree = "<group>"; };
 		1D9194871AE9899600355015 /* TwitterHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterHeader.xib; sourceTree = "<group>"; };
 		1D9194891AE989AF00355015 /* TwitterHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterHeader.swift; sourceTree = "<group>"; };
+		1D91948C1AE99C9500355015 /* CheckTwitterProfileEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTwitterProfileEdge.swift; sourceTree = "<group>"; };
+		1D91948E1AE99CA100355015 /* CheckTwitterTweetEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckTwitterTweetEdge.swift; sourceTree = "<group>"; };
 		1D97647E1A43470A00E51FE5 /* MediaTextFullWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextFullWebView.swift; sourceTree = "<group>"; };
 		1D9764801A43475800E51FE5 /* MediaTextFullWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTextFullWebView.xib; sourceTree = "<group>"; };
 		1D9764831A4356B200E51FE5 /* MaximizedArticleVisualSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaximizedArticleVisualSource.swift; sourceTree = "<group>"; };
@@ -550,6 +554,8 @@
 				1DAC268F1A3569DB0005C4BE /* CheckShortDescriptionEdge.swift */,
 				1DAC268D1A3564170005C4BE /* CheckShortTitleEdge.swift */,
 				1DF760E21ACB1D660098F6E8 /* CheckTitlePresentEdge.swift */,
+				1D91948C1AE99C9500355015 /* CheckTwitterProfileEdge.swift */,
+				1D91948E1AE99CA100355015 /* CheckTwitterTweetEdge.swift */,
 				1DAC26851A326E530005C4BE /* LandscapeEdge.swift */,
 				1DAC267F1A326B790005C4BE /* PassThroughEdge.swift */,
 				1DAC26871A326E7B0005C4BE /* PortraitEdge.swift */,
@@ -965,6 +971,7 @@
 				1DE218491A38C103007746B4 /* ImageCache.swift in Sources */,
 				1DAC26881A326E7B0005C4BE /* PortraitEdge.swift in Sources */,
 				1DF623831A76031800382E81 /* WCImageView.swift in Sources */,
+				1D91948F1AE99CA100355015 /* CheckTwitterTweetEdge.swift in Sources */,
 				1DF1B8821A69CC2F000EC76E /* ImageAndCaptionBody.swift in Sources */,
 				1DF1B8C81A6BED19000EC76E /* SummaryCardNoImageVisualSource.swift in Sources */,
 				1DF760E51ACB1EAD0098F6E8 /* ImageCardImageOnlyVisualSource.swift in Sources */,
@@ -997,6 +1004,7 @@
 				1DC39A701A7C2F2F007BBEBE /* SafariActivity.swift in Sources */,
 				1DC928801A40993B0040DAD0 /* FullCardHeader.swift in Sources */,
 				1D6F88691AAE206500D73668 /* VideoCardShortVisualSource.swift in Sources */,
+				1D91948D1AE99C9500355015 /* CheckTwitterProfileEdge.swift in Sources */,
 				1D6F886D1AAE397400D73668 /* PassthroughView.swift in Sources */,
 				1D7417081A40145100281714 /* EmptyCardBack.swift in Sources */,
 				1DF1B8DC1A6C2E3E000EC76E /* ArticleCardSmallImageVisualSource.swift in Sources */,
