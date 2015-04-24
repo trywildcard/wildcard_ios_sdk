@@ -455,21 +455,23 @@ public class CardView : UIView
     
     private func convenienceInitialize(){
         
-        backgroundColor = WildcardSDK.cardBackgroundColor
+        backgroundColor = UIColor.clearColor()
         
-        // always have a white container view holder card elements
+        // container view holds card view elements
         containerView = UIView(frame: CGRectZero)
-        containerView.backgroundColor = UIColor.clearColor()
+        containerView.backgroundColor = WildcardSDK.cardBackgroundColor
         containerView.layer.cornerRadius = WildcardSDK.cardCornerRadius
         containerView.layer.masksToBounds = true
         addSubview(containerView)
         containerView.constrainToSuperViewEdges()
         
-        // drop shadow goes on actual card layer
-        layer.shadowColor = UIColor.wildcardMediumGray().CGColor
-        layer.shadowOpacity = 0.8
-        layer.shadowOffset = CGSizeMake(0.0, 1.0)
-        layer.shadowRadius = 1.0
+        // drop shadow if enabled
+        if(WildcardSDK.cardDropShadow){
+            layer.shadowColor = UIColor.wildcardMediumGray().CGColor
+            layer.shadowOpacity = 0.8
+            layer.shadowOffset = CGSizeMake(0.0, 1.0)
+            layer.shadowRadius = 1.0
+        }
         
         physics = CardPhysics(cardView:self)
         physics?.setup()

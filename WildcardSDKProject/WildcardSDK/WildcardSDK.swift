@@ -120,6 +120,15 @@ public class WildcardSDK {
         }
     }
     
+    /// Enables or disables a drop shadow on the card view, ON by default
+    public class var cardDropShadow:Bool{
+        get{
+            return WildcardSDK.sharedInstance.__cardDropShadow
+        }set{
+            WildcardSDK.sharedInstance.__cardDropShadow = newValue
+        }
+    }
+    
     /// Initialize the SDK
     public class func initializeWithApiKey(key:String){
         if(WildcardSDK.sharedInstance.__applicationKey == nil){
@@ -153,6 +162,7 @@ public class WildcardSDK {
     var __cardDescriptionColor:UIColor!
     var __cardActionButtonFont:UIFont!
     var __cardBackgroundColor:UIColor!
+    var __cardDropShadow:Bool!
     var __applicationKey:String?
     var __analytics:WCAnalytics?
     var __networkDelegateQueue:NSOperationQueue!
@@ -174,6 +184,7 @@ public class WildcardSDK {
             Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
             Static.instance!.__networkDelegateQueue = NSOperationQueue.mainQueue()
             Static.instance!.__cardBackgroundColor = UIColor.whiteColor()
+            Static.instance!.__cardDropShadow = true
         })
         return Static.instance!
     }

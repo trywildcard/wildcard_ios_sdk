@@ -1031,6 +1031,10 @@ SWIFT_CLASS("_TtC11WildcardSDK11WildcardSDK")
 + (UIColor * __nonnull)cardBackgroundColor;
 + (void)setCardBackgroundColor:(UIColor * __nonnull)newValue;
 
+/// Enables or disables a drop shadow on the card view, ON by default
++ (BOOL)cardDropShadow;
++ (void)setCardDropShadow:(BOOL)newValue;
+
 /// Initialize the SDK
 + (void)initializeWithApiKey:(NSString * __nonnull)key;
 @end

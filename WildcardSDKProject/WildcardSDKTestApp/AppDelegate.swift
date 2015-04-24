@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         WildcardSDK.initializeWithApiKey("b17442d4-5ca1-4173-bc90-bb9ee60086ab")
         
-        //WildcardSDK.cardCornerRadius = 2.0
         println("running wildcard version \(WildcardSDKVersionNumber)")
         
         return true

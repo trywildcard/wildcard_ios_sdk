@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D91949A1AEA9A9B00355015 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9194991AEA9A9B00355015 /* WildcardSDK.framework */; };
-		1D91949B1AEA9A9B00355015 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9194991AEA9A9B00355015 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D91949D1AEAADE000355015 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D91949C1AEAADE000355015 /* WildcardSDK.framework */; };
+		1D91949E1AEAADE000355015 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D91949C1AEAADE000355015 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DC999651ABA2EEA006BA880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999641ABA2EEA006BA880 /* main.m */; };
 		1DC999681ABA2EEA006BA880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999671ABA2EEA006BA880 /* AppDelegate.m */; };
 		1DC9996E1ABA2EEA006BA880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC9996C1ABA2EEA006BA880 /* Main.storyboard */; };
@@ -36,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1D91949B1AEA9A9B00355015 /* WildcardSDK.framework in Embed Frameworks */,
+				1D91949E1AEAADE000355015 /* WildcardSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D9194991AEA9A9B00355015 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
+		1D91949C1AEAADE000355015 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRedditCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC999631ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC999641ABA2EEA006BA880 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D91949A1AEA9A9B00355015 /* WildcardSDK.framework in Frameworks */,
+				1D91949D1AEAADE000355015 /* WildcardSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 		1DC999561ABA2EEA006BA880 = {
 			isa = PBXGroup;
 			children = (
-				1D9194991AEA9A9B00355015 /* WildcardSDK.framework */,
+				1D91949C1AEAADE000355015 /* WildcardSDK.framework */,
 				1DC999611ABA2EEA006BA880 /* WCRedditCards */,
 				1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */,
 				1DC999601ABA2EEA006BA880 /* Products */,

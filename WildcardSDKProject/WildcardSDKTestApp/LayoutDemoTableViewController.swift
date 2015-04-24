@@ -129,13 +129,13 @@ class LayoutDemoTableViewController: UITableViewController {
         
         let summaryDataProfile:NSMutableDictionary = NSMutableDictionary()
         let summaryBaseDataProfile:NSMutableDictionary = NSMutableDictionary()
-        summaryDataProfile["subtitle"] = "maxbulger"
+        summaryDataProfile["subtitle"] = "ryandawidjan"
         summaryBaseDataProfile["summary"] = summaryDataProfile
         
         let profileMedia:NSMutableDictionary = NSMutableDictionary()
         profileMedia["type"] = "image"
-        profileMedia["imageUrl"] = "https://pbs.twimg.com/profile_images/378800000169457538/09928cb66a148bb81ca85ff9828d50ac_400x400.jpeg"
-        summaryCardTwitterProfile = SummaryCard(url: NSURL(string: "https://twitter.com/maxbulger")!, description: "@trywildcard. product, permaculture. made in rhode island and the commonwealth.", title: "Mɐx Bulger", media: profileMedia, data: summaryBaseDataProfile)
+        profileMedia["imageUrl"] = "https://pbs.twimg.com/profile_images/580571339779641344/i5gdqaph_400x400.jpg"
+        summaryCardTwitterProfile = SummaryCard(url: NSURL(string: "https://twitter.com/ryandawidjan")!, description: "wildcard : menswear : product : biz // connecting with smarter people via 2 wheels and 140 characters.", title: "Ryan", media: profileMedia, data: summaryBaseDataProfile)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
