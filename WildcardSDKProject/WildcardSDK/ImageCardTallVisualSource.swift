@@ -48,6 +48,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
             body = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
             body.logo.hidden = true
+            body.hairline.hidden = true
         }
         return body
     }

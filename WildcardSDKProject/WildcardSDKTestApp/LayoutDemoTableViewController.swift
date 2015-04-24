@@ -88,20 +88,19 @@ class LayoutDemoTableViewController: UITableViewController {
         let data:NSMutableDictionary = NSMutableDictionary()
         videoCard = VideoCard(title: "Avengers: Age of Ultron Official Extended TV SPOT - Let's Finish This (2015) - Avengers Sequel HD", embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
         
-        
         let imgurUrl = NSURL(string: "http://www.imgur.com")!
         let imgur = Creator(name:"Imgur", url:imgurUrl, favicon:NSURL(string:"https://pbs.twimg.com/profile_images/430460875661537280/4CX-Iah3.png"), iosStore:nil)
         
         let imageData:NSMutableDictionary = NSMutableDictionary()
         let imageMedia:NSMutableDictionary = NSMutableDictionary()
-        imageMedia["imageUrl"] =  "https://i.imgur.com/ZvEWNki.png"
+        imageMedia["imageUrl"] =  "http://oceanlink.island.net/biodiversity/shark/Great-White-Shark.jpg"
         imageMedia["imageCaption"] = "We&#039;re nominated for two Webby awards! And when we say &quot;we,&quot; we really mean you - the front lines of the Internet, curating the most awesome images and stories for all to see. Let&#039;s show &#039;em that Imgurians are the best community on the Internet by casting our votes. Here&#039;s where: Social Media: &lt;a href=&quot;http://pv.webbyawards.com/2015/web/general-website/social-media&quot;&gt;http://pv.webbyawards.com/2015/web/general-website/social-media&lt;/a&gt;  Community: &lt;a href=&quot;http://pv.webbyawards.com/2015/web/general-website/community&quot;&gt;http://pv.webbyawards.com/2015/web/general-website/community&lt;/a&gt;  "
         imageMedia["title"] = "Vote for Imgur!"
         imageMedia["width"] = 4796
         imageMedia["height"] = 4796
         imageData["media"] = imageMedia
         
-        imageCard = ImageCard(imageUrl: NSURL(string:"https://i.imgur.com/ZvEWNki.png")!, url: NSURL(string:"http://imgur.com/gallery/ZvEWNki")!, creator: imgur, data: imageData)
+        imageCard = ImageCard(imageUrl: NSURL(string:"http://oceanlink.island.net/biodiversity/shark/Great-White-Shark.jpg")!, url: NSURL(string:"http://imgur.com/gallery/ZvEWNki")!, creator: imgur, data: imageData)
         
         let cnnUrl = NSURL(string: "http://www.cnn.com")!
         let cnn = Creator(name:"CNN", url:imgurUrl, favicon:NSURL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-cnn.png"), iosStore:nil)
