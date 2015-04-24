@@ -44,6 +44,7 @@ public class TwitterHeader : CardViewElement
         title.font = UIFont(name:"HelveticaNeue-Medium", size: 14.0)!
         title.numberOfLines = 1
         kicker.textColor = WildcardSDK.cardKickerColor
+        kicker.numberOfLines = 1
         kicker.font = UIFont(name:"HelveticaNeue-Light", size: 12.0)!
         
         contentEdgeInset = UIEdgeInsetsMake(20, 20, 20, 20)

@@ -12,6 +12,8 @@ import UIKit
 public protocol CardPhysicsDelegate{
     optional func cardViewDragged(cardView:CardView, position:CGPoint)
     optional func cardViewDropped(cardView:CardView, position:CGPoint)
+    optional func cardViewTapped(cardView:CardView)
+    optional func cardViewDoubleTapped(cardView:CardView)
 }
 
 @objc
@@ -21,6 +23,7 @@ public class CardPhysics : NSObject {
     public var cardView:CardView
     public var delegate:CardPhysicsDelegate?
 
+    /// Adds a pan gesture onto the card view which enables it to be dragged around the screen
     public var enableDragging: Bool {
         get {
             return cardPanGestureRecognizer != nil
@@ -116,6 +119,8 @@ public class CardPhysics : NSObject {
     
     func cardDoubleTapped(recognizer:UITapGestureRecognizer!){
         WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"cardDoubleTapped"], withCard: cardView.backingCard)
+        delegate?.cardViewDoubleTapped?(cardView)
+        
         if(cardView.back != nil){
             // these built in transitions automatically re assign super views, so gotta re constrain every time
             if(!flipBoolean){
@@ -136,6 +141,7 @@ public class CardPhysics : NSObject {
     
     func cardTapped(recognizer:UITapGestureRecognizer!){
         WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"cardTapped"], withCard: cardView.backingCard)
+        delegate?.cardViewTapped?(cardView)
         
         // full card is tapped, depending on the layout we can do different things
         if cardView.visualSource is SummaryCardTwitterTweetVisualSource{

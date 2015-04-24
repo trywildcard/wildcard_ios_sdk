@@ -29,7 +29,7 @@ public protocol CardViewVisualSource{
     /// Optional CardViewElement for footer
     optional func viewForCardFooter()->CardViewElement?
     
-    /// ALPHA: Optional CardViewElement for the back of the card. Spans the full card, shown on double tap
+    /// Optional CardViewElement for the back of the card. Spans the full card, shown on double tap
     optional func viewForBackOfCard()->CardViewElement?
 }
 
@@ -81,7 +81,7 @@ public class CardView : UIView
 {
     // MARK: Public
     
-    /// ALPHA: See CardPhysics
+    /// See CardPhysics
     public var physics:CardPhysics?
     
     /// See CardViewDelegate
