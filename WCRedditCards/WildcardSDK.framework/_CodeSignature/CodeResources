@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		XmDLBsPe5iSXQQ6NdazWCM/9dm4=
+		8tMK4qpQWFYlqa8s3zHnvYqSPcY=
 		</data>
 		<key>FullCardHeader.nib</key>
 		<data>
-		GoW14MzCAxMzdwYaxTEPi5YKOwE=
+		2/YLter73lsosCmqmoWOaSajSnk=
 		</data>
 		<key>Headers/WCAnalytics.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/WCCardLayout.h</key>
 		<data>
-		8Em1UKpc2d9Id02APzY5DUQMRUc=
+		PZ9BpyFK4JxfxFCLVoUYMGEgc48=
 		</data>
 		<key>Headers/WCCardType.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/WCElementType.h</key>
 		<data>
-		lz9qzQNNNEzLzYoG7hD+D4tgoqM=
+		Ji8N2YUx4zvL+yRABMbL7zQ3N9w=
 		</data>
 		<key>Headers/WCErrorCode.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/WildcardSDK-Swift.h</key>
 		<data>
-		A2qmLhAaLkqMXning3xBgt3yAb0=
+		TDx6GDXGNu5eQv5MgW63AblYzj4=
 		</data>
 		<key>Headers/WildcardSDK.h</key>
 		<data>
@@ -54,19 +54,19 @@
 		</data>
 		<key>ImageAndCaptionBody.nib</key>
 		<data>
-		xPpNWzQwkNJV1El9U6cPP+FaDeQ=
+		xwOiybLBBpvuPrSPxPbFxaEVs5Y=
 		</data>
 		<key>ImageFloatLeftBody.nib</key>
 		<data>
-		YHiydo/Jl+ie80pWz561B7RWpUo=
+		sg/9IVtQE0amFXoooV2kJhQS14Y=
 		</data>
 		<key>ImageFloatRightBody.nib</key>
 		<data>
-		/R9rvr9H06zoTxx4Aapu36uoIoU=
+		Mqsd9oZ/O0Obge1Reu9Rw92EoEQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WTq3nBDNPRHhxWf1yoYlkoubAz0=
+		bSnuc6W1YJEugezLBssRwSRmBnc=
 		</data>
 		<key>MediaReadingCss.css</key>
 		<data>
@@ -74,27 +74,31 @@
 		</data>
 		<key>MediaTextFullWebView.nib</key>
 		<data>
-		zIWhxJaVzqZIjOgJVadPgRJtbkE=
+		+HyRiIEt8tvr3pY3P8MDSvfNOzA=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		o3pn/Ee0pZsZX9ZF3EPlh9Yt52A=
+		2CyUtKnZS1ofoOnwDCKBSOynhec=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		GqhvDXpjmG1zoc55ZtjcvzZij38=
+		Z+rZiaIS5Pzc9TqxzB+6iso57SQ=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		09NAahPFd8OcWM3VDgnJX3rWLYY=
+		5kTLx7baLAUhNrhtBlYS2dYgqcI=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		BxRoKCu0WHammWEA3W6SPdaZshY=
+		4yJw2zr5GU1bf6GXL/z4+4JKw/U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		LyS/RuSSQTl26srMXDz+qLTBjTY=
+		</data>
+		<key>TwitterHeader.nib</key>
+		<data>
+		D45AkfwH0UWrw2NzwGch9bKFc10=
 		</data>
 		<key>YTPlayerView-iframe-player.html</key>
 		<data>
@@ -109,11 +113,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		XmDLBsPe5iSXQQ6NdazWCM/9dm4=
+		8tMK4qpQWFYlqa8s3zHnvYqSPcY=
 		</data>
 		<key>FullCardHeader.nib</key>
 		<data>
-		GoW14MzCAxMzdwYaxTEPi5YKOwE=
+		2/YLter73lsosCmqmoWOaSajSnk=
 		</data>
 		<key>Headers/WCAnalytics.h</key>
 		<data>
@@ -125,7 +129,7 @@
 		</data>
 		<key>Headers/WCCardLayout.h</key>
 		<data>
-		8Em1UKpc2d9Id02APzY5DUQMRUc=
+		PZ9BpyFK4JxfxFCLVoUYMGEgc48=
 		</data>
 		<key>Headers/WCCardType.h</key>
 		<data>
@@ -133,7 +137,7 @@
 		</data>
 		<key>Headers/WCElementType.h</key>
 		<data>
-		lz9qzQNNNEzLzYoG7hD+D4tgoqM=
+		Ji8N2YUx4zvL+yRABMbL7zQ3N9w=
 		</data>
 		<key>Headers/WCErrorCode.h</key>
 		<data>
@@ -141,7 +145,7 @@
 		</data>
 		<key>Headers/WildcardSDK-Swift.h</key>
 		<data>
-		A2qmLhAaLkqMXning3xBgt3yAb0=
+		TDx6GDXGNu5eQv5MgW63AblYzj4=
 		</data>
 		<key>Headers/WildcardSDK.h</key>
 		<data>
@@ -157,15 +161,15 @@
 		</data>
 		<key>ImageAndCaptionBody.nib</key>
 		<data>
-		xPpNWzQwkNJV1El9U6cPP+FaDeQ=
+		xwOiybLBBpvuPrSPxPbFxaEVs5Y=
 		</data>
 		<key>ImageFloatLeftBody.nib</key>
 		<data>
-		YHiydo/Jl+ie80pWz561B7RWpUo=
+		sg/9IVtQE0amFXoooV2kJhQS14Y=
 		</data>
 		<key>ImageFloatRightBody.nib</key>
 		<data>
-		/R9rvr9H06zoTxx4Aapu36uoIoU=
+		Mqsd9oZ/O0Obge1Reu9Rw92EoEQ=
 		</data>
 		<key>MediaReadingCss.css</key>
 		<data>
@@ -173,27 +177,31 @@
 		</data>
 		<key>MediaTextFullWebView.nib</key>
 		<data>
-		zIWhxJaVzqZIjOgJVadPgRJtbkE=
+		+HyRiIEt8tvr3pY3P8MDSvfNOzA=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		o3pn/Ee0pZsZX9ZF3EPlh9Yt52A=
+		2CyUtKnZS1ofoOnwDCKBSOynhec=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		GqhvDXpjmG1zoc55ZtjcvzZij38=
+		Z+rZiaIS5Pzc9TqxzB+6iso57SQ=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		09NAahPFd8OcWM3VDgnJX3rWLYY=
+		5kTLx7baLAUhNrhtBlYS2dYgqcI=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		BxRoKCu0WHammWEA3W6SPdaZshY=
+		4yJw2zr5GU1bf6GXL/z4+4JKw/U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		LyS/RuSSQTl26srMXDz+qLTBjTY=
+		</data>
+		<key>TwitterHeader.nib</key>
+		<data>
+		D45AkfwH0UWrw2NzwGch9bKFc10=
 		</data>
 		<key>YTPlayerView-iframe-player.html</key>
 		<data>
