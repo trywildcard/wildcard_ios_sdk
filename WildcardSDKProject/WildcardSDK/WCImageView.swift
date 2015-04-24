@@ -107,18 +107,18 @@ public class WCImageView : UIImageView
     private var _downloadTask:NSURLSessionDownloadTask?
     private var _tapGesture:UITapGestureRecognizer!
     
-    private func startPulsing(){
+    func startPulsing(){
         var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 0.75
         pulseAnimation.toValue = NSNumber(float: 1.0)
-        pulseAnimation.fromValue = NSNumber(float: 0.5)
+        pulseAnimation.fromValue = NSNumber(float: 0.6)
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
         pulseAnimation.autoreverses = true;
         pulseAnimation.repeatCount = FLT_MAX;
         layer.addAnimation(pulseAnimation, forKey: nil)
     }
 
-    private func stopPulsing(){
+    func stopPulsing(){
         layer.removeAllAnimations()
     }
     
