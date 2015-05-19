@@ -73,13 +73,6 @@ public class CardViewElement : UIView {
         initialize()
     }
     
-    /*
-    public override init(){
-        super.init()
-        initialize()
-    }
-*/
-    
     public override func awakeFromNib() {
         super.awakeFromNib()
         initialize()
