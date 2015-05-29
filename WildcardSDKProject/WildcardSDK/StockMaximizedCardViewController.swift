@@ -13,7 +13,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     
     var presentingCardView:CardView!
     var maximizedCard:Card!
-    var maximizedCardView:CardView?
+    var maximizedCardView:CardView!
     var maximizedCardVisualSource:MaximizedCardViewVisualSource!
     
     var cardViewTopConstraint:NSLayoutConstraint?
@@ -42,7 +42,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         super.viewDidLoad()
         
         maximizedCardView = CardView.createCardView(maximizedCard, visualSource: maximizedCardVisualSource, preferredWidth:UIViewNoIntrinsicMetric)
-        maximizedCardView?.delegate = self
+        maximizedCardView.delegate = self
         
         view.addSubview(maximizedCardView!)
         
@@ -54,7 +54,6 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
         cardViewRightConstraint = maximizedCardView?.constrainRightToSuperView(view.frame.size.width - initialCardFrame.origin.x - initialCardFrame.size.width)
         cardViewBottomConstraint = maximizedCardView?.constrainBottomToSuperView(view.frame.size.height - initialCardFrame.origin.y - initialCardFrame.size.height)
         maximizedCardView?.fadeOut(0, delay: 0, completion: nil)
-        
     }
     
     override func viewWillAppear(animated: Bool) {

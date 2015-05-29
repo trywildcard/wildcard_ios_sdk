@@ -12,7 +12,7 @@ import UIKit
 class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
-    let duration :NSTimeInterval = 0.5
+    let duration :NSTimeInterval = 0.4
     
     init(isPresenting: Bool) {
         self.isPresenting = isPresenting
@@ -42,12 +42,15 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         containerView.addSubview(presentedControllerView)
   
         maximizedController.view.layoutIfNeeded()
+        let originalShadowOpacity = maximizedController.maximizedCardView.layer.shadowOpacity
+        maximizedController.maximizedCardView.layer.shadowOpacity = 0
         UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
     
             // move card to maximized constraints
             maximizedController.updateInternalCardConstraints(rectConvert)
             
             }, completion: {(completed: Bool) -> Void in
+                maximizedController.maximizedCardView.layer.shadowOpacity = originalShadowOpacity
                 transitionContext.completeTransition(completed)
         })
     }
