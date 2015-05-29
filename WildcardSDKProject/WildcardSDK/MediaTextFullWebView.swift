@@ -14,7 +14,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
     var downloadAppBarButton:UIBarButtonItem!
-    var downloadAppIcon:UIImageView!
+    var downloadAppIcon:WCImageView!
     
     // MARK: CardViewElement
     override public func initialize() {
@@ -31,13 +31,18 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         downloadAppButton?.sizeToFit()
         downloadAppBarButton = UIBarButtonItem(customView: downloadAppButton!)
         
-        downloadAppIcon = UIImageView(frame: CGRectMake(0, 0, 25, 25))
+        downloadAppIcon = WCImageView(frame: CGRectMake(0, 0, 25, 25))
         downloadAppIcon.layer.cornerRadius = 4.0
         downloadAppIcon.layer.masksToBounds = true
     }
     
     override public func update(card:Card) {
         if let articleCard = card as? ArticleCard{
+            if let url = articleCard.creator.favicon{
+                downloadAppIcon.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
+                    self.downloadAppIcon.image = image
+                })
+            }
             webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: card.webUrl)
             updateToolbar(articleCard)
         }
