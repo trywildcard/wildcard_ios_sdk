@@ -23,7 +23,7 @@ class ViewController: UIViewController, CardViewDelegate{
         title = "Test Bench"
  
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Card.getFromUrl(NSURL(string: "http://theguardian.com")!, completion: { (card, error) -> Void in
+        Card.getFromUrl(NSURL(string: "http://www.cnn.com/2015/05/29/politics/dennis-hastert-indictment-questions/index.html")!, completion: { (card, error) -> Void in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             if let card = card{
                 self.cardView = CardView.createCardView(card)

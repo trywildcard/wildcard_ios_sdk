@@ -11,7 +11,6 @@ import Foundation
 @objc
 public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
-    @IBOutlet weak var logo: WCImageView!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
     var downloadAppBarButton:UIBarButtonItem!
@@ -19,8 +18,6 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     
     // MARK: CardViewElement
     override public func initialize() {
-        logo.layer.cornerRadius = 3.0
-        logo.layer.masksToBounds = true
         webview.delegate = self
         bottomToolbar.tintColor = UIColor.wildcardLightBlue()
         
@@ -41,16 +38,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     
     override public func update(card:Card) {
         if let articleCard = card as? ArticleCard{
-            // top right favicon
-            if let url = articleCard.creator.favicon{
-                logo.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
-                    if(image != nil){
-                        self.logo.image = image!
-                        self.downloadAppIcon.image = image!
-                    }
-                })
-            }
-            webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: nil)
+            webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: card.webUrl)
             updateToolbar(articleCard)
         }
     }
@@ -112,12 +100,20 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     }
     
     func constructFinalHtml(articleCard:ArticleCard)->String{
-        var finalHtml = MediaTextFullWebView.webViewReadingCss
+        var finalHtml:String = ""
+        finalHtml += "<html>"
+        finalHtml += "<head>"
+        finalHtml += MediaTextFullWebView.webViewReadingCss
+        finalHtml += "</head>"
         
+        finalHtml += "<body>"
+        
+        finalHtml +=  "<div id=\"customWildcardKicker\">\(articleCard.creator.name.uppercaseString)</div>"
+        finalHtml +=  "<div id=\"customHairline\"></div>"
         finalHtml +=  "<div id=\"customWildcardHeader\">\(articleCard.title)</div>"
         
         let publishedDateFormatter = NSDateFormatter()
-        publishedDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss "
+        publishedDateFormatter.dateFormat = "MMM dd, YYYY"
         var dateDisplayString:String?
         if let date = articleCard.publicationDate{
             dateDisplayString = publishedDateFormatter.stringFromDate(date)
@@ -139,9 +135,14 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
              finalHtml +=  "<div id=\"customWildcardByline\">\(bylineDisplay!)</div>"
         }
         
+        finalHtml +=  "<div id=\"customHairline\"></div>"
+        
         finalHtml += articleCard.html!
         
         finalHtml += "<div><center><span class=\"viewMore\"><a id=\"viewOnWeb\" href=\"\(articleCard.webUrl)\">VIEW ON WEB</a></span></div><br></br>"
+        
+        finalHtml += "</body>"
+        finalHtml += "</html>"
 
         return finalHtml
     }

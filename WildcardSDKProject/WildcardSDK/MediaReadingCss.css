@@ -2,19 +2,42 @@
 
 /* Custom tags */
 #customWildcardHeader {
-    font-family:'Tiempos', 'Georgia', serif;
-    font-size:18px;
+    font-family:'Tiempos', 'Garamond', serif;
+    font-size:24px;
     font-weight:bold;
-    padding-top:2px;
+    padding-top:0px;
     padding-left:0px;
-    padding-right:30px;
-    padding-bottom:7px;
+    padding-right:0px;
+    text-align:center;
+}
+
+#customWildcardKicker {
+    font-family:'Tiempos', 'Garamond', serif;
+    font-size:13px;
+    padding-top:6px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-bottom:10px;
+    text-align:center;
+    color: rgb(155,163,178);
+}
+
+#customHairline {
+    height:1px;
+    border: 0;
+    background-color: rgb(213,219,229);
+    color:rgb(213,219,229);
+    width:100%%;
+    margin-bottom:10px;
 }
 
 #customWildcardByline {
-    font-family:'Tiempos', 'Georgia', serif;
+    font-family:'Tiempos', 'Garamond', serif;
     font-size:14px;
     color:rgb(98,107,128);
+    margin-top:5px;
+    margin-bottom:10px;
+    text-align:center;
 }
 
 #viewOnWeb{
@@ -56,16 +79,16 @@
 /* General CSS */
 
 body{
-    font-family:'Tiempos', 'Georgia', serif;
+    font-family:'Tiempos', 'Garamond', serif;
     font-weight:400;
-    font-size:15px;
-    line-height:22px;
+    font-size:18px;
+    line-height:26px;
     color:rgb(40,47,60);
     word-break:keep-all;
     word-wrap:break-word;
     margin-left:auto;
     margin-right:auto;
-    width:90%%;
+    width:88%%;
 }
 
 figure{

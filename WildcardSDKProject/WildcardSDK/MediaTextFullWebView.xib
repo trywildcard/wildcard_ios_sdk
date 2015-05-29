@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,13 +14,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-bR-gqC" customClass="WCImageView" customModule="WildcardSDK">
-                    <rect key="frame" x="565" y="7" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="25" id="bGK-EF-rUQ"/>
-                        <constraint firstAttribute="height" constant="25" id="pwF-ep-iMY"/>
-                    </constraints>
-                </imageView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-q3-6nl">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <constraints>
@@ -39,8 +32,6 @@
                 <constraint firstAttribute="bottom" secondItem="hkD-Es-DQB" secondAttribute="bottom" id="QKB-0q-KUC"/>
                 <constraint firstAttribute="trailing" secondItem="hkD-Es-DQB" secondAttribute="trailing" id="QKv-AL-97s"/>
                 <constraint firstAttribute="bottom" secondItem="Dkp-q3-6nl" secondAttribute="bottom" id="QcK-ag-H3h"/>
-                <constraint firstItem="XCi-bR-gqC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="YXG-gK-0EV"/>
-                <constraint firstAttribute="trailing" secondItem="XCi-bR-gqC" secondAttribute="trailing" constant="10" id="nSa-3t-8Vc"/>
                 <constraint firstAttribute="centerX" secondItem="Dkp-q3-6nl" secondAttribute="centerX" id="qJX-BO-Rff"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -52,7 +43,6 @@
             </variation>
             <connections>
                 <outlet property="bottomToolbar" destination="Dkp-q3-6nl" id="4H3-mg-XgZ"/>
-                <outlet property="logo" destination="XCi-bR-gqC" id="cZ7-Uu-rUD"/>
                 <outlet property="webview" destination="hkD-Es-DQB" id="trC-sx-zOx"/>
             </connections>
         </view>
