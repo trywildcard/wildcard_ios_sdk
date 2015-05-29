@@ -12,6 +12,39 @@ import Foundation
 public class Utilities{
     
     // MARK: Public
+    public class var IS_IPAD: Bool {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad
+    }
+    public class var IS_IPHONE: Bool {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone
+    }
+    public class var IS_RETINA: Bool {
+        return UIScreen.mainScreen().scale >= 2.0
+    }
+    public class var SCREEN_WIDTH:CGFloat{
+        return UIScreen.mainScreen().bounds.size.width;
+    }
+    public class var SCREEN_HEIGHT:CGFloat{
+        return UIScreen.mainScreen().bounds.size.height;
+    }
+    public class var SCREEN_MAX_LENGTH:CGFloat{
+        return max(SCREEN_HEIGHT, SCREEN_WIDTH)
+    }
+    public class var SCREEN_MAIN_LENGTH:CGFloat{
+        return min(SCREEN_HEIGHT, SCREEN_WIDTH)
+    }
+    public class var IS_IPHONE_4_OR_LESS:Bool{
+        return IS_IPHONE && SCREEN_MAX_LENGTH < 568.0
+    }
+    public class var IS_IPHONE_5:Bool{
+        return IS_IPHONE && SCREEN_MAX_LENGTH == 568.0
+    }
+    public class var IS_IPHONE_6:Bool{
+        return IS_IPHONE && SCREEN_MAX_LENGTH == 667.0
+    }
+    public class var IS_IPHONE_6P:Bool{
+        return IS_IPHONE && SCREEN_MAX_LENGTH == 736.0
+    }
     
     /// Prints the font families available
     public class func printFontFamilies(){

@@ -8,14 +8,17 @@
 
 import UIKit
 
-class StockImageViewViewController: UIViewController,UIViewControllerTransitioningDelegate, UIScrollViewDelegate {
+class StockImageViewViewController: UIViewController,UIViewControllerTransitioningDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     var scrollView:UIScrollView!
     var imageView:WCImageView!
     var fromCardView:CardView!
     var fromImageView:WCImageView!
     var tapGesture:UITapGestureRecognizer!
-    var doubleTapGesture:UITapGestureRecognizer!
+    var imagePanGesture:UIPanGestureRecognizer!
+    var initialTouchPoint:CGPoint = CGPointZero
+    var finalTouchPoint:CGPoint = CGPointZero
+    let PAN_TO_DIMISS_THRESHOLD:CGFloat = 90.0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +52,9 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
         tapGesture = UITapGestureRecognizer(target: self, action: "tapped")
         scrollView.addGestureRecognizer(tapGesture!)
         
-        doubleTapGesture = UITapGestureRecognizer(target: self, action: "doubleTapped")
-        doubleTapGesture.numberOfTapsRequired = 2
-        scrollView.addGestureRecognizer(doubleTapGesture)
-        tapGesture.requireGestureRecognizerToFail(doubleTapGesture)
+        imagePanGesture = UIPanGestureRecognizer(target: self, action: "imagePanned")
+        imagePanGesture.delegate = self
+        scrollView.addGestureRecognizer(imagePanGesture)
         
         view.layoutIfNeeded()
     }
@@ -63,28 +65,38 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
     
     func tapped(){
         if(self.scrollView.zoomScale != 1.0){
-            doubleTapped()
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                self.scrollView.zoomScale = 1.0
+            })
         }else{
             fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: .ImageWillExitFullScreen, parameters:nil))
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
-    func doubleTapped(){
-        if(self.scrollView.zoomScale == 1.0){
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                self.scrollView.zoomScale = 2.5
-            })
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+    // MARK: UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(gestureRecognizer == imagePanGesture && !otherGestureRecognizer.isKindOfClass(UIPinchGestureRecognizer)){
+            return true
         }else{
-            
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                self.scrollView.zoomScale = 1.0
-            })
+            return false
         }
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return imageView
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(gestureRecognizer == imagePanGesture){
+            if(scrollView.zoomScale == 1.0){
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return true
+        }
     }
     
     // MARK: UIViewControllerTransitioningDelegate
@@ -113,6 +125,37 @@ class StockImageViewViewController: UIViewController,UIViewControllerTransitioni
         }else {
             return nil
         }
+    }
+    
+    // MARK: Private
+    func imagePanned(){
+        // drags the image around when we are not zoomed
+        let translation = imagePanGesture.translationInView(scrollView)
+        if(imagePanGesture.state == .Began){
+            initialTouchPoint = imagePanGesture.locationInView(scrollView)
+        }else if(imagePanGesture.state == .Changed){
+            let newCenter = CGPointMake(imageView.center.x + translation.x, imageView.center.y + translation.y)
+            imageView.center = newCenter
+            imagePanGesture.setTranslation(CGPointZero, inView: scrollView)
+        }else{
+            finalTouchPoint = imagePanGesture.locationInView(scrollView)
+            let distance = distanceFromPoint(finalTouchPoint, toOtherPoint: initialTouchPoint)
+            if(distance > PAN_TO_DIMISS_THRESHOLD){
+                fromCardView.delegate?.cardViewRequestedAction?(fromCardView, action: CardViewAction(type: .ImageWillExitFullScreen, parameters:nil))
+                presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }else{
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    self.imageView.frame = self.view.frame
+                })
+            }
+        }
+    }
+    
+    func distanceFromPoint(p1:CGPoint, toOtherPoint p2:CGPoint)->CGFloat{
+        let xDist = (p2.x - p1.x);
+        let yDist = (p2.y - p1.y);
+        let distance = sqrt((xDist * xDist) + (yDist * yDist));
+        return distance;
     }
 
 }

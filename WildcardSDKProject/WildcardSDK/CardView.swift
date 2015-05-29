@@ -110,7 +110,6 @@ public class CardView : UIView
         }
     }
     
-    
     /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned with a default size.
     public class func createCardView(card:Card!)->CardView?{
         if let card = card {

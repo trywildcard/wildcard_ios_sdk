@@ -11,7 +11,8 @@ import Foundation
 class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
-    let duration :NSTimeInterval = 0.5
+    let durationPresenting :NSTimeInterval = 0.5
+    let durationDismissing :NSTimeInterval = 0.3
     
     init(isPresenting: Bool) {
         self.isPresenting = isPresenting
@@ -20,7 +21,11 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
     
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return duration
+        if(isPresenting){
+            return durationPresenting
+        }else{
+            return durationDismissing
+        }
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning)  {
@@ -29,6 +34,21 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         }else{
             animateDismissalWithTransitionContext(transitionContext)
         }
+    }
+    
+    func fullScreenImageSize(origiSize:CGSize)->CGSize{
+        var destinationHeight:CGFloat = 0
+        var destinationWidth:CGFloat = 0
+        if(Utilities.SCREEN_WIDTH > Utilities.SCREEN_HEIGHT){
+            // landscape
+            destinationHeight = Utilities.SCREEN_HEIGHT
+            destinationWidth = destinationHeight * origiSize.width / origiSize.height
+        }else{
+            // portrait
+            destinationWidth = Utilities.SCREEN_WIDTH
+            destinationHeight = destinationWidth * origiSize.height / origiSize.width
+        }
+        return CGSizeMake(destinationWidth, destinationHeight)
     }
     
     // MARK: Private
@@ -45,30 +65,18 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         tempImage.contentMode = stockImageController.fromImageView.contentMode
         containerView.addSubview(tempImage)
         
-        // from image size
-        let imageSize = stockImageController.fromImageView.image!.size
-        
         // get destination dimensions
-        let containerBounds = containerView.bounds
-        var destinationHeight:CGFloat = 0
-        var destinationWidth:CGFloat = 0
-        if(containerBounds.width > containerBounds.height){
-            // landscape
-            destinationHeight = containerView.frame.size.height
-            destinationWidth = destinationHeight * imageSize.width / imageSize.height
-        }else{
-            // portrait
-            destinationWidth = containerView.frame.size.width;
-            destinationHeight = destinationWidth * imageSize.height / imageSize.width
-        }
+        let imageSize = stockImageController.fromImageView.image!.size
+        let destinationSize = fullScreenImageSize(imageSize)
         
         // grow temp image into the destination frame. designed to be identical to what the full screen looks like at default
         UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
             tempImage.center = containerView.center
-            tempImage.bounds = CGRectMake(0, 0,destinationWidth, destinationHeight)
+            tempImage.bounds = CGRectMake(0, 0,destinationSize.width, destinationSize.height)
             }, completion: {(completed: Bool) -> Void in
                 tempImage.removeFromSuperview()
                 containerView.addSubview(presentedController.view)
+                stockImageController.fromImageView.image = nil
                 transitionContext.completeTransition(completed)
         })
     }
@@ -80,28 +88,16 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         let stockImageController = presentedController as! StockImageViewViewController
         
         // from image size
-        let imageSize = stockImageController.fromImageView.image!.size
-        
-        // get destination dimensions
-        let containerBounds = containerView.bounds
-        var destinationHeight:CGFloat = 0
-        var destinationWidth:CGFloat = 0
-        if(containerBounds.width > containerBounds.height){
-            // landscape
-            destinationHeight = containerView.frame.size.height
-            destinationWidth = destinationHeight * imageSize.width / imageSize.height
-        }else{
-            // portrait
-            destinationWidth = containerView.frame.size.width;
-            destinationHeight = destinationWidth * imageSize.height / imageSize.width
-        }
+        let imageSize = stockImageController.imageView.image!.size
+        let destinationSize = fullScreenImageSize(imageSize)
+        let currentCenter = stockImageController.imageView.center
         
         // temp image framed w/ the full screen's image view
         let tempImage = WCImageView(frame: CGRectZero)
-        tempImage.center = containerView.center
-        tempImage.bounds = CGRectMake(0, 0, destinationWidth, destinationHeight)
+        tempImage.bounds = CGRectMake(0, 0, destinationSize.width, destinationSize.height)
+        tempImage.center = currentCenter
         tempImage.backgroundColor = UIColor.clearColor()
-        tempImage.image = stockImageController.fromImageView.image
+        tempImage.image = stockImageController.imageView.image
         tempImage.contentMode = stockImageController.fromImageView.contentMode
         tempImage.clipsToBounds = true
         containerView.addSubview(tempImage)
@@ -109,12 +105,14 @@ class StockImageViewAnimationController: NSObject,UIViewControllerAnimatedTransi
         // temporary image is added, don't need the full screen view anymore
         presentedController.view.removeFromSuperview()
         
+        let destinationRect = containerView.convertRect(stockImageController.fromImageView.frame, fromView:stockImageController.fromImageView.superview)
+        
         // shrink temp image into the destination frame (what the user originally clicked)
         UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
-            tempImage.frame = containerView.convertRect(stockImageController.fromImageView.frame, fromView: stockImageController.fromImageView.superview)
+            tempImage.frame = destinationRect
             }, completion: {(completed: Bool) -> Void in
                 tempImage.removeFromSuperview()
-                containerView.addSubview(presentedController.view)
+                stockImageController.fromImageView.image = stockImageController.imageView.image
                 transitionContext.completeTransition(completed)
         })
         
