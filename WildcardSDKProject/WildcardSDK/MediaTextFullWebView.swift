@@ -135,7 +135,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         }else if let dateString = dateDisplayString{
             bylineDisplay = dateString
         }
-        
+       
         if bylineDisplay != nil{
              finalHtml +=  "<div id=\"customWildcardByline\">\(bylineDisplay!)</div>"
         }

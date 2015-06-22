@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D29BC751B1912C8003453E9 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D29BC741B1912C8003453E9 /* WildcardSDK.framework */; };
-		1D29BC761B1912C8003453E9 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D29BC741B1912C8003453E9 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DC999651ABA2EEA006BA880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999641ABA2EEA006BA880 /* main.m */; };
 		1DC999681ABA2EEA006BA880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999671ABA2EEA006BA880 /* AppDelegate.m */; };
 		1DC9996E1ABA2EEA006BA880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DC9996C1ABA2EEA006BA880 /* Main.storyboard */; };
@@ -17,6 +15,8 @@
 		1DC9997F1ABA2EEA006BA880 /* WCRedditCardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9997E1ABA2EEA006BA880 /* WCRedditCardsTests.m */; };
 		1DC9998E1ABA2F70006BA880 /* __swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC9998D1ABA2F70006BA880 /* __swift.swift */; };
 		1DC999911ABA2FB5006BA880 /* WCRedditCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */; };
+		1DE4BBE91B38936C00C5B0EF /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE4BBE81B38936C00C5B0EF /* WildcardSDK.framework */; };
+		1DE4BBEA1B38936C00C5B0EF /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE4BBE81B38936C00C5B0EF /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,13 +30,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1DC9998B1ABA2F22006BA880 /* Embed Frameworks */ = {
+		1DE4BBE71B38908C00C5B0EF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1D29BC761B1912C8003453E9 /* WildcardSDK.framework in Embed Frameworks */,
+				1DE4BBEA1B38936C00C5B0EF /* WildcardSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +44,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D29BC741B1912C8003453E9 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRedditCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC999631ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DC999641ABA2EEA006BA880 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		1DC9998D1ABA2F70006BA880 /* __swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __swift.swift; sourceTree = "<group>"; };
 		1DC9998F1ABA2FB5006BA880 /* WCRedditCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRedditCardsTableViewController.h; sourceTree = "<group>"; };
 		1DC999901ABA2FB5006BA880 /* WCRedditCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTableViewController.m; sourceTree = "<group>"; };
+		1DE4BBE81B38936C00C5B0EF /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D29BC751B1912C8003453E9 /* WildcardSDK.framework in Frameworks */,
+				1DE4BBE91B38936C00C5B0EF /* WildcardSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 		1DC999561ABA2EEA006BA880 = {
 			isa = PBXGroup;
 			children = (
-				1D29BC741B1912C8003453E9 /* WildcardSDK.framework */,
+				1DE4BBE81B38936C00C5B0EF /* WildcardSDK.framework */,
 				1DC999611ABA2EEA006BA880 /* WCRedditCards */,
 				1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */,
 				1DC999601ABA2EEA006BA880 /* Products */,
@@ -153,7 +153,7 @@
 				1DC9995B1ABA2EEA006BA880 /* Sources */,
 				1DC9995C1ABA2EEA006BA880 /* Frameworks */,
 				1DC9995D1ABA2EEA006BA880 /* Resources */,
-				1DC9998B1ABA2F22006BA880 /* Embed Frameworks */,
+				1DE4BBE71B38908C00C5B0EF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,7 +371,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -391,7 +390,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

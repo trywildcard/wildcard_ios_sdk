@@ -930,7 +930,7 @@ SWIFT_CLASS("_TtC11WildcardSDK11WCImageView")
 /// See WCImageViewDelegate
 @property (nonatomic) id <WCImageViewDelegate> __nullable delegate;
 
-/// Set image to URL with a completion block. This does not automatically set the image -- more suitable for re-use scenarios
+/// Set image to URL with a completion block. If the completion block is nil, this function will automatically set the image for the WCAImageView. If the completion block is not nil, this function will not assign the image directly and use the callback -- more suitable for re-use scenarios. This should be called on the main thread.
 - (void)setImageWithURL:(NSURL * __nonnull)url mode:(UIViewContentMode)mode completion:(void (^ __nullable)(UIImage * __nullable, NSError * __nullable))completion;
 
 /// Set the default place holder image, use this when there was a problem downloading or loading an image
