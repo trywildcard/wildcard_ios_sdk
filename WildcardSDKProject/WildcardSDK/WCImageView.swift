@@ -29,7 +29,7 @@ public class WCImageView : UIImageView
     /// See WCImageViewDelegate
     public var delegate:WCImageViewDelegate?
     
-    /// Set image to URL with a completion block. This does not automatically set the image -- more suitable for re-use scenarios
+    /// Set image to URL with a completion block. If the completion block is nil, this function will automatically set the image for the WCAImageView. If the completion block is not nil, this function will not assign the image directly and use the callback -- more suitable for re-use scenarios. This should be called on the main thread.
     public func setImageWithURL(url:NSURL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
     {
         let imageRequest = NSMutableURLRequest(URL: url)
@@ -48,28 +48,39 @@ public class WCImageView : UIImageView
         }else{
             startPulsing()
             let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
+            
             _downloadTask =
                 session.downloadTaskWithRequest(imageRequest,
                     completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
                         self.stopPulsing()
                         
                         if(error == nil){
-                            let data:NSData? = NSData(contentsOfURL: location)
-                            if let newImage = UIImage(data: data!){
-                                ImageCache.sharedInstance.cacheImageForRequest(newImage, request: imageRequest)
-                                if let cb = completion{
-                                    cb(newImage,nil)
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
+                                let data:NSData? = NSData(contentsOfURL: location)
+                                if let newImage = UIImage(data: data!){
+                                    ImageCache.sharedInstance.cacheImageForRequest(newImage, request: imageRequest)
+                                    if let cb = completion{
+                                        dispatch_async(WildcardSDK.networkDelegateQueue.underlyingQueue, { () -> Void in
+                                            cb(newImage,nil)
+                                        })
+                                    }else{
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            self.setImage(newImage, mode: mode)
+                                        })
+                                    }
                                 }else{
-                                    self.setImage(newImage, mode: mode)
+                                    let error = NSError(domain: "Couldn't create image from data", code: 0, userInfo: nil)
+                                    if let cb = completion{
+                                        dispatch_async(WildcardSDK.networkDelegateQueue.underlyingQueue, { () -> Void in
+                                            cb(nil,error)
+                                        })
+                                    }else{
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            self.setNoImage()
+                                        })
+                                    }
                                 }
-                            }else{
-                                let error = NSError(domain: "Couldn't create image from data", code: 0, userInfo: nil)
-                                if let cb = completion{
-                                    cb(nil,error)
-                                }else{
-                                    self.setNoImage()
-                                }
-                            }
+                            })
                         }else{
                             if let cb = completion{
                                 cb(nil,error)
