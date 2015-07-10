@@ -10,7 +10,7 @@ import Foundation
 
 public extension NSURL{
     
-    public func isTwitterProfileURL()->Bool{
+    func isTwitterProfileURL()->Bool{
         if(absoluteString != nil){
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)\\/?$"
             let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
@@ -26,7 +26,7 @@ public extension NSURL{
         }
     }
     
-    public func isTwitterTweetURL()->Bool{
+    func isTwitterTweetURL()->Bool{
         if(absoluteString != nil){
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)/status/(\\d*)\\/?$"
             let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
@@ -41,6 +41,4 @@ public extension NSURL{
             return false
         }
     }
-    
-    
 }

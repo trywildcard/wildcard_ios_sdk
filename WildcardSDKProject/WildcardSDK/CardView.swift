@@ -366,7 +366,9 @@ public class CardView : UIView
         }
     }
     
-    class func defaultWidth()->CGFloat{
+    // MARK: Private
+    
+    private class func defaultWidth()->CGFloat{
         let screenBounds = UIScreen.mainScreen().bounds
         if(screenBounds.width > screenBounds.height){
             return screenBounds.height - (2 * WildcardSDK.defaultScreenMargin)
@@ -375,8 +377,6 @@ public class CardView : UIView
         }
         
     }
-    
-    // MARK: Private
     
     private func initializeCardComponents(){
         header = visualSource.viewForCardHeader?()

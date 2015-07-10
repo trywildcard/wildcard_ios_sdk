@@ -13,36 +13,15 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
-    var downloadAppBarButton:UIBarButtonItem!
-    var downloadAppIcon:WCImageView!
     
     // MARK: CardViewElement
     override public func initialize() {
         webview.delegate = self
         bottomToolbar.tintColor = UIColor.wildcardLightBlue()
-        
-        // initialize a download app button in case publisher has an app store link
-        var downloadAppButton = UIButton.buttonWithType(UIButtonType.Custom) as? UIButton
-        downloadAppButton?.setTitle("DOWNLOAD APP", forState: UIControlState.Normal)
-        downloadAppButton?.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
-        downloadAppButton?.titleLabel!.font = WildcardSDK.cardActionButtonFont
-        downloadAppButton?.setTitleColor(UIColor.wildcardLightBlue(), forState: UIControlState.Normal)
-        downloadAppButton?.addTarget(self, action: "downloadAppButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
-        downloadAppButton?.sizeToFit()
-        downloadAppBarButton = UIBarButtonItem(customView: downloadAppButton!)
-        
-        downloadAppIcon = WCImageView(frame: CGRectMake(0, 0, 25, 25))
-        downloadAppIcon.layer.cornerRadius = 4.0
-        downloadAppIcon.layer.masksToBounds = true
     }
     
     override public func update(card:Card) {
         if let articleCard = card as? ArticleCard{
-            if let url = articleCard.creator.favicon{
-                downloadAppIcon.setImageWithURL(url, mode: .ScaleToFill, completion: { (image:UIImage?, error:NSError?) -> Void in
-                    self.downloadAppIcon.image = image
-                })
-            }
             webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: card.webUrl)
             updateToolbar(articleCard)
         }
@@ -62,13 +41,6 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         }
     }
     
-    func downloadAppButtonTapped(sender:AnyObject){
-        if(cardView != nil){
-            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"downloadApp"], withCard: cardView!.backingCard)
-            cardView!.handleDownloadApp()
-        }
-    }
-    
     // MARK: Private
     func updateToolbar(card:Card){
         
@@ -78,25 +50,6 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         
         var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         barButtonItems.append(flexSpace)
-        
-        if let articleCard = card as? ArticleCard{
-            if let appStoreUrl = articleCard.creator.iosAppStoreUrl {
-                
-                // publisher logo
-                var imageButton = UIBarButtonItem(customView: downloadAppIcon)
-                imageButton.target = self
-                imageButton.action = "downloadAppButtonTapped:"
-                barButtonItems.append(imageButton)
-                
-                // download app button
-                barButtonItems.append(downloadAppBarButton)
-                
-                // fixed spacing to left of action button
-                var fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-                fixedSpace.width = 5
-                barButtonItems.append(fixedSpace)
-            }
-        }
         
         var actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped:")
         barButtonItems.append(actionButton)
@@ -152,7 +105,7 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         return finalHtml
     }
     
-    class var webViewReadingCss : String{
+    private class var webViewReadingCss : String{
         struct Static{
             static var onceToken : dispatch_once_t = 0
             static var instance : String? = nil
