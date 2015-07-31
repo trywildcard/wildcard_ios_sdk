@@ -1,5 +1,7 @@
 <h2>Wildcard iOS SDK</h2>
 
+Public SDK documents can be found [here](http://www.trywildcard.com/docs/ios-sdk).
+
 <h3>Building</h3>
 
 All targets are included in **WildcardSDKProject.xcodeproj**
@@ -32,11 +34,24 @@ This is a "fat" framework distribution that developers may use for Simulator + D
 
 This is a framework distribution only built for Devices. 
 
+<h3>Demo App</h3>
+
+This repo also contains a demo iOS Application (WCRedditCards) that is used to demonstrate the SDK.
+
+When the SDK is updated, the demo app should also be updated to use the latest code.
+
+1. Use the official [installation steps](http://www.trywildcard.com/docs/ios-sdk/installing) to install the latest SDK into the project. 
+2. Run the project, and just sanity check that it still works.
+3. Inside the repo 
+
 
 <h3>Uploading</h3>
 
+*Internal Wildcard Use Only*
 
-<h3>Demo App</h3>
+
+
+
 
 
 <h3>Future</h3>

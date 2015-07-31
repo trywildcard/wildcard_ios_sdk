@@ -1,3 +1,3 @@
 #!/bin/sh
 
-tar -cvzf WCRedditCards.tar.gz WCRedditCards/
+tar -cvzf ~/Desktop/WCRedditCards.tar.gz WCRedditCards/
