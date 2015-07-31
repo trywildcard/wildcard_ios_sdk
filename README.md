@@ -42,16 +42,21 @@ When the SDK is updated, the demo app should also be updated to use the latest c
 
 1. Use the official [installation steps](http://www.trywildcard.com/docs/ios-sdk/installing) to install the latest SDK into the project. 
 2. Run the project, and just sanity check that it still works.
-3. Inside the repo 
+3. Inside the repo execute ```./zip_reddit_proj.sh```
+4. This should package up the Reddit App and put the *WCRedditCards.tar.gz* onto your desktop. 
+5. This file will also need to be uploaded to S3 since the documentation links to it.
 
 
 <h3>Uploading</h3>
 
 *Internal Wildcard Use Only*
 
+The files can be uploaded directly via browser.
 
-
-
+1. Sign into S3 with Wildcard credentials
+2. Navigate to coopkanicstang-development -> ios_sdk
+3. Three files need to be uploaded: *WCRedditCards.tar.gz*, *WildcardSDK.framework.tar.gz*, and *WildcardSDK_iphoneos.framework.tar.gz*
+4. Once you have tested and packaged up these files, feel free to upload them, and also make sure to mark them as *Public* on S3.
 
 
 <h3>Future</h3>
