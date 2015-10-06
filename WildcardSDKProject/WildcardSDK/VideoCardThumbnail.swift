@@ -107,7 +107,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
             title.text = videoCard.title
             updateLabelAttributes()
         }else{
-            println("VideoCardThumbnail element should only be used with a video card.")
+            print("VideoCardThumbnail element should only be used with a video card.")
         }
     }
     

@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		TntUgc39EBxsoYSaHCBhdosxQEM=
+		EYhWv+FvQ/t1vDuLSBINdA1Una8=
 		</data>
 		<key>FullCardHeader.nib</key>
 		<data>
-		uMFBbulQ9esB1K/W2N67Sj+Q9Mw=
+		0RehgZKKC9oE0aVMN2HLdA/ZfUA=
 		</data>
 		<key>Headers/WCAnalytics.h</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Headers/WildcardSDK-Swift.h</key>
 		<data>
-		BVs164BgJCIZTe/bw1MmkFgXTRw=
+		X5S5fPTPg/DADi/v1xDgn5n+y8M=
 		</data>
 		<key>Headers/WildcardSDK.h</key>
 		<data>
-		QACp7wTNNYoZDg4qFmAWz5WJVA0=
+		NLVi5lYNlaiLdxx+8i4zTLfWqBg=
 		</data>
 		<key>Headers/YTPlayerView.h</key>
 		<data>
@@ -54,19 +54,19 @@
 		</data>
 		<key>ImageAndCaptionBody.nib</key>
 		<data>
-		U/r7ibMpQWxz687XbHtFBjcApUA=
+		MoBmTrZD01bijmzX2GDbXoWvYOg=
 		</data>
 		<key>ImageFloatLeftBody.nib</key>
 		<data>
-		JQ+9r5jEK5RqLdxmxtToFMtN60g=
+		dsyvrFjpA2kdVxuyBQXUNgrD1Nc=
 		</data>
 		<key>ImageFloatRightBody.nib</key>
 		<data>
-		7oXlBFh/Dgpunec3bLUq9kBQv1M=
+		mmkWf012bG3oD2r69jClA0T2VVM=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		rjIB9OXOewnsT3vdReMvFpYF0PY=
+		JFRdMbeExb107RvGXyRmZN+uFnk=
 		</data>
 		<key>MediaReadingCss.css</key>
 		<data>
@@ -74,23 +74,23 @@
 		</data>
 		<key>MediaTextFullWebView.nib</key>
 		<data>
-		q1kCjbptaVnB2LNd1TKomt/fd48=
+		qk+yudIWp0OO/Wrx2qvFKLxKINY=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		3qS8SvUDGBd9lUzPv8OYR6HZLko=
+		HjHg0S13VitCI36Ntw9ouGnE5qQ=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		IjPxo7UAsmAB0Nxsnl5mtlaVrAA=
+		QBIoJxcXps/Vyhh8dAwfP2KOnEw=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		QjISMawBXAi+qVVKC1P4UFDWJMk=
+		hE/XGMlTgxseMb/03XVxTDsdk7g=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		svDcEpb2QjHpS+GiIipzR3ZbzmM=
+		DsnklXRnf7Ibk4RKL57LRCVkA+8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>TwitterHeader.nib</key>
 		<data>
-		d6GzQjxQoYjXsJVnmYk1y37bqNo=
+		AMc9DZwQqCk54SIaoQ8MzCs8moY=
 		</data>
 		<key>YTPlayerView-iframe-player.html</key>
 		<data>
@@ -113,11 +113,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		TntUgc39EBxsoYSaHCBhdosxQEM=
+		EYhWv+FvQ/t1vDuLSBINdA1Una8=
 		</data>
 		<key>FullCardHeader.nib</key>
 		<data>
-		uMFBbulQ9esB1K/W2N67Sj+Q9Mw=
+		0RehgZKKC9oE0aVMN2HLdA/ZfUA=
 		</data>
 		<key>Headers/WCAnalytics.h</key>
 		<data>
@@ -145,11 +145,11 @@
 		</data>
 		<key>Headers/WildcardSDK-Swift.h</key>
 		<data>
-		BVs164BgJCIZTe/bw1MmkFgXTRw=
+		X5S5fPTPg/DADi/v1xDgn5n+y8M=
 		</data>
 		<key>Headers/WildcardSDK.h</key>
 		<data>
-		QACp7wTNNYoZDg4qFmAWz5WJVA0=
+		NLVi5lYNlaiLdxx+8i4zTLfWqBg=
 		</data>
 		<key>Headers/YTPlayerView.h</key>
 		<data>
@@ -161,15 +161,15 @@
 		</data>
 		<key>ImageAndCaptionBody.nib</key>
 		<data>
-		U/r7ibMpQWxz687XbHtFBjcApUA=
+		MoBmTrZD01bijmzX2GDbXoWvYOg=
 		</data>
 		<key>ImageFloatLeftBody.nib</key>
 		<data>
-		JQ+9r5jEK5RqLdxmxtToFMtN60g=
+		dsyvrFjpA2kdVxuyBQXUNgrD1Nc=
 		</data>
 		<key>ImageFloatRightBody.nib</key>
 		<data>
-		7oXlBFh/Dgpunec3bLUq9kBQv1M=
+		mmkWf012bG3oD2r69jClA0T2VVM=
 		</data>
 		<key>MediaReadingCss.css</key>
 		<data>
@@ -177,23 +177,23 @@
 		</data>
 		<key>MediaTextFullWebView.nib</key>
 		<data>
-		q1kCjbptaVnB2LNd1TKomt/fd48=
+		qk+yudIWp0OO/Wrx2qvFKLxKINY=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		3qS8SvUDGBd9lUzPv8OYR6HZLko=
+		HjHg0S13VitCI36Ntw9ouGnE5qQ=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		IjPxo7UAsmAB0Nxsnl5mtlaVrAA=
+		QBIoJxcXps/Vyhh8dAwfP2KOnEw=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		QjISMawBXAi+qVVKC1P4UFDWJMk=
+		hE/XGMlTgxseMb/03XVxTDsdk7g=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		svDcEpb2QjHpS+GiIipzR3ZbzmM=
+		DsnklXRnf7Ibk4RKL57LRCVkA+8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -201,7 +201,7 @@
 		</data>
 		<key>TwitterHeader.nib</key>
 		<data>
-		d6GzQjxQoYjXsJVnmYk1y37bqNo=
+		AMc9DZwQqCk54SIaoQ8MzCs8moY=
 		</data>
 		<key>YTPlayerView-iframe-player.html</key>
 		<data>

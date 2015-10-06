@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc
+
 public class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var body:ImageOnlyBody!
@@ -19,7 +19,7 @@ public class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSo
         super.init(card:card)
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(.ImageOnly) as! ImageOnlyBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0)

@@ -24,24 +24,24 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
             case .Article:
                 let articleCard = card as! ArticleCard
                 if articleCard.abstractContent != nil{
-                    return count(articleCard.abstractContent!) < DESCRIPTION_THRESHOLD
+                    return (articleCard.abstractContent!).characters.count < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
             case .Summary:
                 let summaryCard = card as! SummaryCard
-                return count(summaryCard.description) < DESCRIPTION_THRESHOLD
+                return summaryCard.description.characters.count < DESCRIPTION_THRESHOLD
             case .Video:
                 let videoCard = card as! VideoCard
                 if videoCard.abstractContent != nil{
-                    return count(videoCard.abstractContent!) < DESCRIPTION_THRESHOLD
+                    return (videoCard.abstractContent!).characters.count < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
             case .Image:
                 let imageCard = card as! ImageCard
                 if imageCard.imageCaption != nil{
-                    return count(imageCard.imageCaption!) < DESCRIPTION_THRESHOLD
+                    return (imageCard.imageCaption!).characters.count < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }

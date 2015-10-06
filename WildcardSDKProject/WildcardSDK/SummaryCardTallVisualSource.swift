@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc
+
 public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader!
@@ -21,7 +21,7 @@ public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSourc
         super.init(card: card)
     }
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             header.hairline.hidden = true
@@ -31,7 +31,7 @@ public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSourc
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.ImageAndCaption) as! ImageAndCaptionBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
@@ -40,7 +40,7 @@ public class SummaryCardTallVisualSource : BaseVisualSource, CardViewVisualSourc
         return body
     }
     
-    public func viewForCardFooter() -> CardViewElement? {
+    @objc public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
             self.footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as! ViewOnWebCardFooter
             self.footer.hairline.hidden = true

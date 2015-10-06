@@ -44,24 +44,29 @@ class ViewController2: UIViewController, CardViewDelegate {
         let requestURL = NSURL(string:"https://www.reddit.com/new.json?limit=100")
         
         reRenderButton.enabled = false
-        var session = NSURLSession.sharedSession()
-        var task:NSURLSessionTask = session.dataTaskWithURL(requestURL!, completionHandler: { (data:NSData!, response:NSURLResponse!, error:NSError!) -> Void in
+        let session = NSURLSession.sharedSession()
+        let task:NSURLSessionTask = session.dataTaskWithURL(requestURL!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+            guard let responseData = data else {
+                return
+            }
+            
             if(error != nil){
                 // completion(nil, error)
             }else{
-                var jsonError:NSError?
-                var json:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as? NSDictionary
-                if (jsonError != nil) {
-                    println("JSON ERROR")
+                var json:NSDictionary?
+                
+                do {
+                    json = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                } catch {
+                    json = NSDictionary()
                 }
-                else {
-                    if let data = json!["data"] as? NSDictionary{
-                        if let children = data["children"] as? NSArray{
-                            for child in children{
-                                if let childData = child as? NSDictionary{
-                                    if let data = childData["data"] as? NSDictionary{
-                                        self.redditData.append(data)
-                                    }
+                
+                if let data = json!["data"] as? NSDictionary{
+                    if let children = data["children"] as? NSArray{
+                        for child in children{
+                            if let childData = child as? NSDictionary{
+                                if let data = childData["data"] as? NSDictionary{
+                                    self.redditData.append(data)
                                 }
                             }
                         }
@@ -82,7 +87,7 @@ class ViewController2: UIViewController, CardViewDelegate {
         let data = redditData[index]
         
         if let urlString = data["url"] as? String{
-            if let title = data["title"] as? String{
+            if let _ = data["title"] as? String{
                 if let url = NSURL(string: urlString) {
                     reRenderButton.enabled = false
                     spinner.startAnimating()

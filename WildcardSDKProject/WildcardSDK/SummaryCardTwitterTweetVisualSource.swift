@@ -8,20 +8,20 @@
 
 import Foundation
 
-@objc
+
 public class SummaryCardTwitterTweetVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:TwitterHeader!
     var body:SingleParagraphCardBody!
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(.TwitterHeader) as! TwitterHeader
         }
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(.SimpleParagraph) as! SingleParagraphCardBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 20, 22, 20)

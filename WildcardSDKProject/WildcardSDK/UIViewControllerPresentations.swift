@@ -16,7 +16,7 @@ public extension UIViewController{
         if let card = card {
             presentCard(card, layout:CardLayoutEngine.sharedInstance.matchLayout(card), animated:animated, completion:completion)
         }else{
-            println("Can't present a nil card")
+            print("Can't present a nil card")
         }
     }
     
@@ -24,29 +24,29 @@ public extension UIViewController{
     public func presentCard(card:Card!, layout:WCCardLayout, animated:Bool, completion:(() -> Void)?){
         if let card = card{
             if(!card.supportsLayout(layout)){
-                println("Unsupported layout for this card type, can't present.")
+                print("Unsupported layout for this card type, can't present.")
                 return
             }
             let visualsource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
             presentCard(card, customVisualSource: visualsource, animated: animated, completion: completion)
         }else{
-            println("Can't present a nil card")
+            print("Can't present a nil card")
         }
     }
 
     /// Presents a Card with a custom visual source
     public func presentCard(card:Card!, customVisualSource:CardViewVisualSource, animated:Bool, completion:(() -> Void)? ){
         WildcardSDK.analytics?.trackEvent("CardPresented", withProperties: nil, withCard: card)
-        if let card = card{
-            let stockModal = StockModalCardViewController()
-            stockModal.modalPresentationStyle = .Custom
-            stockModal.transitioningDelegate = stockModal
-            stockModal.modalPresentationCapturesStatusBarAppearance = true
-            stockModal.presentedCard = card
-            stockModal.cardVisualSource = customVisualSource
-            presentViewController(stockModal, animated: animated, completion: completion)
+        if let card = card {
+            let modal = StockModalCardViewController()
+            modal.modalPresentationStyle = .Custom
+            modal.transitioningDelegate = modal
+            modal.modalPresentationCapturesStatusBarAppearance = true
+            modal.presentedCard = card
+            modal.cardVisualSource = customVisualSource
+            self.presentViewController(modal, animated: animated, completion: completion)
         }else{
-            println("Can't present a nil card")
+            print("Can't present a nil card")
         }
     }
 
@@ -58,7 +58,7 @@ public extension UIViewController{
     public func handleCardAction(cardView:CardView, action:CardViewAction){
         switch(action.type){
         case WCCardAction.Collapse:
-            if let maximizedController = self as? StockMaximizedCardViewController{
+            if let _ = self as? StockMaximizedCardViewController{
                 presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
             break
@@ -67,10 +67,9 @@ public extension UIViewController{
                 if let url = actionParams["url"] as? NSURL{
                     let activityItems:[AnyObject] = [url]
                     let appActivity = SafariActivity()
-                    let applicationActivities:[AnyObject] = [appActivity]
-                    let exclusionActivities:[AnyObject] = [UIActivityTypeAirDrop]
+                    let applicationActivities:[UIActivity] = [appActivity]
                     let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
-                    activityViewController.excludedActivityTypes = exclusionActivities
+                    activityViewController.excludedActivityTypes = [UIActivityTypeAirDrop]
                     presentViewController(activityViewController, animated: true, completion: nil)
                 }
             }
@@ -87,19 +86,19 @@ public extension UIViewController{
                 // can only use the Store Kit Controller if the current view controller conforms to delegate
                 if let storeControllerDelegate = self as? SKStoreProductViewControllerDelegate{
                     if let id = actionParams["id"] as? NSString{
-                        var parameters = [NSObject:AnyObject]()
+                        var parameters = [String: AnyObject]()
                         parameters[SKStoreProductParameterITunesItemIdentifier] = id.integerValue
-                        var storeController = SKStoreProductViewController()
+                        let storeController = SKStoreProductViewController()
                         storeController.delegate = storeControllerDelegate
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                        storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError!) -> Void in
+                        storeController.loadProductWithParameters(parameters, completionBlock: { (bool:Bool, error:NSError?) -> Void in
                             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                             self.presentViewController(storeController, animated: true, completion: nil)
                             return
                         })
                     }
                 }else{
-                    println("Unable to present the download sheet. This view controller does not conform to SKStoreProductViewControllerDelegate.")
+                    print("Unable to present the download sheet. This view controller does not conform to SKStoreProductViewControllerDelegate.")
                 }
             }
             break
@@ -115,7 +114,7 @@ public extension UIViewController{
             if let actionParams = action.parameters{
                 if let imageView = actionParams["tappedImageView"] as? WCImageView{
                     if(imageView.image != nil){
-                        var controller = StockImageViewViewController()
+                        let controller = StockImageViewViewController()
                         controller.fromCardView = cardView
                         controller.fromImageView = imageView
                         controller.modalPresentationCapturesStatusBarAppearance = true

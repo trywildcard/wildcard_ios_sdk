@@ -11,11 +11,12 @@ import Foundation
 public extension NSURL{
     
     func isTwitterProfileURL()->Bool{
-        if(absoluteString != nil){
+        let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        if (length > 0) {
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)\\/?$"
-            let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
-            let length:Int = absoluteString!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-            let ytMatch = regex?.firstMatchInString(absoluteString!, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, length))
+            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive)
+            let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+            let ytMatch = regex?.firstMatchInString(absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
             if(ytMatch != nil){
                 return true
             }else{
@@ -27,11 +28,11 @@ public extension NSURL{
     }
     
     func isTwitterTweetURL()->Bool{
-        if(absoluteString != nil){
+        let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        if (length > 0) {
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)/status/(\\d*)\\/?$"
-            let regex = NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
-            let length:Int = absoluteString!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-            let ytMatch = regex?.firstMatchInString(absoluteString!, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, length))
+            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive)
+            let ytMatch = regex?.firstMatchInString(absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
             if(ytMatch != nil){
                 return true
             }else{

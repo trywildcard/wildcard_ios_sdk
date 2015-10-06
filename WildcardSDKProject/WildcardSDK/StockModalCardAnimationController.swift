@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StockModalCardAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
+class StockModalCardAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
     let duration :NSTimeInterval = 0.5
@@ -19,10 +19,10 @@ class StockModalCardAnimationController: NSObject,UIViewControllerAnimatedTransi
     }
    
     // MARK: UIViewControllerAnimatedTransitioning
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
-    
+
     func animateTransition(transitionContext: UIViewControllerContextTransitioning)  {
         if isPresenting {
             animatePresentationWithTransitionContext(transitionContext)
@@ -33,32 +33,25 @@ class StockModalCardAnimationController: NSObject,UIViewControllerAnimatedTransi
     
     // MARK: Private
     func animatePresentationWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
-        let presentedController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let presentedControllerView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-        let containerView = transitionContext.containerView()
-        
-        containerView.addSubview(presentedControllerView)
-        
-        if let stockModalController = presentedController as? StockModalCardViewController{
-            // pop up the card
-            stockModalController.cardViewVerticalConstraint.constant = stockModalController.view.frame.size.height
-            stockModalController.view.layoutIfNeeded()
-            if(stockModalController.cardView != nil){
-                UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                    stockModalController.cardViewVerticalConstraint!.constant = 0
-                    stockModalController.view.layoutIfNeeded()
-                    }, completion: {(completed: Bool) -> Void in
-                        transitionContext.completeTransition(completed)
-                })
-            }
+        if let presentedView = transitionContext.viewForKey(UITransitionContextToViewKey) {
+            let center = presentedView.center
+            presentedView.center = CGPointMake(center.x, -presentedView.bounds.size.height)
+            transitionContext.containerView()!.addSubview(presentedView)
+            
+            UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseOut,
+                animations: {
+                    presentedView.center = center
+                }, completion: {
+                    (completed: Bool) -> Void in
+                    transitionContext.completeTransition(completed)
+            })
         }
     }
     
     func animateDismissalWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
         let presentedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let presentedControllerView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        let containerView = transitionContext.containerView()
-        
         
         if let stockModalController = presentedController as? StockModalCardViewController{
             // move card up and out

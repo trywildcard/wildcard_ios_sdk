@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D288A771B6FEBED00BD3053 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D288A761B6FEBED00BD3053 /* WildcardSDK.framework */; };
+		0FEA74B61BC461B2002789B3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA74B51BC461B2002789B3 /* Security.framework */; };
+		0FEA74CE1BC47360002789B3 /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEA74CD1BC47358002789B3 /* WildcardSDK.framework */; };
 		1D288A781B6FEBED00BD3053 /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D288A761B6FEBED00BD3053 /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DC999651ABA2EEA006BA880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999641ABA2EEA006BA880 /* main.m */; };
 		1DC999681ABA2EEA006BA880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC999671ABA2EEA006BA880 /* AppDelegate.m */; };
@@ -44,6 +45,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FEA74B51BC461B2002789B3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0FEA74B81BC47358002789B3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0FEA74BA1BC47358002789B3 /* __swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __swift.swift; sourceTree = "<group>"; };
+		0FEA74BB1BC47358002789B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0FEA74BC1BC47358002789B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0FEA74BE1BC47358002789B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		0FEA74C01BC47358002789B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0FEA74C11BC47358002789B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0FEA74C21BC47358002789B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FEA74C31BC47358002789B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0FEA74C41BC47358002789B3 /* WCRedditCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WCRedditCards-Bridging-Header.h"; sourceTree = "<group>"; };
+		0FEA74C51BC47358002789B3 /* WCRedditCardsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCRedditCardsTableViewController.h; sourceTree = "<group>"; };
+		0FEA74C61BC47358002789B3 /* WCRedditCardsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTableViewController.m; sourceTree = "<group>"; };
+		0FEA74C71BC47358002789B3 /* WCRedditCards.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WCRedditCards.xcodeproj; sourceTree = "<group>"; };
+		0FEA74CB1BC47358002789B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FEA74CC1BC47358002789B3 /* WCRedditCardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCRedditCardsTests.m; sourceTree = "<group>"; };
+		0FEA74CD1BC47358002789B3 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		1D288A761B6FEBED00BD3053 /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		1DC9995F1ABA2EEA006BA880 /* WCRedditCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WCRedditCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC999631ABA2EEA006BA880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,7 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D288A771B6FEBED00BD3053 /* WildcardSDK.framework in Frameworks */,
+				0FEA74CE1BC47360002789B3 /* WildcardSDK.framework in Frameworks */,
+				0FEA74B61BC461B2002789B3 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +100,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FEA74B71BC47358002789B3 /* WCRedditCards */ = {
+			isa = PBXGroup;
+			children = (
+				0FEA74B81BC47358002789B3 /* .gitignore */,
+				0FEA74B91BC47358002789B3 /* WCRedditCards */,
+				0FEA74C71BC47358002789B3 /* WCRedditCards.xcodeproj */,
+				0FEA74CA1BC47358002789B3 /* WCRedditCardsTests */,
+				0FEA74CD1BC47358002789B3 /* WildcardSDK.framework */,
+			);
+			name = WCRedditCards;
+			sourceTree = "<group>";
+		};
+		0FEA74B91BC47358002789B3 /* WCRedditCards */ = {
+			isa = PBXGroup;
+			children = (
+				0FEA74BA1BC47358002789B3 /* __swift.swift */,
+				0FEA74BB1BC47358002789B3 /* AppDelegate.h */,
+				0FEA74BC1BC47358002789B3 /* AppDelegate.m */,
+				0FEA74BD1BC47358002789B3 /* LaunchScreen.xib */,
+				0FEA74BF1BC47358002789B3 /* Main.storyboard */,
+				0FEA74C11BC47358002789B3 /* Images.xcassets */,
+				0FEA74C21BC47358002789B3 /* Info.plist */,
+				0FEA74C31BC47358002789B3 /* main.m */,
+				0FEA74C41BC47358002789B3 /* WCRedditCards-Bridging-Header.h */,
+				0FEA74C51BC47358002789B3 /* WCRedditCardsTableViewController.h */,
+				0FEA74C61BC47358002789B3 /* WCRedditCardsTableViewController.m */,
+			);
+			path = WCRedditCards;
+			sourceTree = "<group>";
+		};
+		0FEA74C81BC47358002789B3 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0FEA74CA1BC47358002789B3 /* WCRedditCardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				0FEA74CB1BC47358002789B3 /* Info.plist */,
+				0FEA74CC1BC47358002789B3 /* WCRedditCardsTests.m */,
+			);
+			path = WCRedditCardsTests;
+			sourceTree = "<group>";
+		};
 		1DC999561ABA2EEA006BA880 = {
 			isa = PBXGroup;
 			children = (
+				0FEA74B71BC47358002789B3 /* WCRedditCards */,
+				0FEA74B51BC461B2002789B3 /* Security.framework */,
 				1D288A761B6FEBED00BD3053 /* WildcardSDK.framework */,
 				1DC999611ABA2EEA006BA880 /* WCRedditCards */,
 				1DC9997B1ABA2EEA006BA880 /* WCRedditCardsTests */,
@@ -188,7 +253,8 @@
 		1DC999571ABA2EEA006BA880 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = com.trywildcard;
 				TargetAttributes = {
 					1DC9995E1ABA2EEA006BA880 = {
@@ -211,6 +277,12 @@
 			mainGroup = 1DC999561ABA2EEA006BA880;
 			productRefGroup = 1DC999601ABA2EEA006BA880 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0FEA74C81BC47358002789B3 /* Products */;
+					ProjectRef = 0FEA74C71BC47358002789B3 /* WCRedditCards.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1DC9995E1ABA2EEA006BA880 /* WCRedditCards */,
@@ -270,6 +342,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0FEA74BD1BC47358002789B3 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FEA74BE1BC47358002789B3 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		0FEA74BF1BC47358002789B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FEA74C01BC47358002789B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		1DC9996C1ABA2EEA006BA880 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -309,6 +397,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -378,6 +467,7 @@
 				INFOPLIST_FILE = WCRedditCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trywildcard.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WCRedditCards/WCRedditCards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -397,6 +487,7 @@
 				INFOPLIST_FILE = WCRedditCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trywildcard.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WCRedditCards/WCRedditCards-Bridging-Header.h";
 			};
@@ -416,6 +507,7 @@
 				);
 				INFOPLIST_FILE = WCRedditCardsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trywildcard.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WCRedditCards.app/WCRedditCards";
 			};
@@ -431,6 +523,7 @@
 				);
 				INFOPLIST_FILE = WCRedditCardsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trywildcard.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WCRedditCards.app/WCRedditCards";
 			};

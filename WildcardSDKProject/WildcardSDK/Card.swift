@@ -62,7 +62,7 @@ public class Card : NSObject, PlatformObject {
         if let url = url{
             Platform.sharedInstance.getFromUrl(url, completion:completion)
         }else{
-            println("getFromUrl() failed, url is nil.")
+            print("getFromUrl() failed, url is nil.")
         }
     }
     

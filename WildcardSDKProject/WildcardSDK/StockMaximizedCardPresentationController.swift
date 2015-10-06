@@ -21,7 +21,7 @@ class StockMaximizedCardPresentationController :UIPresentationController
         }()
     
     override func presentationTransitionWillBegin() {
-        containerView.addSubview(self.blurView)
+        containerView!.addSubview(self.blurView)
         blurView.constrainToSuperViewEdges()
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {

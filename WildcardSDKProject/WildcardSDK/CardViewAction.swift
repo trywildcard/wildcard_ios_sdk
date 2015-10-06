@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class CardViewAction{
+public class CardViewAction: NSObject{
     
     /// Any parameters for the card action. e.g. for a WCCardAction.ViewOnWeb, there is a url parameter
     public let parameters:NSDictionary?

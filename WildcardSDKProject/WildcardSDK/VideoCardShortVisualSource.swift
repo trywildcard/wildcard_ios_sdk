@@ -8,13 +8,13 @@
 
 import Foundation
 
-@objc
+
 public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
     
     var header:FullCardHeader!
     var body:VideoCardBody!
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             header.hairline.hidden = true
@@ -24,7 +24,7 @@ public class VideoCardShortImageSource : BaseVisualSource, CardViewVisualSource{
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.VideoBody) as! VideoCardBody
             body.videoAspectRatio = 0.5625 // 16:9 default for videos

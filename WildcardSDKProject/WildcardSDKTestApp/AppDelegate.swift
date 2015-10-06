@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         WildcardSDK.initializeWithApiKey("b17442d4-5ca1-4173-bc90-bb9ee60086ab")
-        println("running wildcard version \(WildcardSDKVersionNumber)")
+        print("running wildcard version \(WildcardSDKVersionNumber)")
         return true
     }
 
@@ -50,15 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
-        
-        var returnValue:Int = Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
         if let allowLandscape = allowLandscape {
-            if(allowLandscape){
-                returnValue = Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+            if (allowLandscape) {
+                return UIInterfaceOrientationMask.AllButUpsideDown
             }
         }
-        return returnValue
+        
+        return UIInterfaceOrientationMask.Portrait
     }
 
 }

@@ -78,7 +78,7 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
         if let videoCard = card as? VideoCard{
             videoView.loadVideoCard(videoCard)
         }else{
-            println("VideoCardBody element should only be used with a video card.")
+            print("VideoCardBody element should only be used with a video card.")
         }
     }
     

@@ -23,16 +23,15 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // initialize card view array
+    self.cardViews = [NSMutableArray array];
+    
     // init and load reddit links
     self.redditLinks = [NSMutableArray array];
     [self loadRedditLinks];
     
-    // initialize card view array
-    self.cardViews = [NSMutableArray array];
-    
-    // initialize table view, we'll use automatic sizing in this example
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 50;
+    self.tableView.estimatedRowHeight = 50.0f;
 }
 
 
@@ -128,7 +127,9 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
             [[[UIAlertView alloc]initWithTitle:@"Could not load reddit links" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }else{
             NSDictionary* response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
             NSArray * children = response[@"data"][@"children"];
+            
             for (NSDictionary* child in children){
                 @try{
                     [self.redditLinks addObject:[NSURL URLWithString:child[@"data"][@"url"]]];
@@ -137,7 +138,10 @@ static const NSUInteger WCRedditCardTableViewCellCardViewTag = 1;
                     continue;
                 }
             }
+            
             [[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%lu Reddit Links waiting to be cardified!", (unsigned long)self.redditLinks.count] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            
+            [self.tableView reloadData];
         }
     }];
     [task resume];

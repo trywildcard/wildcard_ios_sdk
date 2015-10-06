@@ -36,11 +36,9 @@ class ViewController: UIViewController, CardViewDelegate{
     }
     
     @IBAction func testButtonTapped(sender: AnyObject) {
-        
-        println("tapped test button")
     }
+    
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
-        let cardAction = action
         switch(action.type){
         case .VideoDidStartPlaying:
             AppDelegate.sharedInstance().allowLandscape = true

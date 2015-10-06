@@ -128,7 +128,7 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
         WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
         
         if(cardView != nil){
-            var parameters = NSMutableDictionary()
+            let parameters = NSMutableDictionary()
             parameters["tappedImageView"] = imageView
             cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
         }

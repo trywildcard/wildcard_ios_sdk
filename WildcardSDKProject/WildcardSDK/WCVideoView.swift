@@ -46,7 +46,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         // initializes the video wkwebview
         let controller = WKUserContentController()
         controller.addScriptMessageHandler(self, name: "observe")
-        var configuration = WKWebViewConfiguration()
+        let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = false
         configuration.mediaPlaybackRequiresUserAction = true
         configuration.userContentController = controller
@@ -97,7 +97,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         
         videoActionImage = UIImageView(frame:CGRectZero)
         videoActionImage.tintColor = UIColor.whiteColor()
-        videoActionImage.setTranslatesAutoresizingMaskIntoConstraints(false)
+        videoActionImage.translatesAutoresizingMaskIntoConstraints = false
         videoActionImage.image = UIImage.loadFrameworkImage("playIcon")
         videoActionImage.hidden = true
         passthroughView.insertSubview(videoActionImage, aboveSubview: posterView)
@@ -108,7 +108,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         // spinner above poster image
         spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
         spinner.hidesWhenStopped = true
-        spinner.setTranslatesAutoresizingMaskIntoConstraints(false)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
         insertSubview(spinner, aboveSubview: passthroughView)
         addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterX, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterX, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterY, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterY, multiplier: 1.0, constant: 0))
@@ -146,7 +146,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
                 setLoading(true)
                 ytPlayer.loadWithVideoId(ytId)
             }else{
-                println("Shouldn't happen -- Video Card with Youtube creator is malformed.")
+                print("Shouldn't happen -- Video Card with Youtube creator is malformed.")
                 setError()
                 return
             }
@@ -268,9 +268,9 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     }
     
     public func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
-        if(state.value == kYTPlayerStatePlaying.value){
+        if(state.rawValue == kYTPlayerStatePlaying.rawValue){
             delegate?.videoViewDidStartPlaying?(self)
-        }else if(state.value == kYTPlayerStatePaused.value){
+        }else if(state.rawValue == kYTPlayerStatePaused.rawValue){
             delegate?.videoViewWillEndPlaying?(self)
         }
     }
@@ -289,7 +289,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     private func getHtml5ListenerJS()->String{
         var script:String?
         if let file = NSBundle.wildcardSDKBundle().pathForResource("html5VideoListeners", ofType: "js"){
-            script = String(contentsOfFile: file, encoding: NSUTF8StringEncoding, error: nil)
+            script = try? String(contentsOfFile: file, encoding: NSUTF8StringEncoding)
         }
         return script!
     }
@@ -304,7 +304,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         }
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
     

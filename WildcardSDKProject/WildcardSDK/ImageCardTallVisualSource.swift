@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc
+
 public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:ImageOnlyBody!
@@ -34,7 +34,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
         super.init(card: card)
     }
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as! ImageOnlyBody
             header.contentEdgeInset = UIEdgeInsetsMake(0,0,0,0)
@@ -43,7 +43,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)

@@ -34,7 +34,7 @@ class ImageCache: NSCache {
     }
     
     class func cacheKeyFromRequest(request:NSURLRequest)->String{
-        return request.URL!.absoluteString!
+        return request.URL!.absoluteString
     }
     
     func cachedImageForRequest(request:NSURLRequest)->UIImage?{
