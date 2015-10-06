@@ -10,6 +10,8 @@
 	<string>WildcardSDKProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>3C209B1DA81826B17542B672F9AE6FB29DEFAF13</key>
+		<string>https://github.com/kerbelda/wildcardTest.git</string>
 		<key>91C55DC158E86763EA7C972EA5779A070519BEAD</key>
 		<string>github.com:trywildcard/wildcard_ios_sdk.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>WildcardSDKProject/WildcardSDKProject.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>3C209B1DA81826B17542B672F9AE6FB29DEFAF13</key>
+		<string>../../../../wildcardTest</string>
 		<key>91C55DC158E86763EA7C972EA5779A070519BEAD</key>
 		<string>../../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>91C55DC158E86763EA7C972EA5779A070519BEAD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>wildcard_ios_sdk</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3C209B1DA81826B17542B672F9AE6FB29DEFAF13</string>
+			<key>IDESourceControlWCCName</key>
+			<string>wildcardTest</string>
 		</dict>
 	</array>
 </dict>

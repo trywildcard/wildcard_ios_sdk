@@ -202,6 +202,8 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     func videoTapped(recognizer:UITapGestureRecognizer!){
         
         delegate?.videoViewTapped?(self)
+        videoWKView.hidden = true
+
         
         if(inError){
             // attempt reload if we're in error state
