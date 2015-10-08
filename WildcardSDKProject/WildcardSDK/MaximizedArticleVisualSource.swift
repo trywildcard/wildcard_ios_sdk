@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc
+
 public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     
     var card:Card
@@ -18,11 +18,11 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
         self.card = card
     }
     
-    public func applicationFrameEdgeInsets() -> UIEdgeInsets {
+    @objc public func applicationFrameEdgeInsets() -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.MediaTextFullWebView) as! MediaTextFullWebView
         }

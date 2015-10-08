@@ -64,7 +64,7 @@ public class CardViewElement : UIView {
     public func initialize(){
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
     

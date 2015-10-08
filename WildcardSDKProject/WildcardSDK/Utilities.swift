@@ -50,11 +50,9 @@ public class Utilities{
     public class func printFontFamilies(){
         for name in UIFont.familyNames()
         {
-            println("Font family: \(name)")
-            if let nameString = name as? String{
-                let names = UIFont.fontNamesForFamilyName(nameString)
-                println(names)
-            }
+            print("Font family: \(name)")
+            let names = UIFont.fontNamesForFamilyName(name)
+            print(names)
         }
     }
     
@@ -64,11 +62,11 @@ public class Utilities{
             return 0
         }else{
             let nsStr = NSString(string: text!)
-            var paragraphStyle = NSMutableParagraphStyle()
+            let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.minimumLineHeight = lineHeight
             paragraphStyle.maximumLineHeight = lineHeight
             
-            var attributesDictionary:[NSObject:AnyObject] =
+            let attributesDictionary:[String: AnyObject] =
             [NSParagraphStyleAttributeName: paragraphStyle,
                 NSFontAttributeName:font]
             

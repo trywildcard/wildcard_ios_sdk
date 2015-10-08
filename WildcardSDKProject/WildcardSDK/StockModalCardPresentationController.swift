@@ -24,8 +24,8 @@ class StockModalCardPresentationController: UIPresentationController {
     }()
     
     override func presentationTransitionWillBegin() {
-        self.blurView.frame = self.containerView.bounds
-        self.containerView.addSubview(self.blurView)
+        self.blurView.frame = containerView!.bounds
+        containerView!.addSubview(self.blurView)
         self.blurView.constrainToSuperViewEdges()
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {

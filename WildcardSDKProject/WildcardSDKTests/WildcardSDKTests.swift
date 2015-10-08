@@ -28,7 +28,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(error == nil)
             XCTAssert(card?.cardType == "article")
             
-            if let articleCard = card as? ArticleCard{
+            if let _ = card as? ArticleCard{
                 XCTAssert(true)
                 
             }else{
@@ -50,7 +50,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(card?.cardType == "image")
             
             if let card = card as? ImageCard{
-                XCTAssert(count(card.title!) > 0)
+                XCTAssert(card.title?.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
                 XCTAssert(card.imageSize.height != -1)
                 XCTAssert(card.imageSize.width != -1)
                 
@@ -75,7 +75,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(error == nil)
             XCTAssert(card?.cardType == "video")
             
-            if let articleCard = card as? VideoCard{
+            if let _ = card as? VideoCard{
                 XCTAssert(true)
                 
             }else{
@@ -107,7 +107,7 @@ class WildcardSDKTests: XCTestCase {
             XCTAssert(card != nil)
             XCTAssert(error == nil)
             
-            if let summaryCard = card as? SummaryCard{
+            if let _ = card as? SummaryCard{
                 XCTAssert(true)
             }else{
                 XCTFail("not summary")
@@ -163,7 +163,7 @@ class WildcardSDKTests: XCTestCase {
     func testSummaryCardLayouts(){
         let engine = CardLayoutEngine.sharedInstance
         let url = NSURL(string: "http://www.google.com")
-        let publisher = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
+        let _ = Creator(name:"Google", url:url!, favicon:nil, iosStore:nil)
         
         let media:NSMutableDictionary = NSMutableDictionary()
         media["imageUrl"] = "http://netdna.webdesignerdepot.com/uploads/2013/02/featured35@wdd2x.jpg"
@@ -173,7 +173,7 @@ class WildcardSDKTests: XCTestCase {
         let SummaryCard1 = SummaryCard(url: url!, description: "test1", title: "test1", media:nil, data:nil)
         XCTAssert(engine.matchLayout(SummaryCard1) == .SummaryCardNoImage)
         
-        let imageUrl = NSURL(string: "http://www.google.com")
+        let _ = NSURL(string: "http://www.google.com")
        
         // image with short title
         let SummaryCard2 = SummaryCard(url: url!, description: "test2", title: "test2", media:media, data:nil)

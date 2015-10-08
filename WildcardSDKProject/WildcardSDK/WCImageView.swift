@@ -51,16 +51,27 @@ public class WCImageView : UIImageView
             
             _downloadTask =
                 session.downloadTaskWithRequest(imageRequest,
-                    completionHandler: { (location:NSURL!, resp:NSURLResponse!, error:NSError!) -> Void in
+                    completionHandler: { (location:NSURL?, resp:NSURLResponse?, error:NSError?) -> Void in
                         self.stopPulsing()
+                        
+                        var error = error
+                        guard let imageLocation = location else {
+                            error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedResponse.rawValue, userInfo: nil)
+                            return
+                        }
+                        
+                        guard let underlyingQueue = WildcardSDK.networkDelegateQueue.underlyingQueue else {
+                            error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedResponse.rawValue, userInfo: nil)
+                            return
+                        }
                         
                         if(error == nil){
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-                                let data:NSData? = NSData(contentsOfURL: location)
+                                let data:NSData? = NSData(contentsOfURL: imageLocation)
                                 if let newImage = UIImage(data: data!){
                                     ImageCache.sharedInstance.cacheImageForRequest(newImage, request: imageRequest)
                                     if let cb = completion{
-                                        dispatch_async(WildcardSDK.networkDelegateQueue.underlyingQueue, { () -> Void in
+                                        dispatch_async(underlyingQueue, { () -> Void in
                                             cb(newImage,nil)
                                         })
                                     }else{
@@ -71,7 +82,7 @@ public class WCImageView : UIImageView
                                 }else{
                                     let error = NSError(domain: "Couldn't create image from data", code: 0, userInfo: nil)
                                     if let cb = completion{
-                                        dispatch_async(WildcardSDK.networkDelegateQueue.underlyingQueue, { () -> Void in
+                                        dispatch_async(underlyingQueue, { () -> Void in
                                             cb(nil,error)
                                         })
                                     }else{
@@ -119,7 +130,7 @@ public class WCImageView : UIImageView
     private var _tapGesture:UITapGestureRecognizer!
     
     func startPulsing(){
-        var pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 0.75
         pulseAnimation.toValue = NSNumber(float: 1.0)
         pulseAnimation.fromValue = NSNumber(float: 0.6)
@@ -147,7 +158,7 @@ public class WCImageView : UIImageView
         addGestureRecognizer(_tapGesture)
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
     

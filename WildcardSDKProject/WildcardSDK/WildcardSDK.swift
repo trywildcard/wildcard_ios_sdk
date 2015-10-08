@@ -9,8 +9,9 @@
 import Foundation
 
 /// Global convenience settings
+
 @objc
-public class WildcardSDK {
+public class WildcardSDK: NSObject {
  
     /// Custom font for Card titles
     public class var cardTitleFont:UIFont{
@@ -135,7 +136,7 @@ public class WildcardSDK {
             WildcardSDK.sharedInstance.__applicationKey = key
             WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
         }else{
-            println("Wildcard SDK can only be initialized once.")
+            print("Wildcard SDK can only be initialized once.")
         }
     }
     

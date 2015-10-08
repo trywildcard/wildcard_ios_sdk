@@ -23,17 +23,17 @@ class CheckShortTitleEdge : LayoutDecisionEdge{
                 return false
             case .Article:
                 let articleCard = card as! ArticleCard
-                return count(articleCard.title) < TITLE_THRESHOLD
+                return articleCard.title.characters.count < TITLE_THRESHOLD
             case .Summary:
                 let summaryCard = card as! SummaryCard
-                return count(summaryCard.title) < TITLE_THRESHOLD
+                return summaryCard.title.characters.count < TITLE_THRESHOLD
             case .Video:
                 let videoCard = card as! VideoCard
-                return count(videoCard.title) < TITLE_THRESHOLD
+                return videoCard.title.characters.count < TITLE_THRESHOLD
             case .Image:
                 let imageCard = card as! ImageCard
                 if imageCard.title != nil {
-                    return count(imageCard.title!) < TITLE_THRESHOLD
+                    return (imageCard.title!).characters.count < TITLE_THRESHOLD
                 }else{
                     return false
                 }

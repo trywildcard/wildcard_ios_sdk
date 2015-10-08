@@ -20,7 +20,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
     }
     
     // MARK: UIViewControllerAnimatedTransitioning
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
     
@@ -39,7 +39,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         
         let rectConvert = maximizedController.calculateMaximizedFrame()
     
-        containerView.addSubview(presentedControllerView)
+        containerView!.addSubview(presentedControllerView)
   
         maximizedController.view.layoutIfNeeded()
         let originalShadowOpacity = maximizedController.maximizedCardView.layer.shadowOpacity
@@ -57,9 +57,7 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
     
     func animateDismissalWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
         let maximizedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)! as! StockMaximizedCardViewController
-        let presentedControllerView = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let containerView = transitionContext.containerView()
-        
+
         maximizedController.maximizedCardView?.fadeOut(duration/2, delay: 0, completion: nil)
         UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             

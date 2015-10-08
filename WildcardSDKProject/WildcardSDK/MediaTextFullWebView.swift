@@ -44,14 +44,15 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
     // MARK: Private
     func updateToolbar(card:Card){
         
-        var barButtonItems:[AnyObject] = []
-        var closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
+        var barButtonItems:[UIBarButtonItem] = []
+        
+        let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
         barButtonItems.append(closeButton)
         
-        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         barButtonItems.append(flexSpace)
         
-        var actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped:")
+        let actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped:")
         barButtonItems.append(actionButton)
         
         bottomToolbar.setItems(barButtonItems, animated: false)
@@ -112,8 +113,8 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         }
         
         dispatch_once(&Static.onceToken, { () -> Void in
-            var file = NSBundle.wildcardSDKBundle().pathForResource("MediaReadingCss", ofType: "css")
-            var contents = NSString(contentsOfFile: file!, encoding: NSUTF8StringEncoding, error: nil)
+            let file = NSBundle.wildcardSDKBundle().pathForResource("MediaReadingCss", ofType: "css")
+            let contents = try? NSString(contentsOfFile: file!, encoding: NSUTF8StringEncoding)
             Static.instance = contents as? String
         })
         return Static.instance!

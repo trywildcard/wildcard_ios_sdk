@@ -18,7 +18,7 @@ class StockImageViewPresentationController: UIPresentationController {
         }()
     
     override func presentationTransitionWillBegin() {
-        containerView.addSubview(self.backgroundView)
+        containerView!.addSubview(self.backgroundView)
         backgroundView.constrainToSuperViewEdges()
         
         if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {

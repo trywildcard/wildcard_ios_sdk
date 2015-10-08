@@ -107,7 +107,7 @@ class StockMaximizedCardViewController: UIViewController, CardPhysicsDelegate, C
     }
     
     // MARK: SKStoreProductViewControllerDelegate
-    func productViewControllerDidFinish(viewController: SKStoreProductViewController!) {
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -64,9 +64,3 @@ The files can be uploaded directly via browser.
 *Internal Wildcard Use Only*
 
 * At the moment, everytime Xcode updates, the SDK will have to also be updated and re packaged.
-
-* This has been OK for Xcode6, but Xcode 7 includes *Swift 2* which may have some substantial syntax changes to the language. When Xcode 7 is released, there may have to be a pretty big code change depending on how much of the language changes.
-
-
-
-

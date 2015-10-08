@@ -13,7 +13,7 @@ Creator of a Card
 
 Any entity that owns Card content. This may be a company, specific website, or individual.
 */
-@objc
+
 public class Creator : PlatformObject {
     
     public let name:String
@@ -39,7 +39,6 @@ public class Creator : PlatformObject {
         if(name != nil && creatorUrl != nil){
             var favicon:NSURL?
             var iosStoreUrl:NSURL?
-            var androidStoreUrl:NSURL?
             
             if let fav = data["favicon"] as? String{
                 favicon = NSURL(string: fav)

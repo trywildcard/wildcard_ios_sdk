@@ -8,14 +8,14 @@
 
 import Foundation
 
-@objc
+
 public class SummaryCardTwitterProfileVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:ImageOnlyBody!
     var body:TwitterHeader!
     var footer:SingleParagraphCardBody!
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(.ImageOnly) as! ImageOnlyBody
             header.contentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -23,14 +23,14 @@ public class SummaryCardTwitterProfileVisualSource : BaseVisualSource, CardViewV
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(.TwitterHeader) as! TwitterHeader
         }
         return body
     }
     
-    public func viewForCardFooter() -> CardViewElement? {
+    @objc public func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
             footer = CardViewElementFactory.createCardViewElement(.SimpleParagraph) as! SingleParagraphCardBody
             footer.contentEdgeInset = UIEdgeInsetsMake(0, 20, 22, 20)

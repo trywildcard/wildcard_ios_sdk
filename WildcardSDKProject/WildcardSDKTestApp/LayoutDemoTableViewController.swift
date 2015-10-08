@@ -20,6 +20,7 @@ class LayoutDemoTableViewController: UITableViewController {
     
     var layoutLabels:[String] =
     [
+        "Article Card",
         "SummaryCard",
         "SummaryCard",
         "SummaryCard",
@@ -40,6 +41,7 @@ class LayoutDemoTableViewController: UITableViewController {
     
     var layoutLabelsSubtexts:[String] =
     [
+        "From URL",
         "No Image",
         "Tall",
         "Short",
@@ -85,7 +87,6 @@ class LayoutDemoTableViewController: UITableViewController {
         videoData["media"] = videoMedia
         
         // article card no image has default
-        let data:NSMutableDictionary = NSMutableDictionary()
         videoCard = VideoCard(title: "Avengers: Age of Ultron Official Extended TV SPOT - Let's Finish This (2015) - Avengers Sequel HD", embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
         
         let imgurUrl = NSURL(string: "http://www.imgur.com")!
@@ -102,7 +103,6 @@ class LayoutDemoTableViewController: UITableViewController {
         
         imageCard = ImageCard(imageUrl: NSURL(string:"http://oceanlink.island.net/biodiversity/shark/Great-White-Shark.jpg")!, url: NSURL(string:"http://imgur.com/gallery/ZvEWNki")!, creator: imgur, data: imageData)
         
-        let cnnUrl = NSURL(string: "http://www.cnn.com")!
         let cnn = Creator(name:"CNN", url:imgurUrl, favicon:NSURL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-cnn.png"), iosStore:nil)
         
         
@@ -110,7 +110,7 @@ class LayoutDemoTableViewController: UITableViewController {
         let articleData:NSMutableDictionary = NSMutableDictionary()
         let articleBaseData:NSMutableDictionary = NSMutableDictionary()
         articleData["htmlContent"] = "<div>Some Content</div>"
-        articleData["publicationDate"] = 1429063354000
+        articleData["publicationDate"] = NSNumber(longLong: 1429063354000)
         let articleMedia:NSMutableDictionary = NSMutableDictionary()
         articleMedia["imageUrl"] =  "http://i2.cdn.turner.com/money/dam/assets/150414182846-high-there-image-1024x576.jpeg"
         articleMedia["type"] = "image"
@@ -142,7 +142,7 @@ class LayoutDemoTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("layoutDemoCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("layoutDemoCell", forIndexPath: indexPath)
         cell.selectionStyle = .None
         cell.textLabel!.text = layoutLabels[indexPath.row]
         cell.detailTextLabel!.text = layoutLabelsSubtexts[indexPath.row]
@@ -151,36 +151,46 @@ class LayoutDemoTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(indexPath.row == 0){
-            presentCard(summaryCard, layout: .SummaryCardNoImage, animated: true, completion: nil)
+            let URL = NSURL(string:"http://www.theatlantic.com/business/archive/2015/02/the-clooney-effect/386018/")
+            Card.getFromUrl(URL,
+                completion: { (card:Card?, error:NSError?) -> Void in
+                    if let card = card {
+                        self.presentCard(card, animated: true, completion: nil)
+                    }else{
+                        UIApplication.sharedApplication().openURL(URL!)
+                    }
+            })
         }else if(indexPath.row == 1){
-            presentCard(summaryCard, layout: .SummaryCardTall, animated: true, completion: nil)
+            presentCard(summaryCard, layout: .SummaryCardNoImage, animated: true, completion: nil)
         }else if(indexPath.row == 2){
-            presentCard(summaryCard, layout: .SummaryCardShort, animated: true, completion: nil)
+            presentCard(summaryCard, layout: .SummaryCardTall, animated: true, completion: nil)
         }else if(indexPath.row == 3){
-            presentCard(summaryCard, layout: .SummaryCardShortLeft, animated: true, completion: nil)
+            presentCard(summaryCard, layout: .SummaryCardShort, animated: true, completion: nil)
         }else if(indexPath.row == 4){
-            presentCard(summaryCard, layout: .SummaryCardImageOnly, animated: true, completion: nil)
+            presentCard(summaryCard, layout: .SummaryCardShortLeft, animated: true, completion: nil)
         }else if(indexPath.row == 5){
-            presentCard(videoCard, layout: .VideoCardShort, animated: true, completion: nil)
+            presentCard(summaryCard, layout: .SummaryCardImageOnly, animated: true, completion: nil)
         }else if(indexPath.row == 6){
-            presentCard(videoCard, layout: .VideoCardShortFull, animated: true, completion: nil)
+            presentCard(videoCard, layout: .VideoCardShort, animated: true, completion: nil)
         }else if(indexPath.row == 7){
-            presentCard(videoCard, layout: .VideoCardThumbnail, animated: true, completion: nil)
+            presentCard(videoCard, layout: .VideoCardShortFull, animated: true, completion: nil)
         }else if(indexPath.row == 8){
-            presentCard(imageCard, layout: .ImageCard4x3, animated: true, completion: nil)
+            presentCard(videoCard, layout: .VideoCardThumbnail, animated: true, completion: nil)
         }else if(indexPath.row == 9){
-            presentCard(imageCard, layout: .ImageCardAspectFit, animated: true, completion: nil)
+            presentCard(imageCard, layout: .ImageCard4x3, animated: true, completion: nil)
         }else if(indexPath.row == 10){
-            presentCard(imageCard, layout: .ImageCardImageOnly, animated: true, completion: nil)
+            presentCard(imageCard, layout: .ImageCardAspectFit, animated: true, completion: nil)
         }else if(indexPath.row == 11){
-            presentCard(articleCard, layout: .ArticleCardNoImage, animated: true, completion: nil)
+            presentCard(imageCard, layout: .ImageCardImageOnly, animated: true, completion: nil)
         }else if(indexPath.row == 12){
-            presentCard(articleCard, layout: .ArticleCardTall, animated: true, completion: nil)
+            presentCard(articleCard, layout: .ArticleCardNoImage, animated: true, completion: nil)
         }else if(indexPath.row == 13){
-            presentCard(articleCard, layout: .ArticleCardShort, animated: true, completion: nil)
+            presentCard(articleCard, layout: .ArticleCardTall, animated: true, completion: nil)
         }else if(indexPath.row == 14){
-            presentCard(summaryCardTwitterTweet, layout:.SummaryCardTwitterTweet, animated:true, completion:nil)
+            presentCard(articleCard, layout: .ArticleCardShort, animated: true, completion: nil)
         }else if(indexPath.row == 15){
+            presentCard(summaryCardTwitterTweet, layout:.SummaryCardTwitterTweet, animated:true, completion:nil)
+        }else if(indexPath.row == 16){
             presentCard(summaryCardTwitterProfile, layout:.SummaryCardTwitterProfile, animated:true, completion:nil)
         }
     }

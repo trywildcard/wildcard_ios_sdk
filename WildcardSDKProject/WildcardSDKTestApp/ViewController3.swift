@@ -23,13 +23,13 @@ class ViewController3: UIViewController, CardViewDelegate {
     
     @IBAction func testButtonTapped(sender: AnyObject) {
         
-        if let header = cardView.visualSource.viewForCardHeader?() as? FullCardHeader{
+        if let _ = cardView.visualSource.viewForCardHeader?() as? FullCardHeader{
            
           //  header.title.font = UIFont(name:"HelveticaNeue-Medium", size: 36.0)!
           
         }
         
-        if let body = cardView.visualSource.viewForCardBody() as? ImageFloatRightBody{
+        if let _ = cardView.visualSource.viewForCardBody() as? ImageFloatRightBody{
             // body.caption.font = UIFont(name:"HelveticaNeue-Medium", size: 24.0)!
             //body.contentEdgeInset = UIEdgeInsetsMake(10, 40, 20, 40)
             // body.imageViewSize = CGSizeMake(200, 200)

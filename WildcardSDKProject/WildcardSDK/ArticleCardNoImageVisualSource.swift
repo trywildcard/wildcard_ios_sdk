@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc
+
 public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource {
     
     var header:FullCardHeader!
@@ -16,7 +16,7 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
     var footer:ReadMoreFooter!
     var footerWeb:ViewOnWebCardFooter!
     
-    public func viewForCardHeader()->CardViewElement?{
+    @objc public func viewForCardHeader()->CardViewElement?{
         if(header == nil){
             header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
             header.hairline.hidden = true
@@ -24,7 +24,7 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         return header
     }
     
-    public func viewForCardBody()->CardViewElement{
+    @objc public func viewForCardBody()->CardViewElement{
         if(body == nil){
             body = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as! SingleParagraphCardBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 0, 15)
@@ -32,7 +32,7 @@ public class ArticleCardNoImageVisualSource : BaseVisualSource, CardViewVisualSo
         return body
     }
     
-    public func viewForCardFooter() -> CardViewElement? {
+    @objc public func viewForCardFooter() -> CardViewElement? {
         if let articleCard = card as? ArticleCard{
             if(articleCard.html == nil){
                 if(footerWeb == nil){

@@ -23,7 +23,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
     }
     
     func testHeaderSizing(){
-        var header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
+        let header:FullCardHeader = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
         header.preferredWidth = 300
         var currentSize:CGSize = header.intrinsicContentSize()
         XCTAssert(currentSize.width == 300)
@@ -32,7 +32,7 @@ class WildcardSDKElementSizingTests: XCTestCase {
         XCTAssert(header.intrinsicContentSize().height > currentSize.height)
         
         header.kickerSpacing -= 10
-        println(header.intrinsicContentSize().height)
+        print(header.intrinsicContentSize().height)
         XCTAssert(header.intrinsicContentSize().height == currentSize.height)
         currentSize = header.intrinsicContentSize()
         
@@ -98,8 +98,8 @@ class WildcardSDKElementSizingTests: XCTestCase {
         currentSize = body.intrinsicContentSize()
         
         body.contentEdgeInset = UIEdgeInsetsMake(currentInset.top, currentInset.left + 10, currentInset.bottom, currentInset.right + 10)
-        println(body.intrinsicContentSize().height)
-        println(currentSize.height)
+        print(body.intrinsicContentSize().height)
+        print(currentSize.height)
         XCTAssert(body.intrinsicContentSize().height < currentSize.height)
     }
     

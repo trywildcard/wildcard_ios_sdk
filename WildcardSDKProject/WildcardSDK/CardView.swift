@@ -62,7 +62,7 @@ public protocol CardViewDelegate{
     /**
     CardView has been requested to perform a specific action.
     */
-    optional func cardViewRequestedAction(cardView:CardView, action: CardViewAction)
+    optional func cardViewRequestedAction(cardView:CardView, action:CardViewAction)
     
     /**
     CardView is about to be reloaded.
@@ -116,7 +116,7 @@ public class CardView : UIView
             let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
             return CardView.createCardView(card, layout: layoutToUse, preferredWidth:UIViewNoIntrinsicMetric)
         }else{
-            println("Can't create CardView from nil card")
+            print("Can't create CardView from nil card")
             return nil
         }
     }
@@ -125,13 +125,13 @@ public class CardView : UIView
     public class func createCardView(card:Card!, layout:WCCardLayout)->CardView?{
         if let card = card {
             if(!card.supportsLayout(layout)){
-                println("Unsupported layout for this card type, returning nil.")
+                print("Unsupported layout for this card type, returning nil.")
                 return nil
             }
             let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
             return CardView.createCardView(card, visualSource: datasource, preferredWidth:UIViewNoIntrinsicMetric)
         }else{
-            println("Can't create CardView from nil card")
+            print("Can't create CardView from nil card")
             return nil
         }
     }
@@ -144,13 +144,13 @@ public class CardView : UIView
     public class func createCardView(card:Card!, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
         if let card = card {
             if(!card.supportsLayout(layout)){
-                println("Unsupported layout for this card type, returning nil.")
+                print("Unsupported layout for this card type, returning nil.")
                 return nil
             }
             let datasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
             return CardView.createCardView(card, visualSource: datasource, preferredWidth:preferredWidth)
         }else{
-            println("Can't create CardView from nil card")
+            print("Can't create CardView from nil card")
             return nil
         }
     }
@@ -163,13 +163,13 @@ public class CardView : UIView
     public class func createCardView(card:Card!, visualSource:CardViewVisualSource!, preferredWidth:CGFloat)->CardView?{
         
         if(card == nil){
-            println("Card is nil -- can't create CardView.")
+            print("Card is nil -- can't create CardView.")
             return nil
         }else if(visualSource == nil){
-            println("Visual source is nil -- can't create CardView.")
+            print("Visual source is nil -- can't create CardView.")
             return nil
         }else if(WildcardSDK.apiKey == nil){
-            println("Wildcard API Key not initialized -- can't create CardView.")
+            print("Wildcard API Key not initialized -- can't create CardView.")
             return nil
         }
         
@@ -205,7 +205,7 @@ public class CardView : UIView
             let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
             return reloadWithCard(card, layout: layoutToUse)
         }else{
-            println("Can't reload with nil card")
+            print("Can't reload with nil card")
         }
     }
     
@@ -213,13 +213,13 @@ public class CardView : UIView
     public func reloadWithCard(newCard:Card!, layout:WCCardLayout){
         if let card = newCard {
             if(!card.supportsLayout(layout)){
-                println("Unsupported layout for this card type, nothing reloaded.")
+                print("Unsupported layout for this card type, nothing reloaded.")
                 return
             }
             let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
             reloadWithCard(card, visualSource: autoDatasource, preferredWidth:UIViewNoIntrinsicMetric)
         }else{
-            println("Can't reload with nil card")
+            print("Can't reload with nil card")
         }
     }
     
@@ -227,13 +227,13 @@ public class CardView : UIView
     public func reloadWithCard(newCard:Card!, layout:WCCardLayout, preferredWidth:CGFloat){
         if let card = newCard {
             if(!card.supportsLayout(layout)){
-                println("Unsupported layout for this card type, nothing reloaded.")
+                print("Unsupported layout for this card type, nothing reloaded.")
                 return
             }
             let autoDatasource = CardViewVisualSourceFactory.visualSourceFromLayout(layout, card: card)
             reloadWithCard(card, visualSource: autoDatasource, preferredWidth:preferredWidth)
         }else{
-            println("Can't reload with nil card")
+            print("Can't reload with nil card")
         }
     }
     
@@ -264,7 +264,7 @@ public class CardView : UIView
             // reloaded
             delegate?.cardViewDidReload?(self)
         }else{
-            println("Can't reload with nil card")
+            print("Can't reload with nil card")
         }
     }
     
@@ -306,7 +306,7 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
-    required public init(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         convenienceInitialize()
     }
@@ -340,7 +340,7 @@ public class CardView : UIView
         Platform.sharedInstance.createWildcardShortLink(backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             if let shareUrl = url {
-                var params:NSDictionary = ["url":shareUrl]
+                let params:NSDictionary = ["url":shareUrl]
                 let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)
                 self.delegate?.cardViewRequestedAction?(self, action: cardAction)
             }
@@ -356,9 +356,9 @@ public class CardView : UIView
     func handleDownloadApp(){
         if let articleCard = backingCard as? ArticleCard{
             if let url = articleCard.creator.iosAppStoreUrl {
-                var lastComponent:NSString = url.lastPathComponent!
-                var id = lastComponent.substringFromIndex(2) as NSString
-                var params:NSDictionary = ["id":id]
+                let lastComponent:NSString = url.lastPathComponent!
+                let id = lastComponent.substringFromIndex(2) as NSString
+                let params:NSDictionary = ["id":id]
                 
                 let cardAction = CardViewAction(type: WCCardAction.DownloadApp, parameters: params)
                 delegate?.cardViewRequestedAction?(self, action: cardAction)
@@ -392,7 +392,7 @@ public class CardView : UIView
         back?.layer.masksToBounds = true
         
         // initialize and update
-        var cardViews:[CardViewElement?] = [header, body, footer, back]
+        let cardViews:[CardViewElement?] = [header, body, footer, back]
         for view in cardViews{
             view?.cardView = self
             view?.update(backingCard)
@@ -477,7 +477,7 @@ public class CardView : UIView
     }
     
     private func removeCardSubviews(){
-        var cardViews:[UIView?] = [header, body, footer, back]
+        let cardViews:[UIView?] = [header, body, footer, back]
         for view in cardViews{
             view?.removeFromSuperview()
         }

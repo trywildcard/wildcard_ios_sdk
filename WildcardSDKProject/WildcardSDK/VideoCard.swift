@@ -112,12 +112,12 @@ public class VideoCard : Card{
     
     public func getYoutubeId()->String?{
         let ytEmbedRegex = "^http(s)://(www.)youtube.com/embed/(.*)$"
-        let regex = NSRegularExpression(pattern: ytEmbedRegex, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
+        let regex = try? NSRegularExpression(pattern: ytEmbedRegex, options: NSRegularExpressionOptions.CaseInsensitive)
         
-        let length:Int = embedUrl.absoluteString!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        let ytMatch = regex?.firstMatchInString(embedUrl.absoluteString!, options: NSMatchingOptions.allZeros, range: NSMakeRange(0, length))
+        let length:Int = embedUrl.absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        let ytMatch = regex?.firstMatchInString(embedUrl.absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
         if(ytMatch != nil){
-            return embedUrl.absoluteString!.lastPathComponent
+            return embedUrl.lastPathComponent
         }else{
             return nil
         }
